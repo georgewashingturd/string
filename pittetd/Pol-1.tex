@@ -1,0 +1,694 @@
+\documentclass[aps,preprint,preprintnumbers,nofootinbib,showpacs,prd]{revtex4-1}
+\usepackage{graphicx,color}
+\usepackage{amsmath,amssymb}
+\usepackage{multirow}
+\usepackage{amsthm}%        But you can't use \usewithpatch for several packages as in this line. The search 
+
+%%% for SLE
+\usepackage{dcolumn}   % needed for some tables
+\usepackage{bm}        % for math
+\usepackage{amssymb}   % for math
+\usepackage{multirow}
+%%% for SLE -End
+
+\usepackage[top=1in, bottom=1.25in, left=1.1in, right=1.1in]{geometry}
+
+%%%%%% My stuffs - Stef
+\newcommand{\lsim}{\mathrel{\mathop{\kern 0pt \rlap
+  {\raise.2ex\hbox{$<$}}}
+  \lower.9ex\hbox{\kern-.190em $\sim$}}}
+\newcommand{\gsim}{\mathrel{\mathop{\kern 0pt \rlap
+  {\raise.2ex\hbox{$>$}}}
+  \lower.9ex\hbox{\kern-.190em $\sim$}}}
+
+%
+% Key
+%
+\newcommand{\key}[1]{\medskip{\sffamily\bfseries\color{blue}#1}\par\medskip}
+%\newcommand{\key}[1]{}
+\newcommand{\q}[1] {\medskip{\sffamily\bfseries\color{red}#1}\par\medskip}
+\newcommand{\comment}[2]{{\color{red}{{\bf #1:}  #2}}}
+
+
+\newcommand{\ie}{{\it i.e.} }
+\newcommand{\eg}{{\it e.g.} }
+
+%
+% Energy scales
+%
+\newcommand{\ev}{{\,{\rm eV}}}
+\newcommand{\kev}{{\,{\rm keV}}}
+\newcommand{\mev}{{\,{\rm MeV}}}
+\newcommand{\gev}{{\,{\rm GeV}}}
+\newcommand{\tev}{{\,{\rm TeV}}}
+\newcommand{\fb}{{\,{\rm fb}}}
+\newcommand{\ifb}{{\,{\rm fb}^{-1}}}
+
+%
+% SUSY notations
+%
+\newcommand{\neu}{\tilde{\chi}^0}
+\newcommand{\neuo}{{\tilde{\chi}^0_1}}
+\newcommand{\neut}{{\tilde{\chi}^0_2}}
+\newcommand{\cha}{{\tilde{\chi}^\pm}}
+\newcommand{\chao}{{\tilde{\chi}^\pm_1}}
+\newcommand{\chaop}{{\tilde{\chi}^+_1}}
+\newcommand{\chaom}{{\tilde{\chi}^-_1}}
+\newcommand{\Wpm}{W^\pm}
+\newcommand{\chat}{{\tilde{\chi}^\pm_2}}
+\newcommand{\smu}{{\tilde{\mu}}}
+\newcommand{\smur}{\tilde{\mu}_R}
+\newcommand{\smul}{\tilde{\mu}_L}
+\newcommand{\sel}{{\tilde{e}}}
+\newcommand{\selr}{\tilde{e}_R}
+\newcommand{\sell}{\tilde{e}_L}
+\newcommand{\smurl}{\tilde{\mu}_{R,L}}
+
+\newcommand{\casea}{\texttt{IA}}
+\newcommand{\caseb}{\texttt{IB}}
+\newcommand{\casec}{\texttt{II}}
+
+\newcommand{\caseasix}{\texttt{IA-6}}
+
+%
+% Greek
+%
+\newcommand{\es}{{\epsilon}}
+\newcommand{\sg}{{\sigma}}
+\newcommand{\dt}{{\delta}}
+\newcommand{\kp}{{\kappa}}
+\newcommand{\lm}{{\lambda}}
+\newcommand{\Lm}{{\Lambda}}
+\newcommand{\gm}{{\gamma}}
+\newcommand{\mn}{{\mu\nu}}
+\newcommand{\Gm}{{\Gamma}}
+\newcommand{\tho}{{\theta_1}}
+\newcommand{\tht}{{\theta_2}}
+\newcommand{\lmo}{{\lambda_1}}
+\newcommand{\lmt}{{\lambda_2}}
+%
+% LaTeX equations
+%
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+
+\newcommand{\nbea}{\begin{eqnarray*}}
+\newcommand{\neea}{\end{eqnarray*}}
+\newcommand{\nbeq}{\begin{equation*}}
+\newcommand{\neeq}{\end{equation*}}
+
+\newcommand{\no}{{\nonumber}}
+\newcommand{\td}[1]{{\widetilde{#1}}}
+\newcommand{\sqt}{{\sqrt{2}}}
+%
+\newcommand{\me}{{\rlap/\!E}}
+\newcommand{\met}{{\rlap/\!E_T}}
+\newcommand{\rdmu}{{\partial^\mu}}
+\newcommand{\gmm}{{\gamma^\mu}}
+\newcommand{\gmb}{{\gamma^\beta}}
+\newcommand{\gma}{{\gamma^\alpha}}
+\newcommand{\gmn}{{\gamma^\nu}}
+\newcommand{\gmf}{{\gamma^5}}
+%
+% Roman expressions
+%
+\newcommand{\br}{{\rm Br}}
+\newcommand{\sign}{{\rm sign}}
+\newcommand{\Lg}{{\mathcal{L}}}
+\newcommand{\M}{{\mathcal{M}}}
+\newcommand{\tr}{{\rm Tr}}
+
+\newcommand{\msq}{{\overline{|\mathcal{M}|^2}}}
+
+%
+% kinematic variables
+%
+%\newcommand{\mc}{m^{\rm cusp}}
+%\newcommand{\mmax}{m^{\rm max}}
+%\newcommand{\mmin}{m^{\rm min}}
+%\newcommand{\mll}{m_{\ell\ell}}
+%\newcommand{\mllc}{m^{\rm cusp}_{\ell\ell}}
+%\newcommand{\mllmax}{m^{\rm max}_{\ell\ell}}
+%\newcommand{\mllmin}{m^{\rm min}_{\ell\ell}}
+%\newcommand{\elmax} {E_\ell^{\rm max}}
+%\newcommand{\elmin} {E_\ell^{\rm min}}
+\newcommand{\mxx}{m_{\chi\chi}}
+\newcommand{\mrec}{m_{\rm rec}}
+\newcommand{\mrecmin}{m_{\rm rec}^{\rm min}}
+\newcommand{\mrecc}{m_{\rm rec}^{\rm cusp}}
+\newcommand{\mrecmax}{m_{\rm rec}^{\rm max}}
+%\newcommand{\mpt}{\rlap/p_T}
+
+%%%song
+\newcommand{\cosmax}{|\cos\Theta|_{\rm max} }
+\newcommand{\maa}{m_{aa}}
+\newcommand{\maac}{m^{\rm cusp}_{aa}}
+\newcommand{\maamax}{m^{\rm max}_{aa}}
+\newcommand{\maamin}{m^{\rm min}_{aa}}
+\newcommand{\eamax} {E_a^{\rm max}}
+\newcommand{\eamin} {E_a^{\rm min}}
+\newcommand{\eaamax} {E_{aa}^{\rm max}}
+\newcommand{\eaacusp} {E_{aa}^{\rm cusp}}
+\newcommand{\eaamin} {E_{aa}^{\rm min}}
+\newcommand{\exxmax} {E_{\neuo \neuo}^{\rm max}}
+\newcommand{\exxcusp} {E_{\neuo \neuo}^{\rm cusp}}
+\newcommand{\exxmin} {E_{\neuo \neuo}^{\rm min}}
+%\newcommand{\mxx}{m_{XX}}
+%\newcommand{\mrec}{m_{\rm rec}}
+\newcommand{\erec}{E_{\rm rec}}
+%\newcommand{\mrecmin}{m_{\rm rec}^{\rm min}}
+%\newcommand{\mrecc}{m_{\rm rec}^{\rm cusp}}
+%\newcommand{\mrecmax}{m_{\rm rec}^{\rm max}}
+%%%song
+
+\newcommand{\mc}{m^{\rm cusp}}
+\newcommand{\mmax}{m^{\rm max}}
+\newcommand{\mmin}{m^{\rm min}}
+\newcommand{\mll}{m_{\mu\mu}}
+\newcommand{\mllc}{m^{\rm cusp}_{\mu\mu}}
+\newcommand{\mllmax}{m^{\rm max}_{\mu\mu}}
+\newcommand{\mllmin}{m^{\rm min}_{\mu\mu}}
+\newcommand{\mllcusp}{m^{\rm cusp}_{\mu\mu}}
+\newcommand{\elmax} {E_\mu^{\rm max}}
+\newcommand{\elmin} {E_\mu^{\rm min}}
+\newcommand{\elmaxw} {E_W^{\rm max}}
+\newcommand{\elminw} {E_W^{\rm min}}
+\newcommand{\R} {{\cal R}}
+
+\newcommand{\ewmax} {E_W^{\rm max}}
+\newcommand{\ewmin} {E_W^{\rm min}}
+\newcommand{\mwrec}{m_{WW}}
+\newcommand{\mwrecmin}{m_{WW}^{\rm min}}
+\newcommand{\mwrecc}{m_{WW}^{\rm cusp}}
+\newcommand{\mwrecmax}{m_{WW}^{\rm max}}
+
+\newcommand{\mpt}{{\rlap/p}_T}
+
+%%%%%% END My stuffs - Stef
+
+
+
+
+
+
+
+\begin{document}
+
+\title{Polchinski Vol 1}
+\bigskip
+\author{Stefanus Koesno$^1$\\
+$^1$ Dr.G's fluid dynamics lab, OEH 201A\\ University of Pittsburgh, PA 15260 USA\\
+}
+%
+\date{\today}
+%
+\begin{abstract}
+
+
+\end{abstract}
+%
+\maketitle
+
+\section{Bosonic strings}
+
+\renewcommand{\theequation}{A.\arabic{equation}}  % redefine the command that creates the equation no.
+\setcounter{equation}{0}  % reset counter 
+
+The parameter $\tau$ is a gauge, since the physical quantity is independent of $\tau$, \ie it is reparametrization invariant.
+
+Classical limit of the relativistic point particle action
+%
+\nbea
+S_{pp} & = & -m \int d\tau~ \sqrt{-\dot X^\mu \dot X_\mu} \\
+& = & -m \int d\tau~ \sqrt{-g_{\mu\nu} \frac{d X^\mu}{d\tau} \frac{dX^\nu}{d\tau}} 
+\neea
+%
+is given by (restoring the right factors of $c$ in the appropriate places)
+%
+\nbea
+S_{pp} & \rightarrow & -m \int \frac{dt}{\gamma}~ \sqrt{-\eta_{\mu\nu} \gamma \frac{d X^\mu}{dt} \gamma \frac{dX^\nu}{dt}} \\
+& = & -m \int dt~ \sqrt{-\eta_{00} \frac{d X^0}{dt} \frac{dX^0}{dt} -\eta_{ij} \frac{d X^i}{dt} \frac{dX^j}{dt} } \\
+& = & -m \int dt~ \sqrt{-(-c^2) \frac{dt}{dt} \frac{dt}{dt} -(+1) \frac{d x^i}{dt} \frac{dx^i}{dt} } \\
+& = & -m c^2 \int dt~ \sqrt{1 - \frac{v^2}{c^2}} \simeq -m c^2 \int dt~ \left ( 1 - \frac{1}{2} \frac{v^2}{c^2} \right ) \\
+& = & \int dt~\left ( \frac{1}{2} m v^2 - m c^2 \right ) = \int dt ~ \left ( T - U \right )
+\neea
+%
+In the first line $d\tau = dt /\gamma$, in the second line $\eta_{00} = -c^2,~ \eta_{ij} = \delta_{ij}$ while in the fourth line $\sqrt{1 + \epsilon} \simeq 1 + \frac{1}{2} \epsilon$, \ie $\frac{v}{c} \ll 1$.
+
+A few words about Polyakov action and string theory as 2-dimensional field theory.
+
+We get the Polyakov action by inserting an {\it independent} metric, $g_{ab}$, on the string world sheet
+%
+\nbea
+S_{\rm Polyakov} & = & \int d^2\sigma~ \sqrt{-g} ~ g_{ab} \partial^a X \cdot \partial^b X
+\neea
+%
+Note that $g_{ab}$ is NOT an induced metric on the world sheet, it is independent, note also that there's no derivative of $g_{ab}$ in the action. This means that varying $\delta S/\delta g_{ab}$ will give a {\it constraint} and NOT a dynamical equation for $g_{ab}$. Therefore we can solve for $g_{ab}$ and then stick it back into the action, not so with the $X^\mu(\vec \sigma)$.
+
+And, in string theory we think of each coordinate of the string $X^\mu(\vec \sigma)$ is considered a field on the 2 dimensional world sheet parameterized by $\vec \sigma$.
+
+How does diffeomorphism generate conservation of energy momentum tensor, \ie $\nabla_a T^{ab} = 0$ ?
+Here we use a trick that utilizes the variation of the action under diffeomorphism to show that  $\nabla_a T^{ab}$ is the divergent of the current under a symmetry such that it has to vanish, however, there are plenty of caveats, they are:
+%
+\bit
+\item We first assume that initially the action, $S$, does not couple to gravity, $g_{ab}$. This is fine since Polyakov action can be written using a flat metric $\eta_{ab} \rightarrow \int d^2\sigma~ \eta_{ab} \partial^a X \cdot \partial^b X$ due to Weyl invariance, \ie $g_{ab} \rightarrow f(\vec\sigma) \tilde g_{ab} = e^{2\phi} \eta_{ab}$
+
+\item Since we're using a flat metric a diffeomorphism only affects the fields $X^\mu(\vec \sigma) = X^\mu(\vec \sigma')$ and nothing else.
+
+\item We then couple the theory with a 2d gravity $g_{ab}$ and assume the coupled theory, $\tilde S$, is diffeomorphism invariant.
+
+\item Under diffeomorphism $\tilde S$ produces two variations 
+%
+\nbea
+\delta X^\mu(\vec \sigma) & = & \epsilon^a \partial_a X^\mu =  \epsilon^a \nabla_a X^\mu\\
+\delta g_{ab}(\vec \sigma) & = & \nabla_a \epsilon_b  + \nabla_b \epsilon_a \\
+\delta \tilde S & \rightarrow & \delta_X \tilde S + \delta_g \tilde S
+\neea
+%
+where $\nabla_a \epsilon_b = \partial_a \epsilon_b - \Gamma^c_{ab} \epsilon_c$, while the original action $S$ only produces the first variation $\delta_X S$.
+
+\item But since $\tilde S$ is diffeomorphism invariant, its variation must vanish, $\delta \tilde S = \delta_X \tilde S + \delta_g \tilde S = 0$, in other words $\delta_X \tilde S = - \delta_g \tilde S$.
+
+\item Now here comes the boom, thanks to (again) Weyl invariance, $S = \tilde S, ~\int d^2\sigma~ \eta_{ab} \partial^a X \cdot \partial^b X \leftrightarrow \int d^2\sigma \sqrt{-g}~g_{ab} \partial^a X \cdot \partial^b X$ and thus $\delta_X \tilde S = \delta_X S = - \delta_g \tilde S = - \delta_g S$.
+
+\eit
+
+Following the carefully crafty ruse above we get the variation of $S$ (with the flat metric) under diffeomorphism as
+%
+\nbea
+\delta_X S = -\delta_g S & = & -\int d^2\sigma~ \left ( \frac{\delta S}{\delta g_{ab}} \right) \delta g_{ab}  = -\int d^2\sigma~ \left ( - \sqrt{-g} ~\frac{T}{2}~ T^{ab} \right ) \delta g_{ab} \\
+& = & \frac{T}{2} \int d^2\sigma \sqrt{-g}~ T^{ab} \left ( \nabla_a \epsilon_b  + \nabla_b \epsilon_a \right ) \\
+& = & T \int d^2\sigma \sqrt{-g}~ T^{ab} (\nabla_a \epsilon_b) \\
+& = & - T \int d^2\sigma ~ \nabla_a \left ( \sqrt{-g}~ T^{ab} \right ) \epsilon_b \\
+\delta S & = & - T \int d^2\sigma \sqrt{-g} ~ \left ( \nabla_a T^{ab} \right ) \epsilon_b 
+\neea
+%
+where going to the last line we have assumed a compatible metric, \ie $\nabla_a g_{bc} = 0$. It is now obvious that $\nabla_a T^{ab}$ is a conserved current and therefore must vanish.
+
+It is quite different from the derivation of $\nabla_a T^{ab} = 0$ in GR. In GR the action is a function of the metric only, here the action is a function of the 4 fields, $X^\mu(\vec \sigma)$ and the independent world sheet metric $g_{ab}$. In GR the derivation goes as follows
+%
+\nbea
+\delta S = \delta_g S & = & \int d^2\sigma~ \left ( \frac{\delta S}{\delta g_{ab}} \right) \delta g_{ab}  = \int d^2\sigma~ \left ( - \sqrt{-g} ~\frac{1}{2}~ T^{ab} \right ) \delta g_{ab} \\
+& = & - \int d^2\sigma \sqrt{-g}~ T^{ab} (\nabla_a \epsilon_b) \\
+& = & \int d^2\sigma ~ \nabla_a \left ( \sqrt{-g}~ T^{ab} \right ) \epsilon_b \\
+\delta S & = & \int d^2\sigma \sqrt{-g} ~ \left ( \nabla_a T^{ab} \right ) \epsilon_b 
+\neea
+%
+It is very similar BUT the assumptions are way different!
+
+What does the infinite sum of $\sum\limits_{n=1}^{\infty} n$ amount to? Here's a trick to calculate it
+%
+\nbea
+\sum_{n=1}^{\infty} n & \Longrightarrow & \lim_{\epsilon \rightarrow 0} \sum_{n=1}^{\infty} n e^{-\epsilon n} \\
+\sum_{n=1}^{\infty} n e^{-\epsilon n} & = & \sum_{n=0}^{\infty} n e^{-\epsilon n} \\
+& = & \sum_{n=0}^{\infty} -\frac{\partial}{\partial \epsilon} (e^{-\epsilon n}) ~ = -\frac{\partial}{\partial \epsilon} \left \{ \sum_{n=0}^{\infty}  e^{-\epsilon n} \right \} \\
+& = & -\frac{\partial}{\partial \epsilon} \left \{ 1 + e^{-\epsilon} + (e^{-\epsilon})^2 + (e^{-\epsilon})^3 + ... \right \} \\
+& = & -\frac{\partial}{\partial \epsilon} \left \{ \frac{1}{(1-e^{-\epsilon})} \right \} \\
+\sum_{n=1}^{\infty} n & \rightarrow  & \lim_{\epsilon \rightarrow 0} \frac{e^{-\epsilon}}{(1-e^{-\epsilon})^2}
+\neea
+%
+
+We now expand the numerator and denominator in $\epsilon$, the numerator is trivial
+%
+\nbea
+e^{-\epsilon} & \rightarrow & 1 - \epsilon + \frac{1}{2} \epsilon^2 + ...
+\neea
+%
+While the denominator is given by
+%
+\nbea
+(1-e^{-\epsilon})^2 = 1 - 2e^{-\epsilon} + e^{-2\epsilon} & \rightarrow & 1 - 2 (1 - \epsilon + \frac{1}{2}\epsilon^2 - \frac{1}{6}\epsilon^3 + \frac{1}{24}\epsilon^4) + (1 - 2\epsilon + \frac{1}{2} 4 \epsilon^2 - \frac{1}{6} 8\epsilon^3 + \frac{1}{24}16\epsilon^2) \\
+& = & \epsilon^2 - \epsilon^3 + \frac{7}{12} \epsilon^4  = \epsilon^2(1 - \epsilon + \frac{7}{12}\epsilon^2)
+\neea
+%
+
+Thus
+%
+\nbea
+\frac{1}{(1-e^{-\epsilon})^2} & \rightarrow & \frac{1}{\epsilon^2(1 - \epsilon + \frac{7}{12}\epsilon^2)} \\
+& = & \frac{1}{\epsilon^2} ~\frac{1}{(1 - \Delta)}, ~~\Delta = \epsilon - \frac{7}{12}\epsilon^2 \\
+& = & \frac{1}{\epsilon^2} \{ 1 + \Delta + \Delta^2 + ... \}
+\neea
+%
+Note: do NOT forget to expand up to $\Delta^2$ (since we're expanding up to second order in $\epsilon$) otherwise you won't get the correct result
+%
+\nbea
+\frac{1}{\epsilon^2} \{ 1 + \Delta + \Delta^2 + ... \} & = & \frac{1}{\epsilon^2} \left \{ 1 + \left( \epsilon - \frac{7}{12}\epsilon^2 \right) + \left( \epsilon - \frac{7}{12}\epsilon^2 \right)^2 + ... \right \} \\
+& = & \frac{1}{\epsilon^2} \left \{ 1 + \left( \epsilon - \frac{7}{12}\epsilon^2 \right) + \left( \epsilon^2 \right) + ... \right \} \\
+\frac{1}{(1-e^{-\epsilon})^2} & \rightarrow & \frac{1}{\epsilon^2} \left \{ 1 + \epsilon + \frac{5}{12}\epsilon^2 + ... \right \} 
+\neea
+%
+
+Combining everything together
+%
+\nbea
+\frac{e^{-\epsilon}}{(1-e^{-\epsilon})^2} & \rightarrow & \left \{ 1 - \epsilon + \frac{1}{2} \epsilon^2 + ... \right \} \times \frac{1}{\epsilon^2} \left \{ 1 + \epsilon + \frac{5}{12}\epsilon^2 + ... \right \} \\
+& = & \frac{1}{\epsilon^2} \left \{ 1 \times \left ( 1 + \epsilon + \frac{5}{12}\epsilon^2 \right ) - \epsilon \times \left ( 1 + \epsilon + \frac{5}{12}\epsilon^2 \right ) + \frac{1}{2}\epsilon^2 \times \left ( 1 + \epsilon + \frac{5}{12}\epsilon^2 \right ) + ... \right \} \\
+& = & \frac{1}{\epsilon^2} \left \{ \left ( 1 + \epsilon + \frac{5}{12}\epsilon^2 \right ) - \left ( \epsilon + \epsilon^2 \right ) + \left ( \frac{1}{2}\epsilon^2 \right ) + ... \right \} \\
+& = & \frac{1}{\epsilon^2} \left \{ 1 + \left ( \epsilon - \epsilon \right ) + \left ( \frac{5}{12}\epsilon^2 - \frac{12}{12}\epsilon^2 + \frac{6}{12}\epsilon^2 \right ) + ... \right \} = \frac{1}{\epsilon^2} \left \{ 1 - \frac{2}{12}\epsilon^2  + ... \right \} \\
+\frac{e^{-\epsilon}}{(1-e^{-\epsilon})^2} & \rightarrow & \frac{1}{\epsilon^2} - \frac{1}{12} + ...
+\neea
+%
+and we can absorb the diverging term $\frac{1}{\epsilon^2}$ through renormalization.
+
+Another way of getting the $-\frac{1}{12}$ is using the analytic continuation of the zeta function $\zeta(s) = \sum\limits_{n=1}^{\infty} n^{-s},~\mathfrak{Re}(s) > 1$ to include $s = -1$ and calculating the value of $\zeta(-1) = \sum\limits_{n=1}^{\infty} n$. How do we do this? We follow Problem 12.4 (and Problem 3.6) of Zwiebach. 
+
+For convenience I will reproduce both problems here:
+
+{\bf Problem 12.4} Analytic continuation of the zeta function.
+
+Consider the definition of the gamma function $\Gamma(s) = \int_0^\infty dt ~e^{-t}~t^{s-1}$. Let $t \rightarrow nt$ in this integral, and use the resulting equation to prove that
+%
+\nbea
+\Gamma(s)\zeta(s) & = & \int_0^\infty dt \frac{t^{s-1}}{e^t - 1}, ~~\mathfrak{Re}(s) > 1.
+\neea
+%
+Verify also the small $t$ expansion
+%
+\nbea
+\frac{1}{e^t-1} & = & \frac{1}{t} - \frac{1}{2} + \frac{t}{12} + \mathcal{O}(t^2).
+\neea
+%
+Use the above equations to show that for $\mathfrak{Re}(s) > 1$
+%
+\nbea
+\Gamma(s)\zeta(s) & = & \int_0^1 dt~t^{s-1} \left ( \frac{1}{e^t - 1} -\frac{1}{t} + \frac{1}{2} - \frac{t}{12}\right ) + \frac{1}{s-1} - \frac{1}{2s} + \frac{1}{12(s+1)} + \int_1^\infty dt \frac{t^{s-1}}{e^t - 1}
+\neea
+%
+Explain why the right-hand side above is well defined for $\mathfrak{Re}(s) > -2$. It follows that this right-hand side defines the analytic continuation of the left-hand side to $\mathfrak{Re}(s) > -2$. Recall the pole structure of $\Gamma(s)$ (Problem 3.6) and use it to show that $\zeta(0) = -1/2$ and that $\zeta(-1) = -1/12$.
+
+{\bf Problem 3.6} Analytic continuation for gamma functions.
+
+Consider the definition of the gamma function for complex arguments $z$ whose real part is positive:
+%
+\nbea
+\Gamma(z) & = & \int_0^\infty dt~e^{-t}~t^{z-1}, ~~ \mathfrak{Re}(z) > 0.
+\neea
+%
+Use this equation to show that for $\mathfrak{Re}(z) > 0$
+%
+\nbea
+\Gamma(z) & = & \int_0^1 dt ~t^{z-1} \left ( e^{-t} - \sum_{n=0}^N \frac{(-t)^n}{n!} \right ) + \sum_{n=0}^N \frac{(-1)^n}{n!} \frac{1}{z+n} + \int_1^\infty dt~e^{-t} t^{z-1}
+\neea
+%
+Explain why the above right-hand side is well defined for $\mathfrak{Re}(z) > -N-1$. It follows that this right-hand side provides the analytic continuation of $\Gamma(z)$ for $\mathfrak{Re}(z) > -N-1$. Conclude that the gamma function has poles at $0, -1, -2, ... ,$ and give the value of the residue at $z = -n$ (with $n$ a positive integer).
+
+We will first do Problem 3.6 where we analytically continue the Gamma function into the complex plane
+%
+\nbea
+\Gamma(s) & = & \int_0^\infty dt ~ e^{-t}~t^{s-1}, ~~ \mathfrak{Re}(s) > 0
+\neea
+%
+Here we see that we have extended the function into the complex plane, however, the real part of $s$, $\mathfrak{Re}(s) > 0$ for the $t^{s-1}$ doesn't blow up when $t \rightarrow 0$.
+
+The immediate step is to break up this integral into
+%
+\nbea
+\int_0^\infty dt ~ e^{-t}~t^{s-1} = \int_0^1 dt ~ e^{-t}~t^{s-1} + \int_0^\infty dt ~ e^{-t}~t^{s-1}
+\neea
+%
+
+The reason of splitting up the integral into $\int_0^1 + \int_1^\infty$ is because we want to expand in small $t$ and hence it is only valid for $0 \leq t < 1$. We can now extend this continuation to include $\mathfrak{Re}(s) > - N - 1$, the trick is as follows. We first expand $e^{-t}$ up to order $N$, $e^{-t} \rightarrow \sum\limits_{n=0}^{N} \frac{(-t)^n}{n!}$. We then use the usual trick $0 = -y + y$.
+%
+\nbea
+\int_0^1 dt ~ t^{s-1} e^{-t} & = & \int_0^1 dt ~ t^{s-1} \left ( e^{-t} + \left \{-e^{-t} + e^{-t} \right \} \right ) \\
+& = & \int_0^1 dt ~ t^{s-1} \left ( e^{-t} + \left \{-\sum\limits_{n=0}^{N} \frac{(-t)^n}{n!} + \sum\limits_{n=0}^{N} \frac{(-t)^n}{n!} \right \} \right ) \\
+& = & \int_0^1 dt ~ t^{s-1} \left ( e^{-t} -\sum\limits_{n=0}^{N} \frac{(-t)^n}{n!} \right )  + \sum\limits_{n=0}^{N} \int_0^1 dt ~ t^{s-1} \frac{(-t)^n}{n!} \\
+& = & \int_0^1 dt ~ t^{s-1} \left ( e^{-t} -\sum\limits_{n=0}^{N} \frac{(-t)^n}{n!} \right )  + \sum\limits_{n=0}^{N} \frac{(-1)^n}{n!} \frac{1}{s+n} 
+\neea
+%
+
+Combining everything together
+%
+\bea
+\Gamma(s) & = & \int_0^\infty dt ~ e^{-t}~t^{s-1} \nonumber \\
+& = & \int_0^1 dt ~ t^{s-1} \left ( e^{-t} -\sum\limits_{n=0}^{N} \frac{(-t)^n}{n!} \right )  + \sum\limits_{n=0}^{N} \frac{(-1)^n}{n!} \frac{1}{s+n} + \int_0^\infty dt ~ e^{-t}~t^{s-1}
+\label{Eq:Prob3.6}
+\eea
+%
+Here we see that we have shifted all the singularities into the $\sum\limits_{n=0}^{N} \frac{(-1)^n}{n!} \frac{1}{s+n}$ terms by subtracting it from the $\int_0^1$ integral. And we can immediately see that it is well defined up till the last pole $\frac{1}{s + N}$, singularity at $s = -N$. The radius of this pole is just 1 because the next pole is located at $s = -N + 1$, thus the function is well defined up to $\mathfrak{Re}(s) > - N - 1$ as advertised.
+
+We now come back to the original problem of zeta function $\zeta(s) = \sum\limits_{n=1}^{\infty} n^{-s},~\mathfrak{Re}(s) > 1$, we want to continue this function to include $\mathfrak{Re}(s) > -2$. We start with the Gamma function $\Gamma(s) = \int_0^\infty dt ~e^{-t} ~ t^{s-1}$ and make a change of variable $t \rightarrow nt$ such that $\Gamma(s) = \int_0^\infty n dt~e^{-nt} ~ t^{s-1} n^{s-1} = \int_0^\infty dt~e^{-nt} ~ t^{s-1} n^{s}$ and then
+%
+\nbea
+\Gamma(s)\zeta(s) & = & \int_0^\infty \left \{ dt~ t^{s-1} \left ( \sum\limits_{n=1}^{\infty}e^{-nt}  n^{s} n^{-s} \right ) \right \} \\
+& = & \int_0^\infty \left \{ dt~ t^{s-1} \left ( \sum\limits_{n=1}^{\infty}e^{-nt} \right ) \right \} = \int_0^\infty dt~ t^{s-1} \left ( \frac{1}{e^t - 1} \right ) \\
+\Gamma(s)\zeta(s) & = & \int_0^\infty dt~ \frac{t^{s-1}}{e^t - 1}
+\neea
+%
+where we have used the standard formula for geometric series
+%
+\nbea
+1 + r + r^2 + ... = \sum_{n=0}^{\infty} r^n & = & \frac{1}{1 - r}, ~~r < 1 \\
+r + r^2 + ... = \sum_{n=1}^{\infty} r^n & = & \frac{1}{1 - r} - 1 = \frac{1}{r^{-1} - 1}
+\neea
+%
+We now expand $\frac{1}{e^t - 1}$ for small $t$ up to order $t$ since we only want continuation up to $\mathfrak{Re}(s) > -2$
+%
+\nbea
+\frac{1}{e^t - 1} & = & \frac{1}{(1 + t + \frac{1}{2}t^2 + \frac{1}{6}t^3 + ...) - 1} = \frac{1}{t(1 + \frac{1}{2}t + \frac{1}{6}t^2)} \\
+& = & \frac{1}{t}\frac{1}{(1 + \Delta)}, ~~ \Delta = \frac{t}{2} + \frac{t^2}{6} \\
+& \rightarrow & \frac{1}{t} (1 - \Delta + \Delta^2 + ...) \\
+& = & \frac{1}{t} \left \{ 1 - \frac{t}{2} - \frac{t^2}{6} + \left ( \frac{t}{2}\right ) ^2 + ... \right \} \\
+\frac{1}{e^t - 1} & = & \frac{1}{t} - \frac{1}{2} + \frac{t}{12}
+\neea
+%
+again, do NOT forget to include up to order $\Delta^2$ when expanding $\frac{1}{(1 + \Delta)}$.
+
+We now break up the integral $\Gamma(s)\zeta(s) = \int_0^\infty dt~ \frac{t^{s-1}}{e^t - 1}$ into
+%
+\nbea
+\Gamma(s)\zeta(s) & = & \int_0^\infty dt~ \frac{t^{s-1}}{e^t - 1} = \int_0^1 dt~ \frac{t^{s-1}}{e^t - 1} + \int_1^\infty dt~ \frac{t^{s-1}}{e^t - 1}
+\neea
+%
+The reason why we break up the integral to $\int_0^1$ and $\int_1^\infty $ instead of $\int_0^2 + \int_2^\infty $ is because we want to expand in small t so $0 \leq t < 1$. We now can safely expand the $\int_0^1$ integral
+%
+\nbea
+\int_0^1 dt~ \frac{t^{s-1}}{e^t - 1} & = & \int_0^1 dt~ t^{s-1} \left ( \frac{1}{e^t - 1} + \left\{ -\frac{1}{e^t - 1} + \frac{1}{e^t - 1}\right \}  \right ) \\
+& = & \int_0^1 dt~ t^{s-1} \left ( \frac{1}{e^t - 1} + \left\{ -\frac{1}{t} + \frac{1}{2} - \frac{t}{12} +\frac{1}{t} - \frac{1}{2} + \frac{t}{12} \right \}  \right ) \\
+& = & \int_0^1 dt~ t^{s-1} \left ( \frac{1}{e^t - 1}  -\frac{1}{t} + \frac{1}{2} - \frac{t}{12} \right ) + \int_0^1 dt~ t^{s-1} \left ( \frac{1}{t} - \frac{1}{2} + \frac{t}{12}  \right ) \\
+\int_0^1 dt~ \frac{t^{s-1}}{e^t - 1} & = &  \int_0^1 dt~ t^{s-1} \left ( \frac{1}{e^t - 1}  -\frac{1}{t} + \frac{1}{2} - \frac{t}{12} \right ) + \frac{1}{s-1} - \frac{1}{2s} + \frac{1}{12(s+1)}
+\neea
+%
+Combining everything together 
+%
+\nbea
+\Gamma(s)\zeta(s) & = & \int_0^\infty dt~ \frac{t^{s-1}}{e^t - 1} = \int_0^1 dt~ \frac{t^{s-1}}{e^t - 1} + \int_1^\infty dt~ \frac{t^{s-1}}{e^t - 1} \\
+& = & \int_0^1 dt~ t^{s-1} \left ( \frac{1}{e^t - 1}  -\frac{1}{t} + \frac{1}{2} - \frac{t}{12} \right ) + \frac{1}{s-1} - \frac{1}{2s} + \frac{1}{12(s+1)} + \int_1^\infty dt~ \frac{t^{s-1}}{e^t - 1}
+\neea
+%
+This formula is now well defined up to $\mathfrak{Re}(s) > -2$ following the same logic as Problem 3.6.
+
+Remember that $s$ is complex, and thus $ \frac{1}{s-1} - \frac{1}{2s} + \frac{1}{12(s+1)}$ gives the poles of $\Gamma(s)\zeta(s)$. What we need is the values of $\zeta(s)$. We now need to show that these poles are the poles of $\Gamma(s)$ and NOT of $\zeta(s)$ such that we can extract the values of $\zeta(s)$.
+
+Using the result of Problem 3.6 above (\ref{Eq:Prob3.6}), the factor $\frac{(-1)^n}{n!(s+n)}$ is the pole of $\Gamma(s)$ and whatever factor multiplying it is the value of $\zeta(s)$. Thus $\zeta(0)$ is the factor multiplying $\frac{(-1)^0}{0!(s+0)}$ which is $-1/2$, and $\zeta(-1)$ is whatever multiplies $\frac{(-1)^1}{1!(s+1)}$ which is $-1/12$ and .....
+%
+\nbea
+-\frac{1}{12} & = & 1 + 2 + 3 + 4 + 5 + 6 + 7 + .......
+\neea
+%
+Voila!
+
+The reason I can see why we like light cone coordinate is because we can easily see that the solution is made of left and right moving parts. To start
+%
+\nbea
+\sigma^+ = \tau + \sigma & ~ & \sigma^- = \tau - \sigma \\
+\partial_\tau = \frac{\partial \sigma^+}{\partial \tau} \partial_+ + \frac{\partial \sigma^-}{\partial \tau} \partial_- & \rightarrow & \partial_\tau = \partial_+ + \partial_- \\
+\partial_\sigma = \frac{\partial \sigma^+}{\partial \sigma} \partial_+ + \frac{\partial \sigma^-}{\partial \sigma} \partial_- & \rightarrow & \partial_\sigma = -\partial_+ - \partial_-
+\neea
+%
+
+The equation of motion is easily derived using a flat metric (which we can do thanks to Weyl invariance)
+%
+\nbea
+\int d^2\sigma~ \partial_\alpha X \cdot \partial^\alpha X & \rightarrow & \partial_\alpha \partial^\alpha X = 0 \\
+& \rightarrow & (\partial_\tau^2 - \partial_\sigma^2 ) X = 0
+\neea
+%
+as the metric is Minkowskian, $\eta_{ab} = (-1, +1)$. Applying the change of variables
+%
+\nbea
+\partial_\tau^2 - \partial_\sigma^2  & \rightarrow & (\partial_+ + \partial_-)^2 - (-\partial_+ - \partial_-)^2 \\
+& = & \partial_+^2 + 2\partial_+ \partial_- + \partial_-^2 -\partial_+^2 + 2\partial_+ \partial_- - \partial_-^2 \\
+& = & 4 \partial_+\partial_- \\
+(\partial_\tau^2 - \partial_\sigma^2 ) X = 0 & \rightarrow & \partial_+\partial_- X = 0
+\neea
+%
+
+This means that
+%
+\nbea
+\partial_+ (\partial_-X) = 0 & \rightarrow & (\partial_-X) = F (\sigma^-) \\
+\partial_- (\partial_+X) = 0 & \rightarrow & (\partial_+X) = G (\sigma^+) \\
+\neea 
+%
+\ie $\partial_- X$ is a function of $\sigma^-$ only, the same goes with $\partial_+X$. Thus, $X$ splits into $X(\sigma^-,\sigma^+) = X(\sigma^-) + X(\sigma^+)$.
+
+Note that even when we are using the flat metric in the Polyakov action we can still do a variation of the action with respect to $\eta_{ab}$, $\frac{\delta S}{\delta \eta_{ab}} \neq 0$.
+
+
+Gauss's theorem in 2D. 
+%
+\nbea
+\int_{\mathcal{R}} d^2\sigma~\partial^\alpha j_\alpha & = & \oint_{\partial \mathcal{R}} j_\alpha \hat n^\alpha = \oint_{\partial \mathcal{R}} \left (j_1 d\sigma^2 - j_2 d\sigma^1 \right )
+\neea
+%
+where $n^\alpha$ is normal to the boundary. The minus sign in the last equation is from the fact that the tangent to the boundary is given by the vector $(d\sigma^1,d\sigma^2)$, the normal is then given by (in Euclidean metric) $(d\sigma^2,-d\sigma^1)$ so that $(d\sigma^1,d\sigma^2) \cdot (d\sigma^2,-d\sigma^1) = d\sigma^1 d\sigma^2 - d\sigma^2 d\sigma^1 = 0$.
+
+Delta function in 2D and the various forms of delta functions. It is said that the delta function in 2D is given by $4\pi \delta^2(\sigma - \sigma') = \partial^2 \ln(\sigma - \sigma')^2$, David Tong proceeds as follows (and I will give a heuristic argument and fill up the gaps), we set $\sigma' = 0$ and integrate both sides
+%
+\nbea
+\int d^2\sigma~ 4\pi \delta^2(\sigma) = 4\pi & = & \int d^2\sigma~\partial^2 \ln(\sigma)^2 \\
+& = & \int d^2\sigma~\partial^2 \ln |\vec \sigma \cdot \vec \sigma| \\
+& = & \int d^2\sigma~\partial^2 \ln (\sigma_1^2 + \sigma_2^2) = \int d^2\sigma~\partial^\alpha\partial_\alpha \ln (\sigma_1^2 + \sigma_2^2) \\
+& = & \int d^2\sigma~\partial_\alpha\partial_\alpha \ln (\sigma_1^2 + \sigma_2^2) = \int d^2\sigma~(\partial_1\partial_1 + \partial_2\partial_2) \ln (\sigma_1^2 + \sigma_2^2) \\
+& = & \int d^2\sigma~\partial_1 \left \{ \frac{2 \sigma_1}{ (\sigma_1^2 + \sigma_2^2) } \right \} + \partial_2 \left \{ \frac{2 \sigma_2}{ (\sigma_1^2 + \sigma_2^2) } \right \} \\
+& = & 2 \int d^2\sigma~\partial_\alpha \left \{ \frac{\sigma_\alpha}{ (\sigma_1^2 + \sigma_2^2) } \right \} = 2 \oint \frac{(\sigma_1 d\sigma_2 - \sigma_2 d\sigma_1)}{ \sigma_1^2 + \sigma_2^2 } 
+\neea
+%
+where since we are in Euclidean space we can raise and lower indices with impunity.
+
+Now comes the change of coordinates, $\sigma_1 + i\sigma_2 = r e^{i\theta}$ which means that
+%
+\nbea
+\sigma_1 = r \frac{(e^{i\theta} + e^{-i\theta})}{2} = r \cos\theta & ~~~~~~ & \sigma_2 = r \frac{(e^{i\theta} - e^{-i\theta})}{2i} = r \sin\theta
+\neea
+%
+The line integral $\oint$ is assumed to be around a circle ($r$ $constant$) such that
+%
+\nbea
+d\sigma_1 = d(r \cos\theta) = -r \sin\theta d\theta & ~~~~~~ & d\sigma_2 = d(r \sin\theta) = r \cos\theta d\theta
+\neea
+%
+such that
+%
+\nbea
+2 \oint \frac{(\sigma_1 d\sigma_2 - \sigma_2 d\sigma_1)}{ \sigma_1^2 + \sigma_2^2 } & \rightarrow & 2 \oint \frac{(r \cos\theta r \cos\theta d\theta - r \sin\theta(-r) \sin\theta d\theta )}{ r^2 } \\
+& = & 2 \oint \frac{r^2 (\cos^2\theta + \sin^2\theta) d\theta}{ r^2 } \\
+& = & 2 \oint \frac{r^2 d\theta}{ r^2 } = 4\pi
+\neea
+%
+The heuristic way is using the Green's function, remember that in E \& M the Green's function is given by
+%
+\nbea
+\nabla^2 G(x,x') & = & \delta(x,x')
+\neea
+%
+going into the momentum space
+%
+\nbea
+k^2 G(k) = 1 & \rightarrow & G(k) = \frac{1}{k^2} \\
+G(x) & = & \int d^d k~ \frac{e^{ikx}}{k^2}
+\neea
+%
+We see that when the dimension $d=3$, from dimensional analysis
+%
+\nbea
+G(x) & = & \int d^3 k~ \frac{e^{ikx}}{k^2} \simeq \int k \rightarrow \frac{1}{r}
+\neea
+%
+this is where we get the $1/r$ potential from and in dimension $d=2$
+%
+\nbea
+G(x) & = & \int d^2 k~ \frac{e^{ikx}}{k^2} \simeq \int k^0 \rightarrow \ln(r)
+\neea
+%
+
+Tong page 34 Eq. 2.13
+%
+\nbea
+X^+ & = & \frac{1}{2} x^+ + \frac{1}{2} \alpha' p^+ \tau
+\neea
+%
+an easier way to see this is to begin with the fact that we can reparameterize $\sigma^\pm \rightarrow \xi^\pm(\sigma^\pm)$ due to the residual symmetry. This means that we can reparameterize the world sheet coordinates into
+%
+\nbea
+\tau & \rightarrow & \tilde \tau = \frac{1}{2} (\tilde \sigma^+ + \tilde \sigma^-) = \frac{1}{2} (\xi^+(\sigma^+) + \xi^-(\sigma^-)), ~~\sigma^\pm \rightarrow \xi^\pm(\sigma^\pm) \\
+\sigma & \rightarrow & \tilde \sigma = \frac{1}{2} (\tilde \sigma^+ - \tilde \sigma^-) = \frac{1}{2} (\xi^+(\sigma^+) - \xi^-(\sigma^-)), ~~\sigma^\pm \rightarrow \xi^\pm(\sigma^\pm)
+\neea
+%
+It is then obvious that
+%
+\nbea
+0 & = & \tilde \partial_+\tilde \partial_- \tilde\tau \\
+0 & = & \left ( \frac {\partial_+}{\tilde \partial_+} \right ) \left ( \frac {\partial_-}{\tilde \partial_-} \right ) \partial_+ \partial_- \tilde\tau \\
+0 & = & \partial_+ \partial_- \tilde\tau 
+\neea
+%
+But this is no different from the equation of motion for $X^\mu \rightarrow \partial_+\partial_-X^\mu = 0$, thus we can reparameterize $\tau \rightarrow \tilde \tau = F(X^\mu)$ as some function of $X^\mu$ itself, \ie we can choose such that
+%
+\nbea
+\tilde \tau & = & C_1 X^+ + C_2 \\
+\tilde\tau & = & \frac{2 X^+}{\alpha' p^+} - \frac{x^+}{\alpha'p^+}
+\neea
+%
+where we have judiciously chosen $C_1 = \frac{2}{\alpha' p^+},~C_2 = - \frac{x^+}{\alpha'p^+}$ so that to agree with Tong's Eq. 2.13 :)
+
+Tong's page 56, Regge Trajectories, as to why $J_{max} = N = \alpha' M^2 + 1$. The maximum spin of the excitation of the string is determined by the (mode) creation operators, \eg 2 creation operators, $\alpha_{-1}^\mu \alpha_{-1}^\nu |0\rangle$ create a (symmetric) second rank tensor $G^{\mu\nu}$ which means spin-2. Thus the number of creation operators, $N$, determines the highest spin.
+
+
+%
+\nbea
+\nabla_a T^{ab} = \partial_a T^{ab} & = & \partial_a \left \{ -\frac{1}{\alpha'} \left ( \partial^a X^\mu \partial^b X_\mu - \frac{1}{2} \gamma^{ab} \partial_c X^\mu \partial^c X_\mu \right ) \right \} \\
+& = & -\frac{1}{\alpha'} \left ( (\partial_a \partial^a X^\mu) \partial^b X_\mu + \partial^a X^\mu (\partial_a\partial^b X_\mu) \frac{}{} \right. \\
+& & \left . ~~~~~~~ - \frac{1}{2} (\partial^b \partial_c X^\mu) \partial^c X_\mu - \frac{1}{2} \partial_c X^\mu (\partial^b \partial^c X_\mu) \right ) \\
+& = & -\frac{1}{\alpha'} \left ( \partial^2 X^\mu \partial^b X_\mu + \partial^c X^\mu (\partial_c\partial^b X_\mu) - \partial_c X^\mu (\partial^b \partial^c X_\mu) \right ) \\
+& = & -\frac{1}{\alpha'} \left ( \partial^2 X^\mu \partial^b X_\mu \right ) = -\frac{1}{\alpha'} \left ( (0) \partial^b X_\mu \right ), ~~~ \partial^2 X^\mu = 0 \\
+\nabla_a T^{ab} & = & 0
+\neea
+%
+
+Where in the last step we have used the equation of motion of $X^\mu$, \ie $(-\gamma)^{1/2} \partial^2 X^\mu = 0$. This is fine because Noerther current is valid only when the EOM is satisfied.
+
+
+\nbea
+\int dE~ e^{S(E) - \beta E} & = & \int dE~ e^{f(E)}, ~~~ f(E) = S(E) - \beta E \\
+\frac{d f(E)}{dE} = 0 & = & \frac{d S(E)}{dE} - \beta \\
+\rightarrow \beta & = & S'(E_*), ~~~ S'(E) = \frac{d S(E)}{dE}
+\neea
+
+\nbea
+S(E) & \sim & N \sqrt{E} \\
+S'(E) = \frac{N}{2} \frac{1}{\sqrt{E}} & \rightarrow & S'(E_*) = \beta = \frac{N}{2} \frac{1}{\sqrt{E}}\\
+\Rightarrow E_* & = & \frac{N^2}{4 \beta^2}
+\neea
+
+\nbea
+f(E) & = & f(E_*) + (E - E_*) f'(E_*) + \frac{(E - E_*)^2}{2} f''(E_*) \\
+& \rightarrow & f(E_*) = \frac{N^2}{4\beta}\\
+& \rightarrow & f'(E_*) = 0\\
+& \rightarrow & f''(E_*) = S''(E_*) = -\frac{N}{4} \frac{1}{\sqrt{E_*^3}} = -2 \frac{\beta^3}{N^2}\\
+f(E) & = & \frac{N^2}{4\beta} - {(E - E_*)^2} \frac{\beta^3}{N^2} \\
+& = & - {E^2} \frac{\beta^3}{N^2} + {2 E E_*} \frac{\beta^3}{N^2} - {E_*^2} \frac{\beta^3}{N^2} + \frac{N^2}{4\beta}, ~~~  E_* = \frac{N^2}{4 \beta^2}\\
+& = & - {E^2} \frac{\beta^3}{N^2} + E \frac{\beta}{2} + \frac{3N^2}{16\beta}
+\neea
+
+\nbea
+\int dE~ e^{S(E) - \beta E} & = & \int dE~ e^{- {E^2} \frac{\beta^3}{N^2} + E \frac{\beta}{2} + \frac{3N^2}{16\beta}}\\
+\int dx ~ e^{-ax^2 + bx + c} & = & \sqrt{\frac{\pi}{a}} e^{\frac{b^2}{4a} + c} \\
+\rightarrow \int dE~ e^{- {E^2} \frac{\beta^3}{N^2} + E \frac{\beta}{2} + \frac{3N^2}{16\beta}} & = & \sqrt{\frac{\pi N^2}{\beta^3}} \exp\left \{\frac{N^2}{16 \beta} + \frac{3N^2}{16\beta} \right \}\\
+e^{-\beta F} = \int dE~ e^{S(E) - \beta E} & = & \frac{N}{\beta}\sqrt{\frac{\pi}{\beta}} \exp \left \{\frac{N^2}{4 \beta} \right \} \\
+e^{-\beta F} \sim e ^{\frac{N^2}{4 \beta} } & \rightarrow & F = -\frac{N^2}{4\beta^2}  = - \frac{k_B}{4} N^2 T^2\\
+F & \sim & N^2 T^2
+\neea
+
+
+
+$M^2 = \frac{4}{\alpha'} (h - 1)$
+
+From this we get the classification of which values of $h$ would be irrelevant, marginal and relevant, here's how they break down
+\bit
+\item Let's start with the most obvious, the irrelevant operators with weight $h > 1$. For $h > 1$ the excitations are massive, thus as we go along the RG flow towards the infrared (\ie coarse graining $\rightarrow$ larger scale = lower momentum), the particles get more and more ``massive", $\frac{M}{p} \rightarrow \infty$ as $p \rightarrow 0$. This means that the particles freeze out in the infrared as they become too heavy.
+\item $h = 0$, this means that the particles have no mass scale which in turn means that RG flow will generate new CFT's.
+\item $h < 1$ translates to tachyonic excitations, \ie the particles are unstable and will decay. In this case, going to low momentum regime does not freeze them as they will just decay, creating new degrees of freedom and thus relevant in the infrared.
+\eit
+
+
+
+\end{document}

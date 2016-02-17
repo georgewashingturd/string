@@ -1,0 +1,560 @@
+\documentclass[aps,preprint,preprintnumbers,nofootinbib,showpacs,prd]{revtex4-1}
+\usepackage{graphicx,color}
+\usepackage{amsmath,amssymb}
+\usepackage{multirow}
+\usepackage{amsthm}%        But you can't use \usewithpatch for several packages as in this line. The search 
+
+%%% for SLE
+\usepackage{dcolumn}   % needed for some tables
+\usepackage{bm}        % for math
+\usepackage{amssymb}   % for math
+\usepackage{multirow}
+%%% for SLE -End
+
+\usepackage[top=1in, bottom=1.25in, left=1.1in, right=1.1in]{geometry}
+
+%%%%%% My stuffs - Stef
+\newcommand{\lsim}{\mathrel{\mathop{\kern 0pt \rlap
+  {\raise.2ex\hbox{$<$}}}
+  \lower.9ex\hbox{\kern-.190em $\sim$}}}
+\newcommand{\gsim}{\mathrel{\mathop{\kern 0pt \rlap
+  {\raise.2ex\hbox{$>$}}}
+  \lower.9ex\hbox{\kern-.190em $\sim$}}}
+
+%
+% Key
+%
+\newcommand{\key}[1]{\medskip{\sffamily\bfseries\color{blue}#1}\par\medskip}
+%\newcommand{\key}[1]{}
+\newcommand{\q}[1] {\medskip{\sffamily\bfseries\color{red}#1}\par\medskip}
+\newcommand{\comment}[2]{{\color{red}{{\bf #1:}  #2}}}
+
+
+\newcommand{\ie}{{\it i.e.} }
+\newcommand{\eg}{{\it e.g.} }
+
+%
+% Energy scales
+%
+\newcommand{\ev}{{\,{\rm eV}}}
+\newcommand{\kev}{{\,{\rm keV}}}
+\newcommand{\mev}{{\,{\rm MeV}}}
+\newcommand{\gev}{{\,{\rm GeV}}}
+\newcommand{\tev}{{\,{\rm TeV}}}
+\newcommand{\fb}{{\,{\rm fb}}}
+\newcommand{\ifb}{{\,{\rm fb}^{-1}}}
+
+%
+% SUSY notations
+%
+\newcommand{\neu}{\tilde{\chi}^0}
+\newcommand{\neuo}{{\tilde{\chi}^0_1}}
+\newcommand{\neut}{{\tilde{\chi}^0_2}}
+\newcommand{\cha}{{\tilde{\chi}^\pm}}
+\newcommand{\chao}{{\tilde{\chi}^\pm_1}}
+\newcommand{\chaop}{{\tilde{\chi}^+_1}}
+\newcommand{\chaom}{{\tilde{\chi}^-_1}}
+\newcommand{\Wpm}{W^\pm}
+\newcommand{\chat}{{\tilde{\chi}^\pm_2}}
+\newcommand{\smu}{{\tilde{\mu}}}
+\newcommand{\smur}{\tilde{\mu}_R}
+\newcommand{\smul}{\tilde{\mu}_L}
+\newcommand{\sel}{{\tilde{e}}}
+\newcommand{\selr}{\tilde{e}_R}
+\newcommand{\sell}{\tilde{e}_L}
+\newcommand{\smurl}{\tilde{\mu}_{R,L}}
+
+\newcommand{\casea}{\texttt{IA}}
+\newcommand{\caseb}{\texttt{IB}}
+\newcommand{\casec}{\texttt{II}}
+
+\newcommand{\caseasix}{\texttt{IA-6}}
+
+%
+% Greek
+%
+\newcommand{\es}{{\epsilon}}
+\newcommand{\sg}{{\sigma}}
+\newcommand{\dt}{{\delta}}
+\newcommand{\kp}{{\kappa}}
+\newcommand{\lm}{{\lambda}}
+\newcommand{\Lm}{{\Lambda}}
+\newcommand{\gm}{{\gamma}}
+\newcommand{\mn}{{\mu\nu}}
+\newcommand{\Gm}{{\Gamma}}
+\newcommand{\tho}{{\theta_1}}
+\newcommand{\tht}{{\theta_2}}
+\newcommand{\lmo}{{\lambda_1}}
+\newcommand{\lmt}{{\lambda_2}}
+%
+% LaTeX equations
+%
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+
+\newcommand{\nbea}{\begin{eqnarray*}}
+\newcommand{\neea}{\end{eqnarray*}}
+\newcommand{\nbeq}{\begin{equation*}}
+\newcommand{\neeq}{\end{equation*}}
+
+\newcommand{\no}{{\nonumber}}
+\newcommand{\td}[1]{{\widetilde{#1}}}
+\newcommand{\sqt}{{\sqrt{2}}}
+%
+\newcommand{\me}{{\rlap/\!E}}
+\newcommand{\met}{{\rlap/\!E_T}}
+\newcommand{\rdmu}{{\partial^\mu}}
+\newcommand{\gmm}{{\gamma^\mu}}
+\newcommand{\gmb}{{\gamma^\beta}}
+\newcommand{\gma}{{\gamma^\alpha}}
+\newcommand{\gmn}{{\gamma^\nu}}
+\newcommand{\gmf}{{\gamma^5}}
+%
+% Roman expressions
+%
+\newcommand{\br}{{\rm Br}}
+\newcommand{\sign}{{\rm sign}}
+\newcommand{\Lg}{{\mathcal{L}}}
+\newcommand{\M}{{\mathcal{M}}}
+\newcommand{\tr}{{\rm Tr}}
+
+\newcommand{\msq}{{\overline{|\mathcal{M}|^2}}}
+
+%
+% kinematic variables
+%
+%\newcommand{\mc}{m^{\rm cusp}}
+%\newcommand{\mmax}{m^{\rm max}}
+%\newcommand{\mmin}{m^{\rm min}}
+%\newcommand{\mll}{m_{\ell\ell}}
+%\newcommand{\mllc}{m^{\rm cusp}_{\ell\ell}}
+%\newcommand{\mllmax}{m^{\rm max}_{\ell\ell}}
+%\newcommand{\mllmin}{m^{\rm min}_{\ell\ell}}
+%\newcommand{\elmax} {E_\ell^{\rm max}}
+%\newcommand{\elmin} {E_\ell^{\rm min}}
+\newcommand{\mxx}{m_{\chi\chi}}
+\newcommand{\mrec}{m_{\rm rec}}
+\newcommand{\mrecmin}{m_{\rm rec}^{\rm min}}
+\newcommand{\mrecc}{m_{\rm rec}^{\rm cusp}}
+\newcommand{\mrecmax}{m_{\rm rec}^{\rm max}}
+%\newcommand{\mpt}{\rlap/p_T}
+
+%%%song
+\newcommand{\cosmax}{|\cos\Theta|_{\rm max} }
+\newcommand{\maa}{m_{aa}}
+\newcommand{\maac}{m^{\rm cusp}_{aa}}
+\newcommand{\maamax}{m^{\rm max}_{aa}}
+\newcommand{\maamin}{m^{\rm min}_{aa}}
+\newcommand{\eamax} {E_a^{\rm max}}
+\newcommand{\eamin} {E_a^{\rm min}}
+\newcommand{\eaamax} {E_{aa}^{\rm max}}
+\newcommand{\eaacusp} {E_{aa}^{\rm cusp}}
+\newcommand{\eaamin} {E_{aa}^{\rm min}}
+\newcommand{\exxmax} {E_{\neuo \neuo}^{\rm max}}
+\newcommand{\exxcusp} {E_{\neuo \neuo}^{\rm cusp}}
+\newcommand{\exxmin} {E_{\neuo \neuo}^{\rm min}}
+%\newcommand{\mxx}{m_{XX}}
+%\newcommand{\mrec}{m_{\rm rec}}
+\newcommand{\erec}{E_{\rm rec}}
+%\newcommand{\mrecmin}{m_{\rm rec}^{\rm min}}
+%\newcommand{\mrecc}{m_{\rm rec}^{\rm cusp}}
+%\newcommand{\mrecmax}{m_{\rm rec}^{\rm max}}
+%%%song
+
+\newcommand{\mc}{m^{\rm cusp}}
+\newcommand{\mmax}{m^{\rm max}}
+\newcommand{\mmin}{m^{\rm min}}
+\newcommand{\mll}{m_{\mu\mu}}
+\newcommand{\mllc}{m^{\rm cusp}_{\mu\mu}}
+\newcommand{\mllmax}{m^{\rm max}_{\mu\mu}}
+\newcommand{\mllmin}{m^{\rm min}_{\mu\mu}}
+\newcommand{\mllcusp}{m^{\rm cusp}_{\mu\mu}}
+\newcommand{\elmax} {E_\mu^{\rm max}}
+\newcommand{\elmin} {E_\mu^{\rm min}}
+\newcommand{\elmaxw} {E_W^{\rm max}}
+\newcommand{\elminw} {E_W^{\rm min}}
+\newcommand{\R} {{\cal R}}
+
+\newcommand{\ewmax} {E_W^{\rm max}}
+\newcommand{\ewmin} {E_W^{\rm min}}
+\newcommand{\mwrec}{m_{WW}}
+\newcommand{\mwrecmin}{m_{WW}^{\rm min}}
+\newcommand{\mwrecc}{m_{WW}^{\rm cusp}}
+\newcommand{\mwrecmax}{m_{WW}^{\rm max}}
+
+\newcommand{\mpt}{{\rlap/p}_T}
+
+%%%%%% END My stuffs - Stef
+
+
+
+
+
+
+
+\begin{document}
+
+\title{Some Derivation}
+\bigskip
+\author{Stefanus Koesno$^1$\\
+$^1$ Somewhere in California\\ San Jose, CA 95133 USA\\
+}
+%
+\date{\today}
+%
+\begin{abstract}
+Some ideas
+
+\end{abstract}
+%
+\maketitle
+
+\section{Deriving QED E.O.M from its Hamiltonian}
+
+\renewcommand{\theequation}{A.\arabic{equation}}  % redefine the command that creates the equation no.
+\setcounter{equation}{0}  % reset counter 
+
+The lagrangian (density) is given by
+%
+\nbea
+\mathcal{L} & = & -\frac{1}{2} \partial_\mu A_\nu \partial^\mu A^\nu + \frac{1}{2} \partial_\mu A_\nu \partial^\nu A^\mu + i \overline \psi \gamma^\mu \partial_\mu \psi - \overline \psi \left ( e \gamma^\mu A_\mu + m\right ) \psi \\
+& = & -\frac{1}{2} \partial_\mu A_\nu F^{\mu\nu} + i \overline \psi \gamma^\mu \partial_\mu \psi - \overline \psi \left ( e \gamma^\mu A_\mu + m\right ) \psi
+\neea
+%
+We can simplyfy the first term by writing $\partial_\mu A_\nu$ in its symmetric and antisymmetric components
+%
+\nbea
+\partial_\mu A_\nu & = & \left \{ \frac{1}{2} (\partial_\mu A_\nu + \partial_\nu A_\mu) + \frac{1}{2} (\partial_\mu A_\nu - \partial_\nu A_\mu)\right \} \\
+& = & \partial_{\{\mu} A_{\nu\}} + \partial_{[\mu} A_{\nu]}
+\neea
+%
+but the symmetric component will vanish when contracted with $(- \partial^\mu A^\nu + \partial^\nu A^\mu)$ which is antisymmetric, $-\frac{1}{2} \partial_\mu A_\nu \partial^\mu A^\nu + \frac{1}{2} \partial_\mu A_\nu \partial^\nu A^\mu$ then becomes
+%
+\nbea
+& = & \frac{1}{2} \frac{1}{2} (\partial_\mu A_\nu - \partial_\nu A_\mu) (- \partial^\mu A^\nu + \partial^\nu A^\mu) \\
+& = & \frac{1}{4} F_{\mu\nu} (-F^{\mu\nu}) \\
+& = & -\frac{1}{4} F_{\mu\nu} F^{\mu\nu} 
+\neea
+%
+and the lagrangian becomes the usual one
+%
+\nbea
+\mathcal{L} & = & -\frac{1}{4} F_{\mu\nu} F^{\mu\nu}  + i \overline \psi \gamma^\mu \partial_\mu \psi - \overline \psi \left ( e \gamma^\mu A_\mu + m\right ) \psi
+\neea
+%
+
+The (traditional) conjugate momenta are
+%
+\nbea
+p_A^{0\sigma} & = & \frac{\delta \mathcal{L}}{\delta \partial_0 \partial_\sigma} = -\frac{1}{2} \delta^0_\mu \delta^\sigma_\nu \partial^\mu A^\nu - \frac{1}{2} \partial_\mu A_\nu g^{0\mu} g^{\sigma\nu} + \frac{1}{2} \delta^0_\mu \delta^\sigma_\nu \partial^\nu A^\mu + \frac{1}{2} \partial_\mu A_\nu g^{0\nu} g^{\sigma\mu} \\
+& = &  - \frac{1}{2} \partial^0 A^\sigma - \frac{1}{2} \partial^0 A^\sigma + \frac{1}{2} \partial^\sigma A^0 + \frac{1}{2} \partial^\sigma A^0 \\
+& = & - \partial^0 A^\sigma + \partial^\sigma A^0 \\
+\rightarrow p_A^{0\sigma} & = & - F^{0\sigma} \\ \\
+\rightarrow p_\psi^{0} & = & \frac{\delta \mathcal{L}}{\delta \partial_0 \psi} = i \overline \psi \gamma^0 \\
+\rightarrow p_{\overline \psi}^{0} & = & \frac{\delta \mathcal{L}}{\delta \partial_0 {\overline \psi}} = 0
+\neea
+%
+The hamiltonian (density) is then
+%
+\nbea
+\mathcal{H} & = & p_A^{0\sigma}\partial_0 A_\sigma + p_\psi^{0} \partial_0 \psi - \mathcal{L} \\
+& = & - F^{0\sigma} \partial_0 A_\sigma +  i \overline \psi \gamma^0 \partial_0 \psi + \frac{1}{2} \partial_\mu A_\nu F^{\mu\nu}  - i \overline \psi \gamma^\mu \partial_\mu \psi + \overline \psi \left ( e \gamma^\mu A_\mu + m\right ) \psi
+\neea
+%
+Writing $\partial_0 A_\sigma$ in its symmetric and antisymmetric components
+%
+\nbea
+\partial_0 A_\sigma & = & \left \{ \frac{1}{2} (\partial_0 A_\sigma + \partial_\sigma A_0) + \frac{1}{2} (\partial_0 A_\sigma - \partial_\sigma A_0)\right \}
+\neea
+%
+and expecting to get rid of the symmetric part by contracting with $F^{0\sigma}$ might not work because
+%
+\nbea
+- F^{0\sigma} \partial_{\{0} A_{\sigma\}} & = & F^{\sigma 0} \partial_{\{0} A_{\sigma\}} \\
+& = & F^{\sigma 0} \partial_{\{\sigma} A_{0\}}
+\neea
+%
+but now we can't swap $0 \leftrightarrow \sigma$ like what we do for the usual dummy indices, \ie 
+%
+\nbea
+- F^{\rho\sigma} \partial_{\{\rho} A_{\sigma\}} & = & F^{\sigma \rho} \partial_{\{\rho} A_{\sigma\}} \\
+& = & F^{\sigma \rho} \partial_{\{\sigma} A_{\rho\}}, ~~ \rho \leftrightarrow \sigma\\
+- F^{\rho\sigma} \partial_{\{\rho} A_{\sigma\}} & = & F^{\rho\sigma} \partial_{\{\rho} A_{\sigma\}}
+\neea
+%
+Going back to the hamiltonian and grouping similar terms
+%
+\nbea
+\mathcal{H} & = &  \left (- \partial_0 A_\nu F^{0\nu} + \frac{1}{2} \partial_\mu A_\nu F^{\mu\nu} \right ) + \left ( i \overline \psi \gamma^0 \partial_0 \psi - i \overline \psi \gamma^\mu \partial_\mu \psi \right ) + \overline \psi \left ( e \gamma^\mu A_\mu + m\right ) \psi
+\neea
+%
+focusing on the first bracket for now
+%
+\nbea
+- \partial_0 A_\nu F^{0\nu} + \frac{1}{2} \partial_\mu A_\nu F^{\mu\nu} & = & - \partial_0 A_\nu F^{0\nu} + \frac{1}{2} \partial_0 A_\nu F^{0\nu} + \frac{1}{2} \partial_i A_\nu F^{i\nu} \\
+& = & - \frac{1}{2} \partial_0 A_\nu F^{0\nu} + \frac{1}{2} \partial_i A_\nu F^{i\nu}, ~~F^{00} = 0 \\
+& = & - \frac{1}{2} \partial_0 A_i F^{0 i} + \frac{1}{2} \left ( \partial_i A_0 F^{i 0} +  \partial_i A_j F^{i j} \right ) \\
+& = & \frac{1}{2} \left ( -\partial_0 A_i F^{0 i} +  \partial_i A_0 F^{i 0}\right ) + \frac{1}{4} F_{ij}F^{ij} \\
+& = & \frac{1}{2} \left ( \partial_0 A_i F^{i 0} + \partial_i A_0 F^{i 0}\right ) + \frac{1}{4} F_{ij}F^{ij} \\
+& = & \frac{1}{2} F^{i 0} \left ( \partial_0 A_i - \partial_i A_0 + 2\partial_i A_0 \right ) + \frac{1}{4} F_{ij}F^{ij}\\
+& = & \frac{1}{2} F^{i 0}F_{0 i} + F^{i 0} \partial_i A_0 + \frac{1}{4} F_{ij}F^{ij}
+\neea
+%
+We can massage this to a more familiar form, to do this we must make sure we use the {\it correct metric}, otherwise we'll get all sorts of minus signs, the metric we have to use here is $(+ - - -)$, \ie $A^\mu = (\phi, \vec A)$, $A_\mu = (\phi, -\vec A)$
+%
+\nbea
+\vec E & = & -\nabla \phi - \partial_0 \vec A \\
+E^i & = & \partial^i \phi - \partial_0 A^i, ~~ \nabla = \partial_i = -\partial^i, \partial_0 = \partial^0, \\
+& = & \partial^i A^0 - \partial^0 A^i \\
+E^i & = & F^{i 0} \\ \\
+F_{0 i} & = & \partial_0 A_i - \partial_i A_0 \\
+& = & -\partial_0 A^i - \partial_i A^0  = E^i = -E_i \\
+& = & -\partial_0 (\vec A)^i - (\nabla)_i \phi
+\neea
+%
+while for the magnetic field
+%
+\nbea
+\vec  B & = & \nabla \times \vec A \\
+B^i & = & \varepsilon^{ijk} \partial_j (-A_k) \\
+\varepsilon_{ilm} B^i & = & -\varepsilon_{ilm} \varepsilon^{ijk}\partial_j A_k \\
+& = & -(\delta^j_l\delta^k_m - \delta^k_l\delta^j_m)\partial_j A_k \\
+& = & -(\partial_l A_m - \partial_m A_l) \\
+F_{lm} & = & -\varepsilon_{ilm} B^i \\ \\
+F^{lm} & = & \varepsilon^{ilm} B_i
+\neea
+%
+The minus sign on $(-A_k)$ is due to the fact that the derivative was initially on the vector $\vec A \rightarrow A^k$ but since we're using the covariant version here we need to include a minus sign from the metric $(+ - - - )$. Also there's no minus sign on $F^{lm} = \varepsilon^{ilm} B_i$ because $B_i = -B^i$ due to the metric $(+ - - -)$, to check if this is correct let's do $F_{12}$ which we know to be $F_{12} = F^{12}= -B^3$, $F_{12} = -\varepsilon_{312} B^3 = -B^3$ and $F^{12} = \varepsilon^{312} B_3 = -B^3$ which are correct.
+
+Thus
+%
+\nbea
+F^{i 0}F_{0 i} & = & E^i(-E_i) = - g_{ij} E^i E^j, ~~ g_{ij} = (- - -) \\
+& = & E^i E^i \\
+\rightarrow \frac{1}{2} F^{i 0}F_{0 i}  & = & \frac{1}{2} \vec E \cdot \vec E \\ \\
+F_{ij}F^{ij} & = & -\varepsilon_{ijk} B^k \varepsilon^{ijl} B_l =  \varepsilon_{ijk} \varepsilon^{ijl} B^k B_l \\
+& = & -2 \delta_k^l B^k B_l = -2 B^k B_k  = 2 B^k B^k\\
+\rightarrow \frac{1}{4} F_{ij}F^{ij}  & = & \frac{1}{2} \vec B \cdot \vec B \\ \\
+F^{i 0} \partial_i A_0 & = & - \partial_i F^{i 0}  A_0 = \partial_i E^i A_0 \\
+\rightarrow F^{i 0} \partial_i A_0 & = & -A_0 (\nabla \cdot \vec E)
+\neea
+%
+And the photon part of the hamiltonian is
+%
+\nbea
+\mathcal{H}_{\rm ph} & = & \frac{1}{2} \vec E \cdot \vec E + \frac{1}{2} \vec B \cdot \vec B - A_0 (\nabla \cdot \vec E)
+\neea
+%
+Going back to our original hamiltonian
+%
+\nbea
+\mathcal{H} & = & \frac{1}{2} F^{i 0} F_{0 i} + F^{i 0} \partial_i A_0 + \frac{1}{4} F_{ij}F^{ij} - i \overline \psi \gamma^i \partial_i \psi + \overline \psi \left ( e \gamma^\mu A_\mu + m\right ) \psi
+\neea
+%
+Let's rewrite the first term
+%
+\nbea
+F_{0 i} & = & g_{0 \mu} g_{i \nu} F^{\mu \nu} = g_{0 0} g_{i j} F^{0 j}, g_{00} = 1, g_{ij} = -\delta_{ij} \\
+& = & (-F^{0 i}) = F^{i 0} \\
+\rightarrow F_{0 i}  & = & p^{0 i}_A \\
+\rightarrow F^{i 0} F_{0 i} & = & p^{0 i}_A p^{0 i}_A
+\neea
+%
+We now want to derive the equations of motion from this hamiltonian. Let's start with the photons, the first is
+%
+\nbea
+\frac{\delta \mathcal{H}}{\delta p^{0 i}_A} & = & \partial_0 A_i \\
+\frac{\delta \mathcal{H}}{\delta p^{0 i}_A} & = & \frac{1}{2}p^{0 i}_A + \frac{1}{2}p^{0 i}_A + \partial_i A_0 \\
+& = & F_{0 i} + \partial_i A_0 = \partial_0 A_i - \partial_i A_0 + \partial_i A_0 \\
+\partial_0 A_i & = & \partial_0 A_i 
+\neea
+%
+Thus this equation only gives us a trivial identity. The next e.o.m is
+%
+\nbea
+\frac{\delta \mathcal{H}}{\delta A_\rho} & = & -\partial_0 p^{0 \rho}_A
+\neea
+%
+Note that $p_A^{00} = F^{00} = 0 \rightarrow {\delta \mathcal{H}}/{\delta A_0} = 0$, so let's do that first since that seems harmless enough, to do this we need to do integration by parts on $F^{i 0} \partial_i A_0 \rightarrow - \partial_i F^{i 0} A_0$, we can do this because the hamiltonian is the integral of the density, $H = \int d^3x \mathcal{H}$, note that integration by parts can only be done on spatial derivatives, $H$ is not integrated in time!
+%
+\nbea
+\frac{\delta \mathcal{H}}{\delta A_0} & = & -\partial_i F^{i 0} + e \overline \psi \gamma^0 \psi	\\
+0 & = & -\partial_i F^{i 0} + e \overline \psi \gamma^0 \psi	\\
+\partial_i F^{i 0} & = & e \overline \psi \gamma^0 \psi \\
+\rightarrow \nabla \cdot \vec E & = & \rho
+\neea
+%
+Where $J^\mu = e \overline \psi \gamma^\mu \psi = (\rho, \vec J) $, so we obtain the first of the Maxwell's equations. Next is ${\delta \mathcal{H}}/{\delta A_k}$, we will do it slowly :) First, the terms we need are $ \frac{1}{4} F_{ij}F^{ij} + e \overline \psi \gamma^\mu A_\mu \psi$, we do not include $\frac{1}{2} F^{i 0} F_{0 i} + F^{i 0} \partial_i A_0$ because they are actually terms of $p_A^{0i}$ and in the hamiltonian formalism the conjugate momenta are independent of the position variables $A_\mu$.
+
+The first of those terms we want to tackle is
+%
+\nbea
+F_{ij} F^{ij} & = & (\partial_i A_j - \partial_j A_i)F^{ij} \\
+F_{ij} F^{ij} & = &  -A_j \partial_i F^{ij} + A_i \partial_j F^{ij} \\ \\
+F_{ij} F^{ij} & = & F_{ij}(\partial^i A^j - \partial^j A^i) \\
+F_{ij} F^{ij} & = &  - \partial^i F_{ij} A^j + \partial^j F_{ij} A^i
+\neea
+%
+And we have done plenty of integration by parts (for spatial derivatives only), again since the hamiltonian density is integrated $H = \int d^3x \mathcal{H}$, thus
+%
+\nbea
+\frac{\delta \left ( \frac{1}{4}F_{ij} F^{ij} \right )}{\delta A_k} & = & \frac{1}{4} \left (- \partial_i F^{ik} + \partial_j F^{kj}  - \partial^i F_{i}^{\ k} + \partial^j F_{\ j}^k \right )\\
+& = & \frac{1}{4} \left (- \partial_i F^{ik} + \partial_j F^{kj}  - \partial_i F^{ik} + \partial_j F^{kj} \right )\\
+& = & \frac{1}{4} \left (- 2\partial_i F^{ik} + 2\partial_j F^{kj} \right )= - \partial_i F^{ik}
+\neea
+%
+while the fermionic part gives
+%
+\nbea
+\frac{\delta (e \overline \psi \gamma^\mu A_\mu \psi) } {\delta A_k} & = & e \overline \psi \gamma^k \psi 
+\neea
+%
+Combining both we get
+%
+\nbea
+\frac{\delta \mathcal{H}}{\delta A_k} & = & - \partial_i F^{ik} + e \overline \psi \gamma^k \psi \\
+-\partial_0 p_A^{0k} & = & - \partial_i F^{ik} + e \overline \psi \gamma^k \psi
+\neea
+%
+We can write it in a more familiar form by remembering that $p_A^{0k} = E^k$, $J^k = e \overline \psi \gamma^k \psi$ and 
+%
+\nbea
+-\partial_i F^{ik} & = & -\partial_i \varepsilon^{ikm} B_m = -\varepsilon^{ikm} \partial_i B_m \\
+& = & \varepsilon^{kim} \partial_i B_m  = -(\nabla \times \vec B)^k
+\neea
+%
+the extra minus sign is again due to the fact that the vector $\vec B \rightarrow B^k = - B_k$ thanks to the choice of metric $(+ - - -)$, the e.o.m can then be written as
+%
+\nbea
+-\partial_0 E^{k} & = & -(\nabla \times \vec B)^k + J^k \\
+\rightarrow \nabla \times \vec B & = & \partial_0 \vec E + \vec J
+\neea
+%
+which is the other familiar Maxwell's equation. For a more modern representation we can add both e.o.m's we get earlier, \ie $\partial_i F^{i 0} = e \overline \psi \gamma^0 \psi $ and $ \partial_0 F^{0 k} + \partial_i F^{ik} = e \overline \psi \gamma^k \psi$ 
+%
+\nbea
+\partial_i F^{i 0} + \partial_0 F^{0 k} + \partial_i F^{ik} & = & e \overline \psi \gamma^0 \psi + e \overline \psi \gamma^k \psi\\
+(\partial_0 F^{0 0} + \partial_0 F^{0 k}) + ( \partial_i F^{i 0} + \partial_i F^{ik}) & = & e \overline \psi \gamma^\mu \psi, ~~F^{00} = 0 \\
+\partial_0 F^{0\mu} + \partial_i F^{i \mu} & = & J^\mu \\
+\rightarrow \partial_\nu F^{\nu\mu} & = & J^\mu
+\neea
+%
+
+We now do the variation of the fermionic parts of the hamiltonian given by  
+%
+\nbea
+\mathcal{H}_{\rm fm} & = & - i \overline \psi \gamma^i \partial_i \psi + \overline \psi \left ( e \gamma^\mu A_\mu + m\right ) \psi 
+\neea
+%
+notice that it does {\it not} contain the time derivative of the field, either $\dot \psi$ or $\dot {\overline \psi}$. What this means is that we have a constrained system, another anomaly is that $p^0_{\overline \psi} = 0$, yet another constraint, we have to treat this hamiltonian according to the Dirac-Bergmann algorithm.
+
+If we insist of using the traditional way we will immediately face an ambiguity as what should we substitute for $p_\psi$. We can choose to substitute all $\overline \psi$ for $p^0_\psi$ but then we will still have the problem of 
+%
+\nbea
+\frac{\delta \mathcal{H}}{\delta p^0_{\overline \psi}} & = & \partial_0 \overline \psi \\
+\rightarrow 0 & = & \partial_0 \overline \psi
+\neea
+%
+which is wrong. Ignoring this issue for now, the fastest way to get the fermionic e.o.m's is actually to substitute all $\overline \psi$ for $p^0_\psi$, $p^0_{\psi} = i \overline \psi \gamma^0 \to \overline\psi = -i p^0_{\psi} \gamma^0$
+%
+\nbea
+\mathcal{H}_{\rm fm} & = & - p^0_{\psi} \gamma^0 \gamma^i \partial_i \psi -i e p^0_\psi A_0 \psi  - e i p^0_{\psi} \gamma^0 \gamma^i A_i \psi - i m p^0_{\psi} \gamma^0 \psi \\
+ & = & p^0_{\psi} \gamma^i \gamma^0 \partial_i \psi - i e p^0_\psi A_0 \psi  + e i p^0_{\psi}  \gamma^i \gamma^0 A_i \psi - i m p^0_{\psi} \gamma^0 \psi
+\neea
+%
+where $\gamma^0\gamma^i = -\gamma^i\gamma^0$ from the anticommutation relation of the gamma matrices. Moving on with this hamiltonian, we can recover all of Dirac's e.o.m's
+%
+\nbea
+\frac{\delta \mathcal{H}}{\delta p^0_\psi} & = & \partial_0 \psi \\
+\frac{\delta \mathcal{H}}{\delta p^0_\psi} & = &  - \gamma^0 \gamma^i \partial_i \psi -i e A_0 \psi  - e i \gamma^0 \gamma^i A_i \psi - i m \gamma^0 \psi \\
+\partial_0 \psi  & = &  - \gamma^0 \gamma^i \partial_i \psi -i e A_0 \psi  - e i \gamma^0 \gamma^i A_i \psi - i m \gamma^0 \psi \\
+i \gamma^0 \partial_0 \psi  & = &  - i \gamma^i \partial_i \psi + e \gamma^0 A_0 \psi  + e \gamma^i A_i \psi + m \psi \\
+i \gamma^\mu \partial_\mu \psi  & = &  e \gamma^\mu A_\mu \psi + m \psi
+\neea
+%
+The next e.o.m is easier to derive if we use the second line (with $\gamma^i$ on the left of $\gamma^0$) of the hamiltonian above because we want to multiply by $\gamma^0$ from the right.
+%
+\nbea
+\frac{\delta \mathcal{H}}{\delta \psi} & = & -\partial_0 p^0_\psi \\
+\frac{\delta \mathcal{H}}{\delta \psi} & = & -\partial_i p^0_{\psi} \gamma^i \gamma^0 - i e p^0_\psi A_0 + e i p^0_{\psi}\gamma^i  \gamma^0  A_i - i m p^0_{\psi} \gamma^0 \\
+-\partial_0 p^0_\psi \gamma^0 & = & -\partial_i p^0_{\psi} \gamma^i - i e p^0_\psi \gamma^0 A_0  + e i p^0_{\psi} \gamma^i A_i - i m p^0_{\psi} \\
+-i \partial_0 \overline \psi \gamma^0 \gamma^0 & = & - i\partial_i \overline \psi \gamma^0 \gamma^i + e \overline \psi \gamma^0 \gamma^0 A_0 - e \overline \psi \gamma^0 \gamma^i A_i + m \overline \psi \gamma^0 \\
+-i \partial_0 \overline \psi \gamma^0 \gamma^0 & = & i\partial_i \overline \psi \gamma^i \gamma^0 + e \overline \psi \gamma^0 \gamma^0 A_0 + e \overline \psi \gamma^i \gamma^0 A_i + m \overline \psi \gamma^0 \\
+-i \partial_0 \overline \psi \gamma^0 & = & i\partial_i \overline \psi \gamma^i + e \overline \psi \gamma^0 A_0 + e \overline \psi \gamma^i A_i + m \overline \psi \\
+-i \partial_\mu \overline \psi \gamma^\mu & = & e \overline \psi \gamma^\mu A_\mu + m \overline \psi
+\neea
+%
+from third to fourth line we have substitued $p^0_{\psi}$ for $i \overline \psi \gamma^0$ and from fourth to fifth line we have swap the order of $\gamma^0 \gamma^i \to \gamma^i \gamma^0$ incurring a minus sign. Again, although the above derivation yields the correct e.o.m's they are fundamentally wrong! We need to employ Dirac-Bergmann algorithm to do it correctly. As this algorithm is quite an extensive subject, I will deal with it in a separate article.
+
+In summary the equations of motion we get from the hamiltonian (density) are:
+
+For the photons
+%
+\nbea
+\partial_i F^{i 0} & = & e \overline \psi \gamma^0 \psi \\
+\partial_0 F^{0 k} + \partial_i F^{ik} & = & e \overline \psi \gamma^k \psi \\
+\rightarrow \partial_\nu F^{\nu\mu} & = & e \overline \psi \gamma^\mu \psi 
+\neea
+%
+and for the fermions
+%
+\nbea
+\rightarrow -  i \partial_\mu \overline \psi \gamma^\mu & = & e \overline \psi (\gamma^\mu A_\mu + m ) \\
+\rightarrow i \gamma^\mu \partial_\mu \psi & = & (e \gamma^\mu A_\mu + m) \psi
+\neea
+%
+
+One might ask as to whatever happened to the other two Maxwell's equations, the sourceless ones? They are actually not equations of motion, they are just a consequence of Bianchi identity, which is
+%
+\nbea
+\partial_\lambda F_{\mu\nu} + \partial_\mu F_{\nu\lambda} + \partial_\nu F_{\lambda\mu} & = & \partial_\lambda\partial_\mu A_\nu - \partial_\lambda\partial_\nu A_\mu + \partial_\mu\partial_\nu A_\lambda - \partial_\mu \partial_\lambda A_\nu + \partial_\nu\partial_\lambda A_\mu - \partial_\nu\partial_\mu A_\lambda \\
+& = & ( \partial_\lambda\partial_\mu A_\nu - \partial_\mu \partial_\lambda A_\nu ) + (- \partial_\lambda\partial_\nu A_\mu +  \partial_\nu\partial_\lambda A_\mu) + ( \partial_\mu\partial_\nu A_\lambda - \partial_\nu\partial_\mu A_\lambda) \\
+\partial_\lambda F_{\mu\nu} + \partial_\mu F_{\nu\lambda} + \partial_\nu F_{\lambda\mu} & = & 0
+\neea
+%
+note that none of the indices are summed. Let's start by setting $_{\lambda = 0, \mu = i, \nu =j}$ and using our usual dictionary $F_{0 i} =  E^i = -E_i, ~F_{lm} = -\varepsilon_{ilm} B^i,~ F^{lm} = \varepsilon^{ilm} B_i$
+%
+\nbea
+0 & = & \partial_0 F_{ij} + \partial_i F_{j 0} + \partial_j F_{0 i} \\
+& = & - \partial_0 \varepsilon_{kij} B^k + \partial_i E_j - \partial_j E_i \\
+& = & -  \varepsilon^{lij} \varepsilon_{kij} \partial_0 B^k + \varepsilon^{lij} (\partial_i E_j - \partial_j E_i )\\
+& = & - 2 \delta^l_k \partial_0 B^k + \varepsilon^{lij} \partial_i E_j - \varepsilon^{lij}  \partial_j E_i \\
+& = & -2 \partial_0 B^l + 2 \varepsilon^{lij} \partial_i E_j \\
+\rightarrow 0 & = & -\partial_0 B^l + \varepsilon^{lij} \partial_i E_j 
+\neea
+%
+note that if $ i = j$ line 2 will become $0=0$ thus $i \neq j \neq k$, we can rewrite this result as
+%
+\nbea
+0 & = & -\partial_0 \vec B - \nabla \times \vec E \\
+\rightarrow  -\partial_0 \vec B & = & \nabla \times \vec E
+\neea
+%
+the extra minus sign in front of $\nabla \times \vec E$ is because $\vec E \rightarrow E^i = - E_i$, thus we have recovered one of the sourceless Maxwell's equations.
+
+Next we set $_{\lambda = i, \mu = j, \nu = k}$ with $i \neq j \neq k$
+%
+\nbea
+0 & = & \partial_i F_{jk} + \partial_j F_{k i} + \partial_k F_{i j} \\
+& = & - \partial_i \varepsilon_{ljk} B^l- \partial_j \varepsilon_{lki} B^l - \partial_k \varepsilon_{lij} B^l \\
+& = & - \varepsilon^{ijk} ( \partial_i \varepsilon_{ljk} B^l + \partial_j \varepsilon_{lki} B^l + \partial_k \varepsilon_{lij} B^l) \\
+& = & -\delta^i_l \partial_i  B^l - \delta^j_l \partial_j  B^l - \delta^k_l \partial_k  B^l \\
+& = & - 3~\partial_l B^l \\
+0 & = & \partial_l B^l
+\neea
+%
+or in the usual notation
+%
+\nbea
+\rightarrow 0 = \nabla \cdot \vec B
+\neea
+Thus we recover the other sourceless Maxwell's equation, Voila! and since these are just Bianchi identity, they are always true regardless of the presence or absence of sources.
+
+
+\end{document}

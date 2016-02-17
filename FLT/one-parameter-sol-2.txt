@@ -1,0 +1,13 @@
+c2=c4=0
+a1=a2=0
+c3=c1
+a4=-a3
+b4=-b3
+b3=b1
+a3=0 or c1=0
+
+if a3=0
+then b2=b1
+
+if c1=0
+then b2=b1

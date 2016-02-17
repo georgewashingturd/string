@@ -1,0 +1,289 @@
+\documentclass[aps,preprint,preprintnumbers,nofootinbib,showpacs,prd]{revtex4-1}
+\usepackage{graphicx,color}
+\usepackage{amsmath,amssymb}
+\usepackage{multirow}
+\usepackage{amsthm}%        But you can't use \usewithpatch for several packages as in this line. The search 
+
+%%% for SLE
+\usepackage{dcolumn}   % needed for some tables
+\usepackage{bm}        % for math
+\usepackage{amssymb}   % for math
+\usepackage{multirow}
+%%% for SLE -End
+
+\usepackage[top=1in, bottom=1.25in, left=1.1in, right=1.1in]{geometry}
+
+%%%%%% My stuffs - Stef
+\newcommand{\lsim}{\mathrel{\mathop{\kern 0pt \rlap
+  {\raise.2ex\hbox{$<$}}}
+  \lower.9ex\hbox{\kern-.190em $\sim$}}}
+\newcommand{\gsim}{\mathrel{\mathop{\kern 0pt \rlap
+  {\raise.2ex\hbox{$>$}}}
+  \lower.9ex\hbox{\kern-.190em $\sim$}}}
+
+%
+% Key
+%
+\newcommand{\key}[1]{\medskip{\sffamily\bfseries\color{blue}#1}\par\medskip}
+%\newcommand{\key}[1]{}
+\newcommand{\q}[1] {\medskip{\sffamily\bfseries\color{red}#1}\par\medskip}
+\newcommand{\comment}[2]{{\color{red}{{\bf #1:}  #2}}}
+
+
+\newcommand{\ie}{{\it i.e.} }
+\newcommand{\eg}{{\it e.g.} }
+
+%
+% Energy scales
+%
+\newcommand{\ev}{{\,{\rm eV}}}
+\newcommand{\kev}{{\,{\rm keV}}}
+\newcommand{\mev}{{\,{\rm MeV}}}
+\newcommand{\gev}{{\,{\rm GeV}}}
+\newcommand{\tev}{{\,{\rm TeV}}}
+\newcommand{\fb}{{\,{\rm fb}}}
+\newcommand{\ifb}{{\,{\rm fb}^{-1}}}
+
+%
+% SUSY notations
+%
+\newcommand{\neu}{\tilde{\chi}^0}
+\newcommand{\neuo}{{\tilde{\chi}^0_1}}
+\newcommand{\neut}{{\tilde{\chi}^0_2}}
+\newcommand{\cha}{{\tilde{\chi}^\pm}}
+\newcommand{\chao}{{\tilde{\chi}^\pm_1}}
+\newcommand{\chaop}{{\tilde{\chi}^+_1}}
+\newcommand{\chaom}{{\tilde{\chi}^-_1}}
+\newcommand{\Wpm}{W^\pm}
+\newcommand{\chat}{{\tilde{\chi}^\pm_2}}
+\newcommand{\smu}{{\tilde{\mu}}}
+\newcommand{\smur}{\tilde{\mu}_R}
+\newcommand{\smul}{\tilde{\mu}_L}
+\newcommand{\sel}{{\tilde{e}}}
+\newcommand{\selr}{\tilde{e}_R}
+\newcommand{\sell}{\tilde{e}_L}
+\newcommand{\smurl}{\tilde{\mu}_{R,L}}
+
+\newcommand{\casea}{\texttt{IA}}
+\newcommand{\caseb}{\texttt{IB}}
+\newcommand{\casec}{\texttt{II}}
+
+\newcommand{\caseasix}{\texttt{IA-6}}
+
+%
+% Greek
+%
+\newcommand{\es}{{\epsilon}}
+\newcommand{\sg}{{\sigma}}
+\newcommand{\dt}{{\delta}}
+\newcommand{\kp}{{\kappa}}
+\newcommand{\lm}{{\lambda}}
+\newcommand{\Lm}{{\Lambda}}
+\newcommand{\gm}{{\gamma}}
+\newcommand{\mn}{{\mu\nu}}
+\newcommand{\Gm}{{\Gamma}}
+\newcommand{\tho}{{\theta_1}}
+\newcommand{\tht}{{\theta_2}}
+\newcommand{\lmo}{{\lambda_1}}
+\newcommand{\lmt}{{\lambda_2}}
+%
+% LaTeX equations
+%
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+
+\newcommand{\nbea}{\begin{eqnarray*}}
+\newcommand{\neea}{\end{eqnarray*}}
+\newcommand{\nbeq}{\begin{equation*}}
+\newcommand{\neeq}{\end{equation*}}
+
+\newcommand{\no}{{\nonumber}}
+\newcommand{\td}[1]{{\widetilde{#1}}}
+\newcommand{\sqt}{{\sqrt{2}}}
+%
+\newcommand{\me}{{\rlap/\!E}}
+\newcommand{\met}{{\rlap/\!E_T}}
+\newcommand{\rdmu}{{\partial^\mu}}
+\newcommand{\gmm}{{\gamma^\mu}}
+\newcommand{\gmb}{{\gamma^\beta}}
+\newcommand{\gma}{{\gamma^\alpha}}
+\newcommand{\gmn}{{\gamma^\nu}}
+\newcommand{\gmf}{{\gamma^5}}
+%
+% Roman expressions
+%
+\newcommand{\br}{{\rm Br}}
+\newcommand{\sign}{{\rm sign}}
+\newcommand{\Lg}{{\mathcal{L}}}
+\newcommand{\M}{{\mathcal{M}}}
+\newcommand{\tr}{{\rm Tr}}
+
+\newcommand{\msq}{{\overline{|\mathcal{M}|^2}}}
+
+%
+% kinematic variables
+%
+%\newcommand{\mc}{m^{\rm cusp}}
+%\newcommand{\mmax}{m^{\rm max}}
+%\newcommand{\mmin}{m^{\rm min}}
+%\newcommand{\mll}{m_{\ell\ell}}
+%\newcommand{\mllc}{m^{\rm cusp}_{\ell\ell}}
+%\newcommand{\mllmax}{m^{\rm max}_{\ell\ell}}
+%\newcommand{\mllmin}{m^{\rm min}_{\ell\ell}}
+%\newcommand{\elmax} {E_\ell^{\rm max}}
+%\newcommand{\elmin} {E_\ell^{\rm min}}
+\newcommand{\mxx}{m_{\chi\chi}}
+\newcommand{\mrec}{m_{\rm rec}}
+\newcommand{\mrecmin}{m_{\rm rec}^{\rm min}}
+\newcommand{\mrecc}{m_{\rm rec}^{\rm cusp}}
+\newcommand{\mrecmax}{m_{\rm rec}^{\rm max}}
+%\newcommand{\mpt}{\rlap/p_T}
+
+%%%song
+\newcommand{\cosmax}{|\cos\Theta|_{\rm max} }
+\newcommand{\maa}{m_{aa}}
+\newcommand{\maac}{m^{\rm cusp}_{aa}}
+\newcommand{\maamax}{m^{\rm max}_{aa}}
+\newcommand{\maamin}{m^{\rm min}_{aa}}
+\newcommand{\eamax} {E_a^{\rm max}}
+\newcommand{\eamin} {E_a^{\rm min}}
+\newcommand{\eaamax} {E_{aa}^{\rm max}}
+\newcommand{\eaacusp} {E_{aa}^{\rm cusp}}
+\newcommand{\eaamin} {E_{aa}^{\rm min}}
+\newcommand{\exxmax} {E_{\neuo \neuo}^{\rm max}}
+\newcommand{\exxcusp} {E_{\neuo \neuo}^{\rm cusp}}
+\newcommand{\exxmin} {E_{\neuo \neuo}^{\rm min}}
+%\newcommand{\mxx}{m_{XX}}
+%\newcommand{\mrec}{m_{\rm rec}}
+\newcommand{\erec}{E_{\rm rec}}
+%\newcommand{\mrecmin}{m_{\rm rec}^{\rm min}}
+%\newcommand{\mrecc}{m_{\rm rec}^{\rm cusp}}
+%\newcommand{\mrecmax}{m_{\rm rec}^{\rm max}}
+%%%song
+
+\newcommand{\mc}{m^{\rm cusp}}
+\newcommand{\mmax}{m^{\rm max}}
+\newcommand{\mmin}{m^{\rm min}}
+\newcommand{\mll}{m_{\mu\mu}}
+\newcommand{\mllc}{m^{\rm cusp}_{\mu\mu}}
+\newcommand{\mllmax}{m^{\rm max}_{\mu\mu}}
+\newcommand{\mllmin}{m^{\rm min}_{\mu\mu}}
+\newcommand{\mllcusp}{m^{\rm cusp}_{\mu\mu}}
+\newcommand{\elmax} {E_\mu^{\rm max}}
+\newcommand{\elmin} {E_\mu^{\rm min}}
+\newcommand{\elmaxw} {E_W^{\rm max}}
+\newcommand{\elminw} {E_W^{\rm min}}
+\newcommand{\R} {{\cal R}}
+
+\newcommand{\ewmax} {E_W^{\rm max}}
+\newcommand{\ewmin} {E_W^{\rm min}}
+\newcommand{\mwrec}{m_{WW}}
+\newcommand{\mwrecmin}{m_{WW}^{\rm min}}
+\newcommand{\mwrecc}{m_{WW}^{\rm cusp}}
+\newcommand{\mwrecmax}{m_{WW}^{\rm max}}
+
+\newcommand{\mpt}{{\rlap/p}_T}
+
+%%%%%% END My stuffs - Stef
+
+
+
+
+
+
+
+\begin{document}
+
+\title{Some Derivation}
+\bigskip
+\author{Stefanus Koesno$^1$\\
+$^1$ Somewhere in Longmont\\ Longmont, CO 80503 USA\\
+}
+%
+\date{\today}
+%
+\begin{abstract}
+Some ideas
+
+\end{abstract}
+%
+\maketitle
+
+\section{Varying the (inverse) tetrad}
+
+\renewcommand{\theequation}{A.\arabic{equation}}  % redefine the command that creates the equation no.
+\setcounter{equation}{0}  % reset counter 
+
+When we are in curved space/coordinate system, the tetrad itself is now a field. We also need to vary this ``field" just like any other field to get its constraint just like equation G4, $\partial \mathcal{L}/\partial \overline \psi = 0$ . In Neil's paper, what's being used is actually the inverse tetrad, $e^\mu_I$, rather than the tetrad. The constraint for the inverse tetrad will be called $c_e$ here.
+
+First we vary the lagrangian with respect of the inverse tetrad, but before we do that we'll rewrite the root of the determinant of the metric
+%
+\nbea
+g & = & \sqrt{-\det(g_{\mu\nu})} = \sqrt{-\det(\eta_{IJ} e^I_\mu e^J_\nu)} \\
+& = & \sqrt{-\det(\eta_{IJ}) \det(e^I_\mu) \det(e^J_\nu)} \\
+& = & \sqrt{-(-1) |e|^2} \\
+g & = & |e|
+\neea
+%
+
+The lagrangian is then given by $L = g\mathcal{L} \rightarrow |e|\mathcal{L}$ while the variation of $|e|$, \ie $\delta|e|$, is given by $\delta|e| = -|e|e^I_\mu \delta e^\mu_I$, the minus sign is there because we are varying the inverse tetrad instead of the tetrad. Thus the variation of the lagrangian due to the variation in the inverse tetrad is given by
+%
+\nbea
+L + \delta L & = & (|e| - |e|e^J_\beta \delta e^\beta_J) \left \{ -\frac{1}{2} \partial_\mu A_\nu \partial^\mu A^\nu + \frac{1}{2} \partial_\mu A_\nu \partial^\nu A^\mu \right . \\
+& & ~~~~~~~~~~~~~~~~~~~~~~ + i \overline \psi (\gamma^I e^\mu_I + \gamma^I \delta e^\mu_I) \partial_\mu \psi \\
+& & \left . \frac{}{} ~~~~~~~~~~~~~~~~~~~~~~ - \overline \psi \lbrack (\gamma^I e^\mu_I + \gamma^I \delta e^\mu_I) A_\mu + m \rbrack \psi \right \} \\
+& = & |e| \left \{ -\frac{1}{2} \partial_\mu A_\nu \partial^\mu A^\nu + \frac{1}{2} \partial_\mu A_\nu \partial^\nu A^\mu + i \overline \psi (\gamma^I e^\mu_I) \partial_\mu \psi - \overline \psi \lbrack (\gamma^I e^\mu_I) A_\mu + m \rbrack \psi \right \} \\
+& & - |e|e^J_\beta \delta e^\beta_J \left \{ -\frac{1}{2} \partial_\mu A_\nu \partial^\mu A^\nu + \frac{1}{2} \partial_\mu A_\nu \partial^\nu A^\mu + i \overline \psi (\gamma^I e^\mu_I) \partial_\mu \psi - \overline \psi \lbrack (\gamma^I e^\mu_I) A_\mu + m \rbrack \psi \right \} \\
+& & + |e| \left \{ i \overline \psi (\gamma^I \delta e^\mu_I) \partial_\mu \psi - \overline \psi (\gamma^I \delta e^\mu_I) A_\mu \psi \right \}  + O(\delta^2 e^\mu_I)\\
+& = & L  - |e|e^J_\beta \delta e^\beta_J \mathcal{L}  + |e| \delta e^\beta_J \left \{ i \overline \psi \gamma^J \partial_\beta \psi - \overline \psi \gamma^J A_\beta \psi \right \}
+\neea
+%
+
+And so the constraint for the inverse tetrad is given by
+%
+\nbea
+c_e = \frac{\delta L}{\delta e^\beta_J} & = & - |e|e^J_\beta \mathcal{L}  + |e| \left \{ i \overline \psi \gamma^J \partial_\beta \psi - \overline \psi \gamma^J A_\beta \psi \right \}
+\neea
+%
+but $c_e = 0$ since there's no derivative of the inverse tetrad in the lagrangian (as is the case with $\overline \psi$) and hence
+%
+\nbea
+- |e|e^J_\beta \mathcal{L}  + |e| \left \{ i \overline \psi \gamma^J \partial_\beta \psi - \overline \psi \gamma^J A_\beta \psi \right \} & = & 0
+\neea
+%
+
+And this is exactly equation I64, if I rewrite it in my notation, which is the standard GR notation by the way :) I'll reproduce equation I64 here
+%
+\nbea
+-(\partial_\phi g) \mathcal{L} - i g \overline \psi \gamma^\alpha \left ( \partial_\phi \frac{\partial r^\mu}{\partial \xi^\alpha} \right ) \partial_\mu \psi + e g \overline \psi \gamma^\alpha \left ( \partial_\phi \frac{\partial r^\mu}{\partial \xi^\alpha} \right ) A_\mu \psi
+\neea
+%
+
+The translation we need is
+\bit
+\item $\partial_\phi g \neq 0$ as explained above but instead $\partial_\phi g = \partial_\phi |e| = -|e| e^I_\mu \partial_\phi e^\mu_I$
+\item Latin indices, $I,J,K,...$ always indicate flat space while greek indices indicate curved space/coordinate system, thus $\gamma^\alpha \rightarrow \gamma^I$
+\item $\frac{\partial r^\mu}{\partial \xi^\alpha}$ is just the inverse tetrad $e^\mu_I$
+\item set the electron charge $e \rightarrow 1$ to avoid confusion with the tetrad
+\item use the determinant of the tetrad $|e|$ instead of the root of the determinant of the metric $g$
+\eit
+
+Applying these trivial changes to equation I64
+%
+\nbea
+{\rm Eq~I64} & \rightarrow & |e| e^I_\mu \partial_\phi e^\mu_I \mathcal{L} - i |e| \overline \psi \gamma^I \left ( \partial_\phi e^\mu_I \right )  \partial_\mu \psi + |e| \overline \psi \gamma^I \left ( \partial_\phi e^\mu_I \right ) A_\mu \psi \\
+& = & -\partial_\phi e^\mu_I \left ( -|e| e^I_\mu \mathcal{L} + i |e| \left \{ \overline \psi \gamma^I \partial_\mu \psi - \overline \psi \gamma^I A_\mu \psi \right \} \right ) \\
+& = & -\partial_\phi e^\mu_I \left \{ c_e \right \} \\
+& = & 0
+\neea
+%
+
+The Hamiltonian is thus conserved under $\phi$ (azimuthal?) rotations.
+
+\end{document}

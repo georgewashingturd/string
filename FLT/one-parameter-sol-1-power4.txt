@@ -1,0 +1,14 @@
+e2=e3=0
+e4=e1
+a3=a4=0
+a2=a1
+d4=d1
+b2=b1
+c4=c1
+c2=c1
+
+if
+d3 = -d2 and b4=-b3
+then d2=d1, b3=b1
+
+b1=0? then a1=0 then c3=-c1

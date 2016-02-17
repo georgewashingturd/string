@@ -1,0 +1,1072 @@
+\documentclass[aps,preprint,preprintnumbers,nofootinbib,showpacs,prd]{revtex4-1}
+\usepackage{graphicx,color}
+\usepackage{amsmath,amssymb}
+\usepackage{multirow}
+\usepackage{amsthm}%        But you can't use \usewithpatch for several packages as in this line. The search 
+
+%%% for SLE
+\usepackage{dcolumn}   % needed for some tables
+\usepackage{bm}        % for math
+\usepackage{amssymb}   % for math
+\usepackage{multirow}
+%%% for SLE -End
+
+\usepackage[top=1in, bottom=1.25in, left=1.1in, right=1.1in]{geometry}
+
+%%%%%% My stuffs - Stef
+\newcommand{\lsim}{\mathrel{\mathop{\kern 0pt \rlap
+  {\raise.2ex\hbox{$<$}}}
+  \lower.9ex\hbox{\kern-.190em $\sim$}}}
+\newcommand{\gsim}{\mathrel{\mathop{\kern 0pt \rlap
+  {\raise.2ex\hbox{$>$}}}
+  \lower.9ex\hbox{\kern-.190em $\sim$}}}
+
+%
+% Key
+%
+\newcommand{\key}[1]{\medskip{\sffamily\bfseries\color{blue}#1}\par\medskip}
+%\newcommand{\key}[1]{}
+\newcommand{\q}[1] {\medskip{\sffamily\bfseries\color{red}#1}\par\medskip}
+\newcommand{\comment}[2]{{\color{red}{{\bf #1:}  #2}}}
+
+
+\newcommand{\ie}{{\it i.e.} }
+\newcommand{\eg}{{\it e.g.} }
+
+%
+% Energy scales
+%
+\newcommand{\ev}{{\,{\rm eV}}}
+\newcommand{\kev}{{\,{\rm keV}}}
+\newcommand{\mev}{{\,{\rm MeV}}}
+\newcommand{\gev}{{\,{\rm GeV}}}
+\newcommand{\tev}{{\,{\rm TeV}}}
+\newcommand{\fb}{{\,{\rm fb}}}
+\newcommand{\ifb}{{\,{\rm fb}^{-1}}}
+
+%
+% SUSY notations
+%
+\newcommand{\neu}{\tilde{\chi}^0}
+\newcommand{\neuo}{{\tilde{\chi}^0_1}}
+\newcommand{\neut}{{\tilde{\chi}^0_2}}
+\newcommand{\cha}{{\tilde{\chi}^\pm}}
+\newcommand{\chao}{{\tilde{\chi}^\pm_1}}
+\newcommand{\chaop}{{\tilde{\chi}^+_1}}
+\newcommand{\chaom}{{\tilde{\chi}^-_1}}
+\newcommand{\Wpm}{W^\pm}
+\newcommand{\chat}{{\tilde{\chi}^\pm_2}}
+\newcommand{\smu}{{\tilde{\mu}}}
+\newcommand{\smur}{\tilde{\mu}_R}
+\newcommand{\smul}{\tilde{\mu}_L}
+\newcommand{\sel}{{\tilde{e}}}
+\newcommand{\selr}{\tilde{e}_R}
+\newcommand{\sell}{\tilde{e}_L}
+\newcommand{\smurl}{\tilde{\mu}_{R,L}}
+
+\newcommand{\casea}{\texttt{IA}}
+\newcommand{\caseb}{\texttt{IB}}
+\newcommand{\casec}{\texttt{II}}
+
+\newcommand{\caseasix}{\texttt{IA-6}}
+
+%
+% Greek
+%
+\newcommand{\es}{{\epsilon}}
+\newcommand{\sg}{{\sigma}}
+\newcommand{\dt}{{\delta}}
+\newcommand{\kp}{{\kappa}}
+\newcommand{\lm}{{\lambda}}
+\newcommand{\Lm}{{\Lambda}}
+\newcommand{\gm}{{\gamma}}
+\newcommand{\mn}{{\mu\nu}}
+\newcommand{\Gm}{{\Gamma}}
+\newcommand{\tho}{{\theta_1}}
+\newcommand{\tht}{{\theta_2}}
+\newcommand{\lmo}{{\lambda_1}}
+\newcommand{\lmt}{{\lambda_2}}
+%
+% LaTeX equations
+%
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+
+\newcommand{\nbea}{\begin{eqnarray*}}
+\newcommand{\neea}{\end{eqnarray*}}
+\newcommand{\nbeq}{\begin{equation*}}
+\newcommand{\neeq}{\end{equation*}}
+
+\newcommand{\no}{{\nonumber}}
+\newcommand{\td}[1]{{\widetilde{#1}}}
+\newcommand{\sqt}{{\sqrt{2}}}
+%
+\newcommand{\me}{{\rlap/\!E}}
+\newcommand{\met}{{\rlap/\!E_T}}
+\newcommand{\rdmu}{{\partial^\mu}}
+\newcommand{\gmm}{{\gamma^\mu}}
+\newcommand{\gmb}{{\gamma^\beta}}
+\newcommand{\gma}{{\gamma^\alpha}}
+\newcommand{\gmn}{{\gamma^\nu}}
+\newcommand{\gmf}{{\gamma^5}}
+%
+% Roman expressions
+%
+\newcommand{\br}{{\rm Br}}
+\newcommand{\sign}{{\rm sign}}
+\newcommand{\Lg}{{\mathcal{L}}}
+\newcommand{\M}{{\mathcal{M}}}
+\newcommand{\tr}{{\rm Tr}}
+
+\newcommand{\msq}{{\overline{|\mathcal{M}|^2}}}
+
+%
+% kinematic variables
+%
+%\newcommand{\mc}{m^{\rm cusp}}
+%\newcommand{\mmax}{m^{\rm max}}
+%\newcommand{\mmin}{m^{\rm min}}
+%\newcommand{\mll}{m_{\ell\ell}}
+%\newcommand{\mllc}{m^{\rm cusp}_{\ell\ell}}
+%\newcommand{\mllmax}{m^{\rm max}_{\ell\ell}}
+%\newcommand{\mllmin}{m^{\rm min}_{\ell\ell}}
+%\newcommand{\elmax} {E_\ell^{\rm max}}
+%\newcommand{\elmin} {E_\ell^{\rm min}}
+\newcommand{\mxx}{m_{\chi\chi}}
+\newcommand{\mrec}{m_{\rm rec}}
+\newcommand{\mrecmin}{m_{\rm rec}^{\rm min}}
+\newcommand{\mrecc}{m_{\rm rec}^{\rm cusp}}
+\newcommand{\mrecmax}{m_{\rm rec}^{\rm max}}
+%\newcommand{\mpt}{\rlap/p_T}
+
+%%%song
+\newcommand{\cosmax}{|\cos\Theta|_{\rm max} }
+\newcommand{\maa}{m_{aa}}
+\newcommand{\maac}{m^{\rm cusp}_{aa}}
+\newcommand{\maamax}{m^{\rm max}_{aa}}
+\newcommand{\maamin}{m^{\rm min}_{aa}}
+\newcommand{\eamax} {E_a^{\rm max}}
+\newcommand{\eamin} {E_a^{\rm min}}
+\newcommand{\eaamax} {E_{aa}^{\rm max}}
+\newcommand{\eaacusp} {E_{aa}^{\rm cusp}}
+\newcommand{\eaamin} {E_{aa}^{\rm min}}
+\newcommand{\exxmax} {E_{\neuo \neuo}^{\rm max}}
+\newcommand{\exxcusp} {E_{\neuo \neuo}^{\rm cusp}}
+\newcommand{\exxmin} {E_{\neuo \neuo}^{\rm min}}
+%\newcommand{\mxx}{m_{XX}}
+%\newcommand{\mrec}{m_{\rm rec}}
+\newcommand{\erec}{E_{\rm rec}}
+%\newcommand{\mrecmin}{m_{\rm rec}^{\rm min}}
+%\newcommand{\mrecc}{m_{\rm rec}^{\rm cusp}}
+%\newcommand{\mrecmax}{m_{\rm rec}^{\rm max}}
+%%%song
+
+\newcommand{\mc}{m^{\rm cusp}}
+\newcommand{\mmax}{m^{\rm max}}
+\newcommand{\mmin}{m^{\rm min}}
+\newcommand{\mll}{m_{\mu\mu}}
+\newcommand{\mllc}{m^{\rm cusp}_{\mu\mu}}
+\newcommand{\mllmax}{m^{\rm max}_{\mu\mu}}
+\newcommand{\mllmin}{m^{\rm min}_{\mu\mu}}
+\newcommand{\mllcusp}{m^{\rm cusp}_{\mu\mu}}
+\newcommand{\elmax} {E_\mu^{\rm max}}
+\newcommand{\elmin} {E_\mu^{\rm min}}
+\newcommand{\elmaxw} {E_W^{\rm max}}
+\newcommand{\elminw} {E_W^{\rm min}}
+\newcommand{\R} {{\cal R}}
+
+\newcommand{\ewmax} {E_W^{\rm max}}
+\newcommand{\ewmin} {E_W^{\rm min}}
+\newcommand{\mwrec}{m_{WW}}
+\newcommand{\mwrecmin}{m_{WW}^{\rm min}}
+\newcommand{\mwrecc}{m_{WW}^{\rm cusp}}
+\newcommand{\mwrecmax}{m_{WW}^{\rm max}}
+
+\newcommand{\mpt}{{\rlap/p}_T}
+
+%%%%%% END My stuffs - Stef
+
+
+
+
+
+
+
+\begin{document}
+
+\title{Polchinski Vol 1}
+\bigskip
+\author{Stefanus Koesno$^1$\\
+$^1$ Somewhere in Longmont\\ Longmont, CO 80503 USA\\
+}
+%
+\date{\today}
+%
+\begin{abstract}
+
+
+\end{abstract}
+%
+\maketitle
+
+\section{Bosonic strings}
+
+\renewcommand{\theequation}{A.\arabic{equation}}  % redefine the command that creates the equation no.
+\setcounter{equation}{0}  % reset counter 
+
+Page 9, comments around Eq. 1.2.1, the parameter $\tau$ is a gauge, since the physical quantity is independent of $\tau$, \ie it is reparametrization invariant. This is related to Rovelli's comments on dynamical equations being correlation functions among partial observables. These correlation functions essentially reduce the number of degrees of freedom, and thus promoting all $X^\mu(\tau)$ to be dynamical will inevitably introduce a gauge. Note also that there might be cases where we can't split the partial observables into $\mathcal{C} \times \mathcal{R}$, \ie things ($\mathcal{C}$) evolving over ``time" ($\mathcal{R}$).
+
+Page 10, Eq. 1.2.3, this is fairly straightforward but why not ... good warm up :)
+%
+\nbea
+S_{pp} = -m \int d\tau~\left ( - \dot X^\mu \dot X_\mu \right ) ^{1/2} & \rightarrow & \delta S_{pp} = -m \int d\tau~ \frac {\delta \left ( - \dot X^\nu \dot X_\nu \right ) ^{1/2}} {\delta \dot X^\mu} \delta \dot X^\mu\\
+\rightarrow -m \int d\tau~ \frac{1}{2}\frac {-2 \dot X_\mu } {\left ( - \dot X^\nu \dot X_\nu \right ) ^{1/2}} \delta \dot X^\mu & = & m \int d\tau~ \frac {\dot X_\mu } {\left ( - \dot X^\nu \dot X_\nu \right ) ^{1/2}} \partial_\tau (\delta X^\mu)\\
+\rightarrow -m \int d\tau~ \partial_\tau \left \{ \frac {\dot X_\mu } {\left ( - \dot X^\nu \dot X_\nu \right ) ^{1/2}} \right \} \delta X^\mu & = & -m \int d\tau~ \partial_\tau u_\mu ~ \delta X^\mu
+\neea
+%
+
+Page 10, after Eq. 1.2.4, classical limit of the relativistic point particle action shows that $m$ is indeed the particle's mass
+%
+\nbea
+S_{pp} & = & -m \int d\tau~ \sqrt{-\dot X^\mu \dot X_\mu} \\
+& = & -m \int d\tau~ \sqrt{-g_{\mu\nu} \frac{d X^\mu}{d\tau} \frac{dX^\nu}{d\tau}} 
+\neea
+%
+is given by (restoring the right factors of $c$ in the appropriate places)
+%
+\nbea
+S_{pp} & \rightarrow & -m \int \frac{dt}{\gamma}~ \sqrt{-\eta_{\mu\nu} \gamma \frac{d X^\mu}{dt} \gamma \frac{dX^\nu}{dt}} \\
+& = & -m \int dt~ \sqrt{-\eta_{00} \frac{d X^0}{dt} \frac{dX^0}{dt} -\eta_{ij} \frac{d X^i}{dt} \frac{dX^j}{dt} } \\
+& = & -m \int dt~ \sqrt{-(-c^2) \frac{dt}{dt} \frac{dt}{dt} -(+1) \frac{d x^i}{dt} \frac{dx^i}{dt} } \\
+& = & -m c^2 \int dt~ \sqrt{1 - \frac{v^2}{c^2}} \simeq -m c^2 \int dt~ \left ( 1 - \frac{1}{2} \frac{v^2}{c^2} \right ) \\
+& = & \int dt~\left ( \frac{1}{2} m v^2 - m c^2 \right ) = \int dt ~ \left ( T - U \right )
+\neea
+%
+In the first line $d\tau = dt /\gamma$, in the second line $\eta_{00} = -c^2,~ \eta_{ij} = \delta_{ij}$ while in the fourth line $\sqrt{1 + \epsilon} \simeq 1 + \frac{1}{2} \epsilon$, \ie $\frac{v}{c} \ll 1$.
+
+Page 10, Eq. 1.2.5 and before, first, $\eta(\tau) = (-\gamma_{\tau\tau}(\tau))^{1/2}$. We can see this from the generic definition of a tetrad in 4 dimensions
+%
+\nbea
+g_{\mu\nu} & = & \eta_{IJ} e^I_\mu e^J_\nu, ~~~\eta_{IJ} = (-,+,+,+)
+\neea
+%
+Restricting ourselves to just 1 dimension, \ie restricting the indices to $\mu=\nu=I=J=\tau=0$
+%
+\nbea
+g_{00} & = & \eta_{00} e^0_0 e^0_0, ~~~\eta_{00} = (-) \\
+\rightarrow \gamma_{\tau\tau} & = & (-) \eta ~ \eta, ~~~ \gamma_{\tau\tau} = g_{00} ~~ \eta = e^0_0\\
+\eta & = & (-\gamma_{\tau\tau})^{1/2}
+\neea
+%
+Coming back to Eq. 1.2.5, and following the form of Polyakov action
+%
+\nbea
+S'_{pp} & = & -\frac{1}{2} \int d\tau ~ \sqrt{-\gamma} \left ( \gamma^{\tau\tau} \partial_\tau X^\mu \partial_\tau X_\mu + m^2 \right )
+\neea
+%
+To proceed we need to note that $\gamma^{\tau\tau}$ is the inverse of $\gamma_{\tau\tau}$ and thus
+%
+\nbea
+\gamma^{\tau\tau} & = & - \frac{1} { (\eta ~ \eta) }
+\neea
+%
+and thus
+%
+\nbea
+\rightarrow S'_{pp} & = & -\frac{1}{2} \int d\tau ~ \eta \left ( - \frac{1} { \eta^2 } \partial_\tau X^\mu \partial_\tau X_\mu + m^2 \right ), ~ \eta = \sqrt{-\gamma}, \gamma^{\tau\tau} = \frac{1} { \eta^2 }\\
+S'_{pp} & = & \frac{1}{2} \int d\tau ~\left ( \frac{1} { \eta } \partial_\tau X^\mu \partial_\tau X_\mu - \eta~ m^2 \right )
+\neea
+%
+A few words about Polyakov action and variation of the world sheet metric (or in this case, the world sheet tetrad).
+
+We get the Polyakov action by inserting an {\it independent} metric, $g_{ab}$, on the string world sheet
+%
+\nbea
+S_{\rm Polyakov} & = & \int d^2\sigma~ \sqrt{-g} ~ g_{ab} \partial^a X \cdot \partial^b X
+\neea
+%
+Note that $g_{ab}$ is NOT an induced metric on the world sheet, it is independent, note also that there's no derivative of $g_{ab}$ in the action. This means that varying $\delta S/\delta g_{ab}$ will give a {\it constraint} and NOT a dynamical equation for $g_{ab}$. Therefore we can solve for $g_{ab}$ and then stick it back into the action, not so with the $X^\mu(\vec \sigma)$.
+
+Page 11, Eq. 1.2.7,
+%
+\nbea
+\frac{\delta S'_{pp}}{\delta \eta} = 0 & = & \left ( -\frac{1}{\eta^2} \dot X^\mu \dot X_\mu - m^2 \right ) \delta \eta\\
+\rightarrow \eta^2 & = & -\dot X^\mu \dot X_\mu / m^2
+\neea
+%
+
+Page 11, Eq. 1.2.9b, the volume (or area) of a geometric object is usually given by (or proportional to) $\epsilon_{IJKL ...} u^I u^J u^K u^L ...$ where $u$ is a tangent vector. See Tong's notes for a very intuitive ``derivation" or Zwiebach's intro to string book.
+
+Page 12 Eq. 1.2.11 and Eq. 1.2.12, symmetries under Lorentz transformation is easy to see since $h_{ab}$  is a contraction of 2 Lorentz vector, so there's no free Lorentz indices and automatically Lorentz invariant. Poincare invariance is due to the fact that the translation constant $a^\mu$ doesn't depend on the world sheet coordinates and so $\partial_a a^\mu = 0$. Invariance under diffeomorphism is less obvious. In the primed coordinates, the action is given by
+%
+\nbea
+\int d\tau' d\sigma'~\sqrt{-h'} & = & \int d\tau' d\sigma'~\sqrt{-\frac{1}{2} h_{a'b'}h_{c'd'} \epsilon^{a'c'}\epsilon^{b'd'}} \\
+& = & \int d\tau d\sigma \left | \frac{\partial \vec \sigma'}{\partial \vec \sigma} \right | ~\sqrt{-\frac{1}{2} h_{a'b'}h_{c'd'} \epsilon^{a'c'}\epsilon^{b'd'}}
+\neea
+%
+It seems that we are in trouble since the factor inside the square root has all of its indices contracted and hence can't cancel the Jacobian of the area element $\left | \frac{\partial \vec \sigma'}{\partial \vec \sigma} \right |$. However, Levi-Civita symbols are {\it not} tensors! They are tensor densities, as explained in Carroll's wonderful GR notes page 58, which for convenience I'll reproduce here with slight modifications, starting with the definition of the determinant $|M|$ of an $n \times n$ matrix $M^\mu_{~\mu'}$
+%
+\nbea
+\epsilon^{\mu_1\mu_2 ... \mu_n} |M| & = & \epsilon^{\mu'_1\mu'_2 ... \mu'_n} M^{\mu_1}_{~\mu'_1}M^{\mu_2}_{~\mu'_2} ... M^{\mu_n}_{~\mu'_n}
+\neea
+%
+and if we judiciously choose the matrix $M^{\mu}_{~\mu'}$ to be the coordinate transformation matrix itself, \ie $M^{\mu}_{~\mu'} = \partial x^\mu / \partial x^{\mu'}$, the determinant $|M|$ reads
+%
+\nbea
+\epsilon^{\mu_1\mu_2 ... \mu_n} |M| & = & \epsilon^{\mu'_1\mu'_2 ... \mu'_n} M^{\mu_1}_{~\mu'_1}M^{\mu_2}_{~\mu'_2} ... M^{\mu_n}_{~\mu'_n} \\
+\epsilon^{\mu_1\mu_2 ... \mu_n} \left | \frac{\partial x^{\mu}}{\partial x^{\mu'}} \right | & = & \epsilon^{\mu'_1\mu'_2 ... \mu'_n} \frac{\partial x^{\mu_1}}{\partial x^{\mu'_1}} \frac{\partial x^{\mu_2}}{\partial x^{\mu'_2}} ... \frac{\partial x^{\mu_n}}{\partial x^{\mu'_n}}
+\neea
+%
+which is the transformation property of Levi-Civita symbol, \ie it picks up a Jacobian factor as well, thus the Nambu Goto action transform as follows under diffeomorphism
+%
+\nbea
+\int d\tau' d\sigma'~\sqrt{-h'} & = & \int d\tau d\sigma \left | \frac{\partial \vec \sigma'}{\partial \vec \sigma} \right | ~\sqrt{-\frac{1}{2} h_{a'b'}h_{c'd'} \epsilon^{a'c'}\epsilon^{b'd'}} \\
+& = & \int d\tau d\sigma \left | \frac{\partial \vec \sigma'}{\partial \vec \sigma} \right | ~\sqrt{-\frac{1}{2}  \left | \frac{\partial \vec \sigma}{\partial \vec \sigma'} \right |^2 h_{ab}h_{cd} \epsilon^{ac}\epsilon^{bd}} \\
+& = & \int d\tau d\sigma \left | \frac{\partial \vec \sigma'}{\partial \vec \sigma} \right | \left | \frac{\partial \vec \sigma}{\partial \vec \sigma'} \right |~\sqrt{-\frac{1}{2}   h_{ab}h_{cd} \epsilon^{ac}\epsilon^{bd}} \\
+\int d\tau' d\sigma'~\sqrt{-h'} & = & \int d\tau d\sigma ~\sqrt{-h}
+\neea
+%
+\ie the Nambu Goto action is diffeomophically invariant.
+
+Page 12, Eq. 1.2.14, here we just need to remember the variation of a determinant. We can either start with the formula involving Levi-Civita symbols or we can just use the fact that
+%
+\nbea
+\det A & = & e^ {\tr ( \log A )}
+\neea
+%
+which is obvious when $A$ is diagonal and so
+%
+\nbea
+\delta ( \det A ) & = & \frac{\delta e^ {\tr ( \log A )}} {\delta A_{ab}} ~\delta A_{ab} \\
+& = & e^ {\tr ( \log A )} ~\frac{\delta \tr ( \log A )} {\delta A_{ab}} \delta A_{ab}
+\neea
+%
+Again, let's assume that $A$ is diagonal for now, thus
+%
+\nbea
+\tr ( \log A ) & = & \log A_{11} + \log A_{22} + ... + \log A_{nn} \\
+& = & (\log A_{cd}) \delta^{cd} \\
+\rightarrow \frac{\delta \tr ( \log A )} {\delta A_{ab}} & = & \frac{\delta \{ (\log A_{cd}) \delta^{cd} \} } {\delta A_{ab}} =\frac{\delta (\log A_{cd}) } {\delta A_{ab}} ~ \delta^{cd}\\
+& = & \frac{1}{A_{ab}} \delta^a_c \delta^b_d \delta^{cd} = \frac{1}{A_{ab}} \delta^{ab} \\
+& = & (A^{-1})^{ab}
+\neea
+%
+Note that in the second to last line, the indices $ab$ are {\it not} contracted, they can't be because $\frac{1}{A_{ab}}$ has all indices upstairs, thus the factor $\frac{1}{A_{ab}}$ only acts as a {\it number}! This is the same situation as when we write diagonal matrices in terms of kronecker deltas' just to emphasize that they are diagonal, \eg $A_{ab} = A_{ab} \delta_{ab}$, obviously we are not summing over $ab$, we are saying that any other components other than the diagonal ones are zero.
+
+And so the variation of the determinant is given by
+%
+\nbea
+\delta ( \det A ) & = & e^ {\tr ( \log A )} ~\frac{\delta \tr ( \log A )} {\delta A_{ab}} \delta A_{ab} \\
+& = & ( \det A )  (A^{-1})^{ab} \delta A_{ab}
+\neea
+%
+which is the first equality of Eq. 1.2.15, the second is from the fact that
+%
+\nbea
+1 = (A^{-1})^{ab} A_{ab} & \rightarrow & 0 = \delta \{ (A^{-1})^{ab} A_{ab} \} \\
+(\delta A^{-1})^{ab} A_{ab} & = & - (A^{-1})^{ab} (\delta A_{ab} )
+\neea
+%
+
+Page 12, Eq. 1.2.17 and the statement preceding it ``Dividing this equation by the square root of minus its determinant gives", this stumped me for a while. The point is that Eq. 1.2.16 is the result of varying the action with respect to $\delta \gamma^{ab}$, thus it constraints $h_{ab}$ to be Eq. 1.2.16. Taking determinants of both sides of Eq. 1.2.16 gives
+%
+\nbea
+\det (h_{ab}) & = & \det \left ( \frac{1}{2} \gamma_{ab} \gamma^{cd} h_{cd} \right ) \\
+& = &  \left ( \frac{1}{2} \gamma^{cd} h_{cd} \right )^2 \det (\gamma_{ab})\\
+(-h) & = & \left ( \frac{1}{2} \gamma^{cd} h_{cd} \right )^2 (-\gamma) \\
+\rightarrow \frac{1}{2} \gamma^{cd} h_{cd} & = & \frac{\sqrt{-h}}{\sqrt{-\gamma}}
+\neea
+%
+Note that first $\gamma^{cd} h_{cd}$ is not a matrix since all indices are contracted, thus it is just a factor and $\det (c A) = c^{n} \det (A)$ where $n$ is the dimension of A. Substituting this result back into Eq. 1.2.16 will give Eq. 1.2.17.
+
+Page 12, Eq. 1.2.18 to get to this equation we need to substitute things judiciously in Eq. 1.2.13
+%
+\nbea
+\sqrt{-\gamma}~\gamma^{ab} \partial_a X^\mu \partial_b X_\mu & = & \sqrt{-\gamma}~\gamma^{ab} h_{ab} \\
+& = & \sqrt{-\gamma}~\gamma^{ab} \left ( \gamma_{ab} \frac{\sqrt{-h}}{\sqrt{-\gamma}} \right ) \\
+& = & \sqrt{-h}~\gamma^{ab} \gamma_{ab} = \sqrt{-h} \times 2
+\neea
+%
+where we have used the fact that $\gamma^{ab} \gamma_{ab} = \dim = 2$ since we are in 2 dimensions. Note that one should not substitute $\gamma^{ab} = h^{ab} (\sqrt{-\gamma}/\sqrt{-h})$ which one obtains from raising the indices of Eq. 1.2.17 into Eq. 1.2.13.
+
+Page 13 Eq. 1.2.21, the rest of the invariances are obvious since all indices (Lorentz and world sheet) are contracted. Note that Weyl transformation does nothing to the scalar fields $X^\mu$ just as Poincare transformation does nothing to the intrinsic metric $\gamma_{ab}$. Under Weyl transformation the inverse $\gamma^{ab}$ and the determinant $\gamma$ change into
+%
+\nbea
+\gamma' = (e^{2\omega})^2 \gamma & ~ & \gamma'^{ab} = \rightarrow e^{-2\omega} \gamma^{ab}\\
+\rightarrow \sqrt{-\gamma'}~\gamma'^{ab} & = & \sqrt{-\gamma}~(e^{2\omega}e^{-2\omega})~\gamma^{ab} \\
+& = & \sqrt{-\gamma}~\gamma^{ab}
+\neea
+%
+and we'll see that we have Weyl invariance only in 2 dimensions, since in other dimensions $\gamma' = (e^{2\omega})^n \gamma, n \neq 2$. 
+
+One interesting thing to note here is that in the case of a zero dimensional particle, we only have {\it one} redundancy in the reparameterization of $\tau$, here in the case of one dimensional string we have {\it two} extra redundancies, diffeomorphism and Weyl. Will we have {\it three} redundancies for a two dimensional membrane?
+
+Page 13, after Eq. 1.2.22, ``$\nabla_a T^{ab} = 0,$ as a consequence of diff invariance". Let's go back to GR for a moment where this is ``obviously" true
+
+In GR the action is a function of the metric {\it only}, here the action is a function of the 4 fields, $X^\mu(\vec \sigma)$ and the independent world sheet metric $g_{ab}$. In GR the derivation goes as follows
+%
+\nbea
+\delta S = \delta_g S & = & \int d^2\sigma~ \left ( \frac{\delta S}{\delta g_{ab}} \right) \delta g_{ab}  = \int d^2\sigma~ \left ( - \sqrt{-g} ~\frac{1}{2}~ T^{ab} \right ) \delta g_{ab} \\
+& = & - \int d^2\sigma \sqrt{-g}~ T^{ab} (\nabla_a \epsilon_b) \\
+& = & \int d^2\sigma ~ \nabla_a \left ( \sqrt{-g}~ T^{ab} \right ) \epsilon_b \\
+\delta S & = & \int d^2\sigma \sqrt{-g} ~ \left ( \nabla_a T^{ab} \right ) \epsilon_b 
+\neea
+%
+
+Meanwhile for Polyakov action, we have {\it two} things that change under diffeomorphism, the metric {\it and} the scalar fields $X^\mu$. Let's see how this goes
+%
+\nbea
+\delta_{\rm diff} S_p = 0 & = & \int d^2\sigma~\frac{\delta S_p}{\delta \gamma_{ab}} ~\delta \gamma_{ab} + \int d^2\sigma~\frac{\delta S_p}{\delta X^\mu} ~\delta X^\mu
+\neea
+%
+Note that the integration is there because the variations $\delta \gamma_{ab}$ and $\delta X^\mu$ are functions of the world sheet coordinates. $\delta_{\rm diff} S_p = 0$ because the action is invariant under diffeomorphism. We now use the definition of the stress tensor for the first term in R.H.S
+%
+\nbea
+\int d^2\sigma~\frac{\delta S_p}{\delta \gamma_{ab}} ~\delta \gamma_{ab} & = & -\frac{1}{4\pi} \int d^2 \sigma~\sqrt{-\gamma}~T^{ab} ~\delta \gamma_{ab} \\
+& = & -\frac{1}{4\pi} \int d^2 \sigma~\sqrt{-\gamma}~T^{ab} ~(\nabla_a \epsilon_b + \nabla_b \epsilon_a) = -\frac{1}{2\pi} \int d^2 \sigma~\sqrt{-\gamma}~T^{ab} ~(\nabla_a \epsilon_b)  \\
+& = & \frac{1}{2\pi} \int d^2 \sigma~\sqrt{-\gamma}~(\nabla_aT^{ab}) ~ \epsilon_b
+\neea
+%
+where we have used the fact that the metric changes into $\gamma_{ab} \rightarrow \gamma_{ab} + \nabla_a \epsilon_b + \nabla_b \epsilon_a$ under infinitesimal diffeomorphism. How about the variation with respect to $\delta X^\mu$? Well, as we mentioned earlier, $\gamma_{ab}$ has no derivatives, thus it is just a constraint. $X^\mu$ on the other hand, is a dynamical object. In fact, for on shell situations, \ie equations of motion to be valid, $\frac{\delta S_p}{\delta X^\mu} = 0$ is a must for any variation ${\delta X^\mu}$. This is fine because {\it classically} $T^{ab}$ only makes sense when it is on shell, \ie classically things only behave on shell. So the variation of $S_p$ under diffeomorphism is
+%
+\nbea
+\delta_{\rm diff} S_p = 0 & = & \int d^2\sigma~\frac{\delta S_p}{\delta \gamma_{ab}} ~\delta \gamma_{ab} + \int d^2\sigma~\frac{\delta S_p}{\delta X^\mu} ~\delta X^\mu \\
+& = & \frac{1}{2\pi} \int d^2 \sigma~\sqrt{-\gamma}~(\nabla_aT^{ab}) ~ \epsilon_b + \int d^2\sigma~(0) ~\delta X^\mu \\
+\rightarrow 0 & = & \frac{1}{2\pi} \int d^2 \sigma~\sqrt{-\gamma}~(\nabla_aT^{ab}) ~ \epsilon_b
+\neea
+%
+for any diffeomorphism transformation $\epsilon_b$ and thus $\nabla_aT^{ab} = 0$, where we have assumed that the metric is compatible $\nabla_a \gamma_{bc} = 0$.
+
+There's a ``cute" trick in Tong's notes on how to derive any stress tensor on the chapter of conformal field theory. However, I believe he glosses over a few important details. I'll outline the trick below, together with the important details (Tong uses $g_{ab}$ as the metric instead of $\gamma_{ab}$).
+%
+\bit
+\item We first assume that initially the action, $S$, does not couple to gravity, $g_{ab}$. This is fine since Polyakov action can be written using a flat metric $\eta_{ab} \rightarrow \int d^2\sigma~ \eta_{ab} \partial^a X \cdot \partial^b X$ due to Weyl invariance, \ie $g_{ab} \rightarrow f(\vec\sigma) \tilde g_{ab} = e^{2\phi} \eta_{ab}$
+
+\item Since we're using a flat metric a diffeomorphism only affects the fields $X^\mu(\vec \sigma) = X^\mu(\vec \sigma')$ and nothing else.
+
+\item We then couple the theory with a 2d gravity $g_{ab}$ and assume the coupled theory, $\tilde S$, is diffeomorphism invariant.
+
+\item Under diffeomorphism $\tilde S$ produces two variations 
+%
+\nbea
+\delta X^\mu(\vec \sigma) & = & \epsilon^a \partial_a X^\mu =  \epsilon^a \nabla_a X^\mu\\
+\delta g_{ab}(\vec \sigma) & = & \nabla_a \epsilon_b  + \nabla_b \epsilon_a \\
+\delta \tilde S & \rightarrow & \delta_X \tilde S + \delta_g \tilde S
+\neea
+%
+where $\nabla_a \epsilon_b = \partial_a \epsilon_b - \Gamma^c_{ab} \epsilon_c$, while the original action $S$ only produces the first variation $\delta_X S$.
+
+\item But since $\tilde S$ is diffeomorphism invariant, its variation must vanish, $\delta \tilde S = \delta_X \tilde S + \delta_g \tilde S = 0$, in other words $\delta_X \tilde S = - \delta_g \tilde S$.
+
+\item Now here comes the boom, thanks to (again) Weyl invariance, $S = \tilde S, ~\int d^2\sigma~ \eta_{ab} \partial^a X \cdot \partial^b X \leftrightarrow \int d^2\sigma \sqrt{-g}~g_{ab} \partial^a X \cdot \partial^b X$ and thus $\delta_X \tilde S = \delta_X S = - \delta_g \tilde S$. And this I think is an important information that is left out by Tong, without Weyl invariance $\delta_X \tilde S \neq \delta_X S$ and we won't be able to use the trick since what we want is $\delta_X S$ and {\it not} $\delta_X \tilde S$ !
+
+\eit
+
+Following the carefully crafted ruse above we get the variation of $S$ (with the flat metric) under diffeomorphism as
+%
+\nbea
+\delta_X S = -\delta_g \tilde S & = & -\int d^2\sigma~ \left ( \frac{\delta \tilde S}{\delta g_{ab}} \right) \delta g_{ab}  = -\int d^2\sigma~ \left ( - \sqrt{-g} ~\frac{T}{2}~ T^{ab} \right ) \delta g_{ab} \\
+& = & \frac{T}{2} \int d^2\sigma \sqrt{-g}~ T^{ab} \left ( \nabla_a \epsilon_b  + \nabla_b \epsilon_a \right ) = T \int d^2\sigma \sqrt{-g}~ T^{ab} (\nabla_a \epsilon_b) \\
+\delta S & = & - T \int d^2\sigma ~ \nabla_a \left ( \sqrt{-g}~ T^{ab} \right ) \epsilon_b = - T \int d^2\sigma \sqrt{-g} ~ \left ( \nabla_a T^{ab} \right ) \epsilon_b 
+\neea
+%
+where going to the last line we have again assumed a compatible metric, \ie $\nabla_a g_{bc} = 0$ and the factor $T$ in front is the string tension, {\it not} stress tensor. It is now obvious that $\nabla_a T^{ab}$ is a conserved current and therefore must vanish. You might wonder whether the stress tensor from $\tilde S$ is the same as the one from $S$, the answer is yes, because to get the stress tensor of $S$ we just need to set $g_{ab} \rightarrow \eta_{ab}$.
+
+Page 13, Eq. 1.2.23, this is quite straightforward assuming you remember that the metric changes as $\gamma_{ab} \rightarrow \gamma_{ab} + 2\epsilon\gamma_{ab}$ under infinitesimal Weyl transformation
+%
+\nbea
+\delta S_p = 0 & = & \int d^2\sigma~\frac{\delta S_p}{\delta \gamma_{ab}} ~\delta \gamma_{ab} = -\frac{1}{4\pi} \int d^2\sigma~\sqrt{-\gamma} ~T^{ab} \epsilon \gamma_{ab} \\
+0 & = & -\frac{1}{4\pi} \int d^2\sigma~\sqrt{-\gamma} ~T^{a}_a \epsilon
+\neea
+%
+and since it has to be true under any transformation $\epsilon$, $T^a_a = 0$.
+
+
+
+
+
+%
+\nbea
+\sqrt{-\gamma'}~R' & = & \sqrt{-\gamma}~(R - 2\nabla^2\omega)
+\neea
+%
+The Riemann tensor can be written in terms of the metric tensor
+%
+\nbea
+R_{\alpha\beta\gamma\delta} & = & \frac{1}{2} \left ( \gamma_{\beta\gamma,\alpha\delta} + \gamma_{\alpha\delta,\beta\gamma} - \gamma_{\beta\delta,\alpha\gamma} - \gamma_{\alpha\gamma,\beta\delta} \right ) + \gamma_{\mu\nu}\Gamma^{\nu}_{\alpha\gamma}\Gamma^{\mu}_{\beta\delta} - \gamma_{\mu\nu}\Gamma^{\nu}_{\alpha\delta}\Gamma^{\mu}_{\beta\gamma}
+\neea
+%
+The only non-zero components in 2d is $R_{1212}=R_{2121}=-R_{1221}=-R_{2112}$ and so we set $_{\alpha = 1,~ \beta = 2, ~\gamma=2, ~\delta = 1}$
+%
+\nbea
+R_{1212} & = & \frac{1}{2} \left ( \gamma_{21,12} + \gamma_{12,21} - \gamma_{22,11} - \gamma_{11,22} \right ) + \gamma_{\mu\nu}\Gamma^{\nu}_{11}\Gamma^{\mu}_{22} - \gamma_{\mu\nu}\Gamma^{\nu}_{12}\Gamma^{\mu}_{21}
+\neea
+%
+The Christoffel symbol is
+%
+\nbea
+\Gamma^\nu_{\alpha\beta} & = & \frac{1}{2} \gamma^{\nu\rho} \left ( \gamma_{\rho\alpha,\beta} + \gamma_{\rho\beta,\alpha} - \gamma_{\alpha\beta,\rho} \right )
+\neea
+%
+and without torsion, it is symmetric $\Gamma^\nu_{[\alpha\beta]} = 0 \rightarrow \Gamma^\nu_{\alpha\beta} = \Gamma^\nu_{\beta\alpha}$
+%
+\nbea
+\Gamma^\nu_{11} & = & \frac{1}{2} \gamma^{\nu\rho} \left ( \gamma_{\rho1,1} + \gamma_{\rho1,1} - \gamma_{11,\rho} \right ) \\
+\Gamma^\mu_{22} & = & \frac{1}{2} \gamma^{\mu\rho} \left ( \gamma_{\rho2,2} + \gamma_{\rho2,2} - \gamma_{22,\rho} \right )\\
+\Gamma^\nu_{12} & = & \frac{1}{2} \gamma^{\nu\rho} \left ( \gamma_{\rho1,2} + \gamma_{\rho2,1} - \gamma_{12,\rho} \right ) \\
+\Gamma^\mu_{21} & = & \frac{1}{2} \gamma^{\mu\rho} \left ( \gamma_{\rho2,1} + \gamma_{\rho1,2} - \gamma_{21,\rho} \right ) \\
+\neea
+%
+
+And the Ricci scalar is
+%
+\nbea
+R & = & \gamma^{\alpha\gamma} \gamma^{\beta\delta} R_{\alpha\beta\gamma\delta} = \gamma^{11} \gamma^{22} R_{1212}
+\neea
+%
+
+
+%
+\nbea
+\Gamma'^\nu_{\alpha\beta} & = & \frac{1}{2} \gamma'^{\nu\rho} \left ( \gamma'_{\rho\alpha,\beta} + \gamma'_{\rho\beta,\alpha} - \gamma'_{\alpha\beta,\rho} \right ) \\
+& = & \frac{1}{2} e^{-2\omega}\gamma^{\nu\rho} \left ( (e^{2\omega}\gamma_{\rho\alpha})_{,\beta} + (e^{2\omega}\gamma_{\rho\beta})_{,\alpha} - (e^{2\omega}\gamma_{\alpha\beta})_{,\rho} \right ) \\
+& = & \frac{1}{2} e^{-2\omega}\gamma^{\nu\rho} e^{2\omega} \left ( (2 \omega_{,\beta} \gamma_{\rho\alpha} + \gamma_{\rho\alpha,\beta} ) + (2\omega_{,\alpha}\gamma_{\rho\beta} + \gamma_{\rho\beta,\alpha}) - (2\omega_{,\rho} \gamma_{\alpha\beta} + \gamma_{\alpha\beta,\rho}) \right ) \\
+& = & \frac{1}{2} \gamma^{\nu\rho} \left ( \gamma_{\rho\alpha,\beta} + \gamma_{\rho\beta,\alpha} - \gamma_{\alpha\beta,\rho} +  2 \omega_{,\beta} \gamma_{\rho\alpha} + 2\omega_{,\alpha}\gamma_{\rho\beta} - 2\omega_{,\rho} \gamma_{\alpha\beta} \right ) \\
+& = & \frac{1}{2} \gamma^{\nu\rho} \left ( \gamma_{\rho\alpha,\beta} + \gamma_{\rho\beta,\alpha} - \gamma_{\alpha\beta,\rho} \right ) + \gamma^{\nu\rho} \left ( \omega_{,\beta} \gamma_{\rho\alpha} + \omega_{,\alpha}\gamma_{\rho\beta} - \omega_{,\rho} \gamma_{\alpha\beta} \right ) \\
+\Gamma'^\nu_{\alpha\beta} & = & \Gamma^\nu_{\alpha\beta} + \left ( \omega_{,\beta} \delta^\nu_\alpha + \omega_{,\alpha}\delta^\nu_\beta - \omega^{,\nu} \gamma_{\alpha\beta} \right )
+\neea
+%
+
+The Riemann tensor can be written in terms of the metric tensor
+%
+\nbea
+R^\alpha_{\beta\gamma\delta} & = &  \Gamma^\alpha_{\beta\delta,\gamma} - \Gamma^\alpha_{\beta\gamma,\delta} + \Gamma^{\nu}_{\beta\delta}\Gamma^{\alpha}_{\nu\gamma} - \Gamma^{\nu}_{\beta\gamma}\Gamma^{\alpha}_{\nu\delta}
+\neea
+%
+
+%
+\nbea
+R_{\beta\delta} & = &  \Gamma^\alpha_{\beta\delta,\alpha} - \Gamma^\alpha_{\beta\alpha,\delta} + \Gamma^{\nu}_{\beta\delta}\Gamma^{\alpha}_{\nu\alpha} - \Gamma^{\nu}_{\beta\alpha}\Gamma^{\alpha}_{\nu\delta} \\
+R = \gamma^{\beta\delta} R_{\beta\delta} & = & \gamma^{\beta\delta} ( \Gamma^\alpha_{\beta\delta,\alpha} - \Gamma^\alpha_{\beta\alpha,\delta} + \Gamma^{\nu}_{\beta\delta}\Gamma^{\alpha}_{\nu\alpha} - \Gamma^{\nu}_{\beta\alpha}\Gamma^{\alpha}_{\nu\delta} )
+\neea
+%
+
+
+%
+\nbea
+\Gamma'^\alpha_{\beta\delta,\alpha} & = & \Gamma^\alpha_{\beta\delta,\alpha} + \partial_\alpha\left ( \omega_{,\delta} \delta^\alpha_\beta + \omega_{,\beta}\delta^\alpha_\delta - \gamma^{\alpha\rho}\omega_{,\rho} \gamma_{\beta\delta} \right ) \\
+\neea
+%
+
+%
+\nbea
+\partial_\alpha\left ( \omega_{,\delta} \delta^\alpha_\beta + \omega_{,\beta}\delta^\alpha_\delta - \gamma^{\alpha\rho}\omega_{,\rho} \gamma_{\beta\delta} \right ) & = & \omega_{,\delta\alpha} \delta^\alpha_\beta + \omega_{,\delta} \delta^\alpha_{\beta,\alpha} + \omega_{,\beta\alpha}\delta^\alpha_\delta + \omega_{,\beta}\delta^\alpha_{\delta,\alpha} \\
+& & - \gamma^{\alpha\rho}_{~~,\alpha}\omega_{,\rho} \gamma_{\beta\delta} - \gamma^{\alpha\rho}\omega_{,\rho\alpha} \gamma_{\beta\delta} - \gamma^{\alpha\rho}\omega_{,\rho} \gamma_{\beta\delta,\alpha}\\
+& = & \omega_{,\delta\beta} + \omega_{,\delta} \delta^\alpha_{\beta,\alpha} + \omega_{,\beta\delta} + \omega_{,\beta}\delta^\alpha_{\delta,\alpha} \\
+& & - \gamma^{\alpha\rho}_{~~,\alpha}\omega_{,\rho} \gamma_{\beta\delta} - \omega^{,\alpha}_{,\alpha} \gamma_{\beta\delta} - \omega^{,\alpha} \gamma_{\beta\delta,\alpha}\\
+& = & 2 \omega_{,\beta\delta} + \omega_{,\delta} \delta^\alpha_{\beta,\alpha} + \omega_{,\beta}\delta^\alpha_{\delta,\alpha} \\
+& & - \gamma^{\alpha\rho}_{~~,\alpha}\omega_{,\rho} \gamma_{\beta\delta} - \nabla^2\omega \gamma_{\beta\delta} - \omega^{,\alpha} \gamma_{\beta\delta,\alpha}
+\neea
+%
+
+%
+\nbea
+&& \gamma^{\beta\delta}\partial_\alpha\left ( \omega_{,\delta} \delta^\alpha_\beta + \omega_{,\beta}\delta^\alpha_\delta - \gamma^{\alpha\rho}\omega_{,\rho} \gamma_{\beta\delta} \right ) \\
+&& ~~~ = 2 \nabla^2 \omega + \omega^{,\beta} \delta^\alpha_{\beta,\alpha} + \omega^{,\delta}\delta^\alpha_{\delta,\alpha} - 2 \gamma^{\alpha\rho}_{~~,\alpha}\omega_{,\rho} - 2 \nabla^2\omega - \gamma^{\beta\delta}\omega^{,\alpha} \gamma_{\beta\delta,\alpha} \\
+&& ~~~ = 2 \omega^{,\beta} \delta^\alpha_{\beta,\alpha} - 2 \omega_{,\rho} \gamma^{\alpha\rho}_{~~,\alpha} - \omega^{,\alpha} \gamma^{\beta\delta} \gamma_{\beta\delta,\alpha} \\
+&& ~~~ = 2 \omega^{,\beta} (\gamma^{\alpha\rho}_{~~,\alpha}\gamma_{\beta\rho} + \gamma^{\alpha\rho}\gamma_{\beta\rho,\alpha}) - 2 \omega_{,\rho} \gamma^{\alpha\rho}_{~~,\alpha} - \omega^{,\alpha} \gamma^{\beta\delta} \gamma_{\beta\delta,\alpha} \\
+&& ~~~ = 2 \omega_{,\rho} \gamma^{\alpha\rho}_{~~,\alpha} + 2 \omega^{,\beta}\gamma^{\alpha\rho}\gamma_{\beta\rho,\alpha} - 2 \omega_{,\rho} \gamma^{\alpha\rho}_{~~,\alpha} - \omega^{,\alpha} \gamma^{\beta\delta} \gamma_{\beta\delta,\alpha} \\
+&& ~~~ = 2 \omega^{,\beta}\gamma^{\alpha\rho}\gamma_{\beta\rho,\alpha} - \omega^{,\alpha} \gamma^{\beta\delta} \gamma_{\beta\delta,\alpha} \\
+\neea
+%
+
+
+
+
+%
+\nbea
+\Gamma'^\alpha_{\beta\alpha,\delta} & = & \Gamma^\alpha_{\beta\alpha,\delta} + \partial_\delta\left ( \omega_{,\alpha} \delta^\alpha_\beta + \omega_{,\beta}\delta^\alpha_\alpha - \gamma^{\alpha\rho}\omega_{,\rho} \gamma_{\beta\alpha} \right )
+\neea
+%
+
+%
+\nbea
+\partial_\delta\left ( \omega_{,\alpha} \delta^\alpha_\beta + \omega_{,\beta}\delta^\alpha_\alpha - \gamma^{\alpha\rho}\omega_{,\rho} \gamma_{\beta\alpha} \right ) & = & \omega_{,\alpha\delta} \delta^\alpha_\beta + \omega_{,\alpha} \delta^\alpha_{\beta,\delta} + \omega_{,\beta\delta}\delta^\alpha_\alpha + \omega_{,\beta}\delta^\alpha_{\alpha,\delta} \\
+& & - \gamma^{\alpha\rho}_{~~,\delta}\omega_{,\rho} \gamma_{\beta\alpha} - \gamma^{\alpha\rho}\omega_{,\rho\delta} \gamma_{\beta\alpha} - \gamma^{\alpha\rho}\omega_{,\rho} \gamma_{\beta\alpha,\delta} \\
+& = & \omega_{,\beta\delta} + \omega_{,\alpha} \delta^\alpha_{\beta,\delta} + 2 \omega_{,\beta\delta} + \omega_{,\beta}\delta^\alpha_{\alpha,\delta} \\
+& & - \gamma^{\alpha\rho}_{~~,\delta}\omega_{,\rho} \gamma_{\beta\alpha} - \omega^{,\alpha}_{,\delta} \gamma_{\beta\alpha} - \omega^{,\alpha} \gamma_{\beta\alpha,\delta} \\
+& = & 3 \omega_{,\beta\delta} + \omega_{,\alpha} \delta^\alpha_{\beta,\delta} + \omega_{,\beta}\delta^\alpha_{\alpha,\delta} \\
+& & - \gamma^{\alpha\rho}_{~~,\delta}\omega_{,\rho} \gamma_{\beta\alpha} - \omega^{,\alpha}_{,\delta} \gamma_{\beta\alpha} - \omega^{,\alpha} \gamma_{\beta\alpha,\delta} \\
+\neea
+%
+
+%
+\nbea
+&& \gamma^{\beta\delta}\partial_\delta\left ( \omega_{,\alpha} \delta^\alpha_\beta + \omega_{,\beta}\delta^\alpha_\alpha - \gamma^{\alpha\rho}\omega_{,\rho} \gamma_{\beta\alpha} \right ) \\
+&& ~~~ = 3 \nabla^2\omega + \omega_{,\alpha} \delta^{\alpha,\beta}_{\beta} + \omega^{,\delta}\delta^\alpha_{\alpha,\delta} - \gamma^{\alpha\rho}_{~~,\delta}\omega_{,\rho} \delta^{\delta}_{\alpha} - \omega^{,\alpha}_{,\delta} \delta^\delta_{\alpha} - \omega^{,\alpha} \gamma^{\beta\delta}\gamma_{\beta\alpha,\delta} \\
+&& ~~~ = 3 \nabla^2\omega + \omega_{,\alpha} \delta^{\alpha,\beta}_{\beta} + \omega^{,\delta}\delta^\alpha_{\alpha,\delta} - \gamma^{\delta\rho}_{~~,\delta}\omega_{,\rho} - \nabla^2\omega - \omega^{,\alpha} \gamma^{\beta\delta}\gamma_{\beta\alpha,\delta} \\
+&& ~~~ = 2 \nabla^2\omega + \omega_{,\alpha} (\gamma^{\alpha\rho,\beta}\gamma_{\rho\beta} + \gamma^{\alpha\rho}\gamma^{~~,\beta}_{\rho\beta}) + \omega^{,\delta}(\gamma^{\alpha\rho}_{~~,\delta} \gamma_{\alpha\rho}) - \gamma^{\delta\rho}_{~~,\delta}\omega_{,\rho} - \omega^{,\alpha} \gamma^{\beta\delta}\gamma_{\beta\alpha,\delta} \\
+\neea
+%
+
+
+
+
+
+
+
+
+
+
+
+
+
+%
+\nbea
+\Gamma'^\alpha_{\beta\delta,\alpha} & = & \Gamma^\alpha_{\beta\delta,\alpha} + \left ( \omega_{,\delta\alpha} \delta^\alpha_\beta + \omega_{,\beta\alpha}\delta^\alpha_\delta - \omega^{,\alpha}_{,\alpha} \gamma_{\beta\delta} - \omega^{,\alpha} \gamma_{\beta\delta,\alpha} \right ) \\
+& = & \Gamma^\alpha_{\beta\delta,\alpha} + \left ( \omega_{,\delta\beta} + \omega_{,\beta\delta} - \nabla^2\omega \gamma_{\beta\delta} - \omega^{,\alpha} \gamma_{\beta\delta,\alpha} \right ) \\
+& = & \Gamma^\alpha_{\beta\delta,\alpha} + \left ( 2\omega_{,\beta\delta} - \nabla^2\omega \gamma_{\beta\delta} - \omega^{,\alpha} \gamma_{\beta\delta,\alpha} \right ) \\
+\Gamma'^\alpha_{\beta\alpha,\delta} & = & \Gamma^\alpha_{\beta\alpha,\delta} + \left ( \omega_{,\alpha\delta} \delta^\alpha_\beta + \omega_{,\beta\delta}\delta^\alpha_\alpha - \omega^{,\alpha}_{,\delta} \gamma_{\beta\alpha} - \omega^{,\alpha} \gamma_{\beta\alpha,\delta} \right ) \\
+& = & \Gamma^\alpha_{\beta\alpha,\delta} + \left ( \omega_{,\beta\delta} + 2\omega_{,\beta\delta} - \omega_{,\delta\beta} - \omega^{,\alpha} \gamma_{\beta\alpha,\delta} \right ) \\
+& = & \Gamma^\alpha_{\beta\alpha,\delta} + \left ( 2\omega_{,\beta\delta} - \omega^{,\alpha} \gamma_{\beta\alpha,\delta} \right )
+\neea
+%
+
+%
+\nbea
+\gamma'^{\beta\delta} \Gamma'^\alpha_{\beta\delta,\alpha} = e^{-2\omega}\gamma^{\beta\delta} \Gamma'^\alpha_{\beta\delta,\alpha} & = & e^{-2\omega} \left \{ \gamma^{\beta\delta}\Gamma^\alpha_{\beta\delta,\alpha} + \left ( 2 \nabla^2\omega - 2 \nabla^2\omega - \omega^{,\alpha} \gamma^{\beta\delta} \gamma_{\beta\delta,\alpha} \right ) \right \}\\
+& = & e^{-2\omega} \left \{ \gamma^{\beta\delta}\Gamma^\alpha_{\beta\delta,\alpha} - \omega^{,\alpha} \gamma^{\beta\delta} \gamma_{\beta\delta,\alpha} \right \}\\
+\gamma'^{\beta\delta} \Gamma'^\alpha_{\beta\alpha,\delta} = e^{-2\omega}\gamma^{\beta\delta} \Gamma'^\alpha_{\beta\alpha,\delta}  & = & e^{-2\omega} \left \{ \gamma^{\beta\delta} \Gamma^\alpha_{\beta\alpha,\delta} + \left ( 2\nabla^2\omega - \omega^{,\alpha} \gamma^{\beta\delta}\gamma_{\beta\alpha,\delta} \right ) \right \}
+\neea
+%
+
+
+%
+\nbea
+\gamma'^{\beta\delta}  \Gamma'^{\nu}_{\beta\delta}\Gamma'^{\alpha}_{\nu\alpha} & = & e^{-2\omega} \gamma^{\beta\delta} \left ( \Gamma'^{\nu}_{\beta\delta}\Gamma'^{\alpha}_{\nu\alpha} \right ) \\
+\rightarrow \gamma^{\beta\delta} \Gamma'^{\nu}_{\beta\delta} & = & \gamma^{\beta\delta}\Gamma^\nu_{\beta\delta} + \left ( 2\omega^{,\nu} - 2 \omega^{,\nu} \right ) = \gamma^{\beta\delta}\Gamma^\nu_{\beta\delta}  \\
+\Gamma'^{\alpha}_{\nu\alpha} & = & \Gamma^\alpha_{\nu\alpha} + \left ( \omega_{,\alpha}\delta^\alpha_\nu +\omega_{,\nu} \delta^\alpha_\alpha - \omega^{,\alpha} \gamma_{\alpha\nu} \right ) \\
+& = & \Gamma^\alpha_{\nu\alpha} + 2 \omega_{,\nu} \\
+\gamma'^{\beta\delta}  \Gamma'^{\nu}_{\beta\delta}\Gamma'^{\alpha}_{\nu\alpha} & = & e^{-2\omega} \gamma^{\beta\delta}\Gamma^\nu_{\beta\delta} (\Gamma^\alpha_{\nu\alpha} + 2 \omega_{,\nu}) \\
+& = & e^{-2\omega} (\gamma^{\beta\delta}\Gamma^\nu_{\beta\delta} \Gamma^\alpha_{\nu\alpha} + 2 \gamma^{\beta\delta}\Gamma^\nu_{\beta\delta}\omega_{,\nu})
+\neea
+%
+
+%
+\nbea
+\gamma'^{\beta\delta}\Gamma'^{\nu}_{\beta\alpha}\Gamma'^{\alpha}_{\nu\delta} & = & e^{-2\omega} \gamma^{\beta\delta} \left ( \{ \Gamma^\nu_{\beta\alpha} + \left ( \omega_{,\alpha}\delta^\nu_\beta + \omega_{,\beta} \delta^\nu_\alpha - \omega^{,\nu} \gamma_{\beta\alpha} \right )  \} \{\Gamma^\alpha_{\nu\delta} + \left ( \omega_{,\delta} \delta^\alpha_\nu + \omega_{,\nu}\delta^\alpha_\delta - \omega^{,\alpha} \gamma_{\nu\delta} \right ) \} \right ) \\
+& = & e^{-2\omega} \left \{ \gamma^{\beta\delta} \left ( \Gamma^\nu_{\beta\alpha} \Gamma^\alpha_{\nu\delta}  \right )  + 2 \gamma^{\beta\delta} \Gamma^\nu_{\beta\delta} \omega_{,\nu} \right \}
+\neea
+%
+
+
+
+
+
+
+
+
+
+
+====================================================
+
+
+
+
+
+What does the infinite sum of $\sum\limits_{n=1}^{\infty} n$ amount to? Here's a trick to calculate it
+%
+\nbea
+\sum_{n=1}^{\infty} n & \Longrightarrow & \lim_{\epsilon \rightarrow 0} \sum_{n=1}^{\infty} n e^{-\epsilon n} \\
+\sum_{n=1}^{\infty} n e^{-\epsilon n} & = & \sum_{n=0}^{\infty} n e^{-\epsilon n} \\
+& = & \sum_{n=0}^{\infty} -\frac{\partial}{\partial \epsilon} (e^{-\epsilon n}) ~ = -\frac{\partial}{\partial \epsilon} \left \{ \sum_{n=0}^{\infty}  e^{-\epsilon n} \right \} \\
+& = & -\frac{\partial}{\partial \epsilon} \left \{ 1 + e^{-\epsilon} + (e^{-\epsilon})^2 + (e^{-\epsilon})^3 + ... \right \} \\
+& = & -\frac{\partial}{\partial \epsilon} \left \{ \frac{1}{(1-e^{-\epsilon})} \right \} \\
+\sum_{n=1}^{\infty} n & \rightarrow  & \lim_{\epsilon \rightarrow 0} \frac{e^{-\epsilon}}{(1-e^{-\epsilon})^2}
+\neea
+%
+
+We now expand the numerator and denominator in $\epsilon$, the numerator is trivial
+%
+\nbea
+e^{-\epsilon} & \rightarrow & 1 - \epsilon + \frac{1}{2} \epsilon^2 + ...
+\neea
+%
+While the denominator is given by
+%
+\nbea
+(1-e^{-\epsilon})^2 = 1 - 2e^{-\epsilon} + e^{-2\epsilon} & \rightarrow & 1 - 2 (1 - \epsilon + \frac{1}{2}\epsilon^2 - \frac{1}{6}\epsilon^3 + \frac{1}{24}\epsilon^4) + (1 - 2\epsilon + \frac{1}{2} 4 \epsilon^2 - \frac{1}{6} 8\epsilon^3 + \frac{1}{24}16\epsilon^2) \\
+& = & \epsilon^2 - \epsilon^3 + \frac{7}{12} \epsilon^4  = \epsilon^2(1 - \epsilon + \frac{7}{12}\epsilon^2)
+\neea
+%
+
+Thus
+%
+\nbea
+\frac{1}{(1-e^{-\epsilon})^2} & \rightarrow & \frac{1}{\epsilon^2(1 - \epsilon + \frac{7}{12}\epsilon^2)} \\
+& = & \frac{1}{\epsilon^2} ~\frac{1}{(1 - \Delta)}, ~~\Delta = \epsilon - \frac{7}{12}\epsilon^2 \\
+& = & \frac{1}{\epsilon^2} \{ 1 + \Delta + \Delta^2 + ... \}
+\neea
+%
+Note: do NOT forget to expand up to $\Delta^2$ (since we're expanding up to second order in $\epsilon$) otherwise you won't get the correct result
+%
+\nbea
+\frac{1}{\epsilon^2} \{ 1 + \Delta + \Delta^2 + ... \} & = & \frac{1}{\epsilon^2} \left \{ 1 + \left( \epsilon - \frac{7}{12}\epsilon^2 \right) + \left( \epsilon - \frac{7}{12}\epsilon^2 \right)^2 + ... \right \} \\
+& = & \frac{1}{\epsilon^2} \left \{ 1 + \left( \epsilon - \frac{7}{12}\epsilon^2 \right) + \left( \epsilon^2 \right) + ... \right \} \\
+\frac{1}{(1-e^{-\epsilon})^2} & \rightarrow & \frac{1}{\epsilon^2} \left \{ 1 + \epsilon + \frac{5}{12}\epsilon^2 + ... \right \} 
+\neea
+%
+
+Combining everything together
+%
+\nbea
+\frac{e^{-\epsilon}}{(1-e^{-\epsilon})^2} & \rightarrow & \left \{ 1 - \epsilon + \frac{1}{2} \epsilon^2 + ... \right \} \times \frac{1}{\epsilon^2} \left \{ 1 + \epsilon + \frac{5}{12}\epsilon^2 + ... \right \} \\
+& = & \frac{1}{\epsilon^2} \left \{ 1 \times \left ( 1 + \epsilon + \frac{5}{12}\epsilon^2 \right ) - \epsilon \times \left ( 1 + \epsilon + \frac{5}{12}\epsilon^2 \right ) + \frac{1}{2}\epsilon^2 \times \left ( 1 + \epsilon + \frac{5}{12}\epsilon^2 \right ) + ... \right \} \\
+& = & \frac{1}{\epsilon^2} \left \{ \left ( 1 + \epsilon + \frac{5}{12}\epsilon^2 \right ) - \left ( \epsilon + \epsilon^2 \right ) + \left ( \frac{1}{2}\epsilon^2 \right ) + ... \right \} \\
+& = & \frac{1}{\epsilon^2} \left \{ 1 + \left ( \epsilon - \epsilon \right ) + \left ( \frac{5}{12}\epsilon^2 - \frac{12}{12}\epsilon^2 + \frac{6}{12}\epsilon^2 \right ) + ... \right \} = \frac{1}{\epsilon^2} \left \{ 1 - \frac{2}{12}\epsilon^2  + ... \right \} \\
+\frac{e^{-\epsilon}}{(1-e^{-\epsilon})^2} & \rightarrow & \frac{1}{\epsilon^2} - \frac{1}{12} + ...
+\neea
+%
+and we can absorb the diverging term $\frac{1}{\epsilon^2}$ through renormalization.
+
+Another way of getting the $-\frac{1}{12}$ is using the analytic continuation of the zeta function $\zeta(s) = \sum\limits_{n=1}^{\infty} n^{-s},~\mathfrak{Re}(s) > 1$ to include $s = -1$ and calculating the value of $\zeta(-1) = \sum\limits_{n=1}^{\infty} n$. How do we do this? We follow Problem 12.4 (and Problem 3.6) of Zwiebach. 
+
+For convenience I will reproduce both problems here:
+
+{\bf Problem 12.4} Analytic continuation of the zeta function.
+
+Consider the definition of the gamma function $\Gamma(s) = \int_0^\infty dt ~e^{-t}~t^{s-1}$. Let $t \rightarrow nt$ in this integral, and use the resulting equation to prove that
+%
+\nbea
+\Gamma(s)\zeta(s) & = & \int_0^\infty dt \frac{t^{s-1}}{e^t - 1}, ~~\mathfrak{Re}(s) > 1.
+\neea
+%
+Verify also the small $t$ expansion
+%
+\nbea
+\frac{1}{e^t-1} & = & \frac{1}{t} - \frac{1}{2} + \frac{t}{12} + \mathcal{O}(t^2).
+\neea
+%
+Use the above equations to show that for $\mathfrak{Re}(s) > 1$
+%
+\nbea
+\Gamma(s)\zeta(s) & = & \int_0^1 dt~t^{s-1} \left ( \frac{1}{e^t - 1} -\frac{1}{t} + \frac{1}{2} - \frac{t}{12}\right ) + \frac{1}{s-1} - \frac{1}{2s} + \frac{1}{12(s+1)} + \int_1^\infty dt \frac{t^{s-1}}{e^t - 1}
+\neea
+%
+Explain why the right-hand side above is well defined for $\mathfrak{Re}(s) > -2$. It follows that this right-hand side defines the analytic continuation of the left-hand side to $\mathfrak{Re}(s) > -2$. Recall the pole structure of $\Gamma(s)$ (Problem 3.6) and use it to show that $\zeta(0) = -1/2$ and that $\zeta(-1) = -1/12$.
+
+{\bf Problem 3.6} Analytic continuation for gamma functions.
+
+Consider the definition of the gamma function for complex arguments $z$ whose real part is positive:
+%
+\nbea
+\Gamma(z) & = & \int_0^\infty dt~e^{-t}~t^{z-1}, ~~ \mathfrak{Re}(z) > 0.
+\neea
+%
+Use this equation to show that for $\mathfrak{Re}(z) > 0$
+%
+\nbea
+\Gamma(z) & = & \int_0^1 dt ~t^{z-1} \left ( e^{-t} - \sum_{n=0}^N \frac{(-t)^n}{n!} \right ) + \sum_{n=0}^N \frac{(-1)^n}{n!} \frac{1}{z+n} + \int_1^\infty dt~e^{-t} t^{z-1}
+\neea
+%
+Explain why the above right-hand side is well defined for $\mathfrak{Re}(z) > -N-1$. It follows that this right-hand side provides the analytic continuation of $\Gamma(z)$ for $\mathfrak{Re}(z) > -N-1$. Conclude that the gamma function has poles at $0, -1, -2, ... ,$ and give the value of the residue at $z = -n$ (with $n$ a positive integer).
+
+We will first do Problem 3.6 where we analytically continue the Gamma function into the complex plane
+%
+\nbea
+\Gamma(s) & = & \int_0^\infty dt ~ e^{-t}~t^{s-1}, ~~ \mathfrak{Re}(s) > 0
+\neea
+%
+Here we see that we have extended the function into the complex plane, however, the real part of $s$, $\mathfrak{Re}(s) > 0$ for the $t^{s-1}$ doesn't blow up when $t \rightarrow 0$.
+
+The immediate step is to break up this integral into
+%
+\nbea
+\int_0^\infty dt ~ e^{-t}~t^{s-1} = \int_0^1 dt ~ e^{-t}~t^{s-1} + \int_0^\infty dt ~ e^{-t}~t^{s-1}
+\neea
+%
+
+The reason of splitting up the integral into $\int_0^1 + \int_1^\infty$ is because we want to expand in small $t$ and hence it is only valid for $0 \leq t < 1$. We can now extend this continuation to include $\mathfrak{Re}(s) > - N - 1$, the trick is as follows. We first expand $e^{-t}$ up to order $N$, $e^{-t} \rightarrow \sum\limits_{n=0}^{N} \frac{(-t)^n}{n!}$. We then use the usual trick $0 = -y + y$.
+%
+\nbea
+\int_0^1 dt ~ t^{s-1} e^{-t} & = & \int_0^1 dt ~ t^{s-1} \left ( e^{-t} + \left \{-e^{-t} + e^{-t} \right \} \right ) \\
+& = & \int_0^1 dt ~ t^{s-1} \left ( e^{-t} + \left \{-\sum\limits_{n=0}^{N} \frac{(-t)^n}{n!} + \sum\limits_{n=0}^{N} \frac{(-t)^n}{n!} \right \} \right ) \\
+& = & \int_0^1 dt ~ t^{s-1} \left ( e^{-t} -\sum\limits_{n=0}^{N} \frac{(-t)^n}{n!} \right )  + \sum\limits_{n=0}^{N} \int_0^1 dt ~ t^{s-1} \frac{(-t)^n}{n!} \\
+& = & \int_0^1 dt ~ t^{s-1} \left ( e^{-t} -\sum\limits_{n=0}^{N} \frac{(-t)^n}{n!} \right )  + \sum\limits_{n=0}^{N} \frac{(-1)^n}{n!} \frac{1}{s+n} 
+\neea
+%
+
+Combining everything together
+%
+\bea
+\Gamma(s) & = & \int_0^\infty dt ~ e^{-t}~t^{s-1} \nonumber \\
+& = & \int_0^1 dt ~ t^{s-1} \left ( e^{-t} -\sum\limits_{n=0}^{N} \frac{(-t)^n}{n!} \right )  + \sum\limits_{n=0}^{N} \frac{(-1)^n}{n!} \frac{1}{s+n} + \int_0^\infty dt ~ e^{-t}~t^{s-1}
+\label{Eq:Prob3.6}
+\eea
+%
+Here we see that we have shifted all the singularities into the $\sum\limits_{n=0}^{N} \frac{(-1)^n}{n!} \frac{1}{s+n}$ terms by subtracting it from the $\int_0^1$ integral. And we can immediately see that it is well defined up till the last pole $\frac{1}{s + N}$, singularity at $s = -N$. The radius of this pole is just 1 because the next pole is located at $s = -N + 1$, thus the function is well defined up to $\mathfrak{Re}(s) > - N - 1$ as advertised.
+
+We now come back to the original problem of zeta function $\zeta(s) = \sum\limits_{n=1}^{\infty} n^{-s},~\mathfrak{Re}(s) > 1$, we want to continue this function to include $\mathfrak{Re}(s) > -2$. We start with the Gamma function $\Gamma(s) = \int_0^\infty dt ~e^{-t} ~ t^{s-1}$ and make a change of variable $t \rightarrow nt$ such that $\Gamma(s) = \int_0^\infty n dt~e^{-nt} ~ t^{s-1} n^{s-1} = \int_0^\infty dt~e^{-nt} ~ t^{s-1} n^{s}$ and then
+%
+\nbea
+\Gamma(s)\zeta(s) & = & \int_0^\infty \left \{ dt~ t^{s-1} \left ( \sum\limits_{n=1}^{\infty}e^{-nt}  n^{s} n^{-s} \right ) \right \} \\
+& = & \int_0^\infty \left \{ dt~ t^{s-1} \left ( \sum\limits_{n=1}^{\infty}e^{-nt} \right ) \right \} = \int_0^\infty dt~ t^{s-1} \left ( \frac{1}{e^t - 1} \right ) \\
+\Gamma(s)\zeta(s) & = & \int_0^\infty dt~ \frac{t^{s-1}}{e^t - 1}
+\neea
+%
+where we have used the standard formula for geometric series
+%
+\nbea
+1 + r + r^2 + ... = \sum_{n=0}^{\infty} r^n & = & \frac{1}{1 - r}, ~~r < 1 \\
+r + r^2 + ... = \sum_{n=1}^{\infty} r^n & = & \frac{1}{1 - r} - 1 = \frac{1}{r^{-1} - 1}
+\neea
+%
+We now expand $\frac{1}{e^t - 1}$ for small $t$ up to order $t$ since we only want continuation up to $\mathfrak{Re}(s) > -2$
+%
+\nbea
+\frac{1}{e^t - 1} & = & \frac{1}{(1 + t + \frac{1}{2}t^2 + \frac{1}{6}t^3 + ...) - 1} = \frac{1}{t(1 + \frac{1}{2}t + \frac{1}{6}t^2)} \\
+& = & \frac{1}{t}\frac{1}{(1 + \Delta)}, ~~ \Delta = \frac{t}{2} + \frac{t^2}{6} \\
+& \rightarrow & \frac{1}{t} (1 - \Delta + \Delta^2 + ...) \\
+& = & \frac{1}{t} \left \{ 1 - \frac{t}{2} - \frac{t^2}{6} + \left ( \frac{t}{2}\right ) ^2 + ... \right \} \\
+\frac{1}{e^t - 1} & = & \frac{1}{t} - \frac{1}{2} + \frac{t}{12}
+\neea
+%
+again, do NOT forget to include up to order $\Delta^2$ when expanding $\frac{1}{(1 + \Delta)}$.
+
+We now break up the integral $\Gamma(s)\zeta(s) = \int_0^\infty dt~ \frac{t^{s-1}}{e^t - 1}$ into
+%
+\nbea
+\Gamma(s)\zeta(s) & = & \int_0^\infty dt~ \frac{t^{s-1}}{e^t - 1} = \int_0^1 dt~ \frac{t^{s-1}}{e^t - 1} + \int_1^\infty dt~ \frac{t^{s-1}}{e^t - 1}
+\neea
+%
+The reason why we break up the integral to $\int_0^1$ and $\int_1^\infty $ instead of $\int_0^2 + \int_2^\infty $ is because we want to expand in small t so $0 \leq t < 1$. We now can safely expand the $\int_0^1$ integral
+%
+\nbea
+\int_0^1 dt~ \frac{t^{s-1}}{e^t - 1} & = & \int_0^1 dt~ t^{s-1} \left ( \frac{1}{e^t - 1} + \left\{ -\frac{1}{e^t - 1} + \frac{1}{e^t - 1}\right \}  \right ) \\
+& = & \int_0^1 dt~ t^{s-1} \left ( \frac{1}{e^t - 1} + \left\{ -\frac{1}{t} + \frac{1}{2} - \frac{t}{12} +\frac{1}{t} - \frac{1}{2} + \frac{t}{12} \right \}  \right ) \\
+& = & \int_0^1 dt~ t^{s-1} \left ( \frac{1}{e^t - 1}  -\frac{1}{t} + \frac{1}{2} - \frac{t}{12} \right ) + \int_0^1 dt~ t^{s-1} \left ( \frac{1}{t} - \frac{1}{2} + \frac{t}{12}  \right ) \\
+\int_0^1 dt~ \frac{t^{s-1}}{e^t - 1} & = &  \int_0^1 dt~ t^{s-1} \left ( \frac{1}{e^t - 1}  -\frac{1}{t} + \frac{1}{2} - \frac{t}{12} \right ) + \frac{1}{s-1} - \frac{1}{2s} + \frac{1}{12(s+1)}
+\neea
+%
+Combining everything together 
+%
+\nbea
+\Gamma(s)\zeta(s) & = & \int_0^\infty dt~ \frac{t^{s-1}}{e^t - 1} = \int_0^1 dt~ \frac{t^{s-1}}{e^t - 1} + \int_1^\infty dt~ \frac{t^{s-1}}{e^t - 1} \\
+& = & \int_0^1 dt~ t^{s-1} \left ( \frac{1}{e^t - 1}  -\frac{1}{t} + \frac{1}{2} - \frac{t}{12} \right ) + \frac{1}{s-1} - \frac{1}{2s} + \frac{1}{12(s+1)} + \int_1^\infty dt~ \frac{t^{s-1}}{e^t - 1}
+\neea
+%
+This formula is now well defined up to $\mathfrak{Re}(s) > -2$ following the same logic as Problem 3.6.
+
+Remember that $s$ is complex, and thus $ \frac{1}{s-1} - \frac{1}{2s} + \frac{1}{12(s+1)}$ gives the poles of $\Gamma(s)\zeta(s)$. What we need is the values of $\zeta(s)$. We now need to show that these poles are the poles of $\Gamma(s)$ and NOT of $\zeta(s)$ such that we can extract the values of $\zeta(s)$.
+
+Using the result of Problem 3.6 above (\ref{Eq:Prob3.6}), the factor $\frac{(-1)^n}{n!(s+n)}$ is the pole of $\Gamma(s)$ and whatever factor multiplying it is the value of $\zeta(s)$. Thus $\zeta(0)$ is the factor multiplying $\frac{(-1)^0}{0!(s+0)}$ which is $-1/2$, and $\zeta(-1)$ is whatever multiplies $\frac{(-1)^1}{1!(s+1)}$ which is $-1/12$ and .....
+%
+\nbea
+-\frac{1}{12} & = & 1 + 2 + 3 + 4 + 5 + 6 + 7 + .......
+\neea
+%
+Voila!
+
+The reason I can see why we like light cone coordinate is because we can easily see that the solution is made of left and right moving parts. To start
+%
+\nbea
+\sigma^+ = \tau + \sigma & ~ & \sigma^- = \tau - \sigma \\
+\partial_\tau = \frac{\partial \sigma^+}{\partial \tau} \partial_+ + \frac{\partial \sigma^-}{\partial \tau} \partial_- & \rightarrow & \partial_\tau = \partial_+ + \partial_- \\
+\partial_\sigma = \frac{\partial \sigma^+}{\partial \sigma} \partial_+ + \frac{\partial \sigma^-}{\partial \sigma} \partial_- & \rightarrow & \partial_\sigma = -\partial_+ - \partial_-
+\neea
+%
+
+The equation of motion is easily derived using a flat metric (which we can do thanks to Weyl invariance)
+%
+\nbea
+\int d^2\sigma~ \partial_\alpha X \cdot \partial^\alpha X & \rightarrow & \partial_\alpha \partial^\alpha X = 0 \\
+& \rightarrow & (\partial_\tau^2 - \partial_\sigma^2 ) X = 0
+\neea
+%
+as the metric is Minkowskian, $\eta_{ab} = (-1, +1)$. Applying the change of variables
+%
+\nbea
+\partial_\tau^2 - \partial_\sigma^2  & \rightarrow & (\partial_+ + \partial_-)^2 - (-\partial_+ - \partial_-)^2 \\
+& = & \partial_+^2 + 2\partial_+ \partial_- + \partial_-^2 -\partial_+^2 + 2\partial_+ \partial_- - \partial_-^2 \\
+& = & 4 \partial_+\partial_- \\
+(\partial_\tau^2 - \partial_\sigma^2 ) X = 0 & \rightarrow & \partial_+\partial_- X = 0
+\neea
+%
+
+This means that
+%
+\nbea
+\partial_+ (\partial_-X) = 0 & \rightarrow & (\partial_-X) = F (\sigma^-) \\
+\partial_- (\partial_+X) = 0 & \rightarrow & (\partial_+X) = G (\sigma^+) \\
+\neea 
+%
+\ie $\partial_- X$ is a function of $\sigma^-$ only, the same goes with $\partial_+X$. Thus, $X$ splits into $X(\sigma^-,\sigma^+) = X(\sigma^-) + X(\sigma^+)$.
+
+Note that even when we are using the flat metric in the Polyakov action we can still do a variation of the action with respect to $\eta_{ab}$, $\frac{\delta S}{\delta \eta_{ab}} \neq 0$.
+
+
+Gauss's theorem in 2D. 
+%
+\nbea
+\int_{\mathcal{R}} d^2\sigma~\partial^\alpha j_\alpha & = & \oint_{\partial \mathcal{R}} j_\alpha \hat n^\alpha = \oint_{\partial \mathcal{R}} \left (j_1 d\sigma^2 - j_2 d\sigma^1 \right )
+\neea
+%
+where $n^\alpha$ is normal to the boundary. The minus sign in the last equation is from the fact that the tangent to the boundary is given by the vector $(d\sigma^1,d\sigma^2)$, the normal is then given by (in Euclidean metric) $(d\sigma^2,-d\sigma^1)$ so that $(d\sigma^1,d\sigma^2) \cdot (d\sigma^2,-d\sigma^1) = d\sigma^1 d\sigma^2 - d\sigma^2 d\sigma^1 = 0$.
+
+Delta function in 2D and the various forms of delta functions. It is said that the delta function in 2D is given by $4\pi \delta^2(\sigma - \sigma') = \partial^2 \ln(\sigma - \sigma')^2$, David Tong proceeds as follows (and I will give a heuristic argument and fill up the gaps), we set $\sigma' = 0$ and integrate both sides
+%
+\nbea
+\int d^2\sigma~ 4\pi \delta^2(\sigma) = 4\pi & = & \int d^2\sigma~\partial^2 \ln(\sigma)^2 \\
+& = & \int d^2\sigma~\partial^2 \ln |\vec \sigma \cdot \vec \sigma| \\
+& = & \int d^2\sigma~\partial^2 \ln (\sigma_1^2 + \sigma_2^2) = \int d^2\sigma~\partial^\alpha\partial_\alpha \ln (\sigma_1^2 + \sigma_2^2) \\
+& = & \int d^2\sigma~\partial_\alpha\partial_\alpha \ln (\sigma_1^2 + \sigma_2^2) = \int d^2\sigma~(\partial_1\partial_1 + \partial_2\partial_2) \ln (\sigma_1^2 + \sigma_2^2) \\
+& = & \int d^2\sigma~\partial_1 \left \{ \frac{2 \sigma_1}{ (\sigma_1^2 + \sigma_2^2) } \right \} + \partial_2 \left \{ \frac{2 \sigma_2}{ (\sigma_1^2 + \sigma_2^2) } \right \} \\
+& = & 2 \int d^2\sigma~\partial_\alpha \left \{ \frac{\sigma_\alpha}{ (\sigma_1^2 + \sigma_2^2) } \right \} = 2 \oint \frac{(\sigma_1 d\sigma_2 - \sigma_2 d\sigma_1)}{ \sigma_1^2 + \sigma_2^2 } 
+\neea
+%
+where since we are in Euclidean space we can raise and lower indices with impunity.
+
+Now comes the change of coordinates, $\sigma_1 + i\sigma_2 = r e^{i\theta}$ which means that
+%
+\nbea
+\sigma_1 = r \frac{(e^{i\theta} + e^{-i\theta})}{2} = r \cos\theta & ~~~~~~ & \sigma_2 = r \frac{(e^{i\theta} - e^{-i\theta})}{2i} = r \sin\theta
+\neea
+%
+The line integral $\oint$ is assumed to be around a circle ($r$ $constant$) such that
+%
+\nbea
+d\sigma_1 = d(r \cos\theta) = -r \sin\theta d\theta & ~~~~~~ & d\sigma_2 = d(r \sin\theta) = r \cos\theta d\theta
+\neea
+%
+such that
+%
+\nbea
+2 \oint \frac{(\sigma_1 d\sigma_2 - \sigma_2 d\sigma_1)}{ \sigma_1^2 + \sigma_2^2 } & \rightarrow & 2 \oint \frac{(r \cos\theta r \cos\theta d\theta - r \sin\theta(-r) \sin\theta d\theta )}{ r^2 } \\
+& = & 2 \oint \frac{r^2 (\cos^2\theta + \sin^2\theta) d\theta}{ r^2 } \\
+& = & 2 \oint \frac{r^2 d\theta}{ r^2 } = 4\pi
+\neea
+%
+The heuristic way is using the Green's function, remember that in E \& M the Green's function is given by
+%
+\nbea
+\nabla^2 G(x,x') & = & \delta(x,x')
+\neea
+%
+going into the momentum space
+%
+\nbea
+k^2 G(k) = 1 & \rightarrow & G(k) = \frac{1}{k^2} \\
+G(x) & = & \int d^d k~ \frac{e^{ikx}}{k^2}
+\neea
+%
+We see that when the dimension $d=3$, from dimensional analysis
+%
+\nbea
+G(x) & = & \int d^3 k~ \frac{e^{ikx}}{k^2} \simeq \int k \rightarrow \frac{1}{r}
+\neea
+%
+this is where we get the $1/r$ potential from and in dimension $d=2$
+%
+\nbea
+G(x) & = & \int d^2 k~ \frac{e^{ikx}}{k^2} \simeq \int k^0 \rightarrow \ln(r)
+\neea
+%
+
+Tong page 34 Eq. 2.13
+%
+\nbea
+X^+ & = & \frac{1}{2} x^+ + \frac{1}{2} \alpha' p^+ \tau
+\neea
+%
+an easier way to see this is to begin with the fact that we can reparameterize $\sigma^\pm \rightarrow \xi^\pm(\sigma^\pm)$ due to the residual symmetry. This means that we can reparameterize the world sheet coordinates into
+%
+\nbea
+\tau & \rightarrow & \tilde \tau = \frac{1}{2} (\tilde \sigma^+ + \tilde \sigma^-) = \frac{1}{2} (\xi^+(\sigma^+) + \xi^-(\sigma^-)), ~~\sigma^\pm \rightarrow \xi^\pm(\sigma^\pm) \\
+\sigma & \rightarrow & \tilde \sigma = \frac{1}{2} (\tilde \sigma^+ - \tilde \sigma^-) = \frac{1}{2} (\xi^+(\sigma^+) - \xi^-(\sigma^-)), ~~\sigma^\pm \rightarrow \xi^\pm(\sigma^\pm)
+\neea
+%
+It is then obvious that
+%
+\nbea
+0 & = & \tilde \partial_+\tilde \partial_- \tilde\tau \\
+0 & = & \left ( \frac {\partial_+}{\tilde \partial_+} \right ) \left ( \frac {\partial_-}{\tilde \partial_-} \right ) \partial_+ \partial_- \tilde\tau \\
+0 & = & \partial_+ \partial_- \tilde\tau 
+\neea
+%
+But this is no different from the equation of motion for $X^\mu \rightarrow \partial_+\partial_-X^\mu = 0$, thus we can reparameterize $\tau \rightarrow \tilde \tau = F(X^\mu)$ as some function of $X^\mu$ itself, \ie we can choose such that
+%
+\nbea
+\tilde \tau & = & C_1 X^+ + C_2 \\
+\tilde\tau & = & \frac{2 X^+}{\alpha' p^+} - \frac{x^+}{\alpha'p^+}
+\neea
+%
+where we have judiciously chosen $C_1 = \frac{2}{\alpha' p^+},~C_2 = - \frac{x^+}{\alpha'p^+}$ so that to agree with Tong's Eq. 2.13 :)
+
+Tong's page 56, Regge Trajectories, as to why $J_{max} = N = \alpha' M^2 + 1$. The maximum spin of the excitation of the string is determined by the (mode) creation operators, \eg 2 creation operators, $\alpha_{-1}^\mu \alpha_{-1}^\nu |0\rangle$ create a (symmetric) second rank tensor $G^{\mu\nu}$ which means spin-2. Thus the number of creation operators, $N$, determines the highest spin.
+
+
+%
+\nbea
+\nabla_a T^{ab} = \partial_a T^{ab} & = & \partial_a \left \{ -\frac{1}{\alpha'} \left ( \partial^a X^\mu \partial^b X_\mu - \frac{1}{2} \gamma^{ab} \partial_c X^\mu \partial^c X_\mu \right ) \right \} \\
+& = & -\frac{1}{\alpha'} \left ( (\partial_a \partial^a X^\mu) \partial^b X_\mu + \partial^a X^\mu (\partial_a\partial^b X_\mu) \frac{}{} \right. \\
+& & \left . ~~~~~~~ - \frac{1}{2} (\partial^b \partial_c X^\mu) \partial^c X_\mu - \frac{1}{2} \partial_c X^\mu (\partial^b \partial^c X_\mu) \right ) \\
+& = & -\frac{1}{\alpha'} \left ( \partial^2 X^\mu \partial^b X_\mu + \partial^c X^\mu (\partial_c\partial^b X_\mu) - \partial_c X^\mu (\partial^b \partial^c X_\mu) \right ) \\
+& = & -\frac{1}{\alpha'} \left ( \partial^2 X^\mu \partial^b X_\mu \right ) = -\frac{1}{\alpha'} \left ( (0) \partial^b X_\mu \right ), ~~~ \partial^2 X^\mu = 0 \\
+\nabla_a T^{ab} & = & 0
+\neea
+%
+
+Where in the last step we have used the equation of motion of $X^\mu$, \ie $(-\gamma)^{1/2} \partial^2 X^\mu = 0$. This is fine because Noerther current is valid only when the EOM is satisfied.
+
+
+\nbea
+\int dE~ e^{S(E) - \beta E} & = & \int dE~ e^{f(E)}, ~~~ f(E) = S(E) - \beta E \\
+\frac{d f(E)}{dE} = 0 & = & \frac{d S(E)}{dE} - \beta \\
+\rightarrow \beta & = & S'(E_*), ~~~ S'(E) = \frac{d S(E)}{dE}
+\neea
+
+\nbea
+S(E) & \sim & N \sqrt{E} \\
+S'(E) = \frac{N}{2} \frac{1}{\sqrt{E}} & \rightarrow & S'(E_*) = \beta = \frac{N}{2} \frac{1}{\sqrt{E}}\\
+\Rightarrow E_* & = & \frac{N^2}{4 \beta^2}
+\neea
+
+\nbea
+f(E) & = & f(E_*) + (E - E_*) f'(E_*) + \frac{(E - E_*)^2}{2} f''(E_*) \\
+& \rightarrow & f(E_*) = \frac{N^2}{4\beta}\\
+& \rightarrow & f'(E_*) = 0\\
+& \rightarrow & f''(E_*) = S''(E_*) = -\frac{N}{4} \frac{1}{\sqrt{E_*^3}} = -2 \frac{\beta^3}{N^2}\\
+f(E) & = & \frac{N^2}{4\beta} - {(E - E_*)^2} \frac{\beta^3}{N^2} \\
+& = & - {E^2} \frac{\beta^3}{N^2} + {2 E E_*} \frac{\beta^3}{N^2} - {E_*^2} \frac{\beta^3}{N^2} + \frac{N^2}{4\beta}, ~~~  E_* = \frac{N^2}{4 \beta^2}\\
+& = & - {E^2} \frac{\beta^3}{N^2} + E \frac{\beta}{2} + \frac{3N^2}{16\beta}
+\neea
+
+\nbea
+\int dE~ e^{S(E) - \beta E} & = & \int dE~ e^{- {E^2} \frac{\beta^3}{N^2} + E \frac{\beta}{2} + \frac{3N^2}{16\beta}}\\
+\int dx ~ e^{-ax^2 + bx + c} & = & \sqrt{\frac{\pi}{a}} e^{\frac{b^2}{4a} + c} \\
+\rightarrow \int dE~ e^{- {E^2} \frac{\beta^3}{N^2} + E \frac{\beta}{2} + \frac{3N^2}{16\beta}} & = & \sqrt{\frac{\pi N^2}{\beta^3}} \exp\left \{\frac{N^2}{16 \beta} + \frac{3N^2}{16\beta} \right \}\\
+e^{-\beta F} = \int dE~ e^{S(E) - \beta E} & = & \frac{N}{\beta}\sqrt{\frac{\pi}{\beta}} \exp \left \{\frac{N^2}{4 \beta} \right \} \\
+e^{-\beta F} \sim e ^{\frac{N^2}{4 \beta} } & \rightarrow & F = -\frac{N^2}{4\beta^2}  = - \frac{k_B}{4} N^2 T^2\\
+F & \sim & N^2 T^2
+\neea
+
+
+
+$M^2 = \frac{4}{\alpha'} (h - 1)$
+
+From this we get the classification of which values of $h$ would be irrelevant, marginal and relevant, here's how they break down
+\bit
+\item Let's start with the most obvious, the irrelevant operators with weight $h > 1$. For $h > 1$ the excitations are massive, thus as we go along the RG flow towards the infrared (\ie coarse graining $\rightarrow$ larger scale = lower momentum), the particles get more and more ``massive", $\frac{M}{p} \rightarrow \infty$ as $p \rightarrow 0$. This means that the particles freeze out in the infrared as they become too heavy.
+\item $h = 0$, this means that the particles have no mass scale which in turn means that RG flow will generate new CFT's.
+\item $h < 1$ translates to tachyonic excitations, \ie the particles are unstable and will decay. In this case, going to low momentum regime does not freeze them as they will just decay, creating new degrees of freedom and thus relevant in the infrared.
+\eit
+
+
+
+\end{document}

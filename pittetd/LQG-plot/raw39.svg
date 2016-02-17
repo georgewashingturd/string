@@ -1,0 +1,3345 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.47 r22583"
+   sodipodi:docname="raw39.svg">
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.9899495"
+     inkscape:cx="129.5083"
+     inkscape:cy="806.32408"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1033"
+     inkscape:window-height="876"
+     inkscape:window-x="898"
+     inkscape:window-y="153"
+     inkscape:window-maximized="0" />
+  <defs
+     id="defs4">
+    <marker
+       style="overflow:visible;"
+       id="Arrow1Lend"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none;"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path3858" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mstart"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mstart">
+      <path
+         transform="scale(0.4) translate(10,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path3861" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Mstart"
+       style="overflow:visible">
+      <path
+         id="path3879"
+         style="font-size:12.0;fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(0.6) translate(0,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Mend"
+       style="overflow:visible;">
+      <path
+         id="path3864"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none;"
+         transform="scale(0.4) rotate(180) translate(10,0)" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotM"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="DotM">
+      <path
+         transform="scale(0.4) translate(7.4, 1)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none;marker-end:none"
+         d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
+         id="path3920" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotS"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="DotS">
+      <path
+         transform="scale(0.2) translate(7.4, 1)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none;marker-end:none"
+         d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
+         id="path3923" />
+    </marker>
+    <inkscape:perspective
+       id="perspective10"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective2848" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective2848-4" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective2848-48" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective2848-45" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective2910" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective2941" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective2982" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective2982-1" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective2982-8" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective2982-3" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective3076" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective3113" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective3150" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective3187" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective3224" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective3224-3" />
+    <marker
+       style="overflow:visible"
+       id="DotMf"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="DotMf">
+      <path
+         transform="scale(0.4) translate(7.4, 1)"
+         style="marker-end:none;fill-rule:evenodd;marker-start:none;stroke:#0000ff;stroke-width:1.0pt;fill:#0000ff"
+         d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
+         id="path4882" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotMs"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="DotMs">
+      <path
+         transform="scale(0.4) translate(7.4, 1)"
+         style="marker-end:none;fill-rule:evenodd;marker-start:none;stroke:#0000ff;stroke-width:1.0pt;fill:#0000ff"
+         d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
+         id="path4885" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotMe"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="DotMe">
+      <path
+         transform="scale(0.4) translate(7.4, 1)"
+         style="marker-end:none;fill-rule:evenodd;marker-start:none;stroke:#ff0000;stroke-width:1.0pt;fill:#ff0000"
+         d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
+         id="path5573" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotMB"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="DotMB">
+      <path
+         transform="scale(0.4) translate(7.4, 1)"
+         style="marker-end:none;fill-rule:evenodd;marker-start:none;stroke:#ff0000;stroke-width:1.0pt;fill:#ff0000"
+         d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
+         id="path5576" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotMp"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="DotMp">
+      <path
+         transform="scale(0.4) translate(7.4, 1)"
+         style="marker-end:none;fill-rule:evenodd;marker-start:none;stroke:#ff0000;stroke-width:1.0pt;fill:#ff0000"
+         d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
+         id="path6089" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotMZ"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="DotMZ">
+      <path
+         transform="scale(0.4) translate(7.4, 1)"
+         style="marker-end:none;fill-rule:evenodd;marker-start:none;stroke:#ff0000;stroke-width:1.0pt;fill:#ff0000"
+         d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
+         id="path6092" />
+    </marker>
+    <inkscape:perspective
+       id="perspective6196"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective6237"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective6274"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective6327"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective6388"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective6434"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective6471"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <marker
+       style="overflow:visible"
+       id="DotMf-2"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotMf">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:#0000ff;fill-rule:evenodd;stroke:#0000ff;stroke-width:1pt;marker-start:none;marker-end:none"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path4882-7" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotMs-9"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotMs">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:#0000ff;fill-rule:evenodd;stroke:#0000ff;stroke-width:1pt;marker-start:none;marker-end:none"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path4885-5" />
+    </marker>
+    <inkscape:perspective
+       id="perspective7522"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <marker
+       style="overflow:visible"
+       id="DotMf-2-4"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotMf">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:#0000ff;fill-rule:evenodd;stroke:#0000ff;stroke-width:1pt;marker-start:none;marker-end:none"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path4882-7-4" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker7528"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotMf">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:#0000ff;fill-rule:evenodd;stroke:#0000ff;stroke-width:1pt;marker-start:none;marker-end:none"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path7530" />
+    </marker>
+    <inkscape:perspective
+       id="perspective8772"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <marker
+       style="overflow:visible"
+       id="DotMe-0"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotMe">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:#ff0000;fill-rule:evenodd;stroke:#ff0000;stroke-width:1pt;marker-start:none;marker-end:none"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path5573-7" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotMB-1"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotMB">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:#ff0000;fill-rule:evenodd;stroke:#ff0000;stroke-width:1pt;marker-start:none;marker-end:none"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path5576-7" />
+    </marker>
+    <inkscape:perspective
+       id="perspective8846"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective8880"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective8914"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective16640"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective16677"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective16714"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective16764"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective16801"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <marker
+       style="overflow:visible"
+       id="DotMpT"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="DotMpT">
+      <path
+         transform="scale(0.4) translate(7.4, 1)"
+         style="marker-end:none;fill-rule:evenodd;marker-start:none;stroke:#ff0000;stroke-width:1.0pt;fill:#ff0000"
+         d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
+         id="path21396" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1MendL"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1MendL"
+       style="overflow:visible;">
+      <path
+         id="path21399"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="marker-start:none;stroke:#ff0000;stroke-width:1.0pt;fill:#ff0000;fill-rule:evenodd"
+         transform="scale(0.4) rotate(180) translate(10,0)" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotMZ1"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="DotMZ1">
+      <path
+         transform="scale(0.4) translate(7.4, 1)"
+         style="marker-end:none;fill-rule:evenodd;marker-start:none;stroke:#ff0000;stroke-width:1.0pt;fill:#ff0000"
+         d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
+         id="path21402" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotMf-2Z"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotMf-2Z">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="marker-end:none;fill-rule:evenodd;marker-start:none;stroke:#0000ff;stroke-width:1pt;fill:#0000ff"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path22055" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend0"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Mend0"
+       style="overflow:visible;">
+      <path
+         id="path22058"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="marker-start:none;stroke:#0000ff;stroke-width:1.0pt;fill:#0000ff;fill-rule:evenodd"
+         transform="scale(0.4) rotate(180) translate(10,0)" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotMf-20"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotMf-20">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="marker-end:none;fill-rule:evenodd;marker-start:none;stroke:#0000ff;stroke-width:1pt;fill:#0000ff"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path22061" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotMe9"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="DotMe9">
+      <path
+         transform="scale(0.4) translate(7.4, 1)"
+         style="marker-end:none;fill-rule:evenodd;marker-start:none;stroke:#ff0000;stroke-width:1.0pt;fill:#ff0000"
+         d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
+         id="path22962" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mstarts"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Mstarts"
+       style="overflow:visible">
+      <path
+         id="path22965"
+         style="stroke-linejoin:round;font-size:12.0;fill-rule:evenodd;stroke:#ff0000;stroke-width:0.62500000;fill:#ff0000"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(0.6) translate(0,0)" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotMB9"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="DotMB9">
+      <path
+         transform="scale(0.4) translate(7.4, 1)"
+         style="marker-end:none;fill-rule:evenodd;marker-start:none;stroke:#ff0000;stroke-width:1.0pt;fill:#ff0000"
+         d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
+         id="path22968" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker7528T"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="marker7528T">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="marker-end:none;fill-rule:evenodd;marker-start:none;stroke:#0000ff;stroke-width:1pt;fill:#0000ff"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path23903" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend8"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Mend8"
+       style="overflow:visible;">
+      <path
+         id="path23906"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="marker-start:none;stroke:#0000ff;stroke-width:1.0pt;fill:#0000ff;fill-rule:evenodd"
+         transform="scale(0.4) rotate(180) translate(10,0)" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker75282"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="marker75282">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="marker-end:none;fill-rule:evenodd;marker-start:none;stroke:#0000ff;stroke-width:1pt;fill:#0000ff"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path23909" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotMeq"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="DotMeq">
+      <path
+         transform="scale(0.4) translate(7.4, 1)"
+         style="marker-end:none;fill-rule:evenodd;marker-start:none;stroke:#ff0000;stroke-width:1.0pt;fill:#ff0000"
+         d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
+         id="path24628" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mstartl"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mstartl">
+      <path
+         transform="scale(0.4) translate(10,0)"
+         style="marker-start:none;stroke:#ff0000;stroke-width:1.0pt;fill:#ff0000;fill-rule:evenodd"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path24631" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotMB3"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="DotMB3">
+      <path
+         transform="scale(0.4) translate(7.4, 1)"
+         style="marker-end:none;fill-rule:evenodd;marker-start:none;stroke:#ff0000;stroke-width:1.0pt;fill:#ff0000"
+         d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
+         id="path24634" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotMfC"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="DotMfC">
+      <path
+         transform="scale(0.4) translate(7.4, 1)"
+         style="marker-end:none;fill-rule:evenodd;marker-start:none;stroke:#0000ff;stroke-width:1.0pt;fill:#0000ff"
+         d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
+         id="path25873" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mstartg"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mstartg">
+      <path
+         transform="scale(0.4) translate(10,0)"
+         style="marker-start:none;stroke:#0000ff;stroke-width:1.0pt;fill:#0000ff;fill-rule:evenodd"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path25876" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotMs9"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="DotMs9">
+      <path
+         transform="scale(0.4) translate(7.4, 1)"
+         style="marker-end:none;fill-rule:evenodd;marker-start:none;stroke:#0000ff;stroke-width:1.0pt;fill:#0000ff"
+         d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
+         id="path25879" />
+    </marker>
+    <inkscape:perspective
+       id="perspective26284"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective26321"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective26321-6"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective26321-3"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective26396"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective26433"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective26485"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective26485-2"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective26485-1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <marker
+       style="overflow:visible"
+       id="marker7528n"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="marker7528n">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="marker-end:none;fill-rule:evenodd;marker-start:none;stroke:#00ff00;stroke-width:1pt;fill:#00ff00"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path9207" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker7528t"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="marker7528t">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="marker-end:none;fill-rule:evenodd;marker-start:none;stroke:#00ff00;stroke-width:1pt;fill:#00ff00"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path9210" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotMv"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="DotMv">
+      <path
+         transform="scale(0.4) translate(7.4, 1)"
+         style="marker-end:none;fill-rule:evenodd;marker-start:none;stroke:#7b2bfc;stroke-width:1.0pt;fill:#7b2bfc"
+         d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
+         id="path11125" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotMV"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="DotMV">
+      <path
+         transform="scale(0.4) translate(7.4, 1)"
+         style="marker-end:none;fill-rule:evenodd;marker-start:none;stroke:#7b2bfc;stroke-width:1.0pt;fill:#7b2bfc"
+         d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
+         id="path11128" />
+    </marker>
+    <inkscape:perspective
+       id="perspective11642"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <marker
+       style="overflow:visible"
+       id="DotMpT-3"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotMpT">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:#ff0000;fill-rule:evenodd;stroke:#ff0000;stroke-width:1pt;marker-start:none;marker-end:none"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path21396-0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1MendL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1MendL-1"
+       style="overflow:visible">
+      <path
+         id="path21399-2"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill:#ff0000;fill-rule:evenodd;stroke:#ff0000;stroke-width:1pt;marker-start:none"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotMZ1-9"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotMZ1">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:#ff0000;fill-rule:evenodd;stroke:#ff0000;stroke-width:1pt;marker-start:none;marker-end:none"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path21402-0" />
+    </marker>
+    <inkscape:perspective
+       id="perspective11682"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <marker
+       style="overflow:visible"
+       id="DotMpT-8"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotMpT">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:#ff0000;fill-rule:evenodd;stroke:#ff0000;stroke-width:1pt;marker-start:none;marker-end:none"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path21396-8" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1MendL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1MendL-5"
+       style="overflow:visible">
+      <path
+         id="path21399-7"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill:#ff0000;fill-rule:evenodd;stroke:#ff0000;stroke-width:1pt;marker-start:none"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotMZ1-7"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotMZ1">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:#ff0000;fill-rule:evenodd;stroke:#ff0000;stroke-width:1pt;marker-start:none;marker-end:none"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path21402-08" />
+    </marker>
+    <inkscape:perspective
+       id="perspective11682-3"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <marker
+       style="overflow:visible"
+       id="DotMpT-0"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotMpT">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:#ff0000;fill-rule:evenodd;stroke:#ff0000;stroke-width:1pt;marker-start:none;marker-end:none"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path21396-7" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1MendL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1MendL-4"
+       style="overflow:visible">
+      <path
+         id="path21399-78"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill:#ff0000;fill-rule:evenodd;stroke:#ff0000;stroke-width:1pt;marker-start:none"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotMZ1-3"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotMZ1">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:#ff0000;fill-rule:evenodd;stroke:#ff0000;stroke-width:1pt;marker-start:none;marker-end:none"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path21402-7" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker7528n7"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="marker7528n7">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="marker-end:none;fill-rule:evenodd;marker-start:none;stroke:#00ff00;stroke-width:1pt;fill:#00ff00"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path12416" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1MstartD"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1MstartD">
+      <path
+         transform="scale(0.4) translate(10,0)"
+         style="marker-start:none;stroke:#00ff00;stroke-width:1.0pt;fill:#00ff00;fill-rule:evenodd"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path12419" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker7528tv"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="marker7528tv">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="marker-end:none;fill-rule:evenodd;marker-start:none;stroke:#00ff00;stroke-width:1pt;fill:#00ff00"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path12422" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotMvR"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="DotMvR">
+      <path
+         transform="scale(0.4) translate(7.4, 1)"
+         style="marker-end:none;fill-rule:evenodd;marker-start:none;stroke:#7b2bfc;stroke-width:1.0pt;fill:#7b2bfc"
+         d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
+         id="path13675" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend2"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Mend2"
+       style="overflow:visible;">
+      <path
+         id="path13678"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="marker-start:none;stroke:#7b2bfc;stroke-width:1.0pt;fill:#7b2bfc;fill-rule:evenodd"
+         transform="scale(0.4) rotate(180) translate(10,0)" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotMVs"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="DotMVs">
+      <path
+         transform="scale(0.4) translate(7.4, 1)"
+         style="marker-end:none;fill-rule:evenodd;marker-start:none;stroke:#7b2bfc;stroke-width:1.0pt;fill:#7b2bfc"
+         d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
+         id="path13681" />
+    </marker>
+    <inkscape:perspective
+       id="perspective15102"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective15211"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective15263"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective15263-0"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective15263-6"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3657"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <marker
+       inkscape:stockid="DotL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="DotL"
+       style="overflow:visible">
+      <path
+         id="path3917"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none;marker-end:none"
+         transform="matrix(0.8,0,0,0.8,5.92,0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="DotL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3663"
+       style="overflow:visible">
+      <path
+         id="path3665"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none;marker-end:none"
+         transform="matrix(0.8,0,0,0.8,5.92,0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="DotL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3667"
+       style="overflow:visible">
+      <path
+         id="path3669"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none;marker-end:none"
+         transform="matrix(0.8,0,0,0.8,5.92,0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="DotL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3671"
+       style="overflow:visible">
+      <path
+         id="path3673"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none;marker-end:none"
+         transform="matrix(0.8,0,0,0.8,5.92,0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="DotL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3675"
+       style="overflow:visible">
+      <path
+         id="path3677"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none;marker-end:none"
+         transform="matrix(0.8,0,0,0.8,5.92,0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="DotL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3679"
+       style="overflow:visible">
+      <path
+         id="path3681"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none;marker-end:none"
+         transform="matrix(0.8,0,0,0.8,5.92,0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="DotL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3683"
+       style="overflow:visible">
+      <path
+         id="path3685"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none;marker-end:none"
+         transform="matrix(0.8,0,0,0.8,5.92,0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="DotL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3687"
+       style="overflow:visible">
+      <path
+         id="path3689"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none;marker-end:none"
+         transform="matrix(0.8,0,0,0.8,5.92,0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="DotL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3691"
+       style="overflow:visible">
+      <path
+         id="path3693"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none;marker-end:none"
+         transform="matrix(0.8,0,0,0.8,5.92,0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="DotL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3695"
+       style="overflow:visible">
+      <path
+         id="path3697"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none;marker-end:none"
+         transform="matrix(0.8,0,0,0.8,5.92,0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="DotL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3699"
+       style="overflow:visible">
+      <path
+         id="path3701"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none;marker-end:none"
+         transform="matrix(0.8,0,0,0.8,5.92,0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="DotL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3703"
+       style="overflow:visible">
+      <path
+         id="path3705"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none;marker-end:none"
+         transform="matrix(0.8,0,0,0.8,5.92,0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="DotL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3707"
+       style="overflow:visible">
+      <path
+         id="path3709"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none;marker-end:none"
+         transform="matrix(0.8,0,0,0.8,5.92,0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="DotL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3711"
+       style="overflow:visible">
+      <path
+         id="path3713"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none;marker-end:none"
+         transform="matrix(0.8,0,0,0.8,5.92,0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="DotL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3715"
+       style="overflow:visible">
+      <path
+         id="path3717"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none;marker-end:none"
+         transform="matrix(0.8,0,0,0.8,5.92,0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="DotL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3719"
+       style="overflow:visible">
+      <path
+         id="path3721"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none;marker-end:none"
+         transform="matrix(0.8,0,0,0.8,5.92,0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="DotL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3723"
+       style="overflow:visible">
+      <path
+         id="path3725"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none;marker-end:none"
+         transform="matrix(0.8,0,0,0.8,5.92,0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="DotL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3727"
+       style="overflow:visible">
+      <path
+         id="path3729"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none;marker-end:none"
+         transform="matrix(0.8,0,0,0.8,5.92,0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="DotL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3731"
+       style="overflow:visible">
+      <path
+         id="path3733"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none;marker-end:none"
+         transform="matrix(0.8,0,0,0.8,5.92,0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="DotL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3735"
+       style="overflow:visible">
+      <path
+         id="path3737"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none;marker-end:none"
+         transform="matrix(0.8,0,0,0.8,5.92,0.8)" />
+    </marker>
+    <inkscape:perspective
+       id="perspective5865"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5887"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5909"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5931"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5953"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5953-4"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5953-1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5953-2"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5953-5"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5953-9"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5953-41"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5953-93"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5953-6"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5953-90"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective6148"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3345"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3379"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3413"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3447"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3489"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3523"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3557"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3591"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3633"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3667"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3701"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3735"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4999"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5033"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5067"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5101"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5143"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5177"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5211"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5245"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5792"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5817"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5842"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5867"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5892"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective6823"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective6866"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective6866-3"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective6866-4"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective6866-7"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+  </defs>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 353.04831,334.14373 486.89352,450.31127"
+       id="path5127" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 367.19045,320.00159 129.8046,109.09648"
+       id="path5129" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 380.82751,304.8493 505.58135,407.37979"
+       id="path5131" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 392.44426,291.71732 121.21831,96.97464"
+       id="path5133" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 137.14286,369.50504 81.23423,506.86327"
+       id="path4983"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 160.71428,375.21933 102.78535,518.67437"
+       id="path4985"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 182.14286,384.50504 125.34663,528.55181"
+       id="path4987"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 202.85714,391.6479 145.97426,539.77117"
+       id="path4989"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 72.225907,264.94828 -96.469567,288.68686"
+       id="path3623" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 65.154839,225.55233 -97.984796,249.29091"
+       id="path3619" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 69.700525,243.73508 -96.469567,267.97874"
+       id="path3621" />
+    <path
+       style="fill:#ff0000;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 60.104076,205.34928 -97.984796,228.58279"
+       id="path3617" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 187.14286,48.076473 117.3372,-59.366604"
+       id="path3335"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 168.92857,60.576473 96.954676,-52.03992"
+       id="path3333"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 150,76.290759 75.735312,-43.703082"
+       id="path3331"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 129.64286,86.647902 54.811817,-34.157396"
+       id="path3329"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 326.27927,92.212194 439.41635,7.8644571"
+       id="path3473" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 336.3808,108.87971 450.02296,24.026898"
+       id="path3475" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 346.9874,125.04215 460.12448,41.199491"
+       id="path3477" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 356.58385,145.2452 112.632,-85.862963"
+       id="path3479" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#DotL);marker-end:url(#DotL)"
+       d="m 186.91833,48.15255 c 60.60915,83.84267 139.32926,44.98769 139.32926,44.98769"
+       id="path2816-9-7"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#DotL);marker-end:url(#DotL)"
+       d="m 356.48037,145.19899 c -32.12945,65.62984 0.0291,129.06576 33.87602,146.05371"
+       id="path2818-5-2"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#DotL);marker-end:url(#DotL)"
+       d="M 351.20554,332.00542 C 252.21059,264.3252 204.01912,388.22733 204.01912,388.22733"
+       id="path2820-3-2"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#DotL);marker-end:url(#DotL)"
+       d="M 139.36938,368.00326 C 154.18996,299.04158 109.45994,271.56495 74.00532,264.86617"
+       id="path2822-2-9"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#DotL);marker-end:url(#DotL)"
+       d="m 60.82258,205.73636 c 66.73306,-23.51129 85.70675,-65.44329 68.91445,-119.07545"
+       id="path2824-5-4"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#DotL);marker-end:url(#DotL)"
+       d="m 168.36793,60.27439 c 52.81501,99.85977 144.82337,203.64612 210.87678,243.86518"
+       id="path2826-2-1"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#DotL);marker-end:url(#DotL)"
+       d="m 150.18518,76.43683 c 64.08227,93.64907 29.32093,243.9969 11.82597,298.76005"
+       id="path2828-5-9"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#DotL);marker-end:url(#DotL)"
+       d="M 335.51228,109.12936 C 251.66962,189.94157 65.33237,224.92926 65.33237,224.92926"
+       id="path2830-8-6"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#DotL);marker-end:url(#DotL)"
+       d="M 346.79727,124.92415 C 275.21781,178.81264 211.54522,314.02238 183.5202,381.50289"
+       id="path2832-6-9"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#DotL);marker-end:url(#DotL)"
+       d="M 366.35783,318.87344 C 278.47455,230.99017 69.37298,244.12215 69.37298,244.12215"
+       id="path2834-7-8"
+       sodipodi:nodetypes="cc" />
+    <g
+       transform="translate(-41.179816,-392.23815)"
+       id="g3135-5-5">
+      <text
+         transform="scale(1.0856905,0.92107282)"
+         sodipodi:linespacing="100%"
+         id="text3085-0-9"
+         y="544.43152"
+         x="196.48697"
+         style="font-size:33.06942749px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           y="544.43152"
+           x="196.48697"
+           id="tspan3087-28-6"
+           sodipodi:role="line">~</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417607,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-60-3"
+         y="516.62769"
+         x="233.63692"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           y="516.62769"
+           x="233.63692"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-2-4"
+           sodipodi:role="line">g</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-4-2"
+         y="524.31061"
+         x="246.65334"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           y="524.31061"
+           x="246.65334"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-86-8"
+           sodipodi:role="line">1</tspan></text>
+    </g>
+    <g
+       transform="translate(83.427234,-345.80097)"
+       id="g3135-8-8-4">
+      <text
+         transform="scale(1.0856905,0.92107282)"
+         sodipodi:linespacing="100%"
+         id="text3085-8-9-4"
+         y="544.43152"
+         x="196.48697"
+         style="font-size:33.06942749px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           y="544.43152"
+           x="196.48697"
+           id="tspan3087-2-3-4"
+           sodipodi:role="line">~</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417607,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-4-4-4"
+         y="516.62769"
+         x="233.63692"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           y="516.62769"
+           x="233.63692"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-5-4-2"
+           sodipodi:role="line">g</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-5-6-9"
+         y="524.31061"
+         x="246.65334"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           y="524.31061"
+           x="246.65334"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-1-0-3"
+           sodipodi:role="line">2</tspan></text>
+    </g>
+    <g
+       transform="translate(103.41859,-219.65341)"
+       id="g3135-89-7-1">
+      <text
+         transform="scale(1.0856905,0.92107282)"
+         sodipodi:linespacing="100%"
+         id="text3085-27-2-1"
+         y="544.43152"
+         x="196.48697"
+         style="font-size:33.06942749px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           y="544.43152"
+           x="196.48697"
+           id="tspan3087-9-6-3"
+           sodipodi:role="line">~</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417607,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-5-0-2"
+         y="516.62769"
+         x="233.63692"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           y="516.62769"
+           x="233.63692"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-4-1-5"
+           sodipodi:role="line">g</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-3-6-3"
+         y="524.31061"
+         x="246.65334"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           y="524.31061"
+           x="246.65334"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-12-5-5"
+           sodipodi:role="line">3</tspan></text>
+    </g>
+    <g
+       transform="translate(-36.237336,-171.54715)"
+       id="g3135-3-2-0">
+      <text
+         transform="scale(1.0856905,0.92107282)"
+         sodipodi:linespacing="100%"
+         id="text3085-2-6-4"
+         y="544.43152"
+         x="196.48697"
+         style="font-size:33.06942749px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           y="544.43152"
+           x="196.48697"
+           id="tspan3087-21-6-5"
+           sodipodi:role="line">~</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417607,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-6-0-4"
+         y="516.62769"
+         x="233.63692"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           y="516.62769"
+           x="233.63692"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-8-3-9"
+           sodipodi:role="line">g</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-57-8-5"
+         y="524.31061"
+         x="246.65334"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           y="524.31061"
+           x="246.65334"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-6-0-6"
+           sodipodi:role="line">4</tspan></text>
+    </g>
+    <g
+       transform="translate(-110.62841,-273.44389)"
+       id="g3135-1-2-6">
+      <text
+         transform="scale(1.0856905,0.92107282)"
+         sodipodi:linespacing="100%"
+         id="text3085-1-5-7"
+         y="544.43152"
+         x="196.48697"
+         style="font-size:33.06942749px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           y="544.43152"
+           x="196.48697"
+           id="tspan3087-5-5-1"
+           sodipodi:role="line">~</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417607,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-2-33-5"
+         y="516.62769"
+         x="233.63692"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           y="516.62769"
+           x="233.63692"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-7-37-5"
+           sodipodi:role="line">g</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-6-4-4"
+         y="524.31061"
+         x="246.65334"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           y="524.31061"
+           x="246.65334"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-14-3-0"
+           sodipodi:role="line">5</tspan></text>
+    </g>
+    <path
+       sodipodi:type="arc"
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path4633"
+       sodipodi:cx="561.13971"
+       sodipodi:cy="243.23"
+       sodipodi:rx="69.19545"
+       sodipodi:ry="14.142136"
+       d="m 626.11981,238.36938 a 69.19545,14.142136 0 1 1 -0.33587,-0.1836"
+       sodipodi:start="5.9323341"
+       sodipodi:end="12.201659"
+       sodipodi:open="true"
+       transform="matrix(0.65348254,-0.36510238,0.3502818,0.6820191,-284.71391,127.66262)" />
+    <path
+       sodipodi:type="arc"
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path4633-1"
+       sodipodi:cx="561.13971"
+       sodipodi:cy="243.23"
+       sodipodi:rx="69.19545"
+       sodipodi:ry="14.142136"
+       d="m 626.11981,238.36938 a 69.19545,14.142136 0 1 1 -0.33587,-0.1836"
+       sodipodi:start="5.9323341"
+       sodipodi:end="12.201659"
+       sodipodi:open="true"
+       transform="matrix(-0.08075656,-0.74418919,0.76466684,-0.05596441,-52.790946,661.30434)" />
+    <path
+       sodipodi:type="arc"
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path4633-1-7"
+       sodipodi:cx="561.13971"
+       sodipodi:cy="243.23"
+       sodipodi:rx="69.19545"
+       sodipodi:ry="14.142136"
+       d="m 626.11981,238.36938 a 69.19545,14.142136 0 1 1 -0.33587,-0.1836"
+       sodipodi:start="5.9323341"
+       sodipodi:end="12.201659"
+       sodipodi:open="true"
+       transform="matrix(-0.70460487,-0.25272742,0.2839774,-0.71218272,505.10696,674.43713)" />
+    <path
+       sodipodi:type="arc"
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path4633-1-7-4"
+       sodipodi:cx="561.13971"
+       sodipodi:cy="243.23"
+       sodipodi:rx="69.19545"
+       sodipodi:ry="14.142136"
+       d="m 626.11981,238.36938 a 69.19545,14.142136 0 1 1 -0.33587,-0.1836"
+       sodipodi:start="5.9323341"
+       sodipodi:end="12.201659"
+       sodipodi:open="true"
+       transform="matrix(-0.42680108,0.55953732,-0.55666611,-0.4575518,727.43611,97.615334)" />
+    <path
+       sodipodi:type="arc"
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path4633-1-7-4-0"
+       sodipodi:cx="561.13971"
+       sodipodi:cy="243.23"
+       sodipodi:rx="69.19545"
+       sodipodi:ry="14.142136"
+       d="m 626.11981,238.36938 a 69.19545,14.142136 0 1 1 -0.33587,-0.1836"
+       sodipodi:start="5.9323341"
+       sodipodi:end="12.201659"
+       sodipodi:open="true"
+       transform="matrix(0.47287959,0.52117758,-0.55089805,0.46448051,190.88209,-274.32597)" />
+    <g
+       transform="translate(365.18009,130.43209)"
+       id="g15249-7-9"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-4"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-8"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-8"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-2"
+           sodipodi:role="line">1</tspan></text>
+    </g>
+    <g
+       transform="translate(422.75879,132.45239)"
+       id="g15249-7-5"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-5"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-1"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-7"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-1"
+           sodipodi:role="line">2</tspan></text>
+    </g>
+    <g
+       transform="translate(458.11413,116.28996)"
+       id="g15249-7-52"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-7"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-6"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-1"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-4"
+           sodipodi:role="line">3</tspan></text>
+    </g>
+    <g
+       transform="translate(473.26642,57.701114)"
+       id="g15249-7-3"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-2"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-2"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-16"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-8"
+           sodipodi:role="line">4</tspan></text>
+    </g>
+    <g
+       transform="translate(514.68267,131.44224)"
+       id="g15249-7-7"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-6"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-18"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-9"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-27"
+           sodipodi:role="line">5</tspan></text>
+    </g>
+    <g
+       transform="translate(526.80448,166.79757)"
+       id="g15249-7-54"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-3"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-12"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-3"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-3"
+           sodipodi:role="line">6</tspan></text>
+    </g>
+    <g
+       transform="translate(587.41361,194.0717)"
+       id="g15249-7-1"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-38"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-7"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-4"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-277"
+           sodipodi:role="line">7</tspan></text>
+    </g>
+    <g
+       transform="translate(511.65225,244.57932)"
+       id="g15249-7-19"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-8"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-65"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-0"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-28"
+           sodipodi:role="line">8</tspan></text>
+    </g>
+    <g
+       transform="translate(365.1801,270.8433)"
+       id="g15249-7-0"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-24"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-86"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-5"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-0"
+           sodipodi:role="line">10</tspan></text>
+    </g>
+    <g
+       transform="translate(514.68267,294.0768)"
+       id="g15249-7-06"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-1"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-3"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-89"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-34"
+           sodipodi:role="line">9</tspan></text>
+    </g>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot6132"
+       style="fill:black;stroke:none;stroke-opacity:1;stroke-width:1px;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;font-family:Gentium Book Basic;font-style:italic;font-weight:bold;font-size:56px;-inkscape-font-specification:Gentium Book Basic Bold Italic;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:100%"><flowRegion
+         id="flowRegion6134"><rect
+           id="rect6136"
+           width="636.39612"
+           height="606.09155"
+           x="398.00009"
+           y="74.534523" /></flowRegion><flowPara
+         id="flowPara6138" /></flowRoot>    <g
+       id="g6303-3"
+       style="fill:#000080"
+       transform="translate(51.678404,161.43077)">
+      <g
+         style="fill:#000080"
+         transform="matrix(0.99828589,-0.05852583,0.05852583,0.99828589,-253.41405,-23.879866)"
+         id="g2967-6-1-8-1-5">
+        <g
+           style="fill:#000080"
+           id="g2927-1-8-7-8-7-9"
+           transform="translate(-18.367957,-67.295623)">
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000080;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+             x="423.57144"
+             y="180.21933"
+             id="text2898-5-5-4-2-1-8"
+             sodipodi:linespacing="100%"><tspan
+               sodipodi:role="line"
+               id="tspan2900-2-7-0-4-1-4"
+               x="423.57144"
+               y="180.21933">v</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:22px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000080;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+             x="439.69055"
+             y="187.03699"
+             id="text2836-1-7-7-6-9-5-5-0"
+             sodipodi:linespacing="100%"><tspan
+               sodipodi:role="line"
+               id="tspan2838-7-1-6-1-4-5-2-7"
+               x="439.69055"
+               y="187.03699">i</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       transform="translate(324.40451,-6.3573058)"
+       id="g15249-7-9-1"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-4-7"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-8-4"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-8-0"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-2-9"
+           sodipodi:role="line">1</tspan></text>
+    </g>
+    <g
+       transform="translate(346.14662,-20.694896)"
+       id="g15249-7-5-4"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-5-8"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-1-8"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-7-2"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-1-4"
+           sodipodi:role="line">2</tspan></text>
+    </g>
+    <g
+       transform="translate(367.42095,-34.290659)"
+       id="g15249-7-52-5"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-7-5"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-6-1"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-1-7"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-4-1"
+           sodipodi:role="line">3</tspan></text>
+    </g>
+    <g
+       transform="translate(389.06331,-48.329818)"
+       id="g15249-7-3-1"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-2-5"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-2-2"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-16-7"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-8-6"
+           sodipodi:role="line">4</tspan></text>
+    </g>
+    <g
+       transform="translate(614.7534,31.458164)"
+       id="g15249-7-3-14"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-2-2"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-2-3"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-16-2"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-8-2"
+           sodipodi:role="line">4</tspan></text>
+    </g>
+    <g
+       transform="translate(636.1535,41.73169)"
+       id="g15249-7-7-1"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-6-6"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-18-8"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-9-5"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-27-7"
+           sodipodi:role="line">5</tspan></text>
+    </g>
+    <g
+       transform="translate(655.23887,52.932927)"
+       id="g15249-7-54-6"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-3-1"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-12-8"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-3-9"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-3-2"
+           sodipodi:role="line">6</tspan></text>
+    </g>
+    <g
+       transform="translate(676.37,63.35333)"
+       id="g15249-7-1-7"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-38-9"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-7-5"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-4-4"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-277-3"
+           sodipodi:role="line">7</tspan></text>
+    </g>
+    <g
+       transform="translate(184.23046,196.09498)"
+       id="g15249-7-9-12"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-4-3"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-8-3"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-8-4"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-2-1"
+           sodipodi:role="line">1</tspan></text>
+    </g>
+    <g
+       transform="translate(202.19367,216.60259)"
+       id="g15249-7-7-13"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-6-8"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-18-7"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-9-4"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-27-2"
+           sodipodi:role="line">5</tspan></text>
+    </g>
+    <g
+       transform="translate(220.13659,232.33518)"
+       id="g15249-7-19-7"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-8-7"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-65-9"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-0-3"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-28-1"
+           sodipodi:role="line">8</tspan></text>
+    </g>
+    <g
+       transform="translate(239.00543,250.58285)"
+       id="g15249-7-0-9"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-24-8"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-86-6"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-5-5"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-0-0"
+           sodipodi:role="line">10</tspan></text>
+    </g>
+    <g
+       transform="translate(346.27084,410.42062)"
+       id="g15249-7-0-2"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-24-86"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-86-0"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-5-2"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-0-4"
+           sodipodi:role="line">10</tspan></text>
+    </g>
+    <g
+       transform="translate(372.32138,426.90408)"
+       id="g15249-7-5-8"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-5-6"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-1-5"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-7-0"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-1-9"
+           sodipodi:role="line">2</tspan></text>
+    </g>
+    <g
+       transform="translate(393.11766,440.35705)"
+       id="g15249-7-54-0"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-3-0"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-12-6"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-3-1"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-3-3"
+           sodipodi:role="line">6</tspan></text>
+    </g>
+    <g
+       transform="translate(415.09436,456.02612)"
+       id="g15249-7-06-8"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-1-9"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-3-3"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-89-4"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-34-4"
+           sodipodi:role="line">9</tspan></text>
+    </g>
+    <g
+       transform="translate(666.34027,291.43859)"
+       id="g15249-7-1-6"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-38-0"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-7-6"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-4-6"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-277-1"
+           sodipodi:role="line">7</tspan></text>
+    </g>
+    <g
+       transform="translate(673.69508,353.0484)"
+       id="g15249-7-19-8"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-8-4"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-65-96"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-0-37"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-28-8"
+           sodipodi:role="line">8</tspan></text>
+    </g>
+    <g
+       transform="translate(679.21485,388.35988)"
+       id="g15249-7-06-82"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-1-91"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-3-35"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-89-9"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-34-8"
+           sodipodi:role="line">9</tspan></text>
+    </g>
+    <g
+       transform="translate(669.38987,322.23707)"
+       id="g15249-7-52-4"
+       style="fill:#000000;fill-opacity:1;stroke:none">
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2898-5-2-8-8-6-7-8-9-29-4-1-3-7-7-0"
+         y="23.997976"
+         x="-243.45203"
+         style="font-size:29.65433502px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="23.997976"
+           x="-243.45203"
+           id="tspan2900-2-3-0-3-8-2-6-2-5-0-3-4-1-6-7"
+           sodipodi:role="line">j</tspan></text>
+      <text
+         transform="matrix(1.006524,-0.0169491,-0.03906136,0.99417606,0,0)"
+         sodipodi:linespacing="100%"
+         id="text2836-1-7-7-2-8-7-1-2-1-4-2-9-8-5-9-1-6"
+         y="31.608253"
+         x="-234.69637"
+         style="font-size:16.30988503px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+         xml:space="preserve"><tspan
+           style="fill:#000000;fill-opacity:1;stroke:none"
+           y="31.608253"
+           x="-234.69637"
+           id="tspan2838-7-1-6-2-77-1-9-8-2-6-0-4-7-0-1-4-3"
+           sodipodi:role="line">3</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+       x="-126.53316"
+       y="270.02292"
+       id="text2836-8-6-2"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan2838-2-9-5"
+         x="-126.53316"
+         y="270.02292">5</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+       x="95.895691"
+       y="555.4035"
+       id="text2836-5-8-0"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan2838-1-2-8"
+         x="95.895691"
+         y="555.4035">4</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+       x="503.54382"
+       y="438.83557"
+       id="text2836-0-1-9"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan2838-9-9-1"
+         x="503.54382"
+         y="438.83557">3</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+       x="459.81427"
+       y="33.056988"
+       id="text2836-7-2"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan2838-22-5"
+         x="459.81427"
+         y="33.056988">2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+       x="68.089951"
+       y="-54.728626"
+       id="text2836-1-9-5"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan2838-7-4-4"
+         x="68.089951"
+         y="-54.728626">1</tspan></text>
+    <g
+       id="g6311"
+       transform="matrix(0.91689289,0.39913335,-0.39913335,0.91689289,199.46079,102.58835)">
+      <g
+         style="fill:#ff0000"
+         transform="matrix(0.99828589,-0.05852583,0.05852583,0.99828589,-456.25554,-166.50896)"
+         id="g2967-6-1">
+        <g
+           style="fill:#ff0000"
+           id="g2927-1-8-7"
+           transform="translate(-18.367957,-67.295623)">
+          <g
+             id="g6374"
+             transform="matrix(0.93240782,-0.36140787,0.36140787,0.93240782,-62.577705,159.15322)">
+            <text
+               sodipodi:linespacing="100%"
+               id="text2898-5-5-4"
+               y="180.21933"
+               x="423.57144"
+               style="font-size:40px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#ff0000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+               xml:space="preserve"><tspan
+                 y="180.21933"
+                 x="423.57144"
+                 id="tspan2900-2-7-0"
+                 sodipodi:role="line">e</tspan></text>
+            <text
+               sodipodi:linespacing="100%"
+               id="text2836-1-7-7-6-9"
+               y="182.17096"
+               x="442.12238"
+               style="font-size:22px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#ff0000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+               xml:space="preserve"><tspan
+                 y="182.17096"
+                 x="442.12238"
+                 id="tspan2838-7-1-6-1-4"
+                 sodipodi:role="line">1</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g6311-6"
+       transform="matrix(0.91689289,0.39913335,-0.39913335,0.91689289,447.18859,227.21846)">
+      <g
+         style="fill:#ff0000"
+         transform="matrix(0.99828589,-0.05852583,0.05852583,0.99828589,-456.25554,-166.50896)"
+         id="g2967-6-1-1">
+        <g
+           style="fill:#ff0000"
+           id="g2927-1-8-7-5"
+           transform="translate(-18.367957,-67.295623)">
+          <g
+             id="g6374-4"
+             transform="matrix(0.93240782,-0.36140787,0.36140787,0.93240782,-62.577705,159.15322)">
+            <text
+               sodipodi:linespacing="100%"
+               id="text2898-5-5-4-2"
+               y="180.21933"
+               x="423.57144"
+               style="font-size:40px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#ff0000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+               xml:space="preserve"><tspan
+                 y="180.21933"
+                 x="423.57144"
+                 id="tspan2900-2-7-0-0"
+                 sodipodi:role="line">e</tspan></text>
+            <text
+               sodipodi:linespacing="100%"
+               id="text2836-1-7-7-6-9-9"
+               y="182.17096"
+               x="442.12238"
+               style="font-size:22px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#ff0000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+               xml:space="preserve"><tspan
+                 y="182.17096"
+                 x="442.12238"
+                 id="tspan2838-7-1-6-1-4-7"
+                 sodipodi:role="line">2</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g6311-7"
+       transform="matrix(0.91689289,0.39913335,-0.39913335,0.91689289,491.6353,442.38096)">
+      <g
+         style="fill:#ff0000"
+         transform="matrix(0.99828589,-0.05852583,0.05852583,0.99828589,-456.25554,-166.50896)"
+         id="g2967-6-1-2">
+        <g
+           style="fill:#ff0000"
+           id="g2927-1-8-7-6"
+           transform="translate(-18.367957,-67.295623)">
+          <g
+             id="g6374-0"
+             transform="matrix(0.93240782,-0.36140787,0.36140787,0.93240782,-62.577705,159.15322)">
+            <text
+               sodipodi:linespacing="100%"
+               id="text2898-5-5-4-1"
+               y="180.21933"
+               x="423.57144"
+               style="font-size:40px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#ff0000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+               xml:space="preserve"><tspan
+                 y="180.21933"
+                 x="423.57144"
+                 id="tspan2900-2-7-0-6"
+                 sodipodi:role="line">e</tspan></text>
+            <text
+               sodipodi:linespacing="100%"
+               id="text2836-1-7-7-6-9-5"
+               y="182.17096"
+               x="442.12238"
+               style="font-size:22px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#ff0000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+               xml:space="preserve"><tspan
+                 y="182.17096"
+                 x="442.12238"
+                 id="tspan2838-7-1-6-1-4-75"
+                 sodipodi:role="line">3</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g6311-1"
+       transform="matrix(0.91689289,0.39913335,-0.39913335,0.91689289,219.90426,570.67033)">
+      <g
+         style="fill:#ff0000"
+         transform="matrix(0.99828589,-0.05852583,0.05852583,0.99828589,-456.25554,-166.50896)"
+         id="g2967-6-1-20">
+        <g
+           style="fill:#ff0000"
+           id="g2927-1-8-7-0"
+           transform="translate(-18.367957,-67.295623)">
+          <g
+             id="g6374-1"
+             transform="matrix(0.93240782,-0.36140787,0.36140787,0.93240782,-62.577705,159.15322)">
+            <text
+               sodipodi:linespacing="100%"
+               id="text2898-5-5-4-4"
+               y="180.21933"
+               x="423.57144"
+               style="font-size:40px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#ff0000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+               xml:space="preserve"><tspan
+                 y="180.21933"
+                 x="423.57144"
+                 id="tspan2900-2-7-0-60"
+                 sodipodi:role="line">e</tspan></text>
+            <text
+               sodipodi:linespacing="100%"
+               id="text2836-1-7-7-6-9-7"
+               y="182.17096"
+               x="442.12238"
+               style="font-size:22px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#ff0000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+               xml:space="preserve"><tspan
+                 y="182.17096"
+                 x="442.12238"
+                 id="tspan2838-7-1-6-1-4-1"
+                 sodipodi:role="line">4</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g6311-77"
+       transform="matrix(0.91689289,0.39913335,-0.39913335,0.91689289,1.7113139,312.07127)">
+      <g
+         style="fill:#ff0000"
+         transform="matrix(0.99828589,-0.05852583,0.05852583,0.99828589,-456.25554,-166.50896)"
+         id="g2967-6-1-7">
+        <g
+           style="fill:#ff0000"
+           id="g2927-1-8-7-3"
+           transform="translate(-18.367957,-67.295623)">
+          <g
+             id="g6374-3"
+             transform="matrix(0.93240782,-0.36140787,0.36140787,0.93240782,-62.577705,159.15322)">
+            <text
+               sodipodi:linespacing="100%"
+               id="text2898-5-5-4-5"
+               y="180.21933"
+               x="423.57144"
+               style="font-size:40px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#ff0000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+               xml:space="preserve"><tspan
+                 y="180.21933"
+                 x="423.57144"
+                 id="tspan2900-2-7-0-9"
+                 sodipodi:role="line">e</tspan></text>
+            <text
+               sodipodi:linespacing="100%"
+               id="text2836-1-7-7-6-9-98"
+               y="182.17096"
+               x="442.12238"
+               style="font-size:22px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#ff0000;fill-opacity:1;stroke:none;font-family:Gentium Book Basic;-inkscape-font-specification:Gentium Book Basic Bold Italic"
+               xml:space="preserve"><tspan
+                 y="182.17096"
+                 x="442.12238"
+                 id="tspan2838-7-1-6-1-4-18"
+                 sodipodi:role="line">5</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

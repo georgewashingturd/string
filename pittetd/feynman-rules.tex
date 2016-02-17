@@ -1,0 +1,296 @@
+\documentclass[aps,preprint,preprintnumbers,nofootinbib,showpacs,prd]{revtex4-1}
+\usepackage{graphicx,color}
+\usepackage{amsmath,amssymb}
+\usepackage{multirow}
+\usepackage{amsthm}%        But you can't use \usewithpatch for several packages as in this line. The search 
+
+%%% for SLE
+\usepackage{dcolumn}   % needed for some tables
+\usepackage{bm}        % for math
+\usepackage{amssymb}   % for math
+\usepackage{multirow}
+%%% for SLE -End
+
+%%%%%% My stuffs - Stef
+\newcommand{\lsim}{\mathrel{\mathop{\kern 0pt \rlap
+  {\raise.2ex\hbox{$<$}}}
+  \lower.9ex\hbox{\kern-.190em $\sim$}}}
+\newcommand{\gsim}{\mathrel{\mathop{\kern 0pt \rlap
+  {\raise.2ex\hbox{$>$}}}
+  \lower.9ex\hbox{\kern-.190em $\sim$}}}
+
+%
+% Key
+%
+\newcommand{\key}[1]{\medskip{\sffamily\bfseries\color{blue}#1}\par\medskip}
+%\newcommand{\key}[1]{}
+\newcommand{\q}[1] {\medskip{\sffamily\bfseries\color{red}#1}\par\medskip}
+\newcommand{\comment}[2]{{\color{red}{{\bf #1:}  #2}}}
+
+
+\newcommand{\ie}{{\it i.e.} }
+\newcommand{\eg}{{\it e.g.} }
+
+%
+% Energy scales
+%
+\newcommand{\ev}{{\,{\rm eV}}}
+\newcommand{\kev}{{\,{\rm keV}}}
+\newcommand{\mev}{{\,{\rm MeV}}}
+\newcommand{\gev}{{\,{\rm GeV}}}
+\newcommand{\tev}{{\,{\rm TeV}}}
+\newcommand{\fb}{{\,{\rm fb}}}
+\newcommand{\ifb}{{\,{\rm fb}^{-1}}}
+
+%
+% SUSY notations
+%
+\newcommand{\neu}{\tilde{\chi}^0}
+\newcommand{\neuo}{{\tilde{\chi}^0_1}}
+\newcommand{\neut}{{\tilde{\chi}^0_2}}
+\newcommand{\cha}{{\tilde{\chi}^\pm}}
+\newcommand{\chao}{{\tilde{\chi}^\pm_1}}
+\newcommand{\chaop}{{\tilde{\chi}^+_1}}
+\newcommand{\chaom}{{\tilde{\chi}^-_1}}
+\newcommand{\Wpm}{W^\pm}
+\newcommand{\chat}{{\tilde{\chi}^\pm_2}}
+\newcommand{\smu}{{\tilde{\mu}}}
+\newcommand{\smur}{\tilde{\mu}_R}
+\newcommand{\smul}{\tilde{\mu}_L}
+\newcommand{\sel}{{\tilde{e}}}
+\newcommand{\selr}{\tilde{e}_R}
+\newcommand{\sell}{\tilde{e}_L}
+\newcommand{\smurl}{\tilde{\mu}_{R,L}}
+
+\newcommand{\casea}{\texttt{IA}}
+\newcommand{\caseb}{\texttt{IB}}
+\newcommand{\casec}{\texttt{II}}
+
+\newcommand{\caseasix}{\texttt{IA-6}}
+
+%
+% Greek
+%
+\newcommand{\es}{{\epsilon}}
+\newcommand{\sg}{{\sigma}}
+\newcommand{\dt}{{\delta}}
+\newcommand{\kp}{{\kappa}}
+\newcommand{\lm}{{\lambda}}
+\newcommand{\Lm}{{\Lambda}}
+\newcommand{\gm}{{\gamma}}
+\newcommand{\mn}{{\mu\nu}}
+\newcommand{\Gm}{{\Gamma}}
+\newcommand{\tho}{{\theta_1}}
+\newcommand{\tht}{{\theta_2}}
+\newcommand{\lmo}{{\lambda_1}}
+\newcommand{\lmt}{{\lambda_2}}
+%
+% LaTeX equations
+%
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+
+\newcommand{\nbea}{\begin{eqnarray*}}
+\newcommand{\neea}{\end{eqnarray*}}
+\newcommand{\nbeq}{\begin{equation*}}
+\newcommand{\neeq}{\end{equation*}}
+
+\newcommand{\no}{{\nonumber}}
+\newcommand{\td}[1]{{\widetilde{#1}}}
+\newcommand{\sqt}{{\sqrt{2}}}
+%
+\newcommand{\me}{{\rlap/\!E}}
+\newcommand{\met}{{\rlap/\!E_T}}
+\newcommand{\rdmu}{{\partial^\mu}}
+\newcommand{\gmm}{{\gamma^\mu}}
+\newcommand{\gmb}{{\gamma^\beta}}
+\newcommand{\gma}{{\gamma^\alpha}}
+\newcommand{\gmn}{{\gamma^\nu}}
+\newcommand{\gmf}{{\gamma^5}}
+%
+% Roman expressions
+%
+\newcommand{\br}{{\rm Br}}
+\newcommand{\sign}{{\rm sign}}
+\newcommand{\Lg}{{\mathcal{L}}}
+\newcommand{\M}{{\mathcal{M}}}
+\newcommand{\tr}{{\rm Tr}}
+
+\newcommand{\msq}{{\overline{|\mathcal{M}|^2}}}
+
+%
+% kinematic variables
+%
+%\newcommand{\mc}{m^{\rm cusp}}
+%\newcommand{\mmax}{m^{\rm max}}
+%\newcommand{\mmin}{m^{\rm min}}
+%\newcommand{\mll}{m_{\ell\ell}}
+%\newcommand{\mllc}{m^{\rm cusp}_{\ell\ell}}
+%\newcommand{\mllmax}{m^{\rm max}_{\ell\ell}}
+%\newcommand{\mllmin}{m^{\rm min}_{\ell\ell}}
+%\newcommand{\elmax} {E_\ell^{\rm max}}
+%\newcommand{\elmin} {E_\ell^{\rm min}}
+\newcommand{\mxx}{m_{\chi\chi}}
+\newcommand{\mrec}{m_{\rm rec}}
+\newcommand{\mrecmin}{m_{\rm rec}^{\rm min}}
+\newcommand{\mrecc}{m_{\rm rec}^{\rm cusp}}
+\newcommand{\mrecmax}{m_{\rm rec}^{\rm max}}
+%\newcommand{\mpt}{\rlap/p_T}
+
+%%%song
+\newcommand{\cosmax}{|\cos\Theta|_{\rm max} }
+\newcommand{\maa}{m_{aa}}
+\newcommand{\maac}{m^{\rm cusp}_{aa}}
+\newcommand{\maamax}{m^{\rm max}_{aa}}
+\newcommand{\maamin}{m^{\rm min}_{aa}}
+\newcommand{\eamax} {E_a^{\rm max}}
+\newcommand{\eamin} {E_a^{\rm min}}
+\newcommand{\eaamax} {E_{aa}^{\rm max}}
+\newcommand{\eaacusp} {E_{aa}^{\rm cusp}}
+\newcommand{\eaamin} {E_{aa}^{\rm min}}
+\newcommand{\exxmax} {E_{\neuo \neuo}^{\rm max}}
+\newcommand{\exxcusp} {E_{\neuo \neuo}^{\rm cusp}}
+\newcommand{\exxmin} {E_{\neuo \neuo}^{\rm min}}
+%\newcommand{\mxx}{m_{XX}}
+%\newcommand{\mrec}{m_{\rm rec}}
+\newcommand{\erec}{E_{\rm rec}}
+%\newcommand{\mrecmin}{m_{\rm rec}^{\rm min}}
+%\newcommand{\mrecc}{m_{\rm rec}^{\rm cusp}}
+%\newcommand{\mrecmax}{m_{\rm rec}^{\rm max}}
+%%%song
+
+\newcommand{\mc}{m^{\rm cusp}}
+\newcommand{\mmax}{m^{\rm max}}
+\newcommand{\mmin}{m^{\rm min}}
+\newcommand{\mll}{m_{\mu\mu}}
+\newcommand{\mllc}{m^{\rm cusp}_{\mu\mu}}
+\newcommand{\mllmax}{m^{\rm max}_{\mu\mu}}
+\newcommand{\mllmin}{m^{\rm min}_{\mu\mu}}
+\newcommand{\mllcusp}{m^{\rm cusp}_{\mu\mu}}
+\newcommand{\elmax} {E_\mu^{\rm max}}
+\newcommand{\elmin} {E_\mu^{\rm min}}
+\newcommand{\elmaxw} {E_W^{\rm max}}
+\newcommand{\elminw} {E_W^{\rm min}}
+\newcommand{\R} {{\cal R}}
+
+\newcommand{\ewmax} {E_W^{\rm max}}
+\newcommand{\ewmin} {E_W^{\rm min}}
+\newcommand{\mwrec}{m_{WW}}
+\newcommand{\mwrecmin}{m_{WW}^{\rm min}}
+\newcommand{\mwrecc}{m_{WW}^{\rm cusp}}
+\newcommand{\mwrecmax}{m_{WW}^{\rm max}}
+
+\newcommand{\mpt}{{\rlap/p}_T}
+
+%%%%%% END My stuffs - Stef
+
+
+
+
+
+
+
+\begin{document}
+
+\section{Feynman Rules}
+
+%
+\nbea
+S_{int} & = & \int_x -g f^{abc} A^{a\alpha}(x) A^{b\beta}(x) \partial_\alpha A^{c}_{\beta}(x) \\
+& = & \int_x -g f^{abc} g_{\alpha\beta}g_{\gamma\delta }A^{a\gamma}(x) A^{b\alpha}(x) \partial^\delta A^{c\beta}(x) \\
+& = & -g f^{abc} \int_x~\int_{k_1,k_2,k_3}~ g_{\alpha\beta}g_{\gamma\delta } e^{-ik_1x} A^{a\gamma}(k_1) e^{-ik_2x} A^{b\alpha}(k_2)  e^{-ik_3x}k^\delta_3A^{c\beta}(k_3) 
+\neea
+%
+%
+\nbea
+&& i(-g) f^{def}  g^{\delta\mu}g^{\nu\rho} \frac{\delta}{\delta A^{d\mu}} \frac{\delta}{\delta A^{e\nu}} \left ( \frac{\delta}{\delta A^{f\rho}} \partial_\delta \right ) \left \{\int_x~\int_{k_1,k_2,k_3}~ e^{-ik_1x} A^{a\gamma}(k_1) e^{-ik_2x} A^{b\alpha}(k_2)  e^{-ik_3x}A^{c\beta}(k_3) \right \} \\
+& = & -ig f^{def}  g^{\delta\mu}g^{\nu\rho} \left \{ -ik_{1\delta} (\delta^a_f \delta^\gamma_\rho) (\delta^b_e \delta^\alpha_\nu) (\delta^c_d \delta^\beta_\mu) -ik_{1\delta} (\delta^a_f \delta^\gamma_\rho) (\delta^c_e \delta^\beta_\nu) (\delta^b_d \delta^\alpha_\mu) \right. \\
+&& ~~~~~~~~~~~~~~~~~~~~ -ik_{2\delta} (\delta^b_f \delta^\alpha_\rho) (\delta^a_e \delta^\gamma_\nu) (\delta^c_d \delta^\beta_\mu) -ik_{2\delta} (\delta^b_f \delta^\alpha_\rho) (\delta^c_e \delta^\beta_\nu) (\delta^a_d \delta^\gamma_\mu) \\
+&& ~~~~~~~~~~~~~~~~~~~~ \left. -ik_{3\delta} (\delta^c_f \delta^\beta_\rho) (\delta^a_e \delta^\gamma_\nu) (\delta^b_d \delta^\alpha_\mu) -ik_{3\delta} (\delta^c_f \delta^\beta_\rho) (\delta^b_e \delta^\alpha_\nu) (\delta^a_d \delta^\gamma_\mu) \right \} \int_x e^{-i(k_1+k_2+k_3)x}\\
+& = & -ig~ \{ f^{abc}(-ik_{1\delta}) g^{\delta\beta}g^{\alpha\gamma} +f^{acb}(-ik_{1\delta}) g^{\delta\alpha}g^{\beta\gamma} \\
+&&~~~~~~~~  f^{bac}(-ik_{2\delta}) g^{\delta\beta}g^{\gamma\alpha} +f^{bca}(-ik_{2\delta}) g^{\delta\gamma}g^{\beta\alpha} \\
+&&~~~~~~~~ f^{cab}(-ik_{3\delta}) g^{\delta\alpha}g^{\gamma\beta} +f^{cba}(-ik_{3\delta}) g^{\delta\gamma}g^{\alpha\beta} \} \delta^4(k_1+k_2+k_3)\\
+& = & -ig~ \{ f^{abc}(-ik_{1\delta}) g^{\delta\beta}g^{\alpha\gamma} - f^{abc}(-ik_{1\delta}) g^{\delta\alpha}g^{\beta\gamma} \\
+&&~~~~ -f^{abc}(-ik_{2\delta}) g^{\delta\beta}g^{\gamma\alpha} + f^{abc}(-ik_{2\delta}) g^{\delta\gamma}g^{\beta\alpha} \\
+&&~~~~~~~~ f^{abc}(-ik_{3\delta}) g^{\delta\alpha}g^{\gamma\beta} - f^{abc}(-ik_{3\delta}) g^{\delta\gamma}g^{\alpha\beta} \} \delta^4(k_1+k_2+k_3) \\
+& = & -ig~ f^{abc}~\{ (-ik^\beta_{1}) g^{\alpha\gamma} - (-ik^\alpha_{1}) g^{\beta\gamma} \\
+&&~~~~~~~~~~ -(-ik^\beta_{2}) g^{\gamma\alpha} + (-ik^\gamma_{2}) g^{\beta\alpha} \\
+&&~~~~~~~~~~~~~~(-ik^\alpha_{3}) g^{\gamma\beta} - (-ik^\gamma_{3}) g^{\alpha\beta} \} \delta^4(k_1+k_2+k_3) \\
+& = & g~ f^{abc}~\{ (-k^\beta_{1}) g^{\alpha\gamma} - (-k^\alpha_{1}) g^{\beta\gamma} \\
+&&~~~~~~~ -(-k^\beta_{2}) g^{\gamma\alpha} + (-k^\gamma_{2}) g^{\beta\alpha} \\
+&&~~~~~~~~~~~(-k^\alpha_{3}) g^{\gamma\beta} - (-k^\gamma_{3}) g^{\alpha\beta} \} \delta^4(k_1+k_2+k_3) \\
+& = & g~ f^{abc}~\{ (k_2 -k_{1})^\beta g^{\alpha\gamma} + (k_{1} - k_3)^\alpha g^{\beta\gamma} + (k_{3}-k_2)^\gamma g^{\alpha\beta} \} \delta^4(k_1+k_2+k_3)
+\neea
+%
+
+
+%
+\nbea
+&& i(-g) f^{def}  g_{\delta\mu}g_{\nu\rho} \frac{\delta}{\delta J^{d}_{\mu} (x)} \frac{\delta}{\delta J^{e}_{\nu}(x)} \left ( \frac{\delta}{\delta J^{f}_{\rho}(x)} \partial_\delta \right ) \left \{\int_{x_1,y_1}J^a_\alpha(x_1) \Delta^{ab}_{\alpha\beta}(x_1-y_1)J^b_\alpha(y_1) \times \right. \\
+&& ~~~~~~~~~~~~~~~~~\left. \int_{x_2,y_2}J^a_\alpha(x_2) \Delta^{ab}_{\alpha\beta}(x_2-y_2)J^b_\alpha(y_2)  \int_{x_3,y_3}J^a_\alpha(x_3) \Delta^{ab}_{\alpha\beta}(x_3-y_3)J^b_\alpha(y_3) \right \}\\
+& = & -ig f^{def}  g^{\delta\mu}g^{\nu\rho} \left \{ -ik_{1\delta} \Delta^{fb}_{\rho\beta}(x-y_1)J^b_\alpha(y_1) (\delta^b_e \delta^\alpha_\nu) (\delta^c_d \delta^\beta_\mu) -ik_{1\delta} (\delta^a_f \delta^\gamma_\rho) (\delta^c_e \delta^\beta_\nu) (\delta^b_d \delta^\alpha_\mu) \right. \\
+%
+& = & -ig f^{def}  g^{\delta\mu}g^{\nu\rho} \left \{ -ik_{1\delta} (\delta^a_f \delta^\gamma_\rho) (\delta^b_e \delta^\alpha_\nu) (\delta^c_d \delta^\beta_\mu) -ik_{1\delta} (\delta^a_f \delta^\gamma_\rho) (\delta^c_e \delta^\beta_\nu) (\delta^b_d \delta^\alpha_\mu) \right. \\
+&& ~~~~~~~~~~~~~~~~~~~~ -ik_{2\delta} (\delta^b_f \delta^\alpha_\rho) (\delta^a_e \delta^\gamma_\nu) (\delta^c_d \delta^\beta_\mu) -ik_{2\delta} (\delta^b_f \delta^\alpha_\rho) (\delta^c_e \delta^\beta_\nu) (\delta^a_d \delta^\gamma_\mu) \\
+&& ~~~~~~~~~~~~~~~~~~~~ \left. -ik_{3\delta} (\delta^c_f \delta^\beta_\rho) (\delta^a_e \delta^\gamma_\nu) (\delta^b_d \delta^\alpha_\mu) -ik_{3\delta} (\delta^c_f \delta^\beta_\rho) (\delta^b_e \delta^\alpha_\nu) (\delta^a_d \delta^\gamma_\mu) \right \} \int_x e^{-i(k_1+k_2+k_3)x}\\
+& = & -ig~ \{ f^{abc}(-ik_{1\delta}) g^{\delta\beta}g^{\alpha\gamma} +f^{acb}(-ik_{1\delta}) g^{\delta\alpha}g^{\beta\gamma} \\
+&&~~~~~~~~  f^{bac}(-ik_{2\delta}) g^{\delta\beta}g^{\gamma\alpha} +f^{bca}(-ik_{2\delta}) g^{\delta\gamma}g^{\beta\alpha} \\
+&&~~~~~~~~ f^{cab}(-ik_{3\delta}) g^{\delta\alpha}g^{\gamma\beta} +f^{cba}(-ik_{3\delta}) g^{\delta\gamma}g^{\alpha\beta} \} \delta^4(k_1+k_2+k_3)\\
+& = & -ig~ \{ f^{abc}(-ik_{1\delta}) g^{\delta\beta}g^{\alpha\gamma} - f^{abc}(-ik_{1\delta}) g^{\delta\alpha}g^{\beta\gamma} \\
+&&~~~~ -f^{abc}(-ik_{2\delta}) g^{\delta\beta}g^{\gamma\alpha} + f^{abc}(-ik_{2\delta}) g^{\delta\gamma}g^{\beta\alpha} \\
+&&~~~~~~~~ f^{abc}(-ik_{3\delta}) g^{\delta\alpha}g^{\gamma\beta} - f^{abc}(-ik_{3\delta}) g^{\delta\gamma}g^{\alpha\beta} \} \delta^4(k_1+k_2+k_3) \\
+& = & -ig~ f^{abc}~\{ (-ik^\beta_{1}) g^{\alpha\gamma} - (-ik^\alpha_{1}) g^{\beta\gamma} \\
+&&~~~~~~~~~~ -(-ik^\beta_{2}) g^{\gamma\alpha} + (-ik^\gamma_{2}) g^{\beta\alpha} \\
+&&~~~~~~~~~~~~~~(-ik^\alpha_{3}) g^{\gamma\beta} - (-ik^\gamma_{3}) g^{\alpha\beta} \} \delta^4(k_1+k_2+k_3) \\
+& = & g~ f^{abc}~\{ (-k^\beta_{1}) g^{\alpha\gamma} - (-k^\alpha_{1}) g^{\beta\gamma} \\
+&&~~~~~~~ -(-k^\beta_{2}) g^{\gamma\alpha} + (-k^\gamma_{2}) g^{\beta\alpha} \\
+&&~~~~~~~~~~~(-k^\alpha_{3}) g^{\gamma\beta} - (-k^\gamma_{3}) g^{\alpha\beta} \} \delta^4(k_1+k_2+k_3) \\
+& = & g~ f^{abc}~\{ (k_2 -k_{1})^\beta g^{\alpha\gamma} + (k_{1} - k_3)^\alpha g^{\beta\gamma} + (k_{3}-k_2)^\gamma g^{\alpha\beta} \} \delta^4(k_1+k_2+k_3)
+\neea
+%
+
+
+%
+\nbea
+&&\frac{\delta}{\delta A^{d\mu}} \frac{\delta}{\delta A^{e\nu}} \left ( \frac{\delta}{\delta A^{f\rho}} \partial^\delta \right ) \left \{ g f^{abc} \int_x~\int_{k_1,k_2,k_3}~ g_{\alpha\beta}g_{\gamma\delta } e^{-ik_1x} A^{a\gamma}(k_1) e^{-ik_2x} A^{b\alpha}(k_2)  e^{-ik_3x}A^{c\beta}(k_3) \right \} \\
+& = & g f^{abc} g_{\alpha\beta}g_{\gamma\delta} \left \{ -ik_1^\delta (\delta^a_f \delta^\gamma_\rho) (\delta^b_e \delta^\alpha_\nu) (\delta^c_d \delta^\beta_\mu) -ik_1^\delta (\delta^a_f \delta^\gamma_\rho) (\delta^c_e \delta^\beta_\nu) (\delta^b_d \delta^\alpha_\mu) \right. \\
+&& ~~~~~~~~~~~~~~~~ -ik_2^\delta (\delta^b_f \delta^\alpha_\rho) (\delta^a_e \delta^\gamma_\nu) (\delta^c_d \delta^\beta_\mu) -ik_2^\delta (\delta^b_f \delta^\alpha_\rho) (\delta^c_e \delta^\beta_\nu) (\delta^a_d \delta^\gamma_\mu) \\
+&& ~~~~~~~~~~~~~~~~ \left. -ik_3^\delta (\delta^c_f \delta^\beta_\rho) (\delta^a_e \delta^\gamma_\nu) (\delta^b_d \delta^\alpha_\mu) -ik_3^\delta (\delta^c_f \delta^\beta_\rho) (\delta^b_e \delta^\alpha_\nu) (\delta^a_d \delta^\gamma_\mu) \right \} \\
+& = & g f^{fed} (-ik_1^\delta g_{\nu\mu}g_{\rho\delta} -ik_1^\delta g_{\nu\mu}g_{\rho\delta})
+\neea
+%
+
+
+%
+\nbea
+S_{int} & = & \int_x g^2 f^{abe} f^{cde} A^{a\mu}(x) A^{b\nu}(x) A^{c}_{\mu}(x) A^{d}_{\nu}(x) \\
+& = & g^2 f^{abe} f^{cde} \int_x~\int_{k_1}~ e^{ik_1x} A^{a\mu}(k_1) \int_{k_2}~e^{ik_2x} A^{b\nu}(k_2) \int_{k_3}~ e^{ik_3x}A^{c}_{\mu}(k_3) \int_{k_4}~ e^{ik_4x}A^{d}_{\nu}(k_4) \\
+& = & g^2 f^{abe} f^{cde} \int_x~e^{ik_1x}e^{ik_2x}e^{ik_3x}e^{ik_4x} \int_{k_1,k_2,k_3,k_4}~A^{a\mu}(k_1) A^{b\nu}(k_2) A^{c}_{\mu}(k_3) A^{d}_{\nu}(k_4) \\
+& = & g^2 f^{abe} f^{cde} \delta^4(k_1+k_2+k_3+k_4) \int_{k_1,k_2,k_3,k_4}~A^{a\mu}(k_1) A^{b\nu}(k_2) A^{c}_{\mu}(k_3) A^{d}_{\nu}(k_4) \\
+\neea
+%
+
+%
+\nbea
+\frac{\delta}{\delta A^{a\mu}}\frac{\delta}{\delta A^{b\nu}}\frac{\delta}{\delta A^c_{\mu}}\frac{\delta}{\delta A^c_{\nu}}
+\neea
+%
+
+
+\nbea
+a1a4a2a3 + a1a3a2a4\\
+E81: \frac{256\,i\,g4B1}{9\,{M}^{8}}\\ 
+E61(\%o14) -\frac{512\,i\,g4B1}{9\,{M}^{6}}(\%o15) E41(\%o16) \frac{448\,i\,g4B1}{9\,{M}^{4}}(\%o17) E21(\%o18) -\frac{64\,i\,g4B1}{3\,{M}^{2}}(\%o19) E01(\%o20) 4\,i\,g4B1
+\neea
+
+\begin{thebibliography}{99}
+
+\end{thebibliography}
+
+\end{document}
