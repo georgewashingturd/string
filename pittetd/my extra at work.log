@@ -1,7 +1,7 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  16 FEB 2016 21:29
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  17 FEB 2016 20:25
 entering extended mode
-**"D:/Documents/string/pittetd/my extra at work.tex"
-("D:/Documents/string/pittetd/my extra at work.tex"
+**"D:/Github/string/pittetd/my extra at work.tex"
+("D:/Github/string/pittetd/my extra at work.tex"
 LaTeX2e <2015/01/01> patch level 2
 Babel <3.9m> and hyphenation patterns for 69 languages loaded.
 (D:\Downloads\miktex-portable-2.9\tex\latex\revtex\revtex4-1.cls
@@ -667,49 +667,50 @@ LaTeX Warning: No positions in optional float specifier.
 
 [53]
 File: FLT_twins_dist.png Graphic file (type QTm)
- <use  "FLT_twins_dist.png" > [54] [55] [56] [57] [58]
-Overfull \hbox (0.10997pt too wide) in alignment at lines 2096--2101
+ <use  "FLT_twins_dist.png" > [54] [55] [56] [57] [58] [59]
+Overfull \hbox (0.10997pt too wide) in alignment at lines 2119--2124
  [][][] []
  []
 
-[59] [60] [61] [62]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 2233
+[60] [61] [62]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 2256
 .
  (D:\Downloads\miktex-portable-2.9\tex\latex\base\omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 2233.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 2256.
+
 
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 2236.
+(amsmath)                 on input line 2259.
 
-[63] [64] [65] [66] [67]
-Overfull \hbox (39.89938pt too wide) in alignment at lines 2443--2452
+[63] [64] [65] [66] [67] [68]
+Overfull \hbox (39.89938pt too wide) in alignment at lines 2466--2475
  [][][] []
  []
 
-[68] [69]
-Overfull \hbox (20.85988pt too wide) in alignment at lines 2497--2499
+[69]
+Overfull \hbox (20.85988pt too wide) in alignment at lines 2520--2522
  [][][] []
  []
 
-[70] [71] [72] [73] [74] [75] [76] [77] [78] [79] ("my extra at work.bbl")
-[80]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2801.
+[70] [71] [72] [73] [74] [75] [76] [77] [78] [79] [80] ("my extra at work.bbl")
+[81]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2834.
  ("my extra at work.aux")
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 2801.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 2801.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 2834.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 2834.
  ) 
 Here is how much of TeX's memory you used:
- 12817 strings out of 428755
- 175628 string characters out of 3166785
- 276998 words of memory out of 3000000
- 16029 multiletter control sequences out of 15000+200000
+ 12816 strings out of 428755
+ 175609 string characters out of 3166785
+ 277022 words of memory out of 3000000
+ 16028 multiletter control sequences out of 15000+200000
  15300 words of font info for 56 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
- 36i,18n,38p,874b,559s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,18n,38p,871b,559s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on my extra at work.pdf (80 pages).
+Output written on my extra at work.pdf (81 pages).

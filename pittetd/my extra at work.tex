@@ -2046,7 +2046,16 @@ z^3 + 3a^2z - 3by^2 - b^3 & = & 0 \\
 %
 Some words about convention. I sorted each solution set $z_1,z_2,z_3,w$ in ascending order, \ie $z_1 < z_2 < z_3 < w$. I then paired them up according their even/odd-ness in ascending order as well. I first search if $z_1$ and $z_2$ is of the same evenness, if so $z_1 + z_2 = 2b, z_2 - z_1 = 2y$. We cannot assign $z_1,z_2$ to $a,z$ because $z_1,z_2$ are the smallest numbers of the lot, $a,z$ are derived from $z_3,w$. If $z_1$ and $z_2$ is {\it not} of the same evenness, I tried $z_1$ and $z_3$, and if they're still not of the same evenness I'd try $z_1,w$ and derive $a,z,b,y$ accordingly. 
 
-The result was quite surprising, $b \ge z, ~ b > y,~ b+y \le a+z$, always! Also $b-z$ is always a multiple of 3, \ie $b-z = 3k$ for some integer $k$.
+The result was quite surprising, $b \ge z, ~ b > y,~ b+y \le a+z$, always! Also $b-z$ is always a multiple of 3, \ie $b-z = 3k$ for some integer $k$. This is not at all surprising by the way, let $b - z = q ~\to~ b = z + q$
+%
+\nbea
+b^3 - z^3 & = & 3a^2z - 3y^2b \\
+(z + q)^3 - z^3 & = & 3(a^2z - y^2b) \\
+\cancel{z^3} + 3z^2q + 3zq^2 + q^3 - \cancel{z^3} & = & 3 (a^2z - y^2b) \\
+q^3 & = & 3 (a^2z - y^2b - z^2q - zq^2) \\
+\Rightarrow q & = & 3 h
+\neea
+%
 
 This also sheds some light of the twin solutions. Let's take for example the first row in Table.~\ref{Tab:2}, the first twin is
 %
@@ -2063,6 +2072,20 @@ with $a=41, z=5, b=20, y=17$, while the second twin is given by
 \neea
 %
 with $a=38, z=8, b=32, y=5$.
+
+In conclusion we can the above as a four-parameter algorithm
+%
+\nbea
+(a-z)^3 + (z+(3k + y))^3 + (z+(3k-y))^3 & = & (a+z)^3
+\neea
+%
+with an extra constraint of
+%
+\nbea
+(3k)^3 & = & 3 (a^2z - y^2 (z+3k) - z^2(3k) - z(3k)^2)
+\neea
+%
+and since this constraint is cubic, this parameterization is not very useful.
 
 \bigskip\textbf{\textit{Natural selection}}
 
@@ -2604,7 +2627,13 @@ I then checked the literature about the ``Cubic Pyhtagorean Equation'', $a^3 + b
 
 This explains why it was hard getting the overall vibe from the solutions because we need to group them, for example, in one of the one parameter algorithm, the $1,6,8,9$ is on its own, it is the only solution the algorithm produces that contains $1$.
 
-Getting one parameter algorithms is actually not that hard but it surely is tedious.  Let's start with Pythagoras eqution. What we want to do here is cast each number into a poluynomial $\sum a_n x^n$. The only question is how high a degree of a polynomial we want. We can even extend this to two or more parameters $(\sum a_n x^n)(\sum b_m y^m)$. The only problem is that solving those coefficients $a_n, b_m$ might be quite laborious.
+Getting one parameter algorithms is actually not that hard but it surely is tedious.  Let's start with Pythagoras equation. What we want to do here is cast each number into a poluynomial $\sum a_n x^n$. The only question is how high a degree of a polynomial we want. We can even extend this to two or more parameters
+%
+\nbea
+\sum_{n=0, m=0}^{N_1, N_2} a_{mn} x^n y^m
+\neea
+%
+where $a_{mn}$ is some sort of a coefficient matrix. This formulation is more generic than $(\sum a_n x^n)(\sum b_m y^m)$ because in the case of product of sums we cannot have $a_{N_1}x^{N_1} + b_{N_2}y^{N_2}$ without having $a_{N_1} b_{N_2} x^{N_1}y^{N_2}$ as well. On the other hand,  $a_{mn}$ allows anything :) In fact, Euler's formula for the cubic Pythagorean is exactly like it, it contains $y^4$ and $x^4$ but it doesn't contain $x^4 \cdot y^4$. The only problem is that solving these coefficients, $a_{mn}$, might be quite laborious.
 
 Let's start with Pythagoras, $z_1^2 + z_2^2 = w^2$
 %
@@ -2625,21 +2654,23 @@ x^0 &:& a_3^2 + a_2^2 - a_1^2 = 0
 Two things to note here. Coefficients of the highest and lowest powers are themselves Pythagoreas equations, this is still true with cubic and higher Diophantines and is still obviously true no matter how high the polynomial we use for $x$. This can be good and bad.
 
 Bad if we don't already have solutions but good that we might be able to generate new solutions from a known one. Going the bad news route, we have to set one of the $b$'s and $a$'s to zero, say $
-b_3=0 \to b_1 = b_2$. Now for $a$ we don't want to set $a_3$ to zero as well, this is generally a bad strategy as $z_3 = b_3 x + a_3 = 0$, it is still true even for the cubic Pythagorean or higher.
+b_3=0 \to b_1 = b_2$. Now for $a$ we don't want to set $a_3$ to zero as well, this is generally a bad strategy as $z_3 = b_3 x + a_3 = 0$, this principle still applies for the cubic Pythagorean and higher.
 
-So we need to set one of the $b$'s and one of the $a$'s to zero but we want to stagger them so that they don't belong to the same $z$. However, in the case of Pythagoras this strategy doesn't work, it will only generate a trivial solution.
+So we need to set one of the $b$'s and one of the $a$'s to zero but we want to stagger them so that they don't belong to the same $z$. However, in the case of Pythagoras with just $x$ this strategy doesn't work, it will only generate a trivial solution.
 
 So now let's go the good news route which is not so good in this case. For example, setting $b_1 = 13, b_2 = 12, b_3 = 5$ generates $a_2 = 12 a_1/13, a_3 = 5 a_1/13$ which means that we are only generating integer multiples of $5,12,13$.
 
-This means that we have to start with at least $x^2$ and indeed we do, starting with $x^2$ (and choosing the bad route) we have the following parameterizations
+This means that we have to start with at least $x^2$ and indeed we do, starting with at least $x^2$ (and choosing the bad route) we have the following parameterizations
 %
 \nbea
-&z_1 = 2x + 2, ~, z_2 = x^2 + 2x, ~ w = x^2 + 2x + 2&\\
-&z_1 = -x^2 + x + 2, ~, z_2 = 2x - \frac{x^3}{2}, ~ w = -\frac{x^3}{2} + x + 2&\\
-&z_1 = \frac{x^4}{4} - x^3 + 2x, ~, z_2 = -x^2 + 2x + 2, ~ w = \frac{x^4}{4} - x^3 + 2x + 2 &
+\ba{l l l}
+z_1 = 2x + 2          &~~~ z_2 = x^2 + 2x &~~~ w = x^2 + 2x + 2 \\
+z_1 = -x^2 + x + 2 &~~~ z_2 = 2x - \frac{x^3}{2} &~~~ w = -\frac{x^3}{2} + x + 2 \\
+z_1 = \frac{x^4}{4} - x^3 + 2x &~~~ z_2 = -x^2 + 2x + 2 &~~~ w = \frac{x^4}{4} - x^3 + 2x + 2
+\ea
 \neea
 %
-Things on the good side is quite promising too, say you have the solution $A^2 + B^2 = C^2, ~ A < B < C$ you can create new solutions $z_1^2 + z_2^2 = w^2,~z_1 < z_2 < w$ using
+Things on the good side is quite promising too, say you have a solution $A^2 + B^2 = C^2, ~ A < B < C$ you can create new solutions $z_1^2 + z_2^2 = w^2,~z_1 < z_2 < w$ using
 %
 \nbea
 w & = & A \cdot x^2 + b_1 x + a_1 \\
@@ -2651,7 +2682,7 @@ a_3 & = & -\frac{b_2^2 - b_1^2}{4A} \\
 b_3 & = & -\frac{B\cdot b_2 - C\cdot b_1}{A}
 \neea
 %
-$b_1$, $b_2$ remain free parameters. We can also subtitute the known solutions $A, B, C$ into $a_1, a_2, a_3$ instead of the coefficients of the highest power of $x$ with a similar outcome.
+$b_1$, $b_2$ remain free parameters. We can also subtitute the known solutions $A, B, C$ into $a_1, a_2, a_3$ instead with a similar outcome.
 
 For the cubic Pythagorean, $z_1^3 + z_2^3 + z_3^3 = w^3, z_1 < z_2 < z_3 < w$, the minimum would be $x^2$, no solution with just $x$. The solution I found was a generalization of a known solution, the starting point is
 %
@@ -2685,16 +2716,18 @@ x^3 &:& b_1^3 - 3 a_1^2 = 0
 Solving them altogether generates the following one parameter algorithm for the cubic Pythagorean
 %
 \nbea
-a_1 & = & 3 \left ( \frac{c_1}{2} \right )^3 \\
-b_1 & = & 3 \left ( \frac{c_1}{2} \right )^2 \\
-c_2 & = & \frac{c_1}{2}
+&& a_1 = 3 \left ( \frac{c_1}{2} \right )^3, ~~b_1 = 3 \left ( \frac{c_1}{2} \right )^2, ~~c_2 = \frac{c_1}{2} \\ \\
+w & = & x^3 + c_1 x^2 + 3 \left ( \frac{c_1}{2} \right )^2 x + 3 \left ( \frac{c_1}{2} \right )^3\\
+z_3 & = & ~~\left ( \frac{c_1}{2} \right ) x^2 \\
+z_2 & = & ~~~~~~~c_1 x^2 + 3 \left ( \frac{c_1}{2} \right )^2 x + 3 \left ( \frac{c_1}{2} \right )^3\\
+z_1 & = & x^3 + c_1 x^2 + 3 \left ( \frac{c_1}{2} \right )^2 x
 \neea
 %
-while $c_1$ remains a free parameter. We can certainly solve each coefficient of $x$'s by brute force but we believe there's a better strategy than just a blind ambition :)
+while $c_1$ remains a free parameter. We can certainly solve each coefficient of the different $x$'s by brute force but we believe there's a better strategy than just a blind ambition :)
 
-We can now see how we can have multiple algorithms. For example, choosing a parameterization with up to $x^3$ means that we have $4 \times 4 = 16$ coefficients $a_i, b_i, c_i, d_i,~1 \le i \le 4$. Since we are dealing with cubes we then have $x^j,~ 0 \le j \le 12$ which means that we have 13 constraints for 16 coefficients, some freedom is warranted. We must be careful however, as the requirement that all coefficients must be integers is a very strong condition.
+We can now see how we have multiple algorithms. For example, choosing a parameterization with up to $x^3$ means that we have $4 \times 4 = 16$ coefficients, $a_i, b_i, c_i, d_i,~1 \le i \le 4$. Since we are dealing with cubes we then have $x^j,~ 0 \le j \le 12$ which means that we have 13 constraints for 16 coefficients, some freedom is warranted. We must be careful however, as the requirement that all coefficients must be integers is a very strong condition.
 
-One interesting thing to note here is that solving the coefficients of the polynomials $x^n$ in itself is actually solving a set of Diophantine equations although in this case they are {\bf coupled} Diophantine equations. The good thing here is that we {\it just} need to find {\it one} solution not all of them, it may sometimes even be a trivial solution, \eg in the cubic Pythagorean example above we set $d_1 = d_4 = 1,~d_2 = d_3 = 0$ which means that $-d_1^3 + d_2^3 + d_3^3 + d_4^3 = 0 \to 1^3 + 0 + 0 + 1^3 = 0$, a trivial solution. {\it One solution to rule them all} :)
+One interesting thing to note here is that solving the coefficients of the polynomials $x^n$ in itself is actually solving a set of Diophantine equations although in this case they are {\bf coupled} Diophantine equations. The good thing is that we {\it just} need to find {\it one} solution not all of them, it may sometimes even be a trivial solution, \eg in the cubic Pythagorean example above we set $d_1 = d_4 = 1,~d_2 = d_3 = 0$ which means that $-d_1^3 + d_2^3 + d_3^3 + d_4^3 = 0 \to 1^3 + 0 + 0 + 1^3 = 0$, a trivial solution. {\it One solution to rule them all} :)
 
 Another interesting thing is that we can generate two-parameter algorithms from one-parameter algorithms. In Chamberland's paper there is an interesting formula
 %
@@ -2718,7 +2751,7 @@ Sadly, that was not the case. This is actually my personal weakness, I always wa
 
 In this kind of problems, there's no use in trying to get a generic principle, speed is all that matters. We just need to try as many potential candidates as fast as possible. Something that I do not like since in solving textbook physics problems you always start with some underlying principle and then work with it.
 
-Now, let's see why this simple guess trick won't do but before that let's why it works for the power of {\it 2}. The answer is {\it l.u.c.k}, $(a+z)^2 - (a-z)^2 = 4az$, $4$ is a square and we have only product of terms, gold mine! This is why we can easily extend this to any number of terms. Other powers are more complicated.
+Now, let's see why this simple guess trick won't do but before that let's why it works for the power of {\it 2}. The answer is {\bf l.u.c.k}, $(a+z)^2 - (a-z)^2 = 4az$, $4$ is a square and we have only product of terms, gold mine! This is why we can easily extend this to any number of terms. Other powers are more complicated.
 
 Recall that the formula for a cubic equation is a cube root of a square root $(a + (b^{1/2}))^{1/3}$ and not just a cube root from ``completing the cube"?
 
@@ -2799,4 +2832,5 @@ Some potential higher/random ops
 
 
 \end{document}
+
 
