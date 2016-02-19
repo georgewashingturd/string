@@ -2625,7 +2625,7 @@ So that's all I've got for fooling around with a ``simple guess'', the phrase I 
 
 I then checked the literature about the ``Cubic Pyhtagorean Equation'', $a^3 + b^3 + c^3 = d^3$. There are many algorithms! There are even many one parameter algorithms. The really interesting point is that these algorithms usually only cover only certain solutions not all of them.
 
-This explains why it was hard getting the overall vibe from the solutions because we need to group them, for example, in one of the one parameter algorithm, the $1,6,8,9$ is on its own, it is the only solution the algorithm produces that contains $1$.
+This explains why it was hard getting the overall vibe from the solutions because we need to group them, for example, in one of the one-parameter algorithm, the $1,6,8,9$ is on its own, it is the only solution the algorithm produces that contains $1$.
 
 Getting one parameter algorithms is actually not that hard but it surely is tedious.  Let's start with Pythagoras equation. What we want to do here is cast each number into a poluynomial $\sum a_n x^n$. The only question is how high a degree of a polynomial we want. We can even extend this to two or more parameters
 %
@@ -2633,14 +2633,14 @@ Getting one parameter algorithms is actually not that hard but it surely is tedi
 \sum_{n=0, m=0}^{N_1, N_2} a_{mn} x^n y^m
 \neea
 %
-where $a_{mn}$ is some sort of a coefficient matrix. This formulation is more generic than $(\sum a_n x^n)(\sum b_m y^m)$ because in the case of product of sums we cannot have $a_{N_1}x^{N_1} + b_{N_2}y^{N_2}$ without having $a_{N_1} b_{N_2} x^{N_1}y^{N_2}$ as well. On the other hand,  $a_{mn}$ allows anything :) In fact, Euler's formula for the cubic Pythagorean is exactly like it, it contains $y^4$ and $x^4$ but it doesn't contain $x^4 \cdot y^4$. The only problem is that solving these coefficients, $a_{mn}$, might be quite laborious.
+where $a_{mn}$ is some sort of a coefficient matrix. This formulation is more generic than $(\sum a_n x^n)(\sum b_m y^m)$ because in the case of product of sums we cannot have $a_{N_1}x^{N_1} + b_{N_2}y^{N_2}$ without having $a_{N_1} b_{N_2} x^{N_1}y^{N_2}$ as well. On the other hand,  $a_{mn}$ allows anything :) In fact, Euler's formula for the cubic Pythagorean is exactly like it, it contains $y^4$ and $x^4$ but it doesn't contain the product $x^4 \cdot y^4$. The only problem is that solving these coefficients, $a_{mn}$, might be quite laborious.
 
 Let's start with Pythagoras, $z_1^2 + z_2^2 = w^2$
 %
 \nbea
 w & = & b_1 x + a_1 \\
-z_2 & = & b_2 x + a_2 \\
-z_3 & = & b_3 x + a_3
+z_1 & = & b_2 x + a_2 \\
+z_2 & = & b_3 x + a_3
 \neea
 %
 Substituting this into the Pythagorean equation $z_1^2 + z_2^2 - w^2 = 0$ and grouping coefficients of different powers of $x$
@@ -2682,24 +2682,24 @@ a_3 & = & -\frac{b_2^2 - b_1^2}{4A} \\
 b_3 & = & -\frac{B\cdot b_2 - C\cdot b_1}{A}
 \neea
 %
-$b_1$, $b_2$ remain free parameters. We can also subtitute the known solutions $A, B, C$ into $a_1, a_2, a_3$ instead with a similar outcome.
+$b_1$, $b_2$ remain free parameters. We can also subtitute the known solutions $A, B, C$ into $a_1, a_2, a_3$ instead with a similar outcome. Since $b_1$, $b_2$, and $x$ are free parameters, we immediately have a three-parameter solution. If we substitute the Babylonian algorithm for $A,B,C$ we will then have a {\it five}-parameter algorithm.
 
 For the cubic Pythagorean, $z_1^3 + z_2^3 + z_3^3 = w^3, z_1 < z_2 < z_3 < w$, the minimum would be $x^2$, no solution with just $x$. The solution I found was a generalization of a known solution, the starting point is
 %
 \nbea
 w & = & d_1 x^3 + c_1 x^2 + b_1 x + a_1\\
-z_3 & = & d_2 x^3 + c_2 x^2 + b_2 x + a_2\\
+z_1 & = & d_2 x^3 + c_2 x^2 + b_2 x + a_2\\
 z_2 & = & d_3 x^3 + c_3 x^2 + b_3 x + a_3\\
-z_1 & = & d_4 x^3 + c_4 x^2 + b_4 x + a_4
+z_3 & = & d_4 x^3 + c_4 x^2 + b_4 x + a_4
 \neea
 %
 To prep the solution we need to set $d_1 = d_4 = 1,~d_2 = d_3 = 0$, $a_3 = a_1,~a_2 = a_4 = 0$ and then $c_3 = c_4 = c_1$ followed by $b_3 = b_4 = b_1, ~ b_2=0$, \ie
 %
 \nbea
 w & = & x^3 + c_1 x^2 + b_1 x + a_1\\
-z_3 & = & ~~~~~~~c_2 x^2 \\
+z_1 & = & ~~~~~~~c_2 x^2 \\
 z_2 & = & ~~~~~~~c_1 x^2 + b_1 x + a_1\\
-z_1 & = & x^3 + c_1 x^2 + b_1 x
+z_3 & = & x^3 + c_1 x^2 + b_1 x
 \neea
 %
 All this might seem random but if you do it you'll see the progression. First you'll need to set up $a$'s and $d$'s because they themselves have to satisfy the cubic Pythagorean. Once you do this, you'll see that other variables have to take certain values.
@@ -2718,12 +2718,12 @@ Solving them altogether generates the following one parameter algorithm for the 
 \nbea
 && a_1 = 3 \left ( \frac{c_1}{2} \right )^3, ~~b_1 = 3 \left ( \frac{c_1}{2} \right )^2, ~~c_2 = \frac{c_1}{2} \\ \\
 w & = & x^3 + c_1 x^2 + 3 \left ( \frac{c_1}{2} \right )^2 x + 3 \left ( \frac{c_1}{2} \right )^3\\
-z_3 & = & ~~\left ( \frac{c_1}{2} \right ) x^2 \\
+z_1 & = & ~~\left ( \frac{c_1}{2} \right ) x^2 \\
 z_2 & = & ~~~~~~~c_1 x^2 + 3 \left ( \frac{c_1}{2} \right )^2 x + 3 \left ( \frac{c_1}{2} \right )^3\\
-z_1 & = & x^3 + c_1 x^2 + 3 \left ( \frac{c_1}{2} \right )^2 x
+z_3 & = & x^3 + c_1 x^2 + 3 \left ( \frac{c_1}{2} \right )^2 x
 \neea
 %
-while $c_1$ remains a free parameter. We can certainly solve each coefficient of the different $x$'s by brute force but we believe there's a better strategy than just a blind ambition :)
+while $c_1$ remains a free parameter. This means that we effectively have a two-parameter solution, $x$ and $c_1$.
 
 We can now see how we have multiple algorithms. For example, choosing a parameterization with up to $x^3$ means that we have $4 \times 4 = 16$ coefficients, $a_i, b_i, c_i, d_i,~1 \le i \le 4$. Since we are dealing with cubes we then have $x^j,~ 0 \le j \le 12$ which means that we have 13 constraints for 16 coefficients, some freedom is warranted. We must be careful however, as the requirement that all coefficients must be integers is a very strong condition.
 
@@ -2829,8 +2829,74 @@ Some potential higher/random ops
 \item $a!b \equiv a \cdot (a+1) \cdot (a+2) \cdot ... \cdot (a+b)$
 \end{enumerate}
 
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+For $a,b \in \mathbb{Z}$ there's a unique $q,r \in \mathbb{Z}$ such that $a = bq + r$.
+
+{\it Proof}. For simplicity let's assume that $a,b \ge 0$, the argument for negative integers is similar. We assume $b \neq a$ otherwise it is trivial, \ie $q = 1,~ r = 0$. If $b > a$ then $q = 0,~ r = a$. If $b < a$ then $r < b$. If $r > b$ we can keep substracting $r$ until it is less than $b$ say
+%
+\nbea
+a & = & bq + r \\
+& = & bq + \underbrace{b + b + b + b + ...}_\text{$n$ number of $b$'s} + (r -\underbrace{b - b - b - b - ...}_\text{$n$ number of $b$'s} ) \\
+a & = & b (q+n) + r' \\
+a & = & b q' + r'
+\neea
+%
+where $q' = q + bn$ and $r' = r - bn$. Suppose there are two sets of $q,r$ that satisfy $a = bq + r$, let's denote them $a = bq_1 + r_1$ and $a = bq_2 + r_2$ then
+%
+\nbea
+bq_1 + r_1 & = & bq_2 + r_2 \\
+b(q_1 - q_2) & = & (r_2 - r_1)
+\neea
+%
+this means that $b$ divides $(r_2 - r_1)$, \ie $r_2 - r_1 = bm$ for some $m \in \mathbb{Z}$ but since $r_1, r_2 < b$ this is only possible if $m = r_2 - r_1 = 0$ thus
+%
+\nbea
+b(q_1 - q_2) & = & 0 \\
+\to q_1 & = & q_2
+\neea
+%
+since $b \neq 0$.
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+This is my (baby step) attempt to prove the fundamental theorem of arithmetic that states that every integer is aunique product of primes, we start with a product of two primes.
+
+The product of primes $p_1 p_2$ will be equal to the product of other primes $p_3, p_4$, \ie $p_1 p_2 = p_3 p_4$, if and only if $p_1, p_2$ and $p_3, p_4$ are the same, \ie $p_1 = p_3,~ p_2 = p_4$ or $p_1 = p_4,~ p_2 = p_3$.
+
+{\it Proof}~? I'm not sure about this proof but here it goes. Assume the opposite, $p_1 p_2 = p_3 p_4$ but $\{p_1,p_2\} \neq \{p_3, p_4\}$.
+
+First observation, say $p_1 >p_3$, this means that $p_4 > p_2$ such that the equality has a chance to hold, this also means that
+%
+\nbea
+p_1 & = & q p_3 + r \\
+p_4 & = & \tilde q p_2 + \tilde r
+\neea
+%
+for some $q,r,\tilde q, \tilde r \in \mathbb{Z}$
+%
+\nbea
+p_1 p_2 & = & p_2 (q p_3 + r) \\
+p_3 p_4 & = & p_3 (\tilde q p_2 + \tilde r) \\
+q p_2 p_3 + p_2 r & = & \tilde q p_2 p_3 + p_3 \tilde r \\
+p_2 p_3 (q - \tilde q) & = & p_3 \tilde r - p_2 r\\
+\bcancel{p_2 p_3} (q - \tilde q)  & = & \bcancel{p_2 p_3} \left (\frac{\tilde r}{p_2} - \frac{r}{p_3} \right )
+\neea
+%
+since $r < p_3, ~ \tilde r < p_2 \to \frac{r}{p_3} < 1, ~ \frac{\tilde r}{p_2} < 1$. Now the minimum of $q - \tilde q$ is 1 while the maximum of $\frac{\tilde r}{p_2} - \frac{r}{p_3}$ is $< 1$. The only way this can be consistent is if $\frac{\tilde r}{p_2} - \frac{r}{p_3} = q - \tilde q = 0$.
+
+But this means
+%
+\nbea
+\frac{\tilde r}{p_2} & = & \frac{r}{p_3} \\
+p_3 \tilde r & = & p_2 r
+\neea
+%
+This means that $p_2$ divides $p_3 \tilde r$, since $p_3$ is prime $p_2$ can only divide $\tilde r$ but since $\tilde r < p_2$, $p_2$ doesn't divide $\tilde r$ either so there's a contradiction.
 
 
 \end{document}
+
 
 
