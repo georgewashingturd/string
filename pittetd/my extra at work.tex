@@ -2861,9 +2861,11 @@ since $b \neq 0$.
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-This is my (baby step) attempt to prove the fundamental theorem of arithmetic that states that every integer is aunique product of primes, we start with a product of two primes.
+This is my (baby step) attempt to prove the fundamental theorem of arithmetic that states that every integer is a unique product of primes, we start with a product of two primes.
 
 The product of primes $p_1 p_2$ will be equal to the product of other primes $p_3, p_4$, \ie $p_1 p_2 = p_3 p_4$, if and only if $p_1, p_2$ and $p_3, p_4$ are the same, \ie $p_1 = p_3,~ p_2 = p_4$ or $p_1 = p_4,~ p_2 = p_3$.
+
+I tried different things and I only got circular arguments :( this is the first circular argument.
 
 {\it Proof}~? I'm not sure about this proof but here it goes. Assume the opposite, $p_1 p_2 = p_3 p_4$ but $\{p_1,p_2\} \neq \{p_3, p_4\}$.
 
@@ -2895,6 +2897,94 @@ p_3 \tilde r & = & p_2 r
 %
 This means that $p_2$ divides $p_3 \tilde r$, since $p_3$ is prime $p_2$ can only divide $\tilde r$ but since $\tilde r < p_2$, $p_2$ doesn't divide $\tilde r$ either so there's a contradiction.
 
+The above statement is a circular argument, why? There's no theorem about $a|bc \to a | c$ if and only if $a$ and $b$ are primes, unless you already know the fundamental theorem of arithmetic. I tried proving it in various ways but it always comes down to a circular argument.
+
+My first attempt was that $a | b c$ means that $a$ is the product of the prime factors of $b$ and $c$, now since $a$ is prime, it is not a product of anything. We also have $a \neq b$, the only conclusion is that $a$ is one of the prime factor of $c$. But this is only true if $b c$ can be decomposed into a {\it unique} product of primes which is a circular argument (if the product is not unique $b c$ might be cast into $b c = a z$ and $a | bc$ is just a tautology, \ie something like $0=0$, something that is obviously true).
+
+Another argument I tried was using rational numbers
+%
+\nbea
+p_3 \tilde r & = & p_2 r \\
+\frac{p_3}{p_2} & = & \frac{r}{\tilde r}
+\neea
+%
+but this is a contradiction as $p_2,~p_3$ are primes and we cannot simplify the ratio $p_3/p_2$, but since $r / \tilde r$ has $r < p_3,~\tilde r < p_2$ we have a ``smaller'' ratio which in turn means that $p_3/p_2$ can be simplified, a contradiction indeed. However, the canonical form of rationals is a consequence of the fundamental theorem. We always know that we can simplify ratios because we know that every number is a unique product of primes. 
+
+I then saw that $p_1 p_2 = p_3 p_4$ is a common multiple of $p_2$ and $p_3$. I then proceeded to prove that the least common multiple of $p_2$ and $p_3$ is $p_2 p_3$, the proof can be found below. However, a common multiple is not necessarily the least common multiple, so even though the least common multiple is the product $p_2 p_3$ we might have other common multiples that are larger, \eg $p_1 p_2 = p_3 p_4, ~p_1 > p_3, ~p_4 > p_2$.
+
++++++++++++++++++++++++++++++++++++++\\
+
+Say we have two relatively prime numbers $p_2$ and $p_3$, what is their least common multiple? Say their least common multiple is $m p_2 = p_3 n$ since this is the {\bf least} common multiple $m$ and $n$ are the smallest (relatively prime) numbers that satisfy this equation, relatively prime such that we cannot cancel common factors and create an even lesser common multiple.
+
+My goal here is to show that $m = p_3,~n = p_2$.
+
+Say that $m >p_3$, this means that $n > p_2$ such that the equality has a chance to hold, this also means that
+%
+\nbea
+m & = & q p_3 + r \\
+n & = & \tilde q p_2 + \tilde r
+\neea
+%
+for some $q,r,\tilde q, \tilde r \in \mathbb{Z}$
+%
+\nbea
+m p_2 & = & p_2 (q p_3 + r) \\
+p_3 n & = & p_3 (\tilde q p_2 + \tilde r) \\
+q p_2 p_3 + p_2 r & = & \tilde q p_2 p_3 + p_3 \tilde r \\
+p_2 p_3 (q - \tilde q) & = & p_3 \tilde r - p_2 r\\
+\bcancel{p_2 p_3} (q - \tilde q)  & = & \bcancel{p_2 p_3} \left (\frac{\tilde r}{p_2} - \frac{r}{p_3} \right )
+\neea
+%
+since $r < p_3, ~ \tilde r < p_2 \to \frac{r}{p_3} < 1, ~ \frac{\tilde r}{p_2} < 1$. Now the minimum nonzero value of $q - \tilde q$ is 1 while the maximum of $\frac{\tilde r}{p_2} - \frac{r}{p_3}$ is $< 1$. The only way this can be consistent is if $\frac{\tilde r}{p_2} - \frac{r}{p_3} = q - \tilde q = 0$ such that
+%
+\nbea
+\frac{r}{p_3} & = & \frac{\tilde r}{p_2} \\
+r p_2 & = & p_3 \tilde r 
+\neea
+%
+but since $r < m$, $\tilde r < n$, this is a contradiction, \ie $m$ can't be larger than $p_3$!
+
+Next option is $m < p_3$, this means that $n < p_2$ such that the equality has a chance to hold, this also means that
+%
+\nbea
+p_3 & = & q m + r \\
+p_2 & = & \tilde q n + \tilde r
+\neea
+%
+for some $q,r,\tilde q, \tilde r \in \mathbb{Z}$
+%
+\nbea
+m p_2 & = & m (\tilde q n + \tilde r) \\
+p_3 n & = & n (q m + r) \\
+\bcancel{mn} \left (\tilde q + \frac{\tilde r}{n} \right ) & = &\bcancel{nm} \left (q + \frac{ r}{m} \right ) \\
+\tilde q - q & = & \frac{ r}{m} - \frac{\tilde r}{n}
+\neea
+%
+since $r < m, ~ \tilde r < n \to \frac{r}{m} < 1, ~ \frac{\tilde r}{n} < 1$. Now the minimum nonzero value of $q - \tilde q$ is 1 while the maximum of $\frac{r}{m} - \frac{\tilde r}{n}$ is $< 1$. The only way this can be consistent is if $\frac{ r}{m} - \frac{\tilde r}{n} = \tilde q - q = 0$. But this means
+%
+\nbea
+\frac{\tilde r}{n} & = & \frac{r}{m} \\
+m \tilde r & = & r n \\
+\to \frac{\bcancel{m}~ \tilde r}{\bcancel{m} p_2} & = & \frac {r ~\bcancel{n}}{p_3 \bcancel{n}} \\
+r p_2 & = & p_3 \tilde r
+\neea
+%
+since $r < m, ~\tilde r < n$, this is again a contradiction as we claim that $m,~n$ are the smallest numbers that satisfy $m p_2 = p_3 n$. This means that $m < p_3$ is wrong but we have shown that $m > p_3$ is also wrong, the only conclusion is that $m = p_3$ and therefore $n = p_2$.
+
+++++++++++++++++++++++++++++++++++++++ \\
+
+Algorithm to find least common multiple, an accidental byproduct of the above mishap.
+
+You want to find the least common multiple of $m$ and $n$, say $m > n$ (and of course they are co prime).
+%
+\nbea
+m & = & nq + r \\
+a m & = & n b \\
+n (aq) + ar & = & nb \\
+ar & = & n (b - aq)
+\neea
+%
+Now we have the common multiple of $r$ (the remainder of $m$) and $n$. So the question of finding the least common multiple of $m$ and $n$ becomes the question of finding the common multiple of $r$ and $n$. This is reminiscent of the gcd algorithm of Euclid. The next step is repeating the process, since $r < n, ~ n = rq' + r'$ and we now search for the common multiple $r$ and $r'$ and so on.
 
 \end{document}
 
