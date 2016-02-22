@@ -2986,6 +2986,41 @@ ar & = & n (b - aq)
 %
 Now we have the common multiple of $r$ (the remainder of $m$) and $n$. So the question of finding the least common multiple of $m$ and $n$ becomes the question of finding the common multiple of $r$ and $n$. This is reminiscent of the gcd algorithm of Euclid. The next step is repeating the process, since $r < n, ~ n = rq' + r'$ and we now search for the common multiple $r$ and $r'$ and so on.
 
+++++++++++++++++++++++++++++++++++++++ \\
+
+$m|a$, $m$ is biggest divisor of $a, ~m < a$, and $n|b$ and $n < b$ is the biggest divisor of $b$, what is the biggest divisor of $ab$ ?
+%
+\nbea
+ab & = & (mc)(nd) \\
+& = & (mn)(cd) \\
+ab & = & k w
+\neea
+%
+Say $k > mn$
+%
+\nbea
+(mn)(cd) & = & (mnq + r)w \\
+\cancel{(mn)}(cd) & = & \cancel{(mn)} w \left (q + \frac{r}{mn} \right ) \\
+cd & = & wq + \frac{wr}{mn} \\
+(mn)(cd - wq) & = & wr \\
+\cancel{w} (mn) \left ( \frac{cd}{w} - q \right )& = & \cancel{w} r
+\neea
+%
+Now $r > 0, ~r < mn$, so this is only consistent if $r = 0, ~cd/w = q$ but this means that $k = mn, ~w = cd$.
+
+++++++++++++++++++++++++++++++++++++++ \\
+
+Interesting proofs in ent.pdf
+
+\bit
+\item using subsets
+\item using induction in a new way with multiple bridges
+\eit
+
+
+
+
+
 \end{document}
 
 
