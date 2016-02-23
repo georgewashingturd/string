@@ -341,7 +341,7 @@ Thus $\phi(x)$ does indeed create a particle at spacetime point $x$ :)
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-What is the explicit formula for multiple integrations of a function, \ie what is $\int\int ... \int f(x) dx$ ? The answer is the Cauchy formula for repeated integration
+What is the explicit formula for multiple integrations of a function, \ie what is $\int\int \dots \int f(x) dx$ ? The answer is the Cauchy formula for repeated integration
 \nbea
 (J f)(x) & = & \int_0^x f(t) dt \\
 (J^2 f)(x) & = & \int_0^x \left ( \int_0^t f(s) ds \right ) dt \\
@@ -649,13 +649,13 @@ Now how can that be? If it is smaller than any positive real number (and it's no
 %   }^\text{complex number}
 %
 \nbea
-x = 0.\underbrace{000000 ~...~ 00000}_\text{infinite \# of zeros}1
+x = 0.\underbrace{000000 ~\dots ~ 00000}_\text{infinite \# of zeros}1
 \neea
 %
 There are an infinite number of zeros before the digit $1$ so that it doesn't matter how small the real number you present me, I can always produce a smaller one by adding more zeros in between and it has to be infinite for this to work because $x$ is smaller than {\it any} positive real number. But this won't work since it is just zero! Remember that
 %
 \nbea
-1 = 0.\underbrace{999999 ~...~ 99999}_\text{infinite \# of 9's}
+1 = 0.\underbrace{999999 ~\dots~ 99999}_\text{infinite \# of 9's}
 \neea
 %
 Thus limits are a (more severe?) manifestation of infinities. The real question is: why do we need it? The more obvious reason is in the calculation of a slope. To calculate a slope you need at least two points, say $(x_1, y_1)$ and $(x_2, y_2)$ and the slope is
@@ -894,7 +894,7 @@ You can stop anytime you want, depending on the accuracy you need. The above pre
 \end{tabular}
 }
 
-Thus $\sqrt{56789.012} = 238.3044 ...$
+Thus $\sqrt{56789.012} = 238.3044 \dots$
 
 What we need to take note above is that $C_1$ takes care only the first digit, this makes it a lot easier to start the procedure, rather than trying to figure out 238 from the start.
 
@@ -916,7 +916,7 @@ Another way of computing square roots is using taylor expansion
 for example
 %
 \nbea
-\sqrt{101} = 10\sqrt{1 + 0.01} & = & 10 \left (1 + \frac{1}{2} (0.01) - \frac{1}{2} (0.01)^{2} + \frac{(1) (3)}{2^2} (0.01)^{3} + ... \right )
+\sqrt{101} = 10\sqrt{1 + 0.01} & = & 10 \left (1 + \frac{1}{2} (0.01) - \frac{1}{2} (0.01)^{2} + \frac{(1) (3)}{2^2} (0.01)^{3} + \dots \right )
 \neea
 %
 but the convergence might be slow due to the alternating signs in the series. One important note here is that although the previous method looks a lot like the usual division algorithm, they are extremely different. In the case of roots, you need to keep using the previous results to compute the next one, not so with divisions, this is because divisions are linear while roots are not.
@@ -934,7 +934,7 @@ Why does a number that is a multiple of 9 have digits tham sum up to be a multip
 First of all, any number can be written as
 %
 \nbea
-a_Na_{N-1}a_{N-2}...a_2a_1a_0 & = & \sum_{i = 0}^{N} a_i 10^i, ~~a_i \in \{0,1,2,3,4,5,6,7,8,9\}
+a_Na_{N-1}a_{N-2}\dots a_2a_1a_0 & = & \sum_{i = 0}^{N} a_i 10^i, ~~a_i \in \{0,1,2,3,4,5,6,7,8,9\}
 \neea
 %
 \eg 10937 $\to a_4 = 1, a_3 = 0, a_2 = 9, a_1 = 3, a_0 = 7$, now say we have a number that is a multiple of 9, $b = 9 n$, with $n$ a positive integer
@@ -1032,7 +1032,7 @@ where in the last line we have used the explicit formula for $c$. Switching side
 \sum_{i=2}^{N} i(i-1) & = & \frac{N^3 - N}{3}
 \neea
 %
-We can now in turn use this result to calculate $1 + 2(1) + 3(2) + 4(3) + ... + N(N-1)$, \ie
+We can now in turn use this result to calculate $1 + 2(1) + 3(2) + 4(3) + \dots + N(N-1)$, \ie
 %
 \nbea
 1 + \sum_{i=2}^{N} i(i-1) = 1 + \sum_{i=2}^{N} \frac{i!}{(i-2)!} = \frac{N^3 - N}{3} + 1
@@ -1146,14 +1146,14 @@ a^{n-1} & = & \sum_{i=1}^{ n} a^{n-i} a^{i-1} \\
 In case you forget how to factor $b^{n} - a^{n} = (b - a) \sum_{i=1}^{n} b^{n-i} a^{i-1}$, you start by pulling out the factors one at a time
 %
 \nbea
-b^{n}  -  a^{n} & = & (b  -  a) (b^{n-1} + ... \\
+b^{n}  -  a^{n} & = & (b  -  a) (b^{n-1} + \dots \\
 \rightarrow - a) (b^{n-1} & = & - b^{n-1} a
 \neea
 %
-so you need to add $(b^{n-1} + b^{n-2} a ... \rightarrow (b  b^{n-2} a)$ to cancel $-  a) (b^{n-1} = - b^{n-1} a$ introduced by the first factor $(b^{n-1} + ...$, but then again you generate $- a) (b^{n-2} a = -b^{n-2} a^2$ so you repeat the process until you get
+so you need to add $(b^{n-1} + b^{n-2} a \dots \rightarrow (b  b^{n-2} a)$ to cancel $-  a) (b^{n-1} = - b^{n-1} a$ introduced by the first factor $(b^{n-1} + \dots$, but then again you generate $- a) (b^{n-2} a = -b^{n-2} a^2$ so you repeat the process until you get
 %
 \nbea
-b^{n}  -  a^{n} & = & (b  -  a) (b^{n-1} + b^{n-2} a + b^{n-3} a^2 + ... + b a^{n-2} + a^{n-1})
+b^{n}  -  a^{n} & = & (b  -  a) (b^{n-1} + b^{n-2} a + b^{n-3} a^2 + \dots + b a^{n-2} + a^{n-1})
 \neea
 %
 
@@ -1292,9 +1292,9 @@ Why do they even relate to Fermat? It's all about angles! Back to idea \#1, the 
 
 \bigskip\textbf{\textit{Fun Excursions}}
 
-Since the above ideas didn't get me anywhere I was thinking about other aspects of Fermat. We know we can't find solutions with just two numbers $a$ and $b$, how many numbers do we need to get a solution? \ie $a^n + b^n  + d^n + ... = c^n$.
+Since the above ideas didn't get me anywhere I was thinking about other aspects of Fermat. We know we can't find solutions with just two numbers $a$ and $b$, how many numbers do we need to get a solution? \ie $a^n + b^n  + d^n + \dots = c^n$.
 
-So I began with $n=3$, and lo and behold, I found integer solutions for $a^3 + b^3  + d^3 = c^3$. Do these solutions have a pattern behind them? Euclid to the rescue ... (maybe)
+So I began with $n=3$, and lo and behold, I found integer solutions for $a^3 + b^3  + d^3 = c^3$. Do these solutions have a pattern behind them? Euclid to the rescue $\dots$ (maybe)
 
 \bigskip\textbf{\textit{Running along Euclid}}
 
@@ -2016,7 +2016,7 @@ We have one more constraint to solve, $((y-3672z^3)/2)^{1/3}$ has to be an integ
 %
 Sadly we only get one final solution $6,32,33,41$ because we have three degrees of freedom to begin with but utilize three constraints to get a solution, $a^3 + (y^{1/3})^3 + (a-z)^3 = (a + 8z)^3, ~\sqrt{11943936z^6+u^2}, ~((y-3672z^3)/2)^{1/3}$. Thus the requirement that the solutions are integers is itself a powerful constraint!
 
-Another thing to note about the example above is that since the solution for a cubic polynomial is a cube root of a square root, $( ... + \sqrt{...})^{1/3}$, we immediately incur two constraints, one for each root.
+Another thing to note about the example above is that since the solution for a cubic polynomial is a cube root of a square root, $( \dots + \sqrt{\dots})^{1/3}$, we immediately incur two constraints, one for each root.
 
 One quick side note, I initially wanted to treat the numbers in $a^3 + b^3 + c^3 = d^3$ as vectors much like in the case of $a^2 + b^2 = c^2 \rightarrow \vec a + \vec b = \vec c$ with a right angle between $\vec a$ and $\vec b$. What would become of $\vec a + \vec b + \vec c = \vec d$? maybe there's some sort of of new cosine rule? The problem is we now deal with a generic ``parallelogram'' and for such a four-sided object the angle between any two sides is not fixed as we can always squeeze the object and the length of all sides will still stay the same. This is instartk contrast to a triangle where changing the angle between any two sides would change the length of the other side.
 
@@ -2183,14 +2183,14 @@ the difference between those two quantities will only contain terms multiplying 
 (a+b+c)^2 - (-a+b+c)^2 & = & 4ab + 4ac
 \neea
 %
-And here you see the pattern, if we extend to any number of terms $z_1^2 + z_2^2 + ... + z_n^2 = w^2$ we can use the same result above
+And here you see the pattern, if we extend to any number of terms $z_1^2 + z_2^2 + \dots + z_n^2 = w^2$ we can use the same result above
 %
 \nbea
-(a_1+a_2+ ... +a_n)^2 - (-a_1+a_2+ ... +a_n)^2 & = & 4a_1a_2 + 4a_1a_3 + ... + 4 a_1a_n \\
-\rightarrow (a_1^2+ a_2^2 + ... +a_n^2)^2 - (-a_1^2 + a_2^2 + ... + a_n^2)^2 & = & (2a_1a_2)^2 + (2a_1a_3)^2 + ... + (2a_1a_n)^2
+(a_1+a_2+ \dots +a_n)^2 - (-a_1+a_2+ \dots +a_n)^2 & = & 4a_1a_2 + 4a_1a_3 + \dots + 4 a_1a_n \\
+\rightarrow (a_1^2+ a_2^2 + \dots +a_n^2)^2 - (-a_1^2 + a_2^2 + \dots + a_n^2)^2 & = & (2a_1a_2)^2 + (2a_1a_3)^2 + \dots + (2a_1a_n)^2
 \neea
 %
-where we have done the usual trick $a_i \rightarrow a_i^2$ going to the second line. Thus the generic algorithm for $z_1^2 + z_2^2 + ... + z_n^2 = w^2$ is
+where we have done the usual trick $a_i \rightarrow a_i^2$ going to the second line. Thus the generic algorithm for $z_1^2 + z_2^2 + \dots + z_n^2 = w^2$ is
 %
 \nbea
 z_i & = & 2 a_1 a_{i+1}, ~~~ 1 \le i < n \\
@@ -2200,7 +2200,7 @@ w & = & \sum_{k=1}^{n} a_k^2
 %
 well of course you can choose any other $a$'s beside $a_1$ as the one having the minus sign, also $n$ is good from 2 onwards.
 
-We can easily extend (or maybe distend) this even further to $z_1^{N_1} + ... + z_{n-1}^{N_{n-1}} + z_n^2 = w^2$ with $N_1, ..., N_{n-1}$ any natural numbers. We simply do the following
+We can easily extend (or maybe distend) this even further to $z_1^{N_1} + \dots + z_{n-1}^{N_{n-1}} + z_n^2 = w^2$ with $N_1, \dots, N_{n-1}$ any natural numbers. We simply do the following
 %
 \nbea
 z_i & = & 2 a_1^{M/N_i} a_{i+1}, ~~~ 1 \le i < n, ~~~ M = \prod_{j=1}^{n-1} N_j \\
@@ -2231,18 +2231,18 @@ where $\sum [a,b,c]^3$ is the sum of
 First we need a factor of 2 in front of $(a+b+c+d)^3$ because each parameter in $\sum [a,b,c,d]^3$, \eg $a^3$, is multiplied by 2, $-a^3 + a^3 + a^3 + a^3 = 2 a^3$, the same with $b^3,c^3,d^3$. The RHS is just the combination of 4 choose 3. The general formula is thus
 %
 \nbea
-(n-2)(a_1+a_2+...+a_n)^3 - \sum [a_1, ... , a_n]^3 & = & 24 C[a_1, ..., a_n]
+(n-2)(a_1+a_2+\dots +a_n)^3 - \sum [a_1, \dots , a_n]^3 & = & 24 C[a_1, \dots, a_n]
 \neea
 %
-where $C[a_1, ..., a_n]$ is the combination of $n$ choose three $a_1a_2a_3 + a_1a_2a_4 + ... + a_{n-2}a_{n-1}a_{n}$ and here is the source of the problem.
+where $C[a_1, \dots, a_n]$ is the combination of $n$ choose three $a_1a_2a_3 + a_1a_2a_4 + \dots + a_{n-2}a_{n-1}a_{n}$ and here is the source of the problem.
 
 For simplicity let $n = 4$, so we have $24 C[a, b, c, d] = 24 (abc + abd + acd + bcd)$. We can promote $a \rightarrow 3^2 a^3, b \rightarrow b^3,  c \rightarrow c^3, d \rightarrow d^3$. The first three terms become $(2 \cdot 3 a b c)^3 + (2 \cdot 3 a b d)^3 + (2 \cdot 3 a c d)^3$, however, this ruins the last term $24 bcd \rightarrow 24 (bcd)^3$. 
 
 No holy tri(3)nity \dunno
 
-If $n \ge 5$, we will start having trouble at $24 a_2 a_3 a_4$ because we have promoted $a_2, ..., a_n \rightarrow a_2^3, ..., a_n^3$ to deal with $24 a_1 a_j a_k \rightarrow 8 \cdot 27 a_1^3 a_j^3 a_k^3,~~ j,k > 1$. 
+If $n \ge 5$, we will start having trouble at $24 a_2 a_3 a_4$ because we have promoted $a_2, \dots, a_n \rightarrow a_2^3, \dots, a_n^3$ to deal with $24 a_1 a_j a_k \rightarrow 8 \cdot 27 a_1^3 a_j^3 a_k^3,~~ j,k > 1$. 
 
-Thus for a power of 3 it seems that only $a^3 + b^3 + c^3 + d^3 = e^3$ is bueno. Another significant difference is that the number of $a$'s is {\it not} the same as the number of $z$'s, \eg 3 $a$'s generate $3+1=4$ $z$'s while 4 $a$'s generate $4+4=8$ $z$'s. The next difference from the power of 2 is that the above generic formula is only good for $n \ge 4$ compared to $n \ge 2$ for power of 2. Also for the power of three, the number of terms $z_1^3 + ... + z_n^3 = w^3$ increases factorially and not to mention that there's a constant factor $(n-2)$ in front of $(a_1+a_2+...+a_n)^3$.
+Thus for a power of 3 it seems that only $a^3 + b^3 + c^3 + d^3 = e^3$ is bueno. Another significant difference is that the number of $a$'s is {\it not} the same as the number of $z$'s, \eg 3 $a$'s generate $3+1=4$ $z$'s while 4 $a$'s generate $4+4=8$ $z$'s. The next difference from the power of 2 is that the above generic formula is only good for $n \ge 4$ compared to $n \ge 2$ for power of 2. Also for the power of three, the number of terms $z_1^3 + \dots + z_n^3 = w^3$ increases factorially and not to mention that there's a constant factor $(n-2)$ in front of $(a_1+a_2+\dots+a_n)^3$.
 
 There is still something we can do for power of 3, we can always massage
 %
@@ -2259,7 +2259,7 @@ giving the generic formula for power of 3, before we state the generic formula t
 m = n + {n \choose 3}
 \neea
 %
-$n$ represents $\sum [a_1, ..., a_n]$, \ie the sum of $(-a_1 + ... + a_n) + ... + (a_1 + ... - a_n)$ with the negative sign cycled through each term. ${n \choose 3}$ is for $24 (a_1a_2a_3 + ... + a_{n-2}a_{n-1}a_{n})$. Note that
+$n$ represents $\sum [a_1, \dots, a_n]$, \ie the sum of $(-a_1 + \dots + a_n) + \dots + (a_1 + \dots - a_n)$ with the negative sign cycled through each term. ${n \choose 3}$ is for $24 (a_1a_2a_3 + \dots + a_{n-2}a_{n-1}a_{n})$. Note that
 %
 \nbea
 {n \choose 3} & = & \sum_{j}^{n-2} {n-j \choose 2} 
@@ -2270,7 +2270,7 @@ $n$ represents $\sum [a_1, ..., a_n]$, \ie the sum of $(-a_1 + ... + a_n) + ... 
 \item The equation we want to generate an algorithm for is 
 %
 \nbea
-\left ( z_1^3 + ... + z_n^3 \right ) + \left ( z_{n+1}^3 + ... + z_{n + {n-1 \choose 2}}^3 \right ) + \left ( y_1 z_{n + {n-1 \choose 2} + 1}^3 + ... + y_l z_{m}^3 \right ) & = & (n-2)w^3
+\left ( z_1^3 + \dots + z_n^3 \right ) + \left ( z_{n+1}^3 + \dots + z_{n + {n-1 \choose 2}}^3 \right ) + \left ( y_1 z_{n + {n-1 \choose 2} + 1}^3 + \dots + y_l z_{m}^3 \right ) & = & (n-2)w^3
 \neea
 %
 where $l = {n \choose 3} - {n-1 \choose 2}$
@@ -2280,11 +2280,11 @@ where $l = {n \choose 3} - {n-1 \choose 2}$
 The generic formula is then
 %
 \nbea
-z_i & = & [3^2 a_1^3, ..., a_n^3], ~~~ 1 \le i \le n \\
+z_i & = & [3^2 a_1^3, \dots, a_n^3], ~~~ 1 \le i \le n \\
 z_j & = &  2 \cdot 3 a_1 a_p a_q, ~~~ n + 1 \le j \le n + {n-1 \choose 2}, ~~ 2 \le p, q \le n \\
 z_k & = & 2 a_r, ~~~~~~~~~~~~ n + {n-1 \choose 2} + 1 \le k \le m, ~~ 2 \le r \le n \\
 y_q & = & 3 a_s^3 a_t^3, ~~~~~~~~~ 1 \le q \le {n \choose 3} - {n-1 \choose 2} , ~~~~ 2 \le s, t (\neq r) \le n \\
-w & = & (3^2 a_1^3+ ... + a_n^3)
+w & = & (3^2 a_1^3+ \dots + a_n^3)
 \neea
 %
 and as we can see it is a lot more complicated than that of the power of 2.
@@ -2368,7 +2368,7 @@ n = N & ~~~ & Q = 2
 %
 which means that $N$ is any factor of any even number, a factor that is any factor of any odd number and any even number is any number (actually we only need it to be a factor of any even number for it to be any number since even numbers are $2m$ with $m$ any integer), \ie we can recast $4a^2b^2$ into $u^N$ with $N$ any number :) the only thing to do is $b \rightarrow b^{N}, ~ (b^N)^2 = (b^2)^N$. This is actually interesting, Pythagorean equation is extra special, it not only works with $a^2 + b^2 = c^2$ but also $a^2 + b^N = c^2$ for {\it any} $N$.
 
-Pythagoreans surely are a lucky lot, not only that they can be easily extended indefinitely in terms of the number of terms in $z_1^2 + ... + z_n^2 = w^2$ but also in the exponent $z_1^2 + z_2^N = w^2$. Remember, we started this whole business from nothing but a simple guess!
+Pythagoreans surely are a lucky lot, not only that they can be easily extended indefinitely in terms of the number of terms in $z_1^2 + \dots + z_n^2 = w^2$ but also in the exponent $z_1^2 + z_2^N = w^2$. Remember, we started this whole business from nothing but a simple guess!
 
 Not so with the power of 3, a simple guess won't do. Looking at the example above, $a^3 + b^3 + c^N = d^3$, $N$ is limited to the factors of $9S+1$, for example for $S=2,4,8,12,14,18,20$ the combination $9S+1$ is actually a prime number, they are $19, 37, 73, 109, 127, 163, 181$ respectively.
 
@@ -2428,7 +2428,7 @@ Now comes the time to gather what I've found. In this section I'll list all the 
 		z = \frac{2(a^2 + b^2)}{a^2-b^2 + 2ab}, ~ y = \frac{b^2 + 2ab - a^2}{b^2 - 2ab - a^2}
 	\neea
 	%
-	\item $z_1^2 + ... + z_n^2 = w^2$ (crowd funded Pythagorean)
+	\item $z_1^2 + \dots + z_n^2 = w^2$ (crowd funded Pythagorean)
 	%
 	\nbea
 	z_i & = & 2 a_1 a_{i+1}, ~~~ 1 \le i < n \\
@@ -2449,7 +2449,7 @@ Now comes the time to gather what I've found. In this section I'll list all the 
 	&z_1 = a^N - 2^{N-2}b^N, ~ z_2 = 2ab, ~ w = a^N + 2^{N-2}b^N&
 	\neea
 	%
-	\item $z_1^{N_1} + ... + z_{n-1}^{N_{n-1}} + z_n^2 = w^2$ (Phytagoras on steroids)
+	\item $z_1^{N_1} + \dots + z_{n-1}^{N_{n-1}} + z_n^2 = w^2$ (Phytagoras on steroids)
 	%
 	\nbea
 	z_i & = & 2 a_1^{M/N_i} a_{i+1}, ~~~ 1 \le i < n, ~~~ M = \prod_{j=1}^{n-1} N_j \\
@@ -2518,17 +2518,17 @@ Now comes the time to gather what I've found. In this section I'll list all the 
 	\item {\it Generic power of 3}
 	%
 	\nbea
-	\left ( z_1^3 + ... + z_n^3 \right ) + \left ( z_{n+1}^3 + ... + z_{n + {n-1 \choose 2}}^3 \right ) + 	\left ( y_1 z_{n + {n-1 \choose 2} + 1}^3 + ... + y_l z_{m}^3 \right ) & = & (n-2)w^3
+	\left ( z_1^3 + \dots + z_n^3 \right ) + \left ( z_{n+1}^3 + \dots + z_{n + {n-1 \choose 2}}^3 \right ) + 	\left ( y_1 z_{n + {n-1 \choose 2} + 1}^3 + \dots + y_l z_{m}^3 \right ) & = & (n-2)w^3
 	\neea
 	%
 	where $n \ge 3, ~ l = {n \choose 3} - {n-1 \choose 2}$
 	%
 	\nbea
-	z_i & = & [3^2 a_1^3, ..., a_n^3], ~~~ 1 \le i \le n \\
+	z_i & = & [3^2 a_1^3, \dots, a_n^3], ~~~ 1 \le i \le n \\
 	z_j & = &  2 \cdot 3 a_1 a_p a_q, ~~~ n + 1 \le j \le n + {n-1 \choose 2}, ~~ 2 \le p, q \le n \\
 	z_k & = & 2 a_r, ~~~~~~~~~~~~ n + {n-1 \choose 2} + 1 \le k \le m, ~~ 2 \le r \le n \\
 	y_q & = & 3 a_s^3 a_t^3, ~~~~~~~~~ 1 \le q \le {n \choose 3} - {n-1 \choose 2} , ~~~~ 2 \le s, t (\neq r) \le n \\
-	w & = & (3^2 a_1^3+ ... + a_n^3)
+	w & = & (3^2 a_1^3+ \dots + a_n^3)
 	\neea
 	%
 	\item $z_1^3 + z_2^3 + z_3^N = w^3$ (to cube-finity and beyond)
@@ -2767,7 +2767,7 @@ This is somewhat reminiscent of Galois theory where the symmetry groups are nest
 
 One more pertinent point, the constant coefficients in expanding a polynomial like this one $(a+b)^n$ are computed from Pascal triangle. And we all know that Pascal triangle is a nested (recursive) structure; you need its previous result before computing the next one. Hold on you say, we can use Newton's binomial expansion to compute it, we are modern people after all.
 
-True, but binomial expansion requires factorials and a factorial itself is a recursive structure, there's no explicit formula for a factorial, you have to compute it one step at a time, which is the very definition of recursion. In other words, when we were trying to find algorithms for $z_1^n + ... + z_m^n = w^m$ what we were trying to do was recast a factorial into a polynomial, \eg
+True, but binomial expansion requires factorials and a factorial itself is a recursive structure, there's no explicit formula for a factorial, you have to compute it one step at a time, which is the very definition of recursion. In other words, when we were trying to find algorithms for $z_1^n + \dots + z_m^n = w^m$ what we were trying to do was recast a factorial into a polynomial, \eg
 %
 \nbea
 (a+z)^3 & = & {3 \choose 0} a^3 + {3 \choose 1} a^2 z + {3 \choose 2} a z^2 + {3 \choose 3} z^3 \\
@@ -2776,7 +2776,7 @@ True, but binomial expansion requires factorials and a factorial itself is a rec
 %
 The constant factors, 6 and 2, are (2 times) the binomial expansions (factorials) from $(a+z)^3$ and we are trying to somehow cast it into some polynomial $6 \rightarrow u^3$. It is of no surprise then that this will not always succeed, except for a few serendipitous cases.
 
-If we trace it back even further, this recursivity is derived directly from the definition of exponentiation, \eg $5^n$ is $5 \times 5 \times 5 \times 5 \times 5$. There is no explicit formula for this, we recurse some multiplications and happily denote it $5^n$, in the words of a supermodel ``image is powerful but image is also superficial". ({\it Note: addition is the basic operation in arithmetic, multiplication is a derived operation, \ie repeated additions. Taking a number to some power is repeated multiplications, a derived operation of a derived operation, continuing this trend we can define something like $a[n] \equiv a^{a^{a^ {...}}}$, \ie recursively exponentiating $n$ times and see what kind of number theoretical implications we'll get from it but this might be taking it too far})
+If we trace it back even further, this recursivity is derived directly from the definition of exponentiation, \eg $5^n$ is $5 \times 5 \times 5 \times 5 \times 5$. There is no explicit formula for this, we recurse some multiplications and happily denote it $5^n$, in the words of a supermodel ``image is powerful but image is also superficial". ({\it Note: addition is the basic operation in arithmetic, multiplication is a derived operation, \ie repeated additions. Taking a number to some power is repeated multiplications, a derived operation of a derived operation, continuing this trend we can define something like $a[n] \equiv a^{a^{a^ {\dots}}}$, \ie recursively exponentiating $n$ times and see what kind of number theoretical implications we'll get from it but this might be taking it too far})
 
 This recursive business might also be the culprit behind the indomitability of Fermat's last theorem. Increasing the power by one is not just going one more above the previous one, the recursive nature requires that it is at least ``one order of magnitude" more complicated so to say (although the dicothomy between $n=2$ and $n \ge 3$ is still a mystery to me).
 
@@ -2819,14 +2819,14 @@ Substraction and division are inverse operators of addition and multiplication r
 !^{-1}15 & = & {\rm undefined?}
 \neea
 %
-Although $!^{-1}15$ is undefined, can we still assign some real number value to it? in analogy to the square root of two, $\sqrt{2} = 1.414 ...$
+Although $!^{-1}15$ is undefined, can we still assign some real number value to it? in analogy to the square root of two, $\sqrt{2} = 1.414 \dots$
 
 Some potential higher/random ops
 \begin{enumerate}
 \item $[a * b]_{\pm} \equiv a^b \pm b^a $ 
 \item $[a, b]_{\pm} \equiv a \cdot b \pm b \cdot a $, proven useful in quantum mechanics
-\item $a~!+!~b \equiv a + (b-1) + (a-2) + (b-3) + (a-4) + ... + 1$
-\item $a!b \equiv a \cdot (a+1) \cdot (a+2) \cdot ... \cdot (a+b)$
+\item $a~!+!~b \equiv a + (b-1) + (a-2) + (b-3) + (a-4) + \dots + 1$
+\item $a!b \equiv a \cdot (a+1) \cdot (a+2) \cdot \dots \cdot (a+b)$
 \end{enumerate}
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -2837,7 +2837,7 @@ For $a,b \in \mathbb{Z}$ there's a unique $q,r \in \mathbb{Z}$ such that $a = bq
 %
 \nbea
 a & = & bq + r \\
-& = & bq + \underbrace{b + b + b + b + ...}_\text{$n$ number of $b$'s} + (r -\underbrace{b - b - b - b - ...}_\text{$n$ number of $b$'s} ) \\
+& = & bq + \underbrace{b + b + b + b + \dots}_\text{$n$ number of $b$'s} + (r -\underbrace{b - b - b - b - \dots}_\text{$n$ number of $b$'s} ) \\
 a & = & b (q+n) + r' \\
 a & = & b q' + r'
 \neea
@@ -3010,18 +3010,108 @@ Now $r > 0, ~r < mn$, so this is only consistent if $r = 0, ~cd/w = q$ but this 
 
 ++++++++++++++++++++++++++++++++++++++ \\
 
-Interesting proofs in ent.pdf
+The pdf book I've been reading about elementary number theory (ent) is ent.pdf. It is written by William Stein, there are multiple versions and revisions of the book. One is called ``{\it Primes, Congruences, and Secrets}" dated Nov 16, 2011. Another version is called ``{\it A Computational Approach}" dated March 2007. As far as I can tell, they are pretty much the same but I'll use ``{\it Primes, Congruences, and Secrets}" in this article.
 
+The proofs in these books are not the easiest to understand but they are really cool. So I'll list here explanations about the proofs that hopefully clarify them.
+
+{\bf Lemma 1.1.9} This is a really cool way to prove something. He was using the concept of (sub)sets, something seemingly unrelated to prove properties of gcd.
+
+The goal here is to show that 
+%
+\nbea
+\gcd(a,b) = \gcd(b,a) = \gcd(\pm a,\pm b) = \gcd(a,b-a) = \gcd(a,b+a)
+\neea
+%
+The first thing he showed is that $\gcd(a,b) \le \gcd(a,b-a)$ followed by $\gcd(a,b-a) \le \gcd(a,b)$ which means that $\gcd(a,b) = \gcd(a,b-a)$.
+
+To show that $\gcd(a,b) \le \gcd(a,b-a)$ he uses the idea of a subset. He shows that every common divisor of $a$ and $b$ is also a common divisor of $b-a$, \ie $a = d c_1, b=d c_2 \to b-a = d(c_2-c_1)$. Now since every common divisor of $a$ and $b$ is also a divisor of $b-a$ this means that the common divisors of $a$ and $b$ is a subset of the divisor of $b-a$.
+
+Since they are a subset $\gcd(a,b) \le \gcd(a,b-a)$ as the max element of the subset is either the same as the max element of the superset or lower, \eg consider a set $\{1,4,8,9\}$ if you form a subset of this, the maximum of this subset is 9 or lower, depending what elements you choose for the subset but it can't be higher than 9.
+
+The next step in the proof is to show that $\gcd(a,b-a) \le \gcd(a,b)$. He did this by replacing $a \to -a$, $b \to b-a$ such that $\gcd(a,b) \to \gcd(-a, b-a)$. He then repeats the reasoning above, every common divisor of $-a$ and $b-a$ is also a divisor of $(b-a) - (-a) = b$ this means that $\gcd(-a,b-a) \le \gcd(-a,b)$ but $\gcd(-a,b-a) = \gcd(a, b-a),~\gcd(-a,b) = \gcd(a,b)$. This completes the proof.
+
+{\bf Lemma 1.1.17} This is another cool one. He uses (strong) induction in a way I'd neven seen before. Usually you use induction by proofing the link between $n$ and $n+1$ but he doesn't. Instead he retrospects, let's see what I mean.
+
+The goal here is to prove $\gcd(an,bn) = \gcd(a,b) \cdot |n|$ something very obvious.
+
+He started by (implicitly) assuming that all numbers $a',b'$ smaller than $a,b$, \ie $a'+b' < a+b$, have this property. Note that he uses the sum of the numbers for induction instead the numbers themselves. As the base case he uses $a + b = 2$.
+
+The proof now continues through several bridges. 
+\begin{enumerate}
+\item Show that $\gcd(an,bn) = \gcd(bn,rn)$, this is achieved through Euclid's algorithm as $an = bnq + rn$.
+\item Next, show that $\gcd(bn, rn) = \gcd(b,r) \cdot |n|$, how? by showing that $b + r < a + b$, why? Because if $b + r < a + b$ then the case of $\gcd(bn, rn)$ is already covered by the induction. Recall that induction assumes all pairs $b + r$ leading up to $a + b$ already have this property, so if $b + r < a + b$ then $b,r$ is already in the induction assumption. This is why I said that he's using a strong induction.
+\end{enumerate}
+As we have seen, the induction proof was not a typical one, we're not proving the link between $n$ and $n+1$, he assumes that all elements less than $n+1$ are true and then show that our target is equal to one of those earlier elements. Very clever indeed.
+
+{\bf Theorem 1.1.19} Another clever proof, another indirect one. The goal is to show that if $p$ is prime and $p|ab$ then either $p|a$ or $p|b$.
+
+He approaches this by showing that $p|\gcd(pb, ab)$ why? because $\gcd(pb, ab) = b\gcd(p, a) = b$. So his approach was to find ``how can I represent $b$? are there any other forms of $b$ that are divisible by $p$?" The answer of course is that $p|\gcd(pb, ab)$ and $\gcd(pb, ab)$ happens to be $b$ itself. Nice trick.
+
+{\bf Theorem 1.1.6}, the proof is actually on page 10. I just want to recap the strategy he used to prove this theorem. The key is Theorem 1.1.19 but to prove 1.1.19 you need to know about gcd and its properties, they are
+\begin{enumerate}
+\item Lemma 1.1.9, for any integers $a$ and $b$ we have
+%
+\nbea
+\gcd(a,b) = \gcd(b,a) = \gcd(\pm a,\pm b) = \gcd(a,b-a) = \gcd(a,b+a)
+\neea
+%
+\item Lemma 1.1.10, suppose $a,b,n \in \mathbb{Z}$. Then $\gcd(a,b) = \gcd(a,b-an)$.
+\item Proposition 1.1.11, suppose that $a$ and $b$ are integers with $b \neq 0$. Then there exists unique integers $q$ and $r$ such that $0 \le r < |b|$ and $a = bq + r$
+\item Algorithm 1.1.12 (Division Algorithm) Suppose $a$ and $b$ are integers with $b \neq 0$. This algorithm computes integers $q$ and $r$ such that $0 \le r < |b|$ and $a = bq + r$
+\item Algorithm 1.1.13 (Greatest Common Division), this is Euclid's algorithm
+\item Lemma 1.1.17, for any integers $a,b,n$ we have
+%
+\nbea
+\gcd(an,bn) = \gcd(a,b) \cdot |n|
+\neea
+%
+\item Lemma 1.1.18, suppose $a,b,n \in \mathbb{Z}$ are such that $n|a$ and $n|b$. Then $n|\gcd(a,b)$
+\item Theorem 1.1.19, let $p$ be a prime and $a,b \in \mathbb{N}$. If $p|ab$ then $p|a$ or $p|b$
+\end{enumerate}
+So it's nowhere near straightforward, trying to prove this theorem straightforwardly is an oxymoron.
+
+{\bf Algorithm 1.2.3} This is actually about proof of step 2, the stopping condition. The proof of this step doesn't give any intuition as to how this is true, it basically boils down to ``false assumption leads to contradictions".
+
+There's actually a better explanation which very intuitive. Once you come to a number that is roughly $\sim \sqrt{n}$ you know you can stop, why? The current number in question $\sqrt{n}$ is of course a prime since the non primes have been crossed off by the previous primes and their multiples. But some of the multiples of $\sqrt{n}$, \ie $p \sqrt{n}, ~ p < \sqrt{n}$ have been crossed off by multiples of the previous lesser primes. The next thing to cross is of course $\sqrt{n} \cdot \sqrt{n}$, but this is already bigger than $n$, so we can stop.
+
+The above explanation might still be confusing. Let's see it with a concrete example, for simplicity let's use the same example as in the book $n = 40$ but let's jump straight to after we've crossed off $2,3,5$ and their multiples. The set $X$ is now
+%
+\nbea
+X=[7,11,13,17,19,23,25,29,31,35,37]
+\neea
+%
+We now need to cross off $7$ and its multiples, however, 
 \bit
-\item using subsets
-\item using induction in a new way with multiple bridges
+\item $7 \times 2$ was crossed off by $2 \times 7$
+\item $7 \times 3$ was crossed off by $3 \times 7$
+\item $7 \times 4$ was crossed off by $2 \times 14$
+\item $7 \times 5$ was crossed off by $5 \times 7$.
 \eit
+The next thing to cross off is then $7 \times 7$ but this is larger than $n$ so we can immediately stop. For any other number $> 7$ the situation is even more dire since some of their multiples have been crossed off by the lesser primes and their square is definitely bigger than $n$.
+
+{\bf Proposition 1.2.5} The goal here is to show that there are infinitely many primes in the form $4x - 1$. However the proof was a bit confusing. He started like Euclid, constructing a new number in the form
+%
+\nbea
+N & = & 4 p_1 p_2 \cdots p_n - 1
+\neea
+%
+He then argues that if all prime factors of $N$ is of the form $4x + 1$ then $N$ will be of the form $4x+1$ as well which is true.
+The mysterious phrase is then (the phrase in the ``{\it A Computational Approach}" is even worse) ``since $N$ is odd, each prime divisor $p_i$ is odd so there is a $p|N$ that is of the form $4x-1$". Why not $2x+1$? which is the most generic form of an odd number. The thing is that $N$ is of the form $4x-1$ so we want the product of its factors to conform to $4x-1$. However, his requirement is actually not stringent enough (or he didn't explain it clearly enough), say that we have an odd number whose factors are
+%
+\nbea
+(2x_1 + 1)(4x_2 - 1) & = & 8 x_1 x_2 - 2x_1 + 4 x_2 - 1
+\neea
+%
+just because one of the factor is $4x-1$ it doesn't mean that we are guaranteed to have $N \sim 4x-1$. What we really need (as seen from the example above) is that all other factors are of the form $4x+1$ while at least one of them (or an odd number of them) is of the form $4x-1$.
+
+This is because the product of of the of $x$'s with nothing but the $1$'s need to be in the form of $4x$, thus we need to have all the $x$'s multiplied by 4 and we need an odd number of $4x-1$ because the product of all the $1$'s needs to be $-1$.
 
 
 
 
 
 \end{document}
+
 
 
 
