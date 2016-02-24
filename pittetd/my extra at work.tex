@@ -3095,8 +3095,19 @@ The next thing to cross off is then $7 \times 7$ but this is larger than $n$ so 
 N & = & 4 p_1 p_2 \cdots p_n - 1
 \neea
 %
-He then argues that if all prime factors of $N$ is of the form $4x + 1$ then $N$ will be of the form $4x+1$ as well which is true.
-The mysterious phrase is then (the phrase in the ``{\it A Computational Approach}" is even worse) ``since $N$ is odd, each prime divisor $p_i$ is odd so there is a $p|N$ that is of the form $4x-1$". Why not $2x+1$? which is the most generic form of an odd number. The thing is that $N$ is of the form $4x-1$ so we want the product of its factors to conform to $4x-1$. However, his requirement is actually not stringent enough (or he didn't explain it clearly enough), say that we have an odd number whose factors are
+Notice that he began by assuming that $p_1 p_2 \cdots p_n$ are primes of the form $4x-1$. This is required as we want to show that no known prime of the form $4x-1$ divides $N$, if $p_i$ is just any prime we would only show that the new prime that divides $N$ is not the same as any of $p_i$ but since $p_i$ is not of the form $4x-1$ there might be some other primes of the form $4x-1$ that wasn't included in constructing $N$. Thus the new prime factor of $N$ is not really new, it just wan't included in constructing $N$.
+
+As to why $p_i \nmid N$ is because if $p_i|N \to N = p_i m$ then
+%
+\nbea
+N = p_i m & = & p_i \cdot (4 \prod_{j\neq i} p_j) - 1 \\
+p_i (m - 4 \prod_{j\neq i} p_j) & = & -1 \\
+\to p_i & = & -1
+\neea
+%
+which is a contradiction (this is the reasoning used in Euclid's famous ``there are infinite prime numbers" proof).
+
+He then argues that if all prime factors of $N$ is of the form $4x + 1$ then $N$ will be of the form $4x+1$ as well which is true. The mysterious phrase is then (the phrase in the ``{\it A Computational Approach}" is even worse) ``since $N$ is odd, each prime divisor $p_i$ is odd so there is a $p|N$ that is of the form $4x-1$". Why not $2x+1$? which is the most generic form of an odd number. The thing is that $N$ is of the form $4x-1$ so we want the product of its factors to conform to $4x-1$. However, his requirement is actually not stringent enough (or he didn't explain it clearly enough), say that we have an odd number whose factors are
 %
 \nbea
 (2x_1 + 1)(4x_2 - 1) & = & 8 x_1 x_2 - 2x_1 + 4 x_2 - 1
@@ -3105,6 +3116,247 @@ The mysterious phrase is then (the phrase in the ``{\it A Computational Approach
 just because one of the factor is $4x-1$ it doesn't mean that we are guaranteed to have $N \sim 4x-1$. What we really need (as seen from the example above) is that all other factors are of the form $4x+1$ while at least one of them (or an odd number of them) is of the form $4x-1$.
 
 This is because the product of of the of $x$'s with nothing but the $1$'s need to be in the form of $4x$, thus we need to have all the $x$'s multiplied by 4 and we need an odd number of $4x-1$ because the product of all the $1$'s needs to be $-1$.
+
+How about the last sentence ``We can repeat this process indefinitely"? Remember that the primes that construct $N$, \ie $p_i$, were all of the form $4x-1$. Since we find another one of the form $4x-1$ (as one of the factor of $N$) we can construct a new number $N' = 4 p_1 p_2 \cdots p_n p_{\rm new} - 1$ which in turn produces another prime of the form $4x-1$ which we can use to construct another number and so on.
+
+{\bf Problem 1.3} Prove that there are infinitely many primes of the form $6x - 1$.
+
+This closely follows the proof of Proposition 1.2.5. Let
+%
+\nbea
+N & = & 6 p_1 p_2 \cdots p_n - 1
+\neea
+%
+where $p_i$ is of the form $6x-1$. We know that $p_i \nmid N$. To get the form $6x-1$ the prime factors of $N$ has to be of the form $6x \pm 1$ and an odd number of them of them has to be $6x-1$. Thus we have a new prime of the form $6x-1$ which we can use to construct a new Number $N' = \prod 6 p_i - 1$ and the whole process repeats.
+
+{\bf Problem 1.4} Use Theorem 1.2.10 to deduce that $\lim_{x \to \infty} \pi(x)/x = 0$.
+
+Theorem 1.2.10 is
+%
+\nbea
+\lim_{x \to \infty} \frac{\pi(x)}{x / \log(x)} & = & 1 \\
+\lim_{x \to \infty} \frac{\pi(x)}{x / \log(x)} - 1 & = & 0
+\neea
+%
+The thing I'm not sure about is whether we can do the usual algebraic manipulations with the $\lim$ involved, for example, is the following legit?
+%
+\nbea
+\lim_{x \to \infty} \left ( \frac{\pi(x)}{x / \log(x)} - 1 \right ) \times \frac{1}{\log(x)} & = & 0 \times \frac{1}{\log(x)}
+\neea
+%
+I'm not sure if we can do the above but 
+%
+\nbea
+\lim_{x \to \infty} \frac{\pi(x)}{x / \log(x)} & = & 1 \\
+\lim_{x \to \infty} \pi(x) & = & \lim_{x \to \infty} \frac{x}{\log(x)} \\
+\lim_{x \to \infty} \frac{1}{x} \times \pi(x) & = & \lim_{x \to \infty} \frac{1}{\bcancel{x}} \times\frac{\bcancel{x}}{\log(x)} = 0
+\neea
+%
+I think that was legal as the first line says that $\lim_{x \to \infty} \pi(x) = \lim_{x \to \infty} x / \log(x)$, \ie as $x$ goes to $\infty$ the two approach the same value. This means that if we divide both sides by the same value we will still get the same limit for both sides.
+
+{\bf Problem 1.8 (a)} if $a|n$ and $b|n$ with $\gcd(a,b)=1$, then $ab|n$
+
+The easiest way is of course to use the fundamental theorem of arithmetic but here I try not to do that if at all possible. First $a|n \to n = aa',~b|n \to n = bb'$, suppose $a < b$ (we know $a \neq b$), it doesn't matter which we choose to be smaller, the argument will be the same
+%
+\nbea
+aa' & = & bb' \\
+aa' & = & (aq + r) b' \\
+a (a' - qb') & = & rb'
+\neea
+%
+which means that $a | rb'$. We also know from Euclid's algorithm that $\gcd(b,a) = \gcd(a, r)$ but since $\gcd(a,b) = 1 \to \gcd(a,r)=1$. We know that $a|rb'$ and obviously $a|ab'$ then from Lemma 1.1.18 $\to a|\gcd(rb',ab')$, following the proof of Theorem 1.1.19
+%
+\nbea
+a & | & \gcd(rb',ab') \\
+\gcd(ar,ab') & = & |b'| \cdot \gcd(r,a) = |b'| \cdot 1 \\
+\to a & | & b'
+\neea
+%
+so $b' = a w \to n = bb' = (b a) w \to ab | n$ which completes the proof.
+
+{\bf Problem 1.8 (b)} if $a|bc$ and $\gcd(a,b) = 1$, then $a|c$
+
+Again, let's not use the fundamental theorem. Since we know that $a \neq b$, the first possibility is $a < b \to b = aq + r$
+%
+\nbea
+(aq+r)c & = & an \\
+rc & = & a(n-q) \\
+\to a & | & rc
+\neea
+%
+Following the footsteps of Problem 1.8 (a) above, $\gcd(b,a) = 1 = \gcd(a,r)$. Next, $a|rc$ and $a|ac$, so according to Lemma 1.1.18 $\to a|\gcd(rc,ac) = c \cdot \gcd(r,a) = c \cdot 1 = c \to a | c$.
+
+The only other possibility is $b < a \to b = a - \Delta$
+%
+\nbea
+(a - \Delta)c & = & an \\
+-\Delta c & = & a(n-c) \\
+\to a & | & \Delta c
+\neea
+%
+To proceed we need to show that
+%
+\nbea
+\Delta & = & - b + a\\
+\to \gcd(a,\Delta) & = & \gcd(a, - b + a) = \gcd(a,-b) = \gcd(a,b)\\
+& = & 1
+\neea
+%
+where we have used Lemma 1.1.9 in the second line, thus $\gcd(a,\Delta) = 1$, since $a|\Delta c$ and $a|ac$ using Lemma 1.1.18 $\to a|\gcd(\Delta c,ac) = c \cdot \gcd(\Delta,a) = c \cdot 1 = c \to a|c$.
+
+{\bf Problem 1.9 (a)} if $a|b$ and $b|c$ then $a|c$.
+%
+\nbea
+a|b & \to & b = a m \\
+b|c & \to & c = b n = a mn \\
+c = a(mn) & \to & a|c
+\neea
+%
+
+{\bf Problem 1.9 (b)} if $a|b$ and $c|d$ then $ac|bd$.
+%
+\nbea
+a|b & \to & b = a m \\
+c|d & \to & d = c n \\
+ac = (ac)(mn) & \to & ac|bd
+\neea
+%
+
+{\bf Problem 1.9 (c)} if $m \neq 0$, then $a|b$ if and only if $ma|mb$.
+%
+\nbea
+a|b & \to & b = a w \\
+mb = ma w & \to & ma |mb
+\neea
+%
+The other way
+%
+\nbea
+ma|mb & \to & mb = ma w \to b = aw  \\
+b = a w & \to & a | b
+\neea
+%
+
+{\bf Problem 1.9 (c)} if $d | a$ and $a \neq 0$, then $|d| \le |a|$.
+%
+\nbea
+d|a & \to & a = d w \to |a| = |d w| = |d| |w| \\
+|a| = |d| |w| & \to & |d| \le |a|
+\neea
+%
+
+{\bf Problem 1.12 (a)} Suppose $a,~b$ and $n$ are positive integers. Prove that if $a^n | b^n$ then $a|b$.
+
+Let's try if we can do it without the fundamental theorem, since it'll be too easy otherwise \dunno
+
+The problem is an ``if A then B" type but it also means ``if not B then not A". We'll go by induction but before that, from $a^n | b^n$ we know that $a < b$ (which can be easily proven by induction). We also know that $a|b^n$ either through Lemma 1.1.10, because $a^n|b^n \to b^n = a^n m$ and
+%
+\nbea
+\gcd(a,b^n) & = & \gcd(a, a^n m)\\
+& = & \gcd(a, a^n m - ad), ~~~ d = a^{n-1}m - 1 \\
+\gcd(a,b^n) & = & \gcd(a, a) = a \\
+\to a & | & b^n
+\neea
+%
+or through $b^n = a^n m = a (a^{n-1}m) = a w \to a|b^n$ or through Problem 1.9 (a), $a|a^n$ and $a^n|b^n$ then $a|b^n$.
+
+We now want to show that if $a \nmid b$ then $a \nmid b^n$ by induction. We start by proving the base case $a \nmid b^2$. Before we start we want to divide both $a$ and $b$ by $m \equiv \gcd(a,b)$ and denote them $a' = a/m$ and $b'=b/m$ where $\gcd(a',b') = 1$.
+
+From Problem 1.9 (c) we have $a \nmid b \to a' \nmid b'$. Now what about $a'|b'^2$? Say $a' | b'^2$ then
+%
+\nbea
+a'|b'^2 & = & a' | b' b', ~~~\gcd(a',b') = 1 \\
+\to a' & | & b'
+\neea
+%
+where we have used Problem 1.8 (b). But this is a contradiction since $a' \nmid b'$, thus $a' \nmid b'^2$. Now the induction step, suppose $a' \nmid b'^n$ we want to show $a' \nmid b'^{n+1}$, assume otherwise
+%
+\nbea
+a'|b'^{n+1} & = & a' | b' b'^n, ~~~\gcd(a',b') = 1 \\
+\to a' & | & b'^n
+\neea
+%
+where we have used Problem 1.8 (b). This is a contradiction as $a' \nmid b'^n$ thus we have proved that if $a' \nmid b'$ then $a' \nmid b'^n$ where $\gcd(a',b')=1$. In other words if $a' | b'^n$ then $a' | b'$.
+
+Our problem states that $a^n | b^n = \cancel{m^n} a'^n | \cancel{m^n} b'^n$ where $m = \gcd(a,b)$ (we have used Problem 1.9 (c)). But $a'^n | b'^n$ means that $a' | b'^n$ (as shown above) and by the above result $a' | b'^n \to a'|b' = ma'|mb' = a|b$ using Problem 1.9 (c). This completes the proof.
+
+I initially solved it this way
+%
+\nbea
+b^n & = & a^n  m \\
+m & = & \left(\frac{b}{a} \right)^n
+\neea
+%
+Since $m \in \mathbb{Z} \to b/a \in \mathbb{Z} \to b = an,~n \in \mathbb{Z} \to a|b$. But the dodgy step is the requirement that $b/a \in \mathbb{Z}$, this smells like we are implicitly assuming the fundamental theorem as we are trying to simplify the ratio into the canonical form.
+
+I tried many other more straightforward ways but they didn't come to anything, one of the ways was to assume $a \nmid b \to b = aq + r$ with not much luck.
+
+{\bf Problem 1.12 (b)} Suppose $p$ is a prime and $a$ and $k$ are positive integers. Prove that if $p|a^k$, then $p^k|a^k$.
+
+Again, let's try not to use the fundamental theorem. Start with $p|a^k \to p | a a^{k-1}$, we also have $p | p a^{k-1}$. From Lemma 1.1.18 $\to p|\gcd(a a^{k-1}, p a^{k-1}) = p|a^{k-1}\gcd(a,p)$. From Theorem 1.1.19 it is either $p|a^{k-1}$ or $p|\gcd(p,a)$.
+
+Now $\gcd(p,a)$ is either $1$ or $p$ since $p$ is prime. If $\gcd(p,a) = p$ then we are done since $p|a$ and $a|a^k$ means $p|a^k$ (see Problem 1.9 (a)). If $\gcd(p,a) = 1$ then $p|a^{k-1}$.
+
+We now repeat the process, $p|\gcd(a a^{k-2}, p a^{k-2}) \to p|a^{k-2}$ since $\gcd(p,a) = 1$. Continuing in this path to $p|a$ we get a contradiction because we have assumed that $\gcd(p,a) = 1$, thus  $\gcd(p,a) = p$ and according to Problem 1.9 (a), $p|a$ and $a|a^k$ means $p|a^k$.
+
+{\bf Problem 1.13 (a)} Prove that if a positive integer $n$ is a perfect square, then $n$ cannot be written in the form $4k + 3$.
+
+Since $4k+3$ is odd $n$ has to be odd. In that case $n = (2x+1)^2$
+%
+\nbea
+(2x+1)^2 & = & 4x^2 + 4x + 1 \\
+& = & 4(x^2 + x) + 1 \\
+& = & 2 \{2x(x + 1)\} + 1
+\neea
+%
+while
+%
+\nbea
+4k + 3 & = & 4k + 2 + 1 \\
+& = & 2(2k+1) + 1
+\neea
+%
+This means that $2 x (x + 1) = 2k + 1$ which is impossible since the LHS is even while the RHS is odd.
+
+{\bf Problem 1.13 (b)} Prove that no integer in the sequence
+%
+\nbea
+11, 111, 1111, 11111, 111111, \dots
+\neea
+%
+is a perfect square. (Hint: $111 \cdots 111 = 111 \cdots 108 + 3 = 4k+3$)
+
+We just need to follow the hint :)
+%
+\nbea
+\underbrace{111 \cdots 111}_\text{$N$ number of 1's} & = & \sum_{i=0}^{N-1} 10^i \\
+& = & 11 + \sum_{i=2}^{N-1} 10^i \\
+& = & 11 + \sum_{i=1}^{N-2} 100^i \\
+& = & 4 \cdot 2 + 3 + \sum_{i=1}^{N-2} (4 \cdot 25)^i \\
+& = & 4 \left(2 + \sum_{i=1}^{N-2} 4^{i-1} 25^i \right ) + 3 \\
+& = & 4k + 3
+\neea
+%
+in the above derivation $N > 2$ for $N=2 \to 11 = 4 \cdot 2 + 3$. From Problem 1.13 (a) we know that no perfect square is of the form $4k + 3$ and this completes the proof.
+
+{\bf Problem 1.14} Prove that a positive integer $n$ is prime if and only if $n$ is not divisible by any prime $p$ with $1 < p \le \sqrt{n}$.
+
+The first part is easy, if $n$ is prime then its only factors are $1$ and $n$ thus it is not divisible by $p$ with $1 < p \le \sqrt{n}$.
+
+The other way ``if $n$ is not divisible by any prime $p$ with $1 < p \le \sqrt{n}$ then $n$ is prime" is a bit harder.
+
+The proof proceeds like the field sieve algorithm. Say we list all $N$ primes $p_i \le \sqrt{n}$ that do not divide $n$ sorted by $p_1 < p_2 < \dots < p_N$. We know from the fundamental theorem that $n$ contains prime factors that are smaller than $n$.
+
+Since $p_1, p_2, \dots, p_N$ do not divide $n$ the next prime factor candidate will be $p_{N+1} > p_n > \sqrt{n}$. But for $n = p_{N+1} m$, $m$ has to be $< \sqrt{n}$ and contain one of the $p_1, p_2, \dots, p_N$, otherwise the only other option is $p_{N+1}p_{N+1} > \sqrt{n}\sqrt{n} > n$ but none of $p_1, p_2, \dots, p_N$ divides $n$ thus no prime divides $n$ and $n$ itself must be prime.
+
+
+
+
+
+
+
+
+
 
 
 
