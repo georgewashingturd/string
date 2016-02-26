@@ -3072,7 +3072,7 @@ So it's nowhere near straightforward, trying to prove this theorem straightforwa
 
 {\bf Algorithm 1.2.3} This is actually about proof of step 2, the stopping condition. The proof of this step doesn't give any intuition as to how this is true, it basically boils down to ``false assumption leads to contradictions".
 
-There's actually a better explanation which very intuitive. Once you come to a number that is roughly $\sim \sqrt{n}$ you know you can stop, why? The current number in question $\sqrt{n}$ is of course a prime since the non primes have been crossed off by the previous primes and their multiples. But some of the multiples of $\sqrt{n}$, \ie $p \sqrt{n}, ~ p < \sqrt{n}$ have been crossed off by multiples of the previous lesser primes. The next thing to cross is of course $\sqrt{n} \cdot \sqrt{n}$, but this is already bigger than $n$, so we can stop.
+There's actually a better explanation which is very intuitive. Once you come to a number that is roughly $\sim \sqrt{n}$ you know you can stop, why? The current number in question $\sqrt{n}$ is of course a prime since the non primes have been crossed off by the previous primes and their multiples. But some of the multiples of $\sqrt{n}$, \ie $p \sqrt{n}, ~ p < \sqrt{n}$ have been crossed off by multiples of the previous lesser primes. The next thing to cross is of course $\sqrt{n} \cdot \sqrt{n}$, but this is already bigger than $n$, so we can stop.
 
 The above explanation might still be confusing. Let's see it with a concrete example, for simplicity let's use the same example as in the book $n = 40$ but let's jump straight to after we've crossed off $2,3,5$ and their multiples. The set $X$ is now
 %
@@ -3102,7 +3102,7 @@ As to why $p_i \nmid N$ is because if $p_i|N \to N = p_i m$ then
 \nbea
 N = p_i m & = & p_i \cdot (4 \prod_{j\neq i} p_j) - 1 \\
 p_i (m - 4 \prod_{j\neq i} p_j) & = & -1 \\
-\to p_i & = & -1
+\to p_i & | & -1
 \neea
 %
 which is a contradiction (this is the reasoning used in Euclid's famous ``there are infinite prime numbers" proof).
@@ -3118,6 +3118,19 @@ just because one of the factor is $4x-1$ it doesn't mean that we are guaranteed 
 This is because the product of of the of $x$'s with nothing but the $1$'s need to be in the form of $4x$, thus we need to have all the $x$'s multiplied by 4 and we need an odd number of $4x-1$ because the product of all the $1$'s needs to be $-1$.
 
 How about the last sentence ``We can repeat this process indefinitely"? Remember that the primes that construct $N$, \ie $p_i$, were all of the form $4x-1$. Since we find another one of the form $4x-1$ (as one of the factor of $N$) we can construct a new number $N' = 4 p_1 p_2 \cdots p_n p_{\rm new} - 1$ which in turn produces another prime of the form $4x-1$ which we can use to construct another number and so on.
+
+{\bf Problem 1.1} Warm up! :) Compute the greatest common divisor $\gcd(455,1235)$ by hand.
+
+I did it by hand no calculator involved :)
+%
+\nbea
+1235 & = & 455 \times 2 + 325 \\
+455 & = & 325 \times 1 + 130 \\
+325 & = & 130 \times 2 + 65 \\
+130 & = & 65 \times 2
+\neea
+%
+gcd is $65$!
 
 {\bf Problem 1.3} Prove that there are infinitely many primes of the form $6x - 1$.
 
@@ -3245,6 +3258,14 @@ d|a & \to & a = d w \to |a| = |d w| = |d| |w| \\
 \neea
 %
 
+{\bf Problem 1.11 (b)} Fun facts! The two numbers are actually the first 27 digits of $\pi$ and $e$ and their gcd is 13. Their factors are
+%
+\nbea
+314159265358979323846264338 & = & 2 \times 3 \times 7 \times {\bf 13} \times 17 \times 23 \times 53 \times 27765442739383319011 \\
+271828182845904523536028747 & = & {\bf 13} \times 31 \times 14419 \times 48287851 \times 968760484921
+\neea
+%
+
 {\bf Problem 1.12 (a)} Suppose $a,~b$ and $n$ are positive integers. Prove that if $a^n | b^n$ then $a|b$.
 
 Let's try if we can do it without the fundamental theorem, since it'll be too easy otherwise \dunno
@@ -3349,16 +3370,100 @@ The proof proceeds like the field sieve algorithm. Say we list all $N$ primes $p
 
 Since $p_1, p_2, \dots, p_N$ do not divide $n$ the next prime factor candidate will be $p_{N+1} > p_n > \sqrt{n}$. But for $n = p_{N+1} m$, $m$ has to be $< \sqrt{n}$ and contain one of the $p_1, p_2, \dots, p_N$, otherwise the only other option is $p_{N+1}p_{N+1} > \sqrt{n}\sqrt{n} > n$ but none of $p_1, p_2, \dots, p_N$ divides $n$ thus no prime divides $n$ and $n$ itself must be prime.
 
+++++++++++++++++++++++++++++++++++\\
+
+{\it Example }2.1.5.
+%
+\nbea
+\mathbb{Z}/3\mathbb{Z} & = & \{ \{\underbrace{\dots, -3,0,3, \dots}_\text{``0"}\}, \{\underbrace{\dots, -2,1,4, \dots}_\text{``1"}\}, \{\underbrace{\dots, -1,2,5, \dots}_\text{``2"}\} \}
+\neea
+%
+Explanation: the set $\mathbb{Z}/3\mathbb{Z}$ only has {\it three} elements but each element is a set. Please do not confuse each element with an ideal, we know that the ideal
+%
+\nbea
+3\mathbb{Z} & = & \{\dots, -12,-9,-6,-3,0,3,6,9,12, \dots\}
+\neea
+%
+because if $a$ is an element of an ideal then $-a$ is also an element. Therefore $\{\dots, -2,1,2 \dots\}$ and $\{\dots, -1,2,5 \dots\}$ are {\bf not} ideals.
+
+What happens to $\mathbb{Z}/3\mathbb{Z}$ is it is a quotient of the ring $\mathbb{Z}$ by some ``ideal" $n\mathbb{Z}$ (notice the quatation marks) because as we have seen that two of the sets are not ideals. What we have is shifted ideals
+%
+\nbea
+\mathbb{Z}/3\mathbb{Z} & = & \{ 0 + 3\mathbb{Z}, 1 + 3\mathbb{Z}, 2 + 3\mathbb{Z}\} \\
+0 + 3\mathbb{Z} & = & \{\dots, \underbrace{{\bf 0+}-3}_\text{-3},\underbrace{{\bf 0+}0}_\text{0}, \underbrace{{\bf 0+}3}_\text{3}, \dots\} \\
+1 + 3\mathbb{Z} & = & \{\dots, \underbrace{{\bf 1+}-3}_\text{-2},\underbrace{{\bf 1+}0}_\text{1},\underbrace{{\bf 1+}3}_\text{4}, \dots\} \\
+2 + 3\mathbb{Z} & = & \{\dots, \underbrace{{\bf 2+}-3}_\text{-1},\underbrace{{\bf 2+}0}_\text{2},\underbrace{{\bf 2+}3}_\text{5}, \dots\}
+\neea
+%
+Or in a physicist friendly way (in talking about quotient of a group), we identify each element of $\mathbb{Z}$ using $n\mathbb{Z}$, thus $0 \to 0 + n\mathbb{Z}$, etc. How about $n$ itself? $n$ has been covered by $0 + n\mathbb{Z}$. So in this way $n\mathbb{Z}$ acts as a gauge transformation and each $k + n\mathbb{Z}$ is a gauge orbit.
+
+{\bf Proposition 2.1.9} I proved this before in this document, ``{\it A number $n \in \mathbb{Z}$ is divisible by $3$ if and only if the sum of the digits of $n$ is divisible by $3$.}"
+
+His proof boils down to
+%
+\nbea
+n & = & a + 10b + 100c + \dots \equiv a +b+ c + \cdots ({\rm mod~} 3)
+\neea
+%
+Now why does this proof work? It says that $n = (a+b+c)({\rm mod~} 3)$. The meaning of $({\rm mod~} 3)$ is that $a = b ({\rm mod~} 3) \to 3 | a-b$ so in this case $3 | n - (a+b+c)$ but since $3|n$ therefore $3|(a+b+c).$
 
 
+{\bf Problem 2.12} Let $p$ be prime. Prove that $\mathbb{Z}/p\mathbb{Z}$ is a field.
 
+What is the reasoning behind this? Remember that a field is a ring where each non-zero element has an ``inverse" under multiplication, \ie for each element $a \neq 0$ we can find another element $b$ such that $ab=1$.
 
+If $q$ is not prime we can show that $\mathbb{Z}/q\mathbb{Z}$ is {\bf not} a field. Here is why. For simplicity let's denote $\mathbb{Z}/q\mathbb{Z}$
+%
+\nbea
+\mathbb{Z}/q\mathbb{Z} & = & \{0,1,2,3, \dots, q-1\}
+\neea
+%
+where each number is actually $k + q\mathbb{Z}$. So, if $q$ is not prime, at least one of the numbers in $\mathbb{Z}/q\mathbb{Z}$ less than $q$ has to be a factor of $q$, let's denote this number $w,~w < q$. Since $w$ is a factor of $q \to q = w m$.
 
+The identity element, $1$, in the ring $\mathbb{Z}/q\mathbb{Z}$ is actually $qn + 1 = w(mn) + 1$. Now we want to find another element $u$ such that $uw = 1 = qn + 1 = w(mn) + 1$, but this is a contradiction since $w (u - mn) = 1 \to w|1$. Thus $\mathbb{Z}/q\mathbb{Z}$ for non prime $q$ is {\bf not} a field.
 
+Back to our original problem, we need to show the opposite, that for a prime $p$, $\mathbb{Z}/p\mathbb{Z}$ is always a field. As shown above, since none of the elements of $\mathbb{Z}/p\mathbb{Z}$ is a factor of $p$, this should be possible, the hard part is showing {\bf how} this can definitely be done (answer: induction).
 
+The trick here is to utilize the circular structure of $\mathbb{Z}/p\mathbb{Z}$ in the induction step. The base case is obviously $a \in \mathbb{Z}/p\mathbb{Z},~a = 1$ with the inverse being itself $1\cdot 1 = 1$. Now suppose that we have found the inverse for each non-zero element of $\mathbb{Z}/p\mathbb{Z}$ up to $n$, how about $v=n+1$?
 
+Notice that each non-zero element of $\mathbb{Z}/p\mathbb{Z}$ is less than $p$. This means that we can write 
+%
+\nbea
+p & = & vq + r
+\neea
+%
+What we want is to just exceed $p$, if we add one more $v \to v(q + 1)$ and substracting $p$ from it we get $v(q + 1) - p = v - r$. We know that $r < v$ therefore $v - r < v$ but the case of $< v$, \ie all elements up to $n$, already has an inverse and we can use that inverse to get the inverse of $v$. For example $v-r = d$ and the inverse of $d$ is $y$ such that $dy=ps + 1 = 1$. This means that since $p = vq + r$ and $v-r = d$
+%
+\nbea
+v(q+1) & = & p + d \\
+v(q+1)y & = & py + dy  = py + (ps + 1)\\
+v(q+1)y & = & p(y+s) + 1 
+\neea
+%
+\ie $v(q+1)y = 1$ and the inverse of $v$ is $(q+1)y$. The primality of $p$ was needed to guarantee that $r \neq 0,~v \nmid p$ otherwise the proof doesn't work.
 
+$(q+1)y$ is generally not the ``smallest" inverse of $v$ but we can of course bring it back to be $< p$ by substracting it by $pt \to v((q+1)y -pt) = p(y+s-tv) + 1 = 1$ for some $t$ such that $0 < (q+1)y -pt < p$.
 
+Now, we are dealing with $k + n\mathbb{Z}$. If the element we are inspecting is $> p$ or $< 0$ we can still repeat the same argument but this time instead of just exceeding $p$ we want to exceed $|np|$ with $|n|$ the smallest number such that $|np| > |v|$.
+
+Notice that in the above argument, we can identify $v(q+1) = d$ because of the circular structure of $\mathbb{Z}/p\mathbb{Z}$ which also allows us to utilize previously discovered inverses. Let's see this with a concrete example using $\mathbb{Z}/7\mathbb{Z}$ and pick from it the element $v = 3$ (lucky seven meet holy trinity).
+%
+\nbea
+7 & = & 3 \times 2 + 1
+\neea
+%
+Adding one more $3$ and substracting $7$
+%
+\nbea
+((3 \times 2) + 3) - 7 & = & 3 - 1 \\
+& = & 2
+\neea
+%
+But in the induction process leading up to $3$ we have found the inverse for $2$ which is $4, ~2\cdot 4 = 8 = 1$. Thus the inverse of $3$ is $(2+1)\cdot 4 = 12 \to 3 \times 12 = 36 = 7\cdot 5 + 1$.
+
+Some sidenote, we can of course use the above method to get the inverse of $2$ from the inverse of $1$ but it can actually be computed a lot easier. In the case of $2$ the inverse is $y$ such that $2y = pn +  1$. We want $pn + 1$ to be even and unless $p$ is $2$, $p$ is always odd. Therefore any odd $n$ will do ($n=1$ is a very good choice) and $y$ is just $(p+1)/2$ while the case of $p=2$ is trivial since the only members of $\mathbb{Z}/2\mathbb{Z}$ are $\{0,1\}$.
+
+In conclusion we have done a 2-in-1 combo deal. We have proven that if $p$ is not prime then $\mathbb{Z}/p\mathbb{Z}$ is a not field, in other words if $\mathbb{Z}/p\mathbb{Z}$ is a field then $p$ is prime and we have proven that if $p$ is prime then $\mathbb{Z}/p\mathbb{Z}$ is a field. Therefore we have proven a much stronger statement, {\it $p$ is prime if and only if $\mathbb{Z}/p\mathbb{Z}$ is a field}.
 
 
 
