@@ -3043,9 +3043,36 @@ The proof now continues through several bridges.
 \end{enumerate}
 As we have seen, the induction proof was not a typical one, we're not proving the link between $n$ and $n+1$, he assumes that all elements less than $n+1$ are true and then show that our target is equal to one of those earlier elements. Very clever indeed.
 
+{\bf Lemma 1.1.17, ``Gangnam Style''}. Despite being a very clever proof I would like a simpler one :) A much simpler proof will utilize Euclid's algo
+%
+\nbea
+a & = & bq_1 + r_1 \\
+b & = & r_1q_2 + r_2 \\
+& \vdots & \\
+r_{m-2} & = & r_{m-1} q_m + (1?)
+\neea
+%
+where if the last remainder is 1 the gcd between $a$ and $b$ is 1, otherwise it is $r_{m-1}$. If we multiply $a$ and $b$ by $n$, the multiplication will cascade down all the way
+%
+\nbea
+na & = & nb \cdot q_1 + nr_1 \\
+nb & = & nr_1 \cdot q_2 + nr_2 \\
+& \vdots & \\
+nr_{m-2} & = & nr_{m-1} \cdot q_m + (n \cdot 1?)
+\neea
+%
+if the last remainder is $n$ then the gcd is $n$ since $ n | nr_{m-1}$ otherwise the remainder is $nr_{m-1}$. Thus $\gcd(na,nb) = |n| \cdot \gcd(a,b)$.
+
 {\bf Theorem 1.1.19} Another clever proof, another indirect one. The goal is to show that if $p$ is prime and $p|ab$ then either $p|a$ or $p|b$.
 
 He approaches this by showing that $p|\gcd(pb, ab)$ why? because $\gcd(pb, ab) = b\gcd(p, a) = b$. So his approach was to find ``how can I represent $b$? are there any other forms of $b$ that are divisible by $p$?" The answer of course is that $p|\gcd(pb, ab)$ and $\gcd(pb, ab)$ happens to be $b$ itself. Nice trick.
+
+{\bf Theorem 1.1.19, ``Gangnam Style''}. I, on the other hand, will personally do it the other way. Starting with there was a prime $p$ and if $p \nmid a$ and $p \nmid b$ then $p \nmid ab$, \ie we turn it around, from ``'if A then B'' into ``if not B then not A''.
+
+Say $p \nmid a$ and $p \nmid b$ and we then assume a contradiction $p | ab$. Now $p | pa$ and $p | ab$, from Lemma 1.1.17 $p | \gcd(pa,ab) \to p | a \gcd (p,b)$. Since $p$ is prime $\gcd(p,b)$ is either $p$ or 1. If $\gcd(p,b) = 1$ then $p | a \gcd (p,b) = p|a \cdot 1$ which is a contradiction, if $\gcd(p,b) = p$ then $p|b$ which is also a contradiction, which means that our assumption $p|ab$ is wrong, \ie $p \nmid ab$.
+
+Since $p \nmid a$ and $p \nmid b \longrightarrow p \nmid ab$ this means that $p|ab \longrightarrow p|a$ or $p|b$ with the understanding that $p$ is prime.
+
 
 {\bf Theorem 1.1.6}, the proof is actually on page 10. I just want to recap the strategy he used to prove this theorem. The key is Theorem 1.1.19 but to prove 1.1.19 you need to know about gcd and its properties, they are
 \begin{enumerate}
@@ -3370,6 +3397,15 @@ The proof proceeds like the field sieve algorithm. Say we list all $N$ primes $p
 
 Since $p_1, p_2, \dots, p_N$ do not divide $n$ the next prime factor candidate will be $p_{N+1} > p_n > \sqrt{n}$. But for $n = p_{N+1} m$, $m$ has to be $< \sqrt{n}$ and contain one of the $p_1, p_2, \dots, p_N$, otherwise the only other option is $p_{N+1}p_{N+1} > \sqrt{n}\sqrt{n} > n$ but none of $p_1, p_2, \dots, p_N$ divides $n$ thus no prime divides $n$ and $n$ itself must be prime.
 
+{\bf Chapter 1 Conclusion}
+%
+\bit
+\item On the way through proving the fundamental theorem we see how important $\gcd(na,nb) = n \cdot \gcd(a,b)$ is.
+\item We don't need to use the fundamental theorem as I have shown in solving the various problems above. This reiterates the idea that math is an interconnected web of theorems as mentioned by Feynman, if we don't have a theorem we can use other theorems as bridges to the one we need.
+\item Keen observations are a must, we need all we can get on those numbers.
+\eit
+%
+
 ++++++++++++++++++++++++++++++++++\\
 
 {\it Example }2.1.5.
@@ -3407,6 +3443,15 @@ n & = & a + 10b + 100c + \dots \equiv a +b+ c + \cdots ({\rm mod~} 3)
 %
 Now why does this proof work? It says that $n = (a+b+c)({\rm mod~} 3)$. The meaning of $({\rm mod~} 3)$ is that $a = b ({\rm mod~} 3) \to 3 | a-b$ so in this case $3 | n - (a+b+c)$ but since $3|n$ therefore $3|(a+b+c).$
 
+{\bf Definition 2.1.11} ``(Complete Set of Residues). $\dots$ pairwise distinct''. The name is apt since the set is the set of residues of $n$, \eg $1,2,3,\dots,n-1$. The ``pairwise distinct'' phrase, I think, means that every two elements of $R$ are not related by $n$, \ie every two elements $x_1$ and $x_2$ of $R$, $n \nmid (x_1 - x_2)$.
+
+{\bf Lemma 2.1.12,``Gangnam Style''}. The way I'll prove it is to show it through a contradiction. Assume that $aR$ is not a complete set of residues modulo $n$, which means that there are two elements of $aR$, say $ax_1 - ax_2$ such that
+%
+\nbea
+n | a(x_1 - x_2)
+\neea
+%
+since $\gcd(n,a) = 1$ from Problem 1.8 (b) we know that $n|(x_1 - x_2)$ but this is a contradiction since the elements of $R$ are pairwise distinct. Thus $aR$ is a complete set of residues modulo $n$.
 
 {\bf Problem 2.12} Let $p$ be prime. Prove that $\mathbb{Z}/p\mathbb{Z}$ is a field.
 
