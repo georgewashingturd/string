@@ -732,9 +732,65 @@ Some sidenote, we can of course use the above method to get the inverse of $2$ f
 
 In conclusion we have done a 2-in-1 combo deal. We have proven that if $p$ is not prime then $\mathbb{Z}/p\mathbb{Z}$ is a not field, in other words if $\mathbb{Z}/p\mathbb{Z}$ is a field then $p$ is prime and we have proven that if $p$ is prime then $\mathbb{Z}/p\mathbb{Z}$ is a field. Therefore we have proven a much stronger statement, {\it $p$ is prime if and only if $\mathbb{Z}/p\mathbb{Z}$ is a field}.
 
+{\bf Definition 2.1.16}. Be careful about the reasoning in this proof, especially the following statement
+
+There are only finitely many residue classes modulo n, so we must eventually ﬁnd two integers $i, j$ with $i < j$ such that
+%
+\nbea
+x^j \equiv x^i ({\rm mod~} n).
+\neea
+%
+
+What he was saying is not that the series $x^j$ will produce all remainders of $n$ but that at some point the remainder will repeat, \eg $x^i = nq + r,~x^j = nq' + r'$ where $r' = r$. It doesn't mean that that we will have all remainders $0,1, \dots, n-1$ of $n$.
+
+{\bf Theorem 2.1.20}. The proof is similar to Lemma 2.1.12. If two elements of $xP$ are congruent, \ie $xa = xa' ({\rm mod~} n)$ then since $\gcd(x,n)=1$ according to Proposition 2.1.10 we can divide both sides $\bcancel{x}a = \bcancel{x}a' ({\rm mod~} n)$.
+
+But since all elements of $P$ are distinct $a = a'$. Meaning $xP$ has the same number of elements as $P$ and they are all distinct.
+
+Note that this doesn't mean that $xa = a ({\rm mod~} n)$!
+
+{\bf Proposition 2.1.22}. In the proof of Wilson's theorem the enigmatic statement
+
+If $a \in \{1, 2, . . . , p - 1\}$, then the equation
+%
+\nbea
+ax \equiv 1 ({\rm mod~} p)
+\neea
+%
+has a unique solution $a' \in \{1, 2, . . . , p - 1\}$. 
+
+The above statement is from Exercise 2.12, \ie if $p$ is prime then $\mathbb{Z}/p\mathbb{Z}$ is a field, since $\mathbb{Z}/p\mathbb{Z}$ is a field every element has an inverse. The set $\{1, 2, . . . , p - 1\}$ is just the lift of $\mathbb{Z}/p\mathbb{Z}$ thus each element has an inverse as well.
+
+``Multiplying both sides by $p-1$ proves that $(p-1)! \equiv 1 ({\rm mod~} n)$''. Note that
+%
+\nbea
+1 ({\rm mod~} n) & = & 1 + pm \\
+\to (p-1) \times \{1 ({\rm mod~} n)\} & = & (p-1)(1 + pm) \\
+& = & -1 + p(pm + 1 - m) \\
+(p-1) \{1 ({\rm mod~} n)\} & = & -1 ({\rm mod~}n)
+\neea
+%
+
+Another mysterious statement is ``so that $p \ge 4$ is a composite number'', what happens to 3? Well 3 was the example on page 27.
+
+There are a couple keen observations in this proof
+\bit
+\item $l|(p-1)!$, this is because $l|p$ so $l < p$ and $(p-1)! = 1\cdot 2\cdot 3 \dots (p-1)$ since it lists all numbers between 0 and $p$, it must contain $l$.
+\item ``a prime cannot divide a number $a$ and also divide $a+1$''
+\eit
+
+{\bf Theorem 2.2.2}. In the proof we need to substract both sides of $a + tm \equiv b ({\rm mod~} n)$. We can always add and substract both sides of a congruence since if $a \equiv b ({\rm mod~} n)$ then $n|(a-b) \to n|((a+\Delta) - (b + \Delta))$.
+
+Multiplication is a bit trickier if $a \equiv b ({\rm mod~}n)$ then $ca \equiv cb ({\rm mod~}n)$. We can of course divide both sides with $c$ even if $c \nmid n$. However, we can't just factor out both sides in general.
+
+
+
+
+
 
 
 \end{document}
+
 
 
 
