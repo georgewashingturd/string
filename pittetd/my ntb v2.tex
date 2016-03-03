@@ -443,6 +443,52 @@ a(s+1) + b(t + 1) & > & ab + 1
 %
 $s \ge b, t \ge 0$ will do.
 
+{\bf Theorem 2.4}. This is a spin off of Theorem 1.4 and Theorem 1.5 as explained in the previous paragraph. Theorem 1.4 is $a = bq + r$ here $a = nq + z \to z = a - nq \to z = a + ny$ with $y = -q$. $z$ plays the role of the remainder here and as such it can always be shifted to $[x,x+n)$ according to Theorem 1.5.
+
+{\bf Exercise 2.7}.  Let $a, b, n \in \mathbb{Z}$ with $n > 0$ and $a \equiv b ({\rm mod~} n)$. Show that
+$\gcd(a, n) = \gcd(b, n)$.
+
+We know that $a \equiv b ({\rm mod~} n)$ means $n|(a-b)$. Say $\gcd(a,n) = g_a$ and $\gcd(b,n) = g_b$ and $g_a \neq g_b$. Since $a-b = nn'$, 
+%
+\nbea
+a & = & b + nn' \\
+& = & g_bb' + (g_bn_b)n',~~~ n = g_b n_b \\
+& = & g_b(b' + n_bn') \\
+\to g_b & | & a
+\neea
+%
+By the same token $g_a|b$. Denote $g_{ab} \equiv {\rm lcm}({g_a,g_b})$. Since $g_a,g_b$ both divide $a$, $b$, and $n$, $\gcd(a,n)$ and $\gcd(b,n)$ are $g_{ab} \neq g_a \neq g_b$ which is a contradiction. ($g_{ab}$ can be equal to $g_a$ but that requires $g_a = g_b$)
+
+{\bf Exercise 2.9}.  Let $e$ be a positive integer. For $a \in \{0, \dots , 2^e - 1\}$, let $\tilde a$ denote the integer obtained by inverting the bits in the $e$-bit, binary representation of $a$ (note that $\tilde a \in \{0, \dots , 2^e - 1\}$). Show that $\tilde a + 1 \equiv -a ({\rm mod~} 2^e)$. This justfies the usual rule for computing negatives in 2's complement arithmetic (which is really just arithmetic modulo $2^e$).
+
+First thing to clarify, even though $\tilde a \in \{0, \dots , 2^e - 1\}$ it doesn't mean that $\tilde a$ can take any value, \eg say $e=3,~2^e-1 = 7$ then if $a=1(001)$ then $\tilde a = 6(110)$ otherwise $\tilde a + 1 \equiv -a ({\rm mod~} 2^e)$ doesn't hold.
+
+We can rewrite $\tilde a + 1 \equiv -a ({\rm mod~} 2^e)$ as $\tilde a + a + 1 \equiv 0 ({\rm mod~} 2^e)$ since $\tilde a$ is just the binary complement of $a$
+%
+\nbea
+\tilde a + a & = & \underbrace{111 \dots 1}_\text{$e$ number of ones} = 2^e - 1
+\neea
+%
+Thus
+%
+\nbea
+\tilde a + a + 1 & = & 2^e - 1 + 1 \\
+& = & 2^e \\
+& \equiv & 0 ({\rm mod~} 2^e)
+\neea
+%
+
+{\bf Exercise 2.10}. Show that the equation $7y^3 + 2 = z^3$ has no solutions $y, z \in \mathbb{Z}$.
+
+The LHS is $7y^3 + 2 \equiv 2({\rm mod~}7)$ since $7y^3$ is a multiple of $7$. This means that the RHS has to be $z^3 \equiv 2({\rm mod~}7)$ as well. But there's no integer $z'$ such that $z'^3 = 2$ thanks to Theorem 2.3. Since if there is then $z \equiv z' ({\rm mod~} 7) \to z^3 \equiv z'^3({\rm mod~} 7)$ meaning $z'^3 = 2$.
+
+
+
+
+
+
+
+
 
 
 
@@ -450,6 +496,7 @@ $s \ge b, t \ge 0$ will do.
 
 
 \end{document}
+
 
 
 

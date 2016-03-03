@@ -707,11 +707,11 @@ v(q+1)y & = & py + dy  = py + (ps + 1)\\
 v(q+1)y & = & p(y+s) + 1 
 \neea
 %
-\ie $v(q+1)y = 1$ and the inverse of $v$ is $(q+1)y$. The primality of $p$ was needed to guarantee that $r \neq 0,~v \nmid p$ otherwise the proof doesn't work.
+\ie $v(q+1)y = 1$ and the inverse of $v$ is $(q+1)y$. The primality of $p$ was needed to guarantee that $r \neq 0,~v \nmid p$ otherwise the proof doesn't work. Also, $(q+1)y$ cannot be $0({\rm mod~}p)$ because otherwise $v(pv') = p(y+s) + 1 \to p(vv' - (y+s)) = 1\to p|1$ which is a contradiction.
 
 $(q+1)y$ is generally not the ``smallest" inverse of $v$ but we can of course bring it back to be $< p$ by substracting it by $pt \to v((q+1)y -pt) = p(y+s-tv) + 1 = 1$ for some $t$ such that $0 < (q+1)y -pt < p$.
 
-Now, we are dealing with $k + n\mathbb{Z}$. If the element we are inspecting is $> p$ or $< 0$ we can still repeat the same argument but this time instead of just exceeding $p$ we want to exceed $|np|$ with $|n|$ the smallest number such that $|np| > |v|$.
+Now, we are dealing with $k + n\mathbb{Z}$. If the element we are inspecting is $> p$ or $< 0$ we can still repeat the same argument but this time instead of just exceeding $p$ we want to exceed $\pm|np|$ with $\pm|n|$ the smallest number such that $|np| > |v|$.
 
 Notice that in the above argument, we can identify $v(q+1) = d$ because of the circular structure of $\mathbb{Z}/p\mathbb{Z}$ which also allows us to utilize previously discovered inverses. Let's see this with a concrete example using $\mathbb{Z}/7\mathbb{Z}$ and pick from it the element $v = 3$ (lucky seven meet holy trinity).
 %
@@ -727,6 +727,16 @@ Adding one more $3$ and substracting $7$
 \neea
 %
 But in the induction process leading up to $3$ we have found the inverse for $2$ which is $4, ~2\cdot 4 = 8 = 1$. Thus the inverse of $3$ is $(2+1)\cdot 4 = 12 \to 3 \times 12 = 36 = 7\cdot 5 + 1$.
+
+The last thing to show is that if all there inverses are unique. Say two elements $a$ and $b$ have the same inverse $c$
+%
+\nbea
+ac & \equiv & 1 ({\rm mod~} p) \\
+bc & \equiv & 1 ({\rm mod~} p) \\
+\to c(a-b) & \equiv & 0 ({\rm mod~} p)
+\neea
+%
+but since $c$ is not zero (see comment above) then $a=b$. Thus all inverses are unique.
 
 Some sidenote, we can of course use the above method to get the inverse of $2$ from the inverse of $1$ but it can actually be computed a lot easier. In the case of $2$ the inverse is $y$ such that $2y = pn +  1$. We want $pn + 1$ to be even and unless $p$ is $2$, $p$ is always odd. Therefore any odd $n$ will do ($n=1$ is a very good choice) and $y$ is just $(p+1)/2$ while the case of $p=2$ is trivial since the only members of $\mathbb{Z}/2\mathbb{Z}$ are $\{0,1\}$.
 
@@ -759,15 +769,15 @@ ax \equiv 1 ({\rm mod~} p)
 %
 has a unique solution $a' \in \{1, 2, . . . , p - 1\}$. 
 
-The above statement is from Exercise 2.12, \ie if $p$ is prime then $\mathbb{Z}/p\mathbb{Z}$ is a field, since $\mathbb{Z}/p\mathbb{Z}$ is a field every element has an inverse. The set $\{1, 2, . . . , p - 1\}$ is just the lift of $\mathbb{Z}/p\mathbb{Z}$ thus each element has an inverse as well.
+The above statement is from Exercise 2.12, \ie if $p$ is prime then $\mathbb{Z}/p\mathbb{Z}$ is a field, since $\mathbb{Z}/p\mathbb{Z}$ is a field every element has an inverse. The set $\{1, 2, . . . , p - 1\}$ is just the lift of $\mathbb{Z}/p\mathbb{Z}$ thus each element has an inverse as well. Another crucial ingredient is that all inverses are unique such that the number of inverses are the same as the number of residues, \ie we can cover all the numbers in $(p-1)! = 1\cdot 2\cdot 3 \dots p-1$ and therefore pair up a residue with its inverse.
 
 ``Multiplying both sides by $p-1$ proves that $(p-1)! \equiv 1 ({\rm mod~} n)$''. Note that
 %
 \nbea
-1 ({\rm mod~} n) & = & 1 + pm \\
-\to (p-1) \times \{1 ({\rm mod~} n)\} & = & (p-1)(1 + pm) \\
-& = & -1 + p(pm + 1 - m) \\
-(p-1) \{1 ({\rm mod~} n)\} & = & -1 ({\rm mod~}n)
+1 ({\rm mod~} n) & \equiv & 1 + pm \\
+\to (p-1) \times \{1 ({\rm mod~} n)\} & \equiv & (p-1)(1 + pm) \\
+& \equiv & -1 + p(pm + 1 - m) \\
+(p-1) \{1 ({\rm mod~} n)\} & \equiv & -1 ({\rm mod~}n)
 \neea
 %
 
@@ -779,7 +789,7 @@ There are a couple keen observations in this proof
 \item ``a prime cannot divide a number $a$ and also divide $a+1$''
 \eit
 
-{\bf Theorem 2.2.2}. In the proof we need to substract both sides of $a + tm \equiv b ({\rm mod~} n)$. We can always add and substract both sides of a congruence since if $a \equiv b ({\rm mod~} n)$ then $n|(a-b) \to n|((a+\Delta) - (b + \Delta))$.
+{\bf Theorem 2.2.2}. In the proof we need to substract both sides of $a + tm \equiv b ({\rm mod~} n)$. We can always add and substract both sides of a congruence since if $a \equiv b ({\rm mod~} n)$ then $n|(a-b) \to n|((a+\Delta) - (b + \Delta)) = n|(a-b)$.
 
 Multiplication is a bit trickier if $a \equiv b ({\rm mod~}n)$ then $ca \equiv cb ({\rm mod~}n)$. We can of course divide both sides with $c$ even if $c \nmid n$. However, we can't just factor out both sides in general.
 
@@ -790,6 +800,7 @@ Multiplication is a bit trickier if $a \equiv b ({\rm mod~}n)$ then $ca \equiv c
 
 
 \end{document}
+
 
 
 
