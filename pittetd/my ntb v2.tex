@@ -24,6 +24,7 @@
 
 \usepackage{mathtools} % for \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 
+\usepackage{simplewick}
 
 \newcommand{\msout}[1]{\text{\sout{\ensuremath{#1}}}}
 
@@ -482,15 +483,51 @@ Thus
 
 The LHS is $7y^3 + 2 \equiv 2({\rm mod~}7)$ since $7y^3$ is a multiple of $7$. This means that the RHS has to be $z^3 \equiv 2({\rm mod~}7)$ as well. But there's no integer $z'$ such that $z'^3 = 2$ thanks to Theorem 2.3. Since if there is then $z \equiv z' ({\rm mod~} 7) \to z^3 \equiv z'^3({\rm mod~} 7)$ meaning $z'^3 = 2$.
 
+{\bf Theorem 2.5 {\it(i)}}. It's cool to see an alternative proof, he uses the alternative definition of gcd $as + bt = d$ and Theorem 1.8 to prove it. 
 
+{\bf Theorem 2.5 {\it(ii)}}. This also relates to the statement on page 20 ``The image of $\tau_a$ consists of the $n/d$ integers $i\cdot d (i = 0, \dots, n/d - 1)$''.
 
+Remember that $\gcd(a,n) = d$, let's denote $n_d = n/d$, therefore
+%
+\nbea
+az & = & ny + r \\
+(da')z & = & (dn_d)y + r
+\neea
+%
+Therefore $d|r$
+%
+\nbea
+d(a'z) & = & d(n_d y) + dr' \\
+\to a'z & = & n_d y + r'
+\neea
+%
+Since $0 < r' < n_d$, there are only $n_d - 1$ different values of $r'$ and therefore there are only $n_d - 1$ different values of $r = dr'$. This explains $i\cdot d (i = 0, \dots, n/d - 1)$.
 
+For the next statement ``Moreover, every element $b$ in the image of $\tau_a$ has precisely $d$ pre-images $z_0 + j \cdot (n/d) (j = 0, \dots , d - 1)$, where $z_0 \in \{0, . . . , n/d - 1\}$''. This is because
+%
+\nbea
+a'(z + n_dx) & = & n_d y + r'
+\neea
+%
+\ie shifting $z$ by $n_dx$ doesn't change $r'$ and therefore doesn't change $r = dr'$ either. So for each $r$ there are a few $z$'s related to it. How many? Well, we can rearrange the numbers $0,1, \dots, n-1$ into groups of $n_d-1$ clusters
+%
+\nbea
+\overbrace{\underbrace{0, \dots, n_d - 1}_\text{$n_d$ remainders} ~ \underbrace{0 + n_d, \dots, n_d - 1 + n_d}_\text{$n_d$ remainders} ~ \dots ~ \underbrace{0 + (d-1) n_d, \dots, n_d - 1 + (d-1) n_d}_\text{$n_d$ remainders}}^\text{$d$ repetitions of $n_d$ remainders}
+\neea
+%
+The preimages of $z$ are shown below
+$$
+\contraction{}{0}{~~~~~~~~~~~~~~~~~~~~~~~~~}{}
+\contraction[2ex]{0~}{1}{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}{}
+\contraction[3ex]{0~1~~~~~~~~~~}{1}{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}{}
+\bcontraction{0~1~2~~(0~~~~~~~~~~~~~~~}{1}{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}{}
+\bcontraction[2ex]{0~1~2~~(0+n_d)(1~~~~~~~~~~~~~~}{1}{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}{}
+\bcontraction[3ex]{0~1~2~~(0+n_d)(1 + n_d)(2~~~~~~~~~~~~~~~~~~~~~~~}{1}{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}{}
+0~1 \dots (n_d-1)~|~(0+n_d)(1 + n_d) \dots (n_d - 1 + n_d) ~|~ (0+2n_d)(1 + 2n_d) \dots (n_d - 1 + 2n_d)
+$$
+\ie $0, n_d, 2n_d, \dots, (d-1)n_d$ have the same remainder, ditto for $1,1 + n_d, 1 + 2n_d, \dots, 2 + (d-1)n_d$ and so on.
 
-
-
-
-
-
+Therefore there are $d$ preimages for each $z$.
 
 
 
