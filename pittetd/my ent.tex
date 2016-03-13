@@ -252,6 +252,10 @@ Since they are a subset $\gcd(a,b) \le \gcd(a,b-a)$ as the max element of the su
 
 The next step in the proof is to show that $\gcd(a,b-a) \le \gcd(a,b)$. He did this by replacing $a \to -a$, $b \to b-a$ such that $\gcd(a,b) \to \gcd(-a, b-a)$. He then repeats the reasoning above, every common divisor of $-a$ and $b-a$ is also a divisor of $(b-a) - (-a) = b$ this means that $\gcd(-a,b-a) \le \gcd(-a,b)$ but $\gcd(-a,b-a) = \gcd(a, b-a),~\gcd(-a,b) = \gcd(a,b)$. This completes the proof.
 
+{\bf Lemma 1.1.9, lowbrow version}. The way I'd prove this is straighforward, \ie proof by contradiction. Assume $d = \gcd(a,b) \neq d' = \gcd(a, b-a)$. There are then only two choices, either $d > d'$ or $d < d'$. Start with $d > d'$. Now since $d|a$ and $d|b \to d | b-a$ this means that $d$ is a common divisor of $a$ and $b-a$ which is a contradiction since $d > d'$, \ie no other common divisor should be larger than $d'$, the {\it greatest} common divisor of $a$ and $b-a$.
+
+The other way around, $d < d'$, is also a contradiction. Because $d'|a$ and $d'|b-a \to d'|b$, so here we find a common divisor $d'$ of $a,b$ that is greater than the {\it greatest} common divisor $d$! Thus $d$ must be equal to $d'$.
+
 {\bf Lemma 1.1.17} This is another cool one. He uses (strong) induction in a way I'd neven seen before. Usually you use induction by proofing the link between $n$ and $n+1$ but he doesn't. Instead he retrospects, let's see what I mean.
 
 The goal here is to prove $\gcd(an,bn) = \gcd(a,b) \cdot |n|$ something very obvious.
@@ -265,7 +269,7 @@ The proof now continues through several bridges.
 \end{enumerate}
 As we have seen, the induction proof was not a typical one, we're not proving the link between $n$ and $n+1$, he assumes that all elements less than $n+1$ are true and then show that our target is equal to one of those earlier elements. Very clever indeed.
 
-{\bf Lemma 1.1.17, ``Gangnam Style''}. Despite being a very clever proof I would like a simpler one :) A much simpler proof will utilize Euclid's algo
+{\bf Lemma 1.1.17,  lowbrow version}. Despite being a very clever proof I would like a simpler one :) A much simpler proof will utilize Euclid's algo
 %
 \nbea
 a & = & bq_1 + r_1 \\
@@ -289,7 +293,7 @@ if the last remainder is $n$ then the gcd is $n$ since $ n | nr_{m-1}$ otherwise
 
 He approaches this by showing that $p|\gcd(pb, ab)$ why? because $\gcd(pb, ab) = b\gcd(p, a) = b$. So his approach was to find ``how can I represent $b$? are there any other forms of $b$ that are divisible by $p$?" The answer of course is that $p|\gcd(pb, ab)$ and $\gcd(pb, ab)$ happens to be $b$ itself. Nice trick.
 
-{\bf Theorem 1.1.19, ``Gangnam Style''}. I, on the other hand, will personally do it the other way. Starting with there was a prime $p$ and if $p \nmid a$ and $p \nmid b$ then $p \nmid ab$, \ie we turn it around, from ``'if A then B'' into ``if not B then not A''.
+{\bf Theorem 1.1.19, lowbrow version}. I, on the other hand, will personally do it the other way. Starting with there was a prime $p$ and if $p \nmid a$ and $p \nmid b$ then $p \nmid ab$, \ie we turn it around, from ``'if A then B'' into ``if not B then not A''.
 
 Say $p \nmid a$ and $p \nmid b$ and we then assume a contradiction $p | ab$. Now $p | pa$ and $p | ab$, from Lemma 1.1.17 $p | \gcd(pa,ab) \to p | a \gcd (p,b)$. Since $p$ is prime $\gcd(p,b)$ is either $p$ or 1. If $\gcd(p,b) = 1$ then $p | a \gcd (p,b) = p|a \cdot 1$ which is a contradiction, if $\gcd(p,b) = p$ then $p|b$ which is also a contradiction, which means that our assumption $p|ab$ is wrong, \ie $p \nmid ab$.
 
@@ -667,7 +671,7 @@ Now why does this proof work? It says that $n = (a+b+c)({\rm mod~} 3)$. The mean
 
 {\bf Definition 2.1.11} ``(Complete Set of Residues). $\dots$ pairwise distinct''. The name is apt since the set is the set of residues of $n$, \eg $1,2,3,\dots,n-1$. The ``pairwise distinct'' phrase, I think, means that every two elements of $R$ are not related by $n$, \ie every two elements $x_1$ and $x_2$ of $R$, $n \nmid (x_1 - x_2)$.
 
-{\bf Lemma 2.1.12,``Gangnam Style''}. The way I'll prove it is to show it through a contradiction. Assume that $aR$ is not a complete set of residues modulo $n$, which means that there are two elements of $aR$, say $ax_1 - ax_2$ such that
+{\bf Lemma 2.1.12, lowvrow version}. The way I'll prove it is to show it through a contradiction. Assume that $aR$ is not a complete set of residues modulo $n$, which means that there are two elements of $aR$, say $ax_1 - ax_2$ such that
 %
 \nbea
 n | a(x_1 - x_2)
@@ -789,10 +793,11 @@ There are a couple keen observations in this proof
 \item ``a prime cannot divide a number $a$ and also divide $a+1$''
 \eit
 
+Wilson's theorem can also be stated in a different way stating that there are arbitrarily large gaps between successive primes, \ie for any positive integer $n$ there is a sequence of $n$ consecutive composite integers.
+
 {\bf Theorem 2.2.2}. In the proof we need to substract both sides of $a + tm \equiv b ({\rm mod~} n)$. We can always add and substract both sides of a congruence since if $a \equiv b ({\rm mod~} n)$ then $n|(a-b) \to n|((a+\Delta) - (b + \Delta)) = n|(a-b)$.
 
 Multiplication is a bit trickier if $a \equiv b ({\rm mod~}n)$ then $ca \equiv cb ({\rm mod~}n)$. We can of course divide both sides with $c$ even if $c \nmid n$. However, we can't just factor out both sides in general.
-
 
 
 

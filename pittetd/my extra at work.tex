@@ -2942,7 +2942,7 @@ since $r < p_3, ~ \tilde r < p_2 \to \frac{r}{p_3} < 1, ~ \frac{\tilde r}{p_2} <
 r p_2 & = & p_3 \tilde r 
 \neea
 %
-but since $r < m$, $\tilde r < n$, this is a contradiction, \ie $m$ can't be larger than $p_3$!
+but this means that $N = r p_2 = p_3 \tilde r$ is divisible by $p_2$ and $p_3$, \ie $N$ is a common multiple of $p_2, p_3$ also since $r < m, ~ \tilde r < n \rightarrow N < mp_2, ~N < n p_3$ this is a contradiction since there shouldn't be a lesser common multiple than the least common multiple!
 
 Next option is $m < p_3$, this means that $n < p_2$ such that the equality has a chance to hold, this also means that
 %
@@ -2988,33 +2988,27 @@ Now we have the common multiple of $r$ (the remainder of $m$) and $n$. So the qu
 
 ++++++++++++++++++++++++++++++++++++++ \\
 
-$m|a$, $m$ is biggest divisor of $a, ~m < a$, and $n|b$ and $n < b$ is the biggest divisor of $b$, what is the biggest divisor of $ab$ ?
-%
-\nbea
-ab & = & (mc)(nd) \\
-& = & (mn)(cd) \\
-ab & = & k w
-\neea
-%
-Say $k > mn$
-%
-\nbea
-(mn)(cd) & = & (mnq + r)w \\
-\cancel{(mn)}(cd) & = & \cancel{(mn)} w \left (q + \frac{r}{mn} \right ) \\
-cd & = & wq + \frac{wr}{mn} \\
-(mn)(cd - wq) & = & wr \\
-\cancel{w} (mn) \left ( \frac{cd}{w} - q \right )& = & \cancel{w} r
-\neea
-%
-Now $r > 0, ~r < mn$, so this is only consistent if $r = 0, ~cd/w = q$ but this means that $k = mn, ~w = cd$.
-
-++++++++++++++++++++++++++++++++++++++ \\
-
 My version of the proof of the fundamental theorem of arithmetic.
 
 Instead of using gcd (greatest common divisor) I'll use lcm (least common multiple). First, I need to show that every common multiple of two numbers is itself a multiple of the least common multiple.
 
-{\it Proof}. Assume otherwise, denote the least common multiple of two numbers $a$ and $b$ is denoted $L$ and another common multiple $M$ (larger than $L$ obviously since $L$ is the {\it least} common multiple) we assume $M$ is not a multiple of $L$ and $M > L$. Therefore
+{\it Proof}. Assume otherwise, denote the least common multiple of two numbers $a$ and $b$ is denoted $L$ and another common multiple $M$ (larger than $L$ obviously since $L$ is the {\it least} common multiple) we assume $M$ is not a multiple of $L$ and $M > L$. Now we do some arithmetic :)
+%
+\nbea
+M - L & = & R_0
+\neea
+%
+we know that because $a,b|M$ and $a,b|L \longrightarrow a,b|R_0$, which means that $R_0$ is also a common multiple of $a,b$. But since $L$ is the {\it least} common multiple of $a$ and $b$, $R_0 > L$. We can further deduce that $R_0 > 0$ since $M > L$. We also know that $L \nmid R_0$ because if $R_0$ is a multiple of $L$ then $M$ must be a multiple of $L$ too.
+
+But this also means that we can repeat the process
+%
+\nbea
+R_0 - L & = & R_1
+\neea
+%
+with the same conclusion for $R_1$, it is a common multiple of $a,b$ which is not a multiple of $L$ and $R_1 > L$. We can then repeat it, and repeat it infinitely many times, which becomes {\it ``reductio ad absurdum} since we start with two {\it finite} numbers $M$ and $L$. Thus any common multiple of two numbers must be a multiple of their least common multiples.
+
+The above proof can also be done using a more orthodox number theory stuff, \ie the proposition that for $a,b \in \mathbb{Z}, ~a>b$ there exist unique $q, r$ such that $a = bq + r$ where $0 \le r < b$ and $q > 0$. Therefore
 %
 \nbea
 M & = & Lq + r
@@ -3022,9 +3016,9 @@ M & = & Lq + r
 %
 but because $a,b|M$ and $a,b|L \longrightarrow a,b|r$ and since $0 \le r < L$, $r$ is a common multiple of $a$ and $b$ that is smaller than the least common multiple, which is a contradiction.
 
-Now, if $a$ and $b$ were primes it can be shown that $L=ab$. A word of caution, you can't say that since $a,b$ are primes the only factors of $ab$ are $1,a,b$ therefore their lcm must be $ab$. This is circular reasoning. We want to show that any number can be factorized into a unique set of primes, however, we haven't shown that that is the case and therefore $ab$ can be equal to $cd$ where $c,d$ are primes. 
+Now, if $a$ and $b$ were primes it can be shown that $L=ab$. A word of caution, you can't say that since $a,b$ are primes the only factors of $ab$ are $1,a,b$ therefore their lcm must be $ab$. This is circular reasoning. We want to show that any number can be factorized into a unique set of primes, however, we haven't shown that that is the case yet.
 
-To show that $L$ is $ab$ we need to use the above result. We know that $r=0$, also since $ab$ is a common multiple of $a$ and $b$ it has to be a multiple of $L$
+To show that $L$ is $ab$ we need to use the above result. We know that since $ab$ is a common multiple of $a$ and $b$ it has to be a multiple of $L$
 %
 \nbea
 ab & = & Lq
@@ -3039,7 +3033,7 @@ b & = & nq
 %
 since $b$ is prime $n,q$ must be $1,b$, the question is which one is which? $n$ can't be one since then $L=a$ which is a contradiction, therefore $q=1, n=b$ and thus $L=ab$.
 
-We have therefore shown that the least common multiple of two primes is the product of those two. This combined with the fact that any common multiple is a multiple of the least common multiple is a crucial result.
+We have therefore shown that the least common multiple of two primes is the product of those two. This combined with the fact that any common multiple is a multiple of the least common multiple are the only ingredients we need to prove the fundamental theorem of arithmetic.
 
 Now, to the fundamental theorem. Suppose we can factor a number $N$ into two different factorization
 %
@@ -3079,7 +3073,7 @@ p_1 p_2 \dots p_k & = & 1 ~~~ {\rm if~} n > m \\
 1 & = & q_j q_{j+1} \dots q_n ~~~ {\rm if~} n < m 
 \neea
 %
-which is again a contradiction since $p$'s and $q$'s are all prime numbers. The only way out is to have $m=n$ (the number of prime factors are the same) and therefore $p$'s and $q$'s constitute the same set of prime numbers. We therefore have the result that the prime factors of any number is unique which is the fundamental theorem of arithmetic. As a bonus, our procedure above also demonstrates that the prime factors is unique up to an ordering since we can choose any $p$ and $q$ to begin with.~~~ $\mathcal{Q.E.D}$
+which is again a contradiction since $p$'s and $q$'s are all prime numbers. The only way out is to have $m=n$ (the number of prime factors are the same) but that means $p$'s and $q$'s constitute the same set of prime numbers. We therefore have the result that the prime factors of any number is unique which is the fundamental theorem of arithmetic. As a bonus, our procedure above also demonstrates that the prime factors is unique up to an ordering since we can choose any $p$ and $q$ to begin with.~~~ $\mathcal{Q.E.D}$
 
 \end{document}
 
