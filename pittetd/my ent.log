@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  12 MAR 2016 18:19
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  12 MAR 2016 19:17
 entering extended mode
 **"D:/Github/string/pittetd/my ent.tex"
 ("D:/Github/string/pittetd/my ent.tex"
@@ -605,10 +605,10 @@ lso an el-e-ment. There-fore $\OMS/cmsy/m/n/12 f[] \OML/cmm/m/it/12 ; \OMS/cmsy
 [14] [15] [16] [17]
 Missing character: There is no ﬁ in font cmr12!
  [18] ("my ent.bbl") [19]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 807.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 815.
  ("my ent.aux")
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 807.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 807.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 815.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 815.
  ) 
 Here is how much of TeX's memory you used:
  12745 strings out of 428755

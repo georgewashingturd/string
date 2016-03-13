@@ -746,6 +746,14 @@ Some sidenote, we can of course use the above method to get the inverse of $2$ f
 
 In conclusion we have done a 2-in-1 combo deal. We have proven that if $p$ is not prime then $\mathbb{Z}/p\mathbb{Z}$ is a not field, in other words if $\mathbb{Z}/p\mathbb{Z}$ is a field then $p$ is prime and we have proven that if $p$ is prime then $\mathbb{Z}/p\mathbb{Z}$ is a field. Therefore we have proven a much stronger statement, {\it $p$ is prime if and only if $\mathbb{Z}/p\mathbb{Z}$ is a field}.
 
+On the other hand, if $n$ is not prime things can still be salvage (a bit). We remove the elements $a$ of $\mathbb{Z}/n\mathbb{Z}$ that have $\gcd(a,n) \neq 1$. However, even though the surviving elements all have inverses, as we shall see, the set is no longer a field since it is no longer closed under addition. Now, why are the left over terms invertible? Bezout's lemma, \ie for any two numbers $a$ and $n$ and their gcd $d = \gcd(a,n) = 1$
+%
+\nbea
+am + ny & = & 1
+\neea
+%
+which is also a consequence of the ideals, $a\mathbb{Z} + n\mathbb{Z} = 1\mathbb{Z}$. Therefore, $m$ is the inverse of $a$ and any elements with $\gcd=1$ w.r.t $n$ will have an inverse as well.
+
 {\bf Definition 2.1.16}. Be careful about the reasoning in this proof, especially the following statement
 
 There are only finitely many residue classes modulo n, so we must eventually ﬁnd two integers $i, j$ with $i < j$ such that
