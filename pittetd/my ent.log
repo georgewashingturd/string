@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  12 MAR 2016 19:17
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  14 MAR 2016 20:05
 entering extended mode
 **"D:/Github/string/pittetd/my ent.tex"
 ("D:/Github/string/pittetd/my ent.tex"
@@ -604,19 +604,19 @@ lso an el-e-ment. There-fore $\OMS/cmsy/m/n/12 f[] \OML/cmm/m/it/12 ; \OMS/cmsy
 
 [14] [15] [16] [17]
 Missing character: There is no ﬁ in font cmr12!
- [18] ("my ent.bbl") [19]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 815.
+ [18] [19] [20] ("my ent.bbl") [21]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 859.
  ("my ent.aux")
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 815.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 815.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 859.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 859.
  ) 
 Here is how much of TeX's memory you used:
- 12745 strings out of 428755
- 174289 string characters out of 3166785
+ 12746 strings out of 428755
+ 174299 string characters out of 3166785
  269162 words of memory out of 3000000
- 15972 multiletter control sequences out of 15000+200000
+ 15973 multiletter control sequences out of 15000+200000
  14333 words of font info for 53 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
  36i,17n,38p,703b,414s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on my ent.pdf (19 pages).
+Output written on my ent.pdf (21 pages).
