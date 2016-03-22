@@ -483,6 +483,18 @@ Thus
 
 The LHS is $7y^3 + 2 \equiv 2({\rm mod~}7)$ since $7y^3$ is a multiple of $7$. This means that the RHS has to be $z^3 \equiv 2({\rm mod~}7)$ as well. But there's no integer $z'$ such that $z'^3 = 2$ thanks to Theorem 2.3. Since if there is then $z \equiv z' ({\rm mod~} 7) \to z^3 \equiv z'^3({\rm mod~} 7)$ meaning $z'^3 = 2$.
 
+Except that that was a flawed argument in which I mixed up ``if" and ``if and only if". If $x = y' ({\rm mod~} n)$ then $x^3 = y'^3 ({\rm mod~} n)$ but not the other way round, \ie $x = y' ({\rm mod~} n) \to \sqrt[\leftroot{-2}\uproot{2}3]{x} = \sqrt[\leftroot{-2}\uproot{2}3]{y'} ({\rm mod~} n)$ is WRONG!
+
+The correct way to prove the above is to list the cube of all members of $\mathbb{Z}/7\mathbb{Z}$ except for 0, \ie
+%
+\nbea
+1^3 \equiv 1({\rm mod~}7) & ~~~~~~ & 2^3 \equiv 1({\rm mod~}7) \\
+3^3 \equiv 6({\rm mod~}7) & ~~~~~~ & 4^3 \equiv 1({\rm mod~}7) \\
+5^3 \equiv 6({\rm mod~}7) & ~~~~~~ & 6^3 \equiv 6({\rm mod~}7)
+\neea
+%
+We don't see any $2({\rm mod~}7)$, thus $x^3 = 2 ({\rm mod~} 7)$ has no solution. But wait, how about cube of numbers greater than 7? Well any number can be brought under 7 by $x \equiv y({\rm mod~}7)$, \eg $17 \equiv 3({\rm mod~}7)$ such that $17^3 \equiv 3^3({\rm mod~}7) \equiv 6({\rm mod~}7)$. Thus the above list is enough to proof that there is no $x$ such that $x^3 \equiv 2({\rm mod~}7)$.
+
 {\bf Theorem 2.5 {\it(i)}}. It's cool to see an alternative proof, he uses the alternative definition of gcd $as + bt = d$ and Theorem 1.8 to prove it. 
 
 {\bf Theorem 2.5 {\it(ii)}}. This also relates to the statement on page 20 ``The image of $\tau_a$ consists of the $n/d$ integers $i\cdot d (i = 0, \dots, n/d - 1)$''.

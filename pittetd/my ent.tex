@@ -667,7 +667,7 @@ His proof boils down to
 n & = & a + 10b + 100c + \dots \equiv a +b+ c + \cdots ({\rm mod~} 3)
 \neea
 %
-Now why does this proof work? It says that $n = (a+b+c)({\rm mod~} 3)$. The meaning of $({\rm mod~} 3)$ is that $a = b ({\rm mod~} 3) \to 3 | a-b$ so in this case $3 | n - (a+b+c)$ but since $3|n$ therefore $3|(a+b+c).$
+Now why does this proof work? It says that $n = (a+b+c)~({\rm mod~} 3)$. The meaning of $({\rm mod~} 3)$ is that $a = b~ ({\rm mod~} 3) \to 3 | a-b$ so in this case $3 | n - (a+b+c)$ but since $3|n$ therefore $3|(a+b+c).$
 
 {\bf Definition 2.1.11} ``(Complete Set of Residues). $\dots$ pairwise distinct''. The name is apt since the set is the set of residues of $n$, \eg $1,2,3,\dots,n-1$. The ``pairwise distinct'' phrase, I think, means that every two elements of $R$ are not related by $n$, \ie every two elements $x_1$ and $x_2$ of $R$, $n \nmid (x_1 - x_2)$.
 
@@ -711,7 +711,7 @@ v(q+1)y & = & py + dy  = py + (ps + 1)\\
 v(q+1)y & = & p(y+s) + 1 
 \neea
 %
-\ie $v(q+1)y = 1$ and the inverse of $v$ is $(q+1)y$. The primality of $p$ was needed to guarantee that $r \neq 0,~v \nmid p$ otherwise the proof doesn't work. Also, $(q+1)y$ cannot be $0({\rm mod~}p)$ because otherwise $v(pv') = p(y+s) + 1 \to p(vv' - (y+s)) = 1\to p|1$ which is a contradiction.
+\ie $v(q+1)y = 1$ and the inverse of $v$ is $(q+1)y$. The primality of $p$ was needed to guarantee that $r \neq 0,~v \nmid p$ otherwise the proof doesn't work. Also, $(q+1)y$ cannot be $0~({\rm mod~}p)$ because otherwise $v(pv') = p(y+s) + 1 \to p(vv' - (y+s)) = 1\to p|1$ which is a contradiction.
 
 $(q+1)y$ is generally not the ``smallest" inverse of $v$ but we can of course bring it back to be $< p$ by substracting it by $pt \to v((q+1)y -pt) = p(y+s-tv) + 1 = 1$ for some $t$ such that $0 < (q+1)y -pt < p$.
 
@@ -735,9 +735,9 @@ But in the induction process leading up to $3$ we have found the inverse for $2$
 The last thing to show is that if all there inverses are unique. Say two elements $a$ and $b$ have the same inverse $c$
 %
 \nbea
-ac & \equiv & 1 ({\rm mod~} p) \\
-bc & \equiv & 1 ({\rm mod~} p) \\
-\to c(a-b) & \equiv & 0 ({\rm mod~} p)
+ac & \equiv & 1~ ({\rm mod~} p) \\
+bc & \equiv & 1~ ({\rm mod~} p) \\
+\to c(a-b) & \equiv & 0~ ({\rm mod~} p)
 \neea
 %
 but since $c$ is not zero (see comment above) then $a=b$. Thus all inverses are unique.
@@ -759,37 +759,37 @@ which is also a consequence of the ideals, $a\mathbb{Z} + n\mathbb{Z} = 1\mathbb
 There are only finitely many residue classes modulo n, so we must eventually ﬁnd two integers $i, j$ with $i < j$ such that
 %
 \nbea
-x^j \equiv x^i ({\rm mod~} n).
+x^j \equiv x^i~ ({\rm mod~} n).
 \neea
 %
 
 What he was saying is not that the series $x^j$ will produce all remainders of $n$ but that at some point the remainder will repeat, \eg $x^i = nq + r,~x^j = nq' + r'$ where $r' = r$. It doesn't mean that that we will have all remainders $0,1, \dots, n-1$ of $n$.
 
-{\bf Theorem 2.1.20}. The proof is similar to Lemma 2.1.12. If two elements of $xP$ are congruent, \ie $xa = xa' ({\rm mod~} n)$ then since $\gcd(x,n)=1$ according to Proposition 2.1.10 we can divide both sides $\bcancel{x}a = \bcancel{x}a' ({\rm mod~} n)$.
+{\bf Theorem 2.1.20}. The proof is similar to Lemma 2.1.12. If two elements of $xP$ are congruent, \ie $xa = xa'~ ({\rm mod~} n)$ then since $\gcd(x,n)=1$ according to Proposition 2.1.10 we can divide both sides $\bcancel{x}a = \bcancel{x}a'~ ({\rm mod~} n)$.
 
 But since all elements of $P$ are distinct $a = a'$. Meaning $xP$ has the same number of elements as $P$ and they are all distinct.
 
-Note that this doesn't mean that $xa = a ({\rm mod~} n)$!
+Note that this doesn't mean that $xa = a~ ({\rm mod~} n)$!
 
 {\bf Proposition 2.1.22}. In the proof of Wilson's theorem the enigmatic statement
 
 If $a \in \{1, 2, . . . , p - 1\}$, then the equation
 %
 \nbea
-ax \equiv 1 ({\rm mod~} p)
+ax \equiv 1~ ({\rm mod~} p)
 \neea
 %
 has a unique solution $a' \in \{1, 2, . . . , p - 1\}$. 
 
 The above statement is from Exercise 2.12, \ie if $p$ is prime then $\mathbb{Z}/p\mathbb{Z}$ is a field, since $\mathbb{Z}/p\mathbb{Z}$ is a field every element has an inverse. The set $\{1, 2, . . . , p - 1\}$ is just the lift of $\mathbb{Z}/p\mathbb{Z}$ thus each element has an inverse as well. Another crucial ingredient is that all inverses are unique such that the number of inverses are the same as the number of residues, \ie we can cover all the numbers in $(p-1)! = 1\cdot 2\cdot 3 \dots p-1$ and therefore pair up a residue with its inverse.
 
-``Multiplying both sides by $p-1$ proves that $(p-1)! \equiv 1 ({\rm mod~} n)$''. Note that
+``Multiplying both sides by $p-1$ proves that $(p-1)! \equiv 1~ ({\rm mod~} n)$''. Note that
 %
 \nbea
-1 ({\rm mod~} n) & \equiv & 1 + pm \\
-\to (p-1) \times \{1 ({\rm mod~} n)\} & \equiv & (p-1)(1 + pm) \\
+1~ ({\rm mod~} n) & \equiv & 1 + pm \\
+\to (p-1) \times \{1~ ({\rm mod~} n)\} & \equiv & (p-1)(1 + pm) \\
 & \equiv & -1 + p(pm + 1 - m) \\
-(p-1) \{1 ({\rm mod~} n)\} & \equiv & -1 ({\rm mod~}n)
+(p-1) \{1~ ({\rm mod~} n)\} & \equiv & -1~ ({\rm mod~}n)
 \neea
 %
 
@@ -824,9 +824,9 @@ n+1 &|& ((n+1)! +(n+1))
 %
 where we now have $n$ consecutive composite integers $(n+1)! + 2 , \dots, (n+1)! +(n+1)$. $\mathcal{Q.E.D}$.
 
-{\bf Theorem 2.2.2}. In the proof we need to subtract both sides of $a + tm \equiv b ({\rm mod~} n)$. We can always add and subtract both sides of a congruence since if $a \equiv b ({\rm mod~} n)$ then $n|(a-b) \to n|((a+\Delta) - (b + \Delta)) = n|(a-b)$.
+{\bf Theorem 2.2.2}. In the proof we need to subtract both sides of $a + tm \equiv b~ ({\rm mod~} n)$. We can always add and subtract both sides of a congruence since if $a \equiv b~ ({\rm mod~} n)$ then $n|(a-b) \to n|((a+\Delta) - (b + \Delta)) = n|(a-b)$.
 
-Multiplication is a bit trickier if $a \equiv b ({\rm mod~}n)$ then $ca \equiv cb ({\rm mod~}n)$. We can of course divide both sides with $c$ even if $c \nmid n$. However, we can't just factor out both sides in general.
+Multiplication is a bit trickier if $a \equiv b~ ({\rm mod~}n)$ then $ca \equiv cb~ ({\rm mod~}n)$. We can of course divide both sides with $c$ even if $c \nmid n$. However, we can't just factor out both sides in general.
 
 {\bf Eq. 2.2.2} $p$ has to be prime otherwise it won't work, \eg $p=4$, $\varphi(4) = 2$ but $4 - 4/4 = 3$.
 
@@ -835,25 +835,251 @@ Multiplication is a bit trickier if $a \equiv b ({\rm mod~}n)$ then $ca \equiv c
 Chinese Remainder Theorem in this case is
 %
 \nbea
-x & \equiv & 49^2 ({\rm mod~} 4) \\
-x & \equiv & 49^2 ({\rm mod~} 25) \\
-x & \equiv & x' ({\rm mod~} 4\cdot 25)
+x & \equiv & 49^2~ ({\rm mod~} 4) \\
+x & \equiv & 49^2~ ({\rm mod~} 25) \\
+x & \equiv & x'~ ({\rm mod~} 4\cdot 25)
 \neea
 %
-$49 \equiv 1 ({\rm mod~} 4)$ and $49 \equiv 24 ({\rm mod~} 25) = -1 ({\rm mod~} 25)$, thus
+$49 \equiv 1~ ({\rm mod~} 4)$ and $49 \equiv 24~ ({\rm mod~} 25) = -1~ ({\rm mod~} 25)$, thus
 %
 \nbea
-1 + t\cdot 4 & \equiv & 1 ({\rm mod~} 25) \\
-4t & = & (1-1) ({\rm mod~} 25)  = 0  ({\rm mod~} 25) \\
+1 + t\cdot 4 & \equiv & 1~ ({\rm mod~} 25) \\
+4t & = & (1-1)~ ({\rm mod~} 25)  = 0~ ({\rm mod~} 25) \\
 t & = & 25 \\
-\to x & = & 101  = 1  ({\rm mod~} 4 \cdot 25)
+\to x & = & 101  = 1~ ({\rm mod~} 4 \cdot 25)
 \neea
 %
-and so $49^2 \equiv 1 ({\rm mod~} 100)$.
+and so $49^2 \equiv 1~ ({\rm mod~} 100)$.
 
-{\bf Theorem 2.4.1}. There's a typo in the proof. Instead of ``follows from Proposition 2.1.22'' it should've followed from Theorem 2.1.20 where $x^{\varphi(n)} \equiv 1 ({\rm mod~} n)$ since for a prime $n$, $\varphi(n) = n-1$.
+{\bf Proposition 2.2.7}. Note that this proposition only works if $\gcd(m,n) = 1$ otherwise you'll get weird results! Also for {\bf Equation 2.2.2}, $p$ is prime.
 
+{\bf Theorem 2.4.1}. There's a typo in the proof. Instead of ``follows from Proposition 2.1.22'' it should've followed from Theorem 2.1.20 where $x^{\varphi(n)} \equiv 1~ ({\rm mod~} n)$ since for a prime number $n$, $\varphi(n) = n-1$.
 
+{\bf Section 2.5}. ``The structure of of $(\mathbb{Z}/p\mathbb{Z})^*$ $\dots \dots$ this implies that $(\mathbb{Z}/p\mathbb{Z})^*$ is a cyclic group''.
+
+A cyclic group is a group that can be generated from just one element of the group. The term cyclic here I believe refers to the group operation of addition, since $1 \cdot 1 = 1$ and we won't be able to generate the group. But under addition $({\rm mod~} p)$, any one element of $(\mathbb{Z}/p\mathbb{Z})^*$ can generate the whole group.
+
+{\bf Theorem 2.5.8}. My first question when I saw the proof was that why can't one of the roots of $x^{q_i^{n_i}} - 1$ that is not a root of $x^{q_i^{n_i - 1}} - 1$ be a root of say $x^{q_i^{n_i - k}}$ for $1 < k < n_i - 1$? \eg $\alpha$ is a root of $x^{q_i^{n_i}} - 1 = 0$ but it's not a root of $x^{q_i^{n_i - 1}} - 1 = 0$ but $\alpha$ can still be a root of $x^{q_i^{n_i - k}} -1 = 0$, right?
+
+Well, it can't be because $q_i^{n_i - k} | q_i^{n_i-1}$. So since $\alpha^{q_i^{n_i - k}} -1 = 0 \to \alpha^{q_i^{n_i - k}} = 1$
+%
+\nbea
+x^{q_i^{n_i-1}} - 1 & = & 0 \\
+\left (x^{q_i^{n_i-k}} \right )^{q_i^{k-1}} - 1 & = & 0 \\
+\left (\alpha^{q_i^{n_i-k}} \right )^{q_i^{k-1}} - 1 & = & 0 \\
+\left (1 \right )^{q_i^{k-1}} - 1 & = & 0 \\
+1-1 & = & 0
+\neea
+%
+\ie any roots of $x^{q_i^{n_i - k}} - 1$ are automatically roots of $x^{q_i^{n_i - 1}} - 1$ thus a root of $x^{q_i^{n_i}} - 1$ that is not a root of $x^{q_i^{n_i - 1}} - 1$ is really a new root!
+
+{\bf Problem 2.1}. Prove that for any positive integer $n$, the set $(\mathbb{Z}/n\mathbb{Z})^*$ under multiplication modulo $n$ is a group.
+
+Remember that $(\mathbb{Z}/n\mathbb{Z})^*$ is the unit of $\mathbb{Z}/n\mathbb{Z}$, \ie any element $a \in (\mathbb{Z}/n\mathbb{Z})^*$ is $0 < a < n$ and $\gcd(a,n) = 1$. To show that $(\mathbb{Z}/n\mathbb{Z})^*$ in a group under multiplication $({\rm mod~}n)$ we first need to show that it is closed.
+
+Say we have two elements $a,b \in (\mathbb{Z}/n\mathbb{Z})^*$ if their product $(ab) < n$ then we are done because $\gcd(ab,n)=1$ as $\gcd(a,n)=\gcd(b,n)=1$. However, if $(ab) > n$ we can proceed as so, first $ab = nq + r$ with $0 < r <n$ ($r$ can't be zero since $n|ab$ otherwise).
+
+We now utilize Bezout's lemma, \ie for $p,q \in \mathbb{Z}$,  $d|g \Longleftrightarrow ps + qt = g$  where $d = \gcd(p,q)$. We know that $\gcd(ab,n)=1$ therefore
+%
+\nbea
+(ab)s + nt & = & 1 \\
+(nq + r)s + nt & = & 1 \\
+rs + n(t+qs) & = & 1
+\neea
+%
+and by Bezout's lemma $\gcd(r,n)=1$ and since $0 < r < n$, $r \in (\mathbb{Z}/n\mathbb{Z})^*$. So we have shown that multiplication $({\rm mod~}n)$ is closed.
+
+We now need to show that every element of $(\mathbb{Z}/n\mathbb{Z})^*$ has an inverse. From Bezout's lemma, for every element $a \in (\mathbb{Z}/n\mathbb{Z})^*$, $as + nt = 1$ 
+%
+\nbea
+nt & = & 1 - as \\
+\to n &|& 1 - as \\
+\to as & \equiv & 1~ ({\rm mod~} n)
+\neea
+%
+and therefore $s$ in the inverse of $a$ but since $as + nt = 1$ it also means that $\gcd(s,n)=1$, \ie $s \in (\mathbb{Z}/n\mathbb{Z})^*$. (If $s$ is less than zero or greater than $n$ we can always bring it back within $(0,n)$ by $s = nq' + r' ~\to ~s \equiv r'~ ({\rm mod~} n)$) And so we have an inverse for every element of $(\mathbb{Z}/n\mathbb{Z})^*$.
+
+The other properties of a group can be easily proven:
+\bit
+\item $(\mathbb{Z}/n\mathbb{Z})^*$ has an identity element as $1 \in (\mathbb{Z}/n\mathbb{Z})^*$.
+\item $a,b,c \in (\mathbb{Z}/n\mathbb{Z})^*$ then $(ab)c = a(bc)$. This is obvious since the group action is multiplication $({\rm mod~}n)$.
+\eit
+
+{\bf Problem 2.4}. Prove that if $a$ and $b$ are integers and $p$ is prime, then $(a+b)^p \equiv a^p + b^p~({\rm mod~}p)$. You may assume that the binomial coefficient
+%
+\nbea
+\frac{p!}{r!(p-r)!}
+\neea
+%
+is an integer.
+
+The problem is actually equivalent to show that the binomial coefficient $p!/r!(p-r)!$ is divisible by $p$ if $p$ is prime. The requirement that $p$ is prime is a must otherwise it won't work, \eg $\binom{4}{2} = 6$ and it is not divisible by $4$.
+
+To show that $\binom{p}{r}$ is an integer we need to inductively use Pascal identity, $\binom{p}{k} = \binom{p - 1}{k - 1} + \binom{p - 1}{k}$, and the fact that $\binom{p}{0} = \binom{p}{p} = 1$.
+
+But once it is established that $\binom{p}{r}$ is an integer we can proceed swimmingly
+%
+\nbea
+\binom{p}{r} = \frac{p!}{r!(p-r)!} = \frac{p (p-1) \dots (p-r-1)}{r!}
+\neea
+%
+Since $\binom{p}{r}$ is an integer it means that $r!|p (p-1) \dots (p-r-1)$ but since $\gcd(r!, p) = 1$ ($p$ is prime) this means that $r!|(p-1) \dots (p-r-1)~\to ~ (p-1) \dots (p-r-1) = (r!) q$ and therefore
+%
+\nbea
+\binom{p}{r} & = & \frac{p (p-1) \dots (p-r-1)}{r!} = p \cdot \frac{(p-1) \dots (p-r-1)}{r!} \\
+& = & p q
+\neea
+%
+which means that $\binom{p}{q} = 0~({\rm mod~}p)$, provided $\binom{p}{q} > 1$. And this completes the proof.
+
+{\bf Problem 2.5}. (a) Prove that if $x, y$ is a solution to $ax+by = d$, with $d = \gcd(a, b)$,
+then for all $c \in \mathbb{Z}$,
+%
+\nbea
+x_0 = x + c \cdot \frac{b}{d}, ~~~~~~~ y_0 = y - c \cdot \frac{a}{d} ~~~~~~~~~~(2.6.1)
+\neea
+%
+is also a solution to $ax + by = d$.
+
+(b) Find two distinct solutions to $2261x + 1275y = 17$.
+
+(c) Prove that all solutions are of the form (2.6.1) for some $c$.
+
+For (a) we just need to substitute $x_0, y_0$ into $ax+by = d$
+%
+\nbea
+ax_0+by_0 & = & a \left( x + c \cdot \frac{b}{d} \right ) + b \left( y - c \cdot \frac{a}{d} \right ) \\
+& = & ax + by + c \cdot \left ( \cancel{\frac{ab}{d}} - \cancel{ \frac{ba}{d}} \right ) \\
+& = & ax + by \\
+& = & d
+\neea
+%
+
+For (b) One set of solutions is $x = 22, y = -39$ and another is $x = 997, y = -1768$.
+
+For (c), say we have another solution $ax'+by' = d$, take their difference w.r.t $ax+by = d$, \ie 
+%
+\nbea
+ax'+by' - ax+by & = & a(x' - x) + b(y' - y) \\
+0 & = & a(x' - x) + b(y' - y) \\
+\to a(x' - x) & = & b(y - y') \\
+\bcancel{d}a'(x' - x) & = & \bcancel{d}b'(y - y')
+\neea
+%
+which means that $a'|b'(y-y')$ but since $\gcd(a',b') = 1$, $a'|(y-y')$ or in other words $y - y' = a' q$ for some integer $q$. Rearranging $y' = y - a'q$.
+
+Looking the other way, it also means that $b'|a'(x'-x)$ and since $\gcd(b',a') = 1$, $b'|(x'-x)$, which means that $x'-x = b'p$ for some integer $p$.
+
+But we have a constraint for $p$ because 
+%
+\nbea
+a'(x' - x) & = & b'(y - y'), ~~~ y - y' = a' q\\
+a'(b'p) & = & b'(a'q)
+\neea
+%
+that is $p=q$. Therefore, $x' = x + b'q$ and this completes the proof (once me rename $q$ as $c$ and $a', b'$ as $a/d, b/d$ respectively).
+
+{\bf Problem 2.6}.  Let $f(x) = x^2 +ax+b \in \mathbb{Z}[x]$ be a quadratic polynomial with integer
+coefficients, for example, $f(x) = x^2 + x + 6$. Formulate a conjecture about when the set
+%
+\nbea
+\{f(n) : n \in \mathbb{Z} {\rm ~and~} f(n) {\rm ~is~ prime}\}
+\neea
+%
+is infinite. Give numerical evidence that supports your conjecture.
+
+Well, first $b$ must not be zero because otherwise $f(x) = x^2 + ax = x(x+a) \to x|f(x)$ for which $f(x)$ can only be prime if $x=1$.
+
+Fine, so $b \neq 0$, but for some $a$ and $b$ we can factor $f(x) = (x + x_1)(x + x_2)$ where $x_1 + x_2 = a$ and $x_1x_2 = b$. But again, this is bad news, as $f(x)$ would not be prime. To make sure this doesn't happen $b$ must be prime or 1.
+
+Let's take the easier route, $b=1$ such that $f(x) = x(x+a) + 1$ so as long as $x$ is even we have a chance for $f(x)$ to be prime. And from Wilson's theorem, Proposition 2.1.22, we require that $(x(x+a))! \equiv -1 ~({\rm mod~}(x(x+a)+1))$.
+
+Actually there's a way to increase the probability that $x(x+a) + 1$ will keep producing prime numbers (intermittently and) indefinitely such that the set we are interested in is infinite.
+
+We can set $a=0$ such that $f(x) = x^2 + 1$. Why might this work? it is actually related to my version of the generalized Euclid's proof that there are infinitely many prime numbers.
+
+Let's see how this works. Say we scan $x$ from $x=1$ to infinity and beyond. Everytime $x = p_1 \dots p_n$ for some $n$
+%
+\nbea
+f(x) & = & (p_1 \dots p_n)^2 + 1
+\neea
+%
+then $f(x)$ either contains a new prime or is itself prime since if it contains $p_j, 1 \le j \le n$ then $p_j|1$ which is a contradiction. The only caveat is that $f(x)$ itself might not be prime which is why this is only a conjecture :) although in that case we can flip $b \to -1$
+%
+\nbea
+f(x) & = & (p_1 \dots p_n)^2 - 1
+\neea
+%
+since by the same argument the above should also produce new primes indefinitely.
+
+For other choices of $b > 1$ and $b$ is prime we have $f(x) = x(x+a) + b$ and as long as $b \neq 2$ and $x$ is even we have a chance to have $f(x)$ as prime, if $b = 2$ then $x(x+a)$ must be odd. We can also flip the sign of $b$ if things don't work out :)
+
+Another idea is maybe something like an extended Chinese remainder theorem
+%
+\nbea
+x^2 + ax + b & \equiv & 0 ~({\rm mod~} p_1) \\
+x^2 + ax + b & \equiv & 0 ~({\rm mod~} p_2) \\
+& \vdots & \\
+x^2 + ax + b & \equiv & 0 ~({\rm mod~} p_n) \\
+\neea
+%
+
+{\bf Problem 2.14}. Prove that if $n > 4$ is composite then
+%
+\nbea
+(n-1)! & \equiv & 0~ ({\rm mod~} n)
+\neea
+%
+
+First if $n=4$, $(n-1)! = 3! = 6$ and 6 is not $0~ ({\rm mod~} n)$. For the rest, we use our awesomesauce friend the fundamental theorem of arithmetic.
+
+Write $n$ as
+%
+\nbea
+n & = & \prod_{i=1}^{M} p_i^{\alpha_i}
+\neea
+%
+where each $p_i$ is distinct. We can now pick and choose :) Pick any $p$ you want, say $p_j$. Now, pull out $p_j$ out of $n$ such that $n = p_j n'$.
+
+Now, if $p_j \neq n'$, since $p_j$ and $n'$ are both less than $n$, they are included in $(n-1)!$ (remember that $(n-1)!$ is a product of {\it all} numbers less than $n$). Thus, since $(n-1)!$ contains $n$ as a factor, $(n-1)! \equiv 0~ ({\rm mod~} n)$.
+
+When $n' = p_j$, the above argument fails since $(n-1)!$ contains all numbers less than $n$ only {\it once}. However, it can still be remedied. Let $m=p_j(p_j-1) = p_j(n'-1) \neq n$ and since $n'-1<n \to m < n$ both $m$ and $p_j$ are both contained as factors in $(n-1)!$ and $p_j n'|(n-1)! \to n | (n-1)!$. The only way it doesn't work is if $n'=2$ because then $m$ is just $p_j$ which affirms the fact that $n > 4$ for the above assertion to be true. This completes the proof.
+
+{\bf Problem 2.15}. For what values of $n$ is $\varphi(n)$ odd?
+
+Again, here we are going to call upon our awesomesauce friend da fundamental theorem. Recall Proposition 2.2.7 which states that if $\gcd(m,n)=1$ then $\varphi(mn) = \varphi(m) \cdot \varphi(n)$. Next, every number is a (unique) product of primes
+%
+\nbea
+n & = & \prod_{i=1}^{M} p_i^{\alpha_i}
+\neea
+%
+where each $p_i$ is distinct. Thus
+%
+\nbea
+\varphi(n) & = & \prod_{i=1}^{M} \varphi(p_i^{\alpha_i})
+\neea
+%
+For all primes $p > 2$, $\varphi(p^\alpha) = p^{\alpha-1}(p-1)$, see Eq. 2.2.2, which is even (since $p$ is odd) while $\varphi(2^\alpha) = 2^{\alpha-1}$ which also means that only when $\alpha=1$ is $\varphi(2)$ odd.
+
+Therefore, $\varphi(n)$ is only odd if and only if $n=2$ (and also for $n=1$ but that one is trivial since the only member of $\mathbb{Z}/1\mathbb{Z}$ and $(\mathbb{Z}/1\mathbb{Z})^*$ is 1 which is also equal to $0~ ({\rm mod~}1)$).
+
+{\bf Problem 2.18}. Show that if $p$ is a positive integer such that both $p$ and $p^2 + 2$ are
+prime, then $p = 3$.
+
+Since $p^2 + 2$ is prime $p \neq 2$ otherwise $2|(p^2+2)$ so $p>2$.
+
+%
+\nbea
+(p-1)! & \equiv & -1~({\rm mod~}p) \\
+(p^2 + 1)! & \equiv & -1~({\rm mod~}(p^2 + 2)) \\
+(p^2 + 1)! & = & -1 + (p^2 + 2)n \\
+& = & (2n-1) + p^2n \\
+& = & (2n-1)~({\rm mod~}p) \\
+(p-1)! + (p^2 + 1)! & \equiv & (2n-2) ~({\rm mod~}p) \\
+(p-1)!(1 + (p^2+1)(p^2) \dots p)& = & p n \\
+\to p | (p-1)! &~~~ {\rm OR} ~~~& p | (1 + (p^2+1)(p^2) \dots p)
+\neea
+%
 
 
 \end{document}

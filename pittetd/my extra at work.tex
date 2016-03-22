@@ -3075,6 +3075,42 @@ p_1 p_2 \dots p_k & = & 1 ~~~ {\rm if~} n > m \\
 %
 which is again a contradiction since $p$'s and $q$'s are all prime numbers. The only way out is to have $m=n$ (the number of prime factors are the same) but that means $p$'s and $q$'s constitute the same set of prime numbers. We therefore have the result that the prime factors of any number is unique which is the fundamental theorem of arithmetic. As a bonus, our procedure above also demonstrates that the prime factors is unique up to an ordering since we can choose any $p$ and $q$ to begin with.~~~ $\mathcal{Q.E.D}$
 
+++++++++++++++++++++++++++++++++++++++ \\
+
+Alternative (or more aptly generalized) proof that there is an infinite number of primes. Euclid's proof of $p_1 \dots p_n + 1$ can be generalized further, resulting in ways to produce primes from known ones.
+
+The key is to include all previously known primes, if there's a prime we exclude the proof will not succeed. So here we go. Let's take a look of the following
+%
+\nbea
+S & = & p_1 + p_2 \dots p_n
+\neea
+%
+where $p_1 \dots p_n$ are all the known primes we have. This means that $S$ must contain a new prime as its factor. Otherwise, if $p_1$ is a factor of $S$
+%
+\nbea
+S - p_1 & = & p_2 \dots p_n, ~~~ S = p_1 S' \\
+p_1(S' - 1) & = & p_2 \dots p_n \\
+\to p_1 &|& p_2 \dots p_n
+\neea
+which is a contradiction as $p_2, p_3, \dots, p_n$ are all primes. The same happens if $p_j | S,~j \neq 1$, \eg
+%
+\nbea
+S - p_2 \dots p_n & = & p_1, ~~~ S = p_{13} S' \\
+p_{13}(S' - p_2 \dots p_{12}p_{14} \dots p_n) & = & p_1 \\
+\to p_{13} &|& p_1
+\neea
+%
+which is also a contradiction since $p_1$ is prime. We can generalize this further into something like $S = p_1 \dots p_k + p_{k+1} \dots p_n$ and the proof above still goes through. Basically we just need to group the known primes we have into 2, create the product for each group and add them. Finally, we can even take this further by raising the primes into arbitrary powers (and setting arbitrary sign for each term)
+%
+\nbea
+S & = & \pm \prod_{i=1}^{l}p_{i}^{\alpha_i} \mp \prod_{j=l+1}^{n}p_{j}^{\alpha_j} \\
+& &  ~~~~~{\rm OR}\\
+S & = & \pm 1 \mp \prod_{i=1}^{n}p_{i}^{\alpha_i}
+\neea
+%
+The above two arrangements still produce a new prime factor for $S$ following the same argument as before. 
+
+
 \end{document}
 
 
