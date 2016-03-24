@@ -1024,6 +1024,61 @@ x^2 + ax + b & \equiv & 0 ~({\rm mod~} p_n) \\
 \neea
 %
 
+Although I don't know how this would work since $x$ is squared.
+
+{\bf Problem 2.6}. (*) (The following problem is from the 1998 Putnam Competition.) Define a sequence of decimal integers $a_n$ as follows: $a_1 = 0,~ a_2 = 1$, and $a_{n+2}$ is obtained by writing the digits of $a_{n+1}$ immediately followed by those of $a_n$. For example, $a_3 = 10,~ a_4 = 101$, and $a_5 = 10110$. Determine the $n$ such that $a_n$ is a multiple of 11, as follows:
+
+(a) Find the smallest integer $n > 1$ such that $a_n$ is divisible by 11.
+
+(b) Prove that $a_n$ is divisible by 11 if and only if $n \equiv 1~ ({\rm mod~} 6)$.
+
+First, what is the requirement that a number is a multiple of 11? It's that the sum of the digit multiplied by alternating power of -1 is zero, \ie if the number we're interested in is
+%
+\nbea
+n & = & a + b10 + c100 + d 1000 + \dots
+\neea
+%
+then a - b + c - d + \dots = 0, why? because
+%
+\nbea
+10 & = & 11 - 1 \\
+100 & = & 110 - 10 \\
+& = & 110 - (11 - 1) \\
+& = & 110 - 11 + 1 \\
+1000 & = & 1100 - 100 \\
+& = & 1100 - (110 - 11 + 1) \\
+& = & 1100 - 110 + 11 - 1
+\neea
+%
+et cetera, thus
+%
+\nbea
+n & = & a + b10 + c100 + d 1000 + \dots \\
+& = & a + b(11-1) + c(110 - 11 + 1) + d(1100 - 110 + 11 - 1) + \dots \\
+& = & a - b + c - d + \dots ~ ({\rm mod~} 11) \\
+0 & = & a - b + c - d + \dots ~ ({\rm mod~} 11)
+\neea
+%
+the last line is because $11|n \to n = 0~({\rm mod~}11)$, and so the alternate sum of the digits of the number must be zero for the number to be a multiple of 11.
+
+Let's list the first few $a$'s and their digits' alternate sum
+%
+\bit
+\item $a_1 = 0 \to 0, ~~~ 11 | a_1$
+\item $a_2 = 1 \to 1, ~~~ 11 \nmid a_2$
+\item $a_3 = 10 \to -1, ~~~ 11 \nmid a_3$
+\item $a_4 = 101 \to 2, ~~~ 11 \nmid a_4$
+\item $a_5 = 10110 \to 1, ~~~ 11 \nmid a_5$
+\item $a_6 = 10110101 \to 1, ~~~ 11 \nmid a_6$
+\item $a_7 = 1011010110110 \to 0, ~~~ 11 | a_7$
+\eit
+so the smallest $n > 1$ such that $11|a_n$ is $n=7$.
+
+The number of digits of $a_i$ is the $i^{\rm th}$ fibonacci number.
+
+
+
+
 {\bf Problem 2.14}. Prove that if $n > 4$ is composite then
 %
 \nbea
@@ -1063,23 +1118,12 @@ For all primes $p > 2$, $\varphi(p^\alpha) = p^{\alpha-1}(p-1)$, see Eq. 2.2.2, 
 
 Therefore, $\varphi(n)$ is only odd if and only if $n=2$ (and also for $n=1$ but that one is trivial since the only member of $\mathbb{Z}/1\mathbb{Z}$ and $(\mathbb{Z}/1\mathbb{Z})^*$ is 1 which is also equal to $0~ ({\rm mod~}1)$).
 
-{\bf Problem 2.18}. Show that if $p$ is a positive integer such that both $p$ and $p^2 + 2$ are
-prime, then $p = 3$.
+{\bf Problem 2.18}. Show that if $p$ is a positive integer such that both $p$ and $p^2 + 2$ are prime, then $p = 3$.
 
-Since $p^2 + 2$ is prime $p \neq 2$ otherwise $2|(p^2+2)$ so $p>2$.
+I tried to show that the fact that $p$ and $p^2 + 2$ are prime implies $p=3$ and it didn't work out too well. The best approach is to flip the statement, \ie if $p \neq 3$ then $p$ is not prime OR $p^2 + 2$ is not prime (we can't have both to be prime) which is the solution given in the book.
 
-%
-\nbea
-(p-1)! & \equiv & -1~({\rm mod~}p) \\
-(p^2 + 1)! & \equiv & -1~({\rm mod~}(p^2 + 2)) \\
-(p^2 + 1)! & = & -1 + (p^2 + 2)n \\
-& = & (2n-1) + p^2n \\
-& = & (2n-1)~({\rm mod~}p) \\
-(p-1)! + (p^2 + 1)! & \equiv & (2n-2) ~({\rm mod~}p) \\
-(p-1)!(1 + (p^2+1)(p^2) \dots p)& = & p n \\
-\to p | (p-1)! &~~~ {\rm OR} ~~~& p | (1 + (p^2+1)(p^2) \dots p)
-\neea
-%
+As a side note, you might be tempted to generalize this into, $p$ and $p^2 + (p-1)$, \eg $p=5$ with $p^2 + (5-1) = 29$ where both are primes. However, for $p=7$, $p^2 + 6 = 55$ is not prime. The problem is that $5^2 + 6 = 31, ~19^2 + 6 = 367$ are also prime.
+
 
 
 \end{document}
