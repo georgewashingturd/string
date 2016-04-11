@@ -22,6 +22,9 @@
 
 \usepackage[top=1in, bottom=1.25in, left=1.1in, right=1.1in]{geometry}
 
+\usepackage{mathtools} % for \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+\usepackage{simplewick}
 
 \newcommand{\msout}[1]{\text{\sout{\ensuremath{#1}}}}
 
@@ -206,6 +209,9 @@
 %%%%%% END My stuffs - Stef
 
 \newcommand{\dunno}{$ {}^{\mbox {--}}\backslash(^{\rm o}{}\underline{\hspace{0.2cm}}{\rm o})/^{\mbox {--}}$}
+
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
 
 
 
@@ -664,10 +670,10 @@ Or in a physicist friendly way (in talking about quotient of a group), we identi
 His proof boils down to
 %
 \nbea
-n & = & a + 10b + 100c + \dots \equiv a +b+ c + \cdots ({\rm mod~} 3)
+n & = & a + 10b + 100c + \dots \equiv a +b+ c + \cdots \pmod{3}
 \neea
 %
-Now why does this proof work? It says that $n = (a+b+c)~({\rm mod~} 3)$. The meaning of $({\rm mod~} 3)$ is that $a = b~ ({\rm mod~} 3) \to 3 | a-b$ so in this case $3 | n - (a+b+c)$ but since $3|n$ therefore $3|(a+b+c).$
+Now why does this proof work? It says that $n = (a+b+c)\pmod{3}$. The meaning of $\pmod{3}$ is that $a = b\pmod{3} \to 3 | a-b$ so in this case $3 | n - (a+b+c)$ but since $3|n$ therefore $3|(a+b+c).$
 
 {\bf Definition 2.1.11} ``(Complete Set of Residues). $\dots$ pairwise distinct''. The name is apt since the set is the set of residues of $n$, \eg $1,2,3,\dots,n-1$. The ``pairwise distinct'' phrase, I think, means that every two elements of $R$ are not related by $n$, \ie every two elements $x_1$ and $x_2$ of $R$, $n \nmid (x_1 - x_2)$.
 
@@ -711,7 +717,7 @@ v(q+1)y & = & py + dy  = py + (ps + 1)\\
 v(q+1)y & = & p(y+s) + 1 
 \neea
 %
-\ie $v(q+1)y = 1$ and the inverse of $v$ is $(q+1)y$. The primality of $p$ was needed to guarantee that $r \neq 0,~v \nmid p$ otherwise the proof doesn't work. Also, $(q+1)y$ cannot be $0~({\rm mod~}p)$ because otherwise $v(pv') = p(y+s) + 1 \to p(vv' - (y+s)) = 1\to p|1$ which is a contradiction.
+\ie $v(q+1)y = 1$ and the inverse of $v$ is $(q+1)y$. The primality of $p$ was needed to guarantee that $r \neq 0,~v \nmid p$ otherwise the proof doesn't work. Also, $(q+1)y$ cannot be $0\pmod{p}$ because otherwise $v(pv') = p(y+s) + 1 \to p(vv' - (y+s)) = 1\to p|1$ which is a contradiction.
 
 $(q+1)y$ is generally not the ``smallest" inverse of $v$ but we can of course bring it back to be $< p$ by substracting it by $pt \to v((q+1)y -pt) = p(y+s-tv) + 1 = 1$ for some $t$ such that $0 < (q+1)y -pt < p$.
 
@@ -735,9 +741,9 @@ But in the induction process leading up to $3$ we have found the inverse for $2$
 The last thing to show is that if all there inverses are unique. Say two elements $a$ and $b$ have the same inverse $c$
 %
 \nbea
-ac & \equiv & 1~ ({\rm mod~} p) \\
-bc & \equiv & 1~ ({\rm mod~} p) \\
-\to c(a-b) & \equiv & 0~ ({\rm mod~} p)
+ac & \equiv & 1 \pmod{p} \\
+bc & \equiv & 1 \pmod{p} \\
+\to c(a-b) & \equiv & 0 \pmod{p}
 \neea
 %
 but since $c$ is not zero (see comment above) then $a=b$. Thus all inverses are unique.
@@ -759,37 +765,37 @@ which is also a consequence of the ideals, $a\mathbb{Z} + n\mathbb{Z} = 1\mathbb
 There are only finitely many residue classes modulo n, so we must eventually ﬁnd two integers $i, j$ with $i < j$ such that
 %
 \nbea
-x^j \equiv x^i~ ({\rm mod~} n).
+x^j \equiv x^i \pmod{n}.
 \neea
 %
 
 What he was saying is not that the series $x^j$ will produce all remainders of $n$ but that at some point the remainder will repeat, \eg $x^i = nq + r,~x^j = nq' + r'$ where $r' = r$. It doesn't mean that that we will have all remainders $0,1, \dots, n-1$ of $n$.
 
-{\bf Theorem 2.1.20}. The proof is similar to Lemma 2.1.12. If two elements of $xP$ are congruent, \ie $xa = xa'~ ({\rm mod~} n)$ then since $\gcd(x,n)=1$ according to Proposition 2.1.10 we can divide both sides $\bcancel{x}a = \bcancel{x}a'~ ({\rm mod~} n)$.
+{\bf Theorem 2.1.20}. The proof is similar to Lemma 2.1.12. If two elements of $xP$ are congruent, \ie $xa = xa' \pmod{n}$ then since $\gcd(x,n)=1$ according to Proposition 2.1.10 we can divide both sides $\bcancel{x}a = \bcancel{x}a' \pmod{n}$.
 
 But since all elements of $P$ are distinct $a = a'$. Meaning $xP$ has the same number of elements as $P$ and they are all distinct.
 
-Note that this doesn't mean that $xa = a~ ({\rm mod~} n)$!
+Note that this doesn't mean that $xa = a \pmod{n}$!
 
 {\bf Proposition 2.1.22}. In the proof of Wilson's theorem the enigmatic statement
 
 If $a \in \{1, 2, . . . , p - 1\}$, then the equation
 %
 \nbea
-ax \equiv 1~ ({\rm mod~} p)
+ax \equiv 1 \pmod{p}
 \neea
 %
 has a unique solution $a' \in \{1, 2, . . . , p - 1\}$. 
 
 The above statement is from Exercise 2.12, \ie if $p$ is prime then $\mathbb{Z}/p\mathbb{Z}$ is a field, since $\mathbb{Z}/p\mathbb{Z}$ is a field every element has an inverse. The set $\{1, 2, . . . , p - 1\}$ is just the lift of $\mathbb{Z}/p\mathbb{Z}$ thus each element has an inverse as well. Another crucial ingredient is that all inverses are unique such that the number of inverses are the same as the number of residues, \ie we can cover all the numbers in $(p-1)! = 1\cdot 2\cdot 3 \dots p-1$ and therefore pair up a residue with its inverse.
 
-``Multiplying both sides by $p-1$ proves that $(p-1)! \equiv 1~ ({\rm mod~} n)$''. Note that
+``Multiplying both sides by $p-1$ proves that $(p-1)! \equiv 1 \pmod{n}$''. Note that
 %
 \nbea
-1~ ({\rm mod~} n) & \equiv & 1 + pm \\
-\to (p-1) \times \{1~ ({\rm mod~} n)\} & \equiv & (p-1)(1 + pm) \\
+1 \pmod{n} & \equiv & 1 + pm \\
+\to (p-1) \times \{1 \pmod{n}\} & \equiv & (p-1)(1 + pm) \\
 & \equiv & -1 + p(pm + 1 - m) \\
-(p-1) \{1~ ({\rm mod~} n)\} & \equiv & -1~ ({\rm mod~}n)
+(p-1) \{1\pmod{n}\} & \equiv & -1 \pmod{n}
 \neea
 %
 
@@ -824,9 +830,9 @@ n+1 &|& ((n+1)! +(n+1))
 %
 where we now have $n$ consecutive composite integers $(n+1)! + 2 , \dots, (n+1)! +(n+1)$. $\mathcal{Q.E.D}$.
 
-{\bf Theorem 2.2.2}. In the proof we need to subtract both sides of $a + tm \equiv b~ ({\rm mod~} n)$. We can always add and subtract both sides of a congruence since if $a \equiv b~ ({\rm mod~} n)$ then $n|(a-b) \to n|((a+\Delta) - (b + \Delta)) = n|(a-b)$.
+{\bf Theorem 2.2.2}. In the proof we need to subtract both sides of $a + tm \equiv b \pmod{n}$. We can always add and subtract both sides of a congruence since if $a \equiv b \pmod{n}$ then $n|(a-b) \to n|((a+\Delta) - (b + \Delta)) = n|(a-b)$.
 
-Multiplication is a bit trickier if $a \equiv b~ ({\rm mod~}n)$ then $ca \equiv cb~ ({\rm mod~}n)$. We can of course divide both sides with $c$ even if $c \nmid n$. However, we can't just factor out both sides in general.
+Multiplication is a bit trickier if $a \equiv b \pmod{n}$ then $ca \equiv cb \pmod{n}$. We can of course divide both sides with $c$ even if $c \nmid n$. However, we can't just factor out both sides in general.
 
 {\bf Eq. 2.2.2} $p$ has to be prime otherwise it won't work, \eg $p=4$, $\varphi(4) = 2$ but $4 - 4/4 = 3$.
 
@@ -835,29 +841,38 @@ Multiplication is a bit trickier if $a \equiv b~ ({\rm mod~}n)$ then $ca \equiv 
 Chinese Remainder Theorem in this case is
 %
 \nbea
-x & \equiv & 49^2~ ({\rm mod~} 4) \\
-x & \equiv & 49^2~ ({\rm mod~} 25) \\
-x & \equiv & x'~ ({\rm mod~} 4\cdot 25)
+x & \equiv & 49^2 \pmod{4} \\
+x & \equiv & 49^2 \pmod{25} \\
+x & \equiv & x' \pmod{4\cdot 25}
 \neea
 %
-$49 \equiv 1~ ({\rm mod~} 4)$ and $49 \equiv 24~ ({\rm mod~} 25) = -1~ ({\rm mod~} 25)$, thus
+$49 \equiv 1 \pmod{4}$ and $49 \equiv 24 \pmod{25} = -1 \pmod{25}$, thus
 %
 \nbea
-1 + t\cdot 4 & \equiv & 1~ ({\rm mod~} 25) \\
-4t & = & (1-1)~ ({\rm mod~} 25)  = 0~ ({\rm mod~} 25) \\
+1 + t\cdot 4 & \equiv & 1 \pmod{25} \\
+4t & = & (1-1) \pmod{25}  = 0 \pmod{25} \\
 t & = & 25 \\
-\to x & = & 101  = 1~ ({\rm mod~} 4 \cdot 25)
+\to x & = & 101  = 1 \pmod{4 \cdot 25}
 \neea
 %
-and so $49^2 \equiv 1~ ({\rm mod~} 100)$.
+and so $49^2 \equiv 1 \pmod{100}$.
 
 {\bf Proposition 2.2.7}. Note that this proposition only works if $\gcd(m,n) = 1$ otherwise you'll get weird results! Also for {\bf Equation 2.2.2}, $p$ is prime.
 
-{\bf Theorem 2.4.1}. There's a typo in the proof. Instead of ``follows from Proposition 2.1.22'' it should've followed from Theorem 2.1.20 where $x^{\varphi(n)} \equiv 1~ ({\rm mod~} n)$ since for a prime number $n$, $\varphi(n) = n-1$.
+{\bf Theorem 2.4.1}. There's a typo in the proof. Instead of ``follows from Proposition 2.1.22'' it should've followed from Theorem 2.1.20 where $x^{\varphi(n)} \equiv 1 \pmod{n}$ since for a prime number $n$, $\varphi(n) = n-1$.
 
 {\bf Section 2.5}. ``The structure of of $(\mathbb{Z}/p\mathbb{Z})^*$ $\dots \dots$ this implies that $(\mathbb{Z}/p\mathbb{Z})^*$ is a cyclic group''.
 
-A cyclic group is a group that can be generated from just one element of the group. The term cyclic here I believe refers to the group operation of addition, since $1 \cdot 1 = 1$ and we won't be able to generate the group. But under addition $({\rm mod~} p)$, any one element of $(\mathbb{Z}/p\mathbb{Z})^*$ can generate the whole group.
+A cyclic group is a group that can be generated from just one element of the group. The term cyclic here refers to taking powers of a single element. For example for $(\mathbb{Z}/3\mathbb{Z})^* = \{1,2\}$, 1 can't obviously generate the whole group but $2$ can since $2^1 = 2$ and $2^2 = 4 \equiv 1 \pmod{3}$.
+
+{\bf Proposition 2.5.3}. Note that this only applies to fields. See the last paragraph in the proof, especially this sentence ``since $\beta-\alpha \neq 0$ and $k$ is a field, we have $g(\beta)=0$.''. This is because every element in a field (other than zero) has an inverse such that
+%
+\nbea
+(\beta - \alpha)g(\beta) & = & 0 \\
+(\beta - \alpha)^{-1}(\beta - \alpha)g(\beta) & = & (\beta - \alpha) \cdot 0 \\
+g(\beta) & = & 0
+\neea
+%
 
 {\bf Theorem 2.5.8}. My first question when I saw the proof was that why can't one of the roots of $x^{q_i^{n_i}} - 1$ that is not a root of $x^{q_i^{n_i - 1}} - 1$ be a root of say $x^{q_i^{n_i - k}}$ for $1 < k < n_i - 1$? \eg $\alpha$ is a root of $x^{q_i^{n_i}} - 1 = 0$ but it's not a root of $x^{q_i^{n_i - 1}} - 1 = 0$ but $\alpha$ can still be a root of $x^{q_i^{n_i - k}} -1 = 0$, right?
 
@@ -873,9 +888,11 @@ x^{q_i^{n_i-1}} - 1 & = & 0 \\
 %
 \ie any roots of $x^{q_i^{n_i - k}} - 1$ are automatically roots of $x^{q_i^{n_i - 1}} - 1$ thus a root of $x^{q_i^{n_i}} - 1$ that is not a root of $x^{q_i^{n_i - 1}} - 1$ is really a new root!
 
+{\bf Proposition 2.5.12}. An additive order modulo $n$ is the smallest positive $x$ such that $ax \equiv 0 \pmod{n}$.
+
 {\bf Problem 2.1}. Prove that for any positive integer $n$, the set $(\mathbb{Z}/n\mathbb{Z})^*$ under multiplication modulo $n$ is a group.
 
-Remember that $(\mathbb{Z}/n\mathbb{Z})^*$ is the unit of $\mathbb{Z}/n\mathbb{Z}$, \ie any element $a \in (\mathbb{Z}/n\mathbb{Z})^*$ is $0 < a < n$ and $\gcd(a,n) = 1$. To show that $(\mathbb{Z}/n\mathbb{Z})^*$ in a group under multiplication $({\rm mod~}n)$ we first need to show that it is closed.
+Remember that $(\mathbb{Z}/n\mathbb{Z})^*$ is the unit of $\mathbb{Z}/n\mathbb{Z}$, \ie any element $a \in (\mathbb{Z}/n\mathbb{Z})^*$ is $0 < a < n$ and $\gcd(a,n) = 1$. To show that $(\mathbb{Z}/n\mathbb{Z})^*$ in a group under multiplication $\pmod{n}$ we first need to show that it is closed.
 
 Say we have two elements $a,b \in (\mathbb{Z}/n\mathbb{Z})^*$ if their product $(ab) < n$ then we are done because $\gcd(ab,n)=1$ as $\gcd(a,n)=\gcd(b,n)=1$. However, if $(ab) > n$ we can proceed as so, first $ab = nq + r$ with $0 < r <n$ ($r$ can't be zero since $n|ab$ otherwise).
 
@@ -887,25 +904,25 @@ We now utilize Bezout's lemma, \ie for $p,q \in \mathbb{Z}$,  $d|g \Longleftrigh
 rs + n(t+qs) & = & 1
 \neea
 %
-and by Bezout's lemma $\gcd(r,n)=1$ and since $0 < r < n$, $r \in (\mathbb{Z}/n\mathbb{Z})^*$. So we have shown that multiplication $({\rm mod~}n)$ is closed.
+and by Bezout's lemma $\gcd(r,n)=1$ and since $0 < r < n$, $r \in (\mathbb{Z}/n\mathbb{Z})^*$. So we have shown that multiplication $\pmod{n}$ is closed.
 
 We now need to show that every element of $(\mathbb{Z}/n\mathbb{Z})^*$ has an inverse. From Bezout's lemma, for every element $a \in (\mathbb{Z}/n\mathbb{Z})^*$, $as + nt = 1$ 
 %
 \nbea
 nt & = & 1 - as \\
 \to n &|& 1 - as \\
-\to as & \equiv & 1~ ({\rm mod~} n)
+\to as & \equiv & 1 \pmod{n}
 \neea
 %
-and therefore $s$ in the inverse of $a$ but since $as + nt = 1$ it also means that $\gcd(s,n)=1$, \ie $s \in (\mathbb{Z}/n\mathbb{Z})^*$. (If $s$ is less than zero or greater than $n$ we can always bring it back within $(0,n)$ by $s = nq' + r' ~\to ~s \equiv r'~ ({\rm mod~} n)$) And so we have an inverse for every element of $(\mathbb{Z}/n\mathbb{Z})^*$.
+and therefore $s$ in the inverse of $a$ but since $as + nt = 1$ it also means that $\gcd(s,n)=1$, \ie $s \in (\mathbb{Z}/n\mathbb{Z})^*$. (If $s$ is less than zero or greater than $n$ we can always bring it back within $(0,n)$ by $s = nq' + r' ~\to ~s \equiv r' \pmod{n}$) And so we have an inverse for every element of $(\mathbb{Z}/n\mathbb{Z})^*$.
 
 The other properties of a group can be easily proven:
 \bit
 \item $(\mathbb{Z}/n\mathbb{Z})^*$ has an identity element as $1 \in (\mathbb{Z}/n\mathbb{Z})^*$.
-\item $a,b,c \in (\mathbb{Z}/n\mathbb{Z})^*$ then $(ab)c = a(bc)$. This is obvious since the group action is multiplication $({\rm mod~}n)$.
+\item $a,b,c \in (\mathbb{Z}/n\mathbb{Z})^*$ then $(ab)c = a(bc)$. This is obvious since the group action is multiplication $\pmod{n}$.
 \eit
 
-{\bf Problem 2.4}. Prove that if $a$ and $b$ are integers and $p$ is prime, then $(a+b)^p \equiv a^p + b^p~({\rm mod~}p)$. You may assume that the binomial coefficient
+{\bf Problem 2.4}. Prove that if $a$ and $b$ are integers and $p$ is prime, then $(a+b)^p \equiv a^p + b^p \pmod{p}$. You may assume that the binomial coefficient
 %
 \nbea
 \frac{p!}{r!(p-r)!}
@@ -930,7 +947,7 @@ Since $\binom{p}{r}$ is an integer it means that $r!|p (p-1) \dots (p-r-1)$ but 
 & = & p q
 \neea
 %
-which means that $\binom{p}{q} = 0~({\rm mod~}p)$, provided $\binom{p}{q} > 1$. And this completes the proof.
+which means that $\binom{p}{q} = 0 \pmod{p}$, provided $\binom{p}{q} > 1$. And this completes the proof.
 
 {\bf Problem 2.5}. (a) Prove that if $x, y$ is a solution to $ax+by = d$, with $d = \gcd(a, b)$,
 then for all $c \in \mathbb{Z}$,
@@ -992,7 +1009,7 @@ Well, first $b$ must not be zero because otherwise $f(x) = x^2 + ax = x(x+a) \to
 
 Fine, so $b \neq 0$, but for some $a$ and $b$ we can factor $f(x) = (x + x_1)(x + x_2)$ where $x_1 + x_2 = a$ and $x_1x_2 = b$. But again, this is bad news, as $f(x)$ would not be prime. To make sure this doesn't happen $b$ must be prime or 1.
 
-Let's take the easier route, $b=1$ such that $f(x) = x(x+a) + 1$ so as long as $x$ is even we have a chance for $f(x)$ to be prime. And from Wilson's theorem, Proposition 2.1.22, we require that $(x(x+a))! \equiv -1 ~({\rm mod~}(x(x+a)+1))$.
+Let's take the easier route, $b=1$ such that $f(x) = x(x+a) + 1$ so as long as $x$ is even we have a chance for $f(x)$ to be prime. And from Wilson's theorem, Proposition 2.1.22, we require that $(x(x+a))! \equiv -1 \pmod{(x(x+a)+1)}$.
 
 Actually there's a way to increase the probability that $x(x+a) + 1$ will keep producing prime numbers (intermittently and) indefinitely such that the set we are interested in is infinite.
 
@@ -1017,20 +1034,61 @@ For other choices of $b > 1$ and $b$ is prime we have $f(x) = x(x+a) + b$ and as
 Another idea is maybe something like an extended Chinese remainder theorem
 %
 \nbea
-x^2 + ax + b & \equiv & 0 ~({\rm mod~} p_1) \\
-x^2 + ax + b & \equiv & 0 ~({\rm mod~} p_2) \\
+x^2 + ax + b & \equiv & 0 \pmod{p_1} \\
+x^2 + ax + b & \equiv & 0 \pmod{p_2} \\
 & \vdots & \\
-x^2 + ax + b & \equiv & 0 ~({\rm mod~} p_n) \\
+x^2 + ax + b & \equiv & 0 \pmod{p_n}
+\neea
+%
+Although I don't know how this would work since $x$ is squared.
+
+{\bf Problem 2.7}. Find four complete sets of residues modulo 7, where the $i$th set satisfies the $i$th condition: (1) nonnegative, (2) odd, (3) even, (4) prime.
+
+(1) complete residues, nonnegative $\{0,1,2,3,4,5,6\}$
+
+(2) complete residues, odd, we need to change each even number in (1) into an odd one which can be easily done by adding (or subtracting) 7 such that $\{7,1,9,3,11,5,13\}$
+
+(3) complete residues, even, this time we need to add 7 to the odd ones in (1), $\{0,8,2,10,4,12,6\}$
+
+(4) complete residues, prime, this one is a bit tricky, we need to add 7 until a number becomes prime, $\{7,29,2,3,11,5,13\}$ where $29 = 1 + 7\cdot 4$.
+
+{\bf Problem 2.8}. Find rules in the spirit of Proposition 2.1.9 for divisibility of an integer by 5, 9, and 11, and prove each of these rules using arithmetic modulo a suitable $n$.
+
+The case for 11 will covered below in Problem 2.9. The the other two cases, denote
+%
+\nbea
+n & = & a + b10 + c100 + \dots
 \neea
 %
 
-Although I don't know how this would work since $x$ is squared.
+For the case of 5, this is easy since any number other than 5 will have 
+%
+\nbea
+b10 \equiv c100 \equiv \dots & \equiv & 0 \pmod{5}
+\neea
+%
+since $10^n,~n > 0 \to 10^n \equiv 0 \pmod{5}$, thus
+%
+\nbea
+n & \equiv & a \pmod{5}
+\neea
+%
+and since $5|n \to n \equiv 0 \pmod{5}$, $a$ has to be either 0 or 5.
 
-{\bf Problem 2.6}. (*) (The following problem is from the 1998 Putnam Competition.) Define a sequence of decimal integers $a_n$ as follows: $a_1 = 0,~ a_2 = 1$, and $a_{n+2}$ is obtained by writing the digits of $a_{n+1}$ immediately followed by those of $a_n$. For example, $a_3 = 10,~ a_4 = 101$, and $a_5 = 10110$. Determine the $n$ such that $a_n$ is a multiple of 11, as follows:
+For the case of 9
+%
+\nbea
+a + b10 + c100 + \dots & = & a + b + c + \dots + b9 + c99 + \dots \\
+& \equiv & a + b + c + \dots \pmod{9}
+\neea
+%
+Therefore $a + b + c + \dots$ must be a multiple of 9.
+
+{\bf Problem 2.9}. (*) (The following problem is from the 1998 Putnam Competition.) Define a sequence of decimal integers $a_n$ as follows: $a_1 = 0,~ a_2 = 1$, and $a_{n+2}$ is obtained by writing the digits of $a_{n+1}$ immediately followed by those of $a_n$. For example, $a_3 = 10,~ a_4 = 101$, and $a_5 = 10110$. Determine the $n$ such that $a_n$ is a multiple of 11, as follows:
 
 (a) Find the smallest integer $n > 1$ such that $a_n$ is divisible by 11.
 
-(b) Prove that $a_n$ is divisible by 11 if and only if $n \equiv 1~ ({\rm mod~} 6)$.
+(b) Prove that $a_n$ is divisible by 11 if and only if $n \equiv 1 \pmod{6}$.
 
 First, what is the requirement that a number is a multiple of 11? It's that the sum of the digit multiplied by alternating power of -1 is zero, \ie if the number we're interested in is
 %
@@ -1055,11 +1113,11 @@ et cetera, thus
 \nbea
 n & = & a + b10 + c100 + d 1000 + \dots \\
 & = & a + b(11-1) + c(110 - 11 + 1) + d(1100 - 110 + 11 - 1) + \dots \\
-& = & a - b + c - d + \dots ~ ({\rm mod~} 11) \\
-0 & = & a - b + c - d + \dots ~ ({\rm mod~} 11)
+& = & a - b + c - d + \dots \pmod{11} \\
+0 & = & a - b + c - d + \dots \pmod{11}
 \neea
 %
-the last line is because $11|n \to n = 0~({\rm mod~}11)$, and so the alternate sum of the digits of the number must be zero for the number to be a multiple of 11.
+the last line is because $11|n \to n = 0 \pmod{11}$, and so the alternate sum of the digits of the number must be zero for the number to be a multiple of 11.
 
 Let's list the first few $a$'s and their digits' alternate sum
 %
@@ -1076,17 +1134,45 @@ so the smallest $n > 1$ such that $11|a_n$ is $n=7$.
 
 The number of digits of $a_i$ is the $i^{\rm th}$ fibonacci number.
 
+{\bf Problem 2.10}. Find an integer $x$ such that $37x \equiv 1 \pmod{101}$.
 
+We use Euclid's gcd algorithm to find the solution of Bezout's lemma $37x + 101y = 1$
+%
+\nbea
+\underline{101} & = & \underline{37} \cdot 2 + \underline{27} ~~~~~~~~~~~~~~~~~~~~ \underline{27} = ~~1 \cdot \underline{101} - 2 \cdot \underline{37} \\
+\underline{37} & = & \underline{27} \cdot 1 + \underline{10} ~~~~~~~~~~~~~~~~~~~~ \underline{10} = -1 \cdot \underline{101} + 3 \cdot \underline{37} \\
+\underline{27} & = & \underline{10} \cdot 2 + \underline{7} ~~~~~~~~~~~~~~~~~~~~~~~ \underline{7} = ~~~3 \cdot \underline{101} - 8 \cdot \underline{37} \\
+\underline{10} & = & \underline{7} \cdot 1 ~+ \underline{3} ~~~~~~~~~~~~~~~~~~~~~~~~ \underline{3} = -4 \cdot \underline{101} + 11 \cdot \underline{37} \\
+\underline{7} & = & \underline{3} \cdot 2~ + \underline{1} ~~~~~~~~~~~~~~~~~~~~~~~~ \underline{1} = ~11 \cdot \underline{101} - 30 \cdot \underline{37}
+\neea
+%
+Therefore $x=-30$.
 
+{\bf Problem 2.11}. What is the order of 2 modulo 17?
+
+The order of a number is the smallest positive $m$ such that $2^m \equiv 1 \pmod{17}$. We can just try different numbers by brute force but an astute observer will observe that $2^4 = 16 \equiv -1 \pmod{17}$ and $1 = (-1)^2 = (2^4)^2 \equiv 2^8 \pmod {17}$. Thus the order of 2 modulo 17 is 8.
+
+{\bf Problem 2.13}. Find an $x \in \mathbb{Z}$ such that $x \equiv −4 \pmod{17}$ and $x \equiv 3 \pmod{23}$.
+
+We use Theorem 2.2.2 to solve Chinese remainder theorem
+%
+\nbea
+x = -4 + t\cdot 17 & \equiv & 3 \pmod{23} \\
+17 t & \equiv & 7 \pmod{23} \\
+t & = & 18 \\
+\to x = -4 + 306 & = & 302
+\neea
+%
+to solve the above we first need the inverse of 17 $\pmod{23}$ which can be computed by the extended gcd of 17 and 23. Once we find that we just multiply the inverse to both sides. Or you can just try the numbers between $1 \dots 22$ one at a time :)
 
 {\bf Problem 2.14}. Prove that if $n > 4$ is composite then
 %
 \nbea
-(n-1)! & \equiv & 0~ ({\rm mod~} n)
+(n-1)! & \equiv & 0 \pmod{n}
 \neea
 %
 
-First if $n=4$, $(n-1)! = 3! = 6$ and 6 is not $0~ ({\rm mod~} n)$. For the rest, we use our awesomesauce friend the fundamental theorem of arithmetic.
+First if $n=4$, $(n-1)! = 3! = 6$ and 6 is not $0 \pmod{n}$. For the rest, we use our awesomesauce friend the fundamental theorem of arithmetic.
 
 Write $n$ as
 %
@@ -1096,7 +1182,7 @@ n & = & \prod_{i=1}^{M} p_i^{\alpha_i}
 %
 where each $p_i$ is distinct. We can now pick and choose :) Pick any $p$ you want, say $p_j$. Now, pull out $p_j$ out of $n$ such that $n = p_j n'$.
 
-Now, if $p_j \neq n'$, since $p_j$ and $n'$ are both less than $n$, they are included in $(n-1)!$ (remember that $(n-1)!$ is a product of {\it all} numbers less than $n$). Thus, since $(n-1)!$ contains $n$ as a factor, $(n-1)! \equiv 0~ ({\rm mod~} n)$.
+Now, if $p_j \neq n'$, since $p_j$ and $n'$ are both less than $n$, they are included in $(n-1)!$ (remember that $(n-1)!$ is a product of {\it all} numbers less than $n$). Thus, since $(n-1)!$ contains $n$ as a factor, $(n-1)! \equiv 0 \pmod{n}$.
 
 When $n' = p_j$, the above argument fails since $(n-1)!$ contains all numbers less than $n$ only {\it once}. However, it can still be remedied. Let $m=p_j(p_j-1) = p_j(n'-1) \neq n$ and since $n'-1<n \to m < n$ both $m$ and $p_j$ are both contained as factors in $(n-1)!$ and $p_j n'|(n-1)! \to n | (n-1)!$. The only way it doesn't work is if $n'=2$ because then $m$ is just $p_j$ which affirms the fact that $n > 4$ for the above assertion to be true. This completes the proof.
 
@@ -1116,13 +1202,473 @@ where each $p_i$ is distinct. Thus
 %
 For all primes $p > 2$, $\varphi(p^\alpha) = p^{\alpha-1}(p-1)$, see Eq. 2.2.2, which is even (since $p$ is odd) while $\varphi(2^\alpha) = 2^{\alpha-1}$ which also means that only when $\alpha=1$ is $\varphi(2)$ odd.
 
-Therefore, $\varphi(n)$ is only odd if and only if $n=2$ (and also for $n=1$ but that one is trivial since the only member of $\mathbb{Z}/1\mathbb{Z}$ and $(\mathbb{Z}/1\mathbb{Z})^*$ is 1 which is also equal to $0~ ({\rm mod~}1)$).
+Therefore, $\varphi(n)$ is only odd if and only if $n=2$ (and also for $n=1$ but that one is trivial since the only member of $\mathbb{Z}/1\mathbb{Z}$ and $(\mathbb{Z}/1\mathbb{Z})^*$ is 1 which is also equal to $0 \pmod{1}$).
+
+{\bf Problem 2.17}. Seven competitive math students try to share a huge hoard of stolen math books equally between themselves. Unfortunately, six books are left over, and in the fight over them, one math student is expelled. The remaining six math students, still unable to share the math books equally since two are left over, again fight, and another is expelled.
+When the remaining five share the books, one book is left over, and it is only after yet another math student is expelled that an equal sharing is possible. What is the minimum number of books that allows this to happen?
+
+The above is actually a Chinese remainder problem with the following setting
+%
+\nbea
+x & \equiv & 6 \pmod{7} \\
+x & \equiv & 2 \pmod{6} \\
+x & \equiv & 1 \pmod{5} \\
+x & \equiv & 0 \pmod{4}
+\neea
+%
+We first solve the first 2, using proof of Theorem 2.2.2 $x = 6 + t\cdot 7 \equiv 2 \pmod {6}$, $7t \equiv -4 \pmod{6} \equiv 2 \pmod{6}$, so $t=2$ and $x = 6 + 2 \cdot 7 = 20$. This solution is not unique as any other $x' \equiv 20 \pmod{7\cdot 6}$ is also a solution. We have now reduced the problem to
+%
+\nbea
+x & \equiv & 20 \pmod{42} \\
+x & \equiv & 1 \pmod{5} \\
+x & \equiv & 0 \pmod{4}
+\neea
+%
+Repeating the process $x = 20 + t\cdot 42 \equiv 1 \pmod{5} \to t\cdot 42 \equiv 1 \pmod{5}$ since $5|20$, thus $t = 3$ and so $x = 20 + 3 \cdot 42 = 146$.
+
+The last thing to do is to make it conform to $x \equiv 0 \pmod{4}$. This is the trickiest part since now $\gcd(42\cdot 5, 4) = 2 \neq 1$ and Theorem 2.2.2 needs $\gcd(m,n) = 1$, here $m = 42 \cdot 5 = 210$ and $n=4$. The situation we have now is
+%
+\nbea
+x & \equiv & 146 \pmod{210} \\
+x & \equiv & 0 \pmod{4}
+\neea
+%
+The solution using Theorem 2.2.2 is
+%
+\nbea
+x = 146 + t\cdot 210 & \equiv & 0 \pmod {4} \\
+t\cdot 210 & \equiv & -146 \pmod {4} \\
+210 t & \equiv & 2 \pmod {4}
+\neea
+%
+Although $\gcd(42\cdot 5, 4) = 2 \neq 1$, according to Proposition 2.1.15, since $\gcd(42\cdot 5, 4) = 2$ divides 2, this equation has a solution $t=1$ with $x = 356$. 
+
+The problem is now making sure that 356 is the smallest solution. In the proof of Theorem 2.2.2, the solution of Chinese remainder theorem is unique up to $\pmod{mn}$ which means that we can always substract $mn$ from the solution to get the smallest one. However, the proof requires $\gcd(m,n)=1$, here $\gcd(210, 4) = 2$. Let's modify the proof then.
+
+Suppose that $x$ and $y$ solve both congruences. Then $z = x − y$ satisfies $z \equiv 0 \pmod{m}$ and $z \equiv 0 \pmod{n}$, so $m|z$ and $n|z$. Since $\gcd(n, m) \neq 1$, it follows that ${\rm lcm}(n,m) | z$, so $x \equiv y \pmod{ {\rm lcm}(n,m)}$.
+
+Here ${\rm lcm}(210,4)=420$ and it is greater than 356, therefore 356 is the smallest solution. Math students are not very bright after all, they should've stolen 356 iPhones instead of math books :)
 
 {\bf Problem 2.18}. Show that if $p$ is a positive integer such that both $p$ and $p^2 + 2$ are prime, then $p = 3$.
 
-I tried to show that the fact that $p$ and $p^2 + 2$ are prime implies $p=3$ and it didn't work out too well. The best approach is to flip the statement, \ie if $p \neq 3$ then $p$ is not prime OR $p^2 + 2$ is not prime (we can't have both to be prime) which is the solution given in the book.
+I tried to show that the fact that $p$ and $p^2 + 2$ are prime implies $p=3$ and it didn't work out too well. The reason it didn't work out well is because the tools we have to show that a number is prime are Wilson's theorem (Proposition 2.1.22) and the pseudoprimality test (Theorem 2.4.1). Both are unwieldy as Wilson involves factorial while pesudoprimality involves all numbers.
 
-As a side note, you might be tempted to generalize this into, $p$ and $p^2 + (p-1)$, \eg $p=5$ with $p^2 + (5-1) = 29$ where both are primes. However, for $p=7$, $p^2 + 6 = 55$ is not prime. The problem is that $5^2 + 6 = 31, ~19^2 + 6 = 367$ are also prime.
+A better approach is to flip the statement, \ie if $p \neq 3$ then $p$ is not prime OR $p^2 + 2$ is not prime (we can't have both to be prime) which is the solution given in the book.
+
+However, it is not impossible to be pigheadded and go ahead with a direct deduction from the if clause. An astute observer will notice that $2 = \varphi(3)$ such that
+%
+\nbea
+p^2 + 2 & \Longrightarrow & p^{\varphi(3)} + \varphi(3)
+\neea
+%
+Note that from Theorem 2.1.20 (Euler's Theorem), $x^{\varphi(p)} \equiv 1 \pmod{p}$ when $\gcd(x,p)=1$. But since 3 is prime $\gcd(x,3)=1$ for any nonzero $x$ other than 3. Therefore, for any $x > 0,~x \neq 3$
+%
+\nbea
+x^{\varphi(3)} + \varphi(3) & \equiv & (1 + 3 - 1) \pmod{3} \\
+ & \equiv & 0 \pmod{3} \\
+x^{\varphi(3)} + \varphi(3) & = & 3n
+\neea
+%
+Since $x^{\varphi(3)} + \varphi(3)$ is prime, $n=1$ is a must. But then $x=1$ is the only solution and it is not prime. Therefore $x=3$. Note that we did not even assume that $3$ meets the criterion, we just show that if there's only viable candidate, it has to be 3 :)
+
+The problem can then be generalized, if $x, p$ are prime and $x^{n\varphi(p)} + {\varphi(p)}, ~n > 0$ is also prime, then $x=p$. The proof of this more general statement is the same as above. Since for $x \neq p$, $x^{n\varphi(p)} = 1 \pmod{p}$ and $\varphi(p) = p-1$, $x^{n\varphi(p)} + {\varphi(p)} = 0 \pmod{p}$ and $x=1$, a contradiction, therefore $x=p$.
+
+Initially, I tried generalizing this into, $p$ and $p^2 + (p-1)$, \eg $p=5$ with $p^2 + (5-1) = 29$ where both are primes. However, for $p=7$, $p^2 + 6 = 55$ is not prime. The problem is that $5^2 + 6 = 31, ~19^2 + 6 = 367$ are also prime.
+
+{\bf Problem 2.19}. Let $\varphi : N \to N$ be the Euler $\varphi$ function.
+
+(a) Find all natural numbers $n$ such that $\varphi(n) = 1$.
+
+(b) Do there exist natural numbers $m$ and $n$ such that $\varphi(mn) \neq \varphi(m) \cdot \varphi(n)$?
+
+(a) From problem 2.15 we know that $\varphi(n) = 1$ only for $n=1,2$.
+
+(b) As long as $\gcd(m,n) \neq 1$, $\varphi(mn) \neq \varphi(m) \cdot \varphi(n)$, as shown by the derivations leading to Proposition 2.2.7, \eg $m = 2, n = 4,~\varphi(2 \cdot 4) = 4$ while $\varphi(2)=1$ and $\varphi(4) = 2,~\varphi(2) \cdot \varphi(4) = 2 \neq \varphi(2 \cdot 4) = 4$.
+
+{\bf Problem 2.20}. Find a formula for $\varphi(n)$ directly in terms of the prime factorization of $n$.
+
+According to the fundamental theorem of arithmetic
+%
+\nbea
+n & = & \prod_{i=1}^{N} p_i^{\alpha_i} \\
+\varphi(n) & = & \prod_{i=1}^{N} \varphi(p_i^{\alpha_i}) \\
+\varphi(n) & = & \prod_{i=1}^{N} p_i^{\alpha_i-1}(p_1 - 1)
+\neea
+%
+we can use Proposition 2.2.7 because each prime factors are obviously co-prime to one another (obviously).
+
+{\bf Problem 2.23}. Find all four solutions to the equation
+%
+\nbea
+x^2 - 1 & \equiv & 0 \pmod{35}.
+\neea
+%
+
+We know that $1$ and $35-1 \equiv -1 \pmod{35}$ are roots of $x^2-1\equiv 0 \pmod{35}$ and all roots must have gcd 1 with 35,  the other two roots (by the slow way of elimination) are $6$ and $29$.
+
+{\bf Problem 2.24}. Prove that for any positive integer $n$ the fraction $(12n + 1)/(30n + 2)$ is in reduced form.
+
+Reduced form means that $\gcd(12n + 1, 30n + 2) = 1$ (we cannot simplify it further). Say $d = \gcd(12n + 1, 30n + 2)$
+%
+\nbea
+12n + 1 & = & da \\
+30n + 3 & = & db \\
+\to \frac{12\cancel{n}}{30\cancel{n}} & = & \frac{da - 1}{db - 2} \\
+\frac{2}{5} & = & \frac{da - 1}{db - 2} \\
+2db - 4 & = & 5da - 5 \\
+d(2b - 5a) & = & -1 \\
+\to d &|& -1
+\neea
+%
+which means that $d=1$ and the fraction is indeed in reduced form.
+
+{\bf Problem 2.25}. Suppose $a$ and $b$ are positive integers.
+
+(a) Prove that $\gcd(2^a - 1, 2^b - 1) = 2^{\gcd(a,b)} - 1$.
+
+(b) Does it matter if 2 is replaced by an arbitrary prime $p$?
+
+(c) What if 2 is replaced by an arbitrary positive integer $n$?
+
+First, assume without loss of generality $b > a, ~ b = aq_0 + r_0$ ($b=a$ is obvious), we then use Lemma 1.1.9, $\gcd(a,b) = \gcd(a,b-a)$
+%
+\nbea
+\gcd(2^a - 1, 2^b - 1) & = & \gcd(2^a - 1, 2^b - 1 - 2^a + 1) \\
+& = & \gcd(2^a - 1, 2^a(2^{b-a} - 1))
+\neea
+%
+But we also know that $\gcd(2^a - 1, 2^a)=1$ because two consecutive numbers cannot have gcd larger than 1 because
+%
+\nbea
+d|a & & d|a+1 \\
+d|(a+1-a)& \to & d|1 \\
+\to d & = & 1
+\neea
+%
+Now since $\gcd(2^a - 1, 2^a)=1$
+%
+\nbea
+\gcd(2^a - 1, 2^b - 1) & = & \gcd(2^a - 1,2^{b-a} - 1)
+\neea
+%
+We can then repeat the process $\gcd(2^a - 1,2^{b-a} - 1) = \gcd(2^a - 1,2^a(2^{b-a} - 1)) = \gcd(2^a - 1, 2^{b-2a}-1)$, doing this $q_0 = \floor{b/a}$ times we will get
+%
+\nbea
+\gcd(2^a - 1, 2^b - 1) & = & \gcd(2^a - 1, 2^{b- aq_0} - 1) = \gcd(2^a - 1, 2^{r_0} - 1)
+\neea
+%
+where $r_0 = b \mod a$. Since $0 \le r_0 < a$, we now swap the role of $a \leftrightarrow r_0$ and do the same thing
+%
+\nbea
+\gcd(2^a - 1, 2^{r_0} - 1) = \gcd(2^{r_0} - 1, 2^a - 1) & = & \gcd(2^{r_0} - 1, 2^a - 1 - 2^{r_0} + 1) \\
+& = & \gcd(2^{r_0} - 1, 2^{r_0}(2^{a - r_0} - 1)) \\
+& = & \gcd(2^{r_0} - 1, 2^{a - r_0} - 1)
+\neea
+%
+We can again repeat this $q_1 = \floor{a/r_0}$ times until we get
+%
+\nbea
+\gcd(2^{r_0} - 1, 2^a - 1) & = & \gcd(2^{r_0} - 1, 2^{a - r_0q_1} - 1) = \gcd(2^{r_0} - 1, 2^{r_1} - 1)
+\neea
+%
+where $r_1 = a \mod r_0$. We are thus just following the steps of Euclid's gcd algorithm
+%
+\nbea
+\gcd(2^a - 1, 2^b - 1) & = & \gcd(2^a - 1, 2^{r_0} - 1), ~~~b = aq_0 + r_0 \\
+\gcd(2^{r_0} - 1, 2^a - 1) & = & \gcd(2^{r_0} - 1, 2^{r_1} - 1), ~~~a = r_0q_1 + r_1 \\
+\gcd(2^{r_1} - 1, 2^{r_0} - 1) & = & \gcd(2^{r_1} - 1, 2^{r_2} - 1), ~~~r_0 = r_1q_2 + r_2 \\
+& \vdots & \\
+\gcd(2^{r_{n-1}} - 1, 2^{r_{n-2}} - 1) & = & \gcd(2^{r_{n-1}} - 1, 2^{d} - 1), ~~~r_{n-2} = r_{n-1}q_n + d \\
+\gcd(2^{d} - 1, 2^{r_{n-1}} - 1) & = & \gcd(2^{d} - 1, 2^{dq_1} - 1), ~~~r_{n-1} = dq_1
+\neea
+%
+where $d = \gcd(a,b)$. If we repeat the same process on the last equality $q_1$ times
+%
+\nbea
+\gcd(2^{d} - 1, 2^{dq_1} - 1) & = & \gcd(2^{d} - 1, 2^{dq_1-dq_1} - 1) \\
+& = & \gcd(2^{d} - 1, 2^0 - 1) = \gcd(2^{d} - 1, 0) \\
+& = &  2^{d} - 1 = 2^{\gcd(a,b)} - 1\\
+\gcd(2^a - 1, 2^b - 1) & = & 2^{\gcd(a,b)} - 1
+\neea
+%
+This completes the proof of (a). For (b) and (c), it is obvious from the above derivation that 2 can be substituted with any number.
+
+{\bf Problem 2.26}. For every positive integer $b$, show that there exists a positive integer $n$ such that the polynomial $x^2 - 1 \in (\mathbb{Z}/n\mathbb{Z})[x]$ has at least $b$ roots.
+
+From my first misadventure I gathered the following facts about roots of $x^2 - 1 = 0 \pmod{n}$. First of all, the roots of $x^2 - 1$, denote them $\beta  \to \beta^2 - 1 \equiv \pmod{n}$ satisfy $\gcd(\beta,n)=1$ because otherwise say $d = \gcd(\beta,n) > 1,~\beta=d\beta',~n=dn'$
+%
+\nbea
+\beta^2 - 1 & \equiv & 0 \pmod{n} \\
+\beta^2 - 1 & = & 0 + ny \\
+\beta^2 - ny & = & 1 \\
+d(\beta'\beta - n'y') & = & 1 \\
+\to d&|&1
+\neea
+%
+which is a contradiction. Or you can just use Bezout's lemma, since $\beta^2 \equiv 1 \pmod{n}$
+%
+\nbea
+\beta^2 & = & 1 + ny \\
+\beta\cdot \beta - n\cdot y & = & 1
+\neea
+%
+therefore $\gcd(\beta,n)=1$.
+
+Second, since $x^2 - 1 = (x-1)(x+1)$, $x=1$ and $x=-1=n-1 \pmod{n}$ are automatically solutions.
+
+Third, once you have two solutions $\alpha,\beta$ (not equal to $1$ of course) you can get a third one because
+%
+\nbea
+\alpha^2 \cdot \beta^2 & \equiv & 1 \cdot 1 \pmod{n} \\
+(\alpha\beta)^2 & \equiv & 1 \pmod{n}
+\neea
+%
+and $\alpha\beta$ cannot be equivalent to $\alpha$ or $\beta$ because otherwise
+%
+\nbea
+\alpha\bcancel{\beta} & \equiv & \bcancel{\beta} \pmod{n} \\
+\alpha & \equiv & 1 \pmod{n}
+\neea
+%
+which is a contradiction (the same argument works for $\alpha\beta \equiv \alpha \pmod{n} \to \beta \equiv 1 \pmod{n}$). In the above argument we can cancel $\alpha$ or $\beta$ from both sides because $\gcd(\alpha,n) = \gcd(\beta,n) = 1$. But you cannot continue this process indefinitely as multiplying the new solution with $\alpha$ or $\beta$ produces
+%
+\nbea
+\alpha \cdot \alpha\beta = (\alpha^2)\beta & \equiv & 1 \cdot \beta \pmod{n} \\
+\alpha^2\beta & \equiv & \beta \pmod{n}
+\neea
+%
+so we are not getting any new solution (the same thing happens if you multiply $\beta$ with the new solution $\alpha\beta$ you'll just get $\alpha$).
+
+Other than the above items, I didn't see any way to prove the number of solutions of a polynomial $\mod{n}$ (especially when $n$ is not prime).
+
+The way to prove that we can find $n$ such that $x^2-1$ has at least $b$ solutions is to use something called the Chinese remainder map. Consider a number, any number $x$, we can represent this number in the following way
+%
+\nbea
+x & \equiv & x_{1} \pmod{n_{1}} \\
+x & \equiv & x_{2} \pmod{n_{2}} \\
+ & \vdots & \\
+x & \equiv & x_{123} \pmod{n_{123}} \\
+& \vdots & \\
+x & \equiv & x_{M} \pmod{n_{M}}
+\neea
+%
+where $x_1 = x \mod n_i$, \ie it is just the remainder of $x$, and $x$ is unique up to
+%
+\nbea
+x & \equiv & x' \pmod{n_1 \cdot n_2 \dots n_{123} \dots n_M}
+\neea
+%
+provided that all the $n_i$'s are c relatively prime to one another.
+
+We can now solve this problem. First, find $b$ numbers of distinct primes $p_1, \dots, p_b$ (we can do this since Euclid has proven that there are infinitely many prime numbers). Now, we multiply all those $b$ prime numbers into $n = p_1 \cdot \dots \cdot p_b$ and we want to solve $x^2-1 \equiv \pmod{n}$.
+
+There is of course at least one solution to $x^2-1 \equiv 0 \pmod{n}$, \eg $x=1$, let's denote this solution $\beta \to \beta^2 - 1 \equiv 0 \pmod{n}$. It is more helpful to denote $\alpha = \beta^2$, therefore if we represent $\alpha$ using Chinese remainder map
+%
+\nbea
+\alpha_i & \equiv & \beta_i^2 \pmod {p_i} \\
+& \equiv & (\pm\beta_i)^2 \pmod {p_i}
+\neea
+%
+since $(-\beta_i)^2 = (+\beta_i)^2$. We can thus choose whether we want to include the minus sign of {\bf each} $\beta_i$ and presto we have $2^b$ distinct $\beta$'s, \ie $2^b$ distinct roots of $x^2-1$. The only trick here is that $p_i > 2$ because $\mathbb{Z}/2\mathbb{Z}$ only has 1 ``element'' so to say, \ie $-1 \equiv +1 \pmod{2}$, thus $\pm \beta_i = \beta$, altering the minus sign doesn't produce a new solution. Let's see this with an example. 
+
+Say $b=2$, $p_1 = 2,~p_2 = 3$, we now want to solve $x^2 - 1 \equiv 0 \pmod{6}$. We know that $1 \pmod {6}$ is a solution, \ie $\alpha = 1$, which means that
+%
+\nbea
+\alpha & \equiv & 1 \pmod{2}, ~~~ \alpha_1 = 1 \\
+\alpha & \equiv & 1 \pmod{3}, ~~~ \alpha_2 = 1 \\
+\alpha_1 & \equiv & (\pm 1)^2 \pmod{2} \\
+\alpha_2 & \equiv & (\pm 1)^2 \pmod{3}
+\neea
+%
+We now have $2^2 = 4$ choices for $\beta=(\beta_1,\beta_2) = (+1,+1),~(-1,+1),~(+1,-1),~(-1,-1)$
+%
+\nbea
+(+1,+1) & \to & \beta = 1 \pmod{6} \\
+(-1,+1) & \to & \beta = 1 \pmod{6} \\
+(+1,-1) & \to & \beta = 5 \pmod{6} \\
+(-1,-1) & \to & \beta = 5 \pmod{6}
+\neea
+%
+Oops, we only get {\it two} distinct solutions, had we started with $p_1 = 3,~p_2 = 5$ instead, we would have gotten
+%
+\nbea
+\alpha_1 & \equiv & (\pm 1)^2 \pmod{3} \\
+\alpha_2 & \equiv & (\pm 1)^2 \pmod{5} \\
+(+1,+1) & \to & \beta = 1 \pmod{15} \\
+(-1,+1) & \to & \beta = 4 \pmod{15} \\
+(+1,-1) & \to & \beta = 11 \pmod{15} \\
+(-1,-1) & \to & \beta = 14 \pmod{15}
+\neea
+%
+{\it four} distinct $\beta$'s, \ie four distinct roots instead of just two.
+
+Our proposed solution above is actually an overkill, we do not need $2^b$ solutions, we just need $b$ solutions, so we only need $\ceil{\log_2(b)}$ distinct prime numbers (each $>2$).
+ 
+{\bf Problem 2.27}. (a) Prove that there is no primitive root modulo $2^n$ for any $n \ge 3$.
+(b) (*) Prove that $(\mathbb{Z}/2^n\mathbb{Z})^*$ is generated by $-1$ and 5.
+
+For part(a) we just need to follow the hint. We will need to use induction, but to avoid notational clutter, I'll just show a specific case instead of the generic case in the induction step.
+
+From the hint we know that all elements of $(\mathbb{Z}/8\mathbb{Z})^*$ have multiplicative order of 2. Now take for example $2^4 = 16$, $\varphi(16) = 8$. Assume that the order of $x \in (\mathbb{Z}/16\mathbb{Z})^*$ is 8, \ie $x^8 \equiv 1 \pmod{16}$.
+
+Since the order of $x \pmod{16}$  is 8, $x^4, x^2, x \not\equiv 1 \pmod{16}$. There is something we can say about $x^2$, we know that $x^2 \not\equiv 1 \pmod{8}$, why? because if it is
+%
+\nbea
+x^2 & \equiv & 1 \pmod{8} \\
+& = & 1 + 8n \\
+x^4 & = & (1+8n)^2 = 1 + 16n + 64n^2 \\
+x^4 & \equiv & 1 \pmod{16}
+\neea
+%
+which is a contradiction since the order of $x \pmod{16}$ is 8. Since $x \neq 1$, and thanks to Euler's theorem $x^{\varphi(8)} = x^4 \equiv 1 \pmod{8}$, the order of $x \pmod{8}$ is 4. But we know that the order of any $x \in (\mathbb{Z}/8\mathbb{Z})^*$ is 2. Thus the order of $x \pmod{16}$ cannot be 8, whatever $x$ is and hence $(\mathbb{Z}/16\mathbb{Z})^*$ does not have a primitive root. It is then obvious that we can generalize the above argument for a general the inductive step by replacing 8 with $2^n$ and 16 with $2^{n+1}$.
+
+For part (b), there are many things we need to consider. We know that the elements of $(\mathbb{Z}/2^n\mathbb{Z})^*$ are just positive odd numbers $< 2^n$. By a generator the question hints that we can make any element of $(\mathbb{Z}/2^n\mathbb{Z})^*$ by multiplying $5$ and $-1$ arbitrary times, \ie any element of $(\mathbb{Z}/2^n\mathbb{Z})^*$ is $(-1)^a 5^b$ for some $a,b$.
+
+A cursory observation shows that there is a pattern on $5^q \mod 2^n$ as shown in the following table
+
+%
+\begin{table}[]
+\centering
+\caption{}
+\label{Tab:1}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+$q$ & $5^q$ & $5^q \mod 2^2$ & $5^q \mod 2^3$ & $5^q \mod 2^4$ & $5^q \mod 2^5$ & $5^q \mod 2^6$ \\ \hline 
+1 & 5 & {\bf 1} & $5$ & $5$ & $5$ & $5$\\ \hline
+2 & 25 & {\bf 1}  & {\bf 1} & $9$ & $25$ & $25$ \\ \hline
+3 & 125 & {\bf 1}  & $5$ & $13$ & $29$ & $61$ \\ \hline
+4 & 625 & {\bf 1}  & {\bf 1} & {\bf 1} & $17$ & $49$ \\ \hline
+5 & 3125 & {\bf 1}  & $5$ & $5$ & $21$ & $53$ \\ \hline
+6 & 15625 & {\bf 1}  & {\bf 1} & $9$ & $9$ & $9$ \\ \hline
+7 & 78125 & {\bf 1}  & $5$ & $13$ & $13$ & $45$ \\ \hline
+8 & 390625 & {\bf 1}  & {\bf 1} & {\bf 1} & {\bf 1} & $33$ \\ \hline
+9 & 1953125 & {\bf 1}  & $5$ & $5$ & $5$ & $37$ \\ \hline
+10 & 9765625 & {\bf 1}  & {\bf 1} & $9$ & $25$ & $57$ \\ \hline
+11 & 48828125 & {\bf 1}  & $5$ & $13$ & $29$ & $29$ \\ \hline
+12 & 244140625 & {\bf 1}  & {\bf 1} & {\bf 1} & $17$ & $17$ \\ \hline
+13 & 1220703125 & {\bf 1}  & $5$ & $5$ & $21$ & $21$ \\ \hline
+14 & 6103515625 & {\bf 1}  & {\bf 1} & $9$ & $9$ & $41$ \\ \hline
+15 & 30517578125 & {\bf 1}  & $5$ & $13$ & $13$ & $13$ \\ \hline
+16 & 152587890625 & {\bf 1}  & {\bf 1} & {\bf 1} & {\bf 1} & {\bf 1} \\ \hline
+\end{tabular}
+\end{table}
+%
+We can see that there is a pattern when we go from $2^n$ to $2^{n+1}$ what we need to notice is on what happens to $1 \pmod{2^n}$, \eg $625 \mod 8 = 625 \mod 16 = 1$, however, $25 \mod 8 \neq 25 \mod 16$. This pattern persists for others as well, the order of 5 (the first 1) for a particular $2^n$ always changes when we increment $n$ but the second 1 stays 1 when we increment $n$ and then the pattern repeats. This means that 
+%
+\nbea
+25 & = & 1 + 8u \\
+25 & = & 9 + 16v = (1 + 8) + 2 \cdot 8 v \\
+& = & 1 + 8(2v + 1) \\
+\to u & = & 2v + 1
+\neea
+%
+while
+%
+\nbea
+625 & = & 1 + 8r \\
+625 & = & 1 + 16s \\
+\to r & = & 2s
+\neea
+%
+\ie at the order $q$ of $5$ for a particular $2^n$ the quotient $\floor{5^q/2^n}$ is always odd. Another thing we notice is that the order of $5$ is always $2^{n-2}$, therefore
+%
+\nbea
+\frac{5^{2^{n-2}}-1}{2^n} & = & {\rm odd}
+\neea
+%
+But this all makes sense, every number is either even or odd, say
+%
+\nbea
+5^M & = & 2^N L + r 
+\neea
+%
+if $L$ is odd
+%
+\nbea
+5^M & = & 2^N (2U+1) + r = 2^{N+1}U + (2^N + r)\\
+5^M & = & (2^N + r) \pmod{2^{N+1}}
+\neea
+%
+if $L$ is even
+%
+\nbea
+5^M & = & 2^N (2U) + r = 2^{N+1}U + r \\
+5^M & = & r \pmod{2^{N+1}}
+\neea
+%
+Hence everytime we go from $n \to n+1$ we either increase $5^q \mod 2^{n+1}$ by 0 or $2^n$. In other words the quotient $\floor{5^q/2^n}$ when the remainder is 1 oscillates from odd to even to odd to even etc. We can show this explicitly
+%
+\nbea
+5^q & \equiv & 1 \pmod{2^n} \\
+5^q & = & 1 + 2^nk \\
+& = & 1 + A, ~~~~~A = 2^nk
+\neea
+%
+
+{\bf put proposition here} for $5^y$  to be 1 $y$ must be the multiple of the order
+
+the only thing we need to assume is that $k$ (the order of 5) is odd. The next time $5^y \equiv 1 \pmod{2^n}$ is when $y = 2k$ and all other $1 \pmod{2^n}$ are just $(5^q)^w$ for a positive integer $w$, therefore
+%
+\nbea
+(5^{q})^1 & = & 1 + A \\
+(5^{q})^2 & = & 1 + 2A + A^2  ~~~~~~~~~~~~~~~~~~= 1 + A(2 + A)\\
+(5^{q})^3 & = & 1 + 3A + 3A^2 + A^3 ~~~~~~~~~= 1 + A(3 + 3A + A^2) \\
+(5^{q})^4 & = & 1 + 4A + 6A^2 + 4A^3 + A^4 ~= 1 + A(4 + 6A + 4A^2 + A^3) \\
+& \vdots & \\
+(5^{q})^w & = & 1 + wA + uA^2 + \dots + A^w ~= 1 + A(w + uA + \dots + A^w)
+\neea
+%
+We know that $A = 2^nk$ and is therefore even, the terms in bracket $(w + uA + \dots + A^w)$ is therefore either even or odd depending on whether $w$ is even or odd, \ie if $w$ is od the sum will be odd and if $w$ is even the sum will be even since all other terms inside the bracket is a mutiple of $A$. Now since $k$ is odd, the even/oddness of $(5^{q})^w$ only depends on the even/oddness of the sum in the bracket. And we immediately see that the even/oddness oscillates from one to the next.
+
+
+%
+\nbea
+(5^{q})^1 & = & 1 + A \\
+(5^{q})^2 & = & 1 + 2A + A^2  = 1 + 2A(1 + A/2)\\
+(5^{q})^3 & = & 1 + 3A + 3A^2 + A^3 = 1 + A(3 + 3A + A^2) \\
+(5^{q})^4 & = & 1 + 4A + 6A^2 + 4A^3 + A^4 = 1 + 2A(2 + 3A + 2A^2 + A^3/2) \\
+(5^{q})^5 & = & 1 + 5A + 10A^2 + 10A^3 + 5A^4 + A^5 = 1 + A(5 + 10A + 10A^2 + 5A^3 + A^4) \\
+(5^{q})^6 & = & 1 + 6A + 15A^2 + 20A^3 + 15A^4 + 6A^5 + A^6 = 1 + 2A(3 + 15A/2 + 10A^2 + 15A^3/2 + 3A^4 + A^5/2) \\
+& \vdots & \\
+(5^{q})^w & = & 1 + wA + \dots + A^w
+\neea
+%
+Thus if $w$ is even
+%
+\nbea
+(5^{q})^{2u} & = & 1 + 2uA + \dots + A^{2u} \\
+& = & 1 + 2A(u + \dots + A^{2u}/2)
+\neea
+%
+
+
+
+Another fact about $5^q \mod 2^n$, when we increase $q \to q+1$ the remainder of $5^q$ always changes because otherwise
+%
+\nbea
+5^q & = & 2^n q + r \\
+5^{q+1} & = & 2^n(5q) + 5r
+\neea
+%
+If $5r < 2^n$ then $5^q \mod 2^n \neq 5^{q+1} \mod 2^n$ if $5r > 2^n$, $5r = 2^n + r'$, therefore $5^{q+1} \equiv r' \pmod{2^n}$. If $r = r'$
+%
+\nbea
+5r & = & 2^n + r' = 2^n + r \\
+4r & = & 2^n \\
+r & = & 2^{n-2}
+\neea
+% 
+Thus
+%
+\nbea
+5^q & = & 2^n q + r \\
+& = & 2^n q + 2^{n-2} \\
+& = & 2^{n-2}(2^2q + 1) \\
+\to 2 &|& 5^q
+\neea
+%
+which is a contradiction and thus everytime we increase $q$ the remainder changes, except for $n = 2$ where $5^q \mod 2^2$ is always 1.
+
 
 
 
