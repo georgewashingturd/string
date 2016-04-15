@@ -685,81 +685,6 @@ n | a(x_1 - x_2)
 %
 since $\gcd(n,a) = 1$ from Problem 1.8 (b) we know that $n|(x_1 - x_2)$ but this is a contradiction since the elements of $R$ are pairwise distinct. Thus $aR$ is a complete set of residues modulo $n$.
 
-{\bf Problem 2.12} Let $p$ be prime. Prove that $\mathbb{Z}/p\mathbb{Z}$ is a field.
-
-What is the reasoning behind this? Remember that a field is a ring where each non-zero element has an ``inverse" under multiplication, \ie for each element $a \neq 0$ we can find another element $b$ such that $ab=1$.
-
-If $q$ is not prime we can show that $\mathbb{Z}/q\mathbb{Z}$ is {\bf not} a field. Here is why. For simplicity let's denote $\mathbb{Z}/q\mathbb{Z}$
-%
-\nbea
-\mathbb{Z}/q\mathbb{Z} & = & \{0,1,2,3, \dots, q-1\}
-\neea
-%
-where each number is actually $k + q\mathbb{Z}$. So, if $q$ is not prime, at least one of the numbers in $\mathbb{Z}/q\mathbb{Z}$ less than $q$ has to be a factor of $q$, let's denote this number $w,~w < q$. Since $w$ is a factor of $q \to q = w m$.
-
-The identity element, $1$, in the ring $\mathbb{Z}/q\mathbb{Z}$ is actually $qn + 1 = w(mn) + 1$. Now we want to find another element $u$ such that $uw = 1 = qn + 1 = w(mn) + 1$, but this is a contradiction since $w (u - mn) = 1 \to w|1$. Thus $\mathbb{Z}/q\mathbb{Z}$ for non prime $q$ is {\bf not} a field.
-
-Back to our original problem, we need to show the opposite, that for a prime $p$, $\mathbb{Z}/p\mathbb{Z}$ is always a field. As shown above, since none of the elements of $\mathbb{Z}/p\mathbb{Z}$ is a factor of $p$, this should be possible, the hard part is showing {\bf how} this can definitely be done (answer: induction).
-
-The trick here is to utilize the circular structure of $\mathbb{Z}/p\mathbb{Z}$ in the induction step. The base case is obviously $a \in \mathbb{Z}/p\mathbb{Z},~a = 1$ with the inverse being itself $1\cdot 1 = 1$. Now suppose that we have found the inverse for each non-zero element of $\mathbb{Z}/p\mathbb{Z}$ up to $n$, how about $v=n+1$?
-
-Notice that each non-zero element of $\mathbb{Z}/p\mathbb{Z}$ is less than $p$. This means that we can write 
-%
-\nbea
-p & = & vq + r
-\neea
-%
-What we want is to just exceed $p$, if we add one more $v \to v(q + 1)$ and substracting $p$ from it we get $v(q + 1) - p = v - r$. We know that $r < v$ therefore $v - r < v$ but the case of $< v$, \ie all elements up to $n$, already has an inverse and we can use that inverse to get the inverse of $v$. For example $v-r = d$ and the inverse of $d$ is $y$ such that $dy=ps + 1 = 1$. This means that since $p = vq + r$ and $v-r = d$
-%
-\nbea
-v(q+1) & = & p + d \\
-v(q+1)y & = & py + dy  = py + (ps + 1)\\
-v(q+1)y & = & p(y+s) + 1 
-\neea
-%
-\ie $v(q+1)y = 1$ and the inverse of $v$ is $(q+1)y$. The primality of $p$ was needed to guarantee that $r \neq 0,~v \nmid p$ otherwise the proof doesn't work. Also, $(q+1)y$ cannot be $0\pmod{p}$ because otherwise $v(pv') = p(y+s) + 1 \to p(vv' - (y+s)) = 1\to p|1$ which is a contradiction.
-
-$(q+1)y$ is generally not the ``smallest" inverse of $v$ but we can of course bring it back to be $< p$ by substracting it by $pt \to v((q+1)y -pt) = p(y+s-tv) + 1 = 1$ for some $t$ such that $0 < (q+1)y -pt < p$.
-
-Now, we are dealing with $k + n\mathbb{Z}$. If the element we are inspecting is $> p$ or $< 0$ we can still repeat the same argument but this time instead of just exceeding $p$ we want to exceed $\pm|np|$ with $\pm|n|$ the smallest number such that $|np| > |v|$.
-
-Notice that in the above argument, we can identify $v(q+1) = d$ because of the circular structure of $\mathbb{Z}/p\mathbb{Z}$ which also allows us to utilize previously discovered inverses. Let's see this with a concrete example using $\mathbb{Z}/7\mathbb{Z}$ and pick from it the element $v = 3$ (lucky seven meet holy trinity).
-%
-\nbea
-7 & = & 3 \times 2 + 1
-\neea
-%
-Adding one more $3$ and substracting $7$
-%
-\nbea
-((3 \times 2) + 3) - 7 & = & 3 - 1 \\
-& = & 2
-\neea
-%
-But in the induction process leading up to $3$ we have found the inverse for $2$ which is $4, ~2\cdot 4 = 8 = 1$. Thus the inverse of $3$ is $(2+1)\cdot 4 = 12 \to 3 \times 12 = 36 = 7\cdot 5 + 1$.
-
-The last thing to show is that if all there inverses are unique. Say two elements $a$ and $b$ have the same inverse $c$
-%
-\nbea
-ac & \equiv & 1 \pmod{p} \\
-bc & \equiv & 1 \pmod{p} \\
-\to c(a-b) & \equiv & 0 \pmod{p}
-\neea
-%
-but since $c$ is not zero (see comment above) then $a=b$. Thus all inverses are unique.
-
-Some sidenote, we can of course use the above method to get the inverse of $2$ from the inverse of $1$ but it can actually be computed a lot easier. In the case of $2$ the inverse is $y$ such that $2y = pn +  1$. We want $pn + 1$ to be even and unless $p$ is $2$, $p$ is always odd. Therefore any odd $n$ will do ($n=1$ is a very good choice) and $y$ is just $(p+1)/2$ while the case of $p=2$ is trivial since the only members of $\mathbb{Z}/2\mathbb{Z}$ are $\{0,1\}$.
-
-In conclusion we have done a 2-in-1 combo deal. We have proven that if $p$ is not prime then $\mathbb{Z}/p\mathbb{Z}$ is a not field, in other words if $\mathbb{Z}/p\mathbb{Z}$ is a field then $p$ is prime and we have proven that if $p$ is prime then $\mathbb{Z}/p\mathbb{Z}$ is a field. Therefore we have proven a much stronger statement, {\it $p$ is prime if and only if $\mathbb{Z}/p\mathbb{Z}$ is a field}.
-
-On the other hand, if $n$ is not prime things can still be salvage (a bit). We remove the elements $a$ of $\mathbb{Z}/n\mathbb{Z}$ that have $\gcd(a,n) \neq 1$. However, even though the surviving elements all have inverses, as we shall see, the set is no longer a field since it is no longer closed under addition. Now, why are the left over terms invertible? Bezout's lemma, \ie for any two numbers $a$ and $n$ and their gcd $d = \gcd(a,n) = 1$
-%
-\nbea
-am + ny & = & 1
-\neea
-%
-which is also a consequence of the ideals, $a\mathbb{Z} + n\mathbb{Z} = 1\mathbb{Z}$. Therefore, $m$ is the inverse of $a$ and any elements with $\gcd=1$ w.r.t $n$ will have an inverse as well.
-
 {\bf Definition 2.1.16}. Be careful about the reasoning in this proof, especially the following statement
 
 There are only finitely many residue classes modulo n, so we must eventually ﬁnd two integers $i, j$ with $i < j$ such that
@@ -888,7 +813,7 @@ x^{q_i^{n_i-1}} - 1 & = & 0 \\
 %
 \ie any roots of $x^{q_i^{n_i - k}} - 1$ are automatically roots of $x^{q_i^{n_i - 1}} - 1$ thus a root of $x^{q_i^{n_i}} - 1$ that is not a root of $x^{q_i^{n_i - 1}} - 1$ is really a new root!
 
-{\bf Proposition 2.5.12}. An additive order modulo $n$ is the smallest positive $x$ such that $ax \equiv 0 \pmod{n}$.
+{\bf Proposition 2.5.12}. An additive order modulo $n$ is the smallest positive $x$ such that $ax \equiv 0 \pmod{n}$. The order we've been talking about in this chapter is multiplicative order.
 
 {\bf Problem 2.1}. Prove that for any positive integer $n$, the set $(\mathbb{Z}/n\mathbb{Z})^*$ under multiplication modulo $n$ is a group.
 
@@ -921,6 +846,62 @@ The other properties of a group can be easily proven:
 \item $(\mathbb{Z}/n\mathbb{Z})^*$ has an identity element as $1 \in (\mathbb{Z}/n\mathbb{Z})^*$.
 \item $a,b,c \in (\mathbb{Z}/n\mathbb{Z})^*$ then $(ab)c = a(bc)$. This is obvious since the group action is multiplication $\pmod{n}$.
 \eit
+
+{\bf Problem 2.2}. Compute the following gcd’s using Algorithm 1.1.13:
+%
+\nbea
+\gcd(15, 35) ~~~ \gcd(247, 299) ~~~ \gcd(51, 897) ~~~ \gcd(136, 304)
+\neea
+%
+
+This is nothing but an application of Euclid's algorithm
+%
+\nbea
+\ba{r c l   c   r c l    c    r c l    c   r c l}
+\underline{35} & = & 2 \cdot \underline{15} + 5 & ~~~~~ & \underline{299} & = & 1 \cdot \underline{247} + 52 & ~~~~~ & \underline{897} & = & 17 \cdot \underline{51} + 30 & ~~~~~ & \underline{304} & = & 2 \cdot \underline{136} + 32 \\
+15 & = & 3 \cdot 5 & ~~~ & 247 & = & 4 \cdot 52 + 39 & ~~~ & 51 & = & 1 \cdot 30 + 21 & ~~~ & 136 & = & 4 \cdot 32 + 8 \\
+& & & ~~~ & 52 & = & 1 \cdot 39 + 13 & ~~~ & 30 & = & 1 \cdot 21 + 9 & ~~~ & 32 & = & 4 \cdot 8 \\
+& & & ~~~ & 39 & = & 3 \cdot 13 & ~~~ & 21 & = & 2 \cdot 9 + 3 & ~~~ &  \\
+& & & ~~~ & & & & ~~~ & 9 & = & 3 \cdot 3
+\ea
+\neea
+%
+Therefore $\gcd(15, 35) = 5$, $\gcd(247, 299) = 13$, $\gcd(51, 897) = 3$, $\gcd(136, 304) = 8$.
+
+{\bf Problem 2.3}. Use Algorithm 2.3.7 to find $x, y \in \mathbb{Z}$ such that $2261x + 1275y = 17$.
+
+Algorithm 2.3.7 is
+\begin{enumerate}
+\item $\lbrack$Initialize$\rbrack$ Set $x = 1, y = 0, r = 0, s = 1$.
+\item $\lbrack$Finished?$\rbrack$ If $b = 0$, set $g = a$ and terminate.
+\item $\lbrack$Quotient and Remainder$\rbrack$ Use Algorithm 1.1.12 to write $a = qb + c$ with $0 ≤ c < b$.
+\item $\lbrack$Shift$\rbrack$ Set $(a, b, r, s, x, y) = (b, c, x - qr, y - qs, r, s)$ and go to Step 2.
+\end{enumerate}
+
+Here $a = 2261, b=1275$, $x = 1, y = 0, r = 0, s = 1$, let's crank it through
+%
+\nbea
+2261 & = & 1 \cdot 1275 + 986, ~~~ q = 1\\
+(a, b, r, s, x, y) & = & (1275, 986, 1 - 1\cdot 0, 0-1\cdot 1, 0, 1) \\
+(a, b, r, s, x, y) & = & (1275, 986, 1, -1, 0, 1) \\
+1275 & = & 1 \cdot 986 + 289, ~~~ q = 1 \\
+(a, b, r, s, x, y) & = & (986, 289, 0 - 1\cdot 1, 1-1(-1), 1, -1) \\
+(a, b, r, s, x, y) & = & (986, 289, -1, 2, 1, -1)\\
+986 & = & 3 \cdot 289 + 119, ~~~ q = 3 \\
+(a, b, r, s, x, y) & = & (289, 119, 1 - 3(-1), -1-3 \cdot 2, -1, 2) \\
+(a, b, r, s, x, y) & = & (289, 119, 4, -7, -1, 2) \\
+289 & = & 2 \cdot 119 + 51, ~~~ q = 2 \\
+(a, b, r, s, x, y) & = & (119, 51, -1 - 2\cdot 4, 2-2 (-7), 4, -7) \\
+(a, b, r, s, x, y) & = & (119, 51, -9, 16, 4, -7) \\
+119 & = & 2 \cdot 51 + 17, ~~~ q = 2 \\
+(a, b, r, s, x, y) & = & (51, 17, 4 - 2(-9), -7-2\cdot 16, -9, 16) \\
+(a, b, r, s, x, y) & = & (51, 17, 22, -39, -9, 16) \\
+51 & = & 3 \cdot 17, ~~~ q = 3 \\
+(a, b, r, s, x, y) & = & (17, 0, -9 - 3 \cdot 22, 16-3(-39), 22, -39) \\
+(a, b, r, s, x, y) & = & (17, 0, -75, 133, 22, -39)
+\neea
+%
+$b = 0$ so it's done. Therefore $x = 22,~y = -39$.
 
 {\bf Problem 2.4}. Prove that if $a$ and $b$ are integers and $p$ is prime, then $(a+b)^p \equiv a^p + b^p \pmod{p}$. You may assume that the binomial coefficient
 %
@@ -1132,7 +1113,61 @@ Let's list the first few $a$'s and their digits' alternate sum
 \eit
 so the smallest $n > 1$ such that $11|a_n$ is $n=7$.
 
-The number of digits of $a_i$ is the $i^{\rm th}$ fibonacci number.
+For part (b) we just need to use induction. An important fact about a string of zeros and ones, say we have a random string A
+%
+\nbea
+{\rm A} = 10111010101 \dots 01010
+\neea
+%
+and the alternate sum of the digits of A is {\it non zero}. We can shift A to the left by any arbitrary digits into
+%
+\nbea
+{\rm A}' = 10111010101 \dots 01010 \dots 000000000
+\neea
+%
+and the alternate sum of the digits of ${\rm A'}$ will still be non zero, what we'll get is at most a sign flip of the alternate sum. This is because every time we shift by one digit each 1 will flip its sign but if their sum wasn't zero, it will still not be zero. On the other hand, if the alternate sum of the digits of A is zero, it will remain zero no matter how many times we shift A.
+
+Another important fact is that if we have two strings of ones and zeros, A and B, the alternate sum of the digits of concatenated string AB or BA is zero if and only if the alternate sum of A and the alternate sum of B are independently zero. This is a consequence of the above fact. And since this is true, it is also true if concatenate multiple A's and B's.
+
+We can now start constructing our induction proof. We use as the base case $a_1, a_2, \dots, a_7$ from part (a). To simplify things we will denote ${\rm A} = a_6$ and ${\rm B} = a_7$ and we continue the sequence as shown in Table.~\ref{Tab:3}.
+%
+\begin{table}[]
+\centering
+\caption{The last column is the alternate sum of the digits of the string}
+\label{Tab:3}
+\begin{tabular}{|c|c|l|c|}
+\hline
+$a_6$ & $\tilde a_0$ & A & 1\\ \hline
+$a_7$ & $\tilde a_1$ & B & 0\\ \hline
+$a_8$ & $\tilde a_2$ & B A & 1 \\ \hline
+$a_9$ & $\tilde a_3$ & B A B & -1 \\ \hline
+$a_{10}$ & $\tilde a_4$ & B A B B A & 2 \\ \hline
+$a_{11}$ & $\tilde a_5$ & B A B B A B A B & -1 \\ \hline
+$a_{12}$ & $\tilde a_6$ & B A B B A B A B B A B B A & 1\\ \hline
+$a_{13}$ & $\tilde a_7$ & B A B B A B A B B A B B A B A B B A B A B & 0 \\ \hline
+\end{tabular}
+\end{table}
+%
+It is now obvious that the pattern repeats. To continue let's denote C = $\tilde a_6$ = B A B B A B A B B A B B A with its alternate sum of 1 and D = $\tilde a_7$ = B A B B A B A B B A B B A B A B B A B A B with its alternate sum of 0 and if we continue the sequence we will get the exact same sequence as sown in Table.~\ref{Tab:4}
+%
+\begin{table}[]
+\centering
+\caption{The last column is the alternate sum of the digits of the string}
+\label{Tab:4}
+\begin{tabular}{|c|c|l|c|}
+\hline
+$a_{12}$ & $\tilde a_0$ & C & 1\\ \hline
+$a_{13}$ & $\tilde a_1$ & D & 0\\ \hline
+$a_{14}$ & $\tilde a_2$ & D C & 1 \\ \hline
+$a_{15}$ & $\tilde a_3$ & D C D & -1 \\ \hline
+$a_{16}$ & $\tilde a_4$ & D C D D C & 2 \\ \hline
+$a_{17}$ & $\tilde a_5$ & D C D D C D C D & -1 \\ \hline
+$a_{18}$ & $\tilde a_6$ & D C D D C D C D D C D D C & 1\\ \hline
+$a_{19}$ & $\tilde a_7$ & D C D D C D C D D C D D C D C D D C D C D & 0 \\ \hline
+\end{tabular}
+\end{table}
+%
+We can continue this pattern for eternity :) The key observation is the two facts mentioned above that the alternate sum of a string only flips sign if we shift the string. Therefore $a_n$ is divisible by 11 if and only if $n \equiv 1 \pmod{6}$.
 
 {\bf Problem 2.10}. Find an integer $x$ such that $37x \equiv 1 \pmod{101}$.
 
@@ -1146,11 +1181,88 @@ We use Euclid's gcd algorithm to find the solution of Bezout's lemma $37x + 101y
 \underline{7} & = & \underline{3} \cdot 2~ + \underline{1} ~~~~~~~~~~~~~~~~~~~~~~~~ \underline{1} = ~11 \cdot \underline{101} - 30 \cdot \underline{37}
 \neea
 %
-Therefore $x=-30$.
+Therefore $x=-30 \equiv (101 - 30) \equiv 71 \pmod{101}$.
 
 {\bf Problem 2.11}. What is the order of 2 modulo 17?
 
 The order of a number is the smallest positive $m$ such that $2^m \equiv 1 \pmod{17}$. We can just try different numbers by brute force but an astute observer will observe that $2^4 = 16 \equiv -1 \pmod{17}$ and $1 = (-1)^2 = (2^4)^2 \equiv 2^8 \pmod {17}$. Thus the order of 2 modulo 17 is 8.
+
+{\bf Problem 2.12} Let $p$ be prime. Prove that $\mathbb{Z}/p\mathbb{Z}$ is a field.
+
+What is the reasoning behind this? Remember that a field is a ring where each non-zero element has an ``inverse" under multiplication, \ie for each element $a \neq 0$ we can find another element $b$ such that $ab=1$.
+
+If $q$ is not prime we can show that $\mathbb{Z}/q\mathbb{Z}$ is {\bf not} a field. Here is why. For simplicity let's denote $\mathbb{Z}/q\mathbb{Z}$
+%
+\nbea
+\mathbb{Z}/q\mathbb{Z} & = & \{0,1,2,3, \dots, q-1\}
+\neea
+%
+where each number is actually $k + q\mathbb{Z}$. So, if $q$ is not prime, at least one of the numbers in $\mathbb{Z}/q\mathbb{Z}$ less than $q$ has to be a factor of $q$, let's denote this number $w,~w < q$. Since $w$ is a factor of $q \to q = w m$.
+
+The identity element, $1$, in the ring $\mathbb{Z}/q\mathbb{Z}$ is actually $qn + 1 = w(mn) + 1$. Now we want to find another element $u$ such that $uw = 1 = qn + 1 = w(mn) + 1$, but this is a contradiction since $w (u - mn) = 1 \to w|1$. Thus $\mathbb{Z}/q\mathbb{Z}$ for non prime $q$ is {\bf not} a field.
+
+Back to our original problem, we need to show the opposite, that for a prime $p$, $\mathbb{Z}/p\mathbb{Z}$ is always a field. As shown above, since none of the elements of $\mathbb{Z}/p\mathbb{Z}$ is a factor of $p$, this should be possible, the hard part is showing {\bf how} this can definitely be done (answer: induction).
+
+The trick here is to utilize the circular structure of $\mathbb{Z}/p\mathbb{Z}$ in the induction step. The base case is obviously $a \in \mathbb{Z}/p\mathbb{Z},~a = 1$ with the inverse being itself $1\cdot 1 = 1$. Now suppose that we have found the inverse for each non-zero element of $\mathbb{Z}/p\mathbb{Z}$ up to $n$, how about $v=n+1$?
+
+Notice that each non-zero element of $\mathbb{Z}/p\mathbb{Z}$ is less than $p$. This means that we can write 
+%
+\nbea
+p & = & vq + r
+\neea
+%
+What we want is to just exceed $p$, if we add one more $v \to v(q + 1)$ and substracting $p$ from it we get $v(q + 1) - p = v - r$. We know that $r < v$ therefore $v - r < v$ but the case of $< v$, \ie all elements up to $n$, already has an inverse and we can use that inverse to get the inverse of $v$. For example $v-r = d$ and the inverse of $d$ is $y$ such that $dy=ps + 1 = 1$. This means that since $p = vq + r$ and $v-r = d$
+%
+\nbea
+v(q+1) & = & p + d \\
+v(q+1)y & = & py + dy  = py + (ps + 1)\\
+v(q+1)y & = & p(y+s) + 1 
+\neea
+%
+\ie $v(q+1)y = 1$ and the inverse of $v$ is $(q+1)y$. The primality of $p$ was needed to guarantee that $r \neq 0,~v \nmid p$ otherwise the proof doesn't work. Also, $(q+1)y$ cannot be $0\pmod{p}$ because otherwise $v(pv') = p(y+s) + 1 \to p(vv' - (y+s)) = 1\to p|1$ which is a contradiction.
+
+$(q+1)y$ is generally not the ``smallest" inverse of $v$ but we can of course bring it back to be $< p$ by substracting it by $pt \to v((q+1)y -pt) = p(y+s-tv) + 1 = 1$ for some $t$ such that $0 < (q+1)y -pt < p$.
+
+Now, we are dealing with $k + n\mathbb{Z}$. If the element we are inspecting is $> p$ or $< 0$ we can still repeat the same argument but this time instead of just exceeding $p$ we want to exceed $\pm|np|$ with $\pm|n|$ the smallest number such that $|np| > |v|$.
+
+Notice that in the above argument, we can identify $v(q+1) = d$ because of the circular structure of $\mathbb{Z}/p\mathbb{Z}$ which also allows us to utilize previously discovered inverses. Let's see this with a concrete example using $\mathbb{Z}/7\mathbb{Z}$ and pick from it the element $v = 3$ (lucky seven meet holy trinity).
+%
+\nbea
+7 & = & 3 \times 2 + 1
+\neea
+%
+Adding one more $3$ and substracting $7$
+%
+\nbea
+((3 \times 2) + 3) - 7 & = & 3 - 1 \\
+& = & 2
+\neea
+%
+But in the induction process leading up to $3$ we have found the inverse for $2$ which is $4, ~2\cdot 4 = 8 = 1$. Thus the inverse of $3$ is $(2+1)\cdot 4 = 12 \to 3 \times 12 = 36 = 7\cdot 5 + 1$.
+
+The last thing to show is that if all there inverses are unique. Say two elements $a$ and $b$ have the same inverse $c$
+%
+\nbea
+ac & \equiv & 1 \pmod{p} \\
+bc & \equiv & 1 \pmod{p} \\
+\to c(a-b) & \equiv & 0 \pmod{p}
+\neea
+%
+but since $c$ is not zero (see comment above) then $a=b$. Thus all inverses are unique.
+
+Some side note, we can of course use the above method to get the inverse of $2$ from the inverse of $1$ but it can actually be computed a lot easier. In the case of $2$ the inverse is $y$ such that $2y = pn +  1$. We want $pn + 1$ to be even and unless $p$ is $2$, $p$ is always odd. Therefore any odd $n$ will do ($n=1$ is a very good choice) and $y$ is just $(p+1)/2$ while the case of $p=2$ is trivial since the only members of $\mathbb{Z}/2\mathbb{Z}$ are $\{0,1\}$.
+
+In conclusion we have done a 2-in-1 combo deal. We have proven that if $p$ is not prime then $\mathbb{Z}/p\mathbb{Z}$ is a not field, in other words if $\mathbb{Z}/p\mathbb{Z}$ is a field then $p$ is prime and we have proven that if $p$ is prime then $\mathbb{Z}/p\mathbb{Z}$ is a field. Therefore we have proven a much stronger statement, {\it $p$ is prime if and only if $\mathbb{Z}/p\mathbb{Z}$ is a field}.
+
+On the other hand, if $n$ is not prime things can still be salvage (a bit). We remove the elements $a$ of $\mathbb{Z}/n\mathbb{Z}$ that have $\gcd(a,n) \neq 1$. However, even though the surviving elements all have inverses, as we shall see, the set is no longer a field since it is no longer closed under addition. Now, why are the left over terms invertible? Bezout's lemma, \ie for any two numbers $a$ and $n$ and their gcd $d = \gcd(a,n) = 1$
+%
+\nbea
+am + ny & = & 1
+\neea
+%
+which is also a consequence of the ideals, $a\mathbb{Z} + n\mathbb{Z} = 1\mathbb{Z}$. Therefore, $m$ is the inverse of $a$ and any elements with $\gcd=1$ w.r.t $n$ will have an inverse as well.
+
+I solved Problem 2.12 way early in the chapter when it was first mentioned and hence it didn't occur to me that you can just use Bezout's lemma to prove it, but hey, it's still a solution :)
 
 {\bf Problem 2.13}. Find an $x \in \mathbb{Z}$ such that $x \equiv −4 \pmod{17}$ and $x \equiv 3 \pmod{23}$.
 
@@ -1203,6 +1315,48 @@ where each $p_i$ is distinct. Thus
 For all primes $p > 2$, $\varphi(p^\alpha) = p^{\alpha-1}(p-1)$, see Eq. 2.2.2, which is even (since $p$ is odd) while $\varphi(2^\alpha) = 2^{\alpha-1}$ which also means that only when $\alpha=1$ is $\varphi(2)$ odd.
 
 Therefore, $\varphi(n)$ is only odd if and only if $n=2$ (and also for $n=1$ but that one is trivial since the only member of $\mathbb{Z}/1\mathbb{Z}$ and $(\mathbb{Z}/1\mathbb{Z})^*$ is 1 which is also equal to $0 \pmod{1}$).
+
+{\bf Problem 2.16}.  (a) Prove that $\varphi$ is multiplicative as follows. Suppose $m, n$ are positive integers and $\gcd(m, n) = 1$. Show that the natural map $\psi : \mathbb{Z}/mn\mathbb{Z} \to \mathbb{Z}/m\mathbb{Z} \times \mathbb{Z}/n\mathbb{Z}$ is an injective homomorphism of rings, hence bijective by counting, then look at unit groups.
+
+(b) Prove conversely that if $\gcd(m, n) > 1$, then the natural map $\psi : \mathbb{Z}/mn\mathbb{Z} \to \mathbb{Z}/m\mathbb{Z} \times \mathbb{Z}/n\mathbb{Z}$ is not an isomorphism.
+
+From Lemma 2.2.5 the map is
+%
+\nbea
+\psi(c) & = & (c {\rm~mod~} m, c {\rm~mod~} n)
+\neea
+%
+This problem is slightly different from the proof of Lemma 2.2.5, there we were dealing with units not rings. The proof will follow the proof of Lemma 2.2.5 very closely (basically copy and paste with some modification).
+
+We first show that $\psi$ is injective (means one-to-one but doesn't mean that every element in the target space has a pre-image). If $\psi(c) = \psi(c_0)$, then $m | c−c_0$ and $n | c − c_0$, so $nm | c − c_0$ because $\gcd(n, m) = 1$. Thus $c = c_0$ as elements of $\mathbb{Z}/mn\mathbb{Z}$.
+
+Next we show that $\psi$ is surjective (onto, \ie every element on the target space has a pre-image) that every element of $\mathbb{Z}/m\mathbb{Z} \times \mathbb{Z}/n\mathbb{Z}$ is of the form $\psi(c)$ for some $c$. 
+
+This is where we deviate from the original proof, Theorem 2.2.2 (Chinese remainder theorem) didn't require $\gcd(a, m) = 1$ or $\gcd(b, n) = 1$. Therefore Theorem 2.2.2 implies that there exists $c$ with $c \equiv a \pmod{m}$ and $c \equiv b \pmod{n}$ and therefore $\psi$ is surjective. Hence $\psi$ is bijective.
+
+Now since unit groups $(\mathbb{Z}/w\mathbb{Z})^*$ is a subset of $\mathbb{Z}/w\mathbb{Z}$ a bijective map $\psi$ on a subset is still bijective. This completes the proof.
+
+For part (b) we just need to go back to the first part of the proof of (a). If $\psi(c) = \psi(c_0)$, then $m | c−c_0$ and $n | c − c_0$, but since $\gcd(n, m) > 1$ it is only guaranteed that ${\rm lcm}(n,m) | c − c_0$. This is not enough to definitely show that the map is no longer injective.
+
+However, we can construct a counter example. Let $d = \gcd(m,n), ~m' = m/d, ~n' = n/d$ and
+%
+\nbea
+c & = & x + m' d n' \\
+c_0 & = & x
+\neea
+%
+To make sure that $c \neq c_0$ we need $x < mn - m'dn'$ such that $c, c_0 < mn$, we also need $x < m,n$. These latter requirements are needed such that $c {\rm~mod~} m = c_0 {\rm~mod~} m$ and $c {\rm~mod~} n = c_0 {\rm~mod~} n$.
+
+There is a number that satisfy all the above requirements, $x=1$. It is guaranteed to be $< mn - m'dn'$ because $mn / m'dn' = d, ~ mn - m'dn' = (d-1)m'dn'$ and by definition $d = \gcd(m,n) > 1$. Also, $1 {\rm~mod~} w = 1$ for any $w > 1$. Therefore
+%
+\nbea
+c = 1 + mn/d & & c_0 = 1 \\
+\psi(c) & = & (c {\rm~mod~} m, c {\rm~mod~} n) = (1,1) \\
+\psi(c_0) & = & (c_0 {\rm~mod~} m, c_0 {\rm~mod~} n) = (1,1) \\
+\to \psi(c) & = & \psi(c_0)
+\neea
+%
+Therefore since $c \not\equiv c_0 \pmod{mn}$ the map is not one-to-one.
 
 {\bf Problem 2.17}. Seven competitive math students try to share a huge hoard of stolen math books equally between themselves. Unfortunately, six books are left over, and in the fight over them, one math student is expelled. The remaining six math students, still unable to share the math books equally since two are left over, again fight, and another is expelled.
 When the remaining five share the books, one book is left over, and it is only after yet another math student is expelled that an equal sharing is possible. What is the minimum number of books that allows this to happen?
@@ -1296,6 +1450,44 @@ n & = & \prod_{i=1}^{N} p_i^{\alpha_i} \\
 \neea
 %
 we can use Proposition 2.2.7 because each prime factors are obviously co-prime to one another (obviously).
+
+{\bf Problem 2.21}. (a) Prove that if $\varphi : G \to H$ is a group homomorphism, then $\ker(\varphi)$
+is a subgroup of $G$.
+
+(b) Prove that $\ker(\varphi)$ is normal, i.e., if $a \in G$ and $b \in \ker(\varphi)$, then $a^{-1} ba \in \ker(\varphi)$.
+
+Some background info. The kernel of a homomorphism is the set of pre-images of the identity element, loosely the set of $\varphi^{-1}(e)$ where $e$ is identity element in the target space.
+
+Next, a map $\varphi : G \to H$ is a homomorphism if
+\bit
+\item $\varphi(gh) = \varphi(g)\varphi(h)$ for all $g,h \in G$
+\item $\varphi(e) = e$
+\item $\varphi(g^{-1}) = (\varphi(g))^{-1}$
+\eit
+
+First order of business is to prove that $\ker(\varphi)$ forms a subgroup, \ie it must meet all the criteria of a group
+\bit
+\item Existence of an identity element, since $\varphi(e) = e$, $e \in \ker(\phi)$, remember that we can loosely think of kernel as $\varphi^{-1}(e)$
+\item Closure of product, since we are talking about kernel, we are just interested in the pre-images of the identity $e$. Suppose $\varphi(a) = e$ and $\varphi(b)=e$, \ie $a,b \in \ker(\phi)$, since $\varphi$ is a homomorphism $\varphi(ab) = \varphi(a)\varphi(b) = e \cdot e = e$, therefore $a\cdot b \in \ker(\phi)$
+\item Existence of inverse. Suppose $a \in \ker(\varphi)$, since $\varphi$ is a homomorphism $\varphi(a^{-1}) = (\varphi(a))^{-1} = (e)^{-1} = e$. Therefore $a^{-1} \in \ker(\varphi)$.
+\eit
+
+For part (b) since $\varphi$ is a homomorphism 
+%
+\nbea
+\varphi(a^{-1} ba) & = & \varphi(a^{-1}) \varphi(b) \varphi(a), ~~~ b \in \ker(\varphi) \to \varphi(b) = e \\
+& = & (\varphi(a))^{-1}~ e ~ \varphi(a) \\
+& = & (\varphi(a))^{-1} \varphi(a)) e \\
+& = & e \cdot e \\
+& = & e
+\neea
+%
+Therefore $a^{-1} ba \in \ker(\varphi)$ and $\ker(\varphi)$ is normal.
+
+{\bf Problem 2.22}. Is the set $\mathbb{Z}/5\mathbb{Z} = \{0, 1, 2, 3, 4\}$ with binary operation multiplication
+modulo 5 a group?
+
+Well, it is not because of the element 0, it has no inverse :)
 
 {\bf Problem 2.23}. Find all four solutions to the equation
 %
@@ -1631,6 +1823,32 @@ x^m & \equiv & 1 \pmod{n}
 %
 This completes our proof.
 
+As a side note, an interesting (or not) fact about $5^q \mod 2^n$ I found while solving this problem is that when we increase $q \to q+1$ the remainder always changes. Here's why, 
+%
+\nbea
+5^q & = & 2^n q + r \\
+5^{q+1} & = & 2^n(5q) + 5r
+\neea
+%
+If $5r < 2^n$ then $5^q \mod 2^n \neq 5^{q+1} \mod 2^n$ if $5r > 2^n$, $5r = 2^n + r'$, therefore $5^{q+1} \equiv r' \pmod{2^n}$. If $r = r'$
+%
+\nbea
+5r & = & 2^n + r' = 2^n + r \\
+4r & = & 2^n \\
+r & = & 2^{n-2}
+\neea
+% 
+Thus
+%
+\nbea
+5^q & = & 2^n q + r \\
+& = & 2^n q + 2^{n-2} \\
+& = & 2^{n-2}(2^2q + 1) \\
+\to 2 &|& 5^q
+\neea
+%
+which is a contradiction and thus every time we increase $q$ the remainder changes, except for $n = 2$ where $5^q \mod 2^2$ is always 1. The above proof also applies when we replace $1+p$ for $5$ and $p^n$ for $2^n$ since the logic is the same.
+
 We now resume our earlier proof. From our proposition above, for $5^y \equiv 1 \pmod{2^n}$ to be true, $y = qm$. We now list $1 \pmod{2^n}$ in ascending power of $5$, note that $5^{qm} = (5^q)^m$
 %
 \nbea
@@ -1654,7 +1872,7 @@ The induction itself involves varying $n$. We have proven above that for the cas
 %
 \bit
 \item Our inductive assumption is that $\mod{2^n}$ has the oscillating pattern as described above and the order $q_n$ of $5 \mod 2^{n}$ is $q_n = 2^{n-2}$.
-\item First, we want to show that if $\mod{2^n}$ has the oscillating pattern as described above, $\mod{2^{n+1}}$ will also have the same oscillating pattern (with a lower frequency and an odd first quotient), this is to ensure the continual survival of our inductive step.
+\item First, we want to show that if $\mod{2^n}$ has the oscillating pattern as described above, $\mod{2^{n+1}}$ will also have the same oscillating pattern (with a lower frequency and an odd first quotient), this is to ensure the continual survival of our inductive step. We eould like the first quotient to be odd to make sure that it doesn't remain 1 when we increase $n \to n + 1$.
 \item We want to show that the order of $5 \mod 2^{n+1}$ is $2q_n$ where $q_n$ is the order of $5 \mod 2^n$.
 \item Combining the above two results, and knowing that $q=1$ for $n=2, ~2^n=4$, shows that the order of $5 \mod 2^z$ is $2^{z-2}$.
 \item Since the above pattern repeats for the inductive step, the conclusion that the order of $5 \mod 2^z$ is $2^{z-2}$ holds for any$z$. This will only show that $5^z$ covers half of the elements of $(\mathbb{Z}/2^n\mathbb{Z})^*$, remember that $(\mathbb{Z}/2^n\mathbb{Z})^*$ has $2^{n-1}$ elements.
@@ -1741,7 +1959,7 @@ Some interesting point. There's a version of this proof on Victor Soup's book th
 
 First of all, the hint is quite misleading. Now we know that $\varphi(p^2) = p(p-1)$. In the proof of the existence of a primitive root of $(\mathbb{Z}/p\mathbb{Z})^*$, the author uses the fact that we can decompose $(p-1)$ into its prime factors and by using the fact that $x^n-1$ always have exactly $n$ roots we can construct a primitive root of $(\mathbb{Z}/p\mathbb{Z})^*$.
 
-The problem here is that $p^2$ is no longer prime, thus we don't know how many roots $x^n-1$ has. The best I could do was proof that $x^2-1$ has exactly 2 roots (true for $p^n$ as well not just $p^2$)
+The problem here is that $p^2$ is no longer prime, thus we don't know how many roots $x^n-1$ has. The best I could do was prove that $x^2-1$ has exactly 2 roots (true for $p^n$ as well not just $p^2$)
 %
 \nbea
 x^2-1 & = & (x-1)(x+1) \equiv 0 \pmod{p^n} \\
@@ -1759,7 +1977,7 @@ x - 1 & = & p^a s \\
 \to p &|& 2
 \neea
 %
-which is a contradiction unless $p=2$ (but we are talking about ). Therefore there are only 2 roots $\pm 1$. We also know that $x^{\varphi(p^n)}-1$ has exactly $\varphi(p^n)$ roots (from Euler's theorem), however
+which is a contradiction unless $p=2$ (but we are talking about odd $p$). Therefore there are only 2 roots $\pm 1$. We also know that $x^{\varphi(p^n)}-1$ has exactly $\varphi(p^n)$ roots (from Euler's theorem), however
 %
 \nbea
 x^{\varphi(p^n)}-1 & = & (x^2-1)(x^{\varphi(p^n)/2} + \dots + 1)
@@ -1769,7 +1987,7 @@ therefore $(x^{\varphi(p^n)/2} + \dots + 1)$ has exactly $\varphi(p^n)-2$ roots.
 
 But that was as far as I could go, there was nothing else I could do about it. The hint actually pertains to finding 2 numbers, one with the order $(p-1)$ while the other with the order of $p^{n-1}$. We need this segregation since as the hint states, the orders must have gcd of 1.
 
-The key now is to find a number inside $(\mathbb{Z}/p^n\mathbb{Z})^*$ that has an order $(p-1)$. This is {\it very} tricky. The way I proceeded was suppose we have a number $x$ that has an order $a \mod m$ and another order $b \mod n$, what can we say about the order of $x \mod (mn)$? Well
+The key now is to find a number inside $(\mathbb{Z}/p^n\mathbb{Z})^*$ that has an order $(p-1)$. This is {\it very} tricky. The way I proceeded was suppose we have a number $x$ that has an order $a \mod m$ and another order $b \mod n$, what can we say about the order of $x \mod (mn)$? Well, say that $y$ is the order $\mod mn$
 %
 \nbea
 x^y & \equiv & 1 \pmod{mn} \\
@@ -1795,7 +2013,7 @@ So we have found the number with order $p-1$, we now need to find a number with 
 
 In our earlier solution we started with a number whose remainder is always 1, that was our base case. The only thing is that we started with $2^2$ instead of $2^1$. Here we want to start with $p^1$ and then proceed with the same inductive process.
 
-Instead of 5 the number we want to choose is $x = 1+p$
+Instead of 5 the number we want to choose is $x = 1+p$ which is the most obvious choice. Again, for future use, I use a more generalized notation just like in Problem 2.27 and like Problem 2.27 we start listing the powers of $x^q$
 %
 \nbea
 \begin{array} {l c l c l c l}
@@ -1845,11 +2063,13 @@ This is because
 (x^{q_n})^w & \equiv & (1+t) \pmod{p^{n+1}}
 \neea
 %
-The next argument is similar to the one in Problem 2.27 but more complicated. We know that $q_n = p^{n-1}$ and $\varphi(p^{n+1}) = p^{n}(p-1)$.
+The next argument is similar to the one in Problem 2.27 but a bit more complicated. We know that $q_n = p^{n-1}$ and $\varphi(p^{n+1}) = p^{n}(p-1)$.
 
 We have shown that $(x^{q_n})^1  = x^{p^{n-1}} \not\equiv 1 \pmod{p^{n+1}}$ and by Proposition 2.27.(b).1 this means that $x^{p^m} \not\equiv 1 \pmod{p^{n+1}}$ for all $0 < m < n-1$.
 
-But now we need to take care of the cases for $x^{p^m h}$ where $h | (p-1)$, $0 < m < n-1$. First
+But now we need to take care of the cases for $x^{p^m h}$ where $h | (p-1)$, $0 < m < n-1$. Thanks to Proposition 2.27.(b).1 this ain't so. Because $\gcd(p-1,p)=1$. You see, if $x^{p^m h} \equiv 1 \pmod{p^{n+1}}$ then by our beloved proposition $p^mh|p^{n+1}$ but $\gcd(p-1,p)=1$ means it ain't so.
+
+We can show it more explicitly
 %
 \nbea
 x^{p^{n-1}(p-1)} & = & x^{p^{n}-p^{n-1}} = x^{p^{n}} x^{-p^{n-1}} \\
@@ -1859,7 +2079,7 @@ x^{p^{n-1}(p-1)} & \equiv & (1+t)^{-1} \pmod{p^{n+1}} \not\equiv 1 \pmod{p^{n+1}
 %
 where $(1+t)^{-1}$ is the ``inverse'' of $1+t$ such that $ (1+t)^{-1}(1+t) = 1$ and it is obvious that $(1+t)^{-1} \not\equiv 1 \pmod{p^{n+1}}$. The existence of an inverse is guaranteed since $(\mathbb{Z}/p^{n}\mathbb{Z})^*$ is a group.
 
-With this result it is true that $x^{p^m h} \not\equiv 1 \pmod{p^{n+1}}$, $0 < m < n-1, ~h|(p-1)$ because otherwise it would violate  Proposition 2.2.7.(b).1. We have therefore shown that the order of $x$ is $pq_n = p^n \mod p^{n+1}$.
+With this result it is true that $x^{p^m h} \not\equiv 1 \pmod{p^{n+1}}$, $0 < m < n-1, ~h|(p-1)$ we have therefore shown that the order of $x$ is $pq_n = p^n \mod p^{n+1}$.
 
 We have shown that for our base case of $x=1+p$ and $(\mathbb{Z}/p^{1}\mathbb{Z})^*$, $q_1=p^0=1$ and the quotients oscillates as shown above, going through the inductive motion we have therefore shown that $1+p$ has the order $p^{n-1} \mod p^n$.
 
@@ -1869,9 +2089,9 @@ A primitive root of $125 = 5^3$ is therefore given by $(1+5)d^c$. First we need 
 
 A primitive root is then $6 \cdot 3^25 \equiv 33 \pmod{125}$. Had we chosen $d=2$ we would get $y = 100$, $c = 25$ with a primitive root of $92 \pmod{125}$. But wait a minute, since the order of 2 and 3 are $100 = 5^2(5-1)$, they themselves are primitive roots, so we have found 4 of them in this exercise :)
 
-Some comments, we could have chosen $x=1-p$ instead of $1+p$.
+Some comments, we could have chosen $x=1-p$ instead of $1+p$ and everything would just work the same but in this case we will find another primitive root.
 
-Why can't we use the above strategy for problem 2.27, the problem lies in the base case
+Why can't we use the above strategy for problem 2.27? the problem lies in the base case
 %
 \nbea
 \begin{array} {l c l c l c l}
@@ -1881,68 +2101,194 @@ Why can't we use the above strategy for problem 2.27, the problem lies in the ba
 %
 $3 = 1 + 2$, therefore $A = 2$ and $1 + A/2 = 2$ an even number where it's supposed to be odd. It is indeed a heavy burden to be the first among infinitely many primes :) 
 
-We can still show that 3 is a generator but we need to tweak the proof a bit. Hence we start with $5 = 1 + 2^2$ and $\mod 2^2$ instead. However, by the above argument $1 - 2^2$ also works but this is just $-3$ and since the other generator is $-1$, $3$ is also a generator.
+We can still show that 3 is a generator but we need to tweak the proof a bit, we just need to start with $2^3$ as the base case instead because $3^2 = 1 + 2^3$ while $3^2 = 1 + 2^2 2$ causing an even quotient, something we don't want. However, by the above argument $1 - 2^2$ also works but this is just $-3$ and since the other generator is $-1$, $3$ is also a generator.
 
 
 
 
+{\bf Problem 2.29}. (*) In terms of the prime factorization of $n$, characterize the integers $n$ such that there is a primitive root modulo $n$.
 
+For consistency and to avoid confusion I will rename $n \to w$ since we have used $n$ in Problem 2.28 as the power of $p$, thus the number we are interested here is $w$.
 
-
-
-
-
-We want to show that something has the order $p^{n-1}$.
-
-
-
-
-
-
-
-
-
-
-
-
-
-The only way the above fails is if $A=2$ because
+First suppose we pick a number $x$ and two other numbers $m,n$ with $\gcd(m,n) = 1$, the orders of $x$ are given by
 %
 \nbea
-1 + 2A(1 + A/2) & = & 1 + 2\cdot 2(1 + 2/2) \\
-& = & 1 + 2^2(1 + 1) \\
-& = & 1 + 2^2 \cdot {\rm even}
+x^a & \equiv & 1 \pmod{m} \\
+x^b & \equiv & 1 \pmod{n}
+\neea
+%
+Denote ${\rm lcm}(a,b) = d$, it is then true that
+%
+\nbea
+x^d &\equiv & 1 \pmod{m} \\
+& = & 1 + mu\\
+x^d & \equiv & 1 \pmod{n} \\
+& = & 1 + nv
+\neea
+%
+Furthermore
+%
+\nbea
+x^d & = & x^d \\
+1 + mu & = & 1 +nv \\
+mu & = & nv
+\neea
+%
+Since $\gcd(m,n)=1$ therefore $n|u$ and $m|v \to mu=nv = mns$, thus
+%
+\nbea
+x^d & = & 1 + mn s \\
+& \equiv & 1 \pmod{mn}
+\neea
+%
+We know that the order of $x \mod mn$ must be divisible by $a$ and $b$ and $d = {\rm lcm}(a,b)$ is the smallest number that is divisible by $a$ and $b$, therefore the order of $x \mod mn$ is $d = {\rm lcm}(a,b)$.
+
+We now use this result to characterize the primitive roots of $w$ based on its prime factorization. Thanks to Euclid, every number $w$ can be factorized into
+%
+\nbea
+w & = & \prod_{i=1}^{z} p_i^{n_i} \\
+& = & p_1^{n_1}p_2^{n_2}p_3^{n_3} \dots p_z^{n_z} \\
+\to \varphi(n) & = & \prod_{i=1}^{z} p_i^{n_i-1}(p_i - 1)
+\neea
+%
+We now list every number $1 < x < w$ in each different $\pmod{p_i^{n_i}}$, where $a_i$ is the order of each $x \mod p_i^{n_i}$ where each $a_i$ is limited by Euler's theorem to be $a_i|(p_i^{n_i-1}(p_i-1))$, see Table.~\ref{Tab:2}
+%
+\begin{table}[]
+\centering
+\caption{}
+\label{Tab:2}
+\begin{tabular}{|c|c|c|c c c|}
+\hline
+$w=\prod_{1}^{z}$ & $p_1^{n_1}$ & $p_2^{n_2}$ & $p_3^{n_3}$ & $\dots$ & $p_z^{n_z}$ \\
+$\varphi(p_i^{n_i}) = $ & $p_1^{n_1-1}(p_1-1)$ & $p_2^{n_2-1}(p_2-1)$ & $p_3^{n_3-1}(p_3-1)$ & $\dots$ & $p_z^{n_z-1}(p_z-1)$ \\ \hline 
+ & $x^{a_1} \equiv 1 \pmod{p_1^{n_1}}$ & $x^{a_2} \equiv 1 \pmod{p_2^{n_2}}$ & $x^{a_3} \equiv 1 \pmod{p_3^{n_3}}$ & $\dots$ & $x^{a_z} \equiv 1 \pmod{p_z^{n_z}}$ \\
+ & $a_1|(p_1^{n_1-1}(p_1-1))$ & $a_2|(p_2^{n_2-1}(p_2-1))$ & $a_3|(p_3^{n_3-1}(p_3-1))$ & $\dots$ & $a_z|(p_z^{n_z-1}(p_z-1))$ \\ \hline
+\end{tabular}
+\end{table}
+%
+
+As shown above, the order of $x \mod w$ is given by
+%
+\nbea
+x^{{\rm lcm}(a_1, a_2, \dots, a_z)} & \equiv & 1 \pmod{p_1^{n_1}p_2^{n_2} \dots p_z^{n_z}}
+\neea
+%
+since $\gcd(p_i^{n_i},p_j^{n_j}) = 1$ for any $i, j$. For $x$ to be a primitive root of $n$ we need
+%
+\nbea
+{\rm lcm}(a_1, a_2, \dots, a_z) & = & p_1^{n_1-1}(p_1 - 1)p_2^{n_2-1}(p_2 - 1) \dots p_z^{n_z-1}(p_z - 1)
+\neea
+%
+Now since each $a_i|(p_i^{n_i-1}(p_i-1))$, for the above requirement to hold it has to be that each $a_i = (p_i^{n_i-1}(p_i-1))$. However, $2|(p_i-1)$ for $p_i \neq 2$, therefore
+%
+\nbea
+{\rm lcm}(a_1, a_2, \dots, a_z) & \le & p_1^{n_1-1}(p_1 - 1)p_2^{n_2-1}(p_2 - 1) \dots p_z^{n_z-1}(p_z - 1)
+\neea
+%
+All is not lost, hope, though frail, is hard to kill :) Say one of the $p$'s is 2, $\varphi(2)=1$, thus if $p \neq 2$ then $w = 2 p^z, ~\varphi(w=2 p^z) = 1 \cdot \varphi(p^z)$ and therefore $w$ have primitive roots (here $z$ can be zero). Another obvious solution is of course $w=p^z$ which we proved in Problem 2.28. And from Problem 2.27 $w=4$ will have primitive roots as well and those are the only 3 cases where $w$ will have primitive roots :)
+
+My initial approach in solving this problem was actually to construct much like what we did with Problem 2.28, this turned out to be unprofitable. The difference here is that we have extra primes involved but we can easily use the construction method in Problem 2.28 to find a number with order $p_i^{n_i-1}$.
+
+To illustrate this better let's just assume that $w$ only contain two distinct primes $w = p_1^{n_1} p_2^{n_2}$. We will still use induction but this time we vary $n_i$ one at a time, first we vary $n_1$ while keeping $n_2$ fixed prove it by induction and then we vary $n_2$ while keeping $n_1$ fixed and prove the induction for $n_2$.
+
+First, the number we want is $x=1 + p_2^{n_2} p_1 = 1 + P$ and here $P=p_2^{n_2}p_1 k$, $k=1$, just like last time
+%
+\nbea
+\begin{array} {l c l c l c l}
+(x^{q})^1 & = & 1 + P & & & = & 1 + p_2^{n_2}p_1^n \cdot [P] \\
+(x^{q})^2 & = & 1 + 2P + P^2 & = & 1 + P(2 + P) & = & 1 + p_2^{n_2}p_1^n \cdot \bcancel{P} \\
+(x^{q})^3 & = & 1 + 3P + 3P^2 + P^3 & = & 1 + P(3 + P + P^2) & = & 1 + p_2^{n_2}p_1^n \cdot \bcancel{P} \\
+& \vdots & & & & & \\
+(x^{q})^{p_1} & = & 1 + p_1P + p'P^2 + \dots + P^{p_1} & = & 1 + P(p_1 + p'P + \dots + P^{p_1}) & = & 1 + p_2^{n_2}p_1^n \cdot [P] \\
+& \vdots & & & & & \\
+(x^{q})^{p_1m} & = & 1 + p_1mP + m_1P^2 + \dots + P^{p_1 m} & = & 1 + P(p_1m + m_1P + \dots + P^{p_1m}) & = &  1 + p_2^{n_2}p_1^n \cdot [P]
+\end{array}
+\neea
+%
+And we see the same pattern. The argument holds because $\gcd(p_1,p_2)=1$, therefore whether the sum of the terms in bracket is divisible by $p_1$ or not depends entirely on the coefficient of $P^0$ and the quotient $\floor{(x^{q})^{p_1m}/p_2^{n_2}p_1^n}$ is either divisible by $p_1$ or not depending on whether the bracket is divisible by $p_1$ or not.
+
+It is now obvious that $1 + p_2^{n_2} p_1$ has an order of $p_1^{n_1-1} \mod p_1^{n_1} p_2^{n_2}$ and of course conversely $1 + p_1^{n_1} p_2$ has the order of $p_2^{n_2-1} \mod p_1^{n_1} p_2^{n_2}$. So in general
+%
+\nbea
+x = 1 + p_i \prod_{j\neq i}p_j^{n_j} {\rm~has~the~order~of~} p_i^{n_i-1} \mod \prod_l p_l^{n_l}
+\neea
+%
+However, this strategy is not beneficial in solving Problem 2.29 since it is hard to deal with numbers that have an order of $(p_i - 1)$. The difficulty is due to the fact that $2|(p_i - 1)$ so even if I found all numbers with order $(p_i - 1)$ I cannot just multiply all of them to get a primitive root since $\gcd(p_i - 1, p_j - 1) \neq 1$. And this prompted me to find another strategy which resulted in the solution above.
+
+{\bf Problem 2.30} Compute the last two digits of $3^{45}$.
+
+First, find the order of $3 \mod 100$ which is 20, thus
+%
+\nbea
+3^{45} \equiv 3^{15} \pmod{100} \equiv 07 \pmod{100}
+\neea
+%
+Thus the last two digits of $3^{45}$ is `07'.
+
+{\bf Problem 2.31}. Find the integer $a$ such that $0 \le a < 113$ and
+%
+\nbea
+102^{70} + 1 \equiv a^{37} \pmod {113}.
+\neea
+%
+The order of $102 \mod 113$ is 56 so
+%
+\nbea
+102^{70} & \equiv & 102^{14} \pmod {113}\\
+& \equiv & 98 \pmod{113}
+\neea
+%
+and therefore
+%
+\nbea
+102^{70} + 1  & \equiv & 98 + 1 \equiv a^{37} \pmod {113} \\
+a^{37} & \equiv & 99 \pmod{113}
 \neea
 %
 
+The order of $99 \mod 113$ is 28 so $a^{37 \cdot 28} \equiv 1 \pmod{113}$. Note that 113 is prime so $\varphi(113) = 112$ and an order of a number must be a divisor of 112. However $\gcd(37,112) = 1$ then it must be that
+%
+\nbea
+a^{37 \cdot 28} \equiv 1 \pmod{113} \\
+\to (a^{28})^{37} \equiv 1 \pmod{113} \\
+a^{28} \equiv 1 \pmod{113}
+\neea
+%
+Thus we just need to find a number whose order $\mod 113$ is 28 and that number is $a=60$.
 
-We need $-1$ because $5$ only covers half of $(\mathbb{Z}/2^n\mathbb{Z})^*$. 
+{\bf Problem 2.32}. Find the proportion of primes $p < 1000$ such that 2 is a primitive root modulo $p$.
 
-Another fact about $5^q \mod 2^n$, when we increase $q \to q+1$ the remainder of $5^q$ always changes because otherwise
+Using a small C code I found 67 primes out of 168 (around 40\%) that have 2 as a primitive root, they are 3, 5, 11, 13, 19, 29, 37, 53, 59, 61, 67, 83, 101, 107, 131, 139, 149, 163, 173, 179, 181, 197, 211, 227, 269, 293, 317, 347, 349, 373, 379, 389, 419, 421, 443, 461, 467, 491, 509, 523, 541, 547, 557, 563, 587, 613, 619, 653, 659, 661, 677, 701, 709, 757, 773, 787, 797, 821, 827, 829, 853, 859, 877, 883, 907, 941, 947.
+
+Increasing the limit to $p < 10000$ gets us 470 out of 1229 (38.24 \%) and for $p < 100000$, it is 3603 out of 9592 (37.56\%) and lastly for $p < 1000000$ it is 29341 out of 78498 (37.38\%). So it is slowly decreasing.
+
+
+{\bf Problem 2.33}. Find a prime $p$ such that the smallest primitive root modulo $p$ is $37$.
+
+I don't know any clever way to do this. The problem is that 37 is a primitive root but it is the smallest primitive root. So I wrote a small C code to find primes who have 37 as its smallest primitive root, they are
 %
 \nbea
-5^q & = & 2^n q + r \\
-5^{q+1} & = & 2^n(5q) + 5r
+\ba{c c c c c c c}
+36721 & 51361 & 63361 & 97441 & 129529 & 132169 & 171889 \\
+190537 & 201769 & 314161 & 333791 & 343081 & 387721 & 422231 \\
+493919 & 496609 & 515761 & 529489 & 532009 & 532561 & 557041 \\
+596569 & 600601 & 618719 & 619921 & 628319 & 629281 & 631991 \\
+662281 & 663127 & 687289 & 704719 & 711959 & 720359 & 739201 \\
+751969 & 774601 & 783721 & 828601 & 840839 & 859031 & 890111 \\
+907369 & 1006799 & 1092961 & 1102201 & 1183199 & 1195489 & 1210609 \\
+1233241 & 1257721 & 1266841 & 1295809 & 1353791 & 1405681 & 1427281 \\
+1433041 & 1445161 & 1450849 & 1453321 & 1463641 & 1497271 & 1500071 \\
+1522249 & 1560409 & 1567729 & 1570631 & 1602169 & 1622041 & 1622209
+\ea
 \neea
 %
-If $5r < 2^n$ then $5^q \mod 2^n \neq 5^{q+1} \mod 2^n$ if $5r > 2^n$, $5r = 2^n + r'$, therefore $5^{q+1} \equiv r' \pmod{2^n}$. If $r = r'$
-%
-\nbea
-5r & = & 2^n + r' = 2^n + r \\
-4r & = & 2^n \\
-r & = & 2^{n-2}
-\neea
-% 
-Thus
-%
-\nbea
-5^q & = & 2^n q + r \\
-& = & 2^n q + 2^{n-2} \\
-& = & 2^{n-2}(2^2q + 1) \\
-\to 2 &|& 5^q
-\neea
-%
-which is a contradiction and thus every time we increase $q$ the remainder changes, except for $n = 2$ where $5^q \mod 2^2$ is always 1.
+and many more :) but since the above list was generated in order 36721 is the smallest prime to have 37 as its smallest primitive root.
+
+
+
+
+
+
 
 
 
