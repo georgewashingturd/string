@@ -1100,18 +1100,26 @@ n & = & a + b10 + c100 + d 1000 + \dots \\
 %
 the last line is because $11|n \to n = 0 \pmod{11}$, and so the alternate sum of the digits of the number must be zero for the number to be a multiple of 11.
 
-Let's list the first few $a$'s and their digits' alternate sum
+Let's list the first few $a$'s and their digits' alternate sum, see table.~\ref{Tab:5}
 %
-\bit
-\item $a_1 = 0 \to 0, ~~~ 11 | a_1$
-\item $a_2 = 1 \to 1, ~~~ 11 \nmid a_2$
-\item $a_3 = 10 \to -1, ~~~ 11 \nmid a_3$
-\item $a_4 = 101 \to 2, ~~~ 11 \nmid a_4$
-\item $a_5 = 10110 \to 1, ~~~ 11 \nmid a_5$
-\item $a_6 = 10110101 \to 1, ~~~ 11 \nmid a_6$
-\item $a_7 = 1011010110110 \to 0, ~~~ 11 | a_7$
-\eit
-so the smallest $n > 1$ such that $11|a_n$ is $n=7$.
+\begin{table}[]
+\centering
+\caption{The first few $a$'s and their properties}
+\label{Tab:5}
+\begin{tabular}{|c|l|c|c|}
+\hline
+Index & String & \begin{tabular}{@{}c@{}}\shortstack {\\ \\ Alternate \\ Sum}\end{tabular} & \begin{tabular}{@{}c@{}}\shortstack{ \\ \\ Divisibility \\ by 11}\end{tabular} \\ \hline$a_{1}$ & 0 & 0 & $11 \nmid a_1$ \\ \hline
+$a_{2}$ & 1 & 1 & $11 \nmid a_2$ \\ \hline
+$a_{3}$ & 10 & -1 & $11 \nmid a_3$ \\ \hline
+$a_{4}$ & 101 & 2 & $11 \nmid a_4$ \\ \hline
+$a_{5}$ & 10110 & 1 & $11 \nmid a_5$ \\ \hline
+$a_{6}$ & 10110101 & 1 & $11 \nmid a_6$ \\ \hline
+$a_{7}$ & 1011010110110 & 0 & $11 | a_7$ \\ \hline
+$a_{8}$ & 101101011011010110101 & 1 & $11 \nmid a_8$ \\ \hline
+\end{tabular}
+\end{table}
+%
+so the smallest $n > 1$ such that $11|a_n$ is $n=7$. Here I have included $a_8$ as well as we will need this for part (b).
 
 For part (b) we just need to use induction. An important fact about a string of zeros and ones, say we have a random string A
 %
@@ -1129,56 +1137,66 @@ and the alternate sum of the digits of ${\rm A'}$ will still be non zero, what w
 
 Another important fact is that if we have two strings of ones and zeros, A and B, the alternate sum of the digits of concatenated string AB or BA is zero if and only if the alternate sum of A and the alternate sum of B are independently zero. This is a consequence of the above fact. And since this is true, it is also true if concatenate multiple A's and B's.
 
-We can now start constructing our induction proof. We use as the base case $a_1, a_2, \dots, a_7$ from part (a). To simplify things we will denote ${\rm A} = a_6$ and ${\rm B} = a_7$ and we continue the sequence as shown in Table.~\ref{Tab:3}.
+One last crucial ingredient, the length of $a_7$ and $a_8$, we need both lengths to be odd, since $a$'s are nothing but Fibonacci sequence, the lengths are 1,1,2,3,5,8,13,21, so $a_7$ is 13 characters long while $a_8$ is 21 characters long.
+
+We can now start constructing our induction proof. We use as the base case $a_1, a_2, \dots, a_8$ from part (a). To simplify things we will denote ${\rm A} = a_7$ and ${\rm B} = a_8$ and we continue the sequence as shown in Table.~\ref{Tab:3}.
 %
 \begin{table}[]
 \centering
-\caption{The last column is the alternate sum of the digits of the string}
+\caption{The second iteration of the string pattern}
 \label{Tab:3}
 \begin{tabular}{|c|c|l|c|}
 \hline
-$a_6$ & $\tilde a_0$ & A & 1\\ \hline
-$a_7$ & $\tilde a_1$ & B & 0\\ \hline
-$a_8$ & $\tilde a_2$ & B A & 1 \\ \hline
-$a_9$ & $\tilde a_3$ & B A B & -1 \\ \hline
-$a_{10}$ & $\tilde a_4$ & B A B B A & 2 \\ \hline
-$a_{11}$ & $\tilde a_5$ & B A B B A B A B & -1 \\ \hline
-$a_{12}$ & $\tilde a_6$ & B A B B A B A B B A B B A & 1\\ \hline
-$a_{13}$ & $\tilde a_7$ & B A B B A B A B B A B B A B A B B A B A B & 0 \\ \hline
+\begin{tabular}{@{}c@{}}\shortstack{\\ \\ Actual \\ Index}\end{tabular} & \begin{tabular}{@{}c@{}}\shortstack {\\ \\ Relative \\ Index}\end{tabular} & String & \begin{tabular}{@{}c@{}}\shortstack{ \\ \\ Alternate \\ Sum}\end{tabular} \\ \hline
+$a_7$ & $\tilde a_1$ & A & 0 \\ \hline
+$a_8$ & $\tilde a_2$ & B & 1\\ \hline
+$a_9$ & $\tilde a_3$ & B A & -1 \\ \hline
+$a_{10}$ & $\tilde a_4$ & B A B & 2 \\ \hline
+$a_{11}$ & $\tilde a_5$ & B A B B A & 1 \\ \hline
+$a_{12}$ & $\tilde a_6$ & B A B B A B A B & 1 \\ \hline
+$a_{13}$ & $\tilde a_7$ & B A B B A B A B B A B B A & 0\\ \hline
+$a_{14}$ & $\tilde a_8$ & B A B B A B A B B A B B A B A B B A B A B & 1 \\ \hline
 \end{tabular}
 \end{table}
 %
-It is now obvious that the pattern repeats. To continue let's denote C = $\tilde a_6$ = B A B B A B A B B A B B A with its alternate sum of 1 and D = $\tilde a_7$ = B A B B A B A B B A B B A B A B B A B A B with its alternate sum of 0 and if we continue the sequence we will get the exact same sequence as sown in Table.~\ref{Tab:4}
+This is where we need both $a_7$ and $a_8$ to be odd characters long. This way we can think of A and B as just single digits. Here's why. Say A is {\bf even} characters long with alternate sum of 1 and B odd characters long with alternate sum of 0, A B B A will have an alternate sum of 2 while 1001 (= $-+-+$) should have an alternate sum of 0.
+
+This is because the A on the left ({\bf A}BBA) has been shifted odd + odd + even = even digits, thus its alternate sum stays the same, had A had odd characters, the higher {\bf A}BBA will be shifted by odd + odd + odd = odd digits and hence the alternate sum of ABBA will be zero.
+
+It is now obvious that the pattern repeats. To continue let's denote C = $\tilde a_7$ = B A B B A B A B B A B B A with its alternate sum of 0 and D = $\tilde a_8$ = B A B B A B A B B A B B A B A B B A B A B with its alternate sum of 1. We now need to make sure that the string length of C and D are both odd. Well, they are guaranteed to be odd because $\tilde a_7$ has an odd number of substrings and each substring has an odd number of characters, odd $\times$ odd = odd, the same is true with $\tilde a_8$. So we can continue the sequence we will get the exact same sequence as shown in Table.~\ref{Tab:4}
 %
 \begin{table}[]
 \centering
-\caption{The last column is the alternate sum of the digits of the string}
+\caption{The next iteration of the string pattern}
 \label{Tab:4}
 \begin{tabular}{|c|c|l|c|}
 \hline
-$a_{12}$ & $\tilde a_0$ & C & 1\\ \hline
-$a_{13}$ & $\tilde a_1$ & D & 0\\ \hline
-$a_{14}$ & $\tilde a_2$ & D C & 1 \\ \hline
-$a_{15}$ & $\tilde a_3$ & D C D & -1 \\ \hline
-$a_{16}$ & $\tilde a_4$ & D C D D C & 2 \\ \hline
-$a_{17}$ & $\tilde a_5$ & D C D D C D C D & -1 \\ \hline
-$a_{18}$ & $\tilde a_6$ & D C D D C D C D D C D D C & 1\\ \hline
-$a_{19}$ & $\tilde a_7$ & D C D D C D C D D C D D C D C D D C D C D & 0 \\ \hline
+\begin{tabular}{@{}c@{}}\shortstack{\\ \\ Actual \\ Index}\end{tabular} & \begin{tabular}{@{}c@{}}\shortstack {\\ \\ Relative \\ Index}\end{tabular} & String & \begin{tabular}{@{}c@{}}\shortstack{ \\ \\ Alternate \\ Sum}\end{tabular} \\ \hline
+$a_{13}$ & $\tilde a_1$ & C & 0\\ \hline
+$a_{14}$ & $\tilde a_2$ & D & 1\\ \hline
+$a_{15}$ & $\tilde a_3$ & D C & -1 \\ \hline
+$a_{16}$ & $\tilde a_4$ & D C D & 2 \\ \hline
+$a_{17}$ & $\tilde a_5$ & D C D D C & 1 \\ \hline
+$a_{18}$ & $\tilde a_6$ & D C D D C D C D & 1 \\ \hline
+$a_{19}$ & $\tilde a_7$ & D C D D C D C D D C D D C & 0\\ \hline
+$a_{20}$ & $\tilde a_8$ & D C D D C D C D D C D D C D C D D C D C D & 1 \\ \hline
 \end{tabular}
 \end{table}
 %
-We can continue this pattern for eternity :) The key observation is the two facts mentioned above that the alternate sum of a string only flips sign if we shift the string. Therefore $a_n$ is divisible by 11 if and only if $n \equiv 1 \pmod{6}$.
+We can continue this pattern for eternity :) The key observation is the two facts mentioned above that the alternate sum of a string only flips sign if we shift the string and the fact that the string length of $a_7$ and $a_8$ is odd. Therefore $a_n$ is divisible by 11 if and only if $n \equiv 1 \pmod{6}$.
 
 {\bf Problem 2.10}. Find an integer $x$ such that $37x \equiv 1 \pmod{101}$.
 
 We use Euclid's gcd algorithm to find the solution of Bezout's lemma $37x + 101y = 1$
 %
 \nbea
-\underline{101} & = & \underline{37} \cdot 2 + \underline{27} ~~~~~~~~~~~~~~~~~~~~ \underline{27} = ~~1 \cdot \underline{101} - 2 \cdot \underline{37} \\
-\underline{37} & = & \underline{27} \cdot 1 + \underline{10} ~~~~~~~~~~~~~~~~~~~~ \underline{10} = -1 \cdot \underline{101} + 3 \cdot \underline{37} \\
-\underline{27} & = & \underline{10} \cdot 2 + \underline{7} ~~~~~~~~~~~~~~~~~~~~~~~ \underline{7} = ~~~3 \cdot \underline{101} - 8 \cdot \underline{37} \\
-\underline{10} & = & \underline{7} \cdot 1 ~+ \underline{3} ~~~~~~~~~~~~~~~~~~~~~~~~ \underline{3} = -4 \cdot \underline{101} + 11 \cdot \underline{37} \\
-\underline{7} & = & \underline{3} \cdot 2~ + \underline{1} ~~~~~~~~~~~~~~~~~~~~~~~~ \underline{1} = ~11 \cdot \underline{101} - 30 \cdot \underline{37}
+\ba{r c r c r   c   r c r c r}
+\underline{101} & = & \underline{37} \cdot 2 & + & \underline{27} & ~~~~~~~~~~~~ & \underline{27} & = & 1 \cdot \underline{101} & - & 2 \cdot \underline{37} \\
+\underline{37} & = & \underline{27} \cdot 1 & + & \underline{10} & & \underline{10} & = & -1 \cdot \underline{101} & + & 3 \cdot \underline{37} \\
+\underline{27} & = & \underline{10} \cdot 2 & + & \underline{7} & & \underline{7} & = & 3 \cdot \underline{101} & - & 8 \cdot \underline{37} \\
+\underline{10} & = & \underline{7} \cdot 1 & + & \underline{3} & & \underline{3} & = & -4 \cdot \underline{101}  & + & 11 \cdot \underline{37} \\
+\underline{7} & = & \underline{3} \cdot 2 & + & \underline{1} & & \underline{1} & = & 11 \cdot \underline{101} & - & 30 \cdot \underline{37}
+\ea
 \neea
 %
 Therefore $x=-30 \equiv (101 - 30) \equiv 71 \pmod{101}$.
@@ -1631,7 +1649,7 @@ which is a contradiction (the same argument works for $\alpha\beta \equiv \alpha
 %
 so we are not getting any new solution (the same thing happens if you multiply $\beta$ with the new solution $\alpha\beta$ you'll just get $\alpha$).
 
-Other than the above items, I didn't see any way to prove the number of solutions of a polynomial $\mod{n}$ (especially when $n$ is not prime).
+Other than the above items, I didn't see any way to prove the number of solutions of a polynomial modulo ${n}$ (especially when $n$ is not prime).
 
 The way to prove that we can find $n$ such that $x^2-1$ has at least $b$ solutions is to use something called the Chinese remainder map. Consider a number, any number $x$, we can represent this number in the following way
 %
@@ -1703,7 +1721,7 @@ For part(a) we just need to follow the hint. We will need to use induction, but 
 
 From the hint we know that all elements of $(\mathbb{Z}/8\mathbb{Z})^*$ have multiplicative order of 2. Now take for example $2^4 = 16$, $\varphi(16) = 8$. Assume that the order of $x \in (\mathbb{Z}/16\mathbb{Z})^*$ is 8, \ie $x^8 \equiv 1 \pmod{16}$.
 
-Since the order of $x \pmod{16}$  is 8, $x^4, x^2, x \not\equiv 1 \pmod{16}$. There is something we can say about $x^2$, we know that $x^2 \not\equiv 1 \pmod{8}$, why? because if it is
+Since the order of $x$ modulo ${16}$  is 8, $x^4, x^2, x \not\equiv 1 \pmod{16}$. There is something we can say about $x^2$, we know that $x^2 \not\equiv 1 \pmod{8}$, why? because if it is
 %
 \nbea
 x^2 & \equiv & 1 \pmod{8} \\
@@ -1712,11 +1730,11 @@ x^4 & = & (1+8n)^2 = 1 + 16n + 64n^2 \\
 x^4 & \equiv & 1 \pmod{16}
 \neea
 %
-which is a contradiction since the order of $x \pmod{16}$ is 8. Since $x \neq 1$, and thanks to Euler's theorem $x^{\varphi(8)} = x^4 \equiv 1 \pmod{8}$, the order of $x \pmod{8}$ is 4. But we know that the order of any $x \in (\mathbb{Z}/8\mathbb{Z})^*$ is 2. Thus the order of $x \pmod{16}$ cannot be 8, whatever $x$ is and hence $(\mathbb{Z}/16\mathbb{Z})^*$ does not have a primitive root. It is then obvious that we can generalize the above argument for a general the inductive step by replacing 8 with $2^n$ and 16 with $2^{n+1}$.
+which is a contradiction since the order of $x$ modulo 16 is 8. Since $x \neq 1$, and thanks to Euler's theorem $x^{\varphi(8)} = x^4 \equiv 1 \pmod{8}$, the order of $x$ modulo 8 has to be 4. But we know that the order of any $x \in (\mathbb{Z}/8\mathbb{Z})^*$ is 2. Thus the order of $x$ modulo 16 cannot be 8, whatever $x$ is and $(\mathbb{Z}/16\mathbb{Z})^*$ does not have a primitive root. It is then obvious that we can generalize the above argument for the general inductive step by replacing 8 with $2^n$ and 16 with $2^{n+1}$.
 
-For part (b), there are many things we need to consider. We know that the elements of $(\mathbb{Z}/2^n\mathbb{Z})^*$ are just positive odd numbers $< 2^n$. By a generator the question hints that we can make any element of $(\mathbb{Z}/2^n\mathbb{Z})^*$ by multiplying $5$ and $-1$ arbitrary times, \ie the group operation is multiplication $\mod 2^n$ and therefore any element of $(\mathbb{Z}/2^n\mathbb{Z})^*$ can be generated from $(-1)^a 5^b$ for some $a,b$.
+For part (b), there are many things we need to consider. We know that the elements of $(\mathbb{Z}/2^n\mathbb{Z})^*$ are just positive odd numbers $< 2^n$. By a generator the question hints that we can make any element of $(\mathbb{Z}/2^n\mathbb{Z})^*$ by multiplying $5$ and $-1$ arbitrary times, \ie the group operation is multiplication modulo $2^n$ and therefore any element of $(\mathbb{Z}/2^n\mathbb{Z})^*$ can be generated from $(-1)^a 5^b$ for some $a,b$.
 
-A cursory observation shows that there is a pattern on $5^q \mod 2^n$ as shown in the following table
+A cursory observation shows that there is a pattern on $5^q \mod 2^n$ as shown in Table.\ref{Tab:1}.
 
 %
 \begin{table}[]
@@ -1745,7 +1763,7 @@ $q$ & $5^q$ & $5^q \mod 2^2$ & $5^q \mod 2^3$ & $5^q \mod 2^4$ & $5^q \mod 2^5$ 
 \end{tabular}
 \end{table}
 %
-There is a compelling pattern from the above table, the order of $5$ $\mod 2^n$ is $2^{n-2}$. This has a serious implication. Take for example the phase from $2^3 \to 2^4$, $625 \mod 8 = 625 \mod 16 = 1$ while $25 \mod 8 \neq 25 \mod 16$. This is because
+There is a compelling pattern in Table.~\ref{Tab:1}, the order of $5$ modulo $2^n$ is $2^{n-2}$. This has a serious implication. Take for example the phase from $2^3 \to 2^4$, $625 \mod 8 = 625 \mod 16 = 1$ while $25 \mod 8 \neq 25 \mod 16$. This is because
 %
 \nbea
 25 & = & 1 + 8u \\
@@ -1790,9 +1808,9 @@ if $L$ is even
 \neea
 %
 
-We are now ready to prove Problem 2.27(b) by utilizing induction. First, we fix $n$ and show that the quotient $\floor{5^{qm}/2^n}$ where $5^{qm} \equiv 1 \pmod{2^n}$ oscillates between odd and even as we ascendingly traverse through different values of $m=1 \dots \infty$ with $m=1$ (which means $q$ is the order of $5 \mod 2^n$) having an odd quotient. We then use induction to prove that this patterns continues as we increase $n$.
+We are now ready to prove Problem 2.27(b) by utilizing induction. First, we fix $n$ and show that the quotient $\floor{5^{qm}/2^n}$ where $5^{qm} \equiv 1 \pmod{2^n}$ oscillates between odd and even as we ascendingly traverse through different values of $m=1 \dots \infty$ with $m=1$ (which means $q$ is the order of 5 modulo $2^n$) having an odd quotient. We then use induction to prove that this patterns continues as we increase $n$.
 
-To setup the induction proof we set $n = 2,~2^n = 4$. The order of 5 $\mod 4$ is obviously 1 and
+To setup the induction proof we set $n = 2,~2^n = 4$. The order of 5 modulo 4 is obviously 1 and
 %
 \nbea
 5 & = & 2^2 \cdot 1 + 1
@@ -1800,9 +1818,9 @@ To setup the induction proof we set $n = 2,~2^n = 4$. The order of 5 $\mod 4$ is
 %
 Thus the quotient $\floor{5/2^2} = 1$ is odd and we have met the prerequisite of an odd quotient. We now move on to the oscillating pattern. Even though we have fixed $n=2$, it is constructive to be more generic.
 
-Let's denote the order of 5 $\mod 2^n$ as $q$ and the quotient $\floor{5^q/2^n} = k$. In the above example, $q=1$, $n=2$, and $k=1$. The thing we need here is that $k$ is odd. To proceed we need a fact about the multiplicative order of a number.
+Let's denote the order of 5 modulo $2^n$ as $q$ and the quotient $\floor{5^q/2^n} = k$. In the above example, $q=1$, $n=2$, and $k=1$. The thing we need here is that $k$ is odd. To proceed we need a fact about the multiplicative order of a number.
 
-{\bf Proposition 2.27.(b).1} $x^m \equiv 1 \pmod{n}$ if and only if $q|m$ where $q$ is the (multiplicative) order of $x \mod n$.
+{\bf Proposition 2.27.(b).1} $x^m \equiv 1 \pmod{n}$ if and only if $q|m$ where $q$ is the (multiplicative) order of $x$ modulo $n$.
 
 {\it Proof}. Say $q \nmid m$, this means that $m = qs + r$ and
 %
@@ -1823,7 +1841,7 @@ x^m & \equiv & 1 \pmod{n}
 %
 This completes our proof.
 
-As a side note, an interesting (or not) fact about $5^q \mod 2^n$ I found while solving this problem is that when we increase $q \to q+1$ the remainder always changes. Here's why, 
+As a side note, an interesting (or not) fact about $5^q$ modulo $2^n$ I found while solving this problem is that when we increase $q \to q+1$ the remainder always changes. Here's why, 
 %
 \nbea
 5^q & = & 2^n q + r \\
@@ -1847,13 +1865,13 @@ Thus
 \to 2 &|& 5^q
 \neea
 %
-which is a contradiction and thus every time we increase $q$ the remainder changes, except for $n = 2$ where $5^q \mod 2^2$ is always 1. The above proof also applies when we replace $1+p$ for $5$ and $p^n$ for $2^n$ since the logic is the same.
+which is a contradiction and thus every time we increase $q$ the remainder changes, except for $n = 2$ where $5^q \mod 2^2$ is always 1. The above proof also applies when we replace $1+p$ for $5$ and $p^n$ for $2^n$ where $p$ is an odd prime since the logic is the same.
 
 We now resume our earlier proof. From our proposition above, for $5^y \equiv 1 \pmod{2^n}$ to be true, $y = qm$. We now list $1 \pmod{2^n}$ in ascending power of $5$, note that $5^{qm} = (5^q)^m$
 %
 \nbea
 \begin{array} {l c l c l c l}
-(5^{q})^1 & = & 1 + A & & & = & 1 + 2^n \cdot {\rm odd} \\
+(5^{q})^1 & = & 1 + A & = & 1 + A (1) & = & 1 + 2^n \cdot {\rm odd} \\
 (5^{q})^2 & = & 1 + 2A + A^2 & = & 1 + A(2 + A) & = & 1 + 2^n \cdot {\rm even} \\
 (5^{q})^3 & = & 1 + 3A + 3A^2 + A^3 & = & 1 + A(3 + 3A + A^2) & = & 1 + 2^n \cdot {\rm odd} \\
 (5^{q})^4 & = & 1 + 4A + 6A^2 + 4A^3 + A^4 & = & 1 + A(4 + 6A + 4A^2 + A^3) & = & 1 + 2^n \cdot {\rm even} \\
@@ -1864,23 +1882,22 @@ We now resume our earlier proof. From our proposition above, for $5^y \equiv 1 \
 %
 where we have denoted $A = 2^n k$ to avoid clutter. 
 
-Some points to take note. One, the coefficient of $A^0$ in the bracket $(m + m_1A + \dots + A^{m_0})$ is always the exponent $m$ as dictated by binomial expansion. Two, each term in bracket has $A$ as a factor and therefore even, except for $m$. Three, the sum of odd and even is odd and since all the terms in bracket except for $m$ is guaranteed to be even, the even/oddness of the sum of all the terms inside the bracket is determined by $m$. Lastly, since $A=2^n k$ and $k$ is odd, the even/oddness of the quotient $\floor{5^{qm}/2^n}$ is determined by the even/oddness of the bracket.
+Some points to consider. One, the coefficient of $A^0$ in the bracket $(m + m_1A + \dots + A^{m_0})$ is always the exponent $m$ as dictated by binomial expansion. Two, each term in bracket has $A$ as a factor and therefore even, except for $m$. Three, the sum of odd and even is odd and since all the terms in bracket except for $m$ is guaranteed to be even, the even/oddness of the sum of all the terms inside the bracket is determined by $m$. Lastly, since $A=2^n k$ and $k$ is odd, the even/oddness of the quotient $\floor{5^{qm}/2^n}$ is determined by the even/oddness of the bracket.
 
 Since the sequence of the coefficients of $A^0$ in brackets is just the sequence of natural numbers, the quotient $\floor{5^{qm}/2^n}$ oscillates between odd and even, starting with odd since $k$ is odd. This completes the first part of our proof.
 
-The induction itself involves varying $n$. We have proven above that for the case of $n=2,~2^n = 4$ the order of $5$ $\mod 4$ is $2^{n-2} = 1$. There are several intermediate steps we need to establish to complete this proof
+The induction itself involves varying $n$. We have proven above that for the case of $n=2,~2^n = 4$ the order of 5 modulo 4 is $2^{n-2} = 1$. There are several intermediate steps we need to establish to complete this proof
 %
 \bit
-\item Our inductive assumption is that $\mod{2^n}$ has the oscillating pattern as described above and the order $q_n$ of $5 \mod 2^{n}$ is $q_n = 2^{n-2}$.
-\item First, we want to show that if $\mod{2^n}$ has the oscillating pattern as described above, $\mod{2^{n+1}}$ will also have the same oscillating pattern (with a lower frequency and an odd first quotient), this is to ensure the continual survival of our inductive step. We eould like the first quotient to be odd to make sure that it doesn't remain 1 when we increase $n \to n + 1$.
-\item We want to show that the order of $5 \mod 2^{n+1}$ is $2q_n$ where $q_n$ is the order of $5 \mod 2^n$.
-\item Combining the above two results, and knowing that $q=1$ for $n=2, ~2^n=4$, shows that the order of $5 \mod 2^z$ is $2^{z-2}$.
-\item Since the above pattern repeats for the inductive step, the conclusion that the order of $5 \mod 2^z$ is $2^{z-2}$ holds for any$z$. This will only show that $5^z$ covers half of the elements of $(\mathbb{Z}/2^n\mathbb{Z})^*$, remember that $(\mathbb{Z}/2^n\mathbb{Z})^*$ has $2^{n-1}$ elements.
+\item Our inductive assumption is that $5^w \equiv 1 \pmod{2^n}$ has the oscillating pattern as described above where the order $q_n$ of 5 modulo $2^{n}$ is $q_n = 2^{n-2}$ and the first quotient is odd.
+\item First, we want to show that if $5^w \equiv 1 \pmod{2^n}$ has the oscillating pattern as described above, $5^w \equiv \pmod{2^{n+1}}$ will also have the same oscillating pattern (with a lower frequency and an odd first quotient), this is to ensure the continual survival of our inductive step. We eould like the first quotient to be odd to make sure that it doesn't remain 1 when we increase $n \to n + 1$.
+\item We want to show that the order of 5 modulo $2^{n+1}$ is $2q_n$ where $q_n$ is the order of 5 modulo $2^n$.
+\item Combining the above two results, and knowing that $q=1$ for $n=2, ~2^n=4$, shows that the order of 5 modulo $2^z$ is $2^{z-2}$.
+\item Since the above pattern repeats for the inductive step, the conclusion that the order of 5 modulo $2^z$ is $2^{z-2}$ holds for any $z$. This will only show that $5^z$ covers half of the elements of $(\mathbb{Z}/2^n\mathbb{Z})^*$, remember that $(\mathbb{Z}/2^n\mathbb{Z})^*$ has $2^{n-1}$ elements.
 \item We then show that $-(5^h)$ generates the other half of $(\mathbb{Z}/2^n\mathbb{Z})^*$ and this would complete our proof that $5$ and $-1$ generate $(\mathbb{Z}/2^n\mathbb{Z})^*$.
 \eit
 %
-
-We now proceed to prove our first item in the preceding list. By assumption we know that up to $n$, the quotient $\floor{5^{q_n m_n}/2^n}$ oscillates between odd and even where $q_n$ is the order of $5 \mod 2^n$, also $5^{q_n} = 1 + A_n$ where $A_n = 2^n k_n$. We know that the quotient $k_n = \floor{5^{q_n}/2^n}$ is odd and therefore
+We now proceed to prove our first item in the preceding list. By assumption we know that up to $n$, the quotient $\floor{5^{q_n m_n}/2^n}$ oscillates between odd and even where $q_n$ is the order of 5 modulo $2^n$, also $5^{q_n} = 1 + A_n$ where $A_n = 2^n k_n$. By our inductive assumption the first quotient $k_n = \floor{5^{q_n}/2^n}$ is odd and therefore
 %
 \nbea
 5^{q_n} & = & 2^n k_n + 1 \\
@@ -1889,7 +1906,7 @@ We now proceed to prove our first item in the preceding list. By assumption we k
 5^{q_n} & \equiv & (2^n + 1) \pmod{2^{n+1}} \not\equiv 1 \pmod{2^{n+1}}
 \neea
 %
-Thus the order of $5 \mod 2^{n+1}$ is not $q_n$. For the even quotients, we can pull out the factor 2 such that
+Thus the order of 5 modulo $2^{n+1}$ is not $q_n$. For the even quotients, we can pull out the factor 2 such that
 %
 \nbea
 \begin{array} {l c l c l c l}
@@ -1902,19 +1919,19 @@ Thus the order of $5 \mod 2^{n+1}$ is not $q_n$. For the even quotients, we can 
 \end{array}
 \neea
 %
-since $2A_n = 2^{n+1} k_n$, $5^{2q_n} \equiv 1 \pmod{2^{n+1}}$. Even though we pulled out a factor of 2, $A/2$ is still even since $n > 2,~2^{n-1} = 2g$ thus just like before the quotients $\floor{5^{(2q_n)d}/2^{n+1}}$ oscillates between odd and even as we traverse $d$ monotonically. The first quotient is $1 + A_n/2$ which is odd plus even which is odd, therefore we met all the criteria of having oscillating quotients with the first on being odd.
+since $2A_n = 2^{n+1} k_n$, $5^{2q_n} \equiv 1 \pmod{2^{n+1}}$. Even though we pulled out a factor of 2, $A/2$ is still even since $n > 2,~2^{n-1} = 2g$ thus just like before the quotients $\floor{5^{(2q_n)d}/2^{n+1}}$ oscillates between odd and even as we traverse $d$ monotonically. The first quotient is $1 + A_n/2$ which is odd plus even = odd, therefore we met all the criteria of having oscillating quotients with the first one being odd.
 
-But we have jumped the gun by claiming that $2q_n$ is the first one, \ie the order of $5 \mod{2^{n+1}}$ is $2q_n$. We need to demonstrate this explicitly, which is the next item in the list.
+But we might have jumped the gun by claiming that $2q_n$ is the order of 5 modulo ${2^{n+1}}$. We need to demonstrate this explicitly, which is the next item in the list.
 
 This is actually quite straightforward, we know from Euler's theorem that $x^{\varphi(n)} \equiv 1 \pmod{n}$. Here we have $5^{\varphi(2^{n+1})} \equiv 1 \pmod{2^{n+1}}$, with $\varphi(2^{n+1}) = 2^{n}$.
 
 Now, we have previously shown that $5^{q_n} \equiv (2^n + 1) \pmod{2^{n+1}} \not\equiv 1 \pmod{2^{n+1}}$, combined with the inductive assumption that $q_n = 2^{n-2}$ this means that $5^{2^{m}} \not\equiv 1 \pmod{2^{n+1}}$ for $m \le n-2$ because otherwise we will infract Proposition 2.27.(b).1. 
 
-But from Euler's theorem we know that $q_{n+1}$ has to be $2^u$, and we have shown that $5^{2^{m}} \not\equiv 1 \pmod{2^{n+1}}$ for $m \le n-2$ while showing that $5^{2^{2q_n}} = 5^{2^{n-1}} \equiv 1 \pmod{2^{n+1}}$, thus the order of $5 \mod 2^{n+1}$ has to be $q_{n+1} = 2q_n = 2^{n-1}$. This completes step 2 of the induction proof.
+But from Euler's theorem we know that $q_{n+1}$ has to be $2^u$, and we have shown that $5^{2^{m}} \not\equiv 1 \pmod{2^{n+1}}$ for $m \le n-2$ while showing that $5^{2q_n} = 5^{2^{n-1}} \equiv 1 \pmod{2^{n+1}}$, thus the order of 5 modulo $2^{n+1}$ has to be $q_{n+1} = 2q_n = 2^{n-1}$. This completes step 2 of the induction proof.
 
-We have therefore successfully shown that the order of $5 \mod 2^z$ is $2^{z-2}$ for any$z > 2$. The next major task is to show that $-(5^h)$ generates the other half of $(\mathbb{Z}/2^n\mathbb{Z})^*$.
+We have therefore successfully shown that the order of $5 \mod 2^z$ is $2^{z-2}$ for any $z > 2$. The next major task is to show that $-(5^h)$ generates the other half of $(\mathbb{Z}/2^n\mathbb{Z})^*$.
 
-This turns out to be quite tricky. The point here is that we must make sure that $-(5^a)$ are all distinct from $+(5^b)$ for any positive integer $a,b$. And they all are, this is why. Suppose some $-(5^a) \equiv +(5^b) \pmod{2^n}$
+This turns out to be quite tricky. The point here is that we must make sure that $-(5^a)$ are all distinct from $+(5^b)$ for any positive integer $a,b$. And they all are, this is why. Suppose some $+(5^b) \equiv -(5^a) \pmod{2^n}$
 %
 \nbea
 5^b & \equiv & -(5^a) \pmod{2^n} \\
@@ -1922,7 +1939,7 @@ This turns out to be quite tricky. The point here is that we must make sure that
 5^b + 5^a & = & 2^n s
 \neea
 %
-A crucial observation we need is that the difference between any two powers of $5$ is
+A crucial observation we need is that the difference between any two powers of $5$ is a multiple of 4
 %
 \nbea
 5^u - 5^v & = & (2^n q_u + r_u) - (2^n q_v + r_v) \\
@@ -1932,7 +1949,7 @@ A crucial observation we need is that the difference between any two powers of $
 \to 4 &|& (r_u - r_v)
 \neea
 %
-So the difference between any two $5^a$ and $5^b$, $\mod 2^n$, is a multiple of $4$. And we know, thanks to Euler's theorem, that one of those remainders is obviously $1$, we can therefore write
+So the difference between any two remainders of $5^a$ and $5^b$, modulo $2^n$, is a multiple of $4$. And we know, thanks to Euler's theorem, that one of those remainders is obviously $1$, we can therefore write
 %
 \nbea
 5^b + 5^a & = & 2^n s \\
@@ -1943,9 +1960,9 @@ So the difference between any two $5^a$ and $5^b$, $\mod 2^n$, is a multiple of 
 \to 2 &|& 1
 \neea
 %
-which is a contradiction and since $-(5^h)$ is just the negative of $5^h$, $-(5^h) \mod 2^n$, $1\le h q_{n}$, are all distinct. So we have shown that indeed $-(5^h)$ generates the other half of $(\mathbb{Z}/2^n\mathbb{Z})^*$.
+which is a contradiction. Therefore, since $-(5^h)$ are just the negative of $5^h$, $-(5^h) \pmod {2^n}$ with $1\le h \le q_{n}$ are all distinct from $+(5^b) \pmod {2^n}$. This also means that there are no $-(5^f) \equiv -(5^g) \pmod{2^n}$, $1\le f,g \le q_{n}, ~f \neq g$, because otherwise $(5^f) \equiv (5^g) \pmod{2^n}$ which means that $5^{|f-g|} \equiv 1 \pmod{2^n}, ~|f-g| < q_n$, a contradiction since $q_n$ is the order of 5 modulo $2^n$. So we have indeed  shown that $-(5^h)$ generates the other half of $(\mathbb{Z}/2^n\mathbb{Z})^*$.
 
-And we have arrived, plugging in our base case $n=2, 2^n=4$ and letting the inductive machinery takes over, we see that we have proven that $5$ and $-1$ generate $(\mathbb{Z}/2^n\mathbb{Z})^*$ for $n\ge2$.
+And we have arrived, plugging in our base case $n=2,~ 2^n=4$ and letting the inductive machinery takes over, we see that we have proven that $5$ and $-1$ generate $(\mathbb{Z}/2^n\mathbb{Z})^*$ for $n\ge2$.
 
 Some interesting point. There's a version of this proof on Victor Soup's book that is way more elegant than mine. Also, $3$ and $-1$ also actually generate $(\mathbb{Z}/2^n\mathbb{Z})^*$ (as well, 9, 11,13, and so on). There's a something peculiar about 3 but we will discuss that when we discuss the solution for 2.28 because they are related (by blood?).
 
@@ -1957,9 +1974,9 @@ Some interesting point. There's a version of this proof on Victor Soup's book th
 
 (c) Explicitly find a primitive root modulo 125.
 
-First of all, the hint is quite misleading. Now we know that $\varphi(p^2) = p(p-1)$. In the proof of the existence of a primitive root of $(\mathbb{Z}/p\mathbb{Z})^*$, the author uses the fact that we can decompose $(p-1)$ into its prime factors and by using the fact that $x^n-1$ always have exactly $n$ roots we can construct a primitive root of $(\mathbb{Z}/p\mathbb{Z})^*$.
+Personally speaking, the hint is quite misleading. We know that $\varphi(p^2) = p(p-1)$. In the proof of the existence of a primitive root of $(\mathbb{Z}/p\mathbb{Z})^*$, the author uses the fact that we can decompose $(p-1)$ into its prime factors and by using the fact that $x^n-1$ always have exactly $n$ roots we can construct a primitive root of $(\mathbb{Z}/p\mathbb{Z})^*$.
 
-The problem here is that $p^2$ is no longer prime, thus we don't know how many roots $x^n-1$ has. The best I could do was prove that $x^2-1$ has exactly 2 roots (true for $p^n$ as well not just $p^2$)
+The problem here is that $p^2$ is no longer prime, thus we don't know how many roots $x^n-1$ has. The best I could do was prove that $x^2-1$ modulo $p^2$ has exactly 2 roots (true for modulo $p^n$ as well not just modulo $p^2$)
 %
 \nbea
 x^2-1 & = & (x-1)(x+1) \equiv 0 \pmod{p^n} \\
@@ -1977,28 +1994,27 @@ x - 1 & = & p^a s \\
 \to p &|& 2
 \neea
 %
-which is a contradiction unless $p=2$ (but we are talking about odd $p$). Therefore there are only 2 roots $\pm 1$. We also know that $x^{\varphi(p^n)}-1$ has exactly $\varphi(p^n)$ roots (from Euler's theorem), however
+which is a contradiction unless $p=2$ (but we are talking about an odd $p$). Therefore there are only 2 roots $x = \pm 1$. We also know that $x^{\varphi(p^n)}-1$ has exactly $\varphi(p^n)$ roots (from Euler's theorem), however
 %
 \nbea
 x^{\varphi(p^n)}-1 & = & (x^2-1)(x^{\varphi(p^n)/2} + \dots + 1)
 \neea
 %
-therefore $(x^{\varphi(p^n)/2} + \dots + 1)$ has exactly $\varphi(p^n)-2$ roots. Note that $2|\varphi(p^n)$ since $\varphi(p^n) = p^{n-1}(p-1)$ and $p-1$ is even for $p>2$.
+therefore $(x^{\varphi(p^n)/2} + \dots + 1)$ has exactly $\varphi(p^n)-2$ roots. Note that $2|\varphi(p^n)$ since $\varphi(p^n) = p^{n-1}(p-1)$ and $p-1$ is even for any prime $p>2$.
 
 But that was as far as I could go, there was nothing else I could do about it. The hint actually pertains to finding 2 numbers, one with the order $(p-1)$ while the other with the order of $p^{n-1}$. We need this segregation since as the hint states, the orders must have gcd of 1.
 
-The key now is to find a number inside $(\mathbb{Z}/p^n\mathbb{Z})^*$ that has an order $(p-1)$. This is {\it very} tricky. The way I proceeded was suppose we have a number $x$ that has an order $a \mod m$ and another order $b \mod n$, what can we say about the order of $x \mod (mn)$? Well, say that $y$ is the order $\mod mn$
+The key now is to find a number inside $(\mathbb{Z}/p^n\mathbb{Z})^*$ that has an order $(p-1)$. This is {\it very} tricky. The way I proceeded was suppose we have a number $x$ that has an order $a$ modulo $m$ and another order $b$  modulo $n$, what can we say about the order of $x$ modulo $(mn)$? Well, say that $y$ is the order of $x$ modulo $mn$
 %
 \nbea
-x^y & \equiv & 1 \pmod{mn} \\
-& = & 1 + mn\cdot k \\
+x^y & \equiv & 1 \pmod{mn} = 1 + mn\cdot k \\
 &= & 1 + m(nk) \\
 &= & 1 + n(mk) \\
 x^y & \equiv & 1 \pmod{m} \\
 x^y & \equiv & 1 \pmod{n}
 \neea
 % 
-Therefore, from Proposition 2.27.(b).1, $a|y$ and $b|y$, denote the $z = {\rm lcm}(a,b)$, then $y = z c$. Now we apply this to our problem at hand. Here we are interested in $p^2$, therefore $m=p$ and $n=p$ while $a=b=p-1$, \ie $x$ is a primitive root $\mod p$.
+Therefore, from Proposition 2.27.(b).1, $a|y$ and $b|y$, denote the $z = {\rm lcm}(a,b)$, then $y = z c$. Now we apply this to our problem at hand. Here we are interested in $p^2$, therefore $m=p$ and $n=p$ while $a=b=p-1$, \ie $x$ is a primitive root modulo $p$.
 
 In this case ${\rm lcm}(p-1,p-1) = p-1$, therefore $y = (p-1)c$ and
 %
@@ -2007,17 +2023,17 @@ x^{(p-1)c} \equiv 1 \pmod{p^2} \\
 (x^c)^{p-1} \equiv 1 \pmod{p^2}
 \neea
 %
-Therefore $x^c$ has the order $p-1 \mod p^2$. This can of course be easily generalized to $p^n$.
+Therefore $x^c$ has the order $p-1$ modulo $p^2$. This can of course be easily generalized to $p^n$.
 
-So we have found the number with order $p-1$, we now need to find a number with order $p^{n-1}$. The proof of this is similar to the solution to problem 2.27.
+So we have found the number with order $p-1$ modulo $p^n$, we now need to find a number with order $p^{n-1}$ modulo $p^n$. The proof of this is similar to the solution to problem 2.27.
 
-In our earlier solution we started with a number whose remainder is always 1, that was our base case. The only thing is that we started with $2^2$ instead of $2^1$. Here we want to start with $p^1$ and then proceed with the same inductive process.
+In our earlier solution we started with a number whose remainder is always 1, that was our base case. The only thing is that we started with modulo $2^2$ instead of modulo $2^1$. Here we want to start with modulo $p^1$ and then proceed with the same inductive process.
 
-Instead of 5 the number we want to choose is $x = 1+p$ which is the most obvious choice. Again, for future use, I use a more generalized notation just like in Problem 2.27 and like Problem 2.27 we start listing the powers of $x^q$
+Instead of 5 the number we choose is $x = 1+p$ which is the most obvious choice. Again, for future use, I use a more generalized notation just like in Problem 2.27 and like Problem 2.27 we start listing the powers of $x^q$
 %
 \nbea
 \begin{array} {l c l c l c l}
-(x^{q})^1 & = & 1 + P & & & = & 1 + p^n \cdot [P] \\
+(x^{q})^1 & = & 1 + P & = & 1 + P(1) & = & 1 + p^n \cdot [P] \\
 (x^{q})^2 & = & 1 + 2P + P^2 & = & 1 + P(2 + P) & = & 1 + p^n \cdot \bcancel{P} \\
 (x^{q})^3 & = & 1 + 3P + 3P^2 + P^3 & = & 1 + P(3 + P + P^2) & = & 1 + p^n \cdot \bcancel{P} \\
 & \vdots & & & & & \\
@@ -2027,15 +2043,22 @@ Instead of 5 the number we want to choose is $x = 1+p$ which is the most obvious
 \end{array}
 \neea
 %
-Some explanation is in order here. First the symbol $[P]$ means divisible by $p$ while $\bcancel{P}$ means indivisible by $p$.
+Some explanation is in order here. First, the symbol $[P]$ means divisible by $p$ while $\bcancel{P}$ means indivisible by $p$.
 
 So it is very much like problem 2.27, the sum of the terms in bracket is either divisible by $p$ or not divisible by $p$. Since $p=2$ in problem 2.27, we characterized them even and odd. Here we can see that it oscillates when we hit an exponent that is divisible by $p$, but since $p$ was just 2 in problem 2.27, it oscillated every other step.
 
-Since $P = p^n k$ the sum of the terms in bracket is divisible by $p$ only if the coefficient of $P^0$ is divisible by $p$, this is true because $p$ is prime. And since $P = p^n k$ with $p \nmid k$, the quotient is divisible by $p$ only if the bracket is.
+Since $P = p^n k$ the quotient is divisible by $p$ only if the coefficient of $P^0$ is divisible by $p$, this is true assuming $\gcd(k,p) = 1$. The base case here is $n=1, ~p^n=p$, such that $P = p \cdot 1$, $k=1 \to \gcd(k,p) = 1$ and therefore the quotient is not divisible by $p$. Thus we have shown that the base case meets all the criteria with the order of $1+p$ modulo $p$ being $p^{n-1} = p^0 = 1$.
 
-The base case here is simpler, $n=1, ~p^n=p$, such that $P = p \cdot 1$, $k=1$ and therefore not divisible by $p$. Thus we have shown that the base case meets all the criteria with the order of $1+p$ is just $p^{n-1} = p^0 = 1$.
-
-We now proceed to the inductive step and it is very similar to problem 2.27 by just replacing 2 with $p$
+We now proceed to the inductive step very similar to problem 2.27 by just replacing 2 with $p$. The inductive assumption is that the quotient oscillates between non-divisible and divisible by $p$ and the first quotient is non-divisible by $p$. From the above discussion, all the quotients that are non divisible by $p$ have $x^{q_n w}$ with $p \nmid w$
+%
+\nbea
+x^{q_n w} & = & 1 + p^n g, ~~~p\nmid g \to g = pq + r, ~ 0 < r < p \\
+& = & 1 + p^n(pq + r) \\
+& = & (1 + r) + p^{n+1}q \\
+x^{q_n w} & \equiv & (1 + r) \pmod{p^{n+1}} \not\equiv 1 \pmod{p^{n+1}}
+\neea
+%
+While for the quotients that are divisible by $p$
 %
 \nbea
 \begin{array} {l c l c l c l}
@@ -2048,26 +2071,11 @@ We now proceed to the inductive step and it is very similar to problem 2.27 by j
 \end{array}
 \neea
 %
-We see that again we have the oscillation every time the exponent of $x^{pq_n}$ hits a multiple of $p$. We also know that 
-%
-\nbea
-(x^{q_n})^w & \not\equiv & 1 \pmod{p^{n+1}}, ~~~ p \nmid w
-\neea
-%
-This is because 
-%
-\nbea
-(x^{q_n})^w & = & 1 + p^n \bcancel{P} \\
-& = & 1 + p^n(ps + t) , ~~~~~1 \le t < p\\
-& = & (1+t) + p^{n+1}s \\
-(x^{q_n})^w & \equiv & (1+t) \pmod{p^{n+1}}
-\neea
-%
-The next argument is similar to the one in Problem 2.27 but a bit more complicated. We know that $q_n = p^{n-1}$ and $\varphi(p^{n+1}) = p^{n}(p-1)$.
+We see that just like before we have the oscillation of the quotient $\floor{x^{(pq_n)pm}/p^{n+1}}$ every time the exponent of $(x^{pq_n})$ hits a multiple of $p$. Now we need to show that the order of $x$ modulo $p^{n+1}$ is $pq_n$. The argument needed is similar to the one in Problem 2.27 but a bit more complicated. We know that $q_n = p^{n-1}$ and $\varphi(p^{n+1}) = p^{n}(p-1)$.
 
 We have shown that $(x^{q_n})^1  = x^{p^{n-1}} \not\equiv 1 \pmod{p^{n+1}}$ and by Proposition 2.27.(b).1 this means that $x^{p^m} \not\equiv 1 \pmod{p^{n+1}}$ for all $0 < m < n-1$.
 
-But now we need to take care of the cases for $x^{p^m h}$ where $h | (p-1)$, $0 < m < n-1$. Thanks to Proposition 2.27.(b).1 this ain't so. Because $\gcd(p-1,p)=1$. You see, if $x^{p^m h} \equiv 1 \pmod{p^{n+1}}$ then by our beloved proposition $p^mh|p^{n+1}$ but $\gcd(p-1,p)=1$ means it ain't so.
+But now we need to take care of the cases for $x^{p^m h}$ where $h | (p-1)$, $0 < m < n-1$. Thanks to Proposition 2.27.(b).1 this ain't so. Because $\gcd(p-1,p)=1$. You see, if $x^{p^m h} \equiv 1 \pmod{p^{n+1}}$ then by our beloved proposition $p^{m}h|p^{n+1} \to h | p^v$ but $\gcd(h,p)=\gcd(p-1,p)=1$ means it ain't so.
 
 We can show it more explicitly
 %
@@ -2079,17 +2087,17 @@ x^{p^{n-1}(p-1)} & \equiv & (1+t)^{-1} \pmod{p^{n+1}} \not\equiv 1 \pmod{p^{n+1}
 %
 where $(1+t)^{-1}$ is the ``inverse'' of $1+t$ such that $ (1+t)^{-1}(1+t) = 1$ and it is obvious that $(1+t)^{-1} \not\equiv 1 \pmod{p^{n+1}}$. The existence of an inverse is guaranteed since $(\mathbb{Z}/p^{n}\mathbb{Z})^*$ is a group.
 
-With this result it is true that $x^{p^m h} \not\equiv 1 \pmod{p^{n+1}}$, $0 < m < n-1, ~h|(p-1)$ we have therefore shown that the order of $x$ is $pq_n = p^n \mod p^{n+1}$.
+With this result it is true that $x^{p^m h} \not\equiv 1 \pmod{p^{n+1}}$, $0 < m < n-1, ~h|(p-1)$ we have therefore shown that the order of $x$ modulo $p^{n+1}$ is $pq_n = p^n$.
 
-We have shown that for our base case of $x=1+p$ and $(\mathbb{Z}/p^{1}\mathbb{Z})^*$, $q_1=p^0=1$ and the quotients oscillates as shown above, going through the inductive motion we have therefore shown that $1+p$ has the order $p^{n-1} \mod p^n$.
+We have shown that for our base case of $x=1+p$ and $(\mathbb{Z}/p^{1}\mathbb{Z})^*$, $q_1=p^0=1$ and the quotients oscillates as shown above with the first one being non-divisible by $p$, going through the inductive motion we have therefore shown that $1+p$ has the order $p^{n-1}$ modulo $p^n$.
 
-The primitive root is therefore given by $(1+p)d^c$ where $d$ is a primitive root of $(\mathbb{Z}/p^{1}\mathbb{Z})^*$ and $c$ is $y/(p-1)$ where $y$ is the order of $d \mod p^n$.
+The primitive root is therefore given by $(1+p)d^c$ where $d$ is a primitive root of $(\mathbb{Z}/p^{1}\mathbb{Z})^*$ and $c$ is $y/(p-1)$ where $y$ is the order of $d$ modulo $p^n$.
 
-A primitive root of $125 = 5^3$ is therefore given by $(1+5)d^c$. First we need to find a primitive root of $(\mathbb{Z}/5\mathbb{Z})^*$ and one of those roots is $d=3$ (the other is $d=2$). We now need to find the order of 3 $\mod 5^3$ and it is (believe it or not) $y=100$. Therefore $c = y/(p-1) = 100/4 = 25$.
+A primitive root of $125 = 5^3$ is therefore given by $(1+5)d^c$. First we need to find a primitive root of $(\mathbb{Z}/5\mathbb{Z})^*$ and one of those roots is $d=3$ (the other is $d=2$). We now need to find the order of 3 modulo $5^3$ and it is (believe it or not) $y=100$. Therefore $c = y/(p-1) = 100/4 = 25$.
 
 A primitive root is then $6 \cdot 3^25 \equiv 33 \pmod{125}$. Had we chosen $d=2$ we would get $y = 100$, $c = 25$ with a primitive root of $92 \pmod{125}$. But wait a minute, since the order of 2 and 3 are $100 = 5^2(5-1)$, they themselves are primitive roots, so we have found 4 of them in this exercise :)
 
-Some comments, we could have chosen $x=1-p$ instead of $1+p$ and everything would just work the same but in this case we will find another primitive root.
+Some comments, we could have chosen $x=1-p$ instead of $1+p$ and everything would just work out the same but in this case we will find another primitive root.
 
 Why can't we use the above strategy for problem 2.27? the problem lies in the base case
 %
@@ -2099,9 +2107,9 @@ Why can't we use the above strategy for problem 2.27? the problem lies in the ba
 \end{array}
 \neea
 %
-$3 = 1 + 2$, therefore $A = 2$ and $1 + A/2 = 2$ an even number where it's supposed to be odd. It is indeed a heavy burden to be the first among infinitely many primes :) 
+$3 = 1 + A$, $A = 2$ and $1 + A/2 = 2$ an even number where it's supposed to be odd. It is indeed a heavy burden to be the first among infinitely many primes :) 
 
-We can still show that 3 is a generator but we need to tweak the proof a bit, we just need to start with $2^3$ as the base case instead because $3^2 = 1 + 2^3$ while $3^2 = 1 + 2^2 2$ causing an even quotient, something we don't want. However, by the above argument $1 - 2^2$ also works but this is just $-3$ and since the other generator is $-1$, $3$ is also a generator.
+We can still show that 3 is a generator but we need to tweak the proof a bit, we just need to start with $2^3$ as the base case instead because $3^2 = 1 + 2^3$ since $3^2 = 1 + 2^2 2$ has an even quotient, something we don't want. However, by the above argument $1 - 2^2$ also works but this is just $-3$ and since the other generator is $-1$, $3$ is also a generator.
 
 
 
@@ -2134,24 +2142,24 @@ x^d & = & x^d \\
 mu & = & nv
 \neea
 %
-Since $\gcd(m,n)=1$ therefore $n|u$ and $m|v \to mu=nv = mns$, thus
+Since $\gcd(m,n)=1$ this means that $n|u$ and $m|v \to mu=nv = mns$, thus
 %
 \nbea
 x^d & = & 1 + mn s \\
 & \equiv & 1 \pmod{mn}
 \neea
 %
-We know that the order of $x \mod mn$ must be divisible by $a$ and $b$ and $d = {\rm lcm}(a,b)$ is the smallest number that is divisible by $a$ and $b$, therefore the order of $x \mod mn$ is $d = {\rm lcm}(a,b)$.
+We know that the order of $x$ modulo $mn$ must be divisible by $a$ and $b$ and $d = {\rm lcm}(a,b)$ is the smallest number that is divisible by $a$ and $b$, therefore $x^d \equiv 1 \pmod{mn}$ means that the order of $x$ modulo $mn$ is indeed $d = {\rm lcm}(a,b)$.
 
 We now use this result to characterize the primitive roots of $w$ based on its prime factorization. Thanks to Euclid, every number $w$ can be factorized into
 %
 \nbea
-w & = & \prod_{i=1}^{z} p_i^{n_i} \\
-& = & p_1^{n_1}p_2^{n_2}p_3^{n_3} \dots p_z^{n_z} \\
+w & = & p_1^{n_1}p_2^{n_2}p_3^{n_3} \dots p_z^{n_z} \\
+& = & \prod_{i=1}^{z} p_i^{n_i} \\
 \to \varphi(n) & = & \prod_{i=1}^{z} p_i^{n_i-1}(p_i - 1)
 \neea
 %
-We now list every number $1 < x < w$ in each different $\pmod{p_i^{n_i}}$, where $a_i$ is the order of each $x \mod p_i^{n_i}$ where each $a_i$ is limited by Euler's theorem to be $a_i|(p_i^{n_i-1}(p_i-1))$, see Table.~\ref{Tab:2}
+We now list every number $1 < x < w$ for each distinct $\pmod{p_i^{n_i}}$, where $a_i$ is the order of each $x$ modulo $p_i^{n_i}$ where each $a_i$ is limited by Euler's theorem to be $a_i|(p_i^{n_i-1}(p_i-1))$, see Table.~\ref{Tab:2}
 %
 \begin{table}[]
 \centering
@@ -2166,8 +2174,7 @@ $\varphi(p_i^{n_i}) = $ & $p_1^{n_1-1}(p_1-1)$ & $p_2^{n_2-1}(p_2-1)$ & $p_3^{n_
 \end{tabular}
 \end{table}
 %
-
-As shown above, the order of $x \mod w$ is given by
+As shown above, the order of $x$ modulo $w$ is given by
 %
 \nbea
 x^{{\rm lcm}(a_1, a_2, \dots, a_z)} & \equiv & 1 \pmod{p_1^{n_1}p_2^{n_2} \dots p_z^{n_z}}
@@ -2179,23 +2186,23 @@ since $\gcd(p_i^{n_i},p_j^{n_j}) = 1$ for any $i, j$. For $x$ to be a primitive 
 {\rm lcm}(a_1, a_2, \dots, a_z) & = & p_1^{n_1-1}(p_1 - 1)p_2^{n_2-1}(p_2 - 1) \dots p_z^{n_z-1}(p_z - 1)
 \neea
 %
-Now since each $a_i|(p_i^{n_i-1}(p_i-1))$, for the above requirement to hold it has to be that each $a_i = (p_i^{n_i-1}(p_i-1))$. However, $2|(p_i-1)$ for $p_i \neq 2$, therefore
+Now since each $a_i|(p_i^{n_i-1}(p_i-1))$, for the above requirement to hold it has to be that each $a_i = (p_i^{n_i-1}(p_i-1))$. However, $2|(p_i-1)$ for every $p_i \neq 2$, therefore
 %
 \nbea
 {\rm lcm}(a_1, a_2, \dots, a_z) & \le & p_1^{n_1-1}(p_1 - 1)p_2^{n_2-1}(p_2 - 1) \dots p_z^{n_z-1}(p_z - 1)
 \neea
 %
-All is not lost, hope, though frail, is hard to kill :) Say one of the $p$'s is 2, $\varphi(2)=1$, thus if $p \neq 2$ then $w = 2 p^z, ~\varphi(w=2 p^z) = 1 \cdot \varphi(p^z)$ and therefore $w$ have primitive roots (here $z$ can be zero). Another obvious solution is of course $w=p^z$ which we proved in Problem 2.28. And from Problem 2.27 $w=4$ will have primitive roots as well and those are the only 3 cases where $w$ will have primitive roots :)
+All is not lost, hope, though frail, is hard to kill :) Say one of the $p$'s is 2, $\varphi(2)=1$, thus if $p \neq 2$ then $w = 2 p^z, ~\varphi(w=2 p^z) = 1 \cdot \varphi(p^z)$ and therefore $w$ have primitive roots (here $z$ can be zero of course). Another obvious solution is $w=p^z$ which we proved in Problem 2.28. And from Problem 2.27 $w=4$ will have primitive roots as well and those are the only 3 cases where $w$ will have primitive roots :)
 
 My initial approach in solving this problem was actually to construct much like what we did with Problem 2.28, this turned out to be unprofitable. The difference here is that we have extra primes involved but we can easily use the construction method in Problem 2.28 to find a number with order $p_i^{n_i-1}$.
 
-To illustrate this better let's just assume that $w$ only contain two distinct primes $w = p_1^{n_1} p_2^{n_2}$. We will still use induction but this time we vary $n_i$ one at a time, first we vary $n_1$ while keeping $n_2$ fixed prove it by induction and then we vary $n_2$ while keeping $n_1$ fixed and prove the induction for $n_2$.
+To illustrate this better let's just assume that $w$ only contains two distinct primes $w = p_1^{n_1} p_2^{n_2}$. We will still use induction but this time we vary $n_i$ one at a time, first we vary $n_1$ while keeping $n_2$ fixed, prove it by induction and then we vary $n_2$ while keeping $n_1$ fixed and prove the induction for $n_2$.
 
 First, the number we want is $x=1 + p_2^{n_2} p_1 = 1 + P$ and here $P=p_2^{n_2}p_1 k$, $k=1$, just like last time
 %
 \nbea
 \begin{array} {l c l c l c l}
-(x^{q})^1 & = & 1 + P & & & = & 1 + p_2^{n_2}p_1^n \cdot [P] \\
+(x^{q})^1 & = & 1 + P & = & 1 + P(1) & = & 1 + p_2^{n_2}p_1^n \cdot [P] \\
 (x^{q})^2 & = & 1 + 2P + P^2 & = & 1 + P(2 + P) & = & 1 + p_2^{n_2}p_1^n \cdot \bcancel{P} \\
 (x^{q})^3 & = & 1 + 3P + 3P^2 + P^3 & = & 1 + P(3 + P + P^2) & = & 1 + p_2^{n_2}p_1^n \cdot \bcancel{P} \\
 & \vdots & & & & & \\
@@ -2207,23 +2214,23 @@ First, the number we want is $x=1 + p_2^{n_2} p_1 = 1 + P$ and here $P=p_2^{n_2}
 %
 And we see the same pattern. The argument holds because $\gcd(p_1,p_2)=1$, therefore whether the sum of the terms in bracket is divisible by $p_1$ or not depends entirely on the coefficient of $P^0$ and the quotient $\floor{(x^{q})^{p_1m}/p_2^{n_2}p_1^n}$ is either divisible by $p_1$ or not depending on whether the bracket is divisible by $p_1$ or not.
 
-It is now obvious that $1 + p_2^{n_2} p_1$ has an order of $p_1^{n_1-1} \mod p_1^{n_1} p_2^{n_2}$ and of course conversely $1 + p_1^{n_1} p_2$ has the order of $p_2^{n_2-1} \mod p_1^{n_1} p_2^{n_2}$. So in general
+It is now obvious that $1 + p_2^{n_2} p_1$ has an order of $p_1^{n_1-1}$ modulo $p_1^{n_1} p_2^{n_2}$ and of course conversely $1 + p_1^{n_1} p_2$ has the order of $p_2^{n_2-1}$ modulo $p_1^{n_1} p_2^{n_2}$. So in general
 %
 \nbea
-x = 1 + p_i \prod_{j\neq i}p_j^{n_j} {\rm~has~the~order~of~} p_i^{n_i-1} \mod \prod_l p_l^{n_l}
+x = 1 + p_i \prod_{j\neq i}p_j^{n_j} {\rm~has~the~order~of~} p_i^{n_i-1} {\rm ~modulo~} \prod_l p_l^{n_l}
 \neea
 %
-However, this strategy is not beneficial in solving Problem 2.29 since it is hard to deal with numbers that have an order of $(p_i - 1)$. The difficulty is due to the fact that $2|(p_i - 1)$ so even if I found all numbers with order $(p_i - 1)$ I cannot just multiply all of them to get a primitive root since $\gcd(p_i - 1, p_j - 1) \neq 1$. And this prompted me to find another strategy which resulted in the solution above.
+However, this strategy is not beneficial in solving Problem 2.29 since it is hard to deal with numbers that have an order of $(p_i - 1)$. The difficulty is due to the fact that $2|(p_i - 1)$ so even if I found disparate numbers with order $(p_i - 1)$ I cannot just multiply all of them to get a primitive root since $\gcd(p_i - 1, p_j - 1) \ge 2$. And this prompted me to find another strategy which resulted in the above solution.
 
 {\bf Problem 2.30} Compute the last two digits of $3^{45}$.
 
-First, find the order of $3 \mod 100$ which is 20, thus
+First, find the order of 3 modulo 100 which is 20, thus
 %
 \nbea
-3^{45} \equiv 3^{15} \pmod{100} \equiv 07 \pmod{100}
+3^{45} \equiv 3^{5} \pmod{100} \equiv 43 \pmod{100}
 \neea
 %
-Thus the last two digits of $3^{45}$ is `07'.
+Thus the last two digits of $3^{45}$ is `43'.
 
 {\bf Problem 2.31}. Find the integer $a$ such that $0 \le a < 113$ and
 %
@@ -2231,7 +2238,7 @@ Thus the last two digits of $3^{45}$ is `07'.
 102^{70} + 1 \equiv a^{37} \pmod {113}.
 \neea
 %
-The order of $102 \mod 113$ is 56 so
+The order of 102 modulo 113 is 56 so
 %
 \nbea
 102^{70} & \equiv & 102^{14} \pmod {113}\\
@@ -2246,7 +2253,7 @@ a^{37} & \equiv & 99 \pmod{113}
 \neea
 %
 
-The order of $99 \mod 113$ is 28 so $a^{37 \cdot 28} \equiv 1 \pmod{113}$. Note that 113 is prime so $\varphi(113) = 112$ and an order of a number must be a divisor of 112. However $\gcd(37,112) = 1$ then it must be that
+The order of 99 modulo 113 is 28 so $a^{37 \cdot 28} \equiv 1 \pmod{113}$. Note that 113 is prime so $\varphi(113) = 112$ and an order of a number must be a divisor of 112. However $\gcd(37,112) = 1$ then it must be that
 %
 \nbea
 a^{37 \cdot 28} \equiv 1 \pmod{113} \\
@@ -2254,7 +2261,7 @@ a^{37 \cdot 28} \equiv 1 \pmod{113} \\
 a^{28} \equiv 1 \pmod{113}
 \neea
 %
-Thus we just need to find a number whose order $\mod 113$ is 28 and that number is $a=60$.
+Thus we just need to find a number whose order modulo 113 is 28 and that number is $a=60$.
 
 {\bf Problem 2.32}. Find the proportion of primes $p < 1000$ such that 2 is a primitive root modulo $p$.
 
@@ -2265,7 +2272,7 @@ Increasing the limit to $p < 10000$ gets us 470 out of 1229 (38.24 \%) and for $
 
 {\bf Problem 2.33}. Find a prime $p$ such that the smallest primitive root modulo $p$ is $37$.
 
-I don't know any clever way to do this. The problem is that 37 is a primitive root but it is the smallest primitive root. So I wrote a small C code to find primes who have 37 as its smallest primitive root, they are
+I don't know any clever way to do this. The problem is that even if I know that 37 is a primitive root I don't know any good way of telling if it is the {\it smallest} primitive root. So I wrote a small C code to find primes who have 37 as its smallest primitive root, they are
 %
 \nbea
 \ba{c c c c c c c}
