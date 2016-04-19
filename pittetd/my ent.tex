@@ -2135,7 +2135,7 @@ x^2 & = & 1 + 8 & \equiv 1 \pmod{8}
 \ea
 \neea
 %
-However, it is harder to generalize $x = 1 + 2 \to x = 1 \pm |a|2$. 
+However, it is harder to generalize $x = 1 + 2 \to x = 1 \pm |a|2$
 %
 \nbea
 \ba{r c l c r}
@@ -2144,7 +2144,7 @@ x^2 & = & 1 \pm 4|a| + 4a^2 & \equiv & 1 \pmod{8}
 \ea
 \neea
 %
-This means that
+Or in other words we must satisfy the following
 %
 \nbea
 \ba{r c l c r c l}
@@ -2193,45 +2193,49 @@ x & = & 1 \pm |2u+1|2^2 \equiv 1 \pmod{2^2}
 %
 $2u+1$ guarantees $\gcd(2u+1,2) = 1$. Now we can see how we can get other generators, if we choose $x = 1 + 2(4u+1)$ we get $11, 19, 27, 35, 43, 51, 59, \dots$. And if we choose $x = 1 + |a|2^2$ we get $13, 21, 29, 37, 45, 53, 61, \dots$. 
 
-The only thing left to show is that with this choice $+(x^a) \not\equiv -(x^b) \pmod{2^n}$. The proof is very similar to the one we had for $x=5$, the difference between any two remainders modulo $2^n$ of $x^a - x^b$ is divisible by
+The only thing left to show is that with this choice $+(x^a) \not\equiv -(x^b) \pmod{2^n}$. The proof is not as straightforward as the one for $x=5$. To start, assume that $+(x^a) \equiv -(x^b) \pmod{2^n}$
 %
 \nbea
-x =  \left \{ \ba{l c l r c l}
-1 + 2(4u+1) & \to & 2(4u+1) & | & \Delta r \\
-1 - 2(4u+3) & \to & - 2(4u+3) & | & \Delta r \\
-1 \pm |2u + 1|2^2 & \to & \pm |2u + 1|2^2 & | & \Delta r
-\ea
-\right.
+x^a & \equiv & -(x^b) \pmod{2^n}  = -(x^b) + 2^n G\\
+x^a + x^b & = & 2^n G \\
+x^a(x^{b-a} + 1) & = & 2^n G \\
+\to x^{b-a} & \equiv & -1 \pmod{2^n}
 \neea
 %
-Following the same reasoning as the one for $x=5$, the sum of $x^a + x^b$ is
+We will limit $0 \le a,b \le q$ where $q = 2^{n-2}$ is the order of $x$ modulo $2^n$ as shown above. This restriction is sufficient since the pattern will repeat for $a,b > q$.
+
+We also know that $-(x^q) \equiv -1 \pmod{2^n}$ therefore
 %
 \nbea
-1 + 2(4u+1)y + 1 + 2(4u'+1)y' & = & 2^n t \\
-2(4(uy + u'y') + y + y' + 1) & = & 2^n t \\
-4(uy + u'y') + y + y' + 1 & = & 2^{n-1}t \\
-\to 2 & | & 4(uy + u'y') + y + y' + 1
+x^q = x^{b-a} x ^{q - (b-a)} & \equiv & 1 \pmod{2^n} \\
+-(x^q)x ^{q - (b-a)} & \equiv & 1 \pmod{2^n}, ~~~ {~\rm Let~} c = q - (b-a) \\
+-(x^q x^c) & \equiv & 1 \pmod{2^n} \\
+x^q (-(x^c)) & \equiv & 1 \pmod{2^n} \\
+\to x^c & \equiv & -1 \pmod{2^n}
 \neea
 %
-which is a contradiction, the same can be said for the other two
+Going to the last line we used the fact that $x^q \equiv 1 \pmod{2^n}$. So we have $x^c \equiv x^{b-a} \equiv -1 \pmod{2^n}$. However, $c = q - (b-a)$, therefore, it must be true that $x^{|(q - (b-a)) - (b-a)|} \equiv 1 \pmod{2^n}$.
+
+If $q - (b - a) \neq (b-a)$ this will result in $x$ having an order (modulo $2^n$) smaller than $q$, which is a contradiction. The only way out is to have $q - (b-a) = (b-a)$ which translates to $(b-a) = q/2 = 2^{n-3}$. However, this also leads to another contradiction.
+
+Note that $x^{2^{n-3}} \equiv 1 \pmod{2^{n-1}}$, which is the basis of our inductive reasoning and it also has an odd quotient
 %
 \nbea
-1 - 2(4u+3)y + 1 - 2(4u'+3)y' & = & 2^n t \\
-2(4(uy + u'y') + 3(y + y') + 1) & = & 2^n t \\
-4(uy + u'y') + 3(y + y') + 1 & = & 2^{n-1}t \\
-\to 2 & | & 4(uy + u'y') + 3(y + y') + 1
+x^{2^{n-3}} & = & 1 + 2^{n-1}(2m+1) \\
+& \equiv & (1 + 2^{n-1}) \pmod{2^n}
 \neea
 %
-which again is a contradiction and lastly
+It is therefore impossible to have $(1 + 2^{n-1}) \equiv -1 \pmod{2^n}$ because otherwise
 %
 \nbea
-1 \pm 2^2(2u + 1)y + 1 \pm 2^2(2u' + 1)y' & = & 2^n t \\
-2(\pm 2(2uy + 2u'y') + 2 (y + y') + 1) & = & 2^n t \\
-\pm 2(ay + a'y') + 2 (y + y') + 1 & = & 2^{n-1}t \\
-\to 2 & | & \pm 2^2(ay + a'y') + 2 (y + y') + 1
+1 + 2^{n-1} & = & 2^n g - 1 \\
+2(1 + 2^{n-2}) & = & 2^n g \\
+\to 2 & | & (1 + 2^{n-2})
 \neea
 %
-This completes the proof that the following are the generators of $(\mathbb{Z}/2^n\mathbb{Z}),~n \ge 3$
+which is a contradiction (note that $n \ge 3$). The only case we need to tackle is the base case $n=3$ since obviously there is no such thing as modulo $2^{n-1}$ for the base case. But our base case is simple, the order of $x$ modulo $2^3$ is just $q = 2$, therefore $(b-a) = q/2 = 1$ and by construction we know that $x^1 \not\equiv -1 \pmod{2^3}$.
+
+Therefore, there is no $a,b$ such that $+(x^a) \equiv -(x^b) \pmod{2^n}$ which means that the following are the generators of $(\mathbb{Z}/2^n\mathbb{Z}),~n \ge 3$
 %
 \nbea
 -1 ~~~~~~~~~~{\rm and}~~~~~~~~~~
@@ -2243,7 +2247,7 @@ x =  \left \{ \ba{l}
 \right.
 \neea
 %
-with $u \ge 0$.
+with $u \ge 0$. Some might ask as to why we want to generalize $1 + p \to 1 \pm |a|p$. Apart from the pedagogical value, it also helps us find other primitive roots modulo $p^n$. In conclusion, the trick is to find a base case with oscillating quotient and an ``odd'' first quotient. Also, although the method above is not elegant (it's rather crude even) yet it is also very effective, especially when finding other generators modulo $2^n$.
 
 {\bf Problem 2.29}. (*) In terms of the prime factorization of $n$, characterize the integers $n$ such that there is a primitive root modulo $n$.
 
@@ -2432,7 +2436,6 @@ and many more :) but since the above list was generated in order 36721 is the sm
 
 
 \end{document}
-
 
 
 
