@@ -2426,16 +2426,85 @@ I don't know any clever way to do this. The problem is that even if I know that 
 %
 and many more :) but since the above list was generated in order 36721 is the smallest prime to have 37 as its smallest primitive root.
 
+++++++++++++++++++++++++++++++++++\\
 
+{\bf Definition 3.4.7}. ``if there exists a single $a$ such that $a^{m/2} \not\equiv 1 \pmod{n}$, then half the $a$ have this property, since then $a \to a^{m/2}$ is a surjective homomorphism $(\mathbb{Z}/n\mathbb{Z})^* \to \{\pm1\}$ and the kernel has index $2$''. At first I didn't understand why half the $a$ have this property even if the map is surjective.
 
+Surjective just means onto, \ie all elements in the target space are covered, but it doesn't say anything about the distribution of the pre-images, like how many of them map to $+1$ and how many to $-1$. Before continuing, let's review some basic definitions
 
+The index of $H$ in $G$, denoted $|G:H|$, is the number of cosets of $H$ in $G$. A coset is defined as
+%
+\bit
+\item left coset of $H$ in $G$ is the set $g * H$ where $g \in G$
+\item right coset of $H$ in $G$ is the set $H * g$ where $g \in G$
+\eit
+%
+where $*$ is the group operation.
 
+For example, let $G = \mathbb{Z}$, \ie $G$ is the group of all integers under {\it addition}, let $H = 2\mathbb{Z}$ be the group of all even integers under {\it addition}. There are only {\it two} cosets of $H$. One is $H$ itself which is just $ 0 * H = 0 + H$ and another is $1 * H = 1 + H$ which is the group of odd integers under addition. How about $5 * H = 5 + H$, well $5 + H$ results in the same set as $1 + H$, so it's already covered. The same for $4 + H = 0 + H = H$. Thus the index of $H$ in this case is 2 since there are only 2 cosets of $H$ in $G$.
 
+Back to our earlier discussion, I think this half and half business has something to do with Lagrange's theorem and the fact that if $G$ and $H$ are groups and $\varphi: G \to H$ is a homomorphism, then the index of the kernel of $\varphi$ in $G$ is equal to the order of the image:
+%
+\nbea
+|G:\ker(\varphi)|=|{\rm im~}\varphi|.
+\neea
+%
+In our case at hand, $G = (\mathbb{Z}/n\mathbb{Z})^*$, while $\varphi: a \to a^{m/2} \pmod{n} \to \pm1$, \ie the image of $\varphi$, which is $H$ is just $ \equiv 1 \pmod{n} \to +1$ or $\not\equiv 1 \pmod{n} \to -1$, so we denote them $\pm1$. Thus $|{\rm im~}\varphi|$ is just 2.
 
+However, this fact alone is not enough. We need Lagrange's theorem that states, if $G$ and $H$ are finite groups, then the index of $H$ in $G$ is equal to the quotient of the orders of the two groups:
+%
+\nbea
+|G:H| = \frac{|G|}{|H|}
+\neea
+%
+note that order is just the number of elements of the group.
 
+Therefore 
+%
+\nbea
+|G:\ker(\varphi)| & = & 2 \\
+|G:\ker(\varphi)| & = & \frac{|G|}{|\ker(\varphi)|} \\
+\to \frac{|G|}{|\ker(\varphi)|} & = & 2 \\
+|\ker(\varphi)| & = & \frac{|G|}{2}
+\neea
+%
+and half of $G = (\mathbb{Z}/n\mathbb{Z})^*$ have $a^{m/2} \not\equiv 1 \pmod{n}$.
+
+{\bf Problem 3.3}. For any $n \in N$, let $\sigma(n)$ be the sum of the divisors of $n$; for example, $\sigma(6) = 1 + 2 + 3 + 6 = 12$ and $\sigma(10) = 1 + 2 + 5 + 10 = 18$. Suppose that $n = pqr$ with $p,~ q$, and $r$ distinct primes. Devise an ``efficient'' algorithm that given $n,~ \varphi(n)$ and $\sigma(n)$, computes the factorization of $n$. For example, if $n = 105$, then $p = 3,~ q = 5$, and $r = 7$, so the input to the algorithm would be
+%
+\nbea
+n = 105,~ \varphi(n) = 48,~ {\rm and~} \sigma(n) = 192,
+\neea
+and the output would be 3, 5, and 7.
+
+Well, we follow closely the strategy of Section 3.4.1 ``Factoring $n$ Given $varphi(n)$''. First we express
+%
+\nbea
+\varphi(n) & = & \varphi(pqr) \\
+& = & (p-1)(q-1)(r-1) \\
+& = & pqr - pq - pr - qr + p + q + r - 1\\
+\sigma(n) & = & pqr + pq + pr + qr + p + q + r + 1
+\neea
+%
+Therefore
+%
+\nbea
+\sigma(n) + \varphi(n) & = & pqr + p + q + r \\
+\to p + q + r & = & \sigma(n) + \varphi(n) - n \\
+\sigma(n) - \varphi(n) & = & 2(pq + pr + qr) + 2 \\
+\to pq + pr + qr & = & \frac{\sigma(n) - \varphi(n)}{2} - 1
+\neea
+%
+We also know that
+%
+\nbea
+(x - p)(x - q)(x - r) & = & x^3 - x^2(p + q + r) + x(pq + pr + qr) - pqr \\
+& = &  x^3 - x^2(\sigma(n) + \varphi(n) - n) + x \left (\frac{\sigma(n) - \varphi(n)}{2} - 1 \right ) - n
+\neea
+%
+We therefore setup a cubic polynomial with the above coefficients and solve it using the cubic formula.
 
 
 \end{document}
-
 
 
