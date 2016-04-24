@@ -2428,6 +2428,29 @@ and many more :) but since the above list was generated in order 36721 is the sm
 
 ++++++++++++++++++++++++++++++++++\\
 
+{\bf Algorithm 3.4.5} ``(Probabilistic Algorithm to Factor $n$).'' Some explanation is needed here, especially in the probabilistic part and the top part of page 65.
+
+First, this method is probabilistic in two ways, one by choosing random $a$'s to test whether $a^{m/2}$ is equivalent to $1 \pmod{n}$ or not. Next, once we shoce those random $a$'s everything seems to be deterministic. However, the probabilistic portion is in the ``three possibilities for these signs'' at the bottom of page 64. It is that sometimes (not all of the time) 
+%
+\nbea
+a^{m/2} \equiv -1 \pmod{p} &~~~~~~{\rm and}~~~~~~& a^{m/2} \equiv -1 \pmod{q}
+\neea
+%
+
+But what's wrong with this? we can still say
+%
+\nbea
+p | a^{m/2} + 1 &~~~~~~{\rm but}~~~~~~& q | a^{m/2} + 1
+\neea
+%
+But that's a problem because then $pq | a^{m/2} + 1$ and $\gcd(a^{m/2}-1, pq) = pq$ which doesn't give us the factorization of $n = pq$ into $p$ or $q$. Thus in the explanation at the top of page 65, he could've just used 
+%
+\nbea
+p \nmid a^{m/2} + 1 &~~~~~~{\rm but}~~~~~~& q | a^{m/2} + 1
+\neea
+%
+and we will get $\gcd(a^{m/2} + 1, pq) = q$. So the lesson here is that we want $a^{m/2}$ to have {\it different} values modulo $p$ from modulo $q$. This is why $a^{m/2} \equiv +1 \pmod{p}$ {\bf and} $a^{m/2} \equiv +1 \pmod{q}$ is a bad thing.
+
 {\bf Definition 3.4.7}. ``if there exists a single $a$ such that $a^{m/2} \not\equiv 1 \pmod{n}$, then half the $a$ have this property, since then $a \to a^{m/2}$ is a surjective homomorphism $(\mathbb{Z}/n\mathbb{Z})^* \to \{\pm1\}$ and the kernel has index $2$''. At first I didn't understand why half the $a$ have this property even if the map is surjective.
 
 Surjective just means onto, \ie all elements in the target space are covered, but it doesn't say anything about the distribution of the pre-images, like how many of them map to $+1$ and how many to $-1$. Before continuing, let's review some basic definitions
@@ -2470,6 +2493,17 @@ Therefore
 %
 and half of $G = (\mathbb{Z}/n\mathbb{Z})^*$ have $a^{m/2} \not\equiv 1 \pmod{n}$.
 
+{\bf Problem 3.1}. This problem concerns encoding phrases using numbers using the encoding of Section 3.3.2. What is the longest that an arbitrary sequence of letters (no spaces) can be if it must fit in a number that is less than $10^{20}$?
+
+We have 26 characters to encode A, $\dots$, Z thus we can encode as a number in base 26. However, if we do this the character Z will be 26 and it will coincide with the second character in the sequence, therefore we still need to use base 27.
+
+The longest sequence of letter we can encode is therefore
+%
+\nbea
+\floor{\log_{27}(10^{20})} & = & 13
+\neea
+%
+The floor is to ensure that we have enough characters.
 {\bf Problem 3.3}. For any $n \in N$, let $\sigma(n)$ be the sum of the divisors of $n$; for example, $\sigma(6) = 1 + 2 + 3 + 6 = 12$ and $\sigma(10) = 1 + 2 + 5 + 10 = 18$. Suppose that $n = pqr$ with $p,~ q$, and $r$ distinct primes. Devise an ``efficient'' algorithm that given $n,~ \varphi(n)$ and $\sigma(n)$, computes the factorization of $n$. For example, if $n = 105$, then $p = 3,~ q = 5$, and $r = 7$, so the input to the algorithm would be
 %
 \nbea
@@ -2504,7 +2538,72 @@ We also know that
 %
 We therefore setup a cubic polynomial with the above coefficients and solve it using the cubic formula.
 
+One comment about the cubic formula. The first thing it does is to depress the equation to get rid of $x^2$. This turns our to be a general strategy for any polynomial. What we usually do to solve the quadratic equation is to complete the square. This is actually the ``wrong'' thing to do. What we actually want is to get rid of the $x$ term, which is the same as completing the square for the quadratic case.
+
+However, this strategy of completing the square cannot be extended to completing the cube, for one
+%
+\nbea
+x^3 = a & \to & x = a^{1/3} \\
+x^2 = a & \to & x = \pm a^{1/2}
+\neea
+%
+even if we can complete the cube we only get one solution instead of three, while completing the square guarantees that we have two solutions. So just like the adage, ``One man's treasure is another man's trash'' :) A point of view that works very well for one particular problem hinders us from solving another problem.
+
+{\bf Problem 3.4}. You and Nikita wish to agree on a secret key using the Diffe-Hellman key exchange. Nikita announces that $p = 3793$ and $g = 7$. Nikita secretly chooses a number $n < p$ and tells you that $g^n \equiv 454 \pmod{p}$. You choose the random number $m = 1208$. What is the secret key?
+
+The secret key in this case is $g^{nm} \pmod{p} \equiv (g^{n})^{m} \pmod{p}$
+%
+\nbea
+g^n & \equiv & 454 \pmod{p} \\
+(g^n)^m & \equiv & (454)^m \pmod{p} \\
+(g^n)^{1208} & \equiv & (454)^{1208} \pmod{p} \\
+& \equiv & 2156 \pmod{3793}
+\neea
+%
+
+{\bf Problem 3.5}. You see Michael and Nikita agree on a secret key using the Diffe-Hellman key exchange. Michael and Nikita choose $p = 97$ and $g = 5$. Nikita chooses a random number $n$ and tells Michael that $g^n \equiv 3 \pmod{97}$, and Michael chooses a random number $m$ and tells Nikita that $g^m \equiv 7 \pmod 97$. Brute force crack their code: What is the secret key that Nikita and Michael agree upon? What is $n$? What is $m$?
+
+By brute force $n = 70$, $m = 31$, therefore $g^{31 \cdot 70} \equiv 44 \pmod{97}$.
+
+{\bf Problem 3.6}. In this problem, you will``crack'' an RSA cryptosystem. What is the secret decoding number $d$ for the RSA cryptosystem with public key (n, e) = (5352381469067, 4240501142039)?
+
+Using brute force factorization method we get $n = 141307 \cdot 37877681$. Using the Fermat's method, Section 3.4.2, took around 15 times longer.
+
+We now need to find $d$ where
+%
+\nbea
+ed \equiv 1 \pmod{\varphi(n)}
+\neea
+%
+where $\varphi(n) = (p-1)(q-1) = 5352343450080$. We use Algorithm 2.3.7, which is Bezout's Lemma to calculate $d$
+%
+\nbea
+ed + \varphi(n) y & = & 1 \\
+\to d & = & -156721461241 \equiv 5195621988839 \pmod{5352343450080}
+\neea
+%
+We should check that we have the correct $d$, \ie $ed-1$ must be divisible by $p-1$ and $q-1$, and in this case it is.
+
+{\bf Problem 3.7}. Nikita creates an RSA cryptosystem with public key
+%
+\nbea
+(n, e) = (1433811615146881, 329222149569169).
+\neea
+%
+In the following two problems, show the steps you take to factor $n$. (Don't simply factor n directly using a computer.)
+
+(a) Somehow you discover that $d = 116439879930113$. Show how to use the probabilistic algorithm of Section 3.4.3 to factor $n$.
+
+(b) In part (a) you found that the factors $p$ and $q$ of $n$ are very close. Show how to use the Fermat Factorization Method of Section 3.4.2 to factor $n$.
+
+Part (a), first, we need
+%
+\nbea
+m = ed - 1 & = & 38334587566167741692779486096
+\neea
+%
+
+For part(b), Fermat's method was far quicker (by at least 400,000 times) than brute force factorization, where $p = 37865717$ and $q = 37865693$ because it only needs {\it one} iteration.
 
 \end{document}
-
 
