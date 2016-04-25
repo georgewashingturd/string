@@ -2602,6 +2602,18 @@ Part (a), first, we need
 m = ed - 1 & = & 38334587566167741692779486096
 \neea
 %
+This numbe turns out to be to big for a 64-bit integer, thus I couldn't use my C code to do it. I ended up using maxima, the functions needed are `power\textunderscore mod(a,m,n)' another somewhat related one is `zn\textunderscore power(a,n)'.
+
+This problem turned out to be a little tricky. I initially chose $a=2$ just like the example in Section 3.4.3. However, this only gave $a^{m/2} \equiv -1 \pmod{p}$ and $a^{m/2} \equiv -1 \pmod{q}$, no luck, other primes like 5, 11, 13 are in the same boat. Thus this strategy is really probabilistic.
+
+However, $a=5$ works, we keep dividing $m$ by 2 until we get
+%
+\nbea
+m/2 & = & 4791823445770967711597435762 \\
+\to 5^{m/2} & \equiv & 597421503155725 \pmod{n} \\
+\gcd(597421503155725 - 1, n) & = & 37865717
+\neea
+%
 
 For part(b), Fermat's method was far quicker (by at least 400,000 times) than brute force factorization, where $p = 37865717$ and $q = 37865693$ because it only needs {\it one} iteration.
 

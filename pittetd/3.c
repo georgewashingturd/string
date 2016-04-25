@@ -4,6 +4,8 @@
 #include<string.h> // for memset
 #include<time.h>
 #include <stdint.h>
+#include <windows.h>
+#include<winnt.h>
 
 // This lists the orders of different numbers in Z/p^nZ where p is a prime
 
@@ -14,10 +16,10 @@ typedef signed long long int64;
 /*
 typedef int __int128 __attribute__ ((__mode__ (TI)));
 typedef unsigned int __uint128 __attribute__ ((__mode__ (TI)));
-
-typedef unsigned __int128 uint128_t;
-typedef signed __int128 int128_t;
 */
+typedef unsigned __int128 uint128;
+typedef signed __int128 int128;
+
 
 // Globals
 
@@ -337,12 +339,15 @@ uint64 PowerModQ(uint64 n, uint64 x, uint64 q)
     if (n & 0x1ULL)
         temp = a[0];
     
+    printf("x:%lld\n", x);
+    
     for (i = 1ULL; i < 64ULL; i++)
     {
         a[i] = (a[i-1]*a[i-1]) % q;
         if ((n >> i) & 0x1ULL)
         {
             temp = (temp * a[i]) % q;
+            printf("a:%lld %lld: %lld, %lld\n",a[i], i, temp, q);
         }
     }
     
@@ -436,10 +441,22 @@ uint64 Xgcd(uint64 * a, uint64 * b, uint64 * x, uint64 * y)
 #define MA 1ULL
 void CrackRSAKnowingDMethod(uint64 d, uint64 e, uint64 n)
 {
-    uint64 m = e*d - 1, j;
-    uint64 a[MA], r, g;
+    //uint128 m = ((uint128)e)*((uint128)d) - (uint128)1, j;
+    uint128 m = ((uint128)1), j;
+    uint128 a[MA], r, g;
+    uint128 u = 7ULL;
+    
+    uint128 dd = (uint128)d;
+    uint128 ee = (uint128)1000000ULL;
+    uint128 o = (uint128)1;
+    
+    m = (uint128)327921963064646896263108960;
+
     
     printf("%lld\n", m);
+    //printf("__int128 m  %llu|%llu\n",hi,lo);
+    printf("__int128 d  %llu%llu\n",(uint64)(dd>>64),(uint64)dd);
+    printf("__int128 e  %llu%llu\n",(uint64)(ee>>64),(uint64)ee);
     
     j = 0ULL;
     for (uint64 i = 1000ULL; i < 2000ULL && j < MA; i++)
@@ -523,9 +540,10 @@ int main (int argc, char * argv[])
     printf("%lld %lld %lld %lld\n", a, b, x, y);
     */
 
-    CrackRSAKnowingDMethod((uint64) atoll(argv[1]), (uint64) atoll(argv[1]), (uint64) atoll(argv[1]));
+    //printf("%lld\n", (uint64) atoll(argv[1]));
+    //CrackRSAKnowingDMethod((uint64) atoll(argv[1]), (uint64) atoll(argv[2]), (uint64) atoll(argv[3]));
     
-    //printf("%lld\n", PowerModQ((uint64) atoll(argv[1]), (uint64) atoll(argv[2]), (uint64) atoll(argv[3])));
+    printf("%lld\n", PowerModQ((uint64) atoll(argv[1]), (uint64) atoll(argv[2]), (uint64) atoll(argv[3])));
     
     return 0;
 }
