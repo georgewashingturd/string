@@ -2493,6 +2493,8 @@ Therefore
 %
 and half of $G = (\mathbb{Z}/n\mathbb{Z})^*$ have $a^{m/2} \not\equiv 1 \pmod{n}$.
 
+{\bf Comments}. Just a short comment on Section 3.4 ``Attacking RSA''. If we already know $\varphi(n)$ or even $d$, why do we need to factorize $n$? We can straightforwardly decrypt the message \dunno
+
 {\bf Problem 3.1}. This problem concerns encoding phrases using numbers using the encoding of Section 3.3.2. What is the longest that an arbitrary sequence of letters (no spaces) can be if it must fit in a number that is less than $10^{20}$?
 
 We have 26 characters to encode A, $\dots$, Z thus we can encode as a number in base 26. However, if we do this the character Z will be 26 and it will coincide with the second character in the sequence, therefore we still need to use base 27.
@@ -2503,7 +2505,12 @@ The longest sequence of letter we can encode is therefore
 \floor{\log_{27}(10^{20})} & = & 13
 \neea
 %
-The floor is to ensure that we have enough characters.
+The floor is to ensure that we have enough space for all 13 characters.
+
+{\bf Problem 3.2}. Suppose Michael creates an RSA cryptosystem with a very large modulus $n$ for which the factorization of $n$ cannot be found in a reasonable amount of time. Suppose that Nikita sends messages to Michael by representing each alphabetic character as an integer between 0 and 26 (A corresponds to 1, B to 2, etc., and a space to 0), then encrypts each number {\it separately} using Michael’s RSA cryptosystem. Is this method secure? Explain your answer.
+
+This method is not too secure as eavesdroppers can see repeating numbers being sent by Nikita and they might be able to figure out a dictionary between the plain text alphabets and the encrypted alphabets.
+
 {\bf Problem 3.3}. For any $n \in N$, let $\sigma(n)$ be the sum of the divisors of $n$; for example, $\sigma(6) = 1 + 2 + 3 + 6 = 12$ and $\sigma(10) = 1 + 2 + 5 + 10 = 18$. Suppose that $n = pqr$ with $p,~ q$, and $r$ distinct primes. Devise an ``efficient'' algorithm that given $n,~ \varphi(n)$ and $\sigma(n)$, computes the factorization of $n$. For example, if $n = 105$, then $p = 3,~ q = 5$, and $r = 7$, so the input to the algorithm would be
 %
 \nbea
@@ -2561,11 +2568,11 @@ g^n & \equiv & 454 \pmod{p} \\
 \neea
 %
 
-{\bf Problem 3.5}. You see Michael and Nikita agree on a secret key using the Diffe-Hellman key exchange. Michael and Nikita choose $p = 97$ and $g = 5$. Nikita chooses a random number $n$ and tells Michael that $g^n \equiv 3 \pmod{97}$, and Michael chooses a random number $m$ and tells Nikita that $g^m \equiv 7 \pmod 97$. Brute force crack their code: What is the secret key that Nikita and Michael agree upon? What is $n$? What is $m$?
+{\bf Problem 3.5}. You see Michael and Nikita agree on a secret key using the Diffe-Hellman key exchange. Michael and Nikita choose $p = 97$ and $g = 5$. Nikita chooses a random number $n$ and tells Michael that $g^n \equiv 3 \pmod{97}$, and Michael chooses a random number $m$ and tells Nikita that $g^m \equiv 7 \pmod{97}$. Brute force crack their code: What is the secret key that Nikita and Michael agree upon? What is $n$? What is $m$?
 
 By brute force $n = 70$, $m = 31$, therefore $g^{31 \cdot 70} \equiv 44 \pmod{97}$.
 
-{\bf Problem 3.6}. In this problem, you will``crack'' an RSA cryptosystem. What is the secret decoding number $d$ for the RSA cryptosystem with public key (n, e) = (5352381469067, 4240501142039)?
+{\bf Problem 3.6}. In this problem, you will``crack'' an RSA cryptosystem. What is the secret decoding number $d$ for the RSA cryptosystem with public key $(n, e) = (5352381469067, 4240501142039)$?
 
 Using brute force factorization method we get $n = 141307 \cdot 37877681$. Using the Fermat's method, Section 3.4.2, took around 15 times longer.
 
@@ -2602,20 +2609,30 @@ Part (a), first, we need
 m = ed - 1 & = & 38334587566167741692779486096
 \neea
 %
-This numbe turns out to be to big for a 64-bit integer, thus I couldn't use my C code to do it. I ended up using maxima, the functions needed are `power\textunderscore mod(a,m,n)' another somewhat related one is `zn\textunderscore power(a,n)'.
+This number turns out to be too big for a 64-bit integer, thus I couldn't use my C code to do it. I ended up using maxima, the functions needed are `power\textunderscore mod(a,m,n)' another somewhat related one is `zn\textunderscore power(a,n)'.
 
-This problem turned out to be a little tricky. I initially chose $a=2$ just like the example in Section 3.4.3. However, this only gave $a^{m/2} \equiv -1 \pmod{p}$ and $a^{m/2} \equiv -1 \pmod{q}$, no luck, other primes like 5, 11, 13 are in the same boat. Thus this strategy is really probabilistic.
+This problem turned out to be a little tricky. I initially chose $a=2$ just like the example in Section 3.4.3. However, this only gave $a^{m/2} \equiv -1 \pmod{p}$ and $a^{m/2} \equiv -1 \pmod{q}$ when $a^{m/2} \not\equiv 1 \pmod{n}$, no luck, other primes like 5, 11, 13 are in the same boat. Thus this strategy is really probabilistic.
 
 However, $a=5$ works, we keep dividing $m$ by 2 until we get
 %
 \nbea
 m/2 & = & 4791823445770967711597435762 \\
-\to 5^{m/2} & \equiv & 597421503155725 \pmod{n} \\
+\to 5^{m/2} & \equiv & 597421503155725 \pmod{n} \not\equiv 1 \pmod{n} \\
 \gcd(597421503155725 - 1, n) & = & 37865717
 \neea
 %
+The other prime factor of $n$ is then $n / 37865717 = 37865693$.
 
 For part(b), Fermat's method was far quicker (by at least 400,000 times) than brute force factorization, where $p = 37865717$ and $q = 37865693$ because it only needs {\it one} iteration.
+%
+\nbea
+t & = & \ceil{\sqrt{n}} = 37865705 \\
+t^2 - n & = & = s^2 = 144 \\
+\to s & = & 12
+\neea
+%
+Therefore $p = t + s = 37865717$ and $q = t - s = 37865693$.
+
+
 
 \end{document}
-
