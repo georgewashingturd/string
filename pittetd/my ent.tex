@@ -2428,6 +2428,20 @@ and many more :) but since the above list was generated in order 36721 is the sm
 
 ++++++++++++++++++++++++++++++++++\\
 
+{\bf Page 51}. ``3. Then, $ang \equiv n \pmod{p}$, so everyone knows Nikita's secret key $n$,
+and hence can easily compute the shared secret $s$.''
+
+A bit more explanation will be helpful here. First From step 2, which is Bezout's lemma we have
+%
+\nbea
+ag + bp & = & 1 \\
+n \times (ag + bp) & = & n \\
+nag & = & n - nbp \\
+\to agn & \equiv & n \pmod{p}
+\neea
+%
+What we have is $gn \pmod{p}$ which is part of the public key. From Bezout's lemma we calculated $a$, therefore we just need to multiply $a \times gn \equiv n \pmod{p}$ and we would have found $n$.
+
 {\bf Algorithm 3.4.5} ``(Probabilistic Algorithm to Factor $n$).'' Some explanation is needed here, especially in the probabilistic part and the top part of page 65.
 
 First, this method is probabilistic in two ways, one by choosing random $a$'s to test whether $a^{m/2}$ is equivalent to $1 \pmod{n}$ or not. Next, once we shoce those random $a$'s everything seems to be deterministic. However, the probabilistic portion is in the ``three possibilities for these signs'' at the bottom of page 64. It is that sometimes (not all of the time) 
@@ -2633,6 +2647,8 @@ t^2 - n & = & = s^2 = 144 \\
 %
 Therefore $p = t + s = 37865717$ and $q = t - s = 37865693$.
 
+++++++++++++++++++++++++++++++++++\\
 
+{\bf Definition 4.1.2}. The example right after this definition. $\left ( \frac{5}{5}\right ) = 1$. I believe this is wrong because $\gcd(5,5) = 5 \neq 1$ and as such it should be that $\left ( \frac{5}{5}\right ) = 0$.
 
 \end{document}
