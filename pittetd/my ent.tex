@@ -2651,4 +2651,90 @@ Therefore $p = t + s = 37865717$ and $q = t - s = 37865693$.
 
 {\bf Definition 4.1.2}. The example right after this definition. $\left ( \frac{5}{5}\right ) = 1$. I believe this is wrong because $\gcd(5,5) = 5 \neq 1$ and as such it should be that $\left ( \frac{5}{5}\right ) = 0$.
 
+{\bf Proposition 4.2.1}. Euler's Criterion. This can be proven in a more lowbrow manner. The most obvious way is to use the proof of Lemma 4.1.4. There it was shown that all quadratic residue is of the form $g^{2m}$ where $g$ is a primitive root. Therefore,
+%
+\nbea
+(g^{2m})^{(p-1)/2} & = & g^{m(p-1)} \equiv 1 \pmod{p}
+\neea
+%
+thanks to Euler's theorem 2.1.20 $a^{\varphi(p)} \equiv 1 \pmod{p}$.
+
+Or in more details, my lowbrow proof is as follows. First, if $a \equiv b^2 \pmod{p}$ then
+%
+\nbea
+a^{(p-1)/2} & \equiv & (b^2)^{(p-1)/2} \pmod{p} \\
+& \equiv & b^{p-1} \pmod{p} \\
+& \equiv & 1 \pmod{p}
+\neea
+%
+thanks again to Euler's theorem. We now need to prove the converse, if $a^{(p-1)/2} \equiv 1 \pmod{p}$ then since $p$ is an odd prime, the existence of a primitive root is guaranteed, therefore we can express $a \equiv g^{m} \pmod{p}$ and
+%
+\nbea
+a^{(p-1)/2} & \equiv & (g^m)^{(p-1)/2} \pmod{p}
+\neea
+%
+Now if $m$ is odd, $m = 2y+1$ we get
+%
+\nbea
+(g^m)^{(p-1)/2} & \equiv & (g^{2y+1})^{(p-1)/2} \pmod{p} \\
+& \equiv & g^{y(p-1)} g^{(p-1)/2} \pmod{p} \\
+& \equiv & 1 \cdot g^{(p-1)/2} \pmod{p}
+\neea
+%
+Since $g$ is a primitive root $g^{(p-1)/2} \not\equiv 1 \pmod{p}$. Hence if $m$ is odd we get
+%
+\nbea
+a^{(p-1)/2} & \equiv & (g^{2y+1})^{(p-1)/2} \pmod{p} \\
+a^{(p-1)/2} & \not\equiv & 1 \pmod{p}
+\neea
+%
+which is a contradiction, therefore $m$ has to be even, $m=2y$ but then $a \equiv g^{2y} \pmod{p}$ and from the proof of Lemma 4.1.4 $g^{2y}$ is a quadratic residue. This completes the proof.
+
+{\bf Proof of Proposition 4.2.1}. `` Since the kernel of a homomorphism is a group, and the order of a subgroup divides the order of the group, we have either $\ker(\varphi) = \ker(\psi)$ or $\varphi = 1$.''
+
+Some explanation, the order of a group is the size of a group. Next, since $\ker(\psi)$ is a (normal) subgroup of $(\mathbb{Z}/p\mathbb{Z})^*$, see Problem 2.21, it is true that $\#(\mathbb{Z}/p\mathbb{Z})^* = d \cdot \#\ker(\psi)$ as the order of a subgroup divides the order of the group.
+
+But it is also true that $\ker(\varphi) \subset \ker(\psi)$, thus $\#\ker(\varphi) \le \#\ker(\psi)$ therefore if $\#\ker(\psi) > \#\ker(\varphi)$ then $d < 2 \to d = 1$ and $\#(\mathbb{Z}/p\mathbb{Z})^* = \#\ker(\psi)$. While if $\#\ker(\varphi) = \#\ker(\psi)$ then $\#(\mathbb{Z}/p\mathbb{Z})^* = 2 \cdot \#\ker(\psi)$.
+
+Now $\#(\mathbb{Z}/p\mathbb{Z})^* = \#\ker(\psi)$, means that the kernel of $\psi$ is the entire group $(\mathbb{Z}/p\mathbb{Z})^*$ which means that $\psi$ maps every member of $(\mathbb{Z}/p\mathbb{Z})^*$ to $1$, \ie $\psi(a) = a^{(p-1)/2} = 1$. At first I thought $\varphi = 1$ means that $\varphi$ is the identity operator :)
+
+{\bf Corollary 4.2.3}. The proof mentions `` This follows from Proposition 4.2.1 and the fact that the polynomial $x^2 - 1$ has no roots besides $+1$ and $-1$''.
+
+I'll show explicitly how it follows from the fact that $x^2 - 1$ has no roots besides $+1$ and $-1$.
+
+If $x^2 \not\equiv a \pmod{p}$ then it also means that $a \not\equiv x^2 \pmod{p}$, which is to say that $a$ is a quadratic nonresidue. Thus from Proposition 4.2.1 $a^{(p-1)/2} \not\equiv 1 \pmod$. Now, from Euler's theorem we have
+%
+\nbea
+a^{p-1} & \equiv & 1 \pmod{p}
+\neea
+%
+Therefore we can rewrite $x^2 \equiv 1 \pmod{p}$ as
+%
+\nbea
+x^2 & \equiv & 1 \pmod{p} \\
+\to x^2 & \equiv & a^{p-1} \pmod{p}
+\neea
+%
+Taking the ``squre root'' of both sides
+%
+\nbea
+x = \pm 1 & \equiv & a^{(p-1)/2} \pmod{p}
+\neea
+%
+We know that $x$ is either $+1$ or $-1$ therefore 
+%
+\nbea
+a^{(p-1)/2} \equiv \left \{ \ba{l}
++1 \pmod{p} \\
+-1 \pmod{p}
+\ea \right.
+\neea
+%
+But from Proposition 4.2.1 $a^{(p-1)/2} \equiv 1 \pmod{p}$ means that $a$ is a quadratic residue, which is a contradiction and hence $a^{(p-1)/2} \equiv -1 \pmod{p}$.
+
+The converse is straighforward, if $a^{(p-1)/2} \equiv -1 \pmod{p}$, from Proposition 4.2.1 it follows that $a$ is a quadratic nonresidue and therefore $x^2 \equiv a \pmod{p}$ has no solution.
+
+
+
+
 \end{document}
