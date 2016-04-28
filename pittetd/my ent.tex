@@ -2734,7 +2734,20 @@ But from Proposition 4.2.1 $a^{(p-1)/2} \equiv 1 \pmod{p}$ means that $a$ is a q
 
 The converse is straighforward, if $a^{(p-1)/2} \equiv -1 \pmod{p}$, from Proposition 4.2.1 it follows that $a$ is a quadratic nonresidue and therefore $x^2 \equiv a \pmod{p}$ has no solution.
 
+{\bf Proof of Lemma 4.3.1}. A clarification of the proof of this Lemma. First, this Lemma wants to map $a, 2a, 3a, \dots, \frac{p-1}{2}a$ to $(-p/2, p/2)$. But we are not using {\it all} numbers between $(-p/2, p/2)$ as the image. We are only using {\it half} of them obviously as 
+$a, 2a, 3a, \dots, \frac{p-1}{2}a$ is just half of the complete set of residues of $p$.
 
+Therefore the statement ``No number $1, 2, \dots , \frac{p-1}{2}$ appears more than once, with {\bf either choice of sign}''. Say two elements of $S$, $ka$ mapped to $|d|$ and $ja$ mapped to $-|d|$, therefore
+%
+\nbea
+|d| + (-|d|) & \equiv & 0 \pmod{p} \\
+ka + ja & \equiv & 0 \pmod{p}
+\neea
+%
+which was proven to be a contradiction in the text.
 
+This whole business of proving Lemma 4.3.1 can actually be done using Lemma 2.1.12. Note that $a, 2a, \dots, \frac{p-1}{2}a$ is almost half of the complete residue of $p$, we are just missing 0. We know that we can map $-a\frac{p-1}{2}, \dots, 0, \dots, \frac{p-1}{2}a$ to $-\frac{p-1}{2}, \dots, 0, \dots, \frac{p-1}{2}$ thanks to Lemma 2.1.12.
+
+Let's denote 
 
 \end{document}
