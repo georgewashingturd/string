@@ -677,7 +677,7 @@ Now why does this proof work? It says that $n = (a+b+c)\pmod{3}$. The meaning of
 
 {\bf Definition 2.1.11} ``(Complete Set of Residues). $\dots$ pairwise distinct''. The name is apt since the set is the set of residues of $n$, \eg $1,2,3,\dots,n-1$. The ``pairwise distinct'' phrase, I think, means that every two elements of $R$ are not related by $n$, \ie every two elements $x_1$ and $x_2$ of $R$, $n \nmid (x_1 - x_2)$.
 
-{\bf Lemma 2.1.12, lowvrow version}. The way I'll prove it is to show it through a contradiction. Assume that $aR$ is not a complete set of residues modulo $n$, which means that there are two elements of $aR$, say $ax_1 - ax_2$ such that
+{\bf Lemma 2.1.12, lowbrow version}. The way I'll prove it is to show it through a contradiction. Assume that $aR$ is not a complete set of residues modulo $n$, which means that there are two elements of $aR$, say $ax_1 - ax_2$ such that
 %
 \nbea
 n | a(x_1 - x_2)
@@ -784,11 +784,170 @@ and so $49^2 \equiv 1 \pmod{100}$.
 
 {\bf Proposition 2.2.7}. Note that this proposition only works if $\gcd(m,n) = 1$ otherwise you'll get weird results! Also for {\bf Equation 2.2.2}, $p$ is prime.
 
+{\bf Lowbrow version}. Let's start with $\varphi(n=pq)$ where $p,q$ are distinct primes. We want to count the number of numbers between $1, \dots, pq$ that have $\gcd=1$ with $pq$.
+
+A straightforward counting approach will work for $pq$ but not for more complicated products like $pqrstvw \dots$ LOL
+
+An easier way to do it is to start this way. Say we have $n = n' q$ where $n'$ is a product of {\it distinct} primes and we know what $\varphi(n')$ is.
+
+For me it's easier to see the problem this way. First, let's organize the numbers from $1, \dots, n$ into
+%
+\nbea
+\underbrace{1, \dots, n'-1}_\text{$S_1$}, ~n'~, \underbrace{n'+1, \dots, n'+(n'-1)}_\text{$S_2$}, ~2n'~, \dots, \underbrace{(q-1)n' + 1, \dots, (q-1)n' + (n' - 1)}_\text{$S_q$}, ~n'q
+\neea
+%
+Note that different $S$'s are separated by mutiples of $n'$ therefore they are congruent to one another. Because they are congruent, a number that is co-prime to $n'$ in one $S$ is also co-prime to $n'$ in another $S'$, see Lemma 1.1.9 and Lemma 1.1.10.
+
+Now for each set $S_i$ there are $\#(\mathbb{Z}/n'\mathbb{Z})^*$ numbers that have $\gcd=1$ with $n'$ and there are $q$ numbers of $S$'s. We then throw away any number $a$ between $1, \dots, n$ that have $\gcd(a,n') \neq 1$ and we are left with $m = \varphi(n') \cdot q$ numbers.
+
+Now we would like to throw away numbers that are mutiples of $q$ from $1, \dots, n$. We need to be careful here, some of them are already thrown away. Any number $dq$ where $\gcd(d,n') \neq 1$ were already thrown away. Therefore only multiples of $q$ with $hq$ where $h < n'$ and $\gcd(h,n')=1$ are still left. How about $h > n'$, that wouldn't work since then $hq > n$.
+
+How many $h < n'$ and $\gcd(h,n')=1$ are there? The answer is $\varphi(n')$. Therefore
+%
+\nbea
+\varphi(n) & = & \varphi(n')q - \varphi(n') \\
+& = & \varphi(n')(q - 1) \\
+\varphi(n) & = & \varphi(n') \varphi(q) 
+\neea
+%
+Therefore, starting with $n = p$ we can (inductively) show that any product of distinct primes
+%
+\nbea
+n = \prod_i^{N} p_i & \to & \varphi(n) = \prod_i^{N} \varphi(p_i)
+\neea
+%
+
+Now, what happens if $n$ is not a product of {\it distinct} primes but instead contains duplicates of primes? 
+
+Start with $n = n' q$ and $n' = m q$ and thus $n = m q^2$. We already know $\varphi(n')$ and we want to use this info to calculate $\varphi(n = n'q)$. We again represent the number between $1, \dots, mq^2$ in the following similar manner
+%
+\nbea
+\underbrace{1, \dots, mq}_\text{$S_1$}, ~ \underbrace{mq+1, \dots, mq+mq}_\text{$S_2$}, ~ \dots~, \underbrace{mq(q-1) + 1, \dots, mq(q-1) + mq}_\text{$S_q$}
+\neea
+%
+Just like before each set $S$ is congruent to another as they are separated by multiples of $mq = n'$. Therefore a number that is co-prime to $n'$ in one $S$ is also co-prime to $n'$ in another $S$, see Lemma 1.1.9 and Lemma 1.1.10.
+
+Now, we remove all numbers in each $S$ that are not co-prime to $n'$ thus leaving only $\varphi(n')$ numbers in each $S$. By doing so we have also removed all numbers that are not co-prime to $q$ since $n'=mq$ and we are done. We have $q\varphi(n')$ numbers that are co-prime to $n = mq^2$.
+
+By doing this inductively we have shown that $\varphi(n=ab)$ is multiplicative, $\varphi(ab) = \varphi(a)\varphi(b)$, as long as $\gcd(a,b) = 1$.
+
+{\bf Lesson learned}. My first attempt was to show this by directly counting the numbers that are co-prime to $n$. At first glance, there are
+%
+\nbea
+pq - \frac{pq}{p} - \frac{pq}{q}
+\neea
+%
+co-prime numbers, \eg for $n=3\cdot 5 = 15$, there are $\frac{15}{3} = 5$ multiples of $3$ and $\frac{15}{5} = 3$ multiples of 5. However, we are overcounting by one because then we include $n=15$ itself twice, once for the multiples of 3 and another for the multiple of 5. Therefore $\varphi(n=pq)$ is
+%
+\nbea
+\varphi(pq) & = & pq - \frac{pq}{p} - \frac{pq}{q} + 1 \\
+& = & pq - (q+p) + 1 \\
+& = & (p-1)(q-1) \\
+\varphi(pq) & = & \varphi(p)\varphi(q)
+\neea
+%
+What if $n = pqr$, well first we remove the usual suspects
+%
+\nbea
+pqr - \frac{pqr}{p} - \frac{pqr}{q} - \frac{pqr}{r}
+\neea
+%
+But then we are overcounting things again. First, when we are throwing away multiples of $p$ we include all multiples of $pq$ as well and there are $r$ of them and multiples of $pr$ and there are $q$ of them, this is what the $ - \frac{pqr}{p}$ is for.
+
+But when we are throwing away multiples of $q$ by $- \frac{pqr}{q}$, we are throwing away multiples of $pq$ and multiples of $qr$. However, multiples of $pq$ are already substracted when we are delaing with mutiples of $p$, therefore we need to restore $ + r$ to $\varphi(pqr)$.
+
+Next, we get rid of multiples of $r$, but again we are throwing away mutiples of $pr$ that have been counted when dealing with multiples of $p$, since there are $q$ of them we need to add $+q$ to $\varphi(pqr)$. Lastly we get rid of multiples of $qr$ but these are already accounted for when dealing with multiples of $q$, since there are $p$ of them we need to restore $+p$ to $\varphi(pqr)$.
+
+However, we have a problem. The one number we need to take note of is $pqr$ itself. Note that we restored multiples of $r$ {\it twice} by adding $+q$ and $+p$. Hwever, we are again overcounting as each of those restorations recounts $pqr$ so we need to substract 1 from it and
+%
+\nbea
+\varphi(pqr) & = & pqr - \frac{pqr}{p} - \frac{pqr}{q} - \frac{pqr}{r} + p + q + r - 1 \\
+& = & (p-1)(q-1)(r-1) \\
+\varphi(pqr) & = & \varphi(p)~\varphi(q)~\varphi(r)
+\neea
+%
+The above explanation might be confusing so let's see it in action through an example $\varphi(3 \cdot 5 \cdot 7)$. In this example we start with $3 \cdot 5 \cdot 7 = 105$ numbers. We first get rid of multiples of 3 by substracting $\frac{105}{3} = 35$ numbers from the 105 numbers.
+
+Next we remove multiples of 5 by substracting $\frac{105}{5} = 21$ numbers from the $(105 - 35) = 70$ numbers we have left. However, the following numbers were already removed by removing multiples of 3, $\{15, 30, 45, 60, 75, 90, 105\}$, they are multiples of $3 \cdot 5$ and there are 7 of them so we need to add back 7, \ie $105 - 35 - 21 + 7$.
+
+Then we remove any multiples of $7$ by substracting $\frac{105}{7} = 15$. These 15 numbers are
+%
+\nbea
+7,14,\bcancel{21},28,35,\bcancel{42},49,56,\bcancel{63},70,77,\bcancel{84},91,98,\bcancel{105}
+\neea
+%
+However, $\{21,42,63,84,105\}$ were already removed as part of multiples of $3\cdot 7$ and there are 5 of them (as shown as crossed out numbers above). Therefore we need to substract $15 - 5$ instead of $15$, $105 - 35 - 21 +7 -(15 - 5) = 105 - 35 - 21 - 15 + 7 + 5$.
+
+Another set of numbers that have already been removed are multiples of $5 \cdot 7$, $\{35,70,105\}$ (shown as crossed of numbers below) when we removed multiples of 5, there are 3 of them. 
+%
+\nbea
+7,14,28,\cancel{35},49,56,\cancel{70},77,91,98
+\neea
+%
+However, we have already restored the count for 105 when we added back $+5$. So we cannot just add $+3$ we need to add $+3 -1$ and the final tally is $105 - 35 - 21 -15 + 7 + 5 + 3 - 1$.
+
+This direct counting method gets very complicated once we have more than three distinct primes, thus not tenable as a generic proof. And of course the bijective map proof given in the book is the most elegant of all but it doesn't mean that it cannot be proven from basic principles :) 
+
 {\bf Theorem 2.4.1}. There's a typo in the proof. Instead of ``follows from Proposition 2.1.22'' it should've followed from Theorem 2.1.20 where $x^{\varphi(n)} \equiv 1 \pmod{n}$ since for a prime number $n$, $\varphi(n) = n-1$.
 
 {\bf Section 2.5}. ``The structure of of $(\mathbb{Z}/p\mathbb{Z})^*$ $\dots \dots$ this implies that $(\mathbb{Z}/p\mathbb{Z})^*$ is a cyclic group''.
 
 A cyclic group is a group that can be generated from just one element of the group. The term cyclic here refers to taking powers of a single element. For example for $(\mathbb{Z}/3\mathbb{Z})^* = \{1,2\}$, 1 can't obviously generate the whole group but $2$ can since $2^1 = 2$ and $2^2 = 4 \equiv 1 \pmod{3}$.
+
+{\bf Definition 2.5.1}. Primitive root. The thing about primitive root is that it is the generator of the group, \ie say $g$ is a primitive root modulo an odd prime $p$, the order of $g$ is $\varphi(p) = p-1$. Therefore, any element $a \in \mathbb{Z}/p\mathbb{Z}$ is
+%
+\nbea
+a & \equiv & g^m \pmod{p}
+\neea
+%
+The question is now whether we can reverse the statement
+%
+\nbea
+g & \stackrel{?}{\equiv} & a^n \pmod{p}
+\neea
+%
+The answer is it depends, if $a$ is also a primitive root then yes, otherwise the answer is no because otherwise we can express any other element of $\mathbb{Z}/p\mathbb{Z}$ in terms of $a$, \ie $b \equiv g^u \pmod{p} \equiv a^{nu} \pmod{p}$.
+
+\bigskip
+{\bf Inverse Primitive Root}
+
+Taking this further, is there an inverse primitive root? \ie a number that can be expressed as a power of {\it every} other number, except for $1$ and $0$. 
+%
+\nbea
+d & \equiv & b_i^{m_i} \pmod{p}~~~{\rm for~all~} b_i \in \mathbb{Z}/p\mathbb{Z}, ~~b_i \neq 0,1
+\neea
+%
+of course, $d$ itself should not be $1$. For example for $\mathbb{Z}/5\mathbb{Z}$, $4$ is this number as
+%
+\nbea
+4 & \equiv & 2^2 \pmod{5} \\
+4 & \equiv & 3^2 \pmod{5}
+\neea
+%
+For one thing, exponentiating $p-1$ only gets you $p-1$ and $1$ since $p-1 \equiv -1 \pmod{p}$. Therefore, the only candidate for the inverse primitive root is $p-1$.
+
+If $a^m \equiv -1 \pmod{p}$ then $a^{2m} \equiv 1 \pmod{p}$ and $\gcd(2m, p-1) = d$ where $d$ is the multiplicative order of $a$ modulo $p$. 
+
+Well, let's think about it for a bit. Say a number $a$ satisfies the following
+%
+\nbea
+a^m & \equiv & -1 \pmod{p} \\
+\to a^{2m} & \equiv & 1 \pmod{p}
+\neea
+%
+where $m$ is the smallest number that the above is true. Therefore, the order of $a$ has to be even. Conversely, if the order of $a$ is odd, then there's no $m$ such that $a^m \equiv -1 \pmod{p}$ because if there is then the order of $a$ would be even, which is a contradiction.
+
+Therefore, there exists an inverse primitive root if and only if every number $1 < a < p-1$ has an even multiplicative order modulo $p$. Note that, for a primitive root $g$, $g^{(p-1)/2} \equiv -1 \pmod{p}$ is guaranteed as $p-1$ is even for an odd prime.
+
+From the proof of Theorem 2.5.8, the existence of primitive roots modulo an odd prime $p$, we know that we can find a number $a$ with $p_i^{n_i}$ as its order where
+%
+\nbea
+p-1 = \prod_i^{N} p_i^{n_i}
+\neea
+%
+where $p_i$ is a prime factor of $p-1$. Therefore there is an inverse primitive root modulo $p$ {\it if and only if} $p-1 = 2^n$.
+
+{\it Proof}. $p-1 = 2^n$ means that $\varphi(p) = 2^n$. Therefore the order of any $a \in \mathbb{Z}/p\mathbb{Z}$ is a factor of $2^n$, see Proposition 2.27.(b).1, \ie every number has an even order.  Therefore $a^{d/2} \equiv -1 \pmod{p}$. Why? Note that $x^2 - 1 \equiv 0 \pmod{p}$ only has two solutions $+1$ and $-1$, $+1$ isn't legit because then that means $a^{d/2} \equiv 1 \pmod{p}$ but the order of $a$ is $d$, then $-1$ it is :) As a side note, this also means that the only element of $\mathbb{Z}/p\mathbb{Z}$ that has an order of 2 is $-1 \pmod{p}$. This completes the proof.
 
 {\bf Proposition 2.5.3}. Note that this only applies to fields. See the last paragraph in the proof, especially this sentence ``since $\beta-\alpha \neq 0$ and $k$ is a field, we have $g(\beta)=0$.''. This is because every element in a field (other than zero) has an inverse such that
 %
@@ -814,6 +973,54 @@ x^{q_i^{n_i-1}} - 1 & = & 0 \\
 \ie any roots of $x^{q_i^{n_i - k}} - 1$ are automatically roots of $x^{q_i^{n_i - 1}} - 1$ thus a root of $x^{q_i^{n_i}} - 1$ that is not a root of $x^{q_i^{n_i - 1}} - 1$ is really a new root!
 
 {\bf Proposition 2.5.12}. An additive order modulo $n$ is the smallest positive $x$ such that $ax \equiv 0 \pmod{n}$. The order we've been talking about in this chapter is multiplicative order.
+
+{\bf Lowbrow version of the proof}. This whole business about nested $\varphi$ can be explained without group theory. First we need to show that different primitive roots are related in a certain way.
+
+{\bf Proposition 2.5.12.1}. Any two primitive roots, $g, \tilde g$, modulo $n$ are related thorugh
+%
+\nbea
+\tilde g & \equiv & g^{d} \pmod{n}
+\neea
+%
+where $\gcd(d, \varphi(n)) = 1$. Moreover, since $\varphi(n)$ is always even for $n > 2$, $d$ is always odd.
+
+{\it Proof}. We know that a primitive root, $g$ , is a generator of $\mathbb{Z}/n\mathbb{Z}$. Therefore, if there is another primitive root, $\tilde g$, it must be that $\tilde g \equiv g^d \pmod{n}$.
+
+Say $\gcd(d, \varphi(n)) = w$ thus
+%
+\nbea
+\tilde g^{\varphi(n)/w} & \equiv & (g^{d})^{\varphi(n)/w} \pmod{n} \\
+& \equiv & g^{d'\varphi(n)} \pmod{n}, ~~~ d = d'w\\
+\to \tilde g^{\varphi(n)/w} & \equiv & 1 \pmod{n}
+\neea
+%
+which is a contradiction as the order of $\tilde g$ is $\varphi(n)$. Therefore $\gcd(d, \varphi(n)) = 1$.
+
+{\bf Proposition 2.5.12.2}. $g$ is a primitive root modulo $n$ if and only if $g^d \pmod{n}$ is also a primitive root modulo $n$ where $\gcd(d,\varphi(n)) = 1$.
+
+{\it Proof}. First, suppose that $g$ is a primitive root, now assume that $k = g^d \pmod{n}$ is not a primitive root, therefore
+%
+\nbea
+k^u = (g^d)^u & \equiv & 1 \pmod{n}
+\neea
+%
+where $u|\varphi(n)$ as shown in Proposition 2.27.(b).1. but this is a contradiction as $ud < \varphi(n)$ and the order of $g$ is $\varphi(n)$.
+
+Now conversely, suppose $g^d \pmod{n}$ {\bf is} a primitive root. We know from Euler's theorem that $g^{\varphi(n)} \equiv 1 \pmod{n}$ and according to Proposition 2.27.(b).1 the order of $g$ must divide $\varphi(n)$, let's denote the order of $g$ as $h \to g^h \equiv 1 \pmod{n}$. Therefore
+%
+\nbea
+(g^{h})^d = (g^d)^h & \equiv & 1 \pmod{n}
+\neea
+%
+However, the order of $g^d$ is $\varphi(n)$, thus $h$ must be $\varphi(n)$ but in that case since $h$ is the order of $g$, it has be be a primitive root as well.
+
+We can now proceed to proof Proposition 2.5.12. Let's list the powers of $g$, a primitive root modulo $n$
+%
+\nbea
+g, g^2, g^3 , \dots, g^{\varphi(n)}
+\neea
+%
+According to Proposition 2.5.12.2 any $g^d$ where $\gcd(d,\varphi(n))=1$ is a primitive root. Now how many such $d$'s are there? Well, the answer is of course $\varphi(\varphi(n))$ since by definition $\varphi(n)$ counts the number of numbers, $a$'s, greater than 0 that have $\gcd(n,a)=1$. This completes the proof.
 
 {\bf Problem 2.1}. Prove that for any positive integer $n$, the set $(\mathbb{Z}/n\mathbb{Z})^*$ under multiplication modulo $n$ is a group.
 
@@ -2284,7 +2491,9 @@ x^d & = & 1 + mn s \\
 & \equiv & 1 \pmod{mn}
 \neea
 %
-We know that the order of $x$ modulo $mn$ must be divisible by $a$ and $b$ and $d = {\rm lcm}(a,b)$ is the smallest number that is divisible by $a$ and $b$, therefore $x^d \equiv 1 \pmod{mn}$ means that the order of $x$ modulo $mn$ is indeed $d = {\rm lcm}(a,b)$.
+We know that the order of $x$ modulo $mn$ must be divisible by $a$ and $b$ and $d = {\rm lcm}(a,b)$ is the smallest number that is divisible by $a$ and $b$, therefore $x^d \equiv 1 \pmod{mn}$ means that the order of $x$ modulo $mn$ is indeed $d = {\rm lcm}(a,b)$. Therefore,
+
+{\bf Proposition 2.29.1}. The order of $x$ modulo $mn$ where $\gcd(m,n) = 1$ is given by ${\rm lcm}(a,b)$ where $a$ is the order of $x$ modulo $m$ and $b$ is the order of $x$ modulo $n$.
 
 We now use this result to characterize the primitive roots of $w$ based on its prime factorization. Thanks to Euclid, every number $w$ can be factorized into
 %
@@ -2746,8 +2955,32 @@ ka + ja & \equiv & 0 \pmod{p}
 %
 which was proven to be a contradiction in the text.
 
-This whole business of proving Lemma 4.3.1 can actually be done using Lemma 2.1.12. Note that $a, 2a, \dots, \frac{p-1}{2}a$ is almost half of the complete residue of $p$, we are just missing 0. We know that we can map $-a\frac{p-1}{2}, \dots, 0, \dots, \frac{p-1}{2}a$ to $-\frac{p-1}{2}, \dots, 0, \dots, \frac{p-1}{2}$ thanks to Lemma 2.1.12.
+This whole business of proving Lemma 4.3.1 can actually be done more clearly using Lemma 2.1.12. Note that $-a\frac{p-1}{2}, \dots, 0, \dots, \frac{p-1}{2}a$ is a complete set of residue according to Lemma 2.1.12 because $a \not\equiv 0 \pmod{p} \to \gcd(a,p) = 1$ as $p$ is prime.
 
-Let's denote 
+Let's denote
+%
+\nbea
+A^+ & = & \{a, 2a, 3a, \dots, \frac{p-1}{2}a\} \\
+A^- & = & \{-a, -2a, -3a, \dots, -\frac{p-1}{2}a\} \\
+A & = & \{-a\frac{p-1}{2}, \dots, -a, 0, a, \dots, \frac{p-1}{2}a\}  = \{A^-, 0, A^+\}\\
+O & = & \{-\frac{p-1}{2}, \dots, -1, 0, 1, \dots, \frac{p-1}{2}\}
+\neea
+%
+\ie $A = aO$. Thanks to Lemma 2.1.12 there is a one to one (and onto) mapping between $A$ and $O$. To prove Lemma 4.3.1 we want to map $S = A^+$ to $O$, let's call this bijective mapping $f(A): A \to O$, $f(A^+) = O^+ \subset O$, $f(A^-) = O^- \subset O$.
+
+It is now straightforward to show that ``No number $1, 2, \dots , \frac{p-1}{2}$ appears more than once, with {\bf either choice of sign}'' in  $O^+$. First, assume there are duplicate entries with a positive relative sign $d, d$ in $O^+$. This is a blatant contradiction as $f$ is a bijective mapping as required by Lemma 21.12. 
+
+Next, say there are duplicate entries with a relative negative sign $d, -d \in f(A^+)$, then there will be no bijective mapping between $A$ and $O$. First the mapping between $A$ and $O$ is just a reduction modulo $p$ which means that $\tilde a \equiv \tilde o \pmod{p}$ where $\tilde a \in A$ and $\tilde o = f(\tilde a) \in O$. Therefore
+%
+\nbea
+\tilde a & \equiv & \tilde o \pmod{p} \\
+-\tilde a & \equiv & -\tilde o \pmod{p} \\
+\to f(A^-) & = & - f(A^+), ~~~{\rm note~that~} A^- = -A^+
+\neea
+%
+Hence $d, -d$ will be in the image of $A^-$ as well. This is a contradiction as the overlap between $f(A^+) \cap f(A^-) = \{d, -d\}$ means that $\#\{f(A^-), f(0), f(A^+)\} < \#O$.
+
+I chose to use Lemma 2.1.12 to make sure that the map between $S=A^+$ and $O^+$ is guaranteed to exist, that's all.
+
 
 \end{document}
