@@ -2860,7 +2860,17 @@ Therefore $p = t + s = 37865717$ and $q = t - s = 37865693$.
 
 {\bf Definition 4.1.2}. The example right after this definition. $\left ( \frac{5}{5}\right ) = 1$. I believe this is wrong because $\gcd(5,5) = 5 \neq 1$ and as such it should be that $\left ( \frac{5}{5}\right ) = 0$.
 
-{\bf Proposition 4.2.1}. Euler's Criterion. This can be proven in a more lowbrow manner. The most obvious way is to use the proof of Lemma 4.1.4. There it was shown that all quadratic residue is of the form $g^{2m}$ where $g$ is a primitive root. Therefore,
+{\bf Lemma 4.1.4}. There are some nice things that can be said about $\mathbb{Z}/p\mathbb{Z}$  when $p$ is an odd prime and $p = 2^n + 1$.
+
+{\bf Proposition 4.1.4.1}. If $p$ is an odd prime and $p = 2^n + 1$ then all primitive roots of $(\mathbb{Z}/p\mathbb{Z})^*$ are quadratic non residues and non-primitive roots are all quadratic residues. In other words, exactly half of $(\mathbb{Z}/p\mathbb{Z})^*$ are quadratic residues while the other half are not.
+
+{\it Proof}. From Proposition 2.5.12.2 we know that when $g$ is a primitive root, all $g^d$ with $\gcd(d, \varphi(p)) = 1$ are also primitive roots.
+
+And each primitive root is of course a quadratic non residue because from the proof of Lemma 4.1.4 we know that any primitive root with an odd power is a quadratic non residue. Or more explicitly, $x^2 - 1$ only has $\pm1$ as solutions and $x=g^{\varphi(p)/2}$ where $g$ is {\it any} primitive root is of course a solution since $(g^{\varphi(p)/2})^2 \equiv 1$. However, since $g$ is a primitive root we cannot have $g^{\varphi(p)/2} \equiv +1$ cause then its order will be $\varphi(p)/2$ which is a contradiction. So since the only other solution to $x^2-1$ is $-1$ then $g^{\varphi(p)/2} \equiv -1$.
+
+So we have shown that {\it all} primitive roots are quadratic non-residues. How about the non primitive roots? Well, again from Proposition 2.5.12.2, the non primitive roots are the ones with $g^h$ where $\gcd(h, \varphi(p) \neq 1$. Since $\varphi(p) = 2^n$, $h$ has to be even. And from the proof of Lemma 4.1.4, any $g^{2m}$ is a quadratic residue, thus in this case the non-primitive roots are all quadratic residues. This completes the proof.
+
+{\bf Proposition 4.2.1, lowbrow version}. Euler's Criterion. This can be proven in a more down to earth manner. The most obvious way is to use the proof of Lemma 4.1.4. There it was shown that all quadratic residue is of the form $g^{2m}$ where $g$ is a primitive root. Therefore,
 %
 \nbea
 (g^{2m})^{(p-1)/2} & = & g^{m(p-1)} \equiv 1 \pmod{p}
