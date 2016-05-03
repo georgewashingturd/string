@@ -1,0 +1,30 @@
+if a=g^d then the order of a is varphi(p)/gcd(d,varphi(p))
+
+if b=a^h and the order of a is f then the order of b is f/gcd(f,h)
+
+a = g^d, b=g^dh order of b is varphi(p)/gcd(dh, varphi(p)) = (varphi(p)/gcd(d,varphi(p)))/gcd(varphi(p)/gcd(d,varphi(p)), h)
+
+= varphi(p) / gcd(d,varphi(p))) * gcd(varphi(p)/gcd(d,varphi(p)), h)
+
+is there something with an order of p-1/2, yes it is g^2
+
+if the order of a is m then a^m/2 is -1
+
+you want numbers whose order is  gcd(order,p-1/2) = 1 then t=m^p-1/2, t^2 = 1
+
+p-1/2   - varphi(p-1/2)
+
+gcd(a,bc) = gcd(a,b) . gcd(a/gcd(a,b),c)
+
+(x - 1)(x + 1) = nr
+3 5 = 15 1
+10 12 = 15 8
+
+A (A + 2) = n R
+
+pick one factor of n and then pick another, say a and b
+am = bn+2
+
+for x^2 - 1 to have b roots it must not have primitive roots because if it has primitive roots the only one with order 2 is -1. Say a has order m and m is not 2
+
+then we have to get something like a^varphi(n)/2 but this is surely 1
