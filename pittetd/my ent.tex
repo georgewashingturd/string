@@ -1040,7 +1040,23 @@ Therefore $\varphi(n)|mf$ since $g$ is a primitive root. If $\gcd(\varphi(n),m) 
 \neea
 %
 
-{\bf Corollary 2.5.12.3.2}. Each number in $(\mathbb{Z}/n\mathbb{Z})^*$ has a {\it unique} order since the order of a number $a \equiv g^d \pmod{n}$ is given by $\varphi(n)/\gcd(\varphi(n),m)$ and $d$ is unique. This also means that the only number with order 1is 1 and the onl number with order 2 is $-1 \equiv g^{\varphi(n)/2}\pmod{n}$
+{\bf Corollary 2.5.12.3.2}. If there's a prmitive root, then it means that the only number with order 2 is $g^{\varphi(n)/2}\pmod{n}$. This is because say
+%
+\nbea
+\varphi(n) & = & 2^n_2 \cdot \prod_i^{N} p_i^{n_i}
+\neea
+%
+where each prime $p > 2$ and they are all distinct. For $\gcd(d, \varphi(n)) = \varphi(n)/2$, $d$ must be
+%
+\nbea
+d & = & k\cdot 2^{n_2-1} \cdot \prod_i^{N} p_i^{n_i}
+\neea
+%
+but $d < \varphi(n)$ thus $k=1$ and that's the only value for $d$.
+
+However, we also know that the order of $-1$ modulo $n$ is 2, since there's only 1 number with an order of 2 this means that $g^{\varphi(n)/2} \equiv -1 \pmod{n}$. The only exception to this is $\mathbb{Z}/2\mathbb{Z}$ since the only element is $1\equiv-1\pmod{2}$ (hence 4-1 has an order of 1 modulo 2).
+
+Note that just because each number in $(\mathbb{Z}/n\mathbb{Z})^*$ can be expressed as $a \equiv g^d \pmod{n}$ with unique $d$ it doesn't mean that the order of a number given by $\varphi(n)/\gcd(\varphi(n),d)$ is unique. This is because two distinct numbers $f\neq h$ can have the same gcd with a third number $\gcd(f,j) = \gcd(h,j)$.
 
 {\bf Proposition 2.5.12.4}. If $(\mathbb{Z}/n{Z})^*$ contains a primitive root, $g$, then the inverse of an element $a \equiv g^m \pmod{n}$ is given by $a^{-1} \equiv g^{\varphi(n) - m} \pmod{n}$.
 
