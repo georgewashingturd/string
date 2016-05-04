@@ -238,6 +238,9 @@ Stray thoughts of a stray man. This is a collection of things that I thought was
 \renewcommand{\theequation}{A.\arabic{equation}}  % redefine the command that creates the equation no.
 \setcounter{equation}{0}  % reset counter 
 
+\underline{\textbf{\textit{Chapter 1}}}
+\bigskip
+
 The pdf book I've been reading about elementary number theory (ent) is ent.pdf. It is written by William Stein, there are multiple versions and revisions of the book. One is called ``{\it Primes, Congruences, and Secrets}" dated Nov 16, 2011. Another version is called ``{\it A Computational Approach}" dated March 2007. As far as I can tell, they are pretty much the same but I'll use ``{\it Primes, Congruences, and Secrets}" in this article.
 
 The proofs in these books are not the easiest to understand but they are really cool. So I'll list here explanations about the proofs that hopefully clarify them.
@@ -638,7 +641,9 @@ Since $p_1, p_2, \dots, p_N$ do not divide $n$ the next prime factor candidate w
 \eit
 %
 
-++++++++++++++++++++++++++++++++++\\
+\bigskip
+\underline{\textbf{\textit{Chapter 2}}}
+\bigskip
 
 {\it Example }2.1.5.
 %
@@ -976,7 +981,11 @@ x^{q_i^{n_i-1}} - 1 & = & 0 \\
 
 {\bf Lowbrow version of the proof}. This whole business about nested $\varphi$ can be explained without group theory. First we need to show that different primitive roots are related in a certain way.
 
-{\bf Proposition 2.5.12.1}. Any two primitive roots, $g, \tilde g$, modulo $n$ are related thorugh
+\bigskip
+\underline{\textbf{\textit{Properties of Primitive Roots}}}
+\bigskip
+
+{\bf Proposition 2.5.12.1}. Any two primitive roots, $g, \tilde g$, modulo $n$ are related through
 %
 \nbea
 \tilde g & \equiv & g^{d} \pmod{n}
@@ -1014,7 +1023,50 @@ Now conversely, suppose $g^d \pmod{n}$ {\bf is} a primitive root. We know from E
 %
 However, the order of $g^d$ is $\varphi(n)$, thus $h$ must be $\varphi(n)$ but in that case since $h$ is the order of $g$, it has be be a primitive root as well.
 
-We can now proceed to proof Proposition 2.5.12. Let's list the powers of $g$, a primitive root modulo $n$
+{\bf Proposition 2.5.12.3}.  If $(\mathbb{Z}/n{Z})^*$ contains a primitive root, $g$, then the order of an element $a \equiv g^m \pmod{n}$ is given by $\varphi(n)/\gcd(\varphi(n),m)$.
+
+{\it Proof}. Say the order of $a \equiv g^m \pmod{n}$ is $f$ therefore
+%
+\nbea
+a^{f} & \equiv & g^{mf} \pmod{n} \equiv 1 \pmod{n}
+\neea
+%
+Therefore $\varphi(n)|mf$ since $g$ is a primitive root. If $\gcd(\varphi(n),m) = 1$ then the smallest $f$ is $\varphi(n)$ itself and in that case we have another primitive root. If $h=\gcd(\varphi(n),m) \neq 1$ then the smallest $f$ is obviously $\varphi(n)/h$.
+
+{\bf Corollary 2.5.12.3.1}. Say $a$ is not a primitive root and $b \equiv a^k \pmod{n}$ and the order of $a$ is $d$, therefore the order of $b$ is $d/\gcd(d,k)$. The proof follows closely to the one above by replacing $g$ with $a$. We can also prove this by expressing $a$ in terms of a primitive root $g$ and using the identity
+%
+\nbea
+\gcd(a,bc) & = & \gcd(a,b) \cdot \gcd\left ( \frac{a}{\gcd(a,b)}, c \right )
+\neea
+%
+
+{\bf Corollary 2.5.12.3.2}. Each number in $(\mathbb{Z}/n\mathbb{Z})^*$ has a {\it unique} order since the order of a number $a \equiv g^d \pmod{n}$ is given by $\varphi(n)/\gcd(\varphi(n),m)$ and $d$ is unique. This also means that the only number with order 1is 1 and the onl number with order 2 is $-1 \equiv g^{\varphi(n)/2}\pmod{n}$
+
+{\bf Proposition 2.5.12.4}. If $(\mathbb{Z}/n{Z})^*$ contains a primitive root, $g$, then the inverse of an element $a \equiv g^m \pmod{n}$ is given by $a^{-1} \equiv g^{\varphi(n) - m} \pmod{n}$.
+
+{\it Proof}. Say $b = a^{-1}$, since $g$ is a primitive root, $b \equiv g^l \pmod{n}$ then
+%
+\nbea
+ab & \equiv & g^m b \pmod{n}\\
+& \equiv & g^m g^l \pmod{n} \\
+1 \pmod{n} & \equiv & g^{m+l} \pmod{n}
+\neea
+%
+Thus $m+l = y \cdot \varphi(n) \to l = y\varphi(n) - m$ where $y$ is a positive integer. However, if $ y > 1$
+%
+\nbea
+g^{y\varphi(n) - m} & = & g^{(y-1)\varphi(n)} \cdot g^{\varphi(n) - m} \\
+g^{(y-1)\varphi(n)} \cdot g^{\varphi(n) - m} & \equiv & 1 \cdot g^{\varphi(n) - m} \pmod{n} \\
+\to g^{y\varphi(n) - m} & \equiv & g^{\varphi(n) - m} \pmod{n}
+\neea
+%
+Therefore $a^{-1} \equiv g^{\varphi(n) - m} \pmod{n}$.
+
+Note that the case of $\mathbb{Z}/p{Z}$ where $p$ is prime is unique as $\mathbb{Z}/p{Z} = (\mathbb{Z}/p{Z})^*$. Thus the primitive roots generate both the unit group and the field itself. For others, things are not so rosy and the primitive roots only generate the unit group {\bf NOT} the ring itself.
+
+\bigskip
+
+{\it We can now proceed to prove}  {\bf Proposition 2.5.12}. Let's list the powers of $g$, a primitive root modulo $n$
 %
 \nbea
 g, g^2, g^3 , \dots, g^{\varphi(n)}
@@ -1831,9 +1883,9 @@ which is a contradiction. Or you can just use Bezout's lemma, since $\beta^2 \eq
 %
 therefore $\gcd(\beta,n)=1$.
 
-Second, since $x^2 - 1 = (x-1)(x+1)$, $x=1$ and $x=-1=n-1 \pmod{n}$ are automatically solutions.
+{\bf Second}, since $x^2 - 1 = (x-1)(x+1)$, $x=1$ and $x=-1=n-1 \pmod{n}$ are automatically solutions.
 
-Third, once you have two solutions $\alpha,\beta$ (not equal to $1$ of course) you can get a third one because
+{\bf Third}, once you have two solutions $\alpha,\beta$ (not equal to $1$ of course) you can get a third one because
 %
 \nbea
 \alpha^2 \cdot \beta^2 & \equiv & 1 \cdot 1 \pmod{n} \\
@@ -1856,9 +1908,88 @@ which is a contradiction (the same argument works for $\alpha\beta \equiv \alpha
 %
 so we are not getting any new solution (the same thing happens if you multiply $\beta$ with the new solution $\alpha\beta$ you'll just get $\alpha$).
 
-Other than the above items, I didn't see any way to prove the number of solutions of a polynomial modulo ${n}$ (especially when $n$ is not prime).
+{\bf Fourth}, $x^2 \equiv 1 \pmod{n}$ means that the order of $x$ is $2$ or a factor of $2$, \ie the order of $x$ is either $2$ or $1$. Now, from Proposition 2.5.12.4 if there is a primitive root then the only number with order $2$ is $g^{\varphi(n)/2}$ which is $-1 \pmod{n}$, see Corollary 2.5.12.3.2. Thus we must find a number $n$ such that $(\mathbb{Z}/n\mathbb{Z})^*$ does {\bf not} have a primitive root. 
 
-The way to prove that we can find $n$ such that $x^2-1$ has at least $b$ solutions is to use something called the Chinese remainder map. Consider a number, any number $x$, we can represent this number in the following way
+I feel that this problem is very tricky I don't know why Stein doesn't mark it as difficult with an asterisk or maybe I just missed something very obvious.
+
+My way to solve the problem (quite crudely) is as follows. First,
+%
+\nbea
+x^2 - 1 & = & (x - 1)(x + 1) \\
+& = & m (m + 2)
+\neea
+%
+where $m = x - 1$. We now construct the following, first choose $n = p_1 p_2 p_3 \dots p_N$ where each $p$ is a {\it distinct} prime $> 2$ and $N \ge 3$.
+
+Now, $m(m+2) \equiv 0 \pmod{n}$ means that $m(m+2) = ns$. So we just need to spread the factors of $n$ into $m$ and $m+2$.
+
+Next choose one prime factor $p_i$ from $n$ and set $w = p_i$ and then set $v = n/p_i$ (so $v$ contains all other prime factors of $n$) which also means that $\gcd(w,v) = 1$. Now from Bezout's lemma we can find two numbers $k, l$ such that
+%
+\nbea
+wk + vl & = & 1 \\
+2wk + 2vl & = & 2
+\neea
+%
+Now one of $k,l$ must be negative as $w,v$ are both positive. Say $k$ is positive then
+%
+\nbea
+2wk & = & 2 + 2v|l|
+\neea
+%
+Now if we multiply 
+%
+\nbea
+2wk \cdot 2v|l| & = & 2 \bcancel{p_i} k \cdot 2 \left ( \frac{n}{\bcancel{p_i}} \right ) |l| \\
+& = & n (4 k |l|) \\
+2wk \cdot 2v|l| & \equiv & 0 \pmod{n}
+\neea
+%
+so we can set $m = 2v|l| = x - 1, ~ m + 2 = 2wk$, $x = 2v|l| - 1$ and $x^2 \equiv 1 \pmod{n}$. If $k$ is negative and $l$ is positive we just set $m = 2w|k|$ instead. Note that the pair $(2wk, 2vl)$corresponds to only {\bf one} value of $x$.
+
+What happens if we choose another prime factor of $n$? Say $w' = p_j$ and $v' = n/p_j, ~j \neq i$. Just like before $2w'k' + 2v'l' = 2$. We can show that $2wk \not\equiv 2w'k' \pmod{n}$ because otherwise
+%
+\nbea
+2w'k' & = & 2wk +nt\\
+& = & p_i \left (2 k + \frac{n}{p_i}t \right )
+\neea
+%
+note that $w = p_i$. This means that either $p_i|w'$ or $p_i|k'$ but this is a contradiction since $w' = p_j$ is a different prime from $p_i$ and Bezout tells us that $w'k' + v'l' = 1$ means not only $\gcd(w', v') = 1$ but also $\gcd(k',v') = 1$ and note that $v' = n/p_j = p_i q$ and since $\gcd(k',v') = 1$ this means that $p_i \nmid k'$.
+
+Now what about $2w'k'$ and $2vl$?
+%
+\nbea
+2w'k' & = & 2vl +nt , ~~~ v = \frac{n}{p_i} = p_j p_o u\\
+2 \bcancel{p_j}k' & = & \bcancel{p_j}p_o \left (2 ul + \frac{n}{p_j p_o}t \right ) \\
+2 k' & = & p_o \left (2 ul + \frac{n}{p_j p_o}t \right )
+\neea
+%
+Since each $p > 2$ it means $p_o | k'$ but just like before $\gcd(k',v') = 1$ and $v' = n/p_j = p_o y$ translates to $p_o \nmid k'$. So this ends up in a contradiction as well. 
+
+Next we check $2v'l'$ and $2wk$
+%
+\nbea
+2wk & = & 2v'l' +nt , ~~~ v' = \frac{n}{p_j} = p_i p_o u\\
+2 \bcancel{p_i}k & = & \bcancel{p_i}p_o \left (2 ul + \frac{n}{p_i p_o}t \right ) \\
+2 k & = & p_o \left (2 ul + \frac{n}{p_j p_o}t \right ) \\
+\to p_o & | & k
+\neea
+%
+Just like before $wk + vl = 1$ means that $\gcd(k,v)  = \gcd(k,p_o y)= 1$ so $p_o | k$ is a contradiction.
+
+The last case is  $2v'l'$ and $2vl$
+%
+\nbea
+2vl & = & 2v'l' +nt \\
+\frac{\bcancel{n}}{p_i}(2l) & = & \frac{\bcancel{n}}{p_j}(2 l') + \bcancel{n}t \\
+p_j(2l) & = & p_i ((2 l') + p_j t) \\
+\to p_i & | & l
+\neea
+%
+But $wk + vl = 1$ means that $\gcd(w,l) = \gcd(p_i,l) = 1$, thus $p_i|l$ is a contradiction.
+
+We have thus shown that each $p$ generates a distinct solution to $x^2 - 1 \equiv 0 \pmod{n}$. To get $b$ solutions we just need to set $N$, the number of prime factors, to $N = b + 3$. This guarantees at least $b$ solutions. 
+
+A more elegant way to prove that we can find $n$ such that $x^2-1$ has at least $b$ solutions is to use something called the Chinese remainder map (as shown by Victor Soup). Consider a number, any number $x$, we can represent this number in the following way
 %
 \nbea
 x & \equiv & x_{1} \pmod{n_{1}} \\
@@ -2635,7 +2766,9 @@ I don't know any clever way to do this. The problem is that even if I know that 
 %
 and many more :) but since the above list was generated in order 36721 is the smallest prime to have 37 as its smallest primitive root.
 
-++++++++++++++++++++++++++++++++++\\
+\bigskip
+\underline{\textbf{\textit{Chapter 3}}}
+\bigskip
 
 {\bf Page 51}. ``3. Then, $ang \equiv n \pmod{p}$, so everyone knows Nikita's secret key $n$,
 and hence can easily compute the shared secret $s$.''
@@ -2856,7 +2989,9 @@ t^2 - n & = & = s^2 = 144 \\
 %
 Therefore $p = t + s = 37865717$ and $q = t - s = 37865693$.
 
-++++++++++++++++++++++++++++++++++\\
+\bigskip
+\underline{\textbf{\textit{Chapter 4}}}
+\bigskip
 
 {\bf Definition 4.1.2}. The example right after this definition. $\left ( \frac{5}{5}\right ) = 1$. I believe this is wrong because $\gcd(5,5) = 5 \neq 1$ and as such it should be that $\left ( \frac{5}{5}\right ) = 0$.
 
