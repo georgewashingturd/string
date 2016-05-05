@@ -1058,6 +1058,38 @@ However, we also know that the order of $-1$ modulo $n$ is 2, since there's only
 
 Note that just because each number in $(\mathbb{Z}/n\mathbb{Z})^*$ can be expressed as $a \equiv g^d \pmod{n}$ with unique $d$ it doesn't mean that the order of a number given by $\varphi(n)/\gcd(\varphi(n),d)$ is unique. This is because two distinct numbers $f\neq h$ can have the same gcd with a third number $\gcd(f,j) = \gcd(h,j)$.
 
+{\bf Corollary 2.5.12.3.3}. Non-primitive roots of a unit group are generators of a subgroup of $(\mathbb{Z}/n\mathbb{Z})^*$.
+
+{\it Proof}. Say $a$ is not a primitive root of $(\mathbb{Z}/n\mathbb{Z})^*$ and the order of $a$ is $d < \varphi(n)$. We can list all powers of $a$
+%
+\nbea
+a,~a^2,~\dots~, a^d \equiv 1 \pmod{n}
+\neea
+%
+For the above set to be a group each element must have an inverse and of course it does since the inverse of $a^y, ~ y < d$ is just $a^{d-y}$. The identity element is also included in the set by default. Next we need to show that it is closed under multiplication modulo $n$ which it is since $a^z \cdot a^x = a^{x+y} \equiv a^{((a+y) \mod d)} \pmod{n}$. So every non-primitive root is a generator of a subgroup of $(\mathbb{Z}/n\mathbb{Z})^*$.
+
+And following Proposition 2.5.12.1, each $a^y$ where $\gcd(d,y) = 1$ is also a generator of the subgroup.
+
+For example, in $(\mathbb{Z}/15\mathbb{Z})^* = \{1, 2,4, 7, 8, 11, 13, 14\}$ we have the following
+%
+\nbea
+\ba{r c l c r c l c r c l c r c l}
+1 & \to & \{1\} & ~~~ & 2 & \to & \{2, 4, 8, 1\} & ~~~ & 4 & \to & \{4, 1\} & ~~~ &7 & \to & \{7, 4, 13, 1\} \\
+8 & \to & \{8, 4, 2, 1\} & & 11 & \to & \{11, 1\} & & 13 & \to & \{13, 4, 7, 1\} & ~~~ & 14 & \to & \{14, 1\}
+\ea
+\neea
+%
+what the above means is that for example $2$ generates $\{2, 4, 8, 1\}$ and so on. Thus the collection $\{2, 7, 11, 14\}$ are the generators of $(\mathbb{Z}/15\mathbb{Z})^*$ we can of course make other choices as well like $\{8, 11, 13, 14\}$.
+
+{\bf Corollary 2.5.12.3.4}. If a unit group $(\mathbb{Z}/n\mathbb{Z})^*$ has primitive roots then for each (not necessarily prime) factor $q$ of $\varphi(n)$ we can find an element $(\mathbb{Z}/n\mathbb{Z})^*$ whose order is $q$.
+
+{\it Proof}. Say $q$ is a factor of $\varphi(n)$ such that $\varphi(n) = q q'$ then according to Proposition 2.5.12.3 $g^{q'}$ will have an order $q$ modulo $n$. 
+
+{\bf Corollary 2.5.12.3.5}. For any unit group $(\mathbb{Z}/n\mathbb{Z})^*$ we can find an element of the group whose order is a prime factor of $\varphi(n)$.
+
+{\it Proof}. We know that $(\mathbb{Z}/p^n\mathbb{Z})^*$ for an odd prime $p$ always has primitive roots. Since it has primitive roots
+
+
 {\bf Proposition 2.5.12.4}. If $(\mathbb{Z}/n{Z})^*$ contains a primitive root, $g$, then the inverse of an element $a \equiv g^m \pmod{n}$ is given by $a^{-1} \equiv g^{\varphi(n) - m} \pmod{n}$.
 
 {\it Proof}. Say $b = a^{-1}$, since $g$ is a primitive root, $b \equiv g^l \pmod{n}$ then
@@ -1960,7 +1992,7 @@ Now if we multiply
 2wk \cdot 2v|l| & \equiv & 0 \pmod{n}
 \neea
 %
-so we can set $m = 2v|l| = x - 1, ~ m + 2 = 2wk$, $x = 2v|l| - 1$ and $x^2 \equiv 1 \pmod{n}$. If $k$ is negative and $l$ is positive we just set $m = 2w|k|$ instead. Note that the pair $(2wk, 2vl)$corresponds to only {\bf one} value of $x$.
+so we can set $m = 2v|l| = x - 1, ~ m + 2 = 2wk$, $x = 2v|l| + 1$ and $x^2 \equiv 1 \pmod{n}$. If $k$ is negative and $l$ is positive we just set $m = 2w|k|$ instead. Note that the pair $(2wk, 2vl)$corresponds to only {\bf one} value of $x$.
 
 What happens if we choose another prime factor of $n$? Say $w' = p_j$ and $v' = n/p_j, ~j \neq i$. Just like before $2w'k' + 2v'l' = 2$. We can show that $2wk \not\equiv 2w'k' \pmod{n}$ because otherwise
 %
@@ -2003,9 +2035,21 @@ p_j(2l) & = & p_i ((2 l') + p_j t) \\
 %
 But $wk + vl = 1$ means that $\gcd(w,l) = \gcd(p_i,l) = 1$, thus $p_i|l$ is a contradiction.
 
-We have thus shown that each $p$ generates a distinct solution to $x^2 - 1 \equiv 0 \pmod{n}$. To get $b$ solutions we just need to set $N$, the number of prime factors, to $N = b + 3$. This guarantees at least $b$ solutions. 
+We have thus shown that each $p$ generates a distinct solution to $x^2 - 1 \equiv 0 \pmod{n}$. To get $b$ solutions we just need to set $N$, the number of prime factors, to $N = b + 3$. This guarantees at least $b$ solutions.
 
-A more elegant way to prove that we can find $n$ such that $x^2-1$ has at least $b$ solutions is to use something called the Chinese remainder map (as shown by Victor Soup). Consider a number, any number $x$, we can represent this number in the following way
+The above might be a bit confusing so let's do some example. Say $n = 3 \cdot 5 \cdot 7$, we have three distinct prime factors. We now go Bezout
+%
+\nbea
+\ba{r c l c r c l c r c l}
+3 (12) + 5\cdot 7 (-1) & = & 1 & ~~~~~~~ & 5 (-4) + 3\cdot 7 (1) & = & 1 & ~~~~~~~ & 7 (-2) + 3\cdot 5 (1) & = & 1  \\
+m = 2  (5 \cdot 7) & \equiv & 70 & & m = 2 (5 \cdot 4) & \equiv & 40 & & m = 2 (7 \cdot 2) & \equiv & 28 \\
+x = m + 1 & \equiv & 71 & & x = m + 1 & \equiv & 41 & & x = m + 1 & \equiv & 29 
+\ea
+\neea
+%
+to avoid clutter I shortened $\equiv \pmod{n}$ to just $\equiv$. Thus in the case of $n = 3 \cdot 5 \cdot 7 = 105$ we have found three roots of $x^2 - 1 \equiv 0 \pmod{105}$, they are $29,41,71$ we still have $\pm1$ as roots of course.
+
+\underline{A more elegant way} to prove that we can find $n$ such that $x^2-1$ has at least $b$ solutions is to use something called the Chinese remainder map (as shown by Victor Soup). Consider a number, any number $x$, we can represent this number in the following way
 %
 \nbea
 x & \equiv & x_{1} \pmod{n_{1}} \\

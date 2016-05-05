@@ -300,14 +300,20 @@ int main (int argc, char * argv[])
     
     FindFractionOfPrimesWith2AsPrimitiveRoot(1ULL, 1000ULL);
     */
-    uint64 i, M = 105ULL;
+    uint64 i, M = 135ULL;
     
     for (i = 1ULL; i < M; i++)
     {
+        if (FindGcd(M,i) == 1ULL)
+        {
+            printf("%lld %lld\n", i, FindOrder(M, i));
+        }
+        /*
         if(FindOrder(M, i) == 2ULL)
             printf("%lld\n", i);
         else if (PowerModQ(2ULL, i, M) == 1ULL)
             printf("***%lld\n", i);
+        */
     }
     
     return 0;
