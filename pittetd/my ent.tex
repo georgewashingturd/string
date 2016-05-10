@@ -332,6 +332,150 @@ Since $p \nmid a$ and $p \nmid b \longrightarrow p \nmid ab$ this means that $p|
 \end{enumerate}
 So it's nowhere near straightforward, trying to prove this theorem straightforwardly is an oxymoron.
 
+\underline{\textit{However}}, there is another way to prove the fundamental theorem, my way :)
+
+Instead of using gcd (greatest common divisor) I'll use lcm (least common multiple). First, I need to show that every common multiple of two numbers is itself a multiple of the least common multiple.
+
+{\it Proof}. Assume otherwise, denote the least common multiple of two numbers $a$ and $b$ is denoted $L$ and another common multiple $M$ (larger than $L$ obviously since $L$ is the {\it least} common multiple) we assume $M$ is not a multiple of $L$ and $M > L$. Now we do some arithmetic :)
+%
+\nbea
+M - L & = & R_0
+\neea
+%
+we know that because $a,b|M$ and $a,b|L \longrightarrow a,b|R_0$, which means that $R_0$ is also a common multiple of $a,b$. But since $L$ is the {\it least} common multiple of $a$ and $b$, $R_0 > L$. We can further deduce that $R_0 > 0$ since $M > L$. We also know that $L \nmid R_0$ because if $R_0$ is a multiple of $L$ then $M$ must be a multiple of $L$ too.
+
+But this also means that we can repeat the process
+%
+\nbea
+R_0 - L & = & R_1
+\neea
+%
+with the same conclusion for $R_1$, it is a common multiple of $a,b$ which is not a multiple of $L$ and $R_1 > L$. We can then repeat it, and repeat it infinitely many times, which becomes {\it ``reductio ad absurdum} since we start with two {\it finite} numbers $M$ and $L$. Thus any common multiple of two numbers must be a multiple of their least common multiples.
+
+The above proof can also be done using a more orthodox number theory stuff, \ie the proposition that for $a,b \in \mathbb{Z}, ~a>b$ there exist unique $q, r$ such that $a = bq + r$ where $0 \le r < b$ and $q > 0$. Therefore
+%
+\nbea
+M & = & Lq + r
+\neea
+%
+but because $a,b|M$ and $a,b|L \longrightarrow a,b|r$ and since $0 \le r < L$, $r$ is a common multiple of $a$ and $b$ that is smaller than the least common multiple, which is a contradiction.
+
+Now, if $a$ and $b$ were primes it can be shown that $L=ab$. A word of caution, you can't say that since $a,b$ are primes the only factors of $ab$ are $1,a,b$ therefore their lcm must be $ab$. This is circular reasoning. We want to show that any number can be factorized into a unique set of primes, however, we haven't shown that that is the case yet.
+
+To show that $L$ is $ab$ we need to use the above result. We know that since $ab$ is a common multiple of $a$ and $b$ it has to be a multiple of $L$
+%
+\nbea
+ab & = & Lq
+\neea
+%
+but $L = an$ since $a,b|L$ and so
+%
+\nbea
+\bcancel{a}b & = & \bcancel{a}nq \\
+b & = & nq
+\neea
+%
+since $b$ is prime $n,q$ must be $1,b$, the question is which one is which? $n$ can't be one since then $L=a$ which is a contradiction, therefore $q=1, n=b$ and thus $L=ab$.
+
+We have therefore shown that the least common multiple of two primes is the product of those two. This combined with the fact that any common multiple is a multiple of the least common multiple are the only ingredients we need to prove the fundamental theorem of arithmetic.
+
+Now, to the fundamental theorem. Suppose we can factor a number $N$ into two different factorization
+%
+\nbea
+p_1 p_2 \dots p_n & = & q_1 q_2 \dots q_m
+\neea
+%
+where $p_i, q_j$ are all primes. We will show that $m=n$ (the same number of factors for both sides) and that the $p$'s are equal to the $q$'s.
+
+First, $N=p_1 p_2 \dots p_n = q_1 q_2 \dots q_m$ means that $N$ is a common multiple of $p_1$ and $q_1$ and since they are both primes $N$ must be a multiple of $p_1q_1$ therefore
+%
+\nbea
+N = \bcancel{p_1} q_1 R_{p_1} & = & \bcancel{p_1} p_2 \dots p_n \\
+q_1 R_{p_1} & = & p_2 \dots p_n
+\neea
+%
+where $R_{p_1}$ is just some integer. But the above result means that $N_{p_1} = q_1 R_{p_1} = p_2 \dots p_n$ is a common multiple of $q_1$ and $p_2$ and since they are both primes $N_{p_1}$ must be a multiple of $p_2q_1$ therefore
+%
+\nbea
+N_{p_1} = \bcancel{p_2} q_1 R_{p_2} & = & \bcancel{p_2} p_3 \dots p_n \\
+q_1 R_{p_2} & = & p_3 \dots p_n
+\neea
+%
+We can then repeat the process until $q_1 R_{p_{n-1}} = p_n$, since both $q_1$ and $p_n$ are prime the only solution is to have $R_{p_{n-1}} = 1$ and $q_1 = p_n$, we can therefore factor them out from the equation
+%
+\nbea
+p_1 p_2 \dots \bcancel{p_n} & = & \bcancel{q_1} q_2 \dots q_m \\
+\to p_1 p_2 \dots p_{n-1} & = & q_2 q_3 \dots q_m
+\neea
+%
+We can now repeat the procedure above to get $q_2 = p_{n-1}$ and so on.
+
+Now if $m\neq n$ we will be in trouble sooner or later because one side will be left with just 1
+%
+\nbea
+p_1 p_2 \dots p_k & = & 1 ~~~ {\rm if~} n > m \\
+1 & = & q_j q_{j+1} \dots q_n ~~~ {\rm if~} n < m 
+\neea
+%
+which is again a contradiction since $p$'s and $q$'s are all prime numbers. The only way out is to have $m=n$ (the number of prime factors are the same) but that means $p$'s and $q$'s constitute the same set of prime numbers. We therefore have the result that the prime factors of any number is unique which is the fundamental theorem of arithmetic. As a bonus, our procedure above also demonstrates that the prime factors is unique up to an ordering since we can choose any $p$ and $q$ to begin with.~~~ $\mathcal{Q.E.D}$ :)
+
+
+{\bf Theorem 1.2.1} (Euclid). {\it There are infinitely many primes}.
+
+I tried proving this my own way and I couldn't get very far from the original proof. It somehow must contain the product of all primes, no matter how you spin it. Here's the best I could get. My proof utilizes contradictions. If there are only a finite number of primes, say $\{p_1, p_2, \dots, p_N\}$ then any number $> p_N$ will have one of  those primes as a factor. However, this generates a few contradictions, they are
+%
+\begin{enumerate}
+\item Choose a number $> p_N$, \eg $n = p_N p_{N-1} \dots p_{i+1} + p_i \dots p_1$, this number clearly does {\it not} have $p_j, 1 \le j \le N$ as a factor otherwise
+%
+\nbea
+p_j m & = & p_N p_{N-1} \dots p_{i+1} + p_i \dots p_1 \\
+p_j (m - p_N p_{N-1} \dots p_{i+1}/ p_j) & = & p_i \dots p_1 \\
+\to p_j & | & p_i \dots p_1
+\neea
+%
+which is a contradiction (in the above example we have assumed that $j > i$, if not we just moved the other term to the left hand side with the same conclusion).
+%
+\item Like Euclid, construct $n = p_1 p_2 \dots p_N$, then $n \pm 1$ will have $\gcd(n, n\pm 1) = 1$. However, all three numbers $n-1, n, n+1$ are greater then $p_N$, moreover $n$ contains all prime numbers as factors and $n \pm 1$ contains at least one of those primes, thus their gcd should not be 1, a contradiction.
+%
+\item Again, construct $n = p_1 p_2 \dots p_N$, the Euler's function $\varphi(n)$ defined in chapter 2 counts the number of numbers that have gcd 1 with respect to $n$. However, since there are only a finite number of primes any number $> p_N$ must have one of those primes as a factor and since $n$ contains all of those primes any number $w > p_N$ will have $\gcd(w, n) \neq 1$. This also applies to $n^2$, therefore the number of numbers that have gcd 1 w.r.t. to $n$ and $n^2$ are the same, \ie $\varphi(n) = \varphi(n^2)$. This is a contradiction as $\varphi$ is multiplicative which is shown in Chapter 2.  
+\end{enumerate}
+ %
+Note that the above arguments didn't give you clues on how to produce new primes from old ones, they are merely showing what contradictions result from assuming that there are only finitely many primes.
+
+\underline {\textit{Alternatively}}, we can generalize Euclid's proof of $p_1 \dots p_n + 1$ further, resulting in other ways to produce primes from known ones.
+
+The key is to include all previously known primes, if there's a prime we exclude the proof will not succeed. So here we go. Let's take a look of the following
+%
+\nbea
+S & = & p_1 + p_2 \dots p_n
+\neea
+%
+where $p_1 \dots p_n$ are all the known primes we have. This means that $S$ must contain a new prime as its factor. Otherwise, if $p_1$ is a factor of $S$
+%
+\nbea
+S - p_1 & = & p_2 \dots p_n, ~~~ S = p_1 S' \\
+p_1(S' - 1) & = & p_2 \dots p_n \\
+\to p_1 &|& p_2 \dots p_n
+\neea
+which is a contradiction as $p_2, p_3, \dots, p_n$ are all primes. The same happens if $p_j | S,~j \neq 1$, \eg
+%
+\nbea
+S - p_2 \dots p_n & = & p_1, ~~~ S = p_{13} S' \\
+p_{13}(S' - p_2 \dots p_{12}p_{14} \dots p_n) & = & p_1 \\
+\to p_{13} &|& p_1
+\neea
+%
+which is also a contradiction since $p_1$ is prime. We can generalize this further into something like $S = p_1 \dots p_k + p_{k+1} \dots p_n$ and the proof above still goes through. Basically we just need to group the known primes we have into 2, create the product for each group and add them. Finally, we can even take this further by raising the primes into arbitrary powers (and setting arbitrary sign for each term)
+%
+\nbea
+S & = & \pm \prod_{i=1}^{l}p_{i}^{\alpha_i} \mp \prod_{j=l+1}^{n}p_{j}^{\alpha_j} \\
+& &  ~~~~~{\rm OR}\\
+S & = & \pm 1 \mp \prod_{i=1}^{n}p_{i}^{\alpha_i}
+\neea
+%
+The above two arrangements still produce a new prime factor for $S$ following the same argument as before. 
+
+
 {\bf Algorithm 1.2.3} This is actually about proof of step 2, the stopping condition. The proof of this step doesn't give any intuition as to how this is true, it basically boils down to ``false assumption leads to contradictions".
 
 There's actually a better explanation which is very intuitive. Once you come to a number that is roughly $\sim \sqrt{n}$ you know you can stop, why? The current number in question $\sqrt{n}$ is of course a prime since the non primes have been crossed off by the previous primes and their multiples. But some of the multiples of $\sqrt{n}$, \ie $p \sqrt{n}, ~ p < \sqrt{n}$ have been crossed off by multiples of the previous lesser primes. The next thing to cross is of course $\sqrt{n} \cdot \sqrt{n}$, but this is already bigger than $n$, so we can stop.
@@ -1085,10 +1229,53 @@ what the above means is that for example $2$ generates $\{2, 4, 8, 1\}$ and so o
 
 {\it Proof}. Say $q$ is a factor of $\varphi(n)$ such that $\varphi(n) = q q'$ then according to Proposition 2.5.12.3 $g^{q'}$ will have an order $q$ modulo $n$. 
 
-{\bf Corollary 2.5.12.3.5}. For any unit group $(\mathbb{Z}/n\mathbb{Z})^*$ we can find an element of the group whose order is a prime factor of $\varphi(n)$.
+{\bf Corollary 2.5.12.3.5}. For any unit group $(\mathbb{Z}/n\mathbb{Z})^*$ we can find an element of the group whose order is a factor of $\varphi(n)$ (with certain restrictions).
 
-{\it Proof}. We know that $(\mathbb{Z}/p^n\mathbb{Z})^*$ for an odd prime $p$ always has primitive roots. Since it has primitive roots
+{\it Proof}. The proof lies in the hands of the Chinese :) We need Chinese remainder theorem for this one. First we decompose $\varphi(n)$ into its primal constituents
+%
+\nbea
+n = \prod_i^{N} p_i^{n_i}  ~~~~~~~~~~~~~~~~ \varphi(n) = \prod_i^N p_i^{n_i  - 1} (p_i - 1)
+\neea
+%
+where each $p_i$ is a {\it distinct} prime number. We now utilize Chinese remainder theorem to do work for us. Say we want a number with order $w=\prod_i q_i^{u_i}$ where each $w$ is a factor of $\varphi(n)$. If, $w$ is a factor of just one of the $\varphi(p_i^{n_i})$ we just set up the following Chinese remainder map 
+%
+\nbea
+x & \equiv & 1 \pmod{p_1^{n_1}} \\
+& \vdots & \\
+x & \equiv & g_i^{\varphi(p_i^{n_i})/w} \pmod{p_i^{n_i}} \\
+& \vdots & \\
+x & \equiv & 1 \pmod{p_N^{n_N}}
+\neea
+%
+Since each $p_i$ is a distinct prime, $\gcd(p_i^{n_i}, p_j^{n_j}) = 1$ for any $i\neq j$ thus Chinese remainder theorem guarantees that we can find such an $x$. Also from Corollary 2.5.12.3.4, $g^{\varphi(p_i^{n_i})/w} \pmod{p_i^{n_i}}$ is guaranteed to have an order of $w$ modulo $p_i^{n_i}$. While $x$ has an order of $1$ modulo $p_{j\neq i}^{n_{j\neq i}}$ since $x$ is just $1$ for modulo $p_{j\neq i}^{n_{j\neq i}}$.
 
+We now need to show that $x$ has an order of $w$ modulo $n$. Thanks to Proposition 2.29.1 which will be proven later, the order of $x$ modulo $n$, let's denote it $o_x$, is given by the least common factor of its each order modulo $p_k^{n_k}$
+%
+\nbea
+o_x = {\rm lcm}(1, 1, 1, \dots, w, \dots, 1) & = & w
+\neea
+%
+Thus $x$ has an order of $w$ modulo $n$. 
+
+If $w$ has factors from disparates $\varphi(p_i^{n_i})$'s, we need to split $w$ into $w_i$'s such that each $w_i$ is co-prime to one another (this is to make sure the lcm works as intended) and set up the following Chinese remainder map
+%
+\nbea
+x & \equiv & g_1^{\varphi(p_1^{n_1})/w_1} \pmod{p_1^{n_1}} \\
+& \vdots & \\
+x & \equiv & g_i^{\varphi(p_i^{n_i})/w_i} \pmod{p_i^{n_i}} \\
+& \vdots & \\
+x & \equiv & 1 \pmod{p_N^{n_N}}
+\neea
+%
+the order of $x$ modulo $n$ will then be given by
+%
+\nbea
+o_x = {\rm lcm}(w_1, w_2, w_3, \dots, w_i, \dots, 1) & = & w_1 \cdot w_2 \cdot w_3 \dots w_i \cdot 1 \cdot \dots \cdot 1 = w 
+\neea
+%
+Since we can always find such an $x$ therefore for every factor $w$ of $\varphi(n)$, we can find a number such that its order modulo $n$ is $w$.
+
+The only restriction is when one of the $p_i$'s is $2$ because $\mathbb{Z}/2^n\mathbb{Z}$ does not have primitive roots for $n \ge 3$. However, $\mathbb{Z}/2^n\mathbb{Z}$ still has $(5, -1)$ as generators (and other numbers as well), with $5$ having an order $2^{n-2}$. And since every $(p_i-1)$ is even the order $w$ modulo $n$ we can get is at most $2^{n-2} \tilde w$ where $\tilde w$ doesn't contain any factor of 2.
 
 {\bf Proposition 2.5.12.4}. If $(\mathbb{Z}/n{Z})^*$ contains a primitive root, $g$, then the inverse of an element $a \equiv g^m \pmod{n}$ is given by $a^{-1} \equiv g^{\varphi(n) - m} \pmod{n}$.
 
@@ -2908,6 +3095,44 @@ Therefore
 \neea
 %
 and half of $G = (\mathbb{Z}/n\mathbb{Z})^*$ have $a^{m/2} \not\equiv 1 \pmod{n}$.
+
+{\bf Some cautionary tales}. At first glance it seems that every map that maps to $\{\pm1\}$ seems to result in a kernel with image of 2 because if we follow the above recipe
+%
+\nbea
+|G:\ker(\varphi)| & = & 2 \\
+|G:\ker(\varphi)| & = & \frac{|G|}{|\ker(\varphi)|} \\
+\to \frac{|G|}{|\ker(\varphi)|} & = & 2 \\
+|\ker(\varphi)| & = & \frac{|G|}{2}
+\neea
+%
+However, this is only true if $\varphi$ is a homomorphism. For example if we arbitrarily map $\mathbb{Z}/7\mathbb{Z}$ as $1 \to +1$ and the rest to $-1$ the map is no longer homomorphic. For example
+%
+\nbea
+\varphi(1\cdot2\cdot3) & = & \varphi(1)\varphi(2)\varphi(3) \\
+& = & (+1)(-1)(-1) \\
+\varphi(1\cdot2\cdot3) & = & +1
+\neea
+%
+However
+%
+\nbea
+\varphi(1\cdot2\cdot3) & = & \varphi(1)\varphi(2\cdot 3) \\
+& = & (+1)(-1) \\
+\varphi(1\cdot2\cdot3) & = & -1
+\neea
+%
+a contradiction since $\varphi$ is no longer homomorphic, \ie $\varphi(a\cdot b) \neq \varphi(a)\varphi(b)$. The above difficulty can be (seemingly) overcome if we map to $\{0,1\}$ instead of $\{\pm1\}$, for example
+%
+\nbea
+\varphi(1\cdot2\cdot3) & = & \varphi(1)\varphi(2)\varphi(3) \\
+& = & (+1)(0)(0) \\
+& = & 0 \\
+\varphi(1\cdot2\cdot3) & = & \varphi(1)\varphi(2\cdot 3) \\
+& = & (+1)(0) \\
+& = & 0
+\neea
+%
+So it seems that it is consistent, however, $0$ doesn't have an inverse, thus $\{0,1\}$ is no longer a group. So be careful in applying the above reasoning to any binary mapping!
 
 {\bf Comments}. Just a short comment on Section 3.4 ``Attacking RSA''. If we already know $\varphi(n)$ or even $d$, why do we need to factorize $n$? We can straightforwardly decrypt the message \dunno
 
