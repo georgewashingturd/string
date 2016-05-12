@@ -3278,6 +3278,14 @@ Therefore $p = t + s = 37865717$ and $q = t - s = 37865693$.
 \underline{\textbf{\textit{Chapter 4}}}
 \bigskip
 
+{\bf Some general comments}. In dealing with congruences one must be careful. For example, $5$ being a prime number can certainly {\bf not} be a square. However,
+%
+\nbea
+7^2 & \equiv & 5 \pmod{11}
+\neea
+%
+This cyclic nature sometimes confuses people :)
+
 {\bf Definition 4.1.2}. The example right after this definition. $\left ( \frac{5}{5}\right ) = 1$. I believe this is wrong because $\gcd(5,5) = 5 \neq 1$ and as such it should be that $\left ( \frac{5}{5}\right ) = 0$.
 
 {\bf Lemma 4.1.4}. There are some nice things that can be said about $\mathbb{Z}/p\mathbb{Z}$  when $p$ is an odd prime and $p = 2^n + 1$.
@@ -3412,13 +3420,13 @@ Hence $d, -d$ will be in the image of $A^-$ as well. This is a contradiction as 
 
 I chose to use Lemma 2.1.12 to make sure that the map between $S=A^+$ and $O^+$ is guaranteed to exist, that's all.
 
-{\bf Page 75}. Proof of Proposition 4.3.4.
+{\bf Page 78}. Proof of Proposition 4.3.4.
 
 I would like to explain the set $I$ which is a union of many intervals. What we want to achieve here is to list all numbers that are equivalent to $(-\frac{p}{2}, 0)$ modulo $p$. If we just take the numbers between $(0,p)$ the ones that are in $(-\frac{p}{2}, 0)$ are obviously $(\frac{p}{2}, p)$.
 
 If we go to the next interval $(p, 2p)$ the ones that are in $(-\frac{p}{2}, 0)$ are then $(p + \frac{p}{2}, 2p)$. Thus $(-\frac{p}{2}, 0)$ are represented by $((m - \frac{1}{2})p, mp)$.
 
-{\bf Page 75}. ``Next suppose that $b = \frac{1}{2}(a - 1)$''.
+{\bf Page 78}. ``Next suppose that $b = \frac{1}{2}(a - 1)$''.
 
 The next equation seems to be wrong, for example ``$\frac{a-1}{2}p + \frac{p}{2} = \frac{p-1+a}{2}$''. The thing is $\frac{a-1}{2}p + \frac{p}{2} = \frac{pa}{2}$.
 
@@ -3432,6 +3440,17 @@ and $\frac{pa}{2} > \frac{(p-1)a}{2}$. However, the integers between $(bp, \frac
 
 Therefore, the numbers in $S$ that are between $(bp, \frac{pa}{2})$ are all between $(0,+\frac{p}{2})$, \ie they're all on the {\it positive} half of $(-\frac{p}{2},+\frac{p}{2})$ while the numbers in $S$ that are between $((b - \frac{1}{2})p, bp)$ will be in the {\it negative} half of $(-\frac{p}{2},+\frac{p}{2})$.
 
+{\bf Page 80}. Proof of Proposition 4.3.5. ``The possibilities for $r$ are 1, 3, 5, 7.''
+
+Where did we get these possibilities? Note that $p = 8c + r \to p \equiv r \pmod{8}$. Therefore $r$ is $0 \le r \le 7$. However $p$ is a prime and thus $2,~ 4,~ 6$ are disallowed because, say $r = 6$
+%
+\nbea
+p & \equiv & 6 \pmod{8} \\
+& = & 6 + 8n = 2 (3 + 4n) \\
+\to 2 & | & p
+\neea
+%
+which is a contradiction. So any even $r$ is disallowed, only odd ones are possible.
 
 {\bf Page 81}. ``Next suppose that $p \not\equiv q \pmod{4}$, so $p \equiv −q \pmod{4}$''.
 
@@ -3441,8 +3460,38 @@ This means that either the difference of two odd primes is a multiple of 4 or th
 p & \equiv & u \pmod{4}
 \neea
 %
-where $0 \le u \le 3$. Now $u$ must be either 1 or 3 because if $u$ is 0 or 2 then $p$ would be an even number and not prime. Thus if two odd primes are both equivalent to $1 \pmod{4}$ or $3 \pmod{4}$ then their difference would be a multiple of $4$ and if one of them is $1 \pmod{4}$ and the other is $3 \pmod{4}$ then their sum will be a multiple of $4$.
+where $0 \le u \le 3$. Now $u$ must be either 1 or 3 because if $u$ is 0 or 2 then $p$ would be an even number and not prime, \ie
+%
+\nbea
+p & \equiv & 2 \pmod{4} \\
+& = & 2 + 4n = 2 (1 + 2n) \\
+\to 2 & | & p
+\neea
+%
+Thus if two odd primes are both equivalent to $1 \pmod{4}$ or $3 \pmod{4}$ then their difference would be a multiple of $4$ and if one of them is $1 \pmod{4}$ and the other is $3 \pmod{4}$ then their sum will be a multiple of $4$.
 
+{\bf Page 81}. ``the last equality is because $\frac{p−1}{2}$ is even if and only if $\frac{q−1}{2}$ is even''
 
+If $p \equiv q \pmod{4}$ then $\frac{p-1}{2}$ is even if and only if $\frac{q-1}{2}$ is even because
+%
+\nbea
+p & \equiv & q \pmod{4} \\
+& = & q + 4n \\
+\to \frac{p - 1}{2} & = & \frac{(q-1)}{2} + \frac{4n}{2}
+\neea
+%
+Since $\frac{4n}{2}$ is always even, thus if $\frac{(q-1)}{2}$ is even the LHS is also even and if $\frac{(q-1)}{2}$ is odd then the LHS is also odd.
+
+On the other hand if $p \equiv -q \pmod{4}$ then 
+%
+\nbea
+p & \equiv & -q \pmod{4} \\
+p + q & = & 4n \\
+(p - 1) + (q - 1) & = & 4n - 2 \\
+\frac{p - 1}{2} + \frac{(q-1)}{2} & = & \frac{4n - 2}{2} \\
+\to \frac{p - 1}{2} + \frac{(q-1)}{2} & = & 2n - 1
+\neea
+%
+Since $2n - 1$ is odd the LHS has to be odd as well, \ie one of $\frac{(q-1)}{2}$ and $\frac{(p-1)}{2}$ has to be odd and the other must be even. Therefore $\frac{(p-1)}{2} \cdot \frac{(q-1)}{2}$ has to be even. 
 
 \end{document}
