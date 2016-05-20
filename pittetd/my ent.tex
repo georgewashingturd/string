@@ -220,16 +220,16 @@
 
 \begin{document}
 
-\title{Jumbled up thoughts}
+\title{Alternative Proofs and Solutions to Exercises in Elementary Number Theory (Part I)}
 \bigskip
-\author{Stefanus Koesno$^1$\\
-$^1$ Somewhere in California\\ San Jose, CA 95134 USA\\
+\author{Stefanus$^1$\\
+$^1$ Samsung Semiconductor Inc\\ San Jose, CA 95134 USA\\
 }
 %
 \date{\today}
 %
 \begin{abstract}
-Stray thoughts of a stray man. This is a collection of things that I thought was fun to do and also things that I always come back to after forgetting it :) There's no order or structure here just whatever my mind facies at the moment.
+This is a (not so) short study guide (for newcomers to number theory like me) to accompany William Stein's ``Elementary Number Theory'' book. Here I give alternative proofs to theorems/lemmas/propositions in the book (when possible) and extra explanations as well. I included some interesting findings I discovered by myself that were not mentioned in the book. Lastly, solutions to exercises are provided in as many details as possible in the hope that any TA/student can get help whenever they're stuck. (Part I contains Chapter 1-3 of the book).
 
 \end{abstract}
 %
@@ -334,7 +334,7 @@ So it's nowhere near straightforward, trying to prove this theorem straightforwa
 
 \underline{\textit{However}}, there is another way to prove the fundamental theorem, my way :)
 
-Instead of using gcd (greatest common divisor) I'll use lcm (least common multiple). First, I need to show that every common multiple of two numbers is itself a multiple of the least common multiple.
+{\bf Lowbrow version of proof}. Instead of using gcd (greatest common divisor) I'll use lcm (least common multiple). First, I need to show that every common multiple of two numbers is itself a multiple of the least common multiple.
 
 {\it Proof}. Assume otherwise, denote the least common multiple of two numbers $a$ and $b$ is denoted $L$ and another common multiple $M$ (larger than $L$ obviously since $L$ is the {\it least} common multiple) we assume $M$ is not a multiple of $L$ and $M > L$. Now we do some arithmetic :)
 %
@@ -1106,6 +1106,105 @@ where $p_i$ is a prime factor of $p-1$. Therefore there is an inverse primitive 
 g(\beta) & = & 0
 \neea
 %
+
+{\bf Lemma 2.5.7}. It is very curious that the whole thing depends {\it only} on the {\it orders} of $a$ and $b$ and not on $a$ and $b$ themselves. Think about it, what happens if $ab \equiv 1 \pmod{n}$?, \ie $b$ and $a$ are inverses of one another. In this case the order of $(ab)$ is obviously 1 since $ab \equiv 1 \pmod{n}$. However, it turns out that
+
+{\bf Proposition 2.5.7.1} The order of an inverse $b = a^{-1}$ of an element $a \in (\mathbb{Z}/n\mathbb{Z})^*$ is the same as the order of $a$.
+
+{\it Proof}. This proposition can be easily proven if $(\mathbb{Z}/n\mathbb{Z})^*$ contains primitive roots. Say $g$ is a primitive root of $(\mathbb{Z}/n\mathbb{Z})^*$ and $a \equiv g^m \pmod{n}$. According to Proposition 2.5.12.4 the inverse of $a$ is given by $a^{-1} = b \equiv g^{\varphi(n) - m} \pmod{n}$.
+
+Furthermore, according to Proposition 2.5.12.3, the order of $a$ is given by $\varphi(n)/\gcd(\varphi(n), m)$ while the order of its inverse, $b$, is given by $\varphi(n)/\gcd(\varphi(n), \varphi(n) - m)$. However, according to Lemma 1.1.9
+%
+\nbea
+\gcd(\varphi(n), m)  = \gcd(\varphi(n), -m) = \gcd(\varphi(n), - m + \varphi(n))
+\neea
+%
+Therefore, the orders of $a$ and $b$ are the same.
+
+What if $(\mathbb{Z}/n\mathbb{Z})^*$ does not contain primitive roots? The proof is quite simple and generic (it applies also for unit groups with primitive roots), it uses the usual trick in quantum mechanics, inserting identity over and over again :)
+
+We know that $ab \equiv 1 \pmod{n}$, say the order of $a$ is $d$ and we multiply take $ab$ to the $d^{\rm th}$ power
+%
+\nbea
+(ab)^d & = & \underbrace{bbb \cdots bbb}_\text{$d$ numbers of $b$'s} \times \underbrace{aaa \cdots aaa}_\text{$d$ numbers of $a$'s} \\
+1 \pmod{n} & \equiv & \underbrace{bbb \cdots bbb}_\text{$d$ numbers of $b$'s} \times ~ 1 \pmod{n} \\
+\to b^d & \equiv & 1 \pmod{n}
+\neea
+%
+note that $ab \equiv 1$ thus $(ab)^d \equiv 1$. So the order of $b$ must be a divisor of $d$. What if the order of $b$, say $u$, is smaller than $d$, then
+%
+\nbea
+(ab)^d & = & a^d b^d \\
+& = & a^d (b^u) b^{d-u} \\
+1 & \equiv & a^d (1) b^{d-u} \pmod{n} \\
+& \equiv &  a^u (ab)^{d-u} \pmod{n} \\
+& \equiv &  a^u (1) \pmod{n} \\
+\to 1 \pmod{n} & \equiv & a^u
+\neea
+%
+But this is a contradiction as $u < d$ and the order of $a$ is $d$. Therefore, the order of $b = a^{-1}$ must be $d$ as well.
+
+{\bf Corollary 2.5.7.1.1} If $a, b \in (\mathbb{Z}/n\mathbb{Z})^*$ and $ab \equiv 1 \pmod{n}$ then $a$ and $b$ generate the same subset of $(\mathbb{Z}/n\mathbb{Z})^*$.
+
+{\it Proof}. Say the the order of $a$ (and that of $b$) is $d$, note that
+%
+\nbea
+a^d & \equiv & 1 \pmod{n} \\
+(a^{d-1}) a & \equiv & 1 \pmod{n}
+\neea
+%
+Therefore $a^{d-1}$ must be an inverse of $a$ and thus $a^{d-1} \equiv b \pmod{n}$. This is guaranteed by the way of Bezout's
+%
+\nbea
+ab' + ny & = & 1
+\neea
+%
+and according to Problem 2.5 (a) any $b' = b + c \cdot (n/h)$ with $h = \gcd(a,n)$ will satisfy the above Bezout equation. But $h = \gcd(a,n) = 1$ therefore $b' = b + cn \equiv b \pmod{n}$, \ie any inverse of $a$ must be equivalent to $b \pmod{n}$.
+
+Since $a^{d-1} \equiv b \pmod{n}$ by the same reasoning it is also true that $b^{d-1} \equiv a \pmod{n}$ we have
+%
+\nbea
+b^k \equiv (a^{d-1})^k & ~~~~~~~~~~~ & a^l \equiv (b^{d-1})^l
+\neea
+%
+for any $k, l$. Thus we can express any power of $a$ in terms of $b$ and any power of $b$ in terms of $a$ and since both $a$ and $b$ have the same order they must generate the same subset of $(\mathbb{Z}/n\mathbb{Z})^*$.
+ 
+As to Lemma 2.5.7 itself, there's no guarantee what the order of $ab$ is if the $\gcd(r,s) \neq 1$, for example the order of 4 modulo 13 is 6 and the order of 7 modulo 13 is 12, the order of $4\cdot 7$ modulo 7 is 12, on the other hand the order of 3 modulo 13 is 3 while the order of $4 \cdot 3$ modulo 13 is 2.
+
+{\bf Lowbrow proof of Lemma 2.5.7} Say that the order of $ab$ is $q$ where $q | rs$
+%
+\nbea
+(ab)^q & \equiv & 1 \pmod{n} \\
+(a^q)(b^q) & \equiv & 1 \pmod{n}
+\neea
+%
+Therefore $a^q$ and $b^q$ are inverses of one another and according to Proposition 2.5.7.1 above the order of $a^q$ must be the same as that of $b^q$, let's denote this order $y$
+%
+\nbea
+(a^q)^y  = a^{qy} & \equiv & 1 \pmod{n} \\
+(b^q)^y  = b^{qy} & \equiv & 1 \pmod{n}
+\neea
+%
+Since the order of $a$ is $r$ and the order of $b$ is $s$ it must be that
+%
+\nbea
+r | qy & \to & qy = rz \\
+s | qy & \to & qy = sh \\
+rz & = & sh
+\neea
+%
+Since $\gcd(r,s) = 1$ it means that $s|z, ~z = sz'$ and $r|h, ~h = rh'$, \ie
+%
+\nbea
+rsz' & = & srh' \\
+\to z' & = & h'
+\neea
+%
+which in turn means that $qy = rs z'$ where $z'$ is any positive integer. But $y$, as a multiplicative order, is the smallest positive integer such that $(a^q)^y \equiv (b^q)^y \equiv 1 \pmod{n}$. The smallest $y$ would mean that $z' = 1$ and $qy = rs$.
+
+Now we know that, $q|rs$, say that $q = r's',~r'|r,~s'|s$ then according to Corollary 2.5.12.3.1 the order of $a^{r's'}$ is $r/\gcd(r,r's') = r/r'$, the same follows for $b^q = b^{r's'}$, its order  is given by $s/\gcd(s,r's') = s/s'$
+
+But from our result above $qy$ must be equal to $rs$ here $qy = r's' s/s' = r's$ or $qy = r's' r/r' = rs'$ which is a contradict	on unless $r'=r$ and $s'=s$ or in other words $q = rs$. This completes the proof.
 
 {\bf Theorem 2.5.8}. My first question when I saw the proof was that why can't one of the roots of $x^{q_i^{n_i}} - 1$ that is not a root of $x^{q_i^{n_i - 1}} - 1$ be a root of say $x^{q_i^{n_i - k}}$ for $1 < k < n_i - 1$? \eg $\alpha$ is a root of $x^{q_i^{n_i}} - 1 = 0$ but it's not a root of $x^{q_i^{n_i - 1}} - 1 = 0$ but $\alpha$ can still be a root of $x^{q_i^{n_i - k}} -1 = 0$, right?
 
