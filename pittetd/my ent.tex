@@ -1200,11 +1200,119 @@ rsz' & = & srh' \\
 \to z' & = & h'
 \neea
 %
-which in turn means that $qy = rs z'$ where $z'$ is any positive integer. But $y$, as a multiplicative order, is the smallest positive integer such that $(a^q)^y \equiv (b^q)^y \equiv 1 \pmod{n}$. The smallest $y$ would mean that $z' = 1$ and $qy = rs$.
+which in turn means that $qy = rs z'$ where $z'$ can be any positive integer. But $y$, as a multiplicative order, is the smallest positive integer such that $(a^q)^y \equiv (b^q)^y \equiv 1 \pmod{n}$. The smallest $y$ would mean that $z' = 1$ and $qy = rs$.
 
-Now we know that, $q|rs$, say that $q = r's',~r'|r,~s'|s$ then according to Corollary 2.5.12.3.1 the order of $a^{r's'}$ is $r/\gcd(r,r's') = r/r'$, the same follows for $b^q = b^{r's'}$, its order  is given by $s/\gcd(s,r's') = s/s'$
+We know that, $q|rs$, say that $q = r's',~r'|r,~s'|s$ then according to Corollary 2.5.12.3.1 the order of $a^{r's'}$ is $y = r/\gcd(r,r's') = r/r'$, the same follows for $b^q = b^{r's'}$, its order  is given by $y = s/\gcd(s,r's') = s/s'$
 
-But from our result above $qy$ must be equal to $rs$ here $qy = r's' s/s' = r's$ or $qy = r's' r/r' = rs'$ which is a contradict	on unless $r'=r$ and $s'=s$ or in other words $q = rs$. This completes the proof.
+But from our result above $qy$ must be equal to $rs$ here $qy = r's' \cdot s/s' = r's$ or $qy = r's' \cdot r/r' = rs'$ which is a contradiction unless $r'=r$ and $s'=s$ or in other words $q = rs$. This completes the proof.
+
+Can we say anything about the order of a product of two numbers whose orders are not relatively prime to one another? We can use the book's way or my way but since this is my book, as Sinatra said, I'll do it my way :)
+
+This time the difference is that the order $q$ of $ab$ is $q |{\rm lcm}(r,s)$. A good definition of the least common multiple is as follows
+%
+\nbea
+{\rm lcm}(r,s) & = & \frac{r \cdot s}{\gcd(r,s)} \\
+& = & r' d s'
+\neea
+%
+where $d = \gcd(r,s)$ and $r = r'd, ~ s = s'd$ also $\gcd(r',s') = 1$. The rest follows as before
+%
+\nbea
+(ab)^q \equiv 1 \pmod{n} & ~~~~~~~~~~~~~ & (a^q)(b^q) \equiv 1 \pmod{n}
+\neea
+%
+Therefore $a^q$ and $b^q$ are inverses of one another and according to Proposition 2.5.7.1 above the order of $a^q$ must be the same as that of $b^q$, let's denote this order $y$
+%
+\nbea
+(a^q)^y  = a^{qy} \equiv 1 \pmod{n} & ~~~~~~~~~~~~~ & (b^q)^y  = b^{qy} \equiv 1 \pmod{n}
+\neea
+%
+Since the order of $a$ is $r$ and the order of $b$ is $s$ it must be that
+%
+\nbea
+r | qy \to qy = rz & & s | qy \to qy = sh \\
+& rz = sh &
+\neea
+%
+Since $\gcd(r,s) = d > 1$ it means that 
+%
+\nbea
+r' \bcancel{d} z & = & s' \bcancel{d} h \\
+r' z & = & s' h
+\neea
+%
+with $\gcd(r',s') = 1$, thus $s'|z, ~z = s'z'$ and $r'|h, ~h = r'h'$, \ie
+%
+\nbea
+rs'z' & = & sr'h' \\
+r'ds'z' & = & s'dr'h' \\
+\to z' & = & h'
+\neea
+%
+which in turn means that $qy = r'ds' z'$ where $z'$ can be any positive integer. But $y$, as a multiplicative order, is the smallest positive integer such that $(a^q)^y \equiv (b^q)^y \equiv 1 \pmod{n}$. The smallest $y$ would mean that $z' = 1$ and $qy = r' d s'$.
+
+
+We need some sort of dictionary for the menagerie of variables that we will use
+%
+\nbea
+\ba{r c l c r c l c r c l}
+&&& r = r' d &&&& s = s' d \\
+r' & = & R R' & ~~~ & d & = & D D' & ~~~ & s' & = & S S'
+\ea
+\neea
+%
+Therefore $q|r'ds' \to q = R D S$ then according to Corollary 2.5.12.3.1 the order of $a^{R D S}$ is $y = r/\gcd(r,R D S) = r/(R D)$, the same follows for $b^q = b^{R D S}$, its order is given by $y = s/\gcd(s,R D S) = s/(D S)$
+
+But from our result above $qy$ must be equal to $r' d s'$, here $qy = R D S \cdot r/(R D) = r' d S$ or $qy =R D S \cdot s/(D S) = R d s'$. Now equating the three different $qy$'s
+%
+\nbea
+r' d S = R d s' = r' d s'
+\neea
+%
+which means that $R = r'$ and $S = s'$ and the order of $ab$ is $q = r' D s'$ but it doesn't tell you what $D$ is and that's definitely a problem.
+
+{\bf Bonus}. The above excursion shows that finding the order of a number also gives inverse relations of its factors, \eg
+%
+\nbea
+42^3 & \equiv & 1 \pmod{13} \\
+(6^3) (7^3) & \equiv & 1 \pmod{13}
+\neea
+%
+which means that $(6^3)$ is the inverse of $(7^3)$ modulo 13.
+
+{\bf Rant against Mathematicians}. Doing this book made me realize the difference between physicists and mathematicians. In mathematics (and certainly an attitude of Gauss) intuitive reasoning or reasoning at all for that matter is not important. What is important is brevity and logical conclusion.
+
+I particularly hate this approach since in physics we always want to understand something deeper if at all possible, it differentiates us from machines :)
+
+{\bf A Physicist's Way of Doing Math}. So here I'll give a better explanation as to why the order of a product depends only on the gcd of the orders of its constituents.
+
+First, any element of $(\mathbb{Z}/n\mathbb{Z})^*$ is a generator of a sub{\it group} of $(\mathbb{Z}/n\mathbb{Z})^*$. Say $a \in (\mathbb{Z}/n\mathbb{Z})^*$ and its order is $d$, then the elements $a^u$ with $1 \le u \le d$ form a subgroup of $(\mathbb{Z}/n\mathbb{Z})^*$. They form a group because
+%
+\begin{enumerate}
+\item The existence of identity element, $a^d \equiv 1 \pmod{n}$, check!
+\item The closure property, $a^x \cdot a^y \equiv a^{dq + r} \equiv 1 \cdot a^r \pmod{n}$, $0 \le r < d$.
+\item The existence of an inverse, for any $a^x,~ 1 \le x \le d$, its inverse is given by $a^{d-x}$.
+\end{enumerate}
+%
+We now have the following proposition,
+
+{\bf Proposition 2.5.7.2}. For any two elements $a, b \in (\mathbb{Z}/n\mathbb{Z})^*$ whose orders are respectively $r,s$ and $\gcd(r,s) = 1$, the subgroups generated by $a, b$, denote them $A, B$, are mutually exclusive except for the identity element.
+
+{\it Proof}. Say an element $b^y \in B$, $1 \le y \le s$ can be expressed as $b^y \equiv a^x \pmod{n}$, $1 \le x \le r$. Then
+%
+\nbea
+b^{yk} \equiv a^{xk} & \equiv & 1 \pmod{n}
+\neea
+%
+For the above statement to be true $yk = sw$ but $y$ is less than $s$ thus $\gcd(k, s) > 1$. Another consequence will be $xk = ru$ but again since $x$ is less than $r$ then $\gcd(k, r) > 1$. This is a contradiction since $\gcd(r,s) = 1$. Therefore the subgroups $A$ and $B$ must be mutually exclusive. The only exception is if $b^y \equiv 1$ which is the identity element.
+ 
+\underline{And here's the explanation of why Lemma 2.5.7 works}. This is also another lowbrow proof of Lemma 2.5.7. You see
+%
+\nbea
+(ab)^q \equiv a^q b^q & \equiv & 1 \pmod{n}
+\neea
+%
+means that $a^q$ is an inverse of $b^q$, which is to say that we can express $b^q \equiv a^t$ for some $1 \le t \le r$ where $r$ is the order of $a$. But this contradicts Proposition 2.5.7.2 above unless $a^q$ is the identity element, which makes $b^q$ to be an indentity element as well. Therefore $q$ must be a multiple of $rs$ (since $\gcd(r,s) = 1$) but since $q$ is the {\it smallest} number such that $a^q \equiv 1$, $q$ must be $rs$.
 
 {\bf Theorem 2.5.8}. My first question when I saw the proof was that why can't one of the roots of $x^{q_i^{n_i}} - 1$ that is not a root of $x^{q_i^{n_i - 1}} - 1$ be a root of say $x^{q_i^{n_i - k}}$ for $1 < k < n_i - 1$? \eg $\alpha$ is a root of $x^{q_i^{n_i}} - 1 = 0$ but it's not a root of $x^{q_i^{n_i - 1}} - 1 = 0$ but $\alpha$ can still be a root of $x^{q_i^{n_i - k}} -1 = 0$, right?
 
@@ -2648,7 +2756,7 @@ which is a contradiction. Therefore, since $-(5^h)$ are just the negative of $5^
 
 And we have arrived, plugging in our base case $n=2,~ 2^n=4$ and letting the inductive machinery takes over, we see that we have proven that $5$ and $-1$ generate $(\mathbb{Z}/2^n\mathbb{Z})^*$ for $n\ge2$.
 
-Some interesting point. There's a version of this proof on Victor Soup's book that is way more elegant than mine. Also, $3$ and $-1$ also actually generate $(\mathbb{Z}/2^n\mathbb{Z})^*$ (as well as 11, 13, 19, 21, 29 and so on as we shall see in a bit). There's a something peculiar about 3 but we will discuss that when we discuss the solution for 2.28 because they are related (by blood?).
+Some interesting point. There's a version of this proof on Victor Soup's book that is way more elegant than mine. Also, $3$ and $-1$ also actually generate $(\mathbb{Z}/2^n\mathbb{Z})^*$ (as well as 11, 13, 19, 21, 29 and so on as we shall see in a bit). There's a something peculiar about 3 but we will discuss that when we discuss the solution for Problem 2.28 because they are related (by blood?).
 
 {\bf Problem 2.28}. Let $p$ be an odd prime.
 
@@ -2932,6 +3040,15 @@ x =  \left \{ \ba{l}
 \neea
 %
 with $u \ge 0$. Some might ask as to why we want to generalize $1 + p \to 1 \pm |a|p$. Apart from its pedagogical value, it might also helps us find other primitive roots modulo $p^n$. In conclusion, the trick is to find a base case with oscillating quotient and an ``odd'' first quotient. Also, although the method above is not elegant (it's rather crude even) yet it is also very effective, especially when finding other generators modulo $2^n$.
+
+{\bf Bonus}. The following might make a good exam/homework problem :) From the solutions to Problem 2.27 and 2.28 we see that
+%
+\nbea
+\gcd\left( \frac{(1 + 2^2)^{2^{n-2}} - 1}{2^n}, 2 \right ) & = & 1 \\
+\gcd\left( \frac{(1 + p)^{p^{n-1}} - 1}{p^n}, p \right ) & = & 1
+\neea
+%
+where $p$ is any odd prime. We can also substitute the more general form for $2^2$ and $p$ as discussed in the previous section ``{\bf Generalized Moral of the Story}''.
 
 {\bf Problem 2.29}. (*) In terms of the prime factorization of $n$, characterize the integers $n$ such that there is a primitive root modulo $n$.
 
