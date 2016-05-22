@@ -1282,7 +1282,7 @@ which means that $(6^3)$ is the inverse of $(7^3)$ modulo 13.
 
 {\bf Rant against Mathematicians}. Doing this book made me realize the difference between physicists and mathematicians. In mathematics (and certainly an attitude of Gauss) intuitive reasoning or reasoning at all for that matter is not important. What is important is brevity and logical conclusion.
 
-I particularly hate this approach since in physics we always want to understand something deeper if at all possible, it differentiates us from machines :)
+I particularly hate this approach since in physics we always want to understand something deeper if at all possible, it differentiates us from machines :) Furthermore, as Walter put it, ``the purpose is not to show others how smart you are, but to teach them''.
 
 {\bf A Physicist's Way of Doing Math}. So here I'll give a better explanation as to why the order of a product depends only on the gcd of the orders of its constituents.
 
@@ -1306,13 +1306,13 @@ b^{yk} \equiv a^{xk} & \equiv & 1 \pmod{n}
 %
 For the above statement to be true $yk = sw$ but $y$ is less than $s$ thus $\gcd(k, s) > 1$. Another consequence will be $xk = ru$ but again since $x$ is less than $r$ then $\gcd(k, r) > 1$. This is a contradiction since $\gcd(r,s) = 1$. Therefore the subgroups $A$ and $B$ must be mutually exclusive. The only exception is if $b^y \equiv 1$ which is the identity element.
  
-\underline{And here's the explanation of why Lemma 2.5.7 works}. This is also another lowbrow proof of Lemma 2.5.7. You see
+\underline{And here's the explanation of why Lemma 2.5.7 works}. This also makes another lowbrow proof of Lemma 2.5.7. You see
 %
 \nbea
 (ab)^q \equiv a^q b^q & \equiv & 1 \pmod{n}
 \neea
 %
-means that $a^q$ is an inverse of $b^q$, which is to say that we can express $b^q \equiv a^t$ for some $1 \le t \le r$ where $r$ is the order of $a$. But this contradicts Proposition 2.5.7.2 above unless $a^q$ is the identity element, which makes $b^q$ to be an indentity element as well. Therefore $q$ must be a multiple of $rs$ (since $\gcd(r,s) = 1$) but since $q$ is the {\it smallest} number such that $a^q \equiv 1$, $q$ must be $rs$.
+means that $a^q$ is an inverse of $b^q$, which is to say that we can express $b^q \equiv a^t$ for some $1 \le t \le r$ where $r$ is the order of $a$. This is a consequence of the fact that $a$ generates a subgroup of its own as explained above. But this contradicts Proposition 2.5.7.2 above unless $a^q$ is the identity element, which makes $b^q$ an indentity element as well. Therefore, since $\gcd(r,s) = 1$, $q$ must be a multiple of $rs$ but since $q$ is the {\it smallest} number such that $a^q \equiv 1$, $q$ must be $rs$.
 
 {\bf Theorem 2.5.8}. My first question when I saw the proof was that why can't one of the roots of $x^{q_i^{n_i}} - 1$ that is not a root of $x^{q_i^{n_i - 1}} - 1$ be a root of say $x^{q_i^{n_i - k}}$ for $1 < k < n_i - 1$? \eg $\alpha$ is a root of $x^{q_i^{n_i}} - 1 = 0$ but it's not a root of $x^{q_i^{n_i - 1}} - 1 = 0$ but $\alpha$ can still be a root of $x^{q_i^{n_i - k}} -1 = 0$, right?
 
@@ -3041,11 +3041,11 @@ x =  \left \{ \ba{l}
 %
 with $u \ge 0$. Some might ask as to why we want to generalize $1 + p \to 1 \pm |a|p$. Apart from its pedagogical value, it might also helps us find other primitive roots modulo $p^n$. In conclusion, the trick is to find a base case with oscillating quotient and an ``odd'' first quotient. Also, although the method above is not elegant (it's rather crude even) yet it is also very effective, especially when finding other generators modulo $2^n$.
 
-{\bf Bonus}. The following might make a good exam/homework problem :) From the solutions to Problem 2.27 and 2.28 we see that
+{\bf Bonus}. Proving the following might make a good exam/homework problem :) From the solutions to Problem 2.27 and 2.28 we see that
 %
 \nbea
-\gcd\left( \frac{(1 + 2^2)^{2^{n-2}} - 1}{2^n}, 2 \right ) & = & 1 \\
-\gcd\left( \frac{(1 + p)^{p^{n-1}} - 1}{p^n}, p \right ) & = & 1
+\gcd\left( \frac{(1 + 2^2)^{2^{n-2}} - 1}{2^n}, 2 \right ) & = & 1, ~~~ n \ge 3 \\
+\gcd\left( \frac{(1 + p)^{p^{n-1}} - 1}{p^n}, p \right ) & = & 1, ~~~ n \ge 2
 \neea
 %
 where $p$ is any odd prime. We can also substitute the more general form for $2^2$ and $p$ as discussed in the previous section ``{\bf Generalized Moral of the Story}''.
