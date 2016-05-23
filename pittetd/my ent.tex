@@ -1171,60 +1171,25 @@ for any $k, l$. Thus we can express any power of $a$ in terms of $b$ and any pow
  
 As to Lemma 2.5.7 itself, there's no guarantee what the order of $ab$ is if the $\gcd(r,s) \neq 1$, for example the order of 4 modulo 13 is 6 and the order of 7 modulo 13 is 12, the order of $4\cdot 7$ modulo 7 is 12, on the other hand the order of 3 modulo 13 is 3 while the order of $4 \cdot 3$ modulo 13 is 2.
 
-{\bf Lowbrow proof of Lemma 2.5.7} Say that the order of $ab$ is $q$ where $q | rs$
-%
-\nbea
-(ab)^q & \equiv & 1 \pmod{n} \\
-(a^q)(b^q) & \equiv & 1 \pmod{n}
-\neea
-%
-Therefore $a^q$ and $b^q$ are inverses of one another and according to Proposition 2.5.7.1 above the order of $a^q$ must be the same as that of $b^q$, let's denote this order $y$
-%
-\nbea
-(a^q)^y  = a^{qy} & \equiv & 1 \pmod{n} \\
-(b^q)^y  = b^{qy} & \equiv & 1 \pmod{n}
-\neea
-%
-Since the order of $a$ is $r$ and the order of $b$ is $s$ it must be that
-%
-\nbea
-r | qy & \to & qy = rz \\
-s | qy & \to & qy = sh \\
-rz & = & sh
-\neea
-%
-Since $\gcd(r,s) = 1$ it means that $s|z, ~z = sz'$ and $r|h, ~h = rh'$, \ie
-%
-\nbea
-rsz' & = & srh' \\
-\to z' & = & h'
-\neea
-%
-which in turn means that $qy = rs z'$ where $z'$ can be any positive integer. But $y$, as a multiplicative order, is the smallest positive integer such that $(a^q)^y \equiv (b^q)^y \equiv 1 \pmod{n}$. The smallest $y$ would mean that $z' = 1$ and $qy = rs$.
+{\bf Lowbrow proof of Lemma 2.5.7} First, we'll see if we can say anything about the order of a product of two numbers whose orders are not relatively prime to one another. We can do this using the book's way or my way but since this is my book, as what Sinatra would have said, I'll do it my way :)
 
-We know that, $q|rs$, say that $q = r's',~r'|r,~s'|s$ then according to Corollary 2.5.12.3.1 the order of $a^{r's'}$ is $y = r/\gcd(r,r's') = r/r'$, the same follows for $b^q = b^{r's'}$, its order  is given by $y = s/\gcd(s,r's') = s/s'$
-
-But from our result above $qy$ must be equal to $rs$ here $qy = r's' \cdot s/s' = r's$ or $qy = r's' \cdot r/r' = rs'$ which is a contradiction unless $r'=r$ and $s'=s$ or in other words $q = rs$. This completes the proof.
-
-Can we say anything about the order of a product of two numbers whose orders are not relatively prime to one another? We can use the book's way or my way but since this is my book, as Sinatra said, I'll do it my way :)
-
-This time the difference is that the order $q$ of $ab$ is $q |{\rm lcm}(r,s)$. A good definition of the least common multiple is as follows
+Since we are now assuming that $\gcd(r,s) > 1$, the order $q$ of $ab$ must obey $q |{\rm lcm}(r,s)$. A good definition of the least common multiple is as follows
 %
 \nbea
 {\rm lcm}(r,s) & = & \frac{r \cdot s}{\gcd(r,s)} \\
 & = & r' d s'
 \neea
 %
-where $d = \gcd(r,s)$ and $r = r'd, ~ s = s'd$ also $\gcd(r',s') = 1$. The rest follows as before
+where $d = \gcd(r,s)$ and $r = r'd, ~ s = s'd$ also $\gcd(r',s') = 1$. The rest follows as natural consequences
 %
 \nbea
-(ab)^q \equiv 1 \pmod{n} & ~~~~~~~~~~~~~ & (a^q)(b^q) \equiv 1 \pmod{n}
+(ab)^q \equiv 1 \pmod{n} & ~~~~~~~~~~~~~~~~~~~~~~~ & (a^q)(b^q) \equiv 1 \pmod{n}
 \neea
 %
 Therefore $a^q$ and $b^q$ are inverses of one another and according to Proposition 2.5.7.1 above the order of $a^q$ must be the same as that of $b^q$, let's denote this order $y$
 %
 \nbea
-(a^q)^y  = a^{qy} \equiv 1 \pmod{n} & ~~~~~~~~~~~~~ & (b^q)^y  = b^{qy} \equiv 1 \pmod{n}
+(a^q)^y  = a^{qy} \equiv 1 \pmod{n} & ~~~~~~~~~~~~~~~~~~~~~~~ & (b^q)^y  = b^{qy} \equiv 1 \pmod{n}
 \neea
 %
 Since the order of $a$ is $r$ and the order of $b$ is $s$ it must be that
@@ -1237,7 +1202,7 @@ r | qy \to qy = rz & & s | qy \to qy = sh \\
 Since $\gcd(r,s) = d > 1$ it means that 
 %
 \nbea
-r' \bcancel{d} z & = & s' \bcancel{d} h \\
+(r' \bcancel{d}) z & = & (s' \bcancel{d}) h \\
 r' z & = & s' h
 \neea
 %
@@ -1252,7 +1217,7 @@ r'ds'z' & = & s'dr'h' \\
 which in turn means that $qy = r'ds' z'$ where $z'$ can be any positive integer. But $y$, as a multiplicative order, is the smallest positive integer such that $(a^q)^y \equiv (b^q)^y \equiv 1 \pmod{n}$. The smallest $y$ would mean that $z' = 1$ and $qy = r' d s'$.
 
 
-We need some sort of dictionary for the menagerie of variables that we will use
+We need some sort of dictionary for the menagerie of variables that we are using
 %
 \nbea
 \ba{r c l c r c l c r c l}
@@ -1269,7 +1234,11 @@ But from our result above $qy$ must be equal to $r' d s'$, here $qy = R D S \cdo
 r' d S = R d s' = r' d s'
 \neea
 %
-which means that $R = r'$ and $S = s'$ and the order of $ab$ is $q = r' D s'$ but it doesn't tell you what $D$ is and that's definitely a problem.
+means that $R = r'$ and $S = s'$ and the order of $ab$ is $q = r' D s'$ but it doesn't tell you what $D$.
+
+Now, if $\gcd(r,s) = d = 1$ then $D$ must be 1 and $r' = r, ~s' = s$ and therefore $q = rs$ which is Lemma 2.5.7. On the other hand, if $\gcd(r,s) = d > 1$ then there's no clear telling of what $D$ must be and we have the sort of erratic behaviour discussed previously and this completes the (first non-intuitive lowbrow version of the) proof.
+
+Some more words about the erratic behaviour when $\gcd(r,s) = d > 1$. As far as I can tell, knowing only the orders doesn't give much intel. For example, 7, 11, 23, 29, 31 all have an order of 6 modulo 36 and yet $(11 \cdot 31)$ and $(23 \cdot 29)$ have orders of 2, $(11 \cdot 29)$ has an order of 6 and so on. There's nothing you can say if you only know the orders.
 
 {\bf Bonus}. The above excursion shows that finding the order of a number also gives inverse relations of its factors, \eg
 %
@@ -1280,17 +1249,17 @@ which means that $R = r'$ and $S = s'$ and the order of $ab$ is $q = r' D s'$ bu
 %
 which means that $(6^3)$ is the inverse of $(7^3)$ modulo 13.
 
-{\bf Rant against Mathematicians}. Doing this book made me realize the difference between physicists and mathematicians. In mathematics (and certainly an attitude of Gauss) intuitive reasoning or reasoning at all for that matter is not important. What is important is brevity and logical conclusion.
+{\bf Rant against Mathematicians}. Doing this book made me realize the difference between physicists and mathematicians. In mathematics (and certainly an attitude of Gauss) intuitive reasoning or reasoning at all for that matter is not important. What is important is brevity and logical fidelity.
 
-I particularly hate this approach since in physics we always want to understand something deeper if at all possible, it differentiates us from machines :) Furthermore, as Walter put it, ``the purpose is not to show others how smart you are, but to teach them''.
+I particularly hate this approach since in physics we always want to understand something deeper if at all possible, it differentiates us from machines :) Furthermore, as Walter put it, ``the purpose is not to show others how smart you are, but to teach them'' and brevity doesn't teach much.
 
 {\bf A Physicist's Way of Doing Math}. So here I'll give a better explanation as to why the order of a product depends only on the gcd of the orders of its constituents.
 
 First, any element of $(\mathbb{Z}/n\mathbb{Z})^*$ is a generator of a sub{\it group} of $(\mathbb{Z}/n\mathbb{Z})^*$. Say $a \in (\mathbb{Z}/n\mathbb{Z})^*$ and its order is $d$, then the elements $a^u$ with $1 \le u \le d$ form a subgroup of $(\mathbb{Z}/n\mathbb{Z})^*$. They form a group because
 %
 \begin{enumerate}
-\item The existence of identity element, $a^d \equiv 1 \pmod{n}$, check!
-\item The closure property, $a^x \cdot a^y \equiv a^{dq + r} \equiv 1 \cdot a^r \pmod{n}$, $0 \le r < d$.
+\item The existence of identity element, $a^d \equiv 1 \pmod{n}$ check \checkmark
+\item The closure property, $a^x \cdot a^y \equiv a^{dq + r} \equiv 1 \cdot a^r \pmod{n}$, $x+y = dq+r, ~0 \le r < d$.
 \item The existence of an inverse, for any $a^x,~ 1 \le x \le d$, its inverse is given by $a^{d-x}$.
 \end{enumerate}
 %
@@ -1304,15 +1273,15 @@ We now have the following proposition,
 b^{yk} \equiv a^{xk} & \equiv & 1 \pmod{n}
 \neea
 %
-For the above statement to be true $yk = sw$ but $y$ is less than $s$ thus $\gcd(k, s) > 1$. Another consequence will be $xk = ru$ but again since $x$ is less than $r$ then $\gcd(k, r) > 1$. This is a contradiction since $\gcd(r,s) = 1$. Therefore the subgroups $A$ and $B$ must be mutually exclusive. The only exception is if $b^y \equiv 1$ which is the identity element.
+For the above statement to be true $yk = sw$ but $y$ is less than $s$ thus $\gcd(k, s) > 1$. Another consequence will be $xk = ru$ but again since $x$ is less than $r$ then $\gcd(k, r) > 1$ which meants that $\gcd(r,s) > 1$. This is a contradiction since $\gcd(r,s) = 1$. Therefore the subgroups $A$ and $B$ must be mutually exclusive. The only exception is if $b^y \equiv 1$ which is the identity element.
  
-\underline{And here's the explanation of why Lemma 2.5.7 works}. This also makes another lowbrow proof of Lemma 2.5.7. You see
+\underline{And here's the explanation of why Lemma 2.5.7 works}. This also makes another (more intuitive) lowbrow proof of Lemma 2.5.7. You see
 %
 \nbea
 (ab)^q \equiv a^q b^q & \equiv & 1 \pmod{n}
 \neea
 %
-means that $a^q$ is an inverse of $b^q$, which is to say that we can express $b^q \equiv a^t$ for some $1 \le t \le r$ where $r$ is the order of $a$. This is a consequence of the fact that $a$ generates a subgroup of its own as explained above. But this contradicts Proposition 2.5.7.2 above unless $a^q$ is the identity element, which makes $b^q$ an indentity element as well. Therefore, since $\gcd(r,s) = 1$, $q$ must be a multiple of $rs$ but since $q$ is the {\it smallest} number such that $a^q \equiv 1$, $q$ must be $rs$.
+means that $a^q$ is an inverse of $b^q$, which is to say that we can express $b^q \equiv a^t$ for some $1 \le t \le r$ where $r$ is the order of $a$. This is a consequence of the fact that $a$ generates a subgroup of its own and thus the inverse of $a^x$ can be expressed as $a^{r-x}$ as explained above. But this contradicts Proposition 2.5.7.2 above unless $a^q$ is the identity element, but that will make $b^q$ an indentity element as well. Therefore, since $\gcd(r,s) = 1$, $q$ must be a multiple of $rs$ such that $(ab)^q \equiv 1$ but since $q$ is the {\it smallest} number such that $(ab)^q \equiv 1$, $q$ must be $rs$.
 
 {\bf Theorem 2.5.8}. My first question when I saw the proof was that why can't one of the roots of $x^{q_i^{n_i}} - 1$ that is not a root of $x^{q_i^{n_i - 1}} - 1$ be a root of say $x^{q_i^{n_i - k}}$ for $1 < k < n_i - 1$? \eg $\alpha$ is a root of $x^{q_i^{n_i}} - 1 = 0$ but it's not a root of $x^{q_i^{n_i - 1}} - 1 = 0$ but $\alpha$ can still be a root of $x^{q_i^{n_i - k}} -1 = 0$, right?
 
