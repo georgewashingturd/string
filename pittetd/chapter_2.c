@@ -277,17 +277,90 @@ void FindFractionOfPrimesWith2AsPrimitiveRoot (uint64 start, uint64 end)
 }
 
 
-uint64 PowerModQ(uint64 n, uint64 q)
+uint64 PowerModQ(uint64 n, uint64 x, uint64 q)
 {
+    uint64 ao[64], g = 1ULL;
+    int i;
+    
+    ao[0] = x % q;
+    for(i = 1; i < 64; i++)
+    {
+        ao[i] = (ao[i-1] * ao[i-1]) % q;
+    }
+    
+    for(i = 0; i < 64; i++)
+    {
+        if ((n >> i) & 1ULL)
+        {
+            g = (g * ao[i]) % q;
+        }
+    }
+    
+    return g;
+    
+/*    
     uint64 res = 1ULL;
     
     while(n > 0)
     {
-        res = (res*n) % q;
+        res = (res*x) % q;
         n--;
     }
     
     return res;
+*/
+}
+
+int64 Bezout(int64 * a, int64 * b, int64 * r, int64 * s, int64 * x, int64 * y)
+{
+    int64 g, r1, s1, q, c;
+    
+    *x = 1LL;
+    *y = 0LL;
+
+    *r = 0LL;
+    *s = 1LL;
+    
+    while (*b != 0LL)
+    {
+        q = (*a) / (*b);
+        c = (*a) % (*b);
+
+        *a = *b;
+        *b = c;        
+
+        // save old values
+        r1 = *r;
+        s1 = *s;
+        
+        *r = (*x) - q*(*r);
+        *s = (*y) - q*(*s);
+        
+        *x = r1;
+        *y = s1;
+        
+        //printf("%lld %lld %lld %lld %lld %lld\n", *a, *b, *r, *s, *x, *y);
+    }
+
+    if (*b == 0LL)
+    {
+        g = *a;
+        return g;
+    }
+}
+
+uint64 FindInverse(uint64 a, uint64 q)
+{
+    int64 A = a, B = q, r, s, x, y, i;
+    
+    Bezout(&A, &B, &r, &s, &x, &y);
+    
+    if (x < 0LL)
+        i = x + q;
+    else
+        i = x % q;
+    
+    return i;
 }
 
 int main (int argc, char * argv[])
