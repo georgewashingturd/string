@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  22 MAY 2016 21:33
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  25 MAY 2016 20:15
 entering extended mode
 **"D:/Github/string/pittetd/my ent.tex"
 ("D:/Github/string/pittetd/my ent.tex"
@@ -742,16 +742,16 @@ Overfull \hbox (52.48201pt too wide) in alignment at lines 3110--3120
 
 [86] [87] [88] [89] [90] [91] [92]
 Missing character: There is no ’ in font cmr12!
- [93] [94] [95] [96] [97] [98] [99] [100]
+ [93] [94] [95] [96] [97]
+Missing character: There is no ’ in font cmr12!
+ [98] [99] [100]
 [101]
 Missing character: There is no − in font cmr12!
-Missing character: There is no − in font cmr8!
-Missing character: There is no − in font cmr8!
  [102] ("my ent.bbl") [103]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 3682.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 3695.
  ("my ent.aux")
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 3682.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 3682.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 3695.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 3695.
  ) 
 Here is how much of TeX's memory you used:
  13357 strings out of 428755
