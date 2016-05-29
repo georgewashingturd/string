@@ -3692,4 +3692,171 @@ p + q & = & 4n \\
 %
 Since $2n - 1$ is odd the LHS has to be odd as well, \ie one of $\frac{(q-1)}{2}$ and $\frac{(p-1)}{2}$ has to be odd and the other must be even. Therefore $\frac{(p-1)}{2} \cdot \frac{(q-1)}{2}$ has to be even. 
 
+{\bf Problem 4.10}. (*) Prove that for any $n \in \mathbb{Z}$, the integer $n^2 + n + 1$ does not have any divisors of the form $6k - 1$.
+
+Solving this problem turned to be a very interesting jaunt :) Let me start by dropping the bombshell, take $n = 9 \to n^2 + n + 1 = 91$,
+%
+\nbea
+91 & = & 7 \cdot 13 \\
+& = & (-7) (-13) \\
+& = & (6(-1) - 1)(6(-2) - 1)
+\neea
+%
+so not only $9^2 + 9 + 1$ has a divisor of the form $6k - 1$ but it actually has {\it two!} Also $(-10)^2 - 10 + 1 = 91$, the same situation as above.
+
+Let's see how I came to this conclusion. I started doing this problem before I finished reading chapter 4, I'd only gotten as far as the first proof of Gauss's quadratic reciprocity law. I wanted to know if I can solve this problem with just some basic tools.
+
+My favorite tool is of course proof by contradiction. Assume that $n^2 + n + 1$ has a divisor of the form $6k - 1$, we then get
+%
+\nbea
+n^2 + n + 1 & = & (6k - 1)m \\
+& = & 6km - m \\
+& \equiv & -m \pmod{6} \\
+n(n + 1) + (m + 1) & \equiv & 0 \pmod{6}
+\neea
+%
+I then make a table of what values $m$ must take for the above to hold, see Table.~\ref{Tab:6}.
+%
+\begin{table}[]
+\centering
+\caption{Various values of $n$ and $m$ {\bf modulo 6} that will allow $n(n + 1) + (m + 1) \equiv 0 \pmod{6}$ to hold}
+\label{Tab:6}
+\begin{tabular}{|c|c|c|c|}
+\hline
+~~~$n$~~~ & $n(n+1)$ & $(m + 1)$ & ~~~$m$~~~ \\ \hline
+0 & 0 & 0 & $-1$ \\ \hline
+1 & 2 & 4 & $\pm3$ \\ \hline
+2 & 0 & 0 & $-1$ \\ \hline
+3 & 0 & 0 & $-1$ \\ \hline
+4 & 2 & 4 & $\pm3$ \\ \hline
+5 & 0 & 0 & $-1$ \\ \hline
+\end{tabular}
+\end{table}
+%
+So we see that we only have two values of $m$ modulo 6 it's either $-1 \pmod{6}$ or $\pm3 \pmod{6}$.
+
+I then employ a high school tactic, our familiar friend, the quadratic formula, but first, let's set
+%
+\nbea
+m & \equiv & -1 \pmod{6} \\
+& = & 6u - 1 \\
+& = & 6(k + w) - 1 \\
+\to 0 & = & n^2 + n + 1 - (6k - 1)(6(k + w) - 1)
+\neea
+%
+where I have set $u = k + w$. We then employ the quadratic formula to give us
+%
+\nbea
+n & = & \frac{1 \pm \sqrt{(144k-24)w+144k^2-48k+1}}{2} \\
+\to g^2 & = & (144k-24)w+144k^2-48k+1
+\neea
+%
+where I have denoted whatever inside the square root as $g^2$ because it has to be a square for $n$ to be an integer, not only that but $g$ also needs to be odd for $n$ to be an integer.
+
+My initial thought was to show that there are no $k, w$ such that $g$ is an integer. Let's go this route first, solving for $k$
+%
+\nbea
+0 & = & (144k-24)w+144k^2-48k+1 - g^2 \\
+\to k & = & \frac{2 - 6w \pm \sqrt{36w^2+g^2+3}}{2}
+\neea
+%
+which means that we need to show that there are no $w, g$ such that $36w^2+g^2+3$ is a square. This turns out to be hard, I tried different things, mostly modulo stuffs, without any success because this is basically solving a diophantine equation. I also tried different combination, \eg instead of expressing $u = k + w$ I just used $u$, etc, with not much success either.
+
+Nevertheless, this is what I did next, I wanted to see what happens if I switched side, \ie try to prove that the problem was indeed wrong that $36w^2+g^2+3$ can be a square
+%
+\nbea
+d^2 & = &  36w^2+g^2+3 \\
+d^2 - g^2 & = & 36w^2 + 3 \\
+(g + a)^2 - g^2 & = & 36w^2 + 3 \\
+2ga + a^2 & = & 36w^2 + 3
+\neea
+%
+I have set $d = g + a$ which is legit because the LHS is positive thus $d > g$ and $a$ is positive. Now if $a = 1$
+%
+\nbea
+2g + 1 & = & 36w^2 + 3 \\
+g & = & 18w^2 + 1
+\neea
+%
+This is good (or bad?) news, because $g$ is odd, substituting this back into $k$
+%
+\nbea
+k & = & \frac{2 - 6w \pm \sqrt{36w^2+(18w^2 + 1)^2+3}}{2} \\
+k & = & -\frac{3w^2+w}{2} ~~~{\rm OR}~~~ \frac{9w^2-3w+2}{6}
+\neea
+%
+Now, $\frac{9w^2-3w+2}{6}$ won't do. This is because $k$ is an integer and therefore $9w^2-3w+2$ must be a multiple of $6$, however
+%
+\nbea
+9w^2-3w+2 & \equiv & 0 \pmod{6} \equiv 0 \pmod{3} \\
+3(w^2 - w) + 2 & = & 3r \\
+2 & = & 3(r - w^2 + w) \\
+\to 3 & | & 2
+\neea
+%
+which is a contradiction, so $k = -\frac{3w^2+w}{2}$. Substituting this back in to $n$ we get
+%
+\nbea
+n & = & \frac{1 \pm \sqrt{\left (144-\frac{3w^2+w}{2}-24 \right )w+144\left (-\frac{3w^2+w}{2} \right)^2-48k+1}}{2} \\
+n & = & -9w^2-1 ~~~{\rm OR} ~~~ 9w^2
+\neea
+%
+This doesn't mean that any value of $w$ will do, we still need to make sure that $k = -\frac{3w^2+w}{2}$ is still an integer. Setting $w = 1 \to k = 2, ~n = -10$ or $9$ we get the counter example above.
+
+Note that we have arrived at this conclusion by setting $m \equiv -1 \pmod{6}$, if we chose $m \equiv \pm3 \pmod{6}$ we will get
+%
+\nbea
+n & = & \frac{1 \pm \sqrt{3\{(48k-8)w+48k^2-32k+3\}}}{2} \\
+d^2 & = & 36w^2-24w+g^2+7 \\
+\to g & = & \frac{36w^2-24w+7 - a^2}{2a}
+\neea
+%
+where we have, just like before, set $d = g + a$. Again we can set $a = 1$ to get $g = 18w^2-12w+3$ with $k = -\frac{3w^2-w}{2}$ or $\frac{9w^2-9w+4}{6}$ and just like before $\frac{9w^2-9w+4}{6}$ doesn't work. Finally, with this choice $x = -9w^2+6w-2$ or $9w^2-6w+1$. Setting $w = 1 \to x = -5$ or $4$, \ie
+%
+\nbea
+(-5)^2 - 5 + 1 = 4^2 + 4 + 1 & = & (6(-1) - 1)(-3) 
+\neea
+%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%
+\nbea
+g & = & \frac{36w^2 + (3 - a^2)}{2a} \\
+\to 2 & | & 3 - a^2 \\
+\neea
+%
+$a$ must be odd
+%
+\nbea
+g & = & \frac{36w^2 + (3 - (2a + 1)^2)}{2(2a + 1)} \\
+g & = & \frac{36w^2 + (2 - 4a^2 - 4a)}{2(2a + 1)} \\
+\neea
+%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}

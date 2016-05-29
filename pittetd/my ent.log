@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  25 MAY 2016 20:15
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  28 MAY 2016 21:13
 entering extended mode
 **"D:/Github/string/pittetd/my ent.tex"
 ("D:/Github/string/pittetd/my ent.tex"
@@ -747,19 +747,24 @@ Missing character: There is no ’ in font cmr12!
  [98] [99] [100]
 [101]
 Missing character: There is no − in font cmr12!
- [102] ("my ent.bbl") [103]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 3695.
+ [102] [103]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 3720.
+
+[104] [105] [106] ("my ent.bbl") [107]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 3862.
  ("my ent.aux")
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 3695.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 3695.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 3862.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 3862.
  ) 
 Here is how much of TeX's memory you used:
- 13357 strings out of 428755
- 184584 string characters out of 3166785
+ 13358 strings out of 428755
+ 184591 string characters out of 3166785
  292381 words of memory out of 3000000
- 16570 multiletter control sequences out of 15000+200000
+ 16571 multiletter control sequences out of 15000+200000
  16861 words of font info for 62 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
  36i,21n,38p,703b,418s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on my ent.pdf (103 pages).
+Output written on my ent.pdf (107 pages).
