@@ -3803,7 +3803,7 @@ n & = & -9w^2-1 ~~~{\rm OR} ~~~ 9w^2
 %
 This doesn't mean that any value of $w$ will do, we still need to make sure that $k = -\frac{3w^2+w}{2}$ is still an integer. Setting $w = 1 \to k = 2, ~n = -10$ or $9$ we get the counter example above.
 
-Note that we have arrived at this conclusion by setting $m \equiv -1 \pmod{6}$, if we chose $m \equiv \pm3 \pmod{6}$ we will get
+Note that we have arrived at this conclusion by setting $m \equiv -1 \pmod{6}$, if we chose $m \equiv -3 \pmod{6}$ we will get
 %
 \nbea
 n & = & \frac{1 \pm \sqrt{3\{(48k-8)w+48k^2-32k+3\}}}{2} \\
@@ -3817,64 +3817,169 @@ where we have, just like before, set $d = g + a$. Again we can set $a = 1$ to ge
 (-5)^2 - 5 + 1 = 4^2 + 4 + 1 & = & (6(-1) - 1)(-3) 
 \neea
 %
+Thus many {\it many} values of $w$ can generate negative divisors of the form $6k-1$ :) Therefore I believe the actual problem should be
 
+{\bf Problem 4.10 (Corrected)}. (*) Prove that for any $n \in \mathbb{Z}$, the integer $n^2 + n + 1$ does not have any {\it positive} divisors of the form $6k - 1$.
 
+We can still use the above approach to solve this problem. In this solution I'll present the solution in two ways. First, I'll use the approach above then I'll show my failed attempt at induction that still yields the right solution and some interesting results.
 
-
-
-
-
-
-
-
-
-
-
-
+First a few observations. Note that if
 %
 \nbea
-g & = & \frac{36w^2 + (3 - a^2)}{2a} \\
-\to 2 & | & 3 - a^2 \\
+n^2 + n + 1 & = & (6k - 1) m
 \neea
 %
-$a$ must be odd
+then $m$ is either strictly positive or strictly negative. This is because the LHS is {\it always} positive, even when $n \le 0$, thus the RHS has to be positive as well. If $k > 0$ then $6k - 1$ is always positive and therefore $m > 0$. On the other hand, if $k \le 0$ then $6k - 1 < 0$ and $m < 0$ is a must to ensure $(6k-1)m > 0$.
+
+Good, so we have established that $m$ is either positive or negative and from our counter examples above we know that $m$ must be positive. Next, we just need to consider $n \ge 0$ because
 %
 \nbea
-g & = & \frac{36w^2 + (3 - (2a + 1)^2)}{2(2a + 1)} \\
-g & = & \frac{36w^2 + (2 - 4a^2 - 4a)}{2(2a + 1)} \\
+(-y)^2 + (-y) + 1 & = & y^2 - 2y + 1 + y - 1 + 1 \\
+& = & (y - 1)^2 + (y - 1) + 1
 \neea
 %
+Therefore $-y$ will generate the same result as $y - 1$, \eg $(-1)^2 + (-1) + 1 = 0^2 + 0 + 1$ and so on.
 
-
+Now, back to our approach above. We now assume that for $n^2 + n + 1$ has {\it positive} factors of the form $6k - 1$
 %
 \nbea
-g^2 & \equiv & -3 \equiv 1 \pmod{4} \\
-\to g & = & 4r \pm 1
+0 & = & n^2 + n + 1 - (6k - 1)m
 \neea
 %
-
+We then employ the quadratic formula to give us
 %
 \nbea
-(4r \pm 1)^2 + 3 & = & 16r^2 \pm 8r + 4 \\
-\frac{(4r \pm 1)^2 + 3}{4} & = & 4r^2 \pm 2r + 1 \\
-1 + \frac{(4r \pm 1)^2 + 3}{4} & = & 4r^2 \pm 2r + 2
+n & = & \frac{-1 \pm \sqrt{(24k - 4)m - 3}}{2}
 \neea
 %
-
+Now, instead of solving the above square roots directly we will solve in modulo $6k - 1$, therefore
 %
 \nbea
-4r^2 \pm 2r + 2 & \equiv & -2r^2 \pm 2r + 2 \pmod{6}
+n & \equiv & \frac{1 \pm \sqrt{-3}}{2} \pmod{6k - 1}
 \neea
 %
-
-
-so $m$ divides $1 \pmod{6}$ or $3 \pmod{6}$.
+where we have noticed that
 %
 \nbea
-m & | & 6j + 1 \\
-m & | & 6l + 3
+(24k - 4)m = 4m (6k - 1) & \equiv & 0 \pmod{f} 
 \neea
 %
+which means that we need to show that $-3$ is {\it not} a quadratic residue modulo $6k-1$. But before we continue, let's switch to my failed induction attempt.
+
+We can express $n^2 + n + 1$ in a slightly different way
+%
+\nbea
+3\left ( 1 + 6 ~ \frac{(w^2+w)}{2} \right) & = & (1+3w)^2 + (1+3w) + 1 \\
+1 + 6 \left ( (w + 1) +3 ~ \frac{(w^2+w}{2} \right) & = & (2+3w)^2 + (2+3w) + 1 \\
+1 + 6 \left ( 2(w + 1) +3 ~ \frac{(w^2+w)}{2} \right) & = & (3+3w)^2 + (3+3w) + 1
+\neea
+%
+where $w \ge 0$. My original thought was that I could use induction to solve this problem. It's because we can see the recursive pattern here $w^2 + w = (w^2 + w + 1)- 1$ so it seems like we can use previous result to deduce the next one. What the above basically does is to split $n$ in groups of three, \eg setting $w=0$ we get $1^2 + 1 + 1,~2^2 + 2 + 1,~3^2 + 3 + 1$, and setting $w=1$ we'll get the next three $4^2 + 4 + 1,~5^2 + 5 + 1,~6^2 + 6 + 1$ and so on. The only case that is not covered is $0^2 + 0 + 1 = 1$ but this is trivial.
+
+My original idea in reformulating $n^2 + n + 1$ into the three amigos above is to massage them into a form of $6u + v$. Now, any number can be expressed as $6u + v$, \ie we are basically expressing them modulo 6. We now want to see if the three amigos above can be expressed as a product of $(6a - 1)(6b + c)$.
+
+Let's take the first amigo,
+%
+\nbea
+3\left ( 1 + 6 ~ \frac{(w^2+w)}{2} \right) & = & 3(6a_1 - 1)(6b_1 + c_1)
+\neea
+%
+First, since $3$ is a prime it's nonnegotiable that we have a factor of 3. Next, since the LHS is in the form of $6d_1 + 1$ where $d_1 =  \frac{(w^2+w)}{2}$
+%
+\nbea
+6d_1 + 1 & = & (6a_1 - 1)(6b_1 + c_1) \\
+& = & 6(6a_1b_1 + a_1c_1 - b_1) - c_1
+\neea
+%
+Therefore, $-c_1 \equiv 1 \pmod{6}$ and $ (6a_1 - 1)(6b_1 - 1) \to  (6a_1 - 1)(6b_1 - 1)$ and
+%
+\nbea
+6d_1 + 1 & = & 6(6a_1b_1 - a_1 - b_1) + 1 \\
+d_1 & = & b_1(6a_1 - 1) - a_1 \\
+ \frac{(w^2+w)}{2} & \equiv & -a_1 \pmod{6a_1 - 1} \\
+ w^2 + w + 2a_1 & \equiv & 0 \pmod{6a_1 - 1}
+\neea
+%
+The solution to the quadratic equation above is
+%
+\nbea
+\to w & \equiv & \frac{-1 \pm \sqrt{-8a_1 + 1}}{2} \pmod{6a_1 - 1} \\
+& \equiv & \frac{-1 \pm \sqrt{-2a_1}}{2} \pmod{6a_1 - 1}
+\neea
+%
+where we have used the fact that $-8a + 1 \equiv -2a \pmod{6a-1}$. For this solution to materialize we need $-2a$ to be a quadratic residue modulo $6a - 1$. Let's denote $f = 6a - 1 \to a = \frac{f + 1}{6}$
+%
+\nbea
+-2a_1 = -2\cdot \frac{f + 1}{6} & \equiv & s^2 \pmod{f} \\
+-18a_1 = -3f - 3 & \equiv & (3s)^2 \pmod{f} \\
+-3 & \equiv & (3s)^2 \pmod{f}
+\neea
+%
+where we have used the fact that $-3f \equiv 0 \pmod{f}$ in going to the third line. Thus we need $-3$ to be a quadratic residue modulo $6a_1 - 1$. Before we continue, let's tackle the other two amigos.
+
+Those two have the form
+%
+\nbea
+1 + 6d_2 & = & (6a_2 - 1)(6b_2 + c_2) \\
+1 + 6d_3 & = & (6a_3 - 1)(6b_3 + c_3)
+\neea
+%
+where $r = (w + 1) +3 \frac{(w^2+w}{2}$ and $q = 2(w + 1) +3 \frac{(w^2+w}{2}$. Following the same argument as before $l \equiv h \equiv -1 \pmod{6}$, therefore
+%
+\nbea
+d_2 & = & b_2(6a_2 - 1) - a_2 \\
+d_2 & = & b_2(6b_3 - 1) - a_3 \\
+\to 3w^2+5w + 2(a_2 + 1) & \equiv & 0 \pmod{6a_2 - 1} \\
+\to 3w^2+7w + 2(a_3 + 2) & \equiv & 0 \pmod{6a_3 - 1}
+\neea
+%
+The solutions to the above quadratic equations are
+%
+\nbea
+w & \equiv & \frac{-5 \pm \sqrt{-24a_2 + 1}}{6} \pmod{6a_2 - 1} \\
+& \equiv & \frac{-5 \pm \sqrt{-3}}{6} \pmod{6a_2 - 1} \\
+w & \equiv & \frac{-7 \pm \sqrt{-24a_3 + 1}}{6} \pmod{6a_3 - 1} \\
+& \equiv & \frac{-7 \pm \sqrt{-3}}{6} \pmod{6a_3 - 1}
+\neea
+%
+So it all boils down to whether $-3$ is a quadratic residue modulo $6a - 1$ and this is true for the first solution as well. The only problem now is that $6a-1$ is not always prime, \eg $6(11) - 1 = 65$, not prime. So we cannot use Gauss's quadratic reciprocity law to deduce it. You see, $6a - 1 \equiv -1 \pmod{3}$ and it will be very easy to deduce $\left ( \frac{-3}{6a-1}\right )$ using the reciprocity law.
+
+However, if $6a - 1$ is not prime we can always decompose
+%
+\nbea
+6a - 1 & = & (6h - 1)(6l + 1)
+\neea
+%
+and if $6h - 1$ is not prime we can decompose it again and so on (we can always decompose it because we are basically just representing the factors of $6a - 1$ in modulo 6). Thus we should have started with the prime factor of $6d_i + 1$ who has the form $6a - 1$.
+
+So we just need repeat the whole argument above but this time we choose a prime factor of $6d - 1$ in the form of $6a - 1$ who is also prime. Therefore
+%
+\nbea
+\left ( \frac{-3}{6a - 1} \right ) & = & \left ( \frac{-1}{6a - 1} \right ) \left ( \frac{3}{6a - 1} \right ) \\
+& = & (-1)^{\frac{6a - 2}{2}} \cdot (-1)^{\frac{6a-2}{2}\cdot \frac{3-1}{2}}\left ( \frac{6a - 1}{3} \right ) \\
+& = &  (-1)^{6a - 2} \left ( \frac{6a - 1}{3} \right )
+\neea
+%
+Now $(-1)^{6a - 2} = (-1)^{2(3a - 1)} = +1$ and
+%
+\nbea
+\left ( \frac{6a - 1}{3} \right ) & \equiv & (6a - 1)^{\frac{3-1}{2}} \pmod{3} \\
+& \equiv & (-1)^1 \pmod{3} \\
+\to \left ( \frac{6a - 1}{3} \right ) & \equiv & -1 \pmod{3}
+\neea
+%
+where we have used the fact that $6a \equiv 0 \pmod{3}$. Therefore
+%
+\nbea
+\left ( \frac{-3}{6a - 1} \right ) & = & 1 (-1) \\
+& = & -1
+\neea
+%
+which means that $-3$ is not a quadratic residue modulo $6a-1$ and therefore (if you go back to the beginning of the argument) $n^2 + n + 1$ can{\it not} have {\it positive} divisors of the form $6k - 1$.
+
+The reason I didn't start with a prime $6a - 1$ is because I wanted to show my thought process. Starting with prime $6a - 1$ seems to be jumping the gun, \ie you can sort of see the future, and I didn't like that.
+
+
 
 
 
