@@ -3855,7 +3855,7 @@ n & = & \frac{-1 \pm \sqrt{(24k - 4)m - 3}}{2}
 Now, instead of solving the above square roots directly we will solve in modulo $6k - 1$, therefore
 %
 \nbea
-n & \equiv & \frac{1 \pm \sqrt{-3}}{2} \pmod{6k - 1}
+n & \equiv & \frac{-1 \pm \sqrt{-3}}{2} \pmod{6k - 1}
 \neea
 %
 where we have noticed that
@@ -3864,9 +3864,31 @@ where we have noticed that
 (24k - 4)m = 4m (6k - 1) & \equiv & 0 \pmod{f} 
 \neea
 %
-which means that we need to show that $-3$ is {\it not} a quadratic residue modulo $6k-1$. But before we continue, let's switch to my failed induction attempt.
+which means that we need to show that $-3$ is {\it not} a quadratic residue modulo $6k-1$. But before we continue, let's discuss as to why $6k - 1$ with $k<0$ will not work.
 
-We can express $n^2 + n + 1$ in a slightly different way
+If you go back to the solution above, it might seem that everything will also work for $k<0$. But we must be careful. Note that we could've done the following
+%
+\nbea
+n^2 + n + 1 & \equiv & 0 \pmod{6k - 1} \\
+\to n & \equiv & \frac{-1 \pm \sqrt{-3}}{2} \pmod{6k - 1}
+\neea
+%
+We would've gotten the solution right away. However, doing it this way won't reveal the pitfall of $k < 0$. As a concrete example consider $k=-1$, $6k-1 = -7$ and $-3 \pmod{-7}$. The thing is that $-3 \equiv 4 \pmod{-7}$ and $4$ is a quadratic residue. In general, if $k<0$ we have $6k - 1 = -(6|k| + 1)$ and
+%
+\nbea
+n^2 + n + 1 - (6k - 1)m & = & n^2 + n + 1 + (6|k| + 1)m
+\neea
+%
+with the following solution
+%
+\nbea
+\to n & = & \frac{-1 \pm \sqrt{-4(6|k|+1)m+1}}{2} \\
+n & \equiv & \frac{-1 \pm \sqrt{1}}{2} \pmod{6|k|+1}
+\neea
+%
+and there's no contradiction here.
+
+Let's now switch to my failed induction attempt. We can express $n^2 + n + 1$ in a slightly different way
 %
 \nbea
 3\left ( 1 + 6 ~ \frac{(w^2+w)}{2} \right) & = & (1+3w)^2 + (1+3w) + 1 \\
@@ -3874,7 +3896,7 @@ We can express $n^2 + n + 1$ in a slightly different way
 1 + 6 \left ( 2(w + 1) +3 ~ \frac{(w^2+w)}{2} \right) & = & (3+3w)^2 + (3+3w) + 1
 \neea
 %
-where $w \ge 0$. My original thought was that I could use induction to solve this problem. It's because we can see the recursive pattern here $w^2 + w = (w^2 + w + 1)- 1$ so it seems like we can use previous result to deduce the next one. What the above basically does is to split $n$ in groups of three, \eg setting $w=0$ we get $1^2 + 1 + 1,~2^2 + 2 + 1,~3^2 + 3 + 1$, and setting $w=1$ we'll get the next three $4^2 + 4 + 1,~5^2 + 5 + 1,~6^2 + 6 + 1$ and so on. The only case that is not covered is $0^2 + 0 + 1 = 1$ but this is trivial.
+where $w \ge 0$. My original thought was that I could use induction to solve this problem. It's because we can see the recursive pattern here $w^2 + w = (w^2 + w + 1)- 1$ so it seems like we can use a previous result to deduce the next one. What the above basically does is split $n$ in groups of three, \eg setting $w=0$ we get $1^2 + 1 + 1,~2^2 + 2 + 1,~3^2 + 3 + 1$, and setting $w=1$ we'll get the next three $4^2 + 4 + 1,~5^2 + 5 + 1,~6^2 + 6 + 1$ and so on. The only case that is not covered is $0^2 + 0 + 1 = 1$ but this is trivial.
 
 My original idea in reformulating $n^2 + n + 1$ into the three amigos above is to massage them into a form of $6u + v$. Now, any number can be expressed as $6u + v$, \ie we are basically expressing them modulo 6. We now want to see if the three amigos above can be expressed as a product of $(6a - 1)(6b + c)$.
 
@@ -3884,7 +3906,7 @@ Let's take the first amigo,
 3\left ( 1 + 6 ~ \frac{(w^2+w)}{2} \right) & = & 3(6a_1 - 1)(6b_1 + c_1)
 \neea
 %
-First, since $3$ is a prime it's nonnegotiable that we have a factor of 3. Next, since the LHS is in the form of $6d_1 + 1$ where $d_1 =  \frac{(w^2+w)}{2}$
+First, since $3$ is prime it's nonnegotiable that we have a factor of 3. Next, since the LHS is in the form of $6d_1 + 1$ where $d_1 =  \frac{(w^2+w)}{2}$
 %
 \nbea
 6d_1 + 1 & = & (6a_1 - 1)(6b_1 + c_1) \\
@@ -3924,7 +3946,7 @@ Those two have the form
 1 + 6d_3 & = & (6a_3 - 1)(6b_3 + c_3)
 \neea
 %
-where $r = (w + 1) +3 \frac{(w^2+w}{2}$ and $q = 2(w + 1) +3 \frac{(w^2+w}{2}$. Following the same argument as before $l \equiv h \equiv -1 \pmod{6}$, therefore
+where $d_2 = (w + 1) +3 \frac{(w^2+w)}{2}$ and $d_3 = 2(w + 1) +3 \frac{(w^2+w)}{2}$. Following the same argument as before $c_2 \equiv c_3 \equiv -1 \pmod{6}$, therefore
 %
 \nbea
 d_2 & = & b_2(6a_2 - 1) - a_2 \\
@@ -3952,7 +3974,7 @@ However, if $6a - 1$ is not prime we can always decompose
 %
 and if $6h - 1$ is not prime we can decompose it again and so on (we can always decompose it because we are basically just representing the factors of $6a - 1$ in modulo 6). Thus we should have started with the prime factor of $6d_i + 1$ who has the form $6a - 1$.
 
-So we just need repeat the whole argument above but this time we choose a prime factor of $6d - 1$ in the form of $6a - 1$ who is also prime. Therefore
+Repeating the whole argument above with a prime factor of $6d - 1$ in the form of $6a - 1$ who is also prime we arrive at the same conclusion, \ie whether $-3$ is a quadratic residue modulo $6a - 1$. Therefore
 %
 \nbea
 \left ( \frac{-3}{6a - 1} \right ) & = & \left ( \frac{-1}{6a - 1} \right ) \left ( \frac{3}{6a - 1} \right ) \\
@@ -3977,7 +3999,27 @@ where we have used the fact that $6a \equiv 0 \pmod{3}$. Therefore
 %
 which means that $-3$ is not a quadratic residue modulo $6a-1$ and therefore (if you go back to the beginning of the argument) $n^2 + n + 1$ can{\it not} have {\it positive} divisors of the form $6k - 1$.
 
-The reason I didn't start with a prime $6a - 1$ is because I wanted to show my thought process. Starting with prime $6a - 1$ seems to be jumping the gun, \ie you can sort of see the future, and I didn't like that.
+At this point it is appropriate to discuss what would've happened had $6a-1 < 0$, \ie $a<0$. The thing about Gauss's quadratic reciprocity law is that it implicitly assumes the primes involved, $p$ and $q$, are all positive. As a concrete example consider
+%
+\nbea
+\left ( \frac{-3}{-7} \right ) & = & \left ( \frac{-1}{-7} \right ) \left ( \frac{3}{-7} \right ) \\
+& = & (-1)^{\frac{-7-1}{2}} (-1)^{\frac{-7-1}{2}\cdot \frac{3-1}{2}} \left ( \frac{-7}{3} \right )  \\
+& = & \left ( \frac{-7}{3} \right ) \\
+& = & (-1)^{\frac{3-1}{2}} \left ( \frac{7}{3} \right ) \\
+& = & \left ( \frac{1}{3} \right ) \\
+\left ( \frac{-3}{-7} \right ) & = & +1
+\neea
+%
+\ie once we reached $\left ( \frac{-7}{3} \right )$ we need to separate it into $\left ( \frac{-1}{3} \right )  \cdot \left ( \frac{7}{3} \right )$ otherwise we will have
+%
+\nbea
+\left ( \frac{-7}{3} \right ) & \equiv & \left ( \frac{-1}{3} \right ) \\
+& = & -1
+\neea
+%
+which is the wrong result, note that we have used the fact that $-7 \equiv -1 \pmod{3}$.
+
+Some quick note, the reason I didn't start with a prime $6a - 1$ at the beginning is because I wanted to show my thought process. Starting with prime $6a - 1$ seems to be jumping the gun, \ie you can sort of see the future, and I didn't like that.
 
 
 
