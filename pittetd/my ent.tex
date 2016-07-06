@@ -4014,11 +4014,131 @@ which is the wrong result since $-3 \equiv 4 \pmod{-7}$ and is a quadratic resid
 
 Some quick note, the reason I didn't start with a prime $6a - 1$ at the beginning is because I wanted to show my thought process. Starting with prime $6a - 1$ seems to be jumping the gun, \ie you can sort of see the future, and I didn't like that.
 
+The more interesting question now is, what other quadratic coefficients $a,~b,~c$
+%
+\nbea
+an^2 + bn + c & \equiv & 0 \pmod{6k - 1}
+\neea
+%
+will give no solutions as well. Well, what we need is
+%
+\nbea
+b^2 - 4ac & \equiv & - 3 \pmod{6k - 1} \\
+b^2 & \equiv & 4ac - 3 \\
+(2 \gamma + 1)^2 & \equiv & 4ac - 3 \\
+\bcancel{4}(\gamma^2 + \gamma) & \equiv & \bcancel{4}ac -\bcancel{4} \\
+\gamma^2 + \gamma + 1 - ac & \equiv & 0 \pmod{6k - 1}
+\neea
+%
+I have suppressed the $\pmod{6k-1}$ in the intermediate steps to avoid clutter. We can cancel the factor of $4$ from both sides because $\gcd(4,6k-1) = 1$, if this is not true then
+%
+\nbea
+4m & = & 6k - 1\\
+2(2m - 3k) & = & -1 \\
+\to 2 &|& -1
+\neea
+%
+which is a contradiction. It was also obvious that $b$ has to be odd for it to work, hence I denoted $b = 2\gamma + 1$. The above result might be complicated because for different $k$'s we need to have different $a,c,\gamma$, or in other words we need to find $a,c,\gamma$ that hold for every $k$.
+
+But this can be overcome by noting that $\pmod{6k-1} = (6k-1)m$ for some integer $m$, if we set $m$ to zero we just get
+%
+\nbea
+\gamma^2 + \gamma + 1 & = & ac
+\neea
+%
+Thus, the $n^2 + n + 1$ structure reappears, and as long as $ac$ (the product of the coefficients of the highest and lowest powers) equate to $\gamma^2 + \gamma + 1$ for $\gamma \in \mathbb{Z}$ ($\gamma$ can be negative), $an^2 + bn + c$ will not have a positive divisor of the form $6k-1$, \ie
+%
+\nbea
+\frac{(\gamma^2 + \gamma + 1)}{c} n^2 + (2\gamma + 1)n + c, ~~~c|(\gamma^2 + \gamma + 1)
+\neea
+%
+
+Another interesting question is whether we can use another number besides 6 and 1, say $5k - 2$? The trick here is that when $6k-1$ is not prime we want to be able to decompose it into its prime factor where at least one of them is also of the form of $6k - 1$, 6 is actually quite special because
+%
+\nbea
+\ba{r c l c l}
+6k + 1 & = & 6k + 1 & \to & {\rm~can~be~prime} \\
+6k + 2 & = & 2(3k + 1) & \to & {\rm~can~NOT~be~prime} \\
+6k + 3 & = & 3(2k + 1) & \to & {\rm~can~NOT~be~prime} \\
+6k + 4 & = & 2(3k + 2) & \to & {\rm~can~NOT~be~prime} \\
+6k + 5 & \equiv & 6k - 1 & \to & {\rm~can~be~prime}
+\ea
+\neea
+%
+Thus only $6k \pm 1$ can be prime, contrast this to $8k - 1$
+%
+\nbea
+\ba{r c l c l}
+8k + 1 & = & 8k + 1 & \to & {\rm~can~be~prime} \\
+8k + 2 & = & 2(4k + 1) & \to & {\rm~can~NOT~be~prime} \\
+8k + 3 & = & 8k + 3 & \to & {\rm~can~be~prime} \\
+8k + 4 & = & 2(4k + 2) & \to & {\rm~can~NOT~be~prime} \\
+8k + 5 & = & 8k + 5 & \to & {\rm~can~be~prime} \\
+8k + 6 & = & 2(4k + 3) & \to & {\rm~can~NOT~be~prime} \\
+8k + 7 & \equiv & 8k - 1 & \to & {\rm~can~be~prime}
+\ea
+\neea
+%
+The next good ingredient of $6k - 1$ is that it can only be decomposed into $6k - 1 = (6m + 1)(6j - 1)$, for $8k - 1$ it can be decomposed multiple ways
+%
+\nbea
+8k - 1 & = & \left \{
+\ba{l}
+(8m + 1)(8j - 1)\\
+(8m + 3)(8j + 5)
+\ea
+\right.
+\neea
+%
+Thus if any of $8m + 5$ or $8j + 3$ is prime we are sunk because it is not of the form of $8k - 1$. Therefore what we need is that $ax - b$ that can only be decomposed in one and only one way $ak - b = (dx + c)(ay - b)$ while maintaining the fact that $ak - b$ can be prime as well.
+
+The necessary condition for $ak - b$ to be prime is that $\gcd(a,b) = 1$, but this means that $b \in (\mathbb{Z}/a\mathbb{Z})^*$
+
+We also know that $(\mathbb{Z}/a\mathbb{Z})^*$ forms a group which means that every element has an inverse, thus
+%
+\nbea
+\ba{r c l c r c l}
+bh & \equiv & y \to b & \equiv & y h^{-1}
+\ea
+\neea
+%
+where $h, h^{-1}, y \in (\mathbb{Z}/a\mathbb{Z})^*, ~ y \not\equiv 1, ~ h \not\equiv 1$. We also know that $h^{-1} \not\equiv b$ because otherwise $y \equiv 1$. Thus we can always decompose a number more than one way as long as $(\mathbb{Z}/a\mathbb{Z})^*$ has more than three elements (including the identity), that is we can always decompose $ak - b$ at least two ways
+%
+\nbea
+ak - b & = & \left \{
+\ba{l}
+(am + 1)(aj - b)\\
+(am + y)(aj + h^{-1})
+\ea
+\right.
+\neea
+%
+where just like above $b \equiv yh^{-1}$ and therefore we might not be able to decompose $ak - b$ into a prime of the form $aj - b$
+
+%\left ( \frac{}{} \right )
+
+%
+\nbea
+\left ( \frac{5}{10k - 3} \right ) & = & (-1)^{10k-4/2 5-1/2} \left ( \frac{10k - 3}{5} \right )
+\neea
+%
+
+%(-1)^{10k-4/2} (-1)^{10k-4/2 5-1/2}
+
+%3 x 9 = 7
+%1 * 7 = 7
+
+
+%
+\nbea
+c\bcancel{b} & \equiv & \bcancel{b} \pmod{a} \\
+c & \equiv & 1 \pmod{a}
+\neea
+%
 
 
 
-
-
+Well, $5k - 1$ won't work because when $k$ is odd $5k - 1$ will be even, and it will not be prime
 
 
 

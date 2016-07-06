@@ -2461,7 +2461,7 @@ Now comes the time to gather what I've found. In this section I'll list all the 
 %
 \item power of 3
 \begin{enumerate}
-	\item $z_1^3 + z_2^3 + z_3^3 = w^3$ $\rightarrow$ no generic algo, more than just a silly guess required :)
+	\item $z_1^3 + z_2^3 + z_3^3 = w^3$ $\rightarrow$ no straightforward generic algo, more than just silly guesses required :)
 	%
 	\nbea
 	\begin{array} {lcl}
@@ -2475,7 +2475,7 @@ Now comes the time to gather what I've found. In this section I'll list all the 
 	\neea
 	%
 	\item $1 + z_1^3 + z_2^3 = w^3$, see Table.~\ref{Tab:1}
-	\item $1 + z_1^3 + z_2^3 + z_3^3 + z_4^3 = w^3$, this was an accident fromtrying to solve no. 2 above
+	\item $1 + z_1^3 + z_2^3 + z_3^3 + z_4^3 = w^3$, this was an accident from trying to solve no. 2 above
 	%
 	\nbea
 	z_1 = a, ~ z_2 = 2a, ~z_3 = 3 a^2, ~ z_4 = 3 a^3, ~ w = (3 a^3 + 1)
@@ -3109,6 +3109,76 @@ S & = & \pm 1 \mp \prod_{i=1}^{n}p_{i}^{\alpha_i}
 \neea
 %
 The above two arrangements still produce a new prime factor for $S$ following the same argument as before. 
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+
+Say $8a^2 + 1 = d^2$ has non-trivial integer solutions and indeed it does, is there a formula to generate these solutions? Apparently there is, but it is a recurrence relation, proposition: say we have two initial solutions
+%
+\nbea
+8a_0^2 + 1 & = & d_0^2 \\
+8a_1^2 + 1 & = & d_1^2
+\neea
+%
+where
+%
+\nbea
+\ba{r c l c r c l}
+a_0 & = & 0 & ~~~ & d_0 & = & 1\\
+a_1 & = & 1 & ~~~ & d_1 & = & 3
+\ea
+\neea
+%
+It might seem a bit curious that the very first solution is a trivial one but it has to be what it has to be :) The subsequent solutions are given by
+%
+\nbea
+a_i & = & 6a_{i-1} - a_{i-2} \\
+d_i & = & 6d_{i-1} - d_{i-2}
+\neea
+%
+If we substitute this back into $8a^2 + 1 = d^2$ we get
+%
+\nbea
+8a_i^2 + 1 & = & d_i^2 \\
+8(6a_{i-1} - a_{i-2})^2 + 1 & = & (6d_{i-1} - d_{i-2})^2 \\
+36 (8 a_{i-1}^2) - 12 \cdot 8 a_{i-1}a_{i-2} + (8a_{i-2}^2 + 1) & = & 36 d_{i-1}^2 - 12 d_{i-1} d_{i-2} + d_{i-2}^2 \\
+36 (8 a_{i-1}^2) - 12 \cdot 8 a_{i-1}a_{i-2} + \bcancel{d_{i-2}^2} & = & 36 (8a_{i-1}^2 + 1) - 12 d_{i-1} d_{i-2} + \bcancel{d_{i-2}^2} \\
+\bcancel{36 (8 a_{i-1}^2)} - 12 \cdot 8 a_{i-1}a_{i-2}  & = & \bcancel{36 (8 a_{i-1}^2)} + 36 - 12 d_{i-1} d_{i-2} \\
+8 a_{i-1}a_{i-2}  & = & d_{i-1} d_{i-2} - 3
+\neea
+%
+The above relation will prove to be a crucial one :)
+
+To prove this we can use induction, say the above relations are true up till $8a_i^2 + 1 = d_i^2$, \ie $a_i = 6a_{i-1} - a_{i-2}$, $d_i = 6d_{i-1} - d_{i-2}$, let's see  what happens if we apply the same rule to $a_{i+1} = 6a_{i} - a_{i-1}$, in which case
+%
+\nbea
+8 a_i a_{i-1} & = & 8 (6a_{i-1} - a_{i-2}) a_{i-1} \\
+& = & 6 (8a_{i-1}^2) - 8a_{i-1}a_{i-2} \\
+& = & 6 (d_{i-1}^2 - 1) - d_{i-1} d_{i-2} + 3 \\
+& = & (6 d_{i-1} - d_{i-2})d_{i-1} - 3 \\
+8 a_i a_{i-1} & = & d_id_{i-1} - 3
+\neea
+%
+Thus we if back substitute this to our expansion above we have
+%
+\nbea
+8a_{i+1}^2 + 1 & = & 8(6a_{i} - a_{i-1})^2 + 1 \\
+& = & 36 (8 a_{i}^2) - 12 \cdot 8 a_{i}a_{i-1} + (8a_{i-1}^2 + 1)  \\
+& = & 36 (d_{i}^2 - 1) - 12 (d_id_{i-1} - 3) + d_{i-1}^2 \\
+& = & (6d_{i})^2  - 12 d_id_{i-1} + d_{i-1}^2 \\
+8a_{i+1}^2 + 1 & = & (6d_{i} -  d_{i-1})^2
+\neea
+%
+and it works :)
+
+
+
+
+
+
+
+
 
 
 \end{document}
