@@ -3172,6 +3172,182 @@ Thus we if back substitute this to our expansion above we have
 %
 and it works :)
 
+Note that for $8a + 1 = d^2$ the answer is easy because the square of any odd number is
+%
+\nbea
+(2\gamma + 1)^2 & = & 4 (\gamma(\gamma+1)) + 1 \\
+& = & 8 \left (\frac{\gamma(\gamma+1)}{2} \right ) + 1
+\neea
+%
+and since $\gamma(\gamma+1)$ is always even we can always extract a factor of two out of it, thus for $8a + 1 = d^2$ $d$ is any odd number.
+
+The reason I wanted to solve for $8a^2 + 1 = d^2$ is because I wanted to show whether the following Pythagorean equation has a solution
+%
+\nbea
+x^2 + (x+1)^2 & = & (x+k)^2
+\neea
+%
+where $k$ is a free parameter, \ie the two terms on the LHS only differ by one, using the quadratic formula we get
+%
+\nbea
+x = k-1 \pm \sqrt{2(k^2 - k)}
+\neea
+%
+this means that $k^2 - k = 2a^2$, solving $k$ using the quadratic formula we get
+%
+\nbea
+k = \frac{1 \pm \sqrt{8a^2 + 1}}{2}
+\neea
+%
+which in turn means that $8a^2 + 1 = d^2$ for some odd integer $d$.
+
+Note that
+%
+\nbea
+x^2 + (x+2)^2 & = & y^2
+\neea
+%
+has no solutions. We can see this by doing mod 4. In mod 4, any square $a^2 \pmod{4}$ is either 0 or 1
+
+We can take this further by asking if the following has integer solutions
+%
+\nbea
+8a^3 + 1 & = & d^2
+\neea
+%
+or more generally since $8 = 2^3$
+%
+\nbea
+x^3 + 1 & = & d^2
+\neea
+%
+This is somewhat interesting as anything with cubes are usually hard :) My line of attack (which came to me while walking home from buying yogurt) is to rearrange
+%
+\nbea
+x^3 & = & d^2 - 1 = (d-1)(d+1) \\
+& = & m(m + 2)
+\neea
+%
+where $m = d - 1$, I then break $x$ down into its primal constituents
+%
+\nbea
+x & = & \prod_{i} p_i^{n_i}
+\neea
+%
+The simplest case is when $x$ only has one kind of primal factor $x = p_0^{n_0}$, one important thing to note is that the common factor between $m$ and $m+2$ is either 1 or 2, there can't be anything else otherwise say $g|m, ~ g|(m+2), ~ g > 2$
+%
+\nbea
+g & | & (m + 2) - m \\
+g & | & 2
+\neea
+%
+but $g > 2$ so it just isn't so. Therefore, when we distribute the prime factors of $x$ into $m$ and $m+2$ we can only do it if $p_0 = 2$, well, we can set $m = 1, ~ m + 2 = p_0^{n_0}$ but then $(m + 2)  - m\neq 2$, even when $p_0 = 2$ we can only set $m = 2$ because if we set
+%
+\nbea
+m = 2^i & ~~~ & m + 2 = 2^{n_0 - i}
+\neea
+%
+then $\gcd(m, m + 2) > 2$ which is a violation. But if $m = 2$ then $m + 2 = 4$ and $x^2 = m(m + 2) = 8$ and $x = 2$, so if $x$ only contains a single prime type as a factor it has to be 2.
+
+Next, what happens if $x$ has two prime types, \ie $x = p_1^{n_1} p_2^{n_2}$? Well, the requirement that $\gcd(m, m+2) = 2$ forces either $m$ to take all of $p_1^{n_1}$ and $m + 2$ all of $p_2^{n_2}$ or vice versa. But this way there's no way $m$ and $m + 2$ to differ by just 2 because
+%
+\nbea
+p_1^{3n_1} p_2^{3n_2} & = & m(m + 2) \\
+\to m = p_1^{3n_1} & ,~ & m(m + 2) = p_2^{3n_2}
+\neea
+%
+and the difference between any two cubes is
+%
+\nbea
+(x + k)^3 - x^3 & = & 3x^2k + 3xk^2 + k^3
+\neea
+%
+and the minimum of this is 7 (when $x=k=1$), so no bueno. This can be avoided only if one of those two primes is 2
+%
+\nbea
+x & = & 2^{n_1} p_2^{n_2} \\
+\to x^3 & = & 2^{3n_1} p_2^{3n_2} = m(m + 2)
+\neea
+%
+but this case is immediately a no go as $m = 2, ~ m + 2 = 2^{3n_1 - 1} p_2^{3n_2}$ as dictated by the fact that $\gcd(m, m+2) = 2$ and $m < m + 2$.
+
+The next easiest thing is three prime factors, $x = p_1p_2p_3$ such that
+%
+\nbea
+x^3 = p_1^{3}p_2^{3}p_3^{3} & = & m(m+2)
+\neea
+%
+again in this case one of those primes must be 2 to avoid $\gcd(m,m+2) > 2$
+%
+\nbea
+2^3 p_2^{3}p_3^{3} & = & m (m + 2)
+\neea
+%
+Now depending on the actual values of $p_2$ and $p_3$ we might have $m = 2 p_2^{3} ,~ m+2 = 4p_3^3$ or $m = 4p_3^3 ,~ m+2 = 2 p_2^{3}$, let's denote $A = p_3$ and $B = p_2$ therefore
+%
+\nbea
+(m+2) - m = \bcancel{2} & = & \mp \bcancel{2} (2A^3 - B^3) \\
+\pm 1 & = & 2A^3 - B^3 \\
+B^{3} \pm 1 = (B \pm 1)(B^2 \mp B + 1)& = & 2A^3
+\neea
+%
+the $\mp$ sign on the first line is to cater for the two choices for $m$ and $m+2$. Now for $B \ge 3$, $B^2 \mp B + 1 > B \pm 1$. Obviously $B + 1 = 2,~ B^2 - B + 1 = p_3^3$ can't be so since then $B = p_2 = 1$, therefore
+%
+\nbea
+B \pm 1 = 2A &,~~& B^2 \mp B + 1 = A^2
+\neea
+%
+but take note that
+%
+\nbea
+(B \pm 1)^2 = B^2 \pm 2B + 1 & = & 4 A^2 \\
+\to (B \pm 1)^2 - (B^2 \mp B + 1) & = & \pm(4 A^2 - A^2) \\
+\pm \bcancel{3} B & = & \pm \bcancel{3} A^2 \\
+B & = & A^2
+\neea
+%
+but note that $B \pm 1 = 2A$which means that
+%
+\nbea
+B \pm 1 & = & 2A \\
+A^2 \pm 1 & = & 2A \\
+\pm 1 & = & A (2 - A) \\
+\to A =  p_3 &|& \pm 1
+\neea
+%
+which in turn is a contradiction, thus $x = 2 p_2 p_3$ does not work. The next difficulty up is $x = 2^{n_1} p_2 p_3$ (raising the $p$'s for some powers will complicate things too much), same trick
+%
+\nbea
+2^{3n_1} p_2^{3}p_3^{3} & = & m (m + 2)
+\neea
+%
+again to simplify things, denote $A = 2^{3n_1-3}p_3^{3}, ~ B = p_2^{3}$, therefore
+%
+\nbea
+\frac{(m+2) - m}{2} = \pm 1 & = & 2 A^3 - B^3 \\
+B^3 \pm 1 & = & 2 A^3 \\
+(B \pm 1)(B^2 \mp B + 1) & = & 2 A^3
+\neea
+%
+The situation now is more complicated, we can't just assign $B \pm 1 = 2A$ just like before since $A = 2^{3n_1-3}p_3^{3n_3}$ is more complicated than before. We thus distribute the prime factors as follows
+%
+\nbea
+B \pm 1 = 2^a p_3 &,~& B^2 \mp B + 1 = 2^b p_3^2
+\neea
+%
+where $a + b = 3n_1-3$ and like before
+%
+\nbea
+(B \pm 1)^2 - (B^2 \mp B + 1) & = & \pm 3B \\
+(2^a p_3)^2 - 2^b p_3^2 & = & \pm 3B \\
+p_3^2 2^c(2^d - 1) & = & \pm 3B
+\neea
+%
+
+
+
+
+
 
 
 
@@ -3182,7 +3358,6 @@ and it works :)
 
 
 \end{document}
-
 
 
 
