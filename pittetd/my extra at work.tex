@@ -3262,7 +3262,7 @@ and the difference between any two cubes is
 (x + k)^3 - x^3 & = & 3x^2k + 3xk^2 + k^3
 \neea
 %
-and the minimum of this is 7 (when $x=k=1$), so no bueno. This can be avoided only if one of those two primes is 2
+and the minimum is 7 (when $x=k=1$), so no bueno. This can be avoided only if one of those two primes is 2
 %
 \nbea
 x & = & 2^{n_1} p_2^{n_2} \\
@@ -3315,13 +3315,13 @@ A^2 \pm 1 & = & 2A \\
 \to A =  p_3 &|& \pm 1
 \neea
 %
-which in turn is a contradiction, thus $x = 2 p_2 p_3$ does not work. The next difficulty up is $x = 2^{n_1} p_2 p_3$ (raising the $p$'s for some powers will complicate things too much), same trick
+which in turn is a contradiction, thus $x = 2 p_2 p_3$ does not work. The next difficulty up is $x = 2^{n_1} p_2^{n_2} p_3^{n_3}$, same trick
 %
 \nbea
-2^{3n_1} p_2^{3}p_3^{3} & = & m (m + 2)
+2^{3n_1} p_2^{3n_2}p_3^{3n_3} & = & m (m + 2)
 \neea
 %
-again to simplify things, denote $A = 2^{3n_1-3}p_3^{3}, ~ B = p_2^{3}$, therefore
+again to simplify things, denote $A = 2^{3n_1-3}p_3^{3n_3}, ~ B = p_2^{3n_2}$, therefore
 %
 \nbea
 \frac{(m+2) - m}{2} = \pm 1 & = & 2 A^3 - B^3 \\
@@ -3329,6 +3329,222 @@ B^3 \pm 1 & = & 2 A^3 \\
 (B \pm 1)(B^2 \mp B + 1) & = & 2 A^3
 \neea
 %
+Before moving on, let's find out what the $\gcd(B \pm 1, B^2 \mp B + 1)$ is. Say the gcd is $d$ this means that
+%
+\nbea
+d &|& (B \pm 1)^2 - (B^2 \mp B + 1) \\
+d &|& \pm 3B
+\neea
+%
+which in turn means that either $d$ is 3 or it is 1 because if it's not 3 then $d|B \to B = dB'$, let's denote $d\Lambda = (B \pm 1)$
+%
+\nbea
+(B \pm 1)^2 & = & B^2 \pm 2B + 1 \\
+d\Lambda & = & d(dB'^2 \pm 2B') + 1 \\
+d(\Lambda - (B'^2 \pm 2B')) & = & 1 \\
+d &|& 1
+\neea
+%
+Well,that's one interesting fact, but even with that fact it's still a mess to continue, especially if we expand into a generic teritory $x = 2^{n_1}p_2^{n_2}p_3^{n_3} \dots p_i^{n_i}$, we need a new way in.
+
+One possible way in is to note that since $\gcd(m,m+2) = 2$ at the very most, for a generic
+%
+\nbea
+x & = & 2^{n_1}\prod_i p_i^{n_i}, ~~~ p_i > 2
+\neea
+%
+we need to distribute the prime factors of $x^3$ into $m$ and $(m+2)$ in such a way that $\gcd(m,m+2) = 2$, if $\gcd(m,m+2) = 1$ then $m = C^3$ and $m+2 = D^3$ but the difference between two cubes is at least 7 as shown above, that means, so it is very similar to the approach above.
+
+Now, say $(m+2) = 2^{3n_1-1} D^3$ and $c = 2 C^3$ and 
+%
+\nbea
+(m + 2) - m = 2 & = & 2^{3n_1-1} D^3 - 2 C^3 \\
+1 & = & 2 (2^{3n_1-3} D^3) - C^3 \\
+1 & = & 2 E^3 - C^3
+\neea
+%
+where $(2^{3n_1-1} D^3)(2 C^3) = x^3$, we might be tempted to say that the difference between two cubes is at least 7, but in this case it might be the case that $E^3 < C^3$ and that argument falls through. If the assignment is the other way round $(m+2) = 2 C^3$ and $2^{3n_1-1} D^3$ we get 
+%
+\nbea
+(m + 2) - m = 2 & = & 2 C^3 - 2^{3n_1-1} D^3 \\
+1 & = & C^3 - 2 E^3 
+\neea
+%
+or in other words $\frac{(m+2) - m}{2}$ is
+%
+\nbea
+\pm 1 & = & 2 E^3 - C^3
+\neea
+%
+Now if $E > C$ the we can use the argument that the difference of two cubes is at least 7 and we are through, this must mean $E < C$, so let's denote $C = E + F$ giving
+%
+\nbea
+\pm 1 & = & 2 E^3 - C^3 \\
+& = & 2E^3 - (E + F)^3 \\
+\pm 1 & = & E^3-3FE^2-3F^2E-F^3
+\neea
+%
+If we straight away use the cubic formula we get three solutiuons for $E$
+%
+\nbea
+E & = & \left (\frac{\sqrt{4F^6\pm12F^3+1}}{2}+\frac{6F^3\pm1}{2} \right )^{1/3}+
+\frac{2F^2}{  \left (\frac{\sqrt{4F^6\pm12F^3+1}}{2}+\frac{6F^3\pm1}{2} \right )^{1/3}  }+ F \\
+E & = & \left ( -\frac{\sqrt{3}i}{2}-\frac{1}{2} \right ) \left (\frac{\sqrt{4F^6\pm12F^3+1}}{2}+\frac{6F^3\pm1}{2} \right )^{1/3}+
+\frac{2\left ( \frac{\sqrt{3}i}{2}-\frac{1}{2} \right )F^2}{  \left (\frac{\sqrt{4F^6\pm12F^3+1}}{2}+\frac{6F^3\pm1}{2} \right )^{1/3}  }+ F \\
+E & = & \left ( \frac{\sqrt{3}i}{2}-\frac{1}{2} \right )\left (\frac{\sqrt{4F^6\pm12F^3+1}}{2}+\frac{6F^3\pm1}{2} \right )^{1/3}+
+\frac{2\left ( -\frac{\sqrt{3}i}{2}-\frac{1}{2} \right )F^2}{  \left (\frac{\sqrt{4F^6\pm12F^3+1}}{2}+\frac{6F^3\pm1}{2} \right )^{1/3}  }+ F
+\neea
+%
+For $E$ to be real, the imaginary parts have to cancel, \ie
+%
+\nbea
+\left ( \frac{\sqrt{3}i}{2} \right )\left (\frac{\sqrt{4F^6\pm12F^3+1}}{2}+\frac{6F^3\pm1}{2} \right )^{1/3} & = & \frac{2\left ( \frac{\sqrt{3}i}{2}\right )F^2}{  \left (\frac{\sqrt{4F^6\pm12F^3+1}}{2}+\frac{6F^3\pm1}{2} \right )^{1/3}  } \\
+\to \left (\frac{\sqrt{4F^6\pm12F^3+1}}{2}+\frac{6F^3\pm1}{2} \right )^{2/3} & = & 2F^2 \\
+\left (\sqrt{4F^6\pm12F^3+1} + 6F^3\pm1\right )^2 & = & 32F^6
+\neea
+%
+the above equality is valid for the two solutions for $E$ that contain $i$. At this point we have to be careful, if we take the square root of both LHS and RHS we need to add the $\pm$ sign on the RHS $\pm\sqrt{32}F^3$ but this is violation of the convention because we already have $\pm$ sign on the LHS, the correct way is to write {\it two} equations
+%
+\nbea
+\left (\sqrt{4F^6 + 12F^3+1} + 6F^3 + 1\right ) & = & \pm\sqrt{32}F^3 \\
+\left (\sqrt{4F^6 - 12F^3+1} + 6F^3 - 1\right ) & = & \pm\sqrt{32}F^3
+\neea
+%
+Solving for $F$ for the above {\it four} equations we get integer solutions for $F$ only if $F=0$ which won't work for our original problem $\pm 1 = 2C^3 - (C+F)^3$. So there we have it, the only solution for $E$ that works is the one without any imaginary part, \ie
+%
+\nbea
+E & = & \frac{M^2+2F^2 + FM}{ M } \\
+M & = & \left (\frac{\sqrt{4F^6\pm12F^3+1}}{2}+\frac{6F^3\pm1}{2} \right )^{1/3}
+\neea
+%
+Now say that $M$ is irrational, it doesn't mean that $E$ must be irrational, $E$ can still be rational because the ratio of two irrational numbers might still be rational, heck, even the sum of two irrational numbers can still be rational, \eg $\pi - (\pi - 3) = 3$ and $\pi -3$ is irrational.
+
+At this point we need to recall how we got the cubic formula in the first place. A summary of the cubic formula is as follows, first we need to depress the cubic equation $ax^3 + bx^2 + cx + d = 0$, \ie remove the $y^2$ term, by setting
+%
+\nbea
+x & = & y - \frac{b}{3a}
+\neea
+%
+to get the depressed cubic equation
+%
+\nbea
+y^3 + \left ( \frac{3ca - b^2}{3a^2} \right )y + \left ( \frac{27da^2 + 2b^3 - 9abc}{27a^3} \right ) & = & 0
+\neea
+%
+What we have is now an equation of the form $y^3 + Ay = B$ which can be solved by the following substitutions
+%
+\nbea
+A & = & 3st \\
+B & = & s^3 - t^3
+\neea
+%
+yielding $y = s-t$ as the solution. But first we need to solve for $s$ and $t$ by substituting $s = (A/3t)$ into $B = s^3 - t^3$, \ie
+%
+\nbea
+B & = & \left ( \frac{A}{3t} \right )^3 - t^3 \\
+0 & = & t^6 + Bt - \frac{A^3}{27}, ~~~ {\rm setting~}u = t^3 \\
+\to 0 & = & u^2 + Bu - \frac{A^3}{27}
+\neea
+%
+and so we get a quadratic equation, this is how we get the square roots in the first place. Once we solve for $u$ we just take the {\it three} cube roots of $u$ to get $t$ and that's how we get the complex coefficient since in the complex plane the $n^{\rm th}$ root of unity always have $n$ solutions.
+
+If the above is how we get the square root in the first place then to have integer solutions that square root must yield integers, we can't have irrational or complex solution even at this intermediate point since $u$ is an integer, therefore in our case it is sufficient to show that whatever inside the square root does not yield perfect squares.
+
+
+
+
+
+
+The other two solutions have complex numbers multiplying it, the only way we can get rid of it is to get a complex number out of $\sqrt{4F^6-12F^3+1}$ (with the plus sign we only get an irrational number but not complex) but even with this choice we must have $F = 1$, if $F \ge 2$ whatever is under the square root is positive (but it might still be the case that the imaginary parts will cancel, we'll discuss this later).
+
+With $F=1$ what we get is $\pm 1 = 2 E^3 - (E+1)^3 = E^3-(3E^2+3E+1)$, and we know that a cubic will finally overtake a quadratic, so after sometime the difference between $E^3$ and $3E^2+3E+1$ will get larger and larger, getting further away from $\pm 1$.
+
+To confirm this we just need to list the value of this difference for $E = 1, 2, 3, 4, 5$
+%
+\nbea
+1^3-(3\cdot1^2+3\cdot1+1) & = & -6 \\
+2^3-(3\cdot2^2+3\cdot2+1) & = & -11 \\
+3^3-(3\cdot3^2+3\cdot3+1) & = & -10 \\
+4^3-(3\cdot4^2+3\cdot4+1) & = & 3 \\
+5^3-(3\cdot5^2+3\cdot5+1) & = & 34
+\neea
+%
+and the difference will only get bigger, thus we can never get $\pm 1 = 2 E^3 - (E+1)^3$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Now we go back to $(B \pm 1)(B^2 \mp B + 1) = 2 A^3$, remembering that $A = 2^{3n_1-3}p_3^{3n_3}$, if $\gcd(B \pm 1, B^2 \mp B + 1) = d = 1$ then we have to pick a side it's either
+%
+\nbea
+B \pm 1 = 2^{3n_1-3} &,~& B^2 \mp B + 1 = p_3^{3n_3} \\
+&{\rm or}& \\
+B \pm 1 = p_3^{3n_3} &,~& B^2 \mp B + 1 = 2^{3n_1-3}
+\neea
+%
+and $p_3 \neq 3$ obviously. The first choice gives us
+%
+\nbea
+B & = & 2^{3n_1-3} \mp 1 \\
+\to B^2 \mp B + 1 & = & 2^{6n_1-6} \mp 3\cdot2^{3n_1-3} + 3 \\
+(B \pm 1)^2 & = & 2^{6n_1-6} \\
+(B \pm 1)^2 - (B^2 \mp B + 1) & = & \pm 3\cdot2^{3n_1-3} - 3
+\neea
+%
+but $(B \pm 1)^2 - (B^2 \mp B + 1) = \pm 3B = \pm 3\cdot2^{3n_1-3} \mp 3$, thus this choice is only good for $(B + 1)$. 
+
+%
+\nbea
+(B \pm 1)^2 = B^2 \mp B + 1 \pm 3B & = & p_3^{3n_3} \pm 3 \cdot 2^{3n_1-3} - 3 \\
+2^{6n_1-6} & = & p_3^{3n_3} \pm 3 \cdot 2^{3n_1-3} - 3 \\
+2^{3n_1-3}(2^{3n_1-3} \mp 3) & = & p_3^{3n_3} - 3 \\
+(B \pm 1)(B \mp 2) & = & (B^2 \mp B + 1) - 3
+\neea1
+%
+
+
+
+
+
+
+
+
+
+
+
+The only other choice is $B \pm 1 = p_3^{3n_3},~ B^2 \mp B + 1 = 2^{3n_1-3}$
+
+
+
 The situation now is more complicated, we can't just assign $B \pm 1 = 2A$ just like before since $A = 2^{3n_1-3}p_3^{3n_3}$ is more complicated than before. We thus distribute the prime factors as follows
 %
 \nbea
