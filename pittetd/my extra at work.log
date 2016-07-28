@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  23 JUL 2016 19:09
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  24 JUL 2016 18:31
 entering extended mode
 **"D:/Github/string/pittetd/my extra at work.tex"
 ("D:/Github/string/pittetd/my extra at work.tex"
@@ -439,36 +439,69 @@ Package: geometry 2010/09/12 v5.6 Page Geometry
 \Gm@dimlist=\toks30
 
 (D:\Downloads\miktex-portable-2.9\tex\xelatex\xetexconfig\geometry.cfg))
-Class revtex4-1 Info: Patching array package. on input line 215.
-Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 215
+(D:\Downloads\miktex-portable-2.9\tex\latex\mathtools\mathtools.sty
+Package: mathtools 2015/11/12 v1.18 mathematical typesetting tools
+
+(D:\Downloads\miktex-portable-2.9\tex\latex\tools\calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count127
+\calc@Bcount=\count128
+\calc@Adimen=\dimen138
+\calc@Bdimen=\dimen139
+\calc@Askip=\skip56
+\calc@Bskip=\skip57
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count129
+\calc@Cskip=\skip58
+)
+(D:\Downloads\miktex-portable-2.9\tex\latex\mathtools\mhsetup.sty
+Package: mhsetup 2010/01/21 v1.2a programming setup (MH)
+)
+LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
+\g_MT_multlinerow_int=\count130
+\l_MT_multwidth_dim=\dimen140
+\origjot=\skip59
+\l_MT_shortvdotswithinadjustabove_dim=\dimen141
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen142
+\l_MT_above_intertext_sep=\dimen143
+\l_MT_below_intertext_sep=\dimen144
+\l_MT_above_shortintertext_sep=\dimen145
+\l_MT_below_shortintertext_sep=\dimen146
+)
+Class revtex4-1 Info: Patching array package. on input line 217.
+Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 217
 .
-Class revtex4-1 Info: cite was not loaded (OK!) on input line 215.
-Class revtex4-1 Info: mcite was not loaded (OK!) on input line 215.
-Class revtex4-1 Info: multicol was not loaded (OK!) on input line 215.
+Class revtex4-1 Info: cite was not loaded (OK!) on input line 217.
+Class revtex4-1 Info: mcite was not loaded (OK!) on input line 217.
+Class revtex4-1 Info: multicol was not loaded (OK!) on input line 217.
 
 ("my extra at work.aux")
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 215.
-LaTeX Font Info:    ... okay on input line 215.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 215.
-LaTeX Font Info:    ... okay on input line 215.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 215.
-LaTeX Font Info:    ... okay on input line 215.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 215.
-LaTeX Font Info:    ... okay on input line 215.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 215.
-LaTeX Font Info:    ... okay on input line 215.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 215.
-LaTeX Font Info:    ... okay on input line 215.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 215.
-LaTeX Font Info:    ... okay on input line 215.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 215.
-LaTeX Font Info:    ... okay on input line 215.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 217.
+LaTeX Font Info:    ... okay on input line 217.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 217.
+LaTeX Font Info:    ... okay on input line 217.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 217.
+LaTeX Font Info:    ... okay on input line 217.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 217.
+LaTeX Font Info:    ... okay on input line 217.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 217.
+LaTeX Font Info:    ... okay on input line 217.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 217.
+LaTeX Font Info:    ... okay on input line 217.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 217.
+LaTeX Font Info:    ... okay on input line 217.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 217.
+LaTeX Font Info:    ... okay on input line 217.
 Requested font "cmr12" at 12.0pt
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box47
-Package hyperref Info: Link coloring OFF on input line 215.
+Package hyperref Info: Link coloring OFF on input line 217.
 
 (D:\Downloads\miktex-portable-2.9\tex\latex\hyperref\nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -476,11 +509,11 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (D:\Downloads\miktex-portable-2.9\tex\generic\oberdiek\gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count127
+\c@section@level=\count131
 )
-LaTeX Info: Redefining \ref on input line 215.
-LaTeX Info: Redefining \pageref on input line 215.
-LaTeX Info: Redefining \nameref on input line 215.
+LaTeX Info: Redefining \ref on input line 217.
+LaTeX Info: Redefining \pageref on input line 217.
+LaTeX Info: Redefining \nameref on input line 217.
 
 ("my extra at work.out") ("my extra at work.out")
 \@outlinefile=\write4
@@ -518,7 +551,7 @@ LaTeX Info: Redefining \nameref on input line 215.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Class revtex4-1 Info: Taking \maketitle back from hyperref on input line 215.
+Class revtex4-1 Info: Taking \maketitle back from hyperref on input line 217.
 Requested font "cmr12" at 14.4pt
 Requested font "cmr10" at 10.95pt
 (D:\Downloads\miktex-portable-2.9\tex\generic\oberdiek\se-ascii-print.def
@@ -540,14 +573,14 @@ Requested font "cmsy6" at 6.0pt
 Requested font "cmex10" at 12.0pt
 Requested font "cmex8" at 8.0pt
 Requested font "cmex7" at 6.0pt
-LaTeX Font Info:    Try loading font information for U+msa on input line 230.
+LaTeX Font Info:    Try loading font information for U+msa on input line 232.
 (D:\Downloads\miktex-portable-2.9\tex\latex\amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 Requested font "msam10" at 12.0pt
 Requested font "msam10" at 8.0pt
 Requested font "msam7" at 6.0pt
-LaTeX Font Info:    Try loading font information for U+msb on input line 230.
+LaTeX Font Info:    Try loading font information for U+msb on input line 232.
 
 (D:\Downloads\miktex-portable-2.9\tex\latex\amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -564,7 +597,7 @@ Requested font "cmmib6" at 6.0pt
 Requested font "cmbsy10" at 12.0pt
 Requested font "cmbsy8" at 8.0pt
 Requested font "cmbsy6" at 6.0pt
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 230.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 232.
 
 (D:\Downloads\miktex-portable-2.9\tex\latex\jknappen\ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
@@ -589,17 +622,17 @@ File: n-squared-plots/n_squared_sum_box_1.eps Graphic file (type eps)
 File: n-squared-plots/n_squared_sum_box_2.eps Graphic file (type eps)
 
 <n-squared-plots/n_squared_sum_box_2.eps> [28] [29]
-Overfull \hbox (47.07045pt too wide) in paragraph at lines 1077--1108
+Overfull \hbox (47.07045pt too wide) in paragraph at lines 1079--1110
 []$
  []
 
 
-Overfull \hbox (14.90265pt too wide) in paragraph at lines 1077--1108
+Overfull \hbox (14.90265pt too wide) in paragraph at lines 1079--1110
 []$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1077--1108
+Underfull \hbox (badness 10000) in paragraph at lines 1079--1110
 
  []
 
@@ -608,7 +641,7 @@ Requested font "cmbxti10" at 12.0pt
  [32]
 File: FLT_n_1.png Graphic file (type QTm)
  <use  "FLT_n_1.png" >
-Overfull \hbox (15.0259pt too wide) in paragraph at lines 1178--1179
+Overfull \hbox (15.0259pt too wide) in paragraph at lines 1180--1181
  [][] 
  []
 
@@ -623,95 +656,95 @@ Requested font "cmbsy10" at 10.95pt
 Requested font "rsfs10" at 10.95pt
 File: FLT_n_3.png Graphic file (type QTm)
 <use  "FLT_n_3.png" >
-Overfull \hbox (15.0259pt too wide) in paragraph at lines 1184--1185
+Overfull \hbox (15.0259pt too wide) in paragraph at lines 1186--1187
  [][] 
  []
 
 File: FLT_n_115.png Graphic file (type QTm)
 <use  "FLT_n_115.png" >
-Overfull \hbox (15.0259pt too wide) in paragraph at lines 1190--1191
+Overfull \hbox (15.0259pt too wide) in paragraph at lines 1192--1193
  [][] 
  []
 
 File: FLT_n_4.png Graphic file (type QTm)
 <use  "FLT_n_4.png" >
-Overfull \hbox (22.76639pt too wide) in paragraph at lines 1209--1210
+Overfull \hbox (22.76639pt too wide) in paragraph at lines 1211--1212
  [][] 
  []
 
 File: FLT_n_12.png Graphic file (type QTm)
 <use  "FLT_n_12.png" >
-Overfull \hbox (22.76639pt too wide) in paragraph at lines 1215--1216
+Overfull \hbox (22.76639pt too wide) in paragraph at lines 1217--1218
  [][] 
  []
 
 [33] [34]
 File: FLT_angle_n_3.png Graphic file (type QTm)
  <use  "FLT_angle_n_3.png" >
-Overfull \hbox (22.76639pt too wide) in paragraph at lines 1252--1253
+Overfull \hbox (22.76639pt too wide) in paragraph at lines 1254--1255
  [][] 
  []
 
 File: FLT_angle_n_33333.png Graphic file (type QTm)
 <use  "FLT_angle_n_33333.png" >
-Overfull \hbox (22.76639pt too wide) in paragraph at lines 1258--1259
+Overfull \hbox (22.76639pt too wide) in paragraph at lines 1260--1261
  [][] 
  []
 
 [35] [36] [37] [38] [39] [40] [41] [42]
-Overfull \hbox (12.2947pt too wide) in alignment at lines 1527--1530
+Overfull \hbox (12.2947pt too wide) in alignment at lines 1529--1532
  [][][] []
  []
 
 [43] [44] [45] [46] [47] [48]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1755.
+               Default added (so using `tbp') on input line 1757.
 
 [49] [50]
-Overfull \hbox (8.55136pt too wide) in alignment at lines 1812--1814
+Overfull \hbox (8.55136pt too wide) in alignment at lines 1814--1816
  [][][] []
  []
 
 [51] [52]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1887.
+               Default added (so using `tbp') on input line 1889.
 
 [53]
 File: FLT_twins_dist.png Graphic file (type QTm)
  <use  "FLT_twins_dist.png" > [54] [55] [56] [57] [58] [59]
-Overfull \hbox (0.10997pt too wide) in alignment at lines 2119--2124
+Overfull \hbox (0.10997pt too wide) in alignment at lines 2121--2126
  [][][] []
  []
 
 [60] [61] [62]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 2256
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 2258
 .
  (D:\Downloads\miktex-portable-2.9\tex\latex\base\omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 2256.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 2258.
 
 
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 2259.
+(amsmath)                 on input line 2261.
 
 [63]
-Overfull \hbox (7.48509pt too wide) in alignment at lines 2272--2274
+Overfull \hbox (7.48509pt too wide) in alignment at lines 2274--2276
  [][][] []
  []
 
 [64] [65] [66] [67] [68]
-Overfull \hbox (39.89938pt too wide) in alignment at lines 2466--2475
+Overfull \hbox (39.89938pt too wide) in alignment at lines 2468--2477
  [][][] []
  []
 
 [69]
-Overfull \hbox (33.48509pt too wide) in alignment at lines 2520--2522
+Overfull \hbox (33.48509pt too wide) in alignment at lines 2522--2524
  [][][] []
  []
 
@@ -724,45 +757,45 @@ Requested font "cmmib5" at 5.0pt
 Requested font "cmbsy5" at 5.0pt
 Requested font "rsfs5" at 5.0pt
  [81] [82]
-Underfull \hbox (badness 10000) in paragraph at lines 2915--2916
+Underfull \hbox (badness 10000) in paragraph at lines 2917--2918
 
  []
 
 [83] [84]
-Underfull \hbox (badness 10000) in paragraph at lines 2974--2975
+Underfull \hbox (badness 10000) in paragraph at lines 2976--2977
 
  []
 
 [85]
-Underfull \hbox (badness 10000) in paragraph at lines 2989--2990
+Underfull \hbox (badness 10000) in paragraph at lines 2991--2992
 
  []
 
 [86] [87]
-Underfull \hbox (badness 10000) in paragraph at lines 3078--3079
+Underfull \hbox (badness 10000) in paragraph at lines 3080--3081
 
  []
 
 [88]
-Underfull \hbox (badness 10000) in paragraph at lines 3115--3116
+Underfull \hbox (badness 10000) in paragraph at lines 3117--3118
 []\OT1/cmr/m/n/12 =-=-=-=-=-=-=-=-=-=-=-=-=+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 +-+-+-
  []
 
-[89] [90] [91] [92] [93] [94] [95] [96] [97] [98] [99] ("my extra at work.bbl")
-[100]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 3585.
+[89] [90] [91] [92] [93] [94] [95] [96] [97] [98] [99] [100] [101]
+("my extra at work.bbl") [102]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 3721.
  ("my extra at work.aux")
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 3585.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 3585.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 3721.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 3721.
  ) 
 Here is how much of TeX's memory you used:
- 12851 strings out of 428755
- 176128 string characters out of 3166785
- 277547 words of memory out of 3000000
- 16050 multiletter control sequences out of 15000+200000
+ 13405 strings out of 428755
+ 185644 string characters out of 3166785
+ 289769 words of memory out of 3000000
+ 16595 multiletter control sequences out of 15000+200000
  17684 words of font info for 67 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
- 36i,18n,38p,871b,559s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,18n,38p,871b,569s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on my extra at work.pdf (100 pages).
+Output written on my extra at work.pdf (102 pages).

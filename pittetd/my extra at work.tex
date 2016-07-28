@@ -22,6 +22,7 @@
 \usepackage{mathrsfs}
 \usepackage[top=1in, bottom=1.25in, left=1.1in, right=1.1in]{geometry}
 
+\usepackage{mathtools} % for \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 
 \newcommand{\msout}[1]{\text{\sout{\ensuremath{#1}}}}
 
@@ -207,7 +208,8 @@
 
 \newcommand{\dunno}{$ {}^{\mbox {--}}\backslash(^{\rm o}{}\underline{\hspace{0.2cm}}{\rm o})/^{\mbox {--}}$}
 
-
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
 
 
 
@@ -3179,7 +3181,7 @@ Note that for $8a + 1 = d^2$ the answer is easy because the square of any odd nu
 & = & 8 \left (\frac{\gamma(\gamma+1)}{2} \right ) + 1
 \neea
 %
-and since $\gamma(\gamma+1)$ is always even we can always extract a factor of two out of it, thus for $8a + 1 = d^2$ $d$ is any odd number.
+and since $\gamma(\gamma+1)$ is always even we can always extract a factor of two out of it, thus for $8a + 1 = d^2$, $d$ is any odd number.
 
 The reason I wanted to solve for $8a^2 + 1 = d^2$ is because I wanted to show whether the following Pythagorean equation has a solution
 %
@@ -3207,7 +3209,30 @@ Note that
 x^2 + (x+2)^2 & = & y^2
 \neea
 %
-has no solutions. We can see this by doing mod 4. In mod 4, any square $a^2 \pmod{4}$ is either 0 or 1
+reduces to $x^2 + (x+1)^2 = (x+k)^2$. We can see this by doing mod 4. In mod 4, any square $a^2 \pmod{4}$ is either 0 or 1. If $x = 1 \pmod{4}$ we get
+%
+\nbea
+1^2 + (1+2)^2 & = & 2 \pmod{4}
+\neea
+%
+and it is certainly not a quadratic residue modulo 4, If $x = 3 \pmod{4}$ we get
+%
+\nbea
+3^2 + (3+2)^2 & = & 2 \pmod{4}
+\neea
+%
+again, not a quadratic residue modulo 4, while $x = 0 \pmod{4}$
+%
+\nbea
+(4w)^2 + (4w+2)^2 & = & 4 (2w)^2 + 4 (2w+1)^2
+\neea
+%
+and $x = 2 \pmod{4}$
+%
+\nbea
+(4w + 2)^2 + (4w+4)^2 & = & 4 (2w+1)^2 + 4 (2w+2)^2
+\neea
+we can of course cancel the common factor of 4 from LHS and RHS.
 
 We can take this further by asking if the following has integer solutions
 %
@@ -3221,7 +3246,7 @@ or more generally since $8 = 2^3$
 x^3 + 1 & = & d^2
 \neea
 %
-This is somewhat interesting as anything with cubes are usually hard :) My line of attack (which came to me while walking home from buying yogurt) is to rearrange
+This is somewhat interesting as anything with cubes is usually hard :) My line of attack (which came to me while walking home from buying yogurt) is to rearrange
 %
 \nbea
 x^3 & = & d^2 - 1 = (d-1)(d+1) \\
@@ -3247,7 +3272,7 @@ but $g > 2$ so it just isn't so. Therefore, when we distribute the prime factors
 m = 2^i & ~~~ & m + 2 = 2^{n_0 - i}
 \neea
 %
-then $\gcd(m, m + 2) > 2$ which is a violation. But if $m = 2$ then $m + 2 = 4$ and $x^2 = m(m + 2) = 8$ and $x = 2$, so if $x$ only contains a single prime type as a factor it has to be 2.
+then $\gcd(m, m + 2) > 2$ which is a violation. But if $m = 2$ then $m + 2 = 4$ and $x^2 = m(m + 2) = 8$ and $x = 2$, so if $x$ only contains a single prime type as a factor it has to be $x=2$.
 
 Next, what happens if $x$ has two prime types, \ie $x = p_1^{n_1} p_2^{n_2}$? Well, the requirement that $\gcd(m, m+2) = 2$ forces either $m$ to take all of $p_1^{n_1}$ and $m + 2$ all of $p_2^{n_2}$ or vice versa. But this way there's no way $m$ and $m + 2$ to differ by just 2 because
 %
@@ -3262,7 +3287,7 @@ and the difference between any two cubes is
 (x + k)^3 - x^3 & = & 3x^2k + 3xk^2 + k^3
 \neea
 %
-and the minimum is 7 (when $x=k=1$), so no bueno. This can be avoided only if one of those two primes is 2
+where the minimum is 7 (when $x=k=1$), so no bueno. This can be avoided only if one of those two primes is 2
 %
 \nbea
 x & = & 2^{n_1} p_2^{n_2} \\
@@ -3283,7 +3308,18 @@ again in this case one of those primes must be 2 to avoid $\gcd(m,m+2) > 2$
 2^3 p_2^{3}p_3^{3} & = & m (m + 2)
 \neea
 %
-Now depending on the actual values of $p_2$ and $p_3$ we might have $m = 2 p_2^{3} ,~ m+2 = 4p_3^3$ or $m = 4p_3^3 ,~ m+2 = 2 p_2^{3}$, let's denote $A = p_3$ and $B = p_2$ therefore
+and to avoid having perfect cubes for $m$ and $m+2$, depending on the actual values of $p_2$ and $p_3$ we have four possibilities
+%
+\nbea
+\ba{r c l c r c l}
+m & = & 2 p_2^{3} & ~~~& m+2 & = & 4p_3^3 \\
+m & = & 4 p_2^{3} & ~~~& m+2 & = & 2p_3^3 \\
+m & = & 2 p_3^{3} & ~~~& m+2 & = & 4p_2^3 \\
+m & = & 4 p_3^{3} & ~~~& m+2 & = & 2p_2^3
+\ea
+\neea
+%
+to simplify things let's denote the prime number that multiplies 2 as $B$ and the prime factor that multiplies 4 as $A$, \eg $m = 2p_2^3 = 2B^3$ but for $m = 4 p_2^{3} = 4A^3$, etc, therefore
 %
 \nbea
 (m+2) - m = \bcancel{2} & = & \mp \bcancel{2} (2A^3 - B^3) \\
@@ -3291,7 +3327,7 @@ Now depending on the actual values of $p_2$ and $p_3$ we might have $m = 2 p_2^{
 B^{3} \pm 1 = (B \pm 1)(B^2 \mp B + 1)& = & 2A^3
 \neea
 %
-the $\mp$ sign on the first line is to cater for the two choices for $m$ and $m+2$. Now for $B \ge 3$, $B^2 \mp B + 1 > B \pm 1$. Obviously $B + 1 = 2,~ B^2 - B + 1 = p_3^3$ can't be so since then $B = p_2 = 1$, therefore
+the $\mp$ sign on the first line is to cater for the two choices of the constant coefficient for $m$ and $m+2$. Now for $B \ge 3$, $B^2 \mp B + 1 > B \pm 1$. Obviously $B + 1 = 2,~ B^2 - B + 1 = A^3$ can't be so since then $B = p_{2,3} = 1$, therefore
 %
 \nbea
 B \pm 1 = 2A &,~~& B^2 \mp B + 1 = A^2
@@ -3306,13 +3342,13 @@ but take note that
 B & = & A^2
 \neea
 %
-but note that $B \pm 1 = 2A$ which means that
+but remembering that $B \pm 1 = 2A$ we have
 %
 \nbea
 B \pm 1 & = & 2A \\
 A^2 \pm 1 & = & 2A \\
 \pm 1 & = & A (2 - A) \\
-\to A =  p_3 &|& \pm 1
+\to A =  p_{2,3} &|& \pm 1
 \neea
 %
 which in turn is a contradiction, thus $x = 2 p_2 p_3$ does not work. The next difficulty up is $x = 2^{n_1} p_2^{n_2} p_3^{n_3}$, same trick
@@ -3321,7 +3357,7 @@ which in turn is a contradiction, thus $x = 2 p_2 p_3$ does not work. The next d
 2^{3n_1} p_2^{3n_2}p_3^{3n_3} & = & m (m + 2)
 \neea
 %
-again to simplify things, denote $A = 2^{3n_1-3}p_3^{3n_3}, ~ B = p_2^{3n_2}$, therefore
+again to simplify things, denote $A = 2^{3n_1-3}p_{2,3}^{3n_{2,3}}, ~ B = p_{2,3}^{3n_{2,3}}$, therefore
 %
 \nbea
 \frac{(m+2) - m}{2} = \pm 1 & = & 2 A^3 - B^3 \\
@@ -3345,7 +3381,7 @@ d(\Lambda - (B'^2 \pm 2B')) & = & 1 \\
 d &|& 1
 \neea
 %
-Well,that's one interesting fact, but even with that fact it's still a mess to continue, especially if we expand into a generic teritory $x = 2^{n_1}p_2^{n_2}p_3^{n_3} \dots p_i^{n_i}$, we need a new way in.
+Well, that's one interesting fact, but even with that fact it's still a mess to continue, especially if we expand into a generic territory $x = 2^{n_1}p_2^{n_2}p_3^{n_3} \dots p_i^{n_i}$, we need a new way in.
 
 One possible way in is to note that since $\gcd(m,m+2) = 2$ at the very most, for a generic
 %
@@ -3353,7 +3389,7 @@ One possible way in is to note that since $\gcd(m,m+2) = 2$ at the very most, fo
 x & = & 2^{n_1}\prod_i p_i^{n_i}, ~~~ p_i > 2
 \neea
 %
-we need to distribute the prime factors of $x^3$ into $m$ and $(m+2)$ in such a way that $\gcd(m,m+2) = 2$, if $\gcd(m,m+2) = 1$ then $m = C^3$ and $m+2 = D^3$ but the difference between two cubes is at least 7 as shown above, that means, so it is very similar to the approach above.
+we need to distribute the prime factors of $x^3$ into $m$ and $(m+2)$ in such a way that one of them have exactly one factor of two and the other absorbs the rest, if $\gcd(m,m+2) = 1$ then $m = C^3$ and $m+2 = D^3$ but the difference between two cubes is at least 7 as shown above, so it is in a way very similar to the approach above.
 
 Now, say $(m+2) = 2^{3n_1-1} D^3$ and $c = 2 C^3$ and 
 %
@@ -3376,6 +3412,18 @@ or in other words $\frac{(m+2) - m}{2}$ is
 \pm 1 & = & 2 E^3 - C^3
 \neea
 %
+For a moment, let's travel to the {\it real}istic universe, assume $E, C$ are real numbers, we can then factor them out as follows
+%
+\nbea
+2 E^3 - C^3 = (2^{1/3}E - C)((2^{1/3}E)^2 + (2^{1/3}E)C + C^2) = \pm 1
+\neea
+%
+This means that $0 < |2^{1/3}E - C| < 1$, if $2^{1/3}E > C$ then $C = \floor{2^{1/3}E}$ and if $2^{1/3}E < C$ then $C = \ceil{2^{1/3}E}$
+
+
+
+
+
 Now if $E > C$ the we can use the argument that the difference of two cubes is at least 7 and we are through, this must mean $E < C$, so let's denote $C = E + F$ giving
 %
 \nbea
@@ -3384,7 +3432,7 @@ Now if $E > C$ the we can use the argument that the difference of two cubes is a
 \pm 1 & = & E^3-3FE^2-3F^2E-F^3
 \neea
 %
-If we straight away use the cubic formula we get three solutiuons for $E$
+If we straight away use the cubic formula we get three solutions for $E$
 %
 \nbea
 E & = & \left (\frac{\sqrt{4F^6\pm12F^3+1}}{2}+\frac{6F^3\pm1}{2} \right )^{1/3}+
@@ -3419,7 +3467,7 @@ M & = & \left (\frac{\sqrt{4F^6\pm12F^3+1}}{2}+\frac{6F^3\pm1}{2} \right )^{1/3}
 %
 Now say that $M$ is irrational, it doesn't mean that $E$ must be irrational, $E$ can still be rational because the ratio of two irrational numbers might still be rational, heck, even the sum of two irrational numbers can still be rational, \eg $\pi - (\pi - 3) = 3$ and $\pi -3$ is irrational.
 
-At this point we need to recall how we got the cubic formula in the first place. A summary of the cubic formula is as follows, first we need to depress the cubic equation $ax^3 + bx^2 + cx + d = 0$, \ie remove the $y^2$ term, by setting
+At this point we need to recall how we got the cubic formula in the first place. A summary of the cubic formula is as follows, first we need to depress the cubic equation $ax^3 + bx^2 + cx + d = 0$ by removing the $x^2$ term by setting
 %
 \nbea
 x & = & y - \frac{b}{3a}
@@ -3448,7 +3496,95 @@ B & = & \left ( \frac{A}{3t} \right )^3 - t^3 \\
 %
 and so we get a quadratic equation, this is how we get the square roots in the first place. Once we solve for $u$ we just take the {\it three} cube roots of $u$ to get $t$ and that's how we get the complex coefficient since in the complex plane the $n^{\rm th}$ root of unity always have $n$ solutions.
 
-If the above is how we get the square root in the first place then to have integer solutions that square root must yield integers, we can't have irrational or complex solution even at this intermediate point since $u$ is an integer, therefore in our case it is sufficient to show that whatever inside the square root does not yield perfect squares.
+If the above is how we get the square root in the first place then to have rational solutions that square root must yield rational numbers, we can't have irrational or complex solution even at this intermediate point since $u$ is a rational number, therefore in our case it is sufficient to show that whatever inside the square root does not yield perfect rational squares (here we deal with rational because we divide all coefficients by $a$ in the beginning).
+
+We now check if there's a rational solution for $M = \left (\frac{\sqrt{4F^6\pm12F^3+1}}{2}+\frac{6F^3\pm1}{2} \right )^{1/3}$, we know that $\frac{6F^3\pm1}{2}$ is rational and since $F$ is an integer, the square root must produce an integer as well, why not rationals? It's because $F$ is an integer, using the quadratic formula for whatever is inside the square root we solve for $F$
+%
+\nbea
+G^2 & = & 4F^6\pm12F^3+1 \\
+\to F & = & \left ( \frac{ \sqrt{G^2 + 8} \pm 3 }{2} \right )^{1/3}
+\neea
+%
+having $F$ as an integer means that $G$ is an integer and therefore $G^2 + 8$ is an integer as well. But there's no integer $H$ such that $H^2 = G^2 + 8$ because
+%
+\nbea
+H^2 - G^2 = (H - G)(H + G) & = & 2 \cdot 2 \cdot 2
+\neea
+%
+if $H,G > 0$ then $H = 3, G=1$ is the only solution, if $H < 0, G > 0$ 
+%
+\nbea
+(-|H| - G)(-|H| + G) & = & (|H| + G)(|H|-G)
+\neea
+%
+if $H,G < 0$ 
+%
+\nbea
+(-|H| - (-|G|))(-|H| + (-|G|)) & = & (|H| - |G|)(|H| + |G|)
+\neea
+%
+if $H > 0, G < 0$ 
+%
+\nbea
+(H - (-|G|))(H + (-|G|)) & = & (H + |G|)(H - |G|)
+\neea
+%
+Thus the only solutions are $(3,1), (-3,1), (3,-1), (-3,-1)$ in any case $\sqrt{G^2 + 8} = 3$ giving
+%
+\nbea
+F & = & \left ( \frac{ 3 \pm 3 }{2} \right )^{1/3} \\
+F & = & \left \{ \ba{l}
+3^{1/3} \\
+0
+\ea
+\right.
+\neea
+%
+and since $F$ is an integer $F=0$ but this violates $\pm 1 = 2C^3 - (C+F)^3$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+since $H+G > H-G$ it means that $H-G = 2$ the smallest possible $H$ is 3.
+
+
+
+For $F$ to have rational solutions $G^2 + 8$ must yield perfect rational squares which means
+%
+\nbea
+G^2 + 8 & = & H^2 \\
+8 & = & (H - G)(H + G)
+\neea
+%
+Since we are dealing with rationals
+%
+\nbea
+8 & = & \frac{(H' - G')}{I}\frac{(H' + G')}{I} \\
+8 I^2 & = & (H' - G')(H' + G')
+\neea
+%
+where $G',H',I$ are now all integers with $H' > G'$ let's denote $H' = G' + J$, using the quadratic formula for $I$ we get
+%
+\nbea
+I & = & \pm \sqrt{\frac{J^2+2G'J}{8}} \\
+\to J & = & -G' \pm \sqrt{K^2 + G'^2}
+\neea
+%
+where $K$ is an integer satisfying $K^2 + G'^2 = L^2$ and $K^2 = J^2+2G'J$
+
 
 
 
