@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  8 SEP 2016 19:46
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  10 SEP 2016 15:27
 entering extended mode
 **D:/Github/string/pittetd/ICOC-deconstructed.tex
 (D:/Github/string/pittetd/ICOC-deconstructed.tex
@@ -385,18 +385,18 @@ Requested font "cmbsy8" at 8.0pt
 Requested font "cmbsy6" at 6.0pt
 Requested font "cmti12" at 12.0pt
  [1]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 242.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 250.
 
 
 (D:\Downloads\miktex-portable-2.9\tex\latex\base\omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 242.
- [2] [3]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 250.
+ [2] [3] [4]
 Requested font "cmbxti10" at 12.0pt
- [4]
-(ICOC-deconstructed.bbl) [5] (ICOC-deconstructed.aux) ) 
+
+[5] [6] (ICOC-deconstructed.bbl) [7] (ICOC-deconstructed.aux) ) 
 Here is how much of TeX's memory you used:
  4605 strings out of 428755
  55892 string characters out of 3166785
@@ -404,6 +404,6 @@ Here is how much of TeX's memory you used:
  7882 multiletter control sequences out of 15000+200000
  12771 words of font info for 47 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
- 28i,7n,26p,642b,188s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 28i,7n,26p,662b,188s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on ICOC-deconstructed.pdf (5 pages).
+Output written on ICOC-deconstructed.pdf (7 pages).
