@@ -3274,7 +3274,7 @@ m = 2^i & ~~~ & m + 2 = 2^{n_0 - i}
 %
 then $\gcd(m, m + 2) > 2$ which is a violation. But if $m = 2$ then $m + 2 = 4$ and $x^2 = m(m + 2) = 8$ and $x = 2$, so if $x$ only contains a single prime type as a factor it has to be $x=2$.
 
-Next, what happens if $x$ has two prime types, \ie $x = p_1^{n_1} p_2^{n_2}$? Well, the requirement that $\gcd(m, m+2) = 2$ forces either $m$ to take all of $p_1^{n_1}$ and $m + 2$ all of $p_2^{n_2}$ or vice versa. But this way there's no way $m$ and $m + 2$ to differ by just 2 because
+Next, what happens if $x$ has two prime types, \ie $x = p_1^{n_1} p_2^{n_2}$? Well, the requirement that $\gcd(m, m+2) \le 2$ forces either $m$ to take all of $p_1^{n_1}$ and $m + 2$ all of $p_2^{n_2}$ or vice versa. But this way there's no way $m$ and $m + 2$ to differ by just 2 because
 %
 \nbea
 p_1^{3n_1} p_2^{3n_2} & = & m(m + 2) \\
@@ -3389,7 +3389,7 @@ One possible way in is to note that since $\gcd(m,m+2) = 2$ at the very most, fo
 x & = & 2^{n_1}\prod_i p_i^{n_i}, ~~~ p_i > 2
 \neea
 %
-we need to distribute the prime factors of $x^3$ into $m$ and $(m+2)$ in such a way that one of them have exactly one factor of two and the other absorbs the rest, if $\gcd(m,m+2) = 1$ then $m = C^3$ and $m+2 = D^3$ but the difference between two cubes is at least 7 as shown above, so it is in a way very similar to the approach above.
+we need to distribute the prime factors of $x^3$ into $m$ and $(m+2)$ in such a way that one of them have exactly one factor of two and the other absorbs the rest, if $\gcd(m,m+2) = 1$ then $m = C^3$ and $m+2 = D^3$ but the difference between two cubes is at least 7 as shown above, thus only $\gcd(m,m+2) = 2$ will work, so it is in a way very similar to the approach above.
 
 Now, say $(m+2) = 2^{3n_1-1} D^3$ and $c = 2 C^3$ and 
 %
@@ -3490,7 +3490,7 @@ yielding $y = s-t$ as the solution. But first we need to solve for $s$ and $t$ b
 %
 \nbea
 B & = & \left ( \frac{A}{3t} \right )^3 - t^3 \\
-0 & = & t^6 + Bt - \frac{A^3}{27}, ~~~ {\rm setting~}u = t^3 \\
+0 & = & t^6 + Bt^3 - \frac{A^3}{27}, ~~~ {\rm setting~}u = t^3 \\
 \to 0 & = & u^2 + Bu - \frac{A^3}{27}
 \neea
 %
@@ -3540,7 +3540,17 @@ F & = & \left \{ \ba{l}
 \right.
 \neea
 %
-and since $F$ is an integer $F=0$ but this violates $\pm 1 = 2C^3 - (C+F)^3$
+and since $F$ is an integer $F=0$ but this violates $\pm 1 = 2C^3 - (C+F)^3$.
+
+So it seems like we have solved it but in fact we haven't, the problem lies with the statement that ``$u$ is a rational number'', it might not be, recall that $u = t^3$ and $B = s^3 - t^3,~A=3st,~y = s-t$, it's true that $B, A, y$ are all rational but that doesn't mean that $s,t$ have to be rational as well. A product of two irrational numbers can still be rational, \eg $\sqrt{18}\cdot\sqrt{2} = \sqrt{36} = 4$, and as shown above the difference of two irrational numbers can still be rational, thus the argument above fails.
+
+Furthermore,
+%
+\nbea
+E & = & \frac{M^2+2F^2 + FM}{ M }
+\neea
+%
+is a quadratic equation for $M$, and we can feed any rational/integer $E$ and $F$ to produce all sort of irrational $M$, which means that even though $M$ is irrational $E$ can still be rational/integer.
 
 
 
@@ -3704,6 +3714,249 @@ p_3 &|& \pm 1
 \neea
 %
 which is still a contradiction
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+$x^3 + y^3 + 2z^3 = 0$
+
+We will follow the proof for $x^3 + y^3 + z^3 = 0$ closely (which is FLT with $n=3$)
+
+First, if $(x,y,z)$ are not pairwise coprime we can always divide the three of them by their common $\gcd$. If both $x$ and $y$ are even then
+%
+\nbea
+(2x')^3 + (2y')^3 + 2z^3 = 0 \\
+8(x'^3 + y'^3) + 2z^3 = 0 \\
+4(x'^3 + y'^3) + z^3 = 0
+\neea
+%
+therefore $4|z^3$ which means that $z$ has to be even as well. In this case we can keep dividing $(x,y,z)$ by two until both $x$ and $y$ are odd. We can't have one of them to be even and the other odd because $x^3 + y^3$ will then be odd which is a contradiction since $x^3 + y^3$ must be divisible by 2 by the virtue of the factor of 2 multiplying $z^3$.
+
+Thus we can just consider coprime $(x,y,z)$ with $x$ and $y$ both odd. In this case
+%
+\nbea
+x + y & = & 2u \\
+x - y & = & 2v \\
+\to x & = & u + v \\
+y & = & u - v
+\neea
+%
+because the sum/difference of two odd numbers must be even. Also, $u$ and $v$ must have opposite parities (one is odd while the other is even) because otherwise their sum/difference is even and both $x$ and $y$ will be even and thus not coprime, also $\gcd(u,v) = 1$ because otherwise if $d = \gcd(u,v) > 1$
+%
+\nbea
+x & = & d(u' + v') \\
+y & = & d(u' - v')
+\neea
+%
+which means that $d|x, d|y$ and $\gcd(x,y) > 1$. 
+
+Continuing
+%
+\nbea
+-2z^3 & = & (u + v)^3 + (u - v)^3 \\
+-\bcancel{2}z^3 & = & \bcancel{2}u(u^2 + 3v^2)
+\neea
+%
+Since $u$ and $v$ have opposite parities $(u^2 + 3v^2)$ must be odd. Thus the parity of $z$ is determined by the parity of $u$.
+
+Using the fact that $\gcd(u,v)=1$ we would like to know $\gcd(u, u^2 + 3v^2)$, say $d|u$ and $d > 1$, well $d$ must have prime factors, let's denote a prime divisor of $d$ as $g$, and let us assume $g > 3$ for now, then $g | u \to g |u^2$ and $g | (u^2 + 3v^2)$, therefore
+%
+\nbea
+g &|& (u^2 + 3v^2) - u^2 \\
+g &|& 3v^2
+\neea
+%
+Now since $g$ is prime and it`s bigger than $3$ therefore $g | 3v^2 \to g|v^2 \to g |v$ but this is a contradiction since $g > 3$, $g|u, g|v$ and $\gcd(u,v)=1$. So $1 \le g \le 3$, but following the same steps as above $g|u$ and $g | 3v^2 \to g|v^2 \to g |v$. However, either $u$ or $v$ must be odd so their common divisor cannot be even, thus $d = 3^{n_2},~n_2 > 1$, which in turn means
+%
+\nbea
+3^{n_2} &|& u^2 \to 3^{n_2-1} | u^2 \\
+3^{n_2} &|& 3v^2 \\
+\to 3^{n_2-1} &|& v^2
+\neea
+%
+In this case $\gcd(u,v) \ge 3^{\ceil{(n_2-1)/2}}$ which is again a contradiction since $u$ and $v$ are coprime. Therefore if $d > 1$ then $d=3$. This means that $\gcd(u, u^2 + 3v^2)$ is either 1 or 3.
+
+\bigskip
+\textit{\textbf{First Case}}
+\smallskip
+
+If $\gcd(u, u^2 + 3v^2) = 1$ then due to the fact that $-z^3 = u (u^2 + 3v^2)$
+%
+\nbea
+u &= & r^3 \\
+u^2 + 3v^2 & = & s^3
+\neea
+%
+Since $(u^2 + 3v^2)$ is odd, so is $s$. A crucial lemma shows that if $s$ is odd and if it satisfies $s^3 = u^2 + 3v^2$ then there are two coprime integers $e$ and $f$
+%
+\nbea
+s & = & e^2 + 3f^2
+\neea
+%
+so that
+%
+\nbea
+u & = & e (e^2 - 9 f^2) \\
+v & = & 3f (e^2 - f^2)
+\neea
+%
+$e$ and $f$ must also have opposite parities because $u$ and $v$ have opposite parities and
+%
+\nbea
+u & = & e (e^2 - 9 f^2) = e (e - 3f) (e + 3f)
+\neea
+%
+Next just like the argument above say $\gcd(e,e \pm 3f) = d > 1$, take a prime divisor $g$ of $d$, and
+%
+\nbea
+g &|& e \\
+g &|& e \pm 3f \\
+\to g &|& \pm 3f
+\neea
+%
+Since $g$ is prime, if $g > 3$ then $g|f$ and since $g|e$, $g = \gcd(e,f) > 1$ which is a contradiction since $e$ and $f$ are coprime. So $1 \le g \le 3$, now $g \neq 3$ because then $g=3 | e \to 3 | u$ but $3 | v$ as $v = 3f (e^2 - f^2)$ but $u$ and $v$ are coprime, so $g = 1,2$ but 2 is out of the question since then $g = 2 | e \to 2 | u$ and $2 | 3f \to 2 | f \to 2 |v$ but $\gcd(u,v) = 1$, so $d = g = 1 = \gcd(e, e \pm 3f)$.
+
+Now we need to take care of $\gcd(e-3f, e+3f) = d$, in this case since $d | e \pm 3f$
+%
+\nbea
+d &|& ((e-3f)+(e+3f)) \to d | 2e \\
+d &|& ((e+3f)-(e-3f)) \to d | 6f
+\neea
+%
+if we like previously choose a prime factor $g$ of $d$ then $g = 1,2,3$ but 3 is ruled out because then $g=3 | 2e \to 3 | e \to 3|u$ as $u = e (e^2 - 9 f^2)$ and $3|v$ since $v = 3f (e^2 - f^2) \to \gcd(u,v) \ge 3$, contradicted by the fact that $\gcd(u,v) = 1$, $d$ can't be 2 because $e$ or $f$ have opposite parities and therefore $e \pm 3f$ is always odd and since $d | (e \pm 3f)$, an odd number, $d \neq 2$, so the only choice is $d = 1$.
+
+Thus $e, (e - 3f), (e + 3f)$ are pairwise coprime and that means each of them has to be a cube as they are divisors of $r^3$
+%
+\nbea
+r^3 = u & = & e (e^2 - 9 f^2) = e (e - 3f) (e + 3f) \\
+\to -e & = & k^3 \\
+e - 3f & = & l^3 \\
+e + 3f & = & m^3
+\neea
+%
+Now note that
+%
+\nbea
+-2e + (e - 3f) + (e + 3f) & = & 0 \\
+\to 2k^3 + l^3 + m^3 & = & 0
+\neea
+%
+which is a smaller solution than $x^3 + y^3 + 2z^3 = 0$ since $k | r$ and $r|z$.
+
+\bigskip
+\textit{\textbf{Second Case}}
+\smallskip
+
+If $\gcd(u, u^2 + 3v^2) = 3$ then we can express $u = 3w$ and since $\gcd(u,v)=1$ then $3 \nmid v$
+%
+\nbea
+-z^3 & = & 3w (9w^2 + 3v^2) \\
+& = & 9w (3w^2 + v^2)
+\neea
+%
+Because $\gcd(v,w)=1$ and $3 \nmid v$ then $\gcd(9w, 3w^2 + v^2) = 1$ we can see this following a similar argument above, say $\gcd(9w, 3w^2 + v^2)=d$ and we pick a prime divisor $g$ of $d$
+%
+\nbea
+g &|& 9w \to g|81w^2 \\
+g &|& (27(3w^2 + v^2) - 81w^2) \\
+g &|& 3^3v^2
+\neea
+%
+again, if $g>3$ then since $g$ is prime then $g|v^2 \to g|v$ and also $g |3^2 w \to g |w$ but $\gcd(w,v)=1$ so $ 1 \le g \le 3$ but if $g = 3$ then
+%
+\nbea
+g = 3 &|& 3w^2 + v^2 \\
+\to 3b & = & 3w^2 + v^2 \\
+3 (b - w^2) & = & v^2 \\
+3 &|& v^2 \to 3 | v
+\neea
+%
+but $3 \nmid v$ thus $g = 1,2$ but 2 is ruled out since $u$ and $v$ are of opposite parities, this means that if $u$ is even then $w$ is even then $9w$ is even and $3w^2 + v^2$ is odd, if $w$ is odd and $v$ is even then $9w$ is odd and $3w^2 + v^2$ is also odd, so no matter what $\gcd(9w,3w^2+v^2) \neq 2$ thus the only conclusion is that $9w$ and $3w^2+v^2$ are coprime. In this case since $-z^3 = 9w(3w^2 + v^2)$
+%
+\nbea
+9w & = & r^3 \\
+3w^2 + v^2 & = & s^3
+\neea
+%
+By the same lemma, since $s$ is odd and equal to $3w^2 + v^2$, it too can be expressed in terms of smaller coprime numbers, $e$ and $f$, and therefore $s = e^2 + 3f^2$
+%
+\nbea
+v & = & e (e^2 - 9f^2) \\
+w & = & 3f (e^2 - f^2)
+\neea
+%
+we can immediately see that $e$ nd $f$ have opposite parities because otherwise both $u$ and $w$ will be both even, contradicting $\gcd(u,w) = 1$, substituting them back into $r^3$ we get
+%
+\nbea
+r^3 & = & 9w = 27f(e^2 - f^2) = 3^3f(e+f)(e-f) \\
+\left (\frac{r}{3}\right)^3 & = & f (e+f)(e-f)
+\neea
+%
+$(r/3)$ has to be an integer since $r, e$ and $f$ are all integers. And just like before $f, (e+f), (e-f)$ are all pairwise coprime. We can see this easily by first considering $\gcd(f, e \pm f) = d > 1$
+%
+\nbea
+e \pm f & = & d m, ~~~ d|f \\
+e & = & d (m \mp f') \\
+\to d &|& e
+\neea
+%
+which is a contradiction since $e$ and $f$ are coprime. Now we want to know what $d = \gcd(e-f, e+f)$ is, again take a prime divisor $g$ of $d$
+%
+\nbea
+g &|& 2e \\
+g &|& 2f
+\neea
+%
+if $g > 3$ then since $g$ is prime $g|e, g|f$ but it contradicts the fact that $e$ and $f$ are coprime. If $g=3$ it will cause $3 |2e \to 3|e \to 3|v$ by virtue of $v = e (e^2 - 9f^2)$ but since $w = 3f (e^2 - f^2)$, $3|w$ thus $\gcd(w,u) \ge 3$ which contradicts the fact that $u$ and $w$ are coprime, $d \neq 2$ because $e$ and $f$ are of opposite parities and $e \pm f$ is always odd, therefore their divisors cannot be 2, this means that $f, (e-f), (e+f)$ are pairwise coprime which means that
+%
+\nbea
+\left (\frac{r}{3}\right)^3 & = & f (e+f)(e-f) \\
+\to -f & = & k^3 \\
+e + f & = & l^3 \\
+-(e - f) & = & m^3
+\neea
+%
+but
+%
+\nbea
+2f & = & (e + f) - (e - f) \\
+\to -2k^3 & = & l^3 + m^3 \\
+0 & = & l^3 + m^3 + 2k^3
+\neea
+%
+which will lead to another infinite descent since $k|s$ and $s|z$.
+
+
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+What we want to show here is that $x^4 + y^4 = z^2$ has no nontrivial coprime solution
+
+{\it Solution}.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
