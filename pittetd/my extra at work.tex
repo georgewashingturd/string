@@ -3246,6 +3246,11 @@ or more generally since $8 = 2^3$
 x^3 + 1 & = & d^2
 \neea
 %
+
+\bigskip
+\textit{\textbf{Trial by fire, round one}}
+\smallskip
+
 This is somewhat interesting as anything with cubes is usually hard :) My line of attack (which came to me while walking home from buying yogurt) is to rearrange
 %
 \nbea
@@ -3274,6 +3279,10 @@ m = 2^i & ~~~ & m + 2 = 2^{n_0 - i}
 %
 then $\gcd(m, m + 2) > 2$ which is a violation. But if $m = 2$ then $m + 2 = 4$ and $x^2 = m(m + 2) = 8$ and $x = 2$, so if $x$ only contains a single prime type as a factor it has to be $x=2$.
 
+\bigskip
+\textit{\textbf{Trial by fire, round two}}
+\smallskip
+
 Next, what happens if $x$ has two prime types, \ie $x = p_1^{n_1} p_2^{n_2}$? Well, the requirement that $\gcd(m, m+2) \le 2$ forces either $m$ to take all of $p_1^{n_1}$ and $m + 2$ all of $p_2^{n_2}$ or vice versa. But this way there's no way $m$ and $m + 2$ to differ by just 2 because
 %
 \nbea
@@ -3295,6 +3304,10 @@ x & = & 2^{n_1} p_2^{n_2} \\
 \neea
 %
 but this case is immediately a no go as $m = 2, ~ m + 2 = 2^{3n_1 - 1} p_2^{3n_2}$ as dictated by the fact that $\gcd(m, m+2) = 2$ and $m < m + 2$.
+
+\bigskip
+\textit{\textbf{Trial by fire, round three}}
+\smallskip
 
 The next easiest thing is three prime factors, $x = p_1p_2p_3$ such that
 %
@@ -3383,6 +3396,10 @@ d &|& 1
 %
 Well, that's one interesting fact, but even with that fact it's still a mess to continue, especially if we expand into a generic territory $x = 2^{n_1}p_2^{n_2}p_3^{n_3} \dots p_i^{n_i}$, we need a new way in.
 
+\bigskip
+\textit{\textbf{Trial by fire no more}}
+\smallskip
+
 One possible way in is to note that since $\gcd(m,m+2) = 2$ at the very most, for a generic
 %
 \nbea
@@ -3412,6 +3429,46 @@ or in other words $\frac{(m+2) - m}{2}$ is
 \pm 1 & = & 2 E^3 - C^3
 \neea
 %
+Our problem of finding integral solutions for $1 + x^3 = y^2$ has now been reduced to finding integral solutions of $\pm 1 = 2 E^3 - C^3$
+
+My first attempt was of course to parametrize $E$ and $C$ and then deploying our awesome cubic formula but it turned out to be quite disastrous though there were some silver linings, we will discuss this later.
+
+My next idea was to utilize the fact that
+%
+\nbea
+0 = \pm 1 - 2E^3 + C^3 & = & a^3 + b^3 + c^3 + d^3
+\neea
+%
+with $b = c = -E$, the equation $0 = a^3 + b^3 + c^3 + d^3$ is called the cubic quadruple. There's a famous parametrization of this equation due to Euler 
+%
+\nbea
+a & = & (1-(p-3q)(p^2+3q^2))r \\
+b & = & ((p+3q)(p^2+3q^2)-1)r \\
+c & = & ((p^2+3q^2)^2-(p+3q))r \\
+d & = & (-(p^2+3q^2)^2+(p-3q))r
+\neea
+%
+however, this only works for {\it rational} parameters $p,q,r$, there's no known integral parametrization for the cubic quadruples that cover all integral solutions. Note that even though $p,q,r$ are rational numbers they still cover all integral solutions $a,b,c,d$ (and rational solutions as well) of the cubic quadruples (this is something that confused me before because it's usually mentioned that Euler came up with the complete rational parametrization of cubic quadruples but there is no known integral parametrization, aren't integers a subset of rationals? The point is that there are two things here, the solutions which can be integers or rationals and the parameters which again can be integers or rationals. Rational parameters can cover all of integral and rational solutions but integral parameters can only cover some integral solutions, no integral parameters can cover all integral solutions).
+
+From my experience with the cubic quadruples I never see a solution where two of the numbers are the same, \ie all solutions are of the form $a\neq b\neq c\neq d$, but again an observation is not a proof.
+
+Armed with Euler's parametrization above I set out to proof that no two numbers in the cubic quadruple can be the same but it presents more difficulties. First difficulty is that $p,q,r$ are rationals and we are dealing with integers therefore we need to expand $p,q$ into ratios ($r$ can be canceled out).
+
+The next difficulty is that working with $p,q,r$ parametrization means that we are now dealing with quartic Diophantine equations, something that is more difficult than our original problem.
+
+\bigskip
+\textit{\textbf{Fermat to the rescue}}
+\smallskip
+
+I then thought that maybe the proof for FLT with $n=3$, \ie $x^3 + y^3 + z^3 = 0$, can be used to proof that $x^3 + y^3 + 2z^3 = 0$ has no nontrivial integer solutions.
+
+
+
+
+-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-====-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=
+
+
+
 For a moment, let's travel to the {\it real}istic universe, assume $E, C$ are real numbers, we can then factor them out as follows
 %
 \nbea
@@ -3927,6 +3984,9 @@ but
 %
 which will lead to another infinite descent since $k|s$ and $s|z$.
 
+In conclusion, any non-trivial integral solutions of $x^3 + y^3 + 2z^3 = 0$ will lead to an infinite descent, but wait a minute, does the above argument even indicate that the presupposed solutions used in the proof were nontrivial?
+
+Well, the only thing we assumed was that $x$ and $y$ were both odd, so this already excluded the trivial solution $x = y = z = 0$. Two other trivial solutions are $(1,-1,0)$ and $(1,1,-1)$. For $(1,-1,0)$ this means that $u = 0, v = 1$ while for $(1,1,-1)$ it is $u = 1, v = 0$ but then $|v| = |3f(e^2 - f^2)| > 3$ or $v = 0$ while in the second case $|u| = |9f(e^2 - f^2)| > 9$ or $u = 0$. Therefore, trivial solutions are excluded from the proof above.
 
 
 
@@ -3936,7 +3996,158 @@ which will lead to another infinite descent since $k|s$ and $s|z$.
 
 What we want to show here is that $x^4 + y^4 = z^2$ has no nontrivial coprime solution
 
-{\it Solution}.
+{\it Solution}. We start by noting that (pairwise coprime) Pythagorean triples are always of the form $a=m^2-n^2,~b = 2mn,~c = m^2 + n^2$ where $a^2 + b^2 = c^2$ and $\gcd(m,n)=1$ and $m$ and $n$ have opposite parities, one of the is odd while the other is even, this is to ensure that $a,b,c$ are pairwise coprime and that $a$ and $b$ have opposite parities as well, this is due to the fact that going modulo 4, if $a$ and $b$ are both odd then
+%
+\nbea
+a^2 + b^2 & = & 1 + 1 \pmod{4} \\
+& = & 2 \pmod{4}
+\neea
+%
+but $2 \pmod{4}$ is not a quadratic residue modulo 4, so $a$ and $b$ must have opposite parities.
+
+With the above in mind, we assign the following for our current problem $x^4 + y^4 = z^2$
+%
+\nbea
+x^2 & = & m^2 - n^2 \\
+y^2 & = & 2mn \\
+z & = & m^2 + n^2
+\neea
+%
+In this case $x$ is odd and $y$ is even but they're interchangeable due to the symmetry of the problem. Rearranging the equation for $x$ we get $x^2 + n^2 = m^2$, we know that $\gcd(m,n) = 1$ therefore $\gcd(x,m) = \gcd(x,n) = 1$ as well, this means that $(x,n,m)$ also form a Pythagorean triplet and since $x$ is odd, $n$ has to be even and $m$ odd.
+
+And from $y^2 = 2mn$, since $m$ and $n$ are coprime and $n$ even as shown above we have $m = e^2$ and $n = 2f^2$ with $\gcd(e,f)=1$.
+
+Since $(x,n,m)$ form a Pythagorean triplet they must obey
+%
+\nbea
+x & = & g^2 - h^2 \\
+n & = & 2gh \\
+m & = & g^2 + h^2
+\neea
+%
+but $n = 2f^2 = 2gh \to f^2 = gh$ and since $g$ and $h$ are coprime we have $g = r^2, ~h=s^2$, substituting all we have
+%
+\nbea
+m & = & g^2 + h^2 \\
+e^2 & = & r^4 + s^4
+\neea
+%
+which leads to an infinite descent as $e < m < z$. And in this case we can't have nontrivial pairwise coprime solutions for $x^4 + y^4 = z^4 = (z^2)^2$ either, FTL $n=4$ done :)
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+What we want to show here is that $x^4 - y^4 = z^2$ has no nontrivial coprime solution
+
+{\it Solution}. My way of solving this problem is a bit odd :) First I factorize
+%
+\nbea
+z^2 = x^4 - y^4 & = & (x^2 - y^2)(x^2 + y^2)
+\neea
+%
+We know that $x^2,y^2,z$ form a Pythagorean triplet. Since $z^2$ is positive we know that $x > y$ and therefore $x$ must be odd, $y$, however, can be either even or odd ($x$ must be odd because according to the Pythagorean triplet formula $x^2 = m^2 + n^2$ with $m$ and $n$ having opposite parities).
+
+Because they are Pythagorean triplet, we only need to consider pairwise coprime solutions, \ie $\gcd(x^2,y^2)=\gcd(x^2,z)=\gcd(y^2,z)=1$. But this means that $x$, $y$, $z$ must be coprime as well.
+
+First if there's a common divisor $d$ between $(x^2 - y^2)$ and $(x^2 + y^2)$ then
+%
+\nbea
+d &|& 2x^2 \\
+d &|& 2y^2
+\neea
+%
+Thus $d=1,2$ since $x$ and $y$ are coprime, therefore the only common divisors between $(x^2 - y^2),(x^2 + y^2)$ are either 1 or 2 which is expected since if $x$ and $y$ have opposite parities then the common divisors between them must be 1 and if $x$ and $y$ are both odd then the common divisor between $(x^2 - y^2),(x^2 + y^2)$ is 2.
+
+If the common divisor $(x^2 - y^2),(x^2 + y^2)$ is 1 then by virtue of $z^2 = (x^2 - y^2)(x^2 + y^2)$ we have
+%
+\nbea
+x^2 - y^2 & = & a^2 \\
+x^2 + y^2 & = & b^2
+\neea
+%
+with $\gcd(a,b) = 1$ which means that $a$ and $b$ are odd. If the common divisor $(x^2 - y^2),(x^2 + y^2)$ is 2 then we have
+%
+\nbea
+\begin{array} {r c l}
+x^2 - y^2 & = & 2c^2 \\
+x^2 + y^2 & = & 2d^2
+\end{array}
+\neea
+%
+with $\gcd(c,d) = 1$. We can rearrange the above ``judiciously'' to get
+%
+\nbea
+y^2 & = & d^2 - c^2 \\
+x^2 & = & d^2 + c^2
+\neea
+%
+Note that $c,d,x,y$ are all pairwise coprime, also since $x$ and $y$ are both odd, according to the Pythagorean triplet formula $c$ has to be even and $d$ has to be odd.
+
+In either case we actually generate two other Pythagorean triplets $x^2 = y^2 + a^2$ and $x^2 + y^2 = b^2$ with four coprime variables (in the second case $d$ plays the role of $x$ of the first case, and $c \leftrightarrow y$, $y \leftrightarrow a$, $x \leftrightarrow b$). So now we can just concentrate on the first case where $x$ is odd, $y$ is even, $a$ is odd, and $b$ is odd.
+
+From $x^2 = y^2 + a^2$ we have 
+%
+\nbea
+x & = & m^2 + n^2 \\
+y & = & 2mn \\
+a & = & m^2 - n^2
+\neea
+%
+while from $x^2 + y^2 = b^2$ we get
+%
+\nbea
+x & = & e^2 - f^2 \\
+y & = & 2ef \\
+b & = & e^2 + f^2
+\neea
+%
+Therefore
+%
+\nbea
+y = \bcancel{2}mn & = & \bcancel{2}ef
+\neea
+%
+Let's write $e = gh,~f = pq$ such that $m = gp,~n = hq$ with $\gcd(g,h) = \gcd(p,q) = 1$ to ensure that $m$ and $n$ are coprime, from the equation for $x$ we have
+%
+\nbea
+x = m^2 + n^2 & = & e^2 - f^2 \\
+g^2p^2 + h^2q^2 & = & g^2h^2 - p^2q^2 \\
+g^2(p^2 - h^2) & = & -q^2(p^2 + h^2) \\
+g^2(p - h)(p + h) & = & -q^2((p + h)^2 - 2ph) \\
+(p+h) \times (g^2(p - h) + q^2(p+h)) & = & -2q^2ph \\
+\to (p+h) &|& 2q^2ph
+\neea
+%
+We know that $p$ and $h$ are coprime because $e$ and $f$ are coprime and therefore $\gcd((p+h), ph)=1$ we quite easily can see this, say $p = \prod p_i,~h = \prod h_j$, if $(p+h)$ and $ph$ are not coprime then $(p+h)$ will contain some of the $p_i$ and/or $h_j$ but if this is the case then say
+%
+\nbea
+p + h & = & p_i X \\
+h & = & p_i (X - p/p_i) \\
+p_i &|& h
+\neea
+%
+but $\gcd(p,h) = 1$ which is a contradiction, the same can be said if $p+h$ contains some factor $h_j$ of $h$ (by the same token $(p+h)\nmid ph$).
+
+Next $(p+h)\nmid 2$ because that is only possible if $p=1, h=1$ but in this case $m=e$ and $n=f$ which will result in $x = e^2 - f^2 = m^2 - n^2 = m^2 + n^2 \to -1 = 1$ a contradiction. However, $(p+h)$ can still be even.
+
+So $(p+h)|2q^2$, from $m = gp \to qm = gqp,~n=hq \to gn = gqh$
+%
+\nbea
+gq(p+h) & = & qm + gn \\
+\neea
+%
+
+
+%
+\nbea
+m^2 + n^2 & = & e^2 - f^2 \\
+g^2p^2 + h^2q^2 & = & g^2h^2 - p^2q^2 \\
+h^2(q^2 - g^2) & = & -p^2(q^2 + g^2) \\
+h^2(q - g)(q + g) & = & -p^2((q + g)^2 - 2qg) \\
+(q+g) \times (h^2(q - g) + p^2(q+g)) & = & -2p^2qg \\
+\to (q+g) &|& 2p^2qg
+\neea
+%
 
 
 
@@ -3946,6 +4157,20 @@ What we want to show here is that $x^4 + y^4 = z^2$ has no nontrivial coprime so
 
 
 
+
+%
+\nbea
+(x-y)(x+y) = x^2 - y^2 & = & (2ab)^2 = B^2 \\
+x^2 + y^2 & = & 4c^2 = (2c)^2 = C^2
+\neea
+%
+so this is very similar to the case where $(x - y),(x + y),(x^2 + y^2)$ are pairwise coprime. For the other two cases we get
+%
+\nbea
+(x-y)(x+y) = x^2 - y^2 & = & 2(2ab)^2 = 2B^2 \\
+x^2 + y^2 & = & 4c^2 = (2c)^2 = C^2
+\neea
+%
 
 
 
@@ -3972,6 +4197,5 @@ What we want to show here is that $x^4 + y^4 = z^2$ has no nontrivial coprime so
 
 
 \end{document}
-
 
 

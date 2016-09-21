@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  19 SEP 2016 21:09
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  20 SEP 2016 22:06
 entering extended mode
 **"D:/Github/string/pittetd/my extra at work.tex"
 ("D:/Github/string/pittetd/my extra at work.tex"
@@ -782,31 +782,43 @@ Underfull \hbox (badness 10000) in paragraph at lines 3117--3118
 +-+-+-
  []
 
-[89] [90] [91] [92] [93] [94] [95] [96] [97] [98] [99] [100] [101]
-Underfull \hbox (badness 10000) in paragraph at lines 3720--3721
+[89] [90] [91] [92] [93] [94] [95] [96] [97]
+Overfull \hbox (0.97307pt too wide) in paragraph at lines 3468--3469
+[]\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-====-=-=-=-=-=-=-=-=-==
+-=-=-
+ []
+
+[98] [99] [100] [101] [102] [103]
+Underfull \hbox (badness 10000) in paragraph at lines 3777--3778
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 =-=-=-
  []
 
-[102] [103] [104] [105] [106] [107]
-Underfull \hbox (badness 10000) in paragraph at lines 3934--3935
+[104] [105] [106] [107] [108]
+Underfull \hbox (badness 10000) in paragraph at lines 3994--3995
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 =-=-=-
  []
 
-("my extra at work.bbl") [108]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 3974.
+[109] [110]
+Underfull \hbox (badness 10000) in paragraph at lines 4037--4038
+[]\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+=-=-=-
+ []
+
+[111] [112] [113] ("my extra at work.bbl") [114]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 4199.
  ("my extra at work.aux")
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 3974.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 3974.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 4199.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 4199.
  ) 
 Here is how much of TeX's memory you used:
  13405 strings out of 428755
  185644 string characters out of 3166785
- 289937 words of memory out of 3000000
+ 290105 words of memory out of 3000000
  16595 multiletter control sequences out of 15000+200000
  17684 words of font info for 67 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
- 36i,18n,38p,871b,569s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,18n,38p,978b,569s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on my extra at work.pdf (108 pages).
+Output written on my extra at work.pdf (114 pages).
