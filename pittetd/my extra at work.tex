@@ -4107,6 +4107,156 @@ Therefore
 y = \bcancel{2}mn & = & \bcancel{2}ef
 \neea
 %
+My next idea took me through a three day wild goose chase LOL From the fact that
+%
+\nbea
+x & = & m^2 + n ^2 = e^2 - f^2 \\
+\to e^2 & = & m^2 + n ^2 + f^2
+\neea
+%
+we get a Pythagorean quadruple. This also shows that $e > m > n > f$, $m > n$ because $x = m^2 - n^2$, $n > f$ because $mn = ef$ and $e > m$ therefore $f < n$. Also we cannot have two odd numbers (or more) among $m,n,f$, this is because 1,2,3 are not quadratic residue modulo 4, this means that $f$ is odd and therefore $f$ is even (since $e$ and $f$ have opposite parities).
+
+Well, Pythagoras shouldn't have been involved at all, from $ef = mn$ we have
+%
+\nbea
+m & = & dm' \\
+f & = & df' \\
+n & = & f' n' \\
+e & = & m'n'
+\neea
+%
+which means that $\gcd(m,f) = d$ and $\gcd(e,n) = n'$, of course $d$ or $n'$ can be 1 but they cannot both be 1 at the same time because if they are then $e = m, f = n$ and 
+%
+\nbea
+x = e^2 - f^2 & = & m^2 + n^2 \\
+m^2 - n^2 & = & m^2 + n^2 \\
+0 & = & 2n^2 \\
+\to n & = & 0
+\neea
+%
+which also means that $y=0$ a trivial solution. Now for a nontrivial solution
+%
+\nbea
+x = e^2 - f^2 & = & m^2 + n^2 \\
+e^2 - n^2 & = & m^2 + f^2 \\
+n'^2(m'^2 - f'^2) & = & (m^2 + f^2) \\
+n'^2(m'^2 - f'^2)\times(m^2-f^2) & = & (m^2 + f^2)\times(m^2 - f^2) \\
+n'^2(m'^2 - f'^2)(m'^2-f'^2) d^2 & = & (m^4 - f^4) \\
+n'^2(m'^2 - f'^2)^2d^2 & = & (m^4 - f^4) \\
+\xi^2 & = & m^4 - f^4
+\neea
+%
+where $\xi = n'(m'^2-f'^2)d$, now since $x = m^2 - n^2$ and $y = 2ef$ it means that $m < x$ and $f < y$ which means that we have an infinite descent because we can repeat the whole argument from the top about $x^4-y^4=z^2$ by replacing $x,y,z \leftrightarrow m,f,\xi$.
+
+In the above if $d = \gcd(m,f)>1$ is true, we can just divide all terms $m,f,\xi$ by $d$ and the argument about infinite descent will still stand.
+
+\bigskip
+\textit{\textbf{Pythagorean convolusion}}
+\smallskip
+
+If we insist of deploying Pythagorean quadruples, there is a generating formula for the Pythagorean quadruples just like for the triplets, since $m$ and $n$ are of opposite parities (let's pick $m$ to be odd here) and $f$ is even, $e$ and $n$ are given by
+%
+\nbea
+e & = & \frac{m^2 + f^2 + p^2}{2p} \\
+n & = & \frac{m^2 + f^2 - p^2}{2p}
+\neea
+%
+which means that $e - n = p$, here the condition is that $p | m^2 + f^2$ and $p^2 < m^2 + f^2$.
+
+If we now use the constraint that $ef = mn$
+%
+\nbea
+\left (\frac{m^2 + f^2 + p^2}{\bcancel{2p}} \right ) f & = & m \left ( \frac{m^2 + f^2 - p^2}{\bcancel{2p}} \right ) \\
+m^2f + f^3 + p^2f & = & m^3 + mf^2 - mp^2 \\
+(m + f)p^2 & = & (m^3 - f^3) - mf(m - f) \\
+& = & (m-f)(m^2 + mf + f^2 - mf) \\
+(m + f)p^2 & = & (m-f)(m^2+f^2)
+\neea
+%
+This was where my wild goose chase began, from here on I was trying to produce all kinds of contradictions that weren't but those are for later, first the solution
+%
+\nbea
+(m + f) \times (m + f)p^2 & = & (m + f) \times (m-f)(m^2+f^2) \\
+(m + f)^2 p^2 & = & (m^2 - f^2)(m^2+f^2) \\
+\xi^2 & = & m^4 - f^4
+\neea
+%
+where $\xi = (m+f)p$, now since $x = m^2 - n^2$ and $y = 2ef$ it means that $m < x$ and $f < y$ which means that we have an infinite descent because we can repeat the whole argument from the top about $x^4-y^4=z^2$ by replacing $x,y,z \leftrightarrow m,f,\xi$.
+
+In the above $d = \gcd(m,f)>1$ might be true, if this is the case we can just divide all terms $m,f,\xi$ by $d$ and the argument about infinite descent will still stand.
+
+\bigskip
+\textit{\textbf{Pythagorean restriction}}
+\smallskip
+
+Recruting Pythagoras is not so bad afterall, because the above shows that there's no Pythagoran quadruple $a^2 + b^2 + c^2 = d^2$ with $ad = bc$ where $a$ is the smallest among $a,b,c$, a free theorem :)
+
+\bigskip
+\textit{\textbf{The errors of my way}}
+\smallskip
+
+Now let's go back to the goose I was chasing
+%
+\nbea
+(m + f)p^2 & = & (m-f)(m^2+f^2)
+\neea
+%
+at this point had $m$ and $f$ been coprime we would have been done because then $\gcd(m-f ,m+f)=1$ thus $m-f|p^2 \to r = \gcd(p,m-f) > 1$ but since $p|m^2+f^2 \to r | m^2+f^2$ and the fact that $r = \gcd(p,m-f)$ means $r | m-f \to r | m^2 - f^2 \to r |2m^2, ~r|2f^2$ and since $r | m-f$, $r$ must be odd as $m-f$ is odd so $\gcd(r,2)=1$ and $r$ is a common factor of $m^2$ and $f^2$ which is a contradiction as $m$ and $f$ are coprime.
+
+But if $d = \gcd(m,f) > 1$ then
+%
+\nbea
+\bcancel{d}(m' + f')p^2 & = & \bcancel{d}(m'-f')(m^2+f^2)
+\neea
+%
+where $m = dm',~f = df'$. The argument will be almost the same as the above $m'-f'|p^2 \to r = \gcd(p,m'-f') > 1$ but then the final conclusion is different, $r | 2m^2,~r|2f^2 \to r | 2d^2m'^2,~r|2d^2f'^2$ and $r$ avoids contradiction by the fact that it now divides $d^2$.
+
+I then go deeper into the rabbit hole by trying to find out more about $d$, starting from
+%
+\nbea
+(m + f)p^2 & = & (m-f)(m^2+f^2) \\
+((m - f) + 2f)p^2 & = & (m-f)(m^2+f^2), ~~~ m^2 + f^2 = Ap \\
+2f\bcancel{p}p & = & (m-f)\bcancel{p}(A - p) \\
+\to (m-f) &|& 2fp \\
+\bcancel{d}(m'-f') &|& 2\bcancel{d}f'p
+\neea
+%
+again $\gcd(2,m'-f') = \gcd(f',m'-f') = 1 \to (m'-f') | p$, now from $r = \gcd(p, m'-f')$ (which also means $r|(m'-f')$) we can then express $p = rs$ where $\gcd(s, m'-f')=1$ what we have is now
+%
+\nbea
+m'-f' &|& p \\
+m'-f' &|& rs, ~~~ \gcd(m'-f',s)=1 \\
+\to
+\left. \begin{array}{r c l}
+m'-f' &|& r \\
+r &|& m'-f'
+\end{array} \right \} &\Rightarrow & r = m' - f'
+\neea
+%
+so what we know so far is that $r = (m' - f') | d^2$.
+
+And from $e - n = p$
+%
+\nbea
+ef & = & mn \\
+(p+n)f & = & mn \\
+p\bcancel{d}f' & = & n\bcancel{d}(m'-f') \\
+\neea
+%
+
+
+
+
+
+say we have $d=\gcd(m-f,m+f) > 1$
+
+
+
+
+
+
+
+
 Let's write $e = gh,~f = pq$ such that $m = gp,~n = hq$ with $\gcd(g,h) = \gcd(p,q) = 1$ to ensure that $m$ and $n$ are coprime, from the equation for $x$ we have
 %
 \nbea
