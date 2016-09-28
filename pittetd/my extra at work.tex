@@ -4191,6 +4191,33 @@ In the above $d = \gcd(m,f)>1$ might be true, if this is the case we can just di
 
 Recruting Pythagoras is not so bad afterall, because the above shows that there's no Pythagoran quadruple $a^2 + b^2 + c^2 = d^2$ with $ad = bc$ where $a$ is the smallest among $a,b,c$, a free theorem :)
 
+Here's why this theorem is true, say we have the opposite, we have $e^2 = m^n + n^2 + f^2$ and for now we don't care about the parities, now say that $ef = mn$ and $f$ is the smallest one among $e,m,n,f$ while $e$ is the largest one.
+
+If this is true then we can set
+%
+\nbea
+x & = & e^2 - f^2 = m^2 + n^2 \\
+y & = & 2mn = 2ef \\
+a & = &  m^2 - n^2 \\
+b & = & e ^2 + f^2
+\neea
+%
+such that
+%
+\nbea
+x^2 - y^2 & = & a^2 \\
+x^2 + y^2 & = & b^2
+\neea
+%
+Now it doesn't matter even if $m$ and $n$ are not coprime (or $e$ and $f$ are not coprime or all of them are not coprime), we still have
+%
+\nbea
+(x^2 - y^2)(x^2 + y^2) & = & a^2b^2 \\
+x^4 - y^4 & = & z^2
+\neea
+%
+where $z = ab$ and if there is any common factor between the LHS and RHS we can get rid of it here, but this is a contradiction since the above solution has nonontrivial solutions, \ie the only trivial solutions are $(x,y,z) = (0,0,0)$, $(1,1,0)$ or $(1,0,1)$ and in any case it's either $y = 0$ or $z = 0$ and in this case we won't get a Pythagorean quadruple.
+
 \bigskip
 \textit{\textbf{The errors of my way}}
 \smallskip
@@ -4233,7 +4260,87 @@ r &|& m'-f'
 \end{array} \right \} &\Rightarrow & r = m' - f'
 \neea
 %
-so what we know so far is that $r = (m' - f') | d^2$.
+so what we know so far is that $r = (m' - f') | d^2$. But all this leads nowhere we are now really deep into the rabbit hole but we can still salvage this. My first not so good idea was to find another avenue to show that $\gcd(m,f)$ must be 1 somehow, but it was quite difficult.
+
+I then tried to use the fact that $e > m > n > f$ and substituting $(m^2 + f^2 \pm p^2)/2p$ for $e$ and $n$ but it didn't lead anywhere either. Finally, after staring at this problem for a long time the bulb  went off, the key is this equation
+%
+\nbea
+m + f & = & m-f+2f
+\neea
+%
+why is this key, well, let's start where we left off
+%
+\nbea
+(m + f)p^2 & = & (m-f)(m^2+f^2) \\
+(m - f + 2f)p^2 & = & (m-f)(m^2+f^2) \\
+2fp^2 & = & (m-f)((m^2+f^2) - p^2) \\
+2fp^2 & = & (m-f)A \\
+\neea
+%
+for simplicity let's denote $A = (m^2+f^2) - p^2$, we can continue this
+%
+\nbea
+(m+f)\times2fp^2 & = & (m+f)\times(m-f)((m^2+f^2) - p^2) \\
+(m-f +2f)(2fp^2) & = & (m-f)(m+f)((m^2+f^2) - p^2) \\
+(2f)^2p^2 & = & (m-f)((m+f)((m^2+f^2) - p^2) - 2fp^2) \\
+(2f)^2p^2 & = & (m-f)((m+f)A - 2fp^2) \\
+(2f)^2p^2 & = & (m-f)((m+f)A - (m-f)A) \\
+(2f)^2p^2 & = & (m-f)(2fA) 
+\neea
+%
+
+
+%
+\nbea
+(m-f + 2f)(2f)^2p^2 & = & (m-f)((m+f)A - (m-f)A) \\
+(2f)^3p^2 & = & (m-f)((m+f)((m+f)A - (m-f)A) - 4f^2p^2) \\
+(2f)^3p^2 & = & (m-f)((m+f)((m+f)A - (m-f)A) - (m-f)((m+f)A - (m-f)A)) \\
+\neea
+%
+
+
+
+%
+\nbea
+2 \cdot 2f^2p^2 & = & (m^2-f^2)((m^2+f^2) - p^2) - (m-f)(2fp^2) \\
+&& \\
+-2f^2p^2 & = & (m^2+f^2)((m-f)^2 - p^2) \\
+-2f^2p^2 & = & (m^2+f^2)((m^2+f^2) - p^2) - (m^2+f^2)(2mf) \\
+2 \cdot 2f^2p^2 & = & -2(m^2+f^2)((m^2+f^2) - p^2) + 2(m^2+f^2)(2mf) \\
+\neea
+%
+
+
+
+
+
+
+
+
+
+why is this key, well, let's start where we left off
+%
+\nbea
+(m + f)p^2 & = & (m-f)(m^2+f^2) \\
+(m-f)\times(m + f)p^2 & = & (m-f)\times(m-f)(m^2+f^2) \\
+(m^2-f^2)p^2 & = & (m-f)^2(m^2+f^2) \\
+((m^2+f^2) - 2f^2)p^2 & = & (m-f)^2(m^2+f^2) \\
+-2\bcancel{d^2}f'^2p^2 & = & \bcancel{d^2}(m'^2+f'^2)((m-f)^2 - p^2) \\
+-2f'^2p^2 & = & (m'^2+f'^2)((m-f)^2 - p^2)
+\neea
+%
+and by the same argument since $m'^2+f'^2$ is odd $\gcd(m'^2+f'^2,2)=1$ and since $\gcd(m',f')=1 \to \gcd(m'^2+f'^2,f'^2)=1$ and therefore $(m'^2+f'^2) | p^2$, we can continue this
+%
+\nbea
+(m^2-f^2)\times(m^2-f^2)p^2 & = & (m^2-f^2)\times(m-f)^2(m^2+f^2) \\
+(m^4+f^4-2m^2f^2)p^2 & = & (m^4-f^4)(m-f)^2 \\
+(m^4-f^4 + 2f^4-2m^2f^2)p^2 & = & (m^4-f^4)(m-f)^2 \\
+-2\bcancel{d^4}f'^2(m'^2-f'^2)p^2 & = & \bcancel{d^4}(m'^4-f'^4)((m-f)^2 - p^2) \\
+-2f'^2(m'^2-f'^2)p^2 & = & (m'^4-f'^4)((m-f)^2 - p^2)
+\neea
+%
+
+
 
 And from $e - n = p$
 %
@@ -4347,5 +4454,4 @@ x^2 + y^2 & = & 4c^2 = (2c)^2 = C^2
 
 
 \end{document}
-
 
