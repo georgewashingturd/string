@@ -623,6 +623,35 @@ To proceed we need to show that
 %
 where we have used Lemma 1.1.9 in the second line, thus $\gcd(a,\Delta) = 1$, since $a|\Delta c$ and $a|ac$ using Lemma 1.1.18 $\to a|\gcd(\Delta c,ac) = c \cdot \gcd(\Delta,a) = c \cdot 1 = c \to a|c$.
 
+There's yet another way to do this, similar but not the same as the above, first we express
+%
+\nbea
+c & = & aq + r
+\neea
+%
+here $q$ can be zero if $c < a$, also of course $r < a$. Now $d = \gcd(a,c)$ can be greater than 1 so we express $a = da',~r = dr',~\gcd(a',r')=1$, from $a|bc$ we have
+%
+\nbea
+bc & = & an \\
+b (aq + r) & = & an \\
+b(\bcancel{d}r') & = & (\bcancel{d}a')(n - qb) \\
+br' & = & a'(a - qb)
+\neea
+%
+which means that $a'|br'$ but since $\gcd(a,b) = 1 \to \gcd(a',b) = 1$ and $\gcd(a',r') = 1$, what we need now is that $\gcd(a',br') = 1$, how should we go about it?
+
+It's very hard to do it without invoking the fundamental theorem but we can still have a way out, Bezout's lemma, we know that we can find $x, x'$, $y, y'$ such that
+%
+\nbea
+a'x + by & = & \gcd(a',b) = 1 \\
+a'x' + r'y' & = & \gcd(a',r') = 1 \\
+\to (a'x + by)\cdot(a'x' + r'y') & = & 1 \cdot 1 = 1 \\
+a'(x + a'x' + byx') + br'(yy') & = & 1 \\
+\to a' x'' + br' y'' & = & 1
+\neea
+%
+therefore $\gcd(a',br') = 1$ but this contradicts $a'|br'$ (which translates to $\gcd(a',br') = a'$). There are two ways out of this contradiction, first if $a' = 1$ but this means that $d = \gcd(a,r) = a$ which is another contradiction since $r < a$. Another way is to have $r' = 0$ but this only means that $r' = 0 \to r = 0 \to c = aq \to a|c$.
+
 {\bf Problem 1.9 (a)} if $a|b$ and $b|c$ then $a|c$.
 %
 \nbea
