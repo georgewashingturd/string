@@ -3695,16 +3695,122 @@ First, why must $s$ be odd? it's because any odd factor of $3w^2 + v^2$ must hav
 & = & 3g^2 + h^2
 \neea
 %
-and if the constant coefficient is not 3 we will have some problem. The proof is quite involved so it won't be discussed here, the thing is that we can't just do substitution because we first have to prove the existence of $e$ and $f$, \ie that there exist two whole numbers $e$ and $f$ such that $(3f^2 + e^2)^3 = s^3$ and this is not easy.
+and if the constant coefficient is not 3 we will have some problem although we still have to show that $3a^2c^2 + a^2d^2 + b^2c^2$ is a perfect square.
 
-As to why $e$ and $f$ have to be coprime it's because
+The proof is quite involved, the thing is that we can't just do substitution because we first have to prove the existence of $e$ and $f$, \ie that there exist two whole numbers $e$ and $f$ such that $(3f^2 + e^2)^3 = s^3$ and this is not easy.
+
+There is a very clever proof on the internet that I will reproduce here while also filling up all the gaps since that proof is pretty condensed although there's a very vague statement in the middle that I cannot verify/prove but it's still very clever :)
+
+{\it Proof}. Suppose we have an odd number in the form $a^2 + 3b^2$ and we know that $x$ is a factor of $a^2 + 3b^2$
 %
 \nbea
-u & = & e (e^2 - 9 f^2) \\
-v & = & 3f (e^2 - f^2)
+ x &|& a^2 + 3b^2 \\
+ x &|& c^2a^2 + 3c^2b^2
 \neea
 %
-and $u$ and $v$ are coprime thus if $e$ and $f$ are not coprime neither are $u$ and $v$.
+where $c$ is an integer, we now carefully choose $c$ such that
+%
+\nbea
+c^2a^2 & = & xq + 1
+\neea
+%
+The above is actually not as trivial as it seems. We need to remember Bezout's lemma, $c^2a^2 - xq = 1$ means that $\gcd(a^2,x)=1$ and it is a strong requirement since we might not be able to find $c$ such that $c^2a^2 - xq = 1$ as we don't know if $a$ and $x$ are coprime. The good thing for us is that $\gcd(a,b) = 1$ and therefore $\gcd(a,x)=1$ otherwise say $d = \gcd(a,x) > 1$
+%
+\nbea
+x-a^2 & = & 3b^2 \\
+d(x' - a'a) & = & 3b^2
+\neea
+%
+so either $d|3$ or $d|b^2$ but $d|b^2$ means that $a$ and $b$ are not coprime thus $d|3$ and if $d=3$ then
+%
+\nbea
+x = a^2 + 3b^2 & = & 3^2 a'^2 + 3b^2 \\
+\bcancel{3} x' & = & \bcancel{3} 3a'^2 + \bcancel{3}b^2
+\neea
+%
+and we can repeat the same argument with the roles switched $a' \leftrightarrow b$, and this time $\gcd(x',b) \neq 3$ since $3|a$ and $a$ and $b$ are coprime. In summary, if $d = 3$ we just reinitialize the proof with $x'|b^2 + 3a'^2$ and if $d=1$ we are done, nothing to worry about and so we have
+%
+\nbea
+xm & = & c^2a^2 + 3c^2b^2 \\
+& = & (xq + 1) + 3c^2b^2 \\
+x (m - q) & = & 1 + 3c^2b^2 \\
+\to x &|& 1 + 3c^2b^2 \\
+x &|& 1 + 3d^2
+\neea
+%
+where $d = cb$. The next clever step is to take the square root of $x$ and choose an integer $t$ that is smaller than $\sqrt{x}$, note that $t \neq \floor{\sqrt{x}}$, this is because if $x$ is a perfect square then $\floor{\sqrt{x}} = \sqrt{x}$, while in our case when $x$ is a perfect square then $t = \sqrt{x}$.
+
+Yet another clever step is to create another variable $j$ with the following property $1 \le j \le t$, note that $t < \sqrt{x}$ was chosen for this very purpose to ensure that $j^2 < x$ and we will see later why this is, now we multiply
+%
+\nbea
+x &|& 1 + 3d^2 \\
+\to x &|& j^2 + 3 j^2d^2
+\neea
+%
+Now what we need to do is to carefully choose $j$ as what we actually want is
+%
+\nbea
+jd & = & xQ + f_j 
+\neea
+%
+such that $f_j^2 < t^2 < x$, this was the most confusing bit of the proof, how can we guarantee this? We can easily find a counter example whenever there's no constraint on $x$ and $d$, for example, pick $x = 10$ and $d=19$ then $t = 3$, if we choose $j = 1$ we have $jd = 19 = 10 + 9 \to f_1 = 9 > t$, if $j=2$ then $f_2 = 8 > t$ and lastly if $j = 3$ then $f_3 = 7 > t$, so we must have some constraint. I think it has to do with $c$ but without an explicit formula for $c$ I'm afraid I can't proceed \dunno
+
+If we just assume $f_j \le j$ we then repeat what we did previously
+%
+\nbea
+xn & = & j^2 + 3 j^2d^2 \\
+& = & j^2 + 3 (xQ + f_j)^2 \\
+x(n - xQ^2 - 2Qf_j) & = & j^2 + 3f_j^2 \\
+x &|& j^2 + 3f_j^2
+\neea
+%
+Since $1 \le j < t < \sqrt{x}$ and $f_j \le j$ we have $y = j^2 + 3f_j^2 < 4x$ and finally what we have is $x|y$ and $0 <y< 4x$ and since all the numbers here are integers we only have three possibilities
+%
+\bit
+\item First case is $y = 2x$, to prove that this is impossible we go to $\mod 4$ and in $\mod 4$ a square is either 0 or 1 $\mod 4$, say both $j^2$ and $f_j^2$ is $0 \pmod{4}$ then
+%
+\nbea
+0 & \equiv & 2x \pmod{4}
+\neea
+%
+but this means that $x = 2w$ but remember that $x|a^2 + 3b^2$ and $a^2 + 3b^2$ is odd thus $x$ must be odd as well, so one of $j^2$ and $f_j^2$ must be 1 and the other 0$\pmod{4}$
+%
+\nbea
+0 + 3 & \equiv & 2x \pmod{4} \\
+-1 & \equiv & 2x \pmod{4}
+\neea
+%
+but this is impossible, the other way is
+%
+\nbea
+1 + 3\cdot 0 & \equiv & 2x \pmod{4} \\
+1 & = & 2x \pmod{4}
+\neea
+%
+another impossibility, thus $y\neq 2x$
+\item Second case is $y = 3x$, here we get
+%
+\nbea
+3x & = & j^2 + 3f_j^2 \\
+3(x - f_j^2) & = & j^2 \\
+3 &|& j \\
+\to \bcancel{3}x & = & \bcancel{3}3j'^2 + \bcancel{3}f_j^2
+\neea
+%
+therefore we get $x = 3j'^2 + f_j^2$ which is what we want
+\item Lastly, $y=x$ and therefore $x = j^2 + 3f_j^2$ which is also what we want
+\eit
+%
+
+But wait, nowhere did we mention that $f_j$ and $j$(or $j'$) are coprime, well, if they are not coprime we can pull their common factor
+%
+\nbea
+x & = & g^2(j'^2 + 3{f'}_j^2) \\
+g^2 &|& x \\
+\to x' & = & j'^2 + 3{f'}_j^2
+\neea
+%
+where $x'|x \to x'|a^2 + 3b^2$ and we can repeat the argument again this time using $x'$ and if the next $j$ and $f_j$ also have another common factor we will go at it again and we will have an infinite descent. How about $j$ (or $j'$) and $f_j$ having opposite parities, well, if they have the same parities then $x$ will be even but a facor of an odd number must be odd, so there we have it
 
 \bigskip
 \textit{\textbf{Summary}}
