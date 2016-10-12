@@ -3846,6 +3846,142 @@ where $m = y-1$
 \eit
 
 \bigskip
+\textit{\textbf{Extra $\cdots$ Extra $\cdots$}}
+\smallskip
+
+While trying to fill the gaps in the smart proof above I discovered that integers in the form $a^2 + 3b^2$ actually have lots of interesting properties and I also discovered something somewhat interesting, it is that if $3k + 1$ is a prime then $k$ is a quadratic residue modulo $(3k + 1)$.
+
+A counter example is easy enough, take $25 = 3 \cdot 8 + 1$, here $8$ is not a quadratic residue modulo 25. There are ways to prove the above assertion (or conjecture) but this is the most interesting way from what I gathered from rigorous googling.
+
+If we can somehow prove that every prime of the form $3k + 1$ can be massaged into $u^2 + 3v^2$ where (obviously) $\gcd(u,v)=1$ then we are done but to prove this we need to prove a couple of other things.
+
+\underline{\it First Proposition}, if an integer $N$ is in the form $a^2 + 3b^2$ and if a prime $p = c^2 + 3d^2$ divides $N$ then $N/p$ is also in the form of $u^2 + 3v^2$  and $N = a^2 + 3b^2 = (c^2 + 3d^2)(u^2 + 3v^2)$
+
+{\it Proof}. Since $p|N$ then $p| Nd^2 - pb^2$ also
+%
+\nbea
+Nd^2 - pb^2 & = & (a^2 + 3b^2)d^2 - (c^2 + 3d^2)b^2 \\
+& = & (ad + bc)(ad - bc)
+\neea
+%
+and therefore either $p|(ad + bc)$ or $p|(ad - bc)$, also
+%
+\nbea
+Np & = & (ac + 3bd)^2 + 3(ad - bc)^2, ~~~{\rm if~} p|(ad - bc) \\
+Np & = & (ac - 3bd)^2 + 3(ad + bc)^2, ~~~{\rm if~} p|(ad + bc)
+\neea
+%
+Therefore since $p|Np$, $p|(ac \pm 3bd)^2$ and since $p$ is prime $p|(ac \pm 3bd)$, and then if we divide $Np$ by $p^2$ we get
+%
+\nbea
+\frac{Np}{p^2} & = & \left ( \frac{ac \pm 3bd}{p}\right )^2 + 3 \left ( \frac{ad \mp bc}{p} \right )^2 \\
+\frac{N}{p} & = & u^2 + 3v^2
+\neea
+%
+where $u = (ac \pm 3bd)/p$ and $v = (ad \mp bc)/p$ and therefore $a = (cu + 3dv)$ and $b = \pm(du-cv)$.
+
+\underline{\it Second Proposition}, if an integer $N = a^2 + 3b^2$ and $\gcd(a,3b) = 1$ then the only prime factors $p$ of $N$ is in the form $p = 3k+1$
+
+{\it Proof}. Since $p|N$ it means that $a^2 + 3b^2 \equiv 0 \pmod{p}$ and
+%
+\nbea
+a^2 & \equiv & -3b^2 \pmod{p}
+\neea
+%
+which in turn means that $-3$ is a quadratic residue modulo $p$, \ie $\left ( \frac{-3}{p} \right ) = +1$. Using properties of quadratic residues (this includes multiplicative property and use of Legendre symbol) and Gauss's quadratic reciprocity formula
+%
+\nbea
+\left ( \frac{-3}{p} \right ) & = & \left ( \frac{-1}{p} \right ) \left ( \frac{3}{p} \right ) \\
+& = & (-1)^{\frac{p-1}{2}} (-1)^{\frac{p-1}{2}\cdot\frac{3-1}{2}}\left ( \frac{p}{3} \right ) \\
+& = & (-1)^{p-1}\left ( \frac{p}{3} \right ) \\
++1 & = & (+1)\left ( \frac{p}{3} \right )
+\neea
+%
+Therefore $\left ( \frac{p}{3} \right ) = +1$. Now $p$ is prime so if we write it modulo $3$ it can only be $ p \equiv \pm 1 \pmod{3}$ or $p = 3$, if $p = 3$ then
+%
+\nbea
+3n & = & a^2 + 3b^2 \\
+3 (n - b^2) & = & a^2 \\
+\to 3 &|& a
+\neea
+%
+and thus $\gcd(a,3b) = \gcd(3a',3b) \ge 3$ which is a contradiction since $\gcd(a,3b) = 1$, so $p \equiv \pm1 \pmod{3}$, if $p \equiv -1 \pmod{3} = 3k - 1$ then
+%
+\nbea
+\left ( \frac{p}{3} \right ) & = & \left ( \frac{-1}{3} \right ) \\
+& = & (-1)^{\frac{3-1}{2}} \\
+& = & -1
+\neea
+%
+and therefore $\left ( \frac{-3}{p} \right ) = -1$, again a contradiction, thus $p = 3k + 1$
+
+\underline{\it Third Proposition}, if a prime $p$ is in the form of $3k + 1$ then it will divide an integer $N$ in the form of $N = a^2 + 3b^2$ where $\gcd(a,b) = 1$
+
+{\it Proof}. First we need to note that $u^2 + uv + v^2 = a^2 + 3b^2$ if $u = a+b$ and $v = -a+b$ so now we want to show that $p|(u^2 + uv + v^2)$ with $\gcd(u,v)=1$ (if $u$ and $v$ are not coprime then $a$ and $b$ won't be wither since $a = (u-v)/2$ and $b = (u+v)/2$).
+
+First we introduce
+%
+\nbea
+u^{3k} - v^{3k} & = & (u^k - v^k)(u^{2k} + u^kv^k + v^{2k})
+\neea
+%
+To ensure that $\gcd(u,v)=1$ we can set $v = 1$
+%
+\nbea
+u^{3k} - 1 & = & (u^k - 1)(u^{2k} + u^k + 1)
+\neea
+%
+From Fermat's Little Theorem we now that $u^{\varphi(p)} \equiv 1 \pmod{p}$ where since $p$ is prime $\varphi(p) = p -1 = 3k$ in our case, therefore
+%
+\nbea
+u^{\varphi(p)} = u^{3k} & \equiv & 1 \pmod{p} \\
+u^{3k} - 1 & \equiv & 0 \pmod{p} \\
+\to (u^k - 1)(u^{2k} + u^k + 1) & \equiv & 0 \pmod{p}
+\neea
+%
+Now we to recall that a polynomial of order $n$ over a field is guaranteed to have at most $n$ solutions, in our case $u^{3k} - 1$ has exactly $3k$ solutions as $\varphi(p) = 3k$ and $p$ is a prime and thus every member of $(\mathbb{Z}/p\mathbb{Z})^*$ is a root of $u^{3k} - 1$.
+
+This means that $u^k - 1 \equiv 0 \pmod{p}$ must have $k$ roots and $u^{2k} + u^k + 1 \equiv 0 \pmod{p}$ have $2k$ roots, this means that $2/3$ of the members of $(\mathbb{Z}/p\mathbb{Z})^*$ are roots of $u^{2k} + u^k + 1$, we can therefore pick an odd member, say $z$, such that $z^{2k} + z^{k} + 1 \equiv 0 \pmod{p} \to p|(z^k)^2 + (z^k) + 1$, thus $a = (z^k-1)/2$ and $b = (z^k+1)/2$. Note that $z^k$ modulo $p$ might be an even number, \eg $3^2 \equiv 4 \pmod{5}$ but it's ok because what we want is $z^k$ not $z^k \mod p$.
+
+\underline{\it Fourth Proposition}, for a prime $p$ in the form of $p = 3k+1$ it can be expressed as $p = u^2 + 3v^2$, $\gcd(u,v)=1$ in a unique way (up to a sign since $u^2 = (-u)^2, v^2 = (-v)^2$)
+
+{\it Proof}. From the {\it Third Proposition} we know that $p = 3k + 1$ divides some integer $N=a^2 + 3b^2$, first let's write
+%
+\nbea
+a & \equiv & a' \pmod{p} \\
+b & \equiv & b' \pmod{p}
+\neea
+%
+where $a',b' < p$, thus
+%
+\nbea
+a^2 + 3b^2 & = & a'^2 + 3b'^2 \pmod{p} \\
+\to p &|& a'^2 + 3b'^2
+\neea
+%
+so $a'^2 + 3b'^2$ is also divisible by $p$. Another useful observation is that, $a'^2 = (-a'^2), b'^2 = (-b')^2$ thus if $a' , b'> (p-1)/2$ we can replace them with their negative counterpart which is guaranteed to be less than $(p-1)/2$ and since both $a'$ and $b'$ is less than $(p-1)/2$, $a'^2 + 3b'^2 < p^2$.
+
+We now prove this proposition using induction, say all primes $p_i$ less than $p_N$ have the form $p_i = u_i^2 + 3v_i^2$ where $u_i, v_i$ are unique and coprime. We now analyze $p_N$, from the above argument we see that $p_N|(a'^2 + 3b'^2)$ and since $(a'^2 + 3b'^2) < p^2$ we will have other prime factors as well.
+
+According to the {\it Second Proposition} these smaller prime factors are of the form $3k + 1$ and by the induction hypothesis they all have unique forms $p_i = u_i^2 + 3v_i^2$. We can then utilize the {\it First Proposition} to show that $N_j = N/p_j = (a'^2 + 3b'^2)/(u_j^2 + 3v_j^2) = a''^2 + 3b''^2$, where $p_j$ is one of the smaller prime factors of $N$, we can repeat this process until we are left with just $N_j = p$ and therefore $p = u^2 + 3v^2$. Now $p$ has to be unique as all the other $p_i$ are unique in $u_i, v_i$ (up to a choice of signs) and from the proof of the {\it First Proposition} we see that $N/p$ is also unique in its $u,v$ while $\gcd(u,v)=1$ since $p$ is prime.
+
+To get the induction started we start with the smallest prime of the form $3k + 1$ which is $3 = 3(\pm1)^2 + 0^2$, note that 1 is neither prime nor composite.
+
+\underline{\textit{\textbf{Fifth and Final Proposition}}}, if a prime $p$ is of the form $p = 3k+1$ then $k$ is a quadratic residue modulo $p$
+
+{\it Proof}. We can prove the above statement by either the {\it Third} or {\it Fourth Proposition}, since $p|a^2 + 3b^2$, $\gcd(a,b)=1$ and $p$ is prime we can find another number $c$ such that $ca \equiv 1 \pmod{p}$, recall that $(\mathbb{Z}/p\mathbb{Z})^*$ is always a field if $p$ is prime and thus every element has an inverse
+%
+\nbea
+a^2 + 3b^2 & \equiv & 0 \pmod{p} \\
+(ca)^2 + 3(cb)^2 & \equiv & 0 \pmod{p} \\
+1 + 3(cb)^2 & \equiv & 0 \pmod{p} \\
+3(cb)^2 & \equiv & -1 \equiv (3k+1)-1 \pmod{p} \\
+\bcancel{3}(cb)^2 & \equiv & \bcancel{3}k \pmod{p}
+\neea
+%
+and therefore $k$ is a quadratic residue modulo $p$. In the above steps we canceled $3$ from both sides, this is ok as long as $\gcd(3,p)=1$, well, $p$ is a prime of the form $3k+1 \neq 3$ so they are obviously coprime.
+
+\bigskip
 \textit{\textbf{Mistakes and Pitfalls}}
 \smallskip
 
@@ -4304,4 +4440,3 @@ but $\gcd(p,h) = 1$ which is a contradiction, the same can be said if $p+h$ cont
 
 
 \end{document}
-
