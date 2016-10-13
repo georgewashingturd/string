@@ -3981,6 +3981,8 @@ a^2 + 3b^2 & \equiv & 0 \pmod{p} \\
 %
 and therefore $k$ is a quadratic residue modulo $p$. In the above steps we canceled $3$ from both sides, this is ok as long as $\gcd(3,p)=1$, well, $p$ is a prime of the form $3k+1 \neq 3$ so they are obviously coprime.
 
+Note that if $p = 3k+1$ is not prime then $k$ is not guaranteed to be a quadratic residue, for example $25 = 3\cdot 8 + 1$ and $8$ is not a quadratic residue modulo 25. Also, the converse of the above proposition is not true, say $k$ is a quadratic residue modulo $3k+1$, it doesn't mean that $3k+1$ is necessarily prime, for example $100$ is obviously a quadratic residue modulo $301 = 3\cdot100 + 1$ but $301 = 7\times43$ is not prime.
+
 \bigskip
 \textit{\textbf{Mistakes and Pitfalls}}
 \smallskip
@@ -3992,10 +3994,6 @@ For a moment, let's travel to the {\it real}istic universe, assume $E, C$ are re
 \neea
 %
 This means that $0 < |2^{1/3}E - C| < 1$, if $2^{1/3}E > C$ then $C = \floor{2^{1/3}E}$ and if $2^{1/3}E < C$ then $C = \ceil{2^{1/3}E}$
-
-
-
-
 
 Now if $E > C$ the we can use the argument that the difference of two cubes is at least 7 and we are through, this must mean $E < C$, so let's denote $C = E + F$ giving
 %
