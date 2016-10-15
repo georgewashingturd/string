@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  12 OCT 2016 19:59
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  14 OCT 2016 20:37
 entering extended mode
 **"D:/Github/string/pittetd/my extra at work.tex"
 ("D:/Github/string/pittetd/my extra at work.tex"
@@ -796,20 +796,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 4182--4183
 =-=-=-
  []
 
-[118] [119] [120] [121] [122] [123] ("my extra at work.bbl") [124]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 4440.
+[118] [119] [120] [121] [122] [123]
+Underfull \hbox (badness 10000) in paragraph at lines 4427--4428
+[]\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+=-=-=-
+ []
 
-("my extra at work.aux")
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 4440.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 4440.
+[124] [125] ("my extra at work.bbl") [126]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 4477.
+ ("my extra at work.aux")
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 4477.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 4477.
  ) 
 Here is how much of TeX's memory you used:
  13406 strings out of 428755
  185654 string characters out of 3166785
- 290385 words of memory out of 3000000
+ 290441 words of memory out of 3000000
  16596 multiletter control sequences out of 15000+200000
  17684 words of font info for 67 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
  36i,18n,38p,978b,569s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on my extra at work.pdf (124 pages).
+Output written on my extra at work.pdf (126 pages).

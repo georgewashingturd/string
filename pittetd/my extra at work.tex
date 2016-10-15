@@ -4424,10 +4424,47 @@ p_i &|& h
 but $\gcd(p,h) = 1$ which is a contradiction, the same can be said if $p+h$ contains some factor $h_j$ of $h$ (by the same token $(p+h)\nmid ph$).
 
 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
+\bigskip
+\textit{\textbf{Analytic Number Theory}}
+\smallskip
 
+%
+\nbea
+\sum_{k=0}^{n} k z^{k-1} & = & \frac{d}{dz}\sum_{k=0}^{n} z^{k} \\
+& = & \frac{d}{dz} \left ( \frac{1 - z^{n+1}}{1-z} \right ) \\
+& = & \frac{- (n+1)z^{n}(1-z) - (1 - z^{n+1})(-1)}{(1-z)^2} \\
+\sum_{k=0}^{n} k z^{k-1} & = & \frac{nz^{n+1} - (n+1)z^{n} + 1}{(1-z)^2}
+\neea
+%
+%
+\nbea
+\lim_{z\to1}  \sum_{k=0}^{n} k z^{k-1}  & = & \lim_{z\to1} \frac{nz^{n+1} - (n+1)z^{n} + 1}{(1-z)^2} \\
+\sum_{k=1}^{n} k & = & \frac{\bcancel{n^2(n+1)} - \bcancel{n^2(n+1)} + n(n+1)}{2} \\
+\sum_{k=1}^{n} k & = & \frac{n(n+1)}{2} 
+\neea
+%
+where we have used L'Hospital twice to get the limit.
 
-
+%
+\nbea
+\sum_{k=0}^{n} k(k-1) z^{k-2} & = & \frac{d^2}{dz^2}\sum_{k=0}^{n} z^{k} \\
+& = & \frac{d}{dz} \left ( \frac{nz^{n+1} - (n+1)z^{n} + 1}{(1-z)^2} \right ) \\
+\sum_{k=0}^{n} k(k-1) z^{k-2} & = & \frac{z^n((n^2-n)z^2+(2-2n^2)z+n^2+n)-2z}{z^4-3z^3+3z^2-z}
+\neea
+%
+%
+\nbea
+\lim_{z\to1} \sum_{k=0}^{n} k(k-1) z^{k-2}  & = & \lim_{z\to1} \frac{z^n((n^2-n)z^2+(2-2n^2)z+n^2+n)-2z}{z^4-3z^3+3z^2-z} \\
+\sum_{k=1}^{n} k^2 - \sum_{k=1}^{n} k & = & \frac{2n^3-2n}{6} \\
+\sum_{k=1}^{n} k^2 & = &  \frac{2n^3-2n}{6} + \sum_{k=1}^{n} k \\
+& = & \frac{2n^3-2n}{6} + \frac{n(n+1)}{2} \\
+& = & \frac{2n^3-2n + 3n^2+ 3n}{6} \\
+\sum_{k=1}^{n} k^2 & = & \frac{2n^3 + 3n^2+ n}{6}
+\neea
+%
+where we have used L'Hospital four times to get the limit.
 
 
 
