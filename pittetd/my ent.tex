@@ -3916,6 +3916,183 @@ Well $48 = (97-1)/2$ so
 %
 Okay, then \dunno
 
+{\bf Problem 4.9}. In this problem, we will formulate an analog of quadratic reciprocity for a symbol like $\left( \frac{a} {q} \right )$, but without the restriction that $q$ be a prime. Suppose $n$ is an odd positive integer, which we factor as $\prod^k_{i=1} p_i^{e_i}$. We define the Jacobi symbol $\left (\frac{a}{n}\right )$ as follows: 
+%
+\nbea
+\left ( \frac{a}{n}\right ) & = & \prod_{i=1}^k \left ( \frac{a}{p_i} \right )^{e_i}. 
+\neea
+%
+
+(a) Give an example to show that $\left ( \frac{a}{n} \right ) = 1$ need not imply that $a$ is a perfect square modulo $n$.
+
+(b) (*) Let $n$ be odd and $a$ and $b$ be integers. Prove that the following holds: 
+
+i. $\left ( \frac{a}{n}\right )\left ( \frac{b}{n}\right )=\left ( \frac{ab}{n}\right )$. (Thus $a \rightarrow \left ( \frac{a}{n}\right )$ induces a homomorphism from $( \mathbb{Z}/n\mathbb{Z})^*$ to $\{\pm1\}$.) 
+
+ii. $\left ( \frac{-1}{n}\right )\equiv n \pmod{4}$.
+
+iii. $\left ( \frac{2}{n}\right ) = 1$ if $n \equiv \pm 1 \pmod{8}$ and $-1$ otherwise.
+
+iv. Assume $a$ is positive and odd. Then $\left ( \frac{a}{n}\right ) = (-1)^{\frac{a-1}{2}\cdot\frac{n-1}{2}} \left (\frac{n}{a} \right ) $
+
+(a) An example would be $\left( \frac{2}{9}\right )$, remmeber that $n$ has to be odd
+%
+\nbea
+\left( \frac{2}{9}\right ) & = & \left( \frac{2}{3}\right ) \left( \frac{2}{3}\right ) \\
+& = & (-1)(-1) \\
+\left( \frac{2}{9}\right ) & = & +1
+\neea
+%
+However, $2$ is not a quadratic residue modulo $9$.
+
+(b) i. From the definition of the Jacobi symbol we have
+%
+\nbea
+\left ( \frac{ab}{n}\right ) & = & \prod_{i=1}^k \left ( \frac{ab}{p_i} \right )^{e_i}
+\neea
+%
+and from Lemma 4.1.4 we know that each Legendre symbol on the right hand side above is a homomorphism thus 
+%
+\nbea
+\prod_{i=1}^k \left ( \frac{ab}{p_i} \right )^{e_i} & = & \prod_{i=1}^k \left ( \frac{a}{p_i} \right )^{e_i} \left ( \frac{b}{p_i} \right )^{e_i} \\
+& = & \prod_{i=1}^k \left ( \frac{a}{p_i} \right )^{e_i} \prod_{j=1}^k \left ( \frac{b}{p_j} \right )^{e_j} \\
+\left ( \frac{ab}{n}\right ) & = & \left ( \frac{a}{n}\right )\left ( \frac{b}{n}\right )
+\neea
+%
+
+(b) ii. From the definition of the Jacobi symbol we have
+%
+\nbea
+\left ( \frac{-1}{n}\right ) & = & \prod_{i=1}^k \left ( \frac{-1}{p_i} \right )^{e_i}
+\neea
+%
+From Theorem 4.1.7 we have $\left ( \frac{-1}{p}\right ) = (-1)^{(p-1)/2}$ therefore for every prime of the form $p_i = 4k_i+1$ we have
+%
+\nbea
+\left ( \frac{-1}{4k_i+1}\right ) & = & (-1)^{2k_i} \\
+& = & +1
+\neea
+%
+while for every prime of the form $p_i = 4k_i-1$ we have
+%
+\nbea
+\left ( \frac{-1}{4k_i-1}\right ) & = & (-1)^{2k_i-1} \\
+& = & -1
+\neea
+%
+We thus see above that every $p_i = 4k_i + 1$ contributes $+1 \equiv p_i \pmod{4}$ and every $p_j = 4k_j - 1$ contributes $-1 \equiv p_i \pmod{4}$. Now recall that since $n$ is odd every prime factor of $n$ is also odd and every odd number can be expressed as $m = 4k \pm 1$.
+
+This means that 
+%
+\nbea
+\left ( \frac{-1}{n}\right ) & \equiv & \prod_{i=1}^k p_i^{e_i} \pmod{4} \\
+& \equiv & n \pmod{4}
+\neea
+%
+
+(b) iii. Again from Theorem 4.1.7 we have $\left ( \frac{2}{p} \right ) = 1$ if $p \equiv \pm 1 \pmod{8}$ and $-1$ if $p \equiv \pm 3 \pmod{8}$ and any odd prime can be expressed as $\equiv \pm 1, \pm 3 \pmod{8}$, therefore
+%
+\nbea
+\begin{array}{r c l c r c l}
+\left ( \frac{2}{8k_i\pm1}\right ) & = & +1 & ~~~~~~~ & \left ( \frac{2}{8k_i\pm3}\right ) & = & -1
+\end{array}
+\neea
+%
+Thus every (odd) prime factor of $n$ in the form of $8k_i\pm1$ contributes $+1$ while every prime factor of the form $8k_i\pm3$ contributes $-1$.
+
+To get an overall $+1$ we need an even number of $8k_i\pm3$ but $\pm3\cdot\pm3 \equiv 1 \pmod{8}$ and $\pm3\cdot\mp3 \equiv -1 \pmod{8}$ and hence to have $\left ( \frac{2}{p} \right ) = 1$ we must have $n \equiv \pm 1 \pmod{8}$.
+
+(b) iv. Using the definition of the Jacobi symbol
+%
+\nbea
+\left ( \frac{a}{n}\right ) & = & \prod_{i=1}^k \left ( \frac{a}{p_i} \right )^{e_i} \\
+& = & \prod_{i=1}^k\prod_{j=1}^l \left ( \frac{q_j}{p_i} \right )^{e_i\cdot e_j} 
+\neea
+%
+where we have expanded $a$ through its primal constituents $a = \prod_{j=1}^l q_j^{e_j}$ and we can pull each $e_j$ out because each legendre symbol on the right hand side is a homomorphism as shown by Lemma 4.1.4
+%
+\nbea
+\prod_{i=1}^k\prod_{j=1}^l \left ( \frac{q_j}{p_i} \right )^{e_i\cdot e_j} & = & \prod_{i=1}^k\prod_{j=1}^l (-1)^{e_j\cdot\frac{q_j-1}{2}\cdot e_i\cdot \frac{p_i-1}{2}} \left ( \frac{p_i}{q_j} \right )^{e_i\cdot e_j} 
+\neea
+%
+and (ab)using homomorphism to the max :)
+%
+\nbea
+\prod_{i=1}^k\prod_{j=1}^l \left ( \frac{p_i}{q_j} \right )^{e_i\cdot e_j} & = & \prod_{j=1}^l \prod_{i=1}^k \left ( \frac{p_i^{e_i}}{q_j} \right )^{e_j} \\
+& = & \prod_{j=1}^l \left ( \frac{n}{q_j} \right )^{e_j}
+\neea
+%
+and using the same trick as above, every odd prime can be expressed as $4k\pm1$, therefore
+%
+\nbea
+(-1)^{\frac{q_j-1}{2}\cdot\frac{k_i-1}{2}} & = & \left \{
+\begin{array}{l}
++1 {\rm~if~one~of~} q_j, k_i {\rm~or~both~are} +1 \pmod{4} \\
+-1 {\rm~only~if~both~} q_j {\rm~and~} k_i {\rm~are~} -1 \pmod{4}  
+\end{array}
+\right . \\
+(-1)^{\frac{q_j-1}{2}\cdot\frac{k_i-1}{2}} & \equiv & q_j \lor k_i \pmod{4}
+\neea
+%
+where we have borrowed the logical OR symbol $\lor$ to express the condition above since $+1 \lor \pm 1 = +1$ and only $-1 \lor -1 = -1$.
+
+Next, since $a, n$ are odd they can also be expressed as $a,n = 4k_{a,n} \pm 1$ and
+%
+\nbea
+(-1)^{\frac{a-1}{2}\cdot\frac{n-1}{2}} & = & \left \{
+\begin{array}{l}
++1 {\rm~if~one~of~} a, n {\rm~or~both~are} +1 \pmod{4} \\
+-1 {\rm~only~if~both~} a {\rm~and~} n {\rm~are~} -1 \pmod{4}  
+\end{array}
+\right . \\
+(-1)^{\frac{a-1}{2}\cdot\frac{n-1}{2}} & \equiv & a \lor n \pmod{4}
+\neea
+%
+before continuing we need to review some Boolean algebra rules. First, the AND distributive law
+%
+\nbea
+A \lor (B \land C) & = & (A \lor B)\land(A \lor C)
+\neea
+%
+which can be easily derived using the following facts $M \land M = M$ and $M \lor 1 = 1$. Using this rule we can show that
+%
+\nbea
+(A \lor C) \land (A \lor D) \land(B \lor C) \land (B \lor D) & = & (A \lor (C \land D)) \land (B \lor (C \land D)) \\
+& = & (A \land B) \lor (C \land D)
+\neea
+%
+where we have used the AND distribution law twice. Now if any of the components above is composite, say $A = E \land F$ the result will obviously still hold, we just need to substitute $A \to E \land F$ in the final expression, what this means is that
+%
+\nbea
+\prod_i M_i \lor \prod_j N_j & = & \prod_i \prod_j (M_i \lor N_j)
+\neea
+%
+where the product symbol represents the logical AND. Using the above result and expanding $a,n$ by its primal constituents we have
+%
+\nbea
+a \lor n & \equiv & \prod_{j=1}^l (q_j)^{e_j} \lor \prod_{i=1}^l (k_i)^{e_i} \pmod{4} \\
+& = & \prod_{j=1}^l\prod_{i=1}^k (q_j \lor k_i)^{e_i\cdot e_j} \pmod{4}
+\neea
+%
+where we have intermixed logical AND and numerical multiplication (and it's easier to understand if we assign different index for each prime factor even though they might be duplicates so as to eliminate the annoying factors $e_i, e_j$), therefore
+%
+\nbea
+\prod_{i=1}^k\prod_{j=1}^l (-1)^{e_j\cdot\frac{q_j-1}{2}\cdot e_i\cdot\frac{k_i-1}{2}} & \equiv & \prod_{i=1}^k\prod_{j=1}^l  (q_j \lor k_i)^{e_j\cdot e_i} \pmod{4} \\
+& \equiv & a \lor n \pmod{4} \\
+\prod_{i=1}^k\prod_{j=1}^l (-1)^{e_j\cdot\frac{q_j-1}{2}\cdot e_i\cdot\frac{k_i-1}{2}} & = & (-1)^{\frac{a-1}{2}\cdot\frac{n-1}{2}}
+\neea
+%
+Putting all together we have
+%
+\nbea
+\left ( \frac{a}{n}\right ) & = & \prod_{i=1}^k\prod_{j=1}^l (-1)^{e_j\cdot\frac{q_j-1}{2}\cdot e_i\cdot \frac{p_i-1}{2}} \left ( \frac{p_i}{q_j} \right )^{e_i\cdot e_j} \\
+& = & \left ( \prod_{i=1}^k\prod_{j=1}^l (-1)^{e_j\cdot\frac{q_j-1}{2}\cdot e_i\cdot \frac{p_i-1}{2}} \right ) \left ( \prod_{i=1}^k\prod_{j=1}^l \left ( \frac{p_i}{q_j} \right )^{e_i\cdot e_j} \right ) \\
+& = & (-1)^{\frac{a-1}{2}\cdot\frac{n-1}{2}} \prod_{j=1}^l \left ( \frac{n}{q_j} \right )^{e_j} \\
+\left ( \frac{a}{n}\right ) & = & (-1)^{\frac{a-1}{2}\cdot\frac{n-1}{2}} \left ( \frac{n}{a}\right ) 
+\neea
+%
+
+
 {\bf Problem 4.10}. (*) Prove that for any $n \in \mathbb{Z}$, the integer $n^2 + n + 1$ does not have any divisors of the form $6k - 1$.
 
 Solving this problem turned to be a very interesting jaunt :) Let me start by dropping the bombshell, take $n = 9 \to n^2 + n + 1 = 91$,
