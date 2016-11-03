@@ -3870,9 +3870,99 @@ Note that this problem can very easily be solved using Gauss's quadratic recipro
 %
 With prime $p = 5k + 1$ and therefore $p-1$ is even.
 
+{\bf Problem 4.6}. (*) Let $p$ be an odd prime. In this exercise, you will prove that $\left ( \frac{2}{p} \right) =1$ if and only if $p \equiv \pm 1 \pmod{8}$. 
+
+(a) Prove that
+%
+\nbea
+x = \frac{1-t^2}{1 + t^2} & ~~~~~~~ & y = \frac{2t} {1 + t^2} 
+\neea
+%
+is a parameterization of the set of solutions to $x^2 + y^2 \equiv 1 \pmod {p}$, in the sense that the solutions $(x,y) \in \mathbb{Z}/p\mathbb{Z}$ are in bijection with the $t \in \mathbb{Z}/p\mathbb{Z}\cup\{\infty\}$ such that $1+t^2 \not\equiv 0 \pmod{p}$. Here, $t = \infty$ corresponds to the point $(-1,0)$. (Hint: if $(x_1,y_1)$ is a solution, consider the line $y = t(x+1)$ through $(x_1,y_1)$ and $(-1,0)$, and solve for $x_1,y_1$ in terms of $t$.)
+
+(b) Prove that the number of solutions to $x^2 + y^2 \equiv 1 \pmod {p}$ is $p + 1$ if $p \equiv 3 \pmod {4}$ and $p-1$ if $p \equiv 1 \pmod {4}$.
+
+(c) Consider the set $S$ of pairs $(a,b) \in (\mathbb{Z}/p\mathbb{Z})^*\times(\mathbb{Z}/p\mathbb{Z})^*$ such that $a + b = 1$ and $\left (\frac{a} {p} \right )=\left ( \frac{b} {p} \right )= 1$. Prove that $\#S = (p + 1-4)/4$ if $p \equiv 3 \pmod {4}$ and $\#S = (p - 1 - 4)/4$ if $p \equiv 1 \pmod 4$. Conclude that $\#S$ is odd if and only if $p \equiv \pm1 \pmod {8}$.
+
+(d) The map $\sigma(a,b) = (b,a)$ that swaps coordinates is a bijection of the set $S$. It has exactly one fixed point if and only if there is an $a \in \mathbb{Z}/p\mathbb{Z}$ such that $2a = 1$ and $\left (\frac{a} {p} \right )= 1$. Also, prove that $2a = 1$ has a solution $a \in \mathbb{Z}/p\mathbb{Z}$ with $\left (\frac{a} {p} \right )= 1$ if and only if $\left (\frac{2} {p} \right )= 1$.
+
+(e) Finish by showing that $\sigma$ has exactly one fixed point if and only if $\#S$ is odd, i.e., if and only if $p \equiv \pm 1 \pmod {8}$.
+
+Remark: The method of proof of this exercise can be generalized to give a proof of the full Quadratic Reciprocity Law.
+
+(a) This is the usual parameterization of a circle which is also a (Mecantor?) projection used in mapping a sphere to the complex plane. We start with a unit circle centered at the origin, we then draw a line starting from the point $(-1,0)$ to another point in the circle $(x_1,y_1)$. The line in question is $y = t(x+1)$ where $t$ is the slope. Now since $(x_1,y_1)$ lies on the circle it must satisfy
+%
+\nbea
+x^2_1 + y^2_1 & \equiv & 1 \\
+x^2_1 + t^2(x_1 + 1)^2 & \equiv & 1 \\
+(1 + t^2)x^2_1 + 2 t^2 x_1 +t^2 - 1 & \equiv & 0
+\neea
+%
+and using the quadratic formula
+%
+\nbea
+x_1 & \equiv & \frac{-2t^2 \pm \sqrt{4t^4 - 4(t^2+1)(t^2-1)}}{2(1+t^2)} \\
+& \equiv & \frac{-\bcancel{2}t^2 \pm \bcancel{2}\sqrt{t^4 - t^4+1}}{\bcancel{2}(1+t^2)} \\
+x_1 & \equiv & \frac{1-t^2}{1+t^2}
+\neea
+%
+substituting this back to $y_1 = t(x_1+1)$ we get
+%
+\nbea
+y_1 & \equiv & t \frac{(1-t^2) + (1+t^2)}{1+t^2} \\
+y_1 & \equiv & \frac{2t}{1+t^2}
+\neea
+%
+
+(b) This is quite confusing to me, here's why, we know that $x,y \in \mathbb{Z}/p\mathbb{Z}$ and we know that the set $\mathbb{Z}/p\mathbb{Z}$ has $p$ elements $\{1,2,\dots,p=0\}$, so even if $x$ takes the value of each element we will at most have $p$ solutions, how in the world will we get $p+1$ solutions for $p \equiv 3 \pmod{4}$? \dunno
+
+The key observation is that $x = \frac{1-t^2}{1 + t^2}$,  $y = \frac{2t} {1 + t^2}$ will have solutions only when $1+t^2 \not\equiv 0$, now if $1+t^2 \equiv 0$ has no solution then every value of $t$ will give a solution and this will happen if $t^2 \equiv -1$ has no solution, \ie $-1$ is not a quadratic residue, and this will happen when $(-1)^{\frac{p-1}{2}}$ which is guaranteed if $p \equiv 3 \pmod{4}$.
+
+If $p \equiv 1 \pmod{4}$ then $(-1)^{\frac{p-1}{2}} = +1$ and $t^2 \equiv -1$ will have exactly two solutions (see solutuon to Problem 4.7 for why this is so), therefore in this case there are 2 less solutions compared to those of $p \equiv 3 \pmod{4}$.
+
+The question now is how many values can $t$ take? we know that $\mathbb{Z}/p\mathbb{Z}$ has $p$ elements but $t \in \mathbb{Z}/p\mathbb{Z}\cup\{\infty\}$ therefore we get one more $t = \infty$ and the number of values $t$ can take is $p+1$ (if we don't include $t=\infty$ then the point $(-1,0)$ will be excluded from the set of solutions). This means that if $p \equiv 1 \pmod{4}$ there are $p-1$ solutions and when $p \equiv 3 \pmod{4}$ there are $p+1$ solutions.
+
+Note that the number of solutions above are guaranteed since different $t$'s give different $(x,y)$'s, this is so because $t$ is the slope of the line intersecting the unit circle and $(-1,0)$, \ie the parameterization we have is a bijection as mentioned in the problem
+
+(c) This is an extension of part (b), but since we are talking about the unity group $(\mathbb{Z}/p\mathbb{Z})^*$ instead of $\mathbb{Z}/p\mathbb{Z}$ we must exclude solutions that contain $0$ which are $(-1,0),(1,0),(0,1),(0,-1)$ thus we have 4 fewer solutions, this explains the $-4$.
+
+Next, what we want here is the different values of $(x^2,y^2)$ not $(x,y)$ since both $a$ and $b$ are quadratic residues and this is where the divide by 4 comes in, you see $x$ and $-x$ give the same $a$ as $x^2 \equiv (-x)^2$ and ditto for $y$ and $-y$, thus $(x,y),(-x,y),(x,-y),(-x-y)$ all give the same $(a,b)$, \ie it takes only the North East quadrant of the circle as the solutions (excluding the endpoints of the quadrant).
+
+Therefore for $p \equiv 3 \pmod{4}$ we have $(p+1-4)/4$ solutions and for $p \equiv 1 \pmod{4}$ we have $(p-1-4)/4$ solutions.
+
+Now since $p$ is a prime it can be expressed as $p \equiv \pm1, \pm3 \pmod{8}$, if $p \equiv 3 \pmod{4}$ then it can either be $p \equiv 3 \pmod{8}$ or $-1 \pmod{8}$ and if $p \equiv 1 \pmod{4}$ it can only either be $p \equiv -3 \pmod{8}$ or $1 \pmod{8}$, thus to get odd $\#S$ we need $p \equiv 3 \pmod{4} \equiv -1 \pmod{8}$ and $p \equiv 1 \pmod{4} \equiv 1 \pmod{8}$ which means that $p \equiv \pm 1 \pmod{8}$.
+
+(d) The map $\sigma(a,b) = (b,a)$ can be thought of the reflection through the $45^\circ$ line. So geometrically speaking the only fixed point is the one point lying on the $45^\circ$ line.
+
+Since it is a fixed point $(a,b) = (b,a)$ thus $b = a$ and since $1 = b + a = a + a \to 2a = 1$. Also, since $p$ is prime the unity $(\mathbb{Z}/p\mathbb{Z})^*$ must contain a primitive root, say $g$. If $2a \equiv 1$ has a solution then
+%
+\nbea
+2a & \equiv & 1 \\
+2 g^{2n}& \equiv & g^{p-1} \\
+\to 2 & \equiv & g^{(p-1) - 2n}
+\neea
+%
+we have expressed $a \equiv g^{2n}$ since $a$ is a quadratic residue and it has to be an even power of the primitive root as shown by Lemma 4.1.4. Since $p$ is priime $p-1$ is even and $p-1-2n$ is also even thus 2 must be a quadratic residue as well.
+
+Now we just need to prove the converse, if 2 is a quadratic residue then since $p$ is prime the unity $(\mathbb{Z}/p\mathbb{Z})^*$ is a field and 2 must have an inverse such that
+%
+\nbea
+2a & \equiv & 1 \\
+g^{2m} a & \equiv & g^{p-1} \\
+\to a & \equiv & g^{(p-1) - 2m}
+\neea
+%
+and since $(p-1) - 2m$ is even $a$ must be a quadratic residue. The above also means that there is only one fixed point since the inverse of every element of unity $(\mathbb{Z}/p\mathbb{Z})^*$ is unique.
+
+(e) This can be seen most easily by picturing the North East quadrant, but if we are not keen on quadrants we can use some other argument as well :) Note that $\sigma$ is a bijection, \ie a one to one mapping, say $\#S = 2w$ is even and there's a fixed point $(a_f,b_f)$, recall that there can only be one fixed point as shown above, we then need to map the rest of the elements of $S$ back to $S$, if we map $(a_i,b_i) \rightarrow (b_i,a_i)$ and since $\sigma^2 = 1$ then we must map $(b_i,a_i) \rightarrow (a_i,b_i)$ thus every pair of elements of $S$, $(a_i,b_i),(b_i,a_i)$ is bijectively mapped to each other.
+
+Now, there are $2w$ elements in $S$, one is fixed, so we are left with $2w-1$ elements but this is an impossibility since the map $\sigma$ requires pairs to be mapped to each other as explained above thus there will be another point mapped to itself (another fixed point) among the remaining $2w-1$ odd elements but this is a contradiction as there can only be one fixed point.
+
+Now for the converse, if $\#S$ is odd then there must be exactly one fixed point as the map $\sigma$ requires pairs to be mapped to each other as explained above, thus since there are odd number of elements one of them must be mapped onto itself.
+
 {\bf Problem 4.7} How many natural numbers $x < 2^{13}$ satisfy the equation $x^2 \equiv 5 \pmod{2^{13}-1}$? You may assume that $2^{13} - 1$ is prime.
 
-$2^{13}-1 = 8191$ is indeed prime :) onw way to see this is to notice that the exponent, 13, is prime thus we cannot factorize $2^{13}-1$ using $x^n-1 = (x-1)(x^{n-1} + x^{n-1} + \dots + 1)$. First, let's see if $5$ is a quadratic residue modulo 8191
+$2^{13}-1 = 8191$ is indeed prime :) one way to see this is to notice that the exponent, 13, is prime thus we cannot factorize $2^{13}-1$ using $x^n-1 = (x-1)(x^{n-1} + x^{n-1} + \dots + 1)$. First, let's see if $5$ is a quadratic residue modulo 8191
 %
 \nbea
 \left ( \frac{5}{8191} \right ) & = & (-1)^{2\cdot\frac{8190}{2}} \left ( \frac{8191}{5} \right ) \\
