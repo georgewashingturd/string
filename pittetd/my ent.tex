@@ -229,7 +229,7 @@ $^1$ Samsung Semiconductor Inc\\ San Jose, CA 95134 USA\\
 \date{\today}
 %
 \begin{abstract}
-This is a (not so) short study guide (for newcomers to number theory like me) to accompany William Stein's ``Elementary Number Theory'' book. Here I give alternative proofs to theorems/lemmas/propositions in the book (when possible) and extra explanations as well. I included some interesting findings I discovered by myself that were not mentioned in the book. Lastly, solutions to exercises are provided in as many details as possible in the hope that any TA/student can get help whenever they're stuck. (Part I contains Chapter 1-3 of the book).
+This is a (not so) short study guide (for newcomers to number theory like me) to accompany William Stein's ``Elementary Number Theory'' book. Here I give alternative proofs to theorems/lemmas/propositions in the book (when possible) and extra explanations as well. I included some interesting findings I discovered by myself that were not mentioned in the book. Lastly, solutions to exercises are provided in as many details as possible in the hope that any TA/student can get help whenever they're stuck. (Part I contains Chapter 1-4 of the book, this provides a clean conceptual break as Chapter 5-6 deal with continued fractions and elliptic curves while Chapter 1-4 deal mainly with rings, fields, and congruences culminating in Gauss's quadratic reciprocity formula).
 
 \end{abstract}
 %
@@ -3754,6 +3754,36 @@ since $\gcd(22,11) = 11 \neq 1$, see Definition 4.1.2, lastly
 \neea
 %
 
+{\bf Problem 4.2}. Let $G$ be an abelian group, and let $n$ be a positive integer. 
+
+(a) Prove that the map $\phi : G \rightarrow G$ given by $\phi(x) = x^n$ is a group homomorphism.
+
+(b) Prove that the subset $H$ of $G$ of squares of elements of $G$ is a subgroup.
+
+(a) Group homomorphism means a map such that $\phi(a\cdot b) = \phi(a)\cdot\phi(b)$, in this case the group $G$ is abelian, therefore
+%
+\nbea
+\phi(x) \cdot \phi(y) & = & x^n y^n \\
+& = & x \dots x \cdot y \dots y \\
+& = & (xy)(xy) \dots (xy) \\
+& = & (xy)^n \\
+\phi(x) \cdot \phi(y) & = & \phi(xy)
+\neea
+%
+where going from line 2 to line 3 we have used the fact that the group is abelian to swap the order on multiplications, therefore $\phi$ is a homomorphism
+
+(b) To prove that $H$ is a subgroup we need to show that it has the four characteristics of a group
+%
+\bit
+\item Closure, take any two members of $H$ say $x^2$ and $y^2$, then $x^2 \cdot y^2 = (xy)^2$ since $\phi$ is a homomorphism. However, since $x,y$ are members of $G$, $z = x\cdot y$ must be a member of $G$ as well and therefore $z^2 = (xy)^2$ must be a member of $H$.
+\item Associativity, take three elements of $H$, $x^2,y^2,z^2$, since $x,y,z$ are members of $G$ and $G$ is a group, $(xy)z = x(yz)$ and applying $\phi$ to both sides we get $(xy)^2z^2 = x^2(yz)^2$ but since $\phi$ is a homomorphism $(x^2y^2)z^2 = x^2(y^2z^2)$, thus associativity is guaranteed for $H$
+\item Identity element, since $1^2$ is a member of $H$ and $1^2=1$, we automatically have an identity element
+\item Inverse element, take an element $x$ of $G$ and its inverse say $w$, then $x^2$ and $w^2$ are both in $H$, however, $x^2w^2 = (xw)(xw) = 1$ where we have used the fact that the group is abelian to reorder the multiplications
+\eit
+%
+
+
+
 {\bf Problem 4.3}. Use Theorem 4.1.7 to show that for $p \ge 5$ prime, 
 %
 \nbea
@@ -3952,7 +3982,14 @@ g^{2m} a & \equiv & g^{p-1} \\
 \to a & \equiv & g^{(p-1) - 2m}
 \neea
 %
-and since $(p-1) - 2m$ is even $a$ must be a quadratic residue. The above also means that there is only one fixed point since the inverse of every element of unity $(\mathbb{Z}/p\mathbb{Z})^*$ is unique.
+and since $(p-1) - 2m$ is even $a$ must be a quadratic residue. The above also means that there is only one fixed point since the inverse of every element of unity $(\mathbb{Z}/p\mathbb{Z})^*$ is unique. To see that it's unique assume that it is not, say an element $a$ has two different inverses $b$ and $c$ then
+%
+\nbea
+1 \equiv \bcancel{a}b & \equiv & \bcancel{a}c \\
+b & \equiv & c
+\neea
+%
+which is a contradiction since by assumption $b \not\equiv c$, note that we could deploy cancellation because $p$ is prime and therefore $\gcd(b,p) = \gcd(c,p) = 1$.
 
 (e) This can be seen most easily by picturing the North East quadrant, but if we are not keen on quadrants we can use some other argument as well :) Note that $\sigma$ is a bijection, \ie a one to one mapping, say $\#S = 2w$ is even and there's a fixed point $(a_f,b_f)$, recall that there can only be one fixed point as shown above, we then need to map the rest of the elements of $S$ back to $S$, if we map $(a_i,b_i) \rightarrow (b_i,a_i)$ and since $\sigma^2 = 1$ then we must map $(b_i,a_i) \rightarrow (a_i,b_i)$ thus every pair of elements of $S$, $(a_i,b_i),(b_i,a_i)$ is bijectively mapped to each other.
 
