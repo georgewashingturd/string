@@ -3952,7 +3952,20 @@ If $p \equiv 1 \pmod{4}$ then $(-1)^{\frac{p-1}{2}} = +1$ and $t^2 \equiv -1$ wi
 
 The question now is how many values can $t$ take? we know that $\mathbb{Z}/p\mathbb{Z}$ has $p$ elements but $t \in \mathbb{Z}/p\mathbb{Z}\cup\{\infty\}$ therefore we get one more $t = \infty$ and the number of values $t$ can take is $p+1$ (if we don't include $t=\infty$ then the point $(-1,0)$ will be excluded from the set of solutions). This means that if $p \equiv 1 \pmod{4}$ there are $p-1$ solutions and when $p \equiv 3 \pmod{4}$ there are $p+1$ solutions.
 
-Note that the number of solutions above are guaranteed since different $t$'s give different $(x,y)$'s, this is so because $t$ is the slope of the line intersecting the unit circle and $(-1,0)$, \ie the parameterization we have is a bijection as mentioned in the problem
+Note that the number of solutions above are guaranteed since different $t$'s give different $(x,y)$'s, this is so because $t$ is the slope of the line intersecting the unit circle and $(-1,0)$, \ie the parameterization we have is a bijection as mentioned in the problem.
+
+There is an interesting solution to this problem I found from a forum that I will reproduce here. One thing to note about working in modulo is that sometimes $-1$ can be a quadratic residue and in this case we get a poor man's version of the complex numbers.
+
+For $p \equiv 1 \pmod{4}$, $-1$ is a quadratic residue and we can denote its root as $i \to i^2 \equiv -1 \pmod{p}$, therefore we can factorize
+%
+\nbea
+1 \equiv x^2 + y^2 & \equiv & (x + iy)(x - iy) \\
+1 & \equiv & uv
+\neea
+%
+where $u = x + iy,~v = x - iy$ and $x = (u+v)2^{-1},~y = (u-v)(2i)^{-1}$. Here we are guaranteed to have inverses for $2$ and $2i$ since $p$ is a prime number and therefore $(\mathbb{Z}/p\mathbb{Z})^*$ is a field.
+
+$uv \equiv 1$ means that there are $p-1$ solutions (where $u$ or $v$ runs through every member of $(\mathbb{Z}/p\mathbb{Z})^*$ and as explained above every member is guaranteed to have an inverse). And since $u,v$ are bijectively mapped to $x,y$ we have $p-1$ solutions for $x,y$ as well.
 
 (c) This is an extension of part (b), but since we are talking about the unity group $(\mathbb{Z}/p\mathbb{Z})^*$ instead of $\mathbb{Z}/p\mathbb{Z}$ we must exclude solutions that contain $0$ which are $(-1,0),(1,0),(0,1),(0,-1)$ thus we have 4 fewer solutions, this explains the $-4$.
 
@@ -4513,9 +4526,9 @@ Repeating the whole argument above with a prime factor of $6d - 1$ in the form o
 Now $(-1)^{6a - 2} = (-1)^{2(3a - 1)} = +1$ and
 %
 \nbea
-\left ( \frac{6a - 1}{3} \right ) & \equiv & (6a - 1)^{\frac{3-1}{2}} \pmod{3} \\
-& \equiv & (-1)^1 \pmod{3} \\
-\to \left ( \frac{6a - 1}{3} \right ) & \equiv & -1 \pmod{3}
+\left ( \frac{6a - 1}{3} \right ) & = & \left ( \frac{- 1}{3} \right ) = (-1)^{\frac{3-1}{2}} \\
+& = & (-1)^1 \\
+\to \left ( \frac{6a - 1}{3} \right ) & = & -1 
 \neea
 %
 where we have used the fact that $6a \equiv 0 \pmod{3}$. Therefore
@@ -4641,8 +4654,53 @@ ak - b & = & \left \{
 \right.
 \neea
 %
-where just like above $b \equiv yh^{-1}$ and therefore we might not be able to decompose $ak - b$ into a prime of the form $aj - b$
+where just like above $b \equiv yh^{-1}$ and therefore we might not be able to decompose $ak - b$ into a prime of the form $aj - b$ thus 6 is the lucky one :)
 
+But in all seriousness what we need here is $-1$ that can't be decomposed except into $1\times-1$, how should one look for this? well we can start with
+%
+\nbea
+1 & \equiv & ab \pmod{n} \\
+\to -1 & \equiv & -ab \pmod{n}
+\neea
+%
+thus if $n$ is prime it will never work as $(\mathbb{Z}/n\mathbb{Z})$ is a field and $ab \equiv 1$ has $p-1$ solutions and thus $-ab$ also has $p-1$ solutions. So for one $n$ must not be prime.
+
+We also know that the unity $(\mathbb{Z}/n\mathbb{Z})^*$ is always a gorup under multiplication for any $n$ whether prime or not thus every member of $(\mathbb{Z}/n\mathbb{Z})^*$ constitutes a solution for $1 \equiv ab$ and of course that of $-1 \equiv -ab$, the number of elements of $(\mathbb{Z}/n\mathbb{Z})^*$ is of course given by the euler totient function $\varphi(n)$.
+
+So if $\varphi(n)=1$ this will obviously work, $\varphi(n)=2$ will also work because then $(\mathbb{Z}/n\mathbb{Z})^*$ will have only two elements, one of them is obviously 1 and the other must be $-1$ because $\gcd(n,n-1)=1$ for $n > 1$ and therefore the decomposition of $-1$ can only be given by
+%
+\nbea
+\begin{array}{r c l}
+1 & \equiv &(1) (1) \\
+\to -1 & \equiv & (-1)(1)
+\end{array}
+& {\rm ~~~~~~OR~~~~~~} &
+\begin{array}{r c l}
+1 & \equiv &(-1) (-1) \\
+\to -1 & \equiv & (1)(-1)
+\end{array}
+\neea
+%
+so either way $-1$ can only be decomposed into $1 \times -1$. If $\varphi(n) > 2$ then there will be more ways of decomposing $-1$ and therefore we cannot guarantee that the prime constituents of $nk - 1$ will have the form $nl-1$ \dunno
+
+What with $ak - b$? well it's roughly the same because
+%
+\nbea
+1 & \equiv & xy \\
+\to -b & \equiv & -(bx)y
+\neea
+%
+and therefore it will have $\varphi(a)$ solutions as well :)
+
+Now, what we've done so far is provide the necessary conditions but not the sufficient one. Take for example $\varphi(n)=1$, this means $n = 2$, next step is to show that $\left ( \frac{-3}{nk-1}\right) = -1$, if we take $n=2$ we have
+%
+\nbea
+\left ( \frac{-3}{2k-1}\right) & = & \left ( \frac{2k-1}{3}\right)
+\neea
+%
+and it now depends on $k$, we need $2k \equiv 0 \pmod{3}$ for it to work thus we {\it can't} just say that $n^2 + n + 1$ doesn't have a positive roots in the form $2k-1$, we need to get rid of our dependence on $k$ and that means changing $-3 \to \pm 2$ by changing $n^2 + n + 1$ to $an^2 + bn + c$, however, in this case it still won't work because $\left ( \frac{2}{p} \right ) = \pm1$ depending on whether $p$ is $\pm1 \pmod{8}$ or not (recall that Gauss's quadratic reciprocity only works with two odd primes) thus it will still depend on $k$.
+
+For $\varphi(n)=2$ we only have 4 and 6, 4 will most likely have the same problem as 2 above, thus $6$ is the only safe bet
 
 
 
