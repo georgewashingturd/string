@@ -3943,12 +3943,15 @@ y_1 & \equiv & t \frac{(1-t^2) + (1+t^2)}{1+t^2} \\
 y_1 & \equiv & \frac{2t}{1+t^2}
 \neea
 %
+Note that this circle parameterization is quite different from a normal one, here we are working in modulo $p$ therefore we have multiple circles centered on $(np,mp)$ and we identify each circle with another, \ie we fill the 2D $x-y$ plane with circles centered around some $(np,mp)$. If we get a solution say $x=5$, it is clearly outside the circle centered around 0 as it is just a unit circle, however, it does lie on a circle centered around some $(np,mp)$ and we identify these two circles modulo $p$.
 
-(b) This is quite confusing to me, here's why, we know that $x,y \in \mathbb{Z}/p\mathbb{Z}$ and we know that the set $\mathbb{Z}/p\mathbb{Z}$ has $p$ elements $\{1,2,\dots,p=0\}$, so even if $x$ takes the value of each element we will at most have $p$ solutions, how in the world will we get $p+1$ solutions for $p \equiv 3 \pmod{4}$? \dunno
+(b) This is quite confusing to me, here's why, we know that $x,y \in \mathbb{Z}/p\mathbb{Z}$ and we know that the set $\mathbb{Z}/p\mathbb{Z}$ has $p$ elements $\{1,2,\dots,p=0\}$, so even if $t$ takes the value of each element we will at most have $p$ solutions, how in the world will we get $p+1$ solutions for $p \equiv 3 \pmod{4}$? \dunno
+
+On a side note, this is where the parameterization above helps count the number of solutions. Without the parameterization we can attempt to guess the number of solutions by for example, set $x = x_0$, we'll get $y^2 = 1 - x_0^2$ and since $p$ is prime, according to Proposition 2.5.5, $y$ will have exactly two solutions but the problem is we don't know if $1 - x_0^2$ is a quadratic residue modulo $p$. As far as I know there's no way of knowing if $1-w^2$ is a quadratic residue.
 
 The key observation is that $x = \frac{1-t^2}{1 + t^2}$,  $y = \frac{2t} {1 + t^2}$ will have solutions only when $1+t^2 \not\equiv 0$, now if $1+t^2 \equiv 0$ has no solution then every value of $t$ will give a solution and this will happen if $t^2 \equiv -1$ has no solution, \ie $-1$ is not a quadratic residue, and this will happen when $(-1)^{\frac{p-1}{2}}$ which is guaranteed if $p \equiv 3 \pmod{4}$.
 
-If $p \equiv 1 \pmod{4}$ then $(-1)^{\frac{p-1}{2}} = +1$ and $t^2 \equiv -1$ will have exactly two solutions (see solutuon to Problem 4.7 for why this is so), therefore in this case there are 2 less solutions compared to those of $p \equiv 3 \pmod{4}$.
+If $p \equiv 1 \pmod{4}$ then $(-1)^{\frac{p-1}{2}} = +1$ and $t^2 \equiv -1$ will have exactly two solutions (see solution to Problem 4.7 for why this is so), therefore in this case there are 2 less solutions compared to those of $p \equiv 3 \pmod{4}$.
 
 The question now is how many values can $t$ take? we know that $\mathbb{Z}/p\mathbb{Z}$ has $p$ elements but $t \in \mathbb{Z}/p\mathbb{Z}\cup\{\infty\}$ therefore we get one more $t = \infty$ and the number of values $t$ can take is $p+1$ (if we don't include $t=\infty$ then the point $(-1,0)$ will be excluded from the set of solutions). This means that if $p \equiv 1 \pmod{4}$ there are $p-1$ solutions and when $p \equiv 3 \pmod{4}$ there are $p+1$ solutions.
 
