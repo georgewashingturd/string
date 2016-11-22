@@ -4705,6 +4705,162 @@ and it now depends on $k$, we need $2k \equiv 0 \pmod{3}$ for it to work thus we
 
 For $\varphi(n)=2$ we only have 4 and 6, 4 will most likely have the same problem as 2 above, thus $6$ is the only safe bet
 
+\bigskip
+\underline{\textbf{\textit{Chapter 5}}}
+\bigskip
+
+{\bf Problem 5.1} If $c_n = p_n /q_n$ is the $n$th convergent of $[a_0 , a_1 , \dots , a_n ]$ and $a_0 > 0$, show that
+%
+\nbea
+[a_n , a_{n-1} , \dots , a_1 , a_0 ] & = & \frac{p_n}{p_{n-1}}
+\neea
+%
+and
+%
+\nbea
+[a_n , a_{n-1} , \dots , a_2 , a_1 ] & = & \frac{q_n}{q_{n-1}}.
+\neea
+%
+(Hint: In the first case, notice that $\frac{p_n}{p_{n-1}} = a_n + \frac{p_{n-2}}{p_{n-1}} = a_n + \frac{1}{\frac{p_{n-1}}{p_{n-2}}}$.)
+
+To tackle this problem we just need to recall the definitions of $p_n$ and $q_n$, let's start with $p_n$ first
+%
+\nbea
+p_n & = & a_np_{n-1} + p_{n-2} \\
+\frac{p_n}{p_{n-1}} & = & a_n + \frac{p_{n-2}}{p_{n-1}} \\
+& = & a_n + \frac{1}{\frac{p_{n-1}}{p_{n-2}}}
+\neea
+%
+continuing in the same fashion 
+%
+\nbea
+p_{n-1} & = & a_{n-1}p_{n-2} + p_{n-3} \\
+\frac{p_{n-1}}{p_{n-2}} & = & a_{n-1} + \frac{p_{n-3}}{p_{n-2}} \\
+& = & a_{n-1} + \frac{1}{\frac{p_{n-2}}{p_{n-3}}}
+\neea
+%
+and thus
+%
+\nbea
+\frac{p_n}{p_{n-1}} & = & a_n + \frac{1}{\frac{p_{n-1}}{p_{n-2}}} \\
+& = & a_n + \frac{1}{a_{n-1} + \frac{1}{\frac{p_{n-2}}{p_{n-3}}}}
+\neea
+%
+and so on, and therefore we will get a continued fraction, the thing we have to take care here is the last term given by
+%
+\nbea
+p_1 & = & a_1p_0 + p_{-1} \\
+\frac{p_1}{p_0} & = & a_1 + \frac{1}{\frac{p_0}{p_{-1}}} \\
+& = &  a_1 + \frac{1}{a_0}
+\neea
+%
+as $p_0 = a_0$ and $p_{-1} = 1$.
+
+For $q_n$ things are quite different as $q_{-1} = 0$ so for $q_n$ we have to stop at
+%
+\nbea
+q_2 & = & a_2q_1 + q_0 \\
+\frac{q_2}{q_1} & = & a_2 + \frac{1}{\frac{q_1}{q_0}} \\
+& = & a_2 + \frac{1}{a_1}
+\neea
+%
+as $q_1 = a_1$ and $q_0 = 1$.
+
+
+{\bf Problem 5.2}. Show that every nonzero rational number can be represented in exactly two ways by a finite simple continued fraction. (For example, 2 can be represented by [1, 1] and [2], and 1/3 by [0, 3] and [0, 2, 1].)
+
+To solve this problem we need to return to the proof of Proposition 5.2.14, which utilizes Euclid's gcd algorithm. If the number in question $a/b$ has $\gcd(a,b)=1$ then the last remainder $r_n$ is 1, therefore $r_{n-1} > 1$ because otherwise the algorithm would have ended at $r_{n-1}$ instead of $r_n$. And so
+%
+\nbea
+r_{n-1} & = & r_n \cdot a_n \\
+& = & 1 \cdot a_n \\
+\to 1 & < & a_n
+\neea
+%
+Now, since $a_n > 1$ we can reexpress $[a_0, a_1, \dots, a_n] \to [a_0, a_1, \dots, a_n-1, 1]$ as
+%
+\nbea
+[a_0, a_1, \dots, a_n-1, 1] & = &  [a_0, a_1, \dots, a_n-1 + \frac{1}{1}] \\
+& = & [a_0, a_1, \dots, a_n]
+\neea
+%
+If $\gcd(a,b) > 1$, $1 < r_n < r_{n-1}$, this is because $r_{n-2} = r_{n-1}a_{n-1} + r_n$ and as the remainder of $r_{n-1}$, $0 \le r_n < r_{n-1}$ except that in this case $r_n | r_{n-1}$ but all in all since $r_n < r_{n-1}$, it's guaranteed that $a_n > 1$ and we can employ the same argument above.
+
+So we know that there are at least two ways of expressing $a/b$, the question now is whether there are at most two ways of expressing a rational number $a/b$?
+
+To answer this question we need to go back to Euclid's algorithm, this algorithm is based on the fact that we can express two numbers $a,b$ as $a = qb + r$ where $0 \le r < b$ and $q,r$ are unique. But what happens if we don't follow this rule and let $r \ge b$? In this case then $b = r\cdot 0 + b$ and one of the $a_i$ in the continued fractions will be zero but this is disallowed as $a_i > 0$
+
+{\bf Problem 5.3}. Evaluate the inﬁnite continued fraction $[2, \overline{1, 2, 1}]$.
+
+The overline means
+%
+\nbea
+[2, \overline{1, 2, 1}] & = & [2, 1, 2, 1, 1, 2, 1, 1, 2, 1, \dots]
+\neea
+%
+Using the technique in Example 5.5.4
+%
+\nbea
+[2, \overline{1, 2, 1}] & = & 2 + \frac{1}{[\overline{1, 2, 1}] }
+\neea
+%
+and
+%
+\nbea
+\alpha = [\overline{1, 2, 1}] & = & 1 + \frac{1}{2 + \frac{1}{1 + \frac{1}{\alpha}}} \\
+& = & 1 + \frac{1}{2 + \frac{\alpha}{\alpha + 1}} \\
+\alpha & = & 1 + \frac{\alpha + 1}{3 \alpha + 2} \\
+0 & = & 3\alpha^2 - 2\alpha-3
+\neea
+%
+and using the quadratic formula we get
+%
+\nbea
+\alpha & = & \frac{2+\sqrt{40}}{6} \\
+& = & \frac{1+\sqrt{10}}{3} \\
+\frac{1}{\alpha} & = & \frac{3}{1 + \sqrt{10}}
+\neea
+%
+and so
+%
+\nbea
+[2, \overline{1, 2, 1}] & = & 2 + \frac{1}{\alpha} \\
+& = & \frac{5 + 2\sqrt{10}}{1 + \sqrt{10}} \times \frac{-1 + \sqrt{10}}{-1 + \sqrt{10}} \\
+& = & \frac{5 +\sqrt{10}}{3}
+\neea
+%
+
+{\bf Problem 5.4}. Determine the infinite continued fraction of $\frac{1+\sqrt{13}}{2}$.
+
+%
+\nbea
+x = \frac{1+\sqrt{13}}{2} & = & 2 + \frac{-4 +1+\sqrt{13}}{2}
+\neea
+%
+so $a_0 = 2$ and $t_0 = \frac{-3+\sqrt{13}}{2}$. We have
+%
+\nbea
+\frac{1}{t_0} & = & \frac{2}{-3+\sqrt{13}} \\
+& = & \frac{3 + \sqrt{13}}{2}
+\neea
+%
+so $a_1 = 3$ and $t_1 = \frac{-3+\sqrt{13}}{2}$. Likewise $a_n = 3, ~n > 0$ and $\frac{1+\sqrt{13}}{2} = [2,\overline{3}]$
+
+{\bf Problem 5.5}. Let $a_0 \in \mathbb{R}$ and $a_1 , \dots , a_n$ and $b$ be positive real numbers. Prove that
+%
+\nbea
+[a_0 , a_1 , \dots , a_n + b] < [a_0 , a_1 , \dots , a_n ]
+\neea
+%
+if and only if $n$ is odd.
+
+
+
+
+
+
+
+
 
 
 
