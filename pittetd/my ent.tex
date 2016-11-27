@@ -4719,6 +4719,15 @@ For $\varphi(n)=2$ we only have 4 and 6, 4 will most likely have the same proble
 \neea
 %
 
+while we are on this issue note that adding $0$ is like the common trick of inserting unity in quantum mechanics, although you have to insert it even times, \eg
+%
+\nbea
+\lbrack A \rbrack & = & \lbrack 0,0,0,0,A \rbrack \\
+& = & (A)^{(-1)^4} \\
+& = & A
+\neea
+%
+
 {\bf Page 108}, the recurrence relation of $r_i$, note that $a_n$ starts with $n = 0 \to a_0$ thus for $[1,0,1,1,2,1,\dots] \to [a_0 = 1, a_1 = 0, a_2=1, a_3 = 1, a_4 = 2, a_5=1, a_6=1, \dots]$, and you'll see the recurrence relation easily, note that $p_n = a_np_{n-1} + p_{n-2}$, ditto with $q_n$ thus
 %
 \nbea
@@ -4728,6 +4737,8 @@ r_{3n} & = & a_{3n}r_{3n-1} + r_{3n-2} \\
 %
 the same goes with $r_{3n-1}$ and $r_{3n-2}$
 
+{\bf Page 109}, ``the boundary condition is 0'', in physics we usually say the boundary terms are 0, this is the $uv$ term you get when integrating $\int udv$ by parts
+
 {\bf Page 111}, {\it Definition 5.5.1}, a quadratic irrational is an irrational number that is a solution to a quadratic equation with rational coefficients, thus it is a number of the form
 %
 \nbea
@@ -4735,6 +4746,33 @@ the same goes with $r_{3n-1}$ and $r_{3n-2}$
 \neea
 %
 (which is just the quadratic formula in a slight disguise) where $a,b,c,d$ integers and $d \neq 0$ and $c$ is not a square.
+
+{\bf Page 112}, last sentence, $[a_0,a_1,\dots]$ ``is of the form $c + d\alpha$ $\dots$ so $[a_0,a_1,\dots]$ also satisfies a quadratic polynomial'', if we follow the steps taken in Example 5.5.4 what we will get in simplifying $[a_0,a_1,\dots]$ is
+%
+\nbea
+\lbrack a_0,a_1,\dots\rbrack  = B & = & a_0 + \frac{1}{a_1 + \frac{1}{a_2 + \dots + \frac{1}{\alpha}}} \\
+B & = & \frac{r + s\alpha}{t + u\alpha} \\
+tB + u\alpha B & = & r + s\alpha \\
+\frac{- r + tB}{~~~s -uB} & = & \alpha
+\neea
+% 
+now, from the previous paragraph it was shown that $\alpha$ satisfies a quadratic equation, thus substituting the above relationship $B = [a_0,a_1,\dots]$ also satisfies a quadratic polynomial but I don't think the statement that $[a_0,a_1,\dots]$ is of the form $c + d\alpha$ is correct
+
+{\bf Page 113}, bottom of page
+%
+\nbea
+B^2_n - 4A_nC_n = (b^2 - 4ac)(p_{n-1}q_{n-2} - q_{n-1}p_{n-2})^2 = b^2 - 4ac
+\neea
+%
+to get to the last equality we use Eq. 5.2.2, $p_nq_{n-1} - q_np_{n-1} = (-1)^{n-1}$
+
+{\bf Page 119}, middle paragraph, ``To prepare our proof of the implication $(\Longleftarrow)$ of Theorem 5.7.1 $\dots$, it suffices to show that any prime $p\equiv 1 \pmod{4}$ is a sum of two squares''
+
+This is all very confusing, let's go back to Theorem 5.7.1 itself, it says that if $p \equiv 3 \pmod{4}$ is a prime and any prime factor $p$ of $n$ of the form $3 \pmod{4}$ has even exponent then $n$ is a sum of two squares, note that $n$ is a {\it positive} integer
+
+Well, what about $9 = 3^2$, then it should be a sum of two squares, well it is $9 = 0^2 + 3^2$, thus even though $n$ is a positive integer, one of the squares can be zero
+
+So back to the middle paragraph of Page 119, we split $n = n_1^2n_2 = (0^2 + n_1^2)n_2$ and therefore as long as $n_2$ is a sum of two squares we are good
 
 {\bf Problem 5.1} If $c_n = p_n /q_n$ is the $n$th convergent of $[a_0 , a_1 , \dots , a_n ]$ and $a_0 > 0$, show that
 %
@@ -4896,6 +4934,183 @@ where $a_{n+1} = 1/b$. We now use Proposition 5.2.7 which states that for our ca
 \neea
 %
 Now if $n$ is odd then $(-1)^n = -1$, also since $q_n$ does not involve $a_0$ as long as $a_n > 0$ for $n \ge 1$, $q_n$'s are guaranteed to be positive, thus the difference $\lbrack a_0 , a_1 , \dots , a_n, a_{n+1}\rbrack - \lbrack a_0 , a_1 , \dots , a_n\rbrack < 0$ and we are done :)
+
+{\bf Problem 5.6}. (*) Extend the method presented in the text to show that the continued fraction expansion of $e^{1/k}$ is
+%
+\nbea
+[1, (k - 1), 1, 1, (3k - 1), 1, 1, (5k - 1), 1, 1, (7k - 1), \dots]
+\neea
+%
+for all $k \in\mathbb{N}$.
+
+(a) Compute $p_0 , p_3 , q_0$, and $q_3$ for the above continued fraction. Your answers should be in terms of $k$.
+
+(b) Condense three steps of the recurrence for the numerators and denominators of the above continued fraction. That is, produce a simple recurrence for $r_{3n}$ in terms of $r_{3n-3}$ and $r_{3n-6}$ whose coefficients are polynomials in $n$ and $k$.
+
+(c) Deﬁne a sequence of real numbers by
+%
+\nbea
+T_n (k) = \frac{1}{k^n} \int_0^{1/k} \frac{(kt)^n (kt - 1)^n}{n!}e^tdt.
+\neea
+%
+
+i. Compute $T_0 (k)$, and verify that it equals $q_0 e^{1/k} - p_0$.
+
+ii. Compute $T_1 (k)$, and verify that it equals $q_3 e^{1/k} - p_3$.
+
+iii. Integrate $T_n (k)$ by parts twice in succession, as in Section 5.4, and verify that $T_n (k), T_{n-1} (k)$, and $T_{n-2} (k)$ satisfy the recurrence produced in part 6b, for $n \ge 2$.
+
+(d) Conclude that the continued fraction
+%
+\nbea
+[1, (k - 1), 1, 1, (3k - 1), 1, 1, (5k - 1), 1, 1, (7k - 1), \dots]
+\neea
+%
+represents $e^{1/k}$.
+
+{\bf Problem 5.7}. Let $d$ be an integer that is coprime to 10. Prove that the decimal
+expansion of $\frac{1}{d}$ has a period equal to the order of 10 modulo $d$. (Hint:
+For every positive integer $r$, we have $\frac{1}{1-10^r} = \sum_{n\ge1}10^{-rn}$.)
+
+First, there are two things to take care of, one, the order mentioned in this problem is the multiplicative order modulo $d$, \ie the smallest $w$ such that $10^w \equiv 1 \pmod{d}$. Next, there's a typo in the hint, what is the typo? follow along to find out :)
+
+The hint is nothing but the formula for infinite geometric series. Now,
+%
+\nbea
+\frac{1}{d} & = & 0.AAAAAAA\dots
+\neea
+%
+where say $A$ is an $r$ digit sequence with $r$ the {\it smallest} periodicity of $A$ because if it's not the smallest we can find a smaller one, which means that
+%
+\nbea
+\frac{1}{d} & = & \sum_{n \ge 1}^{\infty} A \cdot 10^{-rn} \\
+& = & A \sum_{n \ge 1}^{\infty} 10^{-rn} \\
+& = & \frac{A}{1-10^{-r}}
+\neea
+%
+which in turn means that
+%
+\nbea
+\frac{1}{d} & = & \frac{A}{1-10^{-r}} \\
+1-10^{-r} & = & Ad \\
+1-10^{-r} & \equiv & 0 \pmod{d} \\
+\frac{1}{10^r} & \equiv & 1 \pmod{d} \\
+\to 10^r & \equiv & 1 \pmod{d}
+\neea
+%
+Thus $r$, the periodicity of $A$ is the multiple of the order of $10$ modulo $d$. (Note that since $\gcd(10,d) = 1$ we have an inverse of 10 modulo $d$) but if $r$ is not the order then we can find a smaller periodicity of $A$ which will be contradictory to our initial assumption
+
+{\bf Problem 5.8}. Find a positive integer that has at least three different representations
+as the sum of two squares, disregarding signs and the order of the summands.
+
+What the question means here is that $(-2)^2$ and $(+2)^2$ are the same and $1^2 + 2^2$ is the same as $2^2 + 1^2$, they don't count as two different representations.
+
+From a brute force search one such number is
+%
+\nbea
+325 & = & 1^2 + 18^2 \\
+& = & 6^2 + 17^2 \\
+& = & 10^2 + 15^2
+\neea
+%
+
+{\bf Problem 5.9}. Show that if a natural number $n$ is the sum of two rational squares
+it is also the sum of two integer squares.
+
+To simplify things, let's assume that these rationals are in their lowest terms, \ie they can't be simplified no more
+%
+\nbea
+n & = & \frac{a^2}{b^2} + \frac{c^2}{d^2} \\
+& = & \frac{(ad)^2 + (bc)^2}{(bd)^2} \\
+n(bd)^2 & = & (ad)^2 + (bc)^2
+\neea
+%
+which means that $d^2|(bc)^2$ and $b^2|(ad)^2$ which in turn means that $d|bc$ and $b|ad$, but since the rationals are in their lowest terms $\gcd(a,b) = \gcd(c,d) = 1$ and therefore $d|b$ and $b|d$ which means that $b = d$.
+
+However, the above discussion is of no relevance to this problem LOL The key is that $n(bd)^2$ is a sum of two squares which means that according to Theorem 5.7.1, all of its prime factors of the form $p \equiv 3 \pmod{4}$ have even exponents.
+
+Now any prime factor of $(bd)^2$ has even exponent therefore any prime factor of $n$ of the form $p \equiv 3 \pmod{4}$ must have even exponent as well otherwise $n(bd)^2$ would not be a sum of two squares but this means that $n$ must be a sum of two squares as well as its prime factors $p \equiv 3 \pmod{4}$ have even exponent 
+
+{\bf Problem 5.10}. (*) Let $p$ be an odd prime. Show that $p \equiv 1, 3 \pmod{8}$ if and only if $p$ can be written as $p = x^2 + 2y^2$ for some choice of integers $x$ and $y$.
+
+I think the converse is quite easy, if $p = x^2 + 2y^2$ then since $2y^2$ is even $x$ must be odd, thus $x \equiv 1,3,5,7 \equiv 1,3,-3,-1 \pmod{8}$ and $x^2 \equiv 1 \pmod{8}$
+%
+\begin{table}[]
+\centering
+\caption{Various values of $y$, $2y^2$ and $x^2 + 2y^2$ {\bf modulo 8}}
+\label{Tab:7}
+\begin{tabular}{|c|c|c|}
+\hline
+~~~$y$~~~ & ~~~$y^2$~~~ & $x^2 + 2y^2$ \\ \hline
+0 & 0 & 1 \\ \hline
+1 & 1 & 3 \\ \hline
+2 & 4 & 1 \\ \hline
+3 & 0 & 3 \\ \hline
+4 & 2 & 1 \\ \hline
+\end{tabular}
+\end{table}
+%
+we now just need to list all possible values of $y$ modulo 8, see Table~\ref{Tab:7}, we only need to list $0,\dots,4$ because we are dealing with $y^2$ and $5=-3, 6=-2$ and so on. So we see that $p \equiv 1,3 \pmod{8}$.
+
+Apart of the lowbrow approach above we can utilize the same technique as the one used in the proof of Lemma 5.7.4, since $\mathbb{Z}/p\mathbb{Z}$ is a field
+%
+\nbea
+x^2 + 2y^2 & \equiv & 0 \pmod{p} \\
+\left ( \frac{x}{y}\right )^2 & \equiv & -2 \pmod{p}
+\neea
+%
+and $-2$ is a quadratic residue modulo $p \equiv 1,3 \pmod{8}$ because $-1$ and $2$ are both quadratic residues modulo $p \equiv 1\pmod{8}$ and $-1$ and $2$ are both quadtaric {\it non}-residues modulo $p \equiv 3 \pmod{8}$
+
+For the if proof we might be able to utilize the proof in Page 120 top. Here $r \in \mathbb{Z}$ such that $r^2 \equiv -2 \pmod{p}$ since $p \equiv 1,3 \pmod{8}$ means that $-2$ is a quadratic residue.
+
+Again, choose $n = \floor{\sqrt{p}}$, and since $p$ is prime $n < \sqrt{p}$, it is a strict inequality, also choose $x = \frac{-r}{p}$, such that from Lemma 5.7.5 we have $a,b$ with $0 <b \le n \to 0 < b < \sqrt{p}$ and
+%
+\nbea
+\left | -\frac{r}{p} - \frac{a}{b} \right | \le \frac{1}{b(n+1)} < \frac{1}{b\sqrt{p}}
+\neea
+%
+simplifying
+%
+\nbea
+\left | -\frac{r}{p} - \frac{a}{b} \right | & = & \left | \frac{-rb - pa}{pb} \right | \\
+& = & \left | \frac{rb + pa}{pb} \right |
+\neea
+%
+Let $c = rb + pa$
+%
+\nbea
+\left | \frac{rb + pa}{pb} \right | = \left | \frac{c}{pb} \right | & < & \frac{1}{b\sqrt{p}} \\
+|c| & < & \frac{p\bcancel{b}}{\bcancel{b}\sqrt{p}} = \sqrt{p}
+\neea
+%
+From $0 < b < \sqrt{p}$ we know that $b^2 < p$, thus
+%
+\nbea
+0 < 2b^2 + c^2 < 3p
+\neea
+%
+Note the {\it strict} inequalities, it is imperative that they are strict! But $c = rb + pa \equiv rb \pmod{p}$, so
+%
+\nbea
+2b^2 + c^2 \equiv 2b^2 + r^2b^2 \equiv b^2(2 + r^2) \equiv b^2 (2 - 2) \equiv 0 \pmod{p}
+\neea
+%
+which means that $2b^2 + c^2$ is a non-zero multiple of $p$ but it must be less than $3p$, so the choices are $p$ and $2p$.
+
+If $2b^2 + c^2 = p$ then we are done but if $2b^2 + c^2 = 2p$ then $c$ must be even $c = 2c'$ and
+%
+\nbea
+2b^2 + c^2 & = & 2p \\
+2b^2 + 4c'^2 & = & 2p \\
+b^2 + 2c'^2 & = & p
+\neea
+%
+and we are again done
+
+{\bf Problem 5.11}. Prove that of any four consecutive integers, at least one is not representable as a sum of two squares.
+
+The key word here is ``four'' :) If we express these four in modulo 4 then one of them must be of the form $3 \pmod{4}$, now from the multiplication table of modulo 4 we know that $3 \pmod{4}$ can only be factorized as $3 \cdot 1 \pmod{4}$ and $1 \pmod{4}$ can only be factorized as $1^2$ of $(-1)^2$ modulo 4, therefore if we break down this number into its primal constituents there must be an odd number of $3 \pmod{4}$ and therefore it can't be written as a sum of two squares
+
 
 
 
