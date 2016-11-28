@@ -5111,6 +5111,110 @@ and we are again done
 
 The key word here is ``four'' :) If we express these four in modulo 4 then one of them must be of the form $3 \pmod{4}$, now from the multiplication table of modulo 4 we know that $3 \pmod{4}$ can only be factorized as $3 \cdot 1 \pmod{4}$ and $1 \pmod{4}$ can only be factorized as $1^2$ of $(-1)^2$ modulo 4, therefore if we break down this number into its primal constituents there must be an odd number of $3 \pmod{4}$ and therefore it can't be written as a sum of two squares
 
+\bigskip
+\underline{\textbf{\textit{Chapter 6}}}
+\bigskip
+
+{\bf Problem 6.1}. Write down an equation $y^2 = x^3 + ax + b$ over a field $K$ such that
+$-16(4a^3 +27b^2 ) = 0$. Precisely what goes wrong when trying to endow the set $E(K) = \{(x, y) \in K \times K : y^2 = x^3 + ax + b\} \cup \{\mathcal{O}\}$ with a group structure?
+
+The subject of interest here is the discriminant, $\Delta$, and for our current concern it's discriminant for the cubic equation. The discriminant, $\Delta$, is defined as the product of the square of the pairwise differences of the roots, \ie
+%
+\nbea
+\Delta & = & \prod_{i \neq j} (r_i - r_j)^2
+\neea
+%
+where $r_i$ is the $i$th root of the polynomial in question. For the quadratic equation it is given by $\Delta = b^2 - 4ac$ (which can be easily derived from the quadratic formula) and it betrays whether the roots are distinct or not, which can be clearly seen from its definition above. The same is true for higher degree polynomials.
+
+For our cubic problem, what we need to see is that if $\Delta = -16(4a^3 +27b^2) = 0$ we will have multiple roots. The way to see this is to factorize the cubic equation into its roots, we can always do this when we are in the complex plane, \ie
+%
+\nbea
+x^3 + ax^2 + b & = & (x-r_1)(x-r_2)(x-r_3)
+\neea
+%
+The key point here is that since there's no $x^2$ term, the roots sum up to zero, this is similar to the situation for quadratic equations when there's no linear term, the sum of the roots is zero, $x^2 - w = 0 \to x = \pm\sqrt{w}$.
+
+This means that
+%
+\nbea
+x^3 + ax^2 + b & = & (x-r_1)(x-r_2)(x+(r_1+r_2))
+\neea
+%
+Expanding the RHS
+%
+\nbea
+x^3-(r_2^2+r_1r_2+r_1^2)x+(r_1r_2^2+r_1^2r_2)
+\neea
+%
+thus $a = -(r_2^2+r_1r_2+r_1^2)$ and $b = r_1r_2^2+r_1^2r_2$, substituting this into $\Delta = -16(4a^3 +27b^2 ) = 0$ we get
+%
+\nbea
+0 = 4a^3 +27b^2 & = & -(r_2-r_1)^2(r_2+2r_1)^2(2r_2+r_1)^2
+\neea
+%
+which means that $r_2 = r_1$, therefore when $\Delta = -16(4a^3 +27b^2 ) = 0$ we will get at most 2 distinct roots.
+
+Geometrically speaking this means we have either cusps, isolated points or self crossings. At these problematic points we cannot get the tangent needed to add the point to itself, that's one problem.
+
+The second problem can be easily seen when we only have two distinct roots, if we add these two points by connecting a line through them, the resulting line will not instersect another point in the curve, \eg consider $y^2 = x^3-3x+2 = (x-1)(x-1)(x+2)$, see Fig.~\ref{fig:singular-curve}.
+%
+\begin{figure}
+\centering
+  \includegraphics[width=.55\linewidth]{singular_curve.png}
+  \caption{Plot of $y^2 = x^3-3x+2 = (x-1)(x-1)(x+2)$, we have multiple roots at $x=1$, the green line represents an addition of the roots (the two red dots) and it is obvious that this green line does not intersect any other point in the curve and hence the addition operation is not closed.}
+\label{fig:singular-curve}
+\end{figure}
+%
+
+{\bf Problem 6.8}. Suppose $a, b, c$ are relatively prime integers with $a^2 + b^2 = c^2$ . Then there exist integers $x$ and $y$ with $x > y$ such that $c = x^2 + y^2$ and
+either $a = x^2 - y^2 , b = 2xy$ or $a = 2xy, b = x^2 - y^2$.
+
+Since $a, b, c$ are relatively prime then $a$ and $b$ must not be both even. Can they be both odd? The answer is no because if we express them in modulo 4, a square can only be 0 or 1 modulo 4 and a sum of two odd squares would amount to 2 modulo 4, however, 2 is not a quadratic residue modulo 4.
+
+Thus $a$ and $b$ must be of opposite parities (\ie one is odd and the other even), we then proceed by taking $b$ as odd (which doesn't affect the final result)
+%
+\nbea
+a^2 + b^2 & = & c^2 \\
+\to a^2 & = & c^2 - b^2 \\
+& = & (c + b)(c - b)
+\neea
+%
+since $c$ and $b$ are both odd we can express $2u = c+b, 2v = c-b \to c = u+v, b = u - v$ therefore $\gcd(u,v)=1$ because otherwise $c$ and $b$ would not be coprime.
+
+Since $u$ and $v$ are coprime they must be perfect squares because $a^2 = 4uv$, \ie $u = x^2, v = y^2$ and
+%
+\nbea
+a^2 & = & 4x^2y^2 \\
+a & = & 2xy
+\neea
+%
+substituting this into
+%
+\nbea
+c & = & u + v \\
+& = & x^2 + y^2 \\
+b & = & u - v \\
+& = & x^2 - y^2
+\neea
+%
+and we are done (we can always $a \leftrightarrow b$ to get the other result). One small note is that $\gcd(x,y)=1$ because otherwise $a,b,c$ would not be coprime.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
