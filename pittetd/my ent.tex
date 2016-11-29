@@ -5115,6 +5115,36 @@ The key word here is ``four'' :) If we express these four in modulo 4 then one o
 \underline{\textbf{\textit{Chapter 6}}}
 \bigskip
 
+{\bf Page 125}, {\it Remark } 6.1.3., the characteristic of a ring, $R$, is (taken from Wikipedia) the smallest number of times one must use the ring's multiplicative identity element (1) in a sum to get the additive identity element (0); the ring is said to have characteristic zero if this sum never reaches the additive identity.
+
+So a ring with characteristic 5 will have $1 + 1 + 1 + 1 + 1 = 0$ or in other words (for our case of integer modulo 5) this translates to $4 \equiv -1 \pmod{5}$.
+
+For the example in Remark 6.1.3., the characteristic is 2, however, $-16(4a^3 + 27b^3)$ is zero {\bf not} because $-a \equiv a$ therefore $a \equiv 0$ but because $16$ is even and since $1 + 1 = 0$ then any even number is equivalent to zero.
+
+The above explanation, however, does not explain why characteristic 3 is problematic since $-16(4a^3 + 27b^3) \not\equiv 0$ unless $a \equiv 0$.
+
+To see why characteristic 3 is problematic we need to go to the more general description
+%
+\nbea
+y^2 + a_1xy + a_3y & = & x^3 + a_2x^2 + a_4x + a_6
+\neea
+%
+we can simplify the above by substituting $y = Y -(a_1x + a_2)/2$ to get
+%
+\nbea
+Y^2 = x^3 + ax^2 + bx + c
+\neea
+%
+for some integers $a,b,c$. Here you can already see the problem, if we have characteristic 2 we cannot divide by 2 since $2 \equiv 0$.
+
+To proceed we need to do another substitution, $x = X - a/3$ to get
+%
+\nbea
+Y^2 = X^3 + b'X + c'
+\neea
+%
+for some integers $b',c'$ and here lies the problem, we need to divide by 3 to get to this form but characteristic 3 means that $3 \equiv 0$ so we obviously can't divide by 3
+
 {\bf Problem 6.1}. Write down an equation $y^2 = x^3 + ax + b$ over a field $K$ such that
 $-16(4a^3 +27b^2 ) = 0$. Precisely what goes wrong when trying to endow the set $E(K) = \{(x, y) \in K \times K : y^2 = x^3 + ax + b\} \cup \{\mathcal{O}\}$ with a group structure?
 
@@ -5149,10 +5179,10 @@ x^3-(r_2^2+r_1r_2+r_1^2)x+(r_1r_2^2+r_1^2r_2)
 thus $a = -(r_2^2+r_1r_2+r_1^2)$ and $b = r_1r_2^2+r_1^2r_2$, substituting this into $\Delta = -16(4a^3 +27b^2 ) = 0$ we get
 %
 \nbea
-0 = 4a^3 +27b^2 & = & -(r_2-r_1)^2(r_2+2r_1)^2(2r_2+r_1)^2
+0 = -16(4a^3 +27b^2) & = & 16(r_2-r_1)^2(r_2+2r_1)^2(2r_2+r_1)^2
 \neea
 %
-which means that $r_2 = r_1$, therefore when $\Delta = -16(4a^3 +27b^2 ) = 0$ we will get at most 2 distinct roots.
+which means that $r_2 = r_1$, therefore when $\Delta = -16(4a^3 +27b^2 ) = 0$ we will get at most 2 distinct roots (and if $\Delta < 0$ it means that we have imaginary roots).
 
 Geometrically speaking this means we have either cusps, isolated points or self crossings. At these problematic points we cannot get the tangent needed to add the point to itself, that's one problem.
 
