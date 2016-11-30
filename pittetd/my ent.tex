@@ -4947,7 +4947,7 @@ for all $k \in\mathbb{N}$.
 
 (b) Condense three steps of the recurrence for the numerators and denominators of the above continued fraction. That is, produce a simple recurrence for $r_{3n}$ in terms of $r_{3n-3}$ and $r_{3n-6}$ whose coefficients are polynomials in $n$ and $k$.
 
-(c) Deﬁne a sequence of real numbers by
+(c) Define a sequence of real numbers by
 %
 \nbea
 T_n (k) = \frac{1}{k^n} \int_0^{1/k} \frac{(kt)^n (kt - 1)^n}{n!}e^tdt.
@@ -4967,6 +4967,207 @@ iii. Integrate $T_n (k)$ by parts twice in succession, as in Section 5.4, and ve
 \neea
 %
 represents $e^{1/k}$.
+
+(a) Using the formulae for $p_n$ and $q_n$
+%
+\nbea
+\begin{array}{r c l c r c l}
+p_3 & = & a_3p_2 + p_1 & ~~~~~~ & p_1 & = & a_1p_0 + p_{-1}\\
+p_2 & = & a_2p_1 + p_0 & ~~~~~~ & p_0 & = & a_0p_{-1} + p_{-2}
+\end{array}
+\neea
+%
+here $a_0 = 1, a_1 = k - 1, a_2 = 1, a_3 = 1$ with $p_{-2} = 0, p_{-1} = 1$ so
+%
+\nbea
+\begin{array}{r c l c r c l}
+p_3 & = & 2k + 1 & ~~~~~~ & p_1 & = & (k-1) + 1 = k \\
+p_2 & = & k + 1 & ~~~~~~ & p_0 & = & 1
+\end{array}
+\neea
+%
+the same goes with $q_n$
+%
+\nbea
+\begin{array}{r c l c r c l}
+q_3 = a_3q_2 + q_1 & ~~~~~~ & q_1 = a_1q_0 + q_{-1} \\
+q_2 = a_2q_1 + q_0 & ~~~~~~ & q_0 = a_0q_{-1} + q_{-2}
+\end{array}
+\neea
+%
+except that here $q_{-2} = 1, q_{-1} = 0$ so
+%
+\nbea
+\begin{array}{r c l c r c l}
+q_3 = 2k - 1 & ~~~~~~ & q_1 = (k-1) \\
+q_2 = (k-1) + 1 = k & ~~~~~~ & q_0 = 1
+\end{array}
+\neea
+%
+In conclusion $p_0 = 1, p_3 = 2k + 1, q_0 = 1, q_3 = 2k - 1$
+
+(b) Noting that $a_{3n} = 1, a_{3n-1} = 1,  a_{3n-2} = (2n-1)k - 1$
+%
+\nbea
+\begin{array}{r c l c l}
+r_{3n} & = & a_{3n}r_{3n-1} + r_{3n-2} & = & r_{3n-1} + r_{3n-2} \\
+r_{3n-1} & = & a_{3n-1}r_{3n-2} + r_{3n-3} & = & r_{3n-2} + r_{3n-3} \\
+r_{3n-2} & = & a_{3n-2}r_{3n-3} + r_{3n-4} & = & ((2n-1)k - 1)r_{3n-3} + r_{3n-4}
+\end{array}
+\neea
+%
+Expanding $r_{3n}$
+%
+\nbea
+r_{3n} & = & r_{3n-1} + r_{3n-2} \\
+& = & (r_{3n-2} + r_{3n-3}) + (((2n-1)k - 1)r_{3n-3} + r_{3n-4}) \\
+& = & (((2n-1)k - 1)r_{3n-3} + r_{3n-4}) + (((2n-1)k)r_{3n-3} + r_{3n-4}) \\
+& = &  ((4n-2)k - 1)r_{3n-3} + 2r_{3n-4}
+\neea
+%
+setting $n \to n-1$ we get
+%
+\nbea
+r_{3n-3} & = & ((4n-6)k - 1)r_{3n-6} + 2r_{3n-7} \\
+\to 2r_{3n-7} & = & r_{3n-3} - ((4n-6)k - 1)r_{3n-6}
+\neea
+%
+to get $r_{3n-5}$ we just take $r_{3n-2}$ and set $n \to n - 1$
+%
+\nbea
+2r_{3n-4} & = & 2 (r_{3n-5} + r_{3n-6}) \\
+& = & 2 \lbrack \{((2n-3)k - 1)r_{3n-6} + r_{3n-7}\}  + r_{3n-6}\rbrack \\
+& = & ((4n-6)k)r_{3n-6} + 2r_{3n-7}
+\neea
+%
+First we substitute $2r_{3n-4}$
+%
+\nbea
+r_{3n} & = & ((4n-2)k - 1)r_{3n-3} + 2r_{3n-4} \\
+& = & ((4n-2)k - 1)r_{3n-3} + \{((4n-6)k)r_{3n-6} + 2r_{3n-7}\}
+\neea
+%
+we then substitute $2r_{3n-7} = r_{3n-3} - ((4n-6)k - 1)r_{3n-6}$
+%
+\nbea
+r_{3n} & = & ((4n-2)k - 1)r_{3n-3} + \{((4n-6)k)r_{3n-6} + r_{3n-3} - ((4n-6)k - 1)r_{3n-6}\} \\
+& = & (4n-2)k ~ r_{3n-3} + r_{3n-6}
+\neea
+%
+
+(c) (i) Dutifully performing the integral
+%
+\nbea
+T_0 & = & \frac{1}{k^0} \int_0^{1/k} \frac{(kt)^0 (kt - 1)^0}{0!}e^tdt \\
+& = & \int_0^{1/k} e^tdt \\
+& = & \left. e^t\right|^{1/k}_0 = e^{1/k} - 1
+\neea
+%
+while $q_0e^{1/k} - p_0 = e^{1/k} - 1$ and so $T_0 = q_0e^{1/k} - p_0$.
+
+(c) (ii) in this case set $u = (kt) (kt - 1)$ and $dv = e^tdt$
+%
+\nbea
+T_1 & = & \frac{1}{k^1} \int_0^{1/k} \frac{(kt)^1 (kt - 1)^1}{1!}e^tdt \\
+& = & \left. \frac{1}{k} (kt) (kt - 1)e^t\right|^{1/k}_0 - \frac{1}{k} \int_0^{1/k} (k(kt - 1) + kt(k)) e^t dt \\
+& = & 0 - \int_0^{1/k} (2kt - 1) e^t dt \\
+& = & \left.-(2kt - 1) e^t\right|^{1/k}_0 + \int_0^{1/k} 2k e^t dt \\
+& = & -(e^{1/k} + 1) + \left. 2ke^t \right|^{1/k}_0 \\
+& = & -(e^{1/k} + 1) + 2ke^{1/k} - 2k \\
+& = & (2k - 1)e^{1/k} - (2k+1)
+\neea
+%
+while $q_3e^{1/k} - p_3 = (2k - 1)e^{1/k} - (2k+1)$ and thus $T_1 = q_3e^{1/k} - p_3$
+
+(c) (iii) 
+%
+\nbea
+T_n (k) & = & \frac{1}{k^n} \int_0^{1/k} \frac{(kt)^n (kt - 1)^n}{n!}e^tdt \\
+& = & \left.\frac{1}{k^n}\frac{(kt)^n (kt - 1)^n}{n!}e^t \right|^{1/k}_0 - \frac{1}{k^n} \int_0^{1/k} \frac{nk(kt)^{n-1} (kt - 1)^n + (kt)^n nk(kt - 1)^{n-1}}{n!}e^tdt \\
+& = & -\frac{1}{k^{n-1}} \int_0^{1/k} \frac{(kt)^{n-1} (kt - 1)^n + (kt)^n (kt - 1)^{n-1}}{(n-1)!}e^tdt
+\neea
+%
+By now we should have seen enough evidence that the boundary terms are zero so we can ignore them in the future :) doing one term at a time
+%
+\nbea
+& \to &-\frac{1}{k^{n-1}} \int_0^{1/k} \frac{(kt)^{n-1} (kt - 1)^n}{(n-1)!}e^tdt \\
+& &~~~~~~~ = \frac{1}{k^{n-1}} \int_0^{1/k} \frac{(n-1)k(kt)^{n-2} (kt - 1)^n + (kt)^{n-1} nk (kt - 1)^{n-1}}{(n-1)!}e^tdt \\
+& &~~~~~~~ = \frac{1}{k^{n-2}}\int_0^{1/k} \frac{(kt)^{n-2} (kt - 1)^n}{(n-2)!}e^t + \frac{(kt)^{n-1} n (kt - 1)^{n-1}}{(n-1)!}e^tdt \\
+& &~~~~~~~ = \frac{1}{k^{n-2}}\int_0^{1/k} \frac{(kt)^{n-2} (kt - 1)^n}{(n-2)!}e^t dt + nkT_{n-1}
+\neea
+%
+the other term gives
+%
+\nbea
+& \to &-\frac{1}{k^{n-1}} \int_0^{1/k} \frac{(kt)^{n} (kt - 1)^{n-1}}{(n-1)!}e^tdt \\
+& &~~~~~~~ = \frac{1}{k^{n-1}} \int_0^{1/k} \frac{nk(kt)^{n-1} (kt - 1)^{n-1} + (kt)^n (n-1)k (kt - 1)^{n-2}}{(n-1)!}e^tdt \\
+& &~~~~~~~ = \frac{1}{k^{n-2}}\int_0^{1/k} \frac{n(kt)^{n-1} (kt - 1)^{n-1}}{(n-1)!}e^t + \frac{(kt)^n (kt - 1)^{n-2}}{(n-2)!}e^tdt \\
+& &~~~~~~~ = nkT_{n-1} + \frac{1}{k^{n-2}}\int\frac{(kt)^n (kt - 1)^{n-2}}{(n-2)!}e^tdt
+\neea
+%
+the two other terms combine into
+%
+\nbea
+& \to & \frac{1}{k^{n-2}}\int_0^{1/k} \frac{(kt)^{n-2} (kt - 1)^n}{(n-2)!}e^t + \frac{(kt)^n (kt - 1)^{n-2}}{(n-2)!}e^tdt \\
+& &~~~~~~~ = \frac{1}{k^{n-2}}\int_0^{1/k} \frac{(kt)^{n-2} (kt - 1)^{n-2}}{(n-2)!} ((kt - 1)^{2} + (kt)^2) e^t \\
+& &~~~~~~~ = \frac{1}{k^{n-2}}\int_0^{1/k} \frac{(kt)^{n-2} (kt - 1)^{n-2}}{(n-2)!} (2(kt)^2 - 2kt + 1) e^t \\
+& &~~~~~~~ = \frac{1}{k^{n-2}}\int_0^{1/k} \frac{(kt)^{n-2} (kt - 1)^{n-2}}{(n-2)!} (2(kt)(kt - 1) + 1) e^t \\
+& &~~~~~~~ = \frac{2(n-1)k}{k^{n-1}}\int_0^{1/k} \frac{(kt)^{2} (kt - 1)^{n-1}}{(n-1)!} e^t dt +\frac{1}{k^{n-2}}\int_0^{1/k} \frac{(kt)^{n-2} (kt - 1)^{n-2}}{(n-2)!} e^t dt \\
+& &~~~~~~~ = 2(n-1)kT_{n-1} + T_{n-2}
+\neea
+%
+and therefore
+%
+\nbea
+T_n & = & nkT_{n-1} + nkT_{n-1} + 2(n-1)kT_{n-1} + T_{n-2} \\
+& = & (4n - 2)k~T_{n-1} + T_{n-2}
+\neea
+%
+and this is the same recurrence relation as that of part b
+
+(d) Therefore $T_n = q_{3n}e^{1/k} - p_{3n}$. We now consider the limit as $n$ approaches infinity:
+%
+\nbea
+\lim_{n \to \infty} \frac{1}{k^n} \int_0^{1/k} \frac{(kt)^n (kt - 1)^n}{n!}e^tdt
+\neea
+%
+here we need to take a limit of a factorial, there are a few tricks we can use. In general if we have say $C^n/n!$ with $C < n$
+%
+\nbea
+\frac{C^n}{n!} = \frac{C}{1} \cdot \frac{C}{2} \cdot \frac{C}{3} \cdots \frac{C}{n} < \frac{C}{1} \cdot \frac{C}{2} \cdot \frac{C}{3} \cdots \cdot \frac{C}{C} \cdot \frac{C}{C+1} \cdot \frac{C}{C+1} \cdots \frac{C}{C+1}
+\neea
+%
+so we replace the denominators starting from $> C$ into $C+1$ as $C$ is constant
+%
+\nbea
+\frac{C}{1} \cdot \frac{C}{2} \cdot \frac{C}{3} \cdots \cdot \frac{C}{C} \cdot \frac{C}{C+1} \cdot \frac{C}{C+1} \cdots \frac{C}{C+1} & = & \frac{C^C}{C!} \left ( \frac{C}{C+1} \right )^{n-C}
+\neea
+%
+and so
+%
+\nbea
+\frac{C^n}{n!} < \frac{C^C}{C!} \left ( \frac{C}{C+1} \right )^{n-C}
+\neea
+%
+and as $n \to \infty$, $\left ( \frac{C}{C+1} \right )^{n-C} \to 0$
+
+For our case the numerator is $0 \le t \le 1/k \to 0 \le kt \le 1$, so our $C$ here is at most 1 and it is guaranteed to be $< n$ therefore just like the argument above the limit of the whole thing is zero.
+
+We can also use Stirling's approximation $n! \sim \sqrt{2\pi n}(n/e)^n$ in this way our original problem becomes
+%
+\nbea
+\frac{(kt)^n (kt - 1)^n}{n!} & \sim & \left ( \frac{(kt) (kt - 1)}{n} \right )^n 
+\neea
+%
+the limit of the bracket itself is already zero, $\lim_{n\to\infty}\left ( \frac{(kt) (kt - 1)}{n} \right ) = 0$, therefore the whole thing is also zero.
+
+One last thing to do,
+%
+\nbea
+\lbrack a_0, a_1, \dots \rbrack = \lim_{n \to \infty} \frac{p_{3n}}{q_{3n}} & = & \lim_{n \to \infty} \left ( e^{1/k} - \frac{T_n}{q_3n}\right ) = e^{1/k} - 0
+\neea
+%
+and we are done! :)
 
 {\bf Problem 5.7}. Let $d$ be an integer that is coprime to 10. Prove that the decimal
 expansion of $\frac{1}{d}$ has a period equal to the order of 10 modulo $d$. (Hint:
@@ -5144,6 +5345,16 @@ Y^2 = X^3 + b'X + c'
 \neea
 %
 for some integers $b',c'$ and here lies the problem, we need to divide by 3 to get to this form but characteristic 3 means that $3 \equiv 0$ so we obviously can't divide by 3
+
+Another (more lowbrow) way to see this is that if you take the derivative of $y^2 = x^3 + ax + b$ to get the slope at some point $(x_0,y_0)$ we will get something like
+%
+\nbea
+\frac{dy^2}{dx} = \frac{dy^2}{dy}\frac{dy}{dx} & = & 2y\frac{dy}{dx} \\
+\to \frac{dy}{dx} & = & \frac{1}{2y} \frac{dy^2}{dx} \\
+& = & \frac{3x^2 + a}{2y}
+\neea
+%
+and so the gradient at point $(x_0,y_0)$ is $(3x_0^2 + a)/(2y_0)$ but if the field has characteristic 3 then $3 \equiv 0$ and $(3x_0^2 + a)/(2y_0) \to a/(2y_0)$ but at the roots we have big problems because $y = 0$ and the gradient doesn't exist
 
 {\bf Problem 6.1}. Write down an equation $y^2 = x^3 + ax + b$ over a field $K$ such that
 $-16(4a^3 +27b^2 ) = 0$. Precisely what goes wrong when trying to endow the set $E(K) = \{(x, y) \in K \times K : y^2 = x^3 + ax + b\} \cup \{\mathcal{O}\}$ with a group structure?
