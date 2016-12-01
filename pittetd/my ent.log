@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  29 NOV 2016 22:06
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  30 NOV 2016 20:40
 entering extended mode
 **"D:/Github/string/pittetd/my ent.tex"
 ("D:/Github/string/pittetd/my ent.tex"
@@ -765,10 +765,10 @@ LaTeX Warning: No positions in optional float specifier.
 [143] [144] [145] [146]
 File: singular_curve.png Graphic file (type QTm)
  <use  "singular_curve.png" > [147] [148] ("my ent.bbl") [149]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 5468.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 5472.
  ("my ent.aux")
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 5468.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 5468.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 5472.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 5472.
  ) 
 Here is how much of TeX's memory you used:
  13367 strings out of 428755
