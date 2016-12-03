@@ -5460,39 +5460,6 @@ which is point at $(1.29, 0.383)$, very close to zero, see Fig.~\ref{fig:Problem
 \end{figure}
 %
 
-{\bf Problem 6.8}. Suppose $a, b, c$ are relatively prime integers with $a^2 + b^2 = c^2$ . Then there exist integers $x$ and $y$ with $x > y$ such that $c = x^2 + y^2$ and
-either $a = x^2 - y^2 , b = 2xy$ or $a = 2xy, b = x^2 - y^2$.
-
-Since $a, b, c$ are relatively prime then $a$ and $b$ must not be both even. Can they be both odd? The answer is no because if we express them in modulo 4, a square can only be 0 or 1 modulo 4 and a sum of two odd squares would amount to 2 modulo 4, however, 2 is not a quadratic residue modulo 4.
-
-Thus $a$ and $b$ must be of opposite parities (\ie one is odd and the other even), we then proceed by taking $b$ as odd (which doesn't affect the final result)
-%
-\nbea
-a^2 + b^2 & = & c^2 \\
-\to a^2 & = & c^2 - b^2 \\
-& = & (c + b)(c - b)
-\neea
-%
-since $c$ and $b$ are both odd we can express $2u = c+b, 2v = c-b \to c = u+v, b = u - v$ therefore $\gcd(u,v)=1$ because otherwise $c$ and $b$ would not be coprime.
-
-Since $u$ and $v$ are coprime they must be perfect squares because $a^2 = 4uv$, \ie $u = x^2, v = y^2$ and
-%
-\nbea
-a^2 & = & 4x^2y^2 \\
-a & = & 2xy
-\neea
-%
-substituting this into
-%
-\nbea
-c & = & u + v \\
-& = & x^2 + y^2 \\
-b & = & u - v \\
-& = & x^2 - y^2
-\neea
-%
-and we are done (we can always $a \leftrightarrow b$ to get the other result). One small note is that $\gcd(x,y)=1$ because otherwise $a,b,c$ would not be coprime.
-
 {\bf Problem 6.3}. Let $E$ be the elliptic curve over the ﬁnite ﬁeld $K = \mathbb{Z}/5\mathbb{Z}$ deﬁned by the equation
 %
 \nbea
@@ -5549,8 +5516,120 @@ To find this ``primitive root'' we need to see if it can cover the whole 9 eleme
 \end{table}
 %
 
-{\bf Problem 6.7}. Suppose $y^2 = x^3 +ax+b$ with $a, b \in \mathbb{Q}$ defines an elliptic curve. Show that there is another equation $Y^2 = X^3 + AX + B$ with $A, B \in \mathbb{Z}$
-whose solutions are in bijection with the solutions to $y^2 = x^3 +ax+b$.
+{\bf Problem 6.4}. Let $E$ be the elliptic curve defined by the equation $y^2 = x^3 + 1$. For each prime $p \ge 5$, let $N_p$ be the cardinality of the group $E(\mathbb{Z}/p\mathbb{Z})$ of points on this curve having coordinates in $\mathbb{Z}/p\mathbb{Z}$. For example, we have that $N_5 = 6, N_7 = 12, N_{11} = 12, N_{13} = 12, N_{17} = 18, N_{19} =12, \dots , N_{23} = 24$, and $N_{29} = 30$ (you do not have to prove this).
+
+(a) For the set of primes satisfying $p \equiv 2 \pmod{3}$, can you see a pattern for the values of $N_p$ ? Make a general conjecture for the value of $N_p$ when $p \equiv 2 \pmod{3}$.
+
+(b) (*) Prove your conjecture.
+
+(a) Cardinality is the order, \ie the number of elements of the group which in this case is denoted by $N_p$. From the list of $N_p$ given in the problem it looks like when $p \equiv 2 \pmod{3}$, $N_p = p+1$
+
+(b) Note that the point at infinity, $\mathcal{O}$, is always a member so there are $p$ numerical members of the group. And to proceed we will definitely need the hint, I wouldn't expect automorphism or bijection to play a part here :)
+
+First, the automorphism, the object of interest this time is the unity group $(\mathbb{Z}/p\mathbb{Z})^*$. Since this is a group the automorphism in question is just an isomorphism (a bijective morphism) from a group to itself, basically $x^3$ on $(\mathbb{Z}/p\mathbb{Z})^*$ is a bijection.
+
+Now why is it the case that $x^3$ is a bijection? First we need to note that since $p$ is prime $(\mathbb{Z}/p\mathbb{Z})^*$ contains primitive roots, pick one of them say $g$. We can then list the members of $(\mathbb{Z}/p\mathbb{Z})^*$ as different powers of $g$
+%
+\nbea
+g^1, g^2, g^3, \dots, g^{p-1}
+\neea
+%
+where $g^{p-1} \equiv 1$.
+
+{\bf Proposition 6.4.1}. Now $p \equiv 1 \pmod{3}$ (prime $p \equiv 0 \pmod{3}$ is an impossibility unless $p = 3$ but here $p \ge 5$) means that $p-1 \equiv 0 \pmod{3} = 3m$. The next important ingredient is to realize that two members of $(\mathbb{Z}/p\mathbb{Z})^*$, $g^a$ and $g^b$ are the same iff $a \equiv b \pmod{p-1}$.
+
+For $p \equiv 1 \pmod{3} \to p-1 = 3m$, two cube of its members $g^{3a}$ and $g^{3b}$ are the same iff
+%
+\nbea
+3a & \equiv & 3b \pmod{3m} \\
+\bcancel{3}a & = & \bcancel{3}b + \bcancel{3}m\cdot k \\
+a & \equiv & b \pmod{m}
+\neea
+%
+So the cube, $g^{3a}$ and $g^{3b}$, of two members of $(\mathbb{Z}/p\mathbb{Z})^*$ with $p = 3m + 1$ are the same iff $a \equiv b \pmod{m}$. Now note that $a,b$ run from $1,\dots, 3m$.
+
+This means that $x^3$ maps to only $m$ different values if $p = 3m+1$.
+
+Back to our problem at hand, $p = 3m + 2$ and two cubes $g^{3a}$ and $g^{3b}$ can only be the same iff
+%
+\nbea
+3a & \equiv & 3b \pmod{3m + 1} \\
+3 (a - b) & = & (3m+1)k
+\neea
+%
+Now $\gcd(3,3m+1) = 1$ therefore since $(3m+1)|3(a-b)$ it must be that $(3m+1)|(a-b)$ but this is not possible as $a,b$ run from $1, \dots, 3m+1$ so their (absolute) difference must be smaller than $3m+1$ therefore no two cube members $g^{3a}$ and $g^{3b}$ of $(\mathbb{Z}/p\mathbb{Z})^*$ with $p = 3m + 2$ can be the same.
+
+This means that $x^3$ maps to $3m+1$ different numbers and thus $x^3$ is an automorphism on $(\mathbb{Z}/p\mathbb{Z})^*$ with $p = 3m + 1$. Since $x^3$ is a bijection on the unity group $(\mathbb{Z}/p\mathbb{Z})^*$, $x^3 + 1$ maps $1, 2, \dots, p-1$ to $2, 3, \dots, p-1, p \equiv 0$.
+
+Therefore $x^3 + 1$ applied on $\mathbb{Z}/p\mathbb{Z}$ will map $0, 1, 2, \dots, p-1$ to $1, 2, 3, \dots, p-1, p \equiv 0$ and so every member of $\mathbb{Z}/p\mathbb{Z}$ is covered in a bijective way.
+
+Furthermore, we know that every member, $w$, of the unity group $(\mathbb{Z}/p\mathbb{Z})^*$ that is an even power of a primitive root, $w \equiv g^{2n}$, is a quadratic residue, therefore there are $\frac{(p-1)}{2}$ quadratic residues.
+
+Thus since $y^2 = x^3 + 1$ there are $\frac{(p-1)}{2}$ different values of $y^2$ and $2 \times \frac{(p-1)}{2} = p-1$ different values of $y$. Then there's also $y^2 = (-1)^3 + 1 = 0$, so that's one more value of $y$ and finally $\mathcal{O}$ itself so in total there are $N_p = (p - 1) + 1 + 1 = p + 1$ solutions.
+
+{\bf Problem 6.7}. Suppose $y^2 = x^3 +ax+b$ with $a, b \in \mathbb{Q}$ defines an elliptic curve. Show that there is another equation $Y^2 = X^3 + AX + B$ with $A, B \in \mathbb{Z}$ whose solutions are in bijection with the solutions to $y^2 = x^3 +ax+b$.
+
+First, let $a = r/s,~b = u/v$. The next question is whether $x,y$ themselves are rationals or real numbers, the same goes with $X,Y$ whether they are integers or real numbers, well we shall see, for starter let's assume $x,y \in \mathbb{Q},~~ x \to x/x', y \to y,y' $ then
+%
+\nbea
+y^2 & = & x^3 +ax+b \\
+\to \left (\frac{y}{y'} \right )^2 & = & \left ( \frac{x}{x'} \right )^3 +\frac{r}{s}\frac{x}{x'}+\frac{u}{v}
+\neea
+%
+to change the $a,b$ coefficient to integers we need to multiply both sides by the common denominator and here the common denominator is $(y'^2x'^4sv)$. The goal then is to absorb it into $y$ and $x$. For $y$ we need something to an even power while for $x$ we need something to a power of multiple of three, the easiest choice would be to multiply both sides with $(y'^2x'^4sv)^{2\times3=6}$
+%
+\nbea
+(y'^2x'^4sv)^6 \left (\frac{y}{y'} \right )^2 & = & (y'^2x'^4sv)^6 \left ( \frac{x}{x'} \right )^3 + (y'^2x'^4sv)^6 \frac{r}{s}\frac{x}{x'} + (y'^2x'^4sv)^6 \frac{u}{v} \\
+(y'^5x'^2s^3v^3~y)^2 & = & (y'^4 x'^7 s^2 v^2~x)^3 + (y'^8x'^{16} s^3 v^4) \cdot (y'^4 x'^7 s^2 v^2~x) + (y'^{12}x'^{24} s^6 v^5 u) \\
+\to Y'^2 & = & X'^3 + A'X' + B'
+\neea
+%
+The above almost works except that  $A', B'$ are now no longer constant because they depend on $x', y'$ and this cannot be.
+
+Therefore we cannot restrict $X,Y$ to be integers (and hence there shouldn't be any restriction on $x,y$ either although if $x,y$ are rationals so will be $X,Y$).
+
+If we repeat the above process but this time only multiplying by $(sv)^{2\times3=6}$ we get
+%
+\nbea
+(sv)^6 y^2 & = & (sv)^6 x^3 + (sv)^6 \frac{r}{s}x + (sv)^6 \frac{u}{v} \\
+(s^3v^3~y)^2 & = & (s^2 v^2~x)^3 + (s^3 v^4) \cdot (s^2 v^2~x) + (s^6 v^5 u) \\
+\to Y^2 & = & X^3 + AX + B
+\neea
+%
+where $Y = s^3v^3~y, ~ X = s^2 v^2~x, ~ A = s^3 v^4$, and $B = s^6 v^5 u$ and this is clearly a bijection :)
+
+{\bf Problem 6.8}. Suppose $a, b, c$ are relatively prime integers with $a^2 + b^2 = c^2$ . Then there exist integers $x$ and $y$ with $x > y$ such that $c = x^2 + y^2$ and
+either $a = x^2 - y^2 , b = 2xy$ or $a = 2xy, b = x^2 - y^2$.
+
+Since $a, b, c$ are relatively prime then $a$ and $b$ must not be both even. Can they be both odd? The answer is no because if we express them in modulo 4, a square can only be 0 or 1 modulo 4 and a sum of two odd squares would amount to 2 modulo 4, however, 2 is not a quadratic residue modulo 4.
+
+Thus $a$ and $b$ must be of opposite parities (\ie one is odd and the other even), we then proceed by taking $b$ as odd (which doesn't affect the final result)
+%
+\nbea
+a^2 + b^2 & = & c^2 \\
+\to a^2 & = & c^2 - b^2 \\
+& = & (c + b)(c - b)
+\neea
+%
+since $c$ and $b$ are both odd we can express $2u = c+b, 2v = c-b \to c = u+v, b = u - v$ therefore $\gcd(u,v)=1$ because otherwise $c$ and $b$ would not be coprime.
+
+Since $u$ and $v$ are coprime they must be perfect squares because $a^2 = 4uv$, \ie $u = x^2, v = y^2$ and
+%
+\nbea
+a^2 & = & 4x^2y^2 \\
+a & = & 2xy
+\neea
+%
+substituting this into
+%
+\nbea
+c & = & u + v \\
+& = & x^2 + y^2 \\
+b & = & u - v \\
+& = & x^2 - y^2
+\neea
+%
+and we are done (we can always $a \leftrightarrow b$ to get the other result). One small note is that $\gcd(x,y)=1$ because otherwise $a,b,c$ would not be coprime.
 
 {\bf Problem 6.9} (*) Fermat’s Last Theorem for exponent $4$ asserts that any solution to the equation $x^4 + y^4 = z^4$ with $x, y, z \in \mathbb{Z}$ satisfies $xyz = 0$. Prove Fermat’s Last Theorem for exponent $4$, as follows.
 
@@ -5681,9 +5760,56 @@ where $\xi = n'(m'^2-f'^2)d$, now since $z = m^2 - n^2$ and $y = 2ef$ it means t
 
 In the above if $d = \gcd(m,f)>1$ is true, we can just divide all terms $m,f,\xi$ by $d$ and the argument about infinite descent will still stand.
 
+{\bf Problem 6.10}. This problem requires a computer.
 
+(a) Show that the set of numbers $59 + 1 \pm s$ for $s \le 15$ contains 14 numbers that are $B$-power smooth for $B = 20$.
 
+(b) Find the proportion of primes $p$ in the interval from $10^{12}$ and $10^{12} + 1000$ such that $p - 1$ is $B = 10^5$ power smooth.
 
+(a) I don't really quite get the point of $59 + 1$, isn't it just $60$? \dunno Well, the set of numbers here is 45 to 75. Writing the code to do this is quite straightforward, and it was the first time I did coding on Maxima, here's the code
+%
+\begin{verbatim}
+t:0;
+for j:(59+1-15) thru (59+1+15) do
+block(
+    a:ifactors(j),
+    b:0,
+    block(
+        for k:1 thru length(a) do
+        block(
+            if (a[k][1]^a[k][2] > 20) then b:1
+        )
+    ),
+    if (b = 0) then 
+    block(
+        display(j),
+        t:t+1
+    )  
+);
+display(t);
+\end{verbatim}
+%
+In the above code the variable $t$ is the total number of $B$-smooth numbers and $b$ is a just a flag that is set when a number is not $B$-smooth. I have used the function $ifactors$ to factorize a number, the result of this function call is as follows, \eg $ifactors(43) = \lbrack\lbrack2,1\rbrack,\lbrack23,1\rbrack\rbrack$ which means $43 = 2^1 \cdot 23^1$
+
+(b) There are 140 out of 1001 numbers that are $B$-smooth, the code (using the same convention as part (a)) is as follows
+\begin{verbatim}
+t:0;
+for i:1000000000000 thru (1000000000000+1000) do
+block(
+    a:ifactors(i),
+    b:0,
+    for j:1 thru length(a) do
+    block(
+        if (a[j][1]^a[j][2] > 100000) then b:1
+    ),
+    if (b = 0) then 
+    block (
+        display(i),
+        t:t+1
+    )
+);
+display(t);
+\end{verbatim}
 
 
 
