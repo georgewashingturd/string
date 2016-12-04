@@ -5716,7 +5716,7 @@ b & = & u - v \\
 %
 and we are done (we can always $a \leftrightarrow b$ to get the other result). One small note is that $\gcd(x,y)=1$ because otherwise $a,b,c$ would not be coprime.
 
-{\bf Problem 6.9} (*) Fermat’s Last Theorem for exponent $4$ asserts that any solution to the equation $x^4 + y^4 = z^4$ with $x, y, z \in \mathbb{Z}$ satisfies $xyz = 0$. Prove Fermat’s Last Theorem for exponent $4$, as follows.
+{\bf Problem 6.9} (*) Fermat's Last Theorem for exponent $4$ asserts that any solution to the equation $x^4 + y^4 = z^4$ with $x, y, z \in \mathbb{Z}$ satisfies $xyz = 0$. Prove Fermat’s Last Theorem for exponent $4$, as follows.
 
 (a) Show that if the equation $x^2 + y^4 = z^4$ has no integer solutions with $xyz \neq 0$, then Fermat’s Last Theorem for exponent 4 is true.
 
@@ -5814,10 +5814,10 @@ y = \bcancel{2}mn & = & \bcancel{2}ef
 From $ef = mn$ we have
 %
 \nbea
-m & = & dm' \\
-f & = & df' \\
-n & = & f' n' \\
-e & = & m'n'
+\begin{array}{r c l c r c l}
+m & = & dm' & ~~~~~~~~~~~~~~~ & n & = & f' n'\\
+f & = & df' & ~~~~~~~~~~~~~~~ & e & = & m'n'
+\end{array}
 \neea
 %
 which means that $\gcd(m,f) = d$ and $\gcd(e,n) = n'$, of course $d$ or $n'$ can be 1 but they cannot both be 1 at the same time because if they are then $e = m, f = n$ and 
@@ -5829,7 +5829,16 @@ m^2 - n^2 & = & m^2 + n^2 \\
 \to n & = & 0
 \neea
 %
-which also means that $y=0$ a trivial solution. Now for a nontrivial solution
+which also means that $y=0$ a trivial solution. The same can be said for $\gcd(m,e) = m'$ and $\gcd(f,n) = f'$, they both can't be 1 because otherwise $f = m$ and $e = n$ causing
+%
+\nbea
+z = e^2 - f^2 & = & n^2 - m^2 = m^2 + n^2 \\
+\to m & = & 0
+\neea
+%
+
+
+Now for a nontrivial solution
 %
 \nbea
 z = e^2 - f^2 & = & m^2 + n^2 \\
@@ -5851,7 +5860,7 @@ In the above if $d = \gcd(m,f)>1$ is true, we can just divide all terms $m,f,\xi
 
 (b) Find the proportion of primes $p$ in the interval from $10^{12}$ and $10^{12} + 1000$ such that $p - 1$ is $B = 10^5$ power smooth.
 
-(a) I don't really quite get the point of $59 + 1$, isn't it just $60$? \dunno Well, the set of numbers here is 45 to 75. Writing the code to do this is quite straightforward, and it was the first time I did coding on Maxima, here's the code
+(a) I don't really quite get the point of $59 + 1$, isn't it just $60$? \dunno ~~Well, the set of numbers here is 45 to 75. Writing the code to do this is quite straightforward, and it was the first time I did coding on Maxima, here's the code
 %
 \begin{verbatim}
 t:0;
@@ -5874,9 +5883,9 @@ block(
 display(t);
 \end{verbatim}
 %
-In the above code the variable $t$ is the total number of $B$-smooth numbers and $b$ is a just a flag that is set when a number is not $B$-smooth. I have used the function $ifactors$ to factorize a number, the result of this function call is as follows, \eg $ifactors(43) = \lbrack\lbrack2,1\rbrack,\lbrack23,1\rbrack\rbrack$ which means $43 = 2^1 \cdot 23^1$
+In the above code the variable $t$ is the total number of $B$-smooth numbers and $b$ is a just a flag that is set when a number is not $B$-power smooth. I have used the function $ifactors$ to factorize a number, the result of this function call is as follows, \eg $ifactors(43) = \lbrack\lbrack2,1\rbrack,\lbrack23,1\rbrack\rbrack$ which means $43 = 2^1 \cdot 23^1$
 
-(b) There are 140 out of 1001 numbers that are $B$-smooth, the code (using the same convention as part (a)) is as follows
+(b) There are 140 out of 1001 numbers that are $B$-power smooth, the code (using the same convention as part (a)) is as follows
 \begin{verbatim}
 t:0;
 for i:1000000000000 thru (1000000000000+1000) do
