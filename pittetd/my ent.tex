@@ -4741,6 +4741,134 @@ the same goes with $r_{3n-1}$ and $r_{3n-2}$
 
 {\bf Page 109}, ``the boundary condition is 0'', in physics we usually say the boundary terms are 0, this is the $uv$ term you get when integrating $\int udv$ by parts
 
+{\it A side note}, as mentioned a couple of times in the book, $\pi$ does not have the same simple and regular continued fraction and therefore the method used here to prove that $e$ is irrational does not work with $\pi$. Lambert's proof (reproduced from http://www.pi314.net/eng/lambert.php) that $\pi$ is irrational does utilize continued fraction but it's a different one, he used a continued fraction expansion for $\tan(x)$
+%
+\nbea
+\tan(x) & = & \frac{x}{1 - \frac{x^2}{3 - \frac{x^2}{5 - \frac{x^2}{7 - \frac{1}{\ldots}}}}}
+\neea
+%
+Notice that we are using subtraction instead of addition for the continued fraction and the the numerators are $x$ and $x^2$ instead of $1$. You can derive the above by noting that
+%
+\nbea
+\tan(x) = \frac{\sin(x)}{\cos(x)} & = & \frac{\sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{(2n + 1)!} }{\sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n)!}} = \frac{x \cdot \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n + 1)!} }{\sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n)!}} \\
+& = & \frac{x}{\left ( \frac{\sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n)!}}{\sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n + 1)!}} \right )}
+\neea
+%
+We then expand the denominator as $1 + \Delta_1$ but first note that
+%
+\nbea
+\sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n)!} & = & \sum_{n=0}^{\infty} \frac{(-1)^n (2n + 1) x^{2n}}{(2n+1)!} \\
+& = & \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n+1)!} + \sum_{n=0}^{\infty} \frac{(-1)^n (2n) x^{2n}}{(2n+1)!} \\
+& = & \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n+1)!} + \sum_{n=1}^{\infty} \frac{(-1)^n (2n) x^{2n}}{(2n+1)!}
+\neea
+%
+the second term in RHS starts with $2n = 2\cdot 0 = 0$ and so we can start with $n=1$
+%
+\nbea
+\frac{\sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n)!}}{\sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n + 1)!}} & = & \frac{\sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n+1)!} + \sum_{n=1}^{\infty} \frac{(-1)^n (2n) x^{2n}}{(2n+1)!}}{\sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n + 1)!}} \\
+& = & 1 + \frac{\sum_{n=1}^{\infty} \frac{(-1)^n (2n) x^{2n}}{(2n+1)!}}{\sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n + 1)!}} \\
+& = & 1 + \frac{-x^2 \cdot \sum_{n=1}^{\infty} \frac{(-1)^{n-1} (2n) x^{2n-2}}{(2n+1)!}}{\sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n + 1)!}}
+\neea
+%
+changing the starting point of $n=1 \to n=0$ for the second term
+%
+\nbea
+1 + \frac{-x^2 \cdot \sum_{n=1}^{\infty} \frac{(-1)^{n-1} (2n) x^{2n-2}}{(2n+1)!}}{\sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n + 1)!}} & = & 1 -x^2 \cdot \frac{\sum_{n=0}^{\infty} \frac{(-1)^{n} (2n+2) x^{2n-1}}{(2n+3)!}}{\sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n + 1)!}} \\
+& = & 1 - \frac{x^2}{\left ( \frac{\sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n + 1)!}}{\sum_{n=0}^{\infty} \frac{(-1)^{n} (2n+2) x^{2n-1}}{(2n+3)!}} \right )}
+\neea
+%
+collecting what we have
+%
+\nbea
+\frac{x}{\left ( \frac{\sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n)!}}{\sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n + 1)!}} \right )} & = & \frac{x}{1 - \frac{x^2}{\left ( \frac{\sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n + 1)!}}{\sum_{n=0}^{\infty} \frac{(-1)^{n} (2n+2) x^{2n-1}}{(2n+3)!}} \right )}}
+\neea
+%
+We can repeat the same game but this time with
+%
+\nbea
+\sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n + 1)!} & = & \sum_{n=0}^{\infty} \frac{(-1)^n (2n + 3)(2n + 2) x^{2n}}{(2n + 3)!} \\
+& = & \sum_{n=0}^{\infty} \frac{(-1)^n (3)(2n + 2) x^{2n}}{(2n + 3)!} + \sum_{n=0}^{\infty} \frac{(-1)^n (2n)(2n + 2) x^{2n}}{(2n + 3)!} \\
+& = & 3 \cdot \sum_{n=0}^{\infty} \frac{(-1)^n (2n + 2) x^{2n}}{(2n + 3)!} + \sum_{n=1}^{\infty} \frac{(-1)^n (2n)(2n + 2) x^{2n}}{(2n + 3)!}
+\neea
+%
+where we have shifted the starting point of the second term to $n=1$ since it contains $(2n)$ in the numerator and we now see how we get $3$ for the next iteration of the contunued fraction and everytime we shift the starting point back to $n=0$ we will have to substitute $n+1$ for $n$ and we will get $(2n)(2n + 2) \to (2n + 2)(2n + 4)$ and $(2n + 3)! \to (2n + 5)!$ and so in the next iteration we will get 5 as the constant and so on ...
+
+Once we get this Lambert's proof goes on to show that if $\tan(x)$ is rational then $x$ is irrational, for $x = \pi$ we know that $\tan(\pi) = 0$ and so
+%
+\nbea
+0 = \tan(\pi) & = & \frac{\pi}{1 - \frac{\pi^2}{3 - \frac{\pi^2}{5 - \frac{\pi^2}{7 - \frac{1}{\ldots}}}}}
+\neea
+%
+this means that the denominator must be infinite since the numerator is finite, \ie
+%
+\nbea
+1 - \frac{\pi^2}{3 - \frac{\pi^2}{5 - \frac{\pi^2}{7 - \frac{1}{\ldots}}}} & = & \infty
+\neea
+%
+this in turn means that the denominator is zero
+%
+\nbea
+3 - \frac{\pi^2}{5 - \frac{\pi^2}{7 - \frac{1}{\ldots}}} & = & 0 \\
+\to 3 & = & \frac{\pi^2}{5 - \frac{\pi^2}{7 - \frac{1}{\ldots}}} \\
+\frac{3}{\pi^2} & = & \frac{1}{5 - \frac{\pi^2}{7 - \frac{1}{\ldots}}}
+\neea
+%
+
+To proof that the above is irrational we need the following, an infinite (and convergent) continued fraction of the form 
+%
+\nbea
+\frac{a_1}{b_1 + \frac{a_2}{b_2 + \frac{a_3}{b_3 + \frac{a_4}{\ldots}}}}
+\neea
+%
+is irrational if at some $i = j,~|a_i| < |b_i|$ for all $i \ge j$
+
+{\it Proof}. If at $i = j$, $|a_j| < |b_j|$ then $\left | \frac{a_j}{b_j} \right | < 1$ and thus $\sign\left ( \frac{a_{j}}{b_{j}} \right ) = \sign \left ( \frac{a_{j}}{b_{j} + \frac{a_{j+1}}{b_{j+1}}}\right )$ since $\left | \frac{a_{j+1}}{b_{j+1}} \right | < 1$ for the same reason, continuing to infinity we see that
+%
+\nbea
+\sign\left ( \frac{a_{j}}{b_{j} + \frac{a_{j+1}}{b_{j+1} + \frac{a_{j+2}}{\ldots}}}\right ) & = & \sign\left ( \frac{a_{j}}{b_{j}} \right )
+\neea
+%
+Another thing to note is that since $|a_{j+1}| < |b_{j+1}| \to |a_j| < \left | b_j + \frac{a_{j+1}}{b_{j+1}} \right |$ and therefore $\left | \frac{a_j}{b_j + \frac{a_{j+1}}{b_{j+1}}}\right | < 1$. And this trends continue for all $i > j$ therefore
+%
+\nbea
+\left | \frac{a_{j}}{b_{j} + \frac{a_{j+1}}{b_{j+1} + \frac{a_{j+2}}{\ldots}}}\right | & < & 1
+\neea
+%
+another interesting consequence is that $\left | \frac{a_i}{b_i + \frac{a_{i+1}}{\ldots}} \right | < 1$ for all $i > j$
+
+So say
+%
+\nbea
+\frac{a_{j}}{b_{j} + \frac{a_{j+1}}{b_{j+1} + \frac{a_{j+2}}{\ldots}}} & = & x = \frac{p}{q}
+\neea
+%
+\ie starting from $i = j$ the sub continued fraction is a rational number $x = p/q$ with $p,q \in \mathbb{Z}$. Since $|x| < 1$ (due to $|a_j| < |b_j|$) then $|p| < |q|$
+%
+\nbea
+x = \frac{p}{q} & = & \frac{a_{j}}{b_{j} + p_1} \\
+\to p_1 & = & \frac{qa_{j+1} - pb_{j+1}}{p} = \frac{r}{p}
+\neea
+%
+since $p_1 = \frac{a_{j+1}}{b_{j+1} + \frac{a_{j+2}}{\ldots}}$ according to the result above since $|p_1| < 1$ and therefore $|r| < |p| < |q|$. If we continue this trend
+%
+\nbea
+p_1 = \frac{r}{p} & = & \frac{a_{j+1}}{b_{j+1} + p_2}
+\neea
+%
+we will see that $p_2 = s/r$ with $|p_2| < 1$ and $|s| < |r| < |p| < |q|$ and we will arrive at an infinite descent (recall that $s,r,p,q,\ldots \in \mathbb{Z}$), this is clearly a contradiction and $x$ must therefore be irrational. Now if the sub continued fraction is irrational the the full continued fraction is also irrational since $a_1, b_1, a_2, b_2, \ldots, a_{j-1}, b_{j-1}$ are all integers.
+
+Going back to our $\pi$ at hand we have
+%
+\nbea
+\frac{3}{\pi^2} & = & \frac{1}{5 - \frac{\pi^2}{7 - \frac{1}{\ldots}}}
+\neea
+%
+and starting from $b_j = 11 > a_j = \pi^2$ and therefore the RHS is irrational but the LHS is $3/\pi^2$ and $3$ is clearly rational, therefore $\pi^2$ is irrational and $\pi$ has to be irrational as well. The only gap in the proof above is that we need to show that continued fraction expansion of $\tan(x)$ converges to $\tan(x)$ itself.
+
+Note that we can't use Proposition 5.3.12 that says that the continued fraction of a rational number terminates to prove that $\pi$ is irrational because we don't know whether the continued fraction of $\pi$ terminates or not.
+
+Next, we cannot use Proposition 5.3.12 on the above proof by saying that since the continued fraction of $\tan(x)$ is infinite it must be irrational, \eg as a counter example $\tan(\pi/4) = 1$ is rational even though the continued fraction is infinite this is because it's of a different kind of continued fraction where the numerators are not always $1$ and it uses subtraction in the denominator instead of addition.
+
 {\bf Page 111}, {\it Definition 5.5.1}, a quadratic irrational is an irrational number that is a solution to a quadratic equation with rational coefficients, thus it is a number of the form
 %
 \nbea
@@ -6037,14 +6165,5 @@ One thing I learned doing this book is that the best solution is almost always a
 I feel that Victor Shoup's book is better that it proves theorems through a numerical approach rather than just using a bag of tricks that work so in some sense you can get some understanding and his book is a lot longer than this one and hence contains more details.
 
 I almost stopped doing this book at Chapter four since as I explained in the abstract paragraph that Chapter four presents a clear conceptual break, unfortunately, my Clevo laptop that has this amazing 4k screen with high color gamut broke down and I had more free time, who knew ...... well, that's all folks :)
-
-
-
-
-
-
-
-
-
 
 \end{document}
