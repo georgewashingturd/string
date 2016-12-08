@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2016.3.16)  6 DEC 2016 23:25
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2016.3.16)  7 DEC 2016 21:10
 entering extended mode
 **"D:/Github/string/pittetd/my ent.tex"
 ("D:/Github/string/pittetd/my ent.tex"
@@ -630,20 +630,24 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 493.
  [10] [11] [12]
-[13] [14] [15]
-Overfull \hbox (5.66809pt too wide) in alignment at lines 700--703
+[13]
+Requested font "cmtt12" at 12.0pt
+ [14] [15] [16] [17]
+Missing character: There is no − in font cmr12!
+
+Overfull \hbox (5.66809pt too wide) in alignment at lines 810--813
  [][][] []
  []
 
-[16] [17]
+[18] [19] [20]
 Requested font "cmex7" at 5.0pt
 Requested font "msam5" at 5.0pt
 Requested font "msbm5" at 5.0pt
 Requested font "cmbx5" at 5.0pt
 Requested font "cmmib5" at 5.0pt
 Requested font "cmbsy5" at 5.0pt
- [18] [19]
-Overfull \hbox (5.71852pt too wide) in paragraph at lines 833--836
+ [21]
+Overfull \hbox (5.71852pt too wide) in paragraph at lines 943--946
 \OT1/cmr/m/n/12 because if $\OML/cmm/m/it/12 a$ \OT1/cmr/m/n/12 is an el-e-ment
  of an ideal then $\OMS/cmsy/m/n/12 ^^@\OML/cmm/m/it/12 a$ \OT1/cmr/m/n/12 is a
 lso an el-e-ment. There-fore $\OMS/cmsy/m/n/12 f[] \OML/cmm/m/it/12 ; \OMS/cmsy
@@ -651,15 +655,13 @@ lso an el-e-ment. There-fore $\OMS/cmsy/m/n/12 f[] \OML/cmm/m/it/12 ; \OMS/cmsy
 2 ; \OT1/cmr/m/n/12 2 [] \OMS/cmsy/m/n/12 g$
  []
 
-[20]
-Missing character: There is no ﬁ in font cmr12!
- [21] [22] [23]
-Overfull \hbox (26.38pt too wide) in alignment at lines 975--977
+[22] [23] [24] [25]
+Overfull \hbox (26.38pt too wide) in alignment at lines 1085--1087
  [][][] []
  []
 
-[24] [25] [26] [27] [28] [29]
-Overfull \hbox (23.74635pt too wide) in paragraph at lines 1147--1149
+[26] [27] [28] [29] [30] [31]
+Overfull \hbox (23.74635pt too wide) in paragraph at lines 1257--1259
 []\OT1/cmr/m/n/12 Furthermore, ac-cord-ing to Propo-si-tion 2.5.12.3, the or-de
 r of $\OML/cmm/m/it/12 a$ \OT1/cmr/m/n/12 is given by $\OML/cmm/m/it/12 '\OT1/c
 mr/m/n/12 (\OML/cmm/m/it/12 n\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 = []\OT1/cmr/m/n
@@ -667,24 +669,23 @@ mr/m/n/12 (\OML/cmm/m/it/12 n\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 = []\OT1/cmr/m/n
 /cmm/m/it/12 ; m\OT1/cmr/m/n/12 )$
  []
 
-[30] [31] [32] [33]
-Overfull \hbox (2.00038pt too wide) in paragraph at lines 1309--1311
+[32] [33] [34] [35] [36]
+Overfull \hbox (2.00038pt too wide) in paragraph at lines 1419--1421
 []$[]$\OT1/cmr/m/n/12 . This also makes an-other (more
  []
 
-[34] [35] [36] [37] [38] [39] [40]
+[37] [38] [39] [40] [41] [42] [43]
 Missing character: There is no ’ in font cmr12!
 
-Overfull \hbox (16.43211pt too wide) in alignment at lines 1560--1568
+Overfull \hbox (16.43211pt too wide) in alignment at lines 1670--1678
  [][][] []
  []
 
-[41]
 Missing character: There is no ≤ in font cmr12!
- [42] [43] [44] [45] [46]
+[44] [45] [46] [47] [48] [49]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1806.
+               Default added (so using `tbp') on input line 1916.
 
 Requested font "cmmi10" at 10.95pt
 Requested font "cmsy10" at 10.95pt
@@ -694,99 +695,89 @@ Requested font "msbm10" at 10.95pt
 Requested font "cmbx10" at 10.95pt
 Requested font "cmmib10" at 10.95pt
 Requested font "cmbsy10" at 10.95pt
-[47] [48]
+[50]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1845.
+               Default added (so using `tbp') on input line 1955.
 
 
-Overfull \hbox (2.91867pt too wide) in paragraph at lines 1843--1864
+Overfull \hbox (2.91867pt too wide) in paragraph at lines 1953--1974
 []\OT1/cmr/m/n/12 We can now start con-struct-ing our in-duc-tion proof. We use
  as the base case $\OML/cmm/m/it/12 a[]; a[]; [] ; a[]$
  []
 
+[51]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1869.
+               Default added (so using `tbp') on input line 1979.
 
-[49] [50] [51] [52]
-Missing character: There is no − in font cmr12!
- [53] [54]
-Missing character: There is no − in font cmr12!
-Missing character: There is no − in font cmr12!
-Missing character: There is no − in font cmr12!
- [55]
-Missing character: There is no − in font cmr12!
-Missing character: There is no − in font cmr12!
+[52] [53] [54] [55]
 Missing character: There is no − in font cmr12!
  [56] [57]
 Missing character: There is no − in font cmr12!
- [58] [59] [60] [61] [62] [63]
-[64] [65] [66] [67] [68]
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 2532.
-
-[69] [70] [71] [72] [73]
-Overfull \hbox (39.67409pt too wide) in alignment at lines 2703--2712
- [][][] []
- []
-
-[74] [75] [76] [77] [78]
-Overfull \hbox (14.7608pt too wide) in alignment at lines 2826--2836
- [][][] []
- []
-
-[79] [80] [81] [82] [83] [84] [85]
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 3102.
-
-[86]
-Overfull \hbox (52.48201pt too wide) in alignment at lines 3141--3151
- [][][] []
- []
-
-[87] [88] [89] [90] [91] [92]
-Missing character: There is no ’ in font cmr12!
- [93] [94] [95] [96] [97]
-Missing character: There is no ’ in font cmr12!
- [98] [99] [100] [101]
 Missing character: There is no − in font cmr12!
-
-[102] [103] [104] [105] [106] [107] [108] [109] [110] [111] [112] [113]
-[114] [115] [116] [117] [118]
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 4266.
-
-[119] [120] [121] [122] [123] [124] [125] [126] [127] [128] [129] [130]
-[131] [132] [133] [134] [135] [136] [137]
-Missing character: There is no ﬁ in font cmr12!
- [138] [139] [140] [141] [142]
-[143] [144] [145] [146]
+Missing character: There is no − in font cmr12!
+Missing character: There is no − in font cmr12!
+Missing character: There is no − in font cmr12!
+Missing character: There is no − in font cmr12!
+ [58] [59]
+Missing character: There is no − in font cmr12!
+ [60] [61] [62] [63] [64] [65] [66]
+[67] [68] [69] [70] [71]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 5369.
+               Default added (so using `tbp') on input line 2642.
 
-[147] [148] [149] [150] [151] [152]
+[72] [73] [74] [75] [76]
+Overfull \hbox (39.67409pt too wide) in alignment at lines 2813--2822
+ [][][] []
+ []
+
+[77] [78] [79] [80]
+Overfull \hbox (14.7608pt too wide) in alignment at lines 2936--2946
+ [][][] []
+ []
+
+[81] [82] [83] [84] [85] [86] [87]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 3212.
+
+[88]
+Overfull \hbox (52.48201pt too wide) in alignment at lines 3251--3261
+ [][][] []
+ []
+
+[89] [90] [91] [92] [93] [94] [95] [96] [97] [98] [99] [100] [101] [102]
+[103] [104]
+Missing character: There is no − in font cmr12!
+ [105] [106] [107] [108] [109] [110] [111] [112] [113] [114]
+[115] [116] [117] [118] [119] [120]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 4373.
+
+[121] [122] [123] [124] [125] [126] [127] [128] [129] [130] [131] [132]
+[133] [134] [135] [136] [137] [138] [139] [140] [141] [142] [143] [144]
+[145] [146] [147] [148]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 5476.
+
+[149] [150] [151] [152] [153] [154]
 File: singular_curve.png Graphic file (type QTm)
  <use  "singular_curve.png" >
 Missing character: There is no − in font cmr12!
- [153]
+ [155]
 File: Problem_6_2.png Graphic file (type QTm)
 
-<use  "Problem_6_2.png" >
-Missing character: There is no ﬁ in font cmr12!
-Missing character: There is no ﬁ in font cmr12!
-Missing character: There is no ﬁ in font cmr12!
- [154]
+<use  "Problem_6_2.png" > [156]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 5637.
+               Default added (so using `tbp') on input line 5744.
 
 
-Overfull \hbox (23.91975pt too wide) in paragraph at lines 5635--5652
+Overfull \hbox (23.91975pt too wide) in paragraph at lines 5742--5759
 \OT1/cmr/m/n/12 fore there are 8 el-e-ments shown in Ta-ble []VIII[], $(0\OML/c
 mm/m/it/12 ; \OT1/cmr/m/n/12 1)\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 (0\OML/cmm/m/
 it/12 ; \OT1/cmr/m/n/12 4)\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 (2\OML/cmm/m/it/12
@@ -797,30 +788,25 @@ r/m/n/12 1)\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 (3\OML/cmm/m/it/12 ; \OT1/cmr/m/n
 )\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 (4\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 3)$,
  []
 
-[155]
+[157]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 5661.
+               Default added (so using `tbp') on input line 5768.
 
-[156] [157] [158] [159] [160] [161] [162]
-Missing character: There is no ’ in font cmr12!
-Missing character: There is no ’ in font cmr12!
- [163] [164] [165] [166]
-Requested font "cmtt12" at 12.0pt
- [167]
-[168] [169] [170] ("my ent.bbl") [171]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 6169.
+[158] [159] [160] [161] [162] [163] [164] [165] [166] [167] [168] [169]
+[170] [171] [172] ("my ent.bbl") [173]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 6276.
  ("my ent.aux")
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 6169.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 6169.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 6276.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 6276.
  ) 
 Here is how much of TeX's memory you used:
  13386 strings out of 428721
  184904 string characters out of 3167142
- 293871 words of memory out of 3000000
+ 295927 words of memory out of 3000000
  16627 multiletter control sequences out of 15000+200000
  17030 words of font info for 63 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
  36i,21n,39p,953b,458s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on my ent.pdf (171 pages).
+Output written on my ent.pdf (173 pages).

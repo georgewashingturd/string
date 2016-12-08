@@ -263,7 +263,7 @@ Since they are a subset $\gcd(a,b) \le \gcd(a,b-a)$ as the max element of the su
 
 The next step in the proof is to show that $\gcd(a,b-a) \le \gcd(a,b)$. He did this by replacing $a \to -a$, $b \to b-a$ such that $\gcd(a,b) \to \gcd(-a, b-a)$. He then repeats the reasoning above, every common divisor of $-a$ and $b-a$ is also a divisor of $(b-a) - (-a) = b$ this means that $\gcd(-a,b-a) \le \gcd(-a,b)$ but $\gcd(-a,b-a) = \gcd(a, b-a),~\gcd(-a,b) = \gcd(a,b)$. This completes the proof.
 
-{\bf Lemma 1.1.9, lowbrow version}. The way I'd prove this is straighforward, \ie proof by contradiction. Assume $d = \gcd(a,b) \neq d' = \gcd(a, b-a)$. There are then only two choices, either $d > d'$ or $d < d'$. Start with $d > d'$. Now since $d|a$ and $d|b \to d | b-a$ this means that $d$ is a common divisor of $a$ and $b-a$ which is a contradiction since $d > d'$, \ie no other common divisor should be larger than $d'$, the {\it greatest} common divisor of $a$ and $b-a$.
+{\bf Lemma 1.1.9, lowbrow version}. The way I'd prove this is straightforward, \ie proof by contradiction. Assume $d = \gcd(a,b) \neq d' = \gcd(a, b-a)$. There are then only two choices, either $d > d'$ or $d < d'$. Start with $d > d'$. Now since $d|a$ and $d|b \to d | b-a$ this means that $d$ is a common divisor of $a$ and $b-a$ which is a contradiction since $d > d'$, \ie no other common divisor should be larger than $d'$, the {\it greatest} common divisor of $a$ and $b-a$.
 
 The other way around, $d < d'$, is also a contradiction. Because $d'|a$ and $d'|b-a \to d'|b$, so here we find a common divisor $d'$ of $a,b$ that is greater than the {\it greatest} common divisor $d$! Thus $d$ must be equal to $d'$.
 
@@ -540,6 +540,40 @@ I did it by hand no calculator involved :)
 %
 gcd is $65$!
 
+{\bf Problem 1.2}. Use the prime enumeration sieve to make a list of all primes up to 100.
+
+We can immediately remove all even numbers except for 2 so in the next iteration we remove the multiples of 3 and we get
+%
+\nbea
+\begin{array}{c}
+3,5,7,\bcancel{9},11,13,\bcancel{15},17,19,\bcancel{21},23,25,\bcancel{27},29,31,\bcancel{33},35,37,\bcancel{39},41,43,\bcancel{45},\\
+47,49,\bcancel{51},53,55,\bcancel{57},59,61,\bcancel{63},65,67,\bcancel{69},71,73,\bcancel{75},77,79,\bcancel{81},83,85,\bcancel{87},\\
+89,91,\bcancel{93},95,97,\bcancel{99}
+\end{array}
+\neea
+%
+next we remove the multiples of 5
+%
+\nbea
+\begin{array}{c}
+3,5,7,11,13,17,19,23,\bcancel{25},29,31,\bcancel{35},37,41,43,\\
+47,49,53,\bcancel{55},59,61,\bcancel{65},67,71,73,77,79,83,\bcancel{85},\\
+89,91,\bcancel{95},97
+\end{array}
+\neea
+%
+next we remove the multiples of 7
+%
+\nbea
+\begin{array}{c}
+3,5,7,11,13,17,19,23,29,31,37,41,43,\\
+47,\bcancel{49},53,59,61,67,71,73,\bcancel{77},79,83\\
+89,\bcancel{91},97
+\end{array}
+\neea
+%
+and we are done because the next prime is $11 > \sqrt{100}$, so we needed only 4 rounds to get the prime numbers $\le 100$ using the prime enumeration sieve.
+
 {\bf Problem 1.3} Prove that there are infinitely many primes of the form $6x - 1$.
 
 This closely follows the proof of Proposition 1.2.5. Let
@@ -574,6 +608,67 @@ I'm not sure if we can do the above but
 \neea
 %
 I think that was legal as the first line says that $\lim_{x \to \infty} \pi(x) = \lim_{x \to \infty} x / \log(x)$, \ie as $x$ goes to $\infty$ the two approach the same value. This means that if we divide both sides by the same value we will still get the same limit for both sides.
+
+{\bf Problem 1.5}. Let $\psi(x)$ be the number of primes of the form $4k-1$ that are $\le x$. Use a computer to make a conjectural guess about $\lim_{x\to \infty} \psi(x)/\pi(x)$.
+
+Here's the Maxima code I used to calculate $\psi(x)$
+%
+\begin{verbatim}
+t:0;
+for j:1 thru 10000000 do
+block(
+    a:primep(4*j-1),
+    if (a = true) then 
+    block(
+        t:t+1
+    )  
+);
+display(t);
+\end{verbatim}
+%
+where $t$ holds the total number of primes in the form of $4k - 1$ and $primep(x)$ will return $true$ if $x$ is prime, the result is
+%
+\nbea
+\begin{array}{c c c c}
+~~~~~~~ x ~~~~~~~& ~~~~~~~\pi(x) ~~~~~~~& ~~~~~~~\psi(x) ~~~~~~~& ~~~~~~~ \psi(x)/\pi(x) ~~~~~~~\\
+39999 & 3774.698	& 2117 & 0.5608 \\
+399999 & 31009.556 & 16959 & 0.5469 \\
+3999999 & 263126.588 & 141643 & 0.5383 \\
+39999999 & 2285140.986 & 1216966 & 0.5326
+\end{array}
+\neea
+%
+so it seems like $\lim_{x\to \infty} \psi(x)/\pi(x) = 0.5$
+
+{\bf Problem 1.6}. So far 44 Mersenne primes $2^p - 1$ have been discovered. Give a guess,
+backed up by an argument, about when the next Mersenne prime might be discovered (you will have to do some online research).
+
+The current effort is called GIMPS(Great Internet Mersenne Prime Search) and the largest Mersenne prime to date is $2^{74,207,281} - 1$, found on January 7, 2016, and it is the $49$th Mersenne prime.
+
+From http://www.mersenne.org/, it seems like a new Mersenne prime is discovered every 4 years, GIMPS was founded in 1996 and so far it's found 15 Mersenne primes in 20 years, we can of course estimate when the next discovery is by using Moore's law that computing power will double but since GIMPS is now a distributed project that people can participate in it's hard to tell how long until the next one is discovered due to this social aspect :) \dunno
+
+{\bf Problem 1.7}. (a) Let $y = 10000$. Compute $\pi(y) = \#\{{\rm primes~} p \le y\}$.
+
+(b) The prime number theorem implies $\pi(x)$ is asymptotic to $\frac{x}{\log(x)}$. How close is $\pi(y)$ to $y/ \log(y)$, where $y$ is as in (a)?
+
+(a) The Maxima code I used to count $\pi(y) = \#\{{\rm primes~} p \le y\}$ is
+%
+\begin{verbatim}
+t:0;
+for j:1 thru 10000 do
+block(
+    a:primep(j),
+    if (a = true) then 
+    block(
+        t:t+1
+    )  
+);
+display(t);
+\end{verbatim}
+%
+and $\pi(y) = 1229$
+
+(b) $\pi(y) = 1229$ and $y/ \log(y) = 1085.736$ so it's roughly 13\% off
 
 {\bf Problem 1.8 (a)} if $a|n$ and $b|n$ with $\gcd(a,b)=1$, then $ab|n$
 
@@ -692,6 +787,21 @@ b = a w & \to & a | b
 \nbea
 d|a & \to & a = d w \to |a| = |d w| = |d| |w| \\
 |a| = |d| |w| & \to & |d| \le |a|
+\neea
+%
+
+{\bf Problem1.10} In each of the following, apply the division algorithm to find $q$ and $r$
+such that $a = bq + r$ and $0 \le r < |b|$:
+%
+\nbea
+a = 300, b = 17,~~~ a = 729, b = 31, ~~~a = 300, b = −17, ~~~a = 389, b = 4.
+\neea
+%
+
+The thing to take note here is that $r$ is always positive or zero, it can't be negative! and so
+%
+\nbea
+300 = 17\cdot17 + 11 ~~~~~~ 729 = 31 \cdot 23 + 16 ~~~~~~ 300 = -17 \cdot -18 + 6 ~~~~~~ 389 = 4 \cdot 97 + 1
 \neea
 %
 
@@ -867,7 +977,7 @@ since $\gcd(n,a) = 1$ from Problem 1.8 (b) we know that $n|(x_1 - x_2)$ but this
 
 {\bf Definition 2.1.16}. Be careful about the reasoning in this proof, especially the following statement
 
-There are only finitely many residue classes modulo n, so we must eventually ﬁnd two integers $i, j$ with $i < j$ such that
+There are only finitely many residue classes modulo n, so we must eventually find two integers $i, j$ with $i < j$ such that
 %
 \nbea
 x^j \equiv x^i \pmod{n}.
@@ -976,11 +1086,11 @@ For me it's easier to see the problem this way. First, let's organize the number
 \underbrace{1, \dots, n'-1}_\text{$S_1$}, ~n'~, \underbrace{n'+1, \dots, n'+(n'-1)}_\text{$S_2$}, ~2n'~, \dots, \underbrace{(q-1)n' + 1, \dots, (q-1)n' + (n' - 1)}_\text{$S_q$}, ~n'q
 \neea
 %
-Note that different $S$'s are separated by mutiples of $n'$ therefore they are congruent to one another. Because they are congruent, a number that is co-prime to $n'$ in one $S$ is also co-prime to $n'$ in another $S'$, see Lemma 1.1.9 and Lemma 1.1.10.
+Note that different $S$'s are separated by multiples of $n'$ therefore they are congruent to one another. Because they are congruent, a number that is co-prime to $n'$ in one $S$ is also co-prime to $n'$ in another $S'$, see Lemma 1.1.9 and Lemma 1.1.10.
 
 Now for each set $S_i$ there are $\#(\mathbb{Z}/n'\mathbb{Z})^*$ numbers that have $\gcd=1$ with $n'$ and there are $q$ numbers of $S$'s. We then throw away any number $a$ between $1, \dots, n$ that have $\gcd(a,n') \neq 1$ and we are left with $m = \varphi(n') \cdot q$ numbers.
 
-Now we would like to throw away numbers that are mutiples of $q$ from $1, \dots, n$. We need to be careful here, some of them are already thrown away. Any number $dq$ where $\gcd(d,n') \neq 1$ were already thrown away. Therefore only multiples of $q$ with $hq$ where $h < n'$ and $\gcd(h,n')=1$ are still left. How about $h > n'$, that wouldn't work since then $hq > n$.
+Now we would like to throw away numbers that are multiples of $q$ from $1, \dots, n$. We need to be careful here, some of them are already thrown away. Any number $dq$ where $\gcd(d,n') \neq 1$ were already thrown away. Therefore only multiples of $q$ with $hq$ where $h < n'$ and $\gcd(h,n')=1$ are still left. How about $h > n'$, that wouldn't work since then $hq > n$.
 
 How many $h < n'$ and $\gcd(h,n')=1$ are there? The answer is $\varphi(n')$. Therefore
 %
@@ -1017,7 +1127,7 @@ By doing this inductively we have shown that $\varphi(n=ab)$ is multiplicative, 
 pq - \frac{pq}{p} - \frac{pq}{q}
 \neea
 %
-co-prime numbers, \eg for $n=3\cdot 5 = 15$, there are $\frac{15}{3} = 5$ multiples of $3$ and $\frac{15}{5} = 3$ multiples of 5. However, we are overcounting by one because then we include $n=15$ itself twice, once for the multiples of 3 and another for the multiple of 5. Therefore $\varphi(n=pq)$ is
+co-prime numbers, \eg for $n=3\cdot 5 = 15$, there are $\frac{15}{3} = 5$ multiples of $3$ and $\frac{15}{5} = 3$ multiples of 5. However, we are over counting by one because then we include $n=15$ itself twice, once for the multiples of 3 and another for the multiple of 5. Therefore $\varphi(n=pq)$ is
 %
 \nbea
 \varphi(pq) & = & pq - \frac{pq}{p} - \frac{pq}{q} + 1 \\
@@ -1032,13 +1142,13 @@ What if $n = pqr$, well first we remove the usual suspects
 pqr - \frac{pqr}{p} - \frac{pqr}{q} - \frac{pqr}{r}
 \neea
 %
-But then we are overcounting things again. First, when we are throwing away multiples of $p$ we include all multiples of $pq$ as well and there are $r$ of them and multiples of $pr$ and there are $q$ of them, this is what the $ - \frac{pqr}{p}$ is for.
+But then we are over counting things again. First, when we are throwing away multiples of $p$ we include all multiples of $pq$ as well and there are $r$ of them and multiples of $pr$ and there are $q$ of them, this is what the $ - \frac{pqr}{p}$ is for.
 
-But when we are throwing away multiples of $q$ by $- \frac{pqr}{q}$, we are throwing away multiples of $pq$ and multiples of $qr$. However, multiples of $pq$ are already substracted when we are delaing with mutiples of $p$, therefore we need to restore $ + r$ to $\varphi(pqr)$.
+But when we are throwing away multiples of $q$ by $- \frac{pqr}{q}$, we are throwing away multiples of $pq$ and multiples of $qr$. However, multiples of $pq$ are already subtracted when we are dealing with multiples of $p$, therefore we need to restore $ + r$ to $\varphi(pqr)$.
 
-Next, we get rid of multiples of $r$, but again we are throwing away mutiples of $pr$ that have been counted when dealing with multiples of $p$, since there are $q$ of them we need to add $+q$ to $\varphi(pqr)$. Lastly we get rid of multiples of $qr$ but these are already accounted for when dealing with multiples of $q$, since there are $p$ of them we need to restore $+p$ to $\varphi(pqr)$.
+Next, we get rid of multiples of $r$, but again we are throwing away multiples of $pr$ that have been counted when dealing with multiples of $p$, since there are $q$ of them we need to add $+q$ to $\varphi(pqr)$. Lastly we get rid of multiples of $qr$ but these are already accounted for when dealing with multiples of $q$, since there are $p$ of them we need to restore $+p$ to $\varphi(pqr)$.
 
-However, we have a problem. The one number we need to take note of is $pqr$ itself. Note that we restored multiples of $r$ {\it twice} by adding $+q$ and $+p$. Hwever, we are again overcounting as each of those restorations recounts $pqr$ so we need to substract 1 from it and
+However, we have a problem. The one number we need to take note of is $pqr$ itself. Note that we restored multiples of $r$ {\it twice} by adding $+q$ and $+p$. However, we are again over counting as each of those restorations recounts $pqr$ so we need to subtract 1 from it and
 %
 \nbea
 \varphi(pqr) & = & pqr - \frac{pqr}{p} - \frac{pqr}{q} - \frac{pqr}{r} + p + q + r - 1 \\
@@ -1046,17 +1156,17 @@ However, we have a problem. The one number we need to take note of is $pqr$ itse
 \varphi(pqr) & = & \varphi(p)~\varphi(q)~\varphi(r)
 \neea
 %
-The above explanation might be confusing so let's see it in action through an example $\varphi(3 \cdot 5 \cdot 7)$. In this example we start with $3 \cdot 5 \cdot 7 = 105$ numbers. We first get rid of multiples of 3 by substracting $\frac{105}{3} = 35$ numbers from the 105 numbers.
+The above explanation might be confusing so let's see it in action through an example $\varphi(3 \cdot 5 \cdot 7)$. In this example we start with $3 \cdot 5 \cdot 7 = 105$ numbers. We first get rid of multiples of 3 by subtracting $\frac{105}{3} = 35$ numbers from the 105 numbers.
 
-Next we remove multiples of 5 by substracting $\frac{105}{5} = 21$ numbers from the $(105 - 35) = 70$ numbers we have left. However, the following numbers were already removed by removing multiples of 3, $\{15, 30, 45, 60, 75, 90, 105\}$, they are multiples of $3 \cdot 5$ and there are 7 of them so we need to add back 7, \ie $105 - 35 - 21 + 7$.
+Next we remove multiples of 5 by subtracting $\frac{105}{5} = 21$ numbers from the $(105 - 35) = 70$ numbers we have left. However, the following numbers were already removed by removing multiples of 3, $\{15, 30, 45, 60, 75, 90, 105\}$, they are multiples of $3 \cdot 5$ and there are 7 of them so we need to add back 7, \ie $105 - 35 - 21 + 7$.
 
-Then we remove any multiples of $7$ by substracting $\frac{105}{7} = 15$. These 15 numbers are
+Then we remove any multiples of $7$ by subtracting $\frac{105}{7} = 15$. These 15 numbers are
 %
 \nbea
 7,14,\bcancel{21},28,35,\bcancel{42},49,56,\bcancel{63},70,77,\bcancel{84},91,98,\bcancel{105}
 \neea
 %
-However, $\{21,42,63,84,105\}$ were already removed as part of multiples of $3\cdot 7$ and there are 5 of them (as shown as crossed out numbers above). Therefore we need to substract $15 - 5$ instead of $15$, $105 - 35 - 21 +7 -(15 - 5) = 105 - 35 - 21 - 15 + 7 + 5$.
+However, $\{21,42,63,84,105\}$ were already removed as part of multiples of $3\cdot 7$ and there are 5 of them (as shown as crossed out numbers above). Therefore we need to subtract $15 - 5$ instead of $15$, $105 - 35 - 21 +7 -(15 - 5) = 105 - 35 - 21 - 15 + 7 + 5$.
 
 Another set of numbers that have already been removed are multiples of $5 \cdot 7$, $\{35,70,105\}$ (shown as crossed of numbers below) when we removed multiples of 5, there are 3 of them. 
 %
@@ -1267,9 +1377,9 @@ r' d S = R d s' = r' d s'
 %
 means that $R = r'$ and $S = s'$ and the order of $ab$ is $q = r' D s'$ but it doesn't tell you what $D$.
 
-Now, if $\gcd(r,s) = d = 1$ then $D$ must be 1 and $r' = r, ~s' = s$ and therefore $q = rs$ which is Lemma 2.5.7. On the other hand, if $\gcd(r,s) = d > 1$ then there's no clear telling of what $D$ must be and we have the sort of erratic behaviour discussed previously and this completes the (first non-intuitive lowbrow version of the) proof.
+Now, if $\gcd(r,s) = d = 1$ then $D$ must be 1 and $r' = r, ~s' = s$ and therefore $q = rs$ which is Lemma 2.5.7. On the other hand, if $\gcd(r,s) = d > 1$ then there's no clear telling of what $D$ must be and we have the sort of erratic behavior discussed previously and this completes the (first non-intuitive lowbrow version of the) proof.
 
-Some more words about the erratic behaviour when $\gcd(r,s) = d > 1$. As far as I can tell, knowing only the orders doesn't give much intel. For example, 7, 11, 23, 29, 31 all have an order of 6 modulo 36 and yet $(11 \cdot 31)$ and $(23 \cdot 29)$ have orders of 2, $(11 \cdot 29)$ has an order of 6 and so on. There's nothing you can say if you only know the orders.
+Some more words about the erratic behavior when $\gcd(r,s) = d > 1$. As far as I can tell, knowing only the orders doesn't give much intel. For example, 7, 11, 23, 29, 31 all have an order of 6 modulo 36 and yet $(11 \cdot 31)$ and $(23 \cdot 29)$ have orders of 2, $(11 \cdot 29)$ has an order of 6 and so on. There's nothing you can say if you only know the orders.
 
 {\bf Bonus}. The above excursion shows that finding the order of a number also gives inverse relations of its factors, \eg
 %
@@ -1304,7 +1414,7 @@ We now have the following proposition,
 b^{yk} \equiv a^{xk} & \equiv & 1 \pmod{n}
 \neea
 %
-For the above statement to be true $yk = sw$ but $y$ is less than $s$ thus $\gcd(k, s) > 1$. Another consequence will be $xk = ru$ but again since $x$ is less than $r$ then $\gcd(k, r) > 1$ which meants that $\gcd(r,s) > 1$. This is a contradiction since $\gcd(r,s) = 1$. Therefore the subgroups $A$ and $B$ must be mutually exclusive. The only exception is if $b^y \equiv 1$ which is the identity element.
+For the above statement to be true $yk = sw$ but $y$ is less than $s$ thus $\gcd(k, s) > 1$. Another consequence will be $xk = ru$ but again since $x$ is less than $r$ then $\gcd(k, r) > 1$ which means that $\gcd(r,s) > 1$. This is a contradiction since $\gcd(r,s) = 1$. Therefore the subgroups $A$ and $B$ must be mutually exclusive. The only exception is if $b^y \equiv 1$ which is the identity element.
  
 \underline{And here's the explanation of why Lemma 2.5.7 works}. This also makes another (more intuitive) lowbrow proof of Lemma 2.5.7. You see
 %
@@ -1312,7 +1422,7 @@ For the above statement to be true $yk = sw$ but $y$ is less than $s$ thus $\gcd
 (ab)^q \equiv a^q b^q & \equiv & 1 \pmod{n}
 \neea
 %
-means that $a^q$ is an inverse of $b^q$, which is to say that we can express $b^q \equiv a^t$ for some $1 \le t \le r$ where $r$ is the order of $a$. This is a consequence of the fact that $a$ generates a subgroup of its own and thus the inverse of $a^x$ can be expressed as $a^{r-x}$ as explained above. But this contradicts Proposition 2.5.7.2 above unless $a^q$ is the identity element, but that will make $b^q$ an indentity element as well. Therefore, since $\gcd(r,s) = 1$, $q$ must be a multiple of $rs$ such that $(ab)^q \equiv 1$ but since $q$ is the {\it smallest} number such that $(ab)^q \equiv 1$, $q$ must be $rs$.
+means that $a^q$ is an inverse of $b^q$, which is to say that we can express $b^q \equiv a^t$ for some $1 \le t \le r$ where $r$ is the order of $a$. This is a consequence of the fact that $a$ generates a subgroup of its own and thus the inverse of $a^x$ can be expressed as $a^{r-x}$ as explained above. But this contradicts Proposition 2.5.7.2 above unless $a^q$ is the identity element, but that will make $b^q$ an identity element as well. Therefore, since $\gcd(r,s) = 1$, $q$ must be a multiple of $rs$ such that $(ab)^q \equiv 1$ but since $q$ is the {\it smallest} number such that $(ab)^q \equiv 1$, $q$ must be $rs$.
 
 {\bf Theorem 2.5.8}. My first question when I saw the proof was that why can't one of the roots of $x^{q_i^{n_i}} - 1$ that is not a root of $x^{q_i^{n_i - 1}} - 1$ be a root of say $x^{q_i^{n_i - k}}$ for $1 < k < n_i - 1$? \eg $\alpha$ is a root of $x^{q_i^{n_i}} - 1 = 0$ but it's not a root of $x^{q_i^{n_i - 1}} - 1 = 0$ but $\alpha$ can still be a root of $x^{q_i^{n_i - k}} -1 = 0$, right?
 
@@ -1391,7 +1501,7 @@ Therefore $\varphi(n)|mf$ since $g$ is a primitive root. If $\gcd(\varphi(n),m) 
 \neea
 %
 
-{\bf Corollary 2.5.12.3.2}. If there's a prmitive root, then it means that the only number with order 2 is $g^{\varphi(n)/2}\pmod{n}$. This is because say
+{\bf Corollary 2.5.12.3.2}. If there's a primitive root, then it means that the only number with order 2 is $g^{\varphi(n)/2}\pmod{n}$. This is because say
 %
 \nbea
 \varphi(n) & = & 2^n_2 \cdot \prod_i^{N} p_i^{n_i}
@@ -1930,7 +2040,7 @@ Notice that each non-zero element of $\mathbb{Z}/p\mathbb{Z}$ is less than $p$. 
 p & = & vq + r
 \neea
 %
-What we want is to just exceed $p$, if we add one more $v \to v(q + 1)$ and substracting $p$ from it we get $v(q + 1) - p = v - r$. We know that $r < v$ therefore $v - r < v$ but the case of $< v$, \ie all elements up to $n$, already has an inverse and we can use that inverse to get the inverse of $v$. For example $v-r = d$ and the inverse of $d$ is $y$ such that $dy=ps + 1 = 1$. This means that since $p = vq + r$ and $v-r = d$
+What we want is to just exceed $p$, if we add one more $v \to v(q + 1)$ and subtracting $p$ from it we get $v(q + 1) - p = v - r$. We know that $r < v$ therefore $v - r < v$ but the case of $< v$, \ie all elements up to $n$, already has an inverse and we can use that inverse to get the inverse of $v$. For example $v-r = d$ and the inverse of $d$ is $y$ such that $dy=ps + 1 = 1$. This means that since $p = vq + r$ and $v-r = d$
 %
 \nbea
 v(q+1) & = & p + d \\
@@ -1950,7 +2060,7 @@ Notice that in the above argument, we can identify $v(q+1) = d$ because of the c
 7 & = & 3 \times 2 + 1
 \neea
 %
-Adding one more $3$ and substracting $7$
+Adding one more $3$ and subtracting $7$
 %
 \nbea
 ((3 \times 2) + 3) - 7 & = & 3 - 1 \\
@@ -2116,7 +2226,7 @@ t\cdot 210 & \equiv & -146 \pmod {4} \\
 %
 Although $\gcd(42\cdot 5, 4) = 2 \neq 1$, according to Proposition 2.1.15, since $\gcd(42\cdot 5, 4) = 2$ divides 2, this equation has a solution $t=1$ with $x = 356$. 
 
-The problem is now making sure that 356 is the smallest solution. In the proof of Theorem 2.2.2, the solution of Chinese remainder theorem is unique up to $\pmod{mn}$ which means that we can always substract $mn$ from the solution to get the smallest one. However, the proof requires $\gcd(m,n)=1$, here $\gcd(210, 4) = 2$. Let's modify the proof then.
+The problem is now making sure that 356 is the smallest solution. In the proof of Theorem 2.2.2, the solution of Chinese remainder theorem is unique up to $\pmod{mn}$ which means that we can always subtract $mn$ from the solution to get the smallest one. However, the proof requires $\gcd(m,n)=1$, here $\gcd(210, 4) = 2$. Let's modify the proof then.
 
 Suppose that $x$ and $y$ solve both congruences. Then $z = x − y$ satisfies $z \equiv 0 \pmod{m}$ and $z \equiv 0 \pmod{n}$, so $m|z$ and $n|z$. Since $\gcd(n, m) \neq 1$, it follows that ${\rm lcm}(n,m) | z$, so $x \equiv y \pmod{ {\rm lcm}(n,m)}$.
 
@@ -2128,7 +2238,7 @@ I tried to show that the fact that $p$ and $p^2 + 2$ are prime implies $p=3$ and
 
 A better approach is to flip the statement, \ie if $p \neq 3$ then $p$ is not prime OR $p^2 + 2$ is not prime (we can't have both to be prime) which is the solution given in the book.
 
-However, it is not impossible to be pigheadded and go ahead with a direct deduction from the if clause. An astute observer will notice that $2 = \varphi(3)$ such that
+However, it is not impossible to be pigheaded and go ahead with a direct deduction from the if clause. An astute observer will notice that $2 = \varphi(3)$ such that
 %
 \nbea
 p^2 + 2 & \Longrightarrow & p^{\varphi(3)} + \varphi(3)
@@ -2282,7 +2392,7 @@ We can again repeat this $q_1 = \floor{a/r_0}$ times until we get
 \gcd(2^{r_0} - 1, 2^a - 1) & = & \gcd(2^{r_0} - 1, 2^{a - r_0q_1} - 1) = \gcd(2^{r_0} - 1, 2^{r_1} - 1)
 \neea
 %
-where $r_1 = a \mod r_0$. We are thus just following the steps of Euclid's gcd algorithm
+where $r_1 = a \mod r_0$. We are thus just following the steps of Euclid's $\gcd$ algorithm
 %
 \nbea
 \gcd(2^a - 1, 2^b - 1) & = & \gcd(2^a - 1, 2^{r_0} - 1), ~~~b = aq_0 + r_0 \\
@@ -3364,7 +3474,7 @@ The longest sequence of letter we can encode is therefore
 %
 The floor is to ensure that we have enough space for all 13 characters.
 
-{\bf Problem 3.2}. Suppose Michael creates an RSA cryptosystem with a very large modulus $n$ for which the factorization of $n$ cannot be found in a reasonable amount of time. Suppose that Nikita sends messages to Michael by representing each alphabetic character as an integer between 0 and 26 (A corresponds to 1, B to 2, etc., and a space to 0), then encrypts each number {\it separately} using Michael’s RSA cryptosystem. Is this method secure? Explain your answer.
+{\bf Problem 3.2}. Suppose Michael creates an RSA cryptosystem with a very large modulus $n$ for which the factorization of $n$ cannot be found in a reasonable amount of time. Suppose that Nikita sends messages to Michael by representing each alphabetic character as an integer between 0 and 26 (A corresponds to 1, B to 2, etc., and a space to 0), then encrypts each number {\it separately} using Michael's RSA cryptosystem. Is this method secure? Explain your answer.
 
 This method is not too secure as eavesdroppers can see repeating numbers being sent by Nikita and they might be able to figure out a dictionary between the plain text alphabets and the encrypted alphabets.
 
@@ -3413,7 +3523,7 @@ x^2 = a & \to & x = \pm a^{1/2}
 %
 even if we can complete the cube we only get one solution instead of three, while completing the square guarantees that we have two solutions. So just like the adage, ``One man's treasure is another man's trash'' :) A point of view that works very well for one particular problem hinders us from solving another problem.
 
-{\bf Problem 3.4}. You and Nikita wish to agree on a secret key using the Diffe-Hellman key exchange. Nikita announces that $p = 3793$ and $g = 7$. Nikita secretly chooses a number $n < p$ and tells you that $g^n \equiv 454 \pmod{p}$. You choose the random number $m = 1208$. What is the secret key?
+{\bf Problem 3.4}. You and Nikita wish to agree on a secret key using the Diffie-Hellman key exchange. Nikita announces that $p = 3793$ and $g = 7$. Nikita secretly chooses a number $n < p$ and tells you that $g^n \equiv 454 \pmod{p}$. You choose the random number $m = 1208$. What is the secret key?
 
 The secret key in this case is $g^{nm} \pmod{p} \equiv (g^{n})^{m} \pmod{p}$
 %
@@ -3425,7 +3535,7 @@ g^n & \equiv & 454 \pmod{p} \\
 \neea
 %
 
-{\bf Problem 3.5}. You see Michael and Nikita agree on a secret key using the Diffe-Hellman key exchange. Michael and Nikita choose $p = 97$ and $g = 5$. Nikita chooses a random number $n$ and tells Michael that $g^n \equiv 3 \pmod{97}$, and Michael chooses a random number $m$ and tells Nikita that $g^m \equiv 7 \pmod{97}$. Brute force crack their code: What is the secret key that Nikita and Michael agree upon? What is $n$? What is $m$?
+{\bf Problem 3.5}. You see Michael and Nikita agree on a secret key using the Diffie-Hellman key exchange. Michael and Nikita choose $p = 97$ and $g = 5$. Nikita chooses a random number $n$ and tells Michael that $g^n \equiv 3 \pmod{97}$, and Michael chooses a random number $m$ and tells Nikita that $g^m \equiv 7 \pmod{97}$. Brute force crack their code: What is the secret key that Nikita and Michael agree upon? What is $n$? What is $m$?
 
 By brute force $n = 70$, $m = 31$, therefore $g^{31 \cdot 70} \equiv 44 \pmod{97}$.
 
@@ -3514,7 +3624,7 @@ And each primitive root is of course a quadratic non residue because from the pr
 
 So we have shown that {\it all} primitive roots are quadratic non-residues. How about the non primitive roots? Well, again from Proposition 2.5.12.2, the non primitive roots are the ones with $g^h$ where $\gcd(h, \varphi(p) \neq 1$. Since $\varphi(p) = 2^n$, $h$ has to be even. And from the proof of Lemma 4.1.4, any $g^{2m}$ is a quadratic residue, thus in this case the non-primitive roots are all quadratic residues. This completes the proof.
 
-{\bf Theorem 4.1.7}.  (Gauss’s Quadratic Reciprocity Law). This law can be expressed in a more conducive manner
+{\bf Theorem 4.1.7}.  (Gauss's Quadratic Reciprocity Law). This law can be expressed in a more conducive manner
 %
 \nbea
 \left ( \frac{p}{q} \right ) \times \left ( \frac{q}{p} \right ) & = & (-1)^{\frac{p-1}{2} \cdot \frac{q-1}{2}} \left ( \frac{q}{p} \right ) \times \left ( \frac{q}{p} \right ) \\
@@ -3576,7 +3686,7 @@ Now $\#(\mathbb{Z}/p\mathbb{Z})^* = \#\ker(\psi)$, means that the kernel of $\ps
 
 I'll show explicitly how it follows from the fact that $x^2 - 1$ has no roots besides $+1$ and $-1$.
 
-If $x^2 \not\equiv a \pmod{p}$ then it also means that $a \not\equiv x^2 \pmod{p}$, which is to say that $a$ is a quadratic nonresidue. Thus from Proposition 4.2.1 $a^{(p-1)/2} \not\equiv 1 \pmod$. Now, from Euler's theorem we have
+If $x^2 \not\equiv a \pmod{p}$ then it also means that $a \not\equiv x^2 \pmod{p}$, which is to say that $a$ is a quadratic non-residue. Thus from Proposition 4.2.1 $a^{(p-1)/2} \not\equiv 1 \pmod$. Now, from Euler's theorem we have
 %
 \nbea
 a^{p-1} & \equiv & 1 \pmod{p}
@@ -3606,7 +3716,7 @@ a^{(p-1)/2} \equiv \left \{ \ba{l}
 %
 But from Proposition 4.2.1 $a^{(p-1)/2} \equiv 1 \pmod{p}$ means that $a$ is a quadratic residue, which is a contradiction and hence $a^{(p-1)/2} \equiv -1 \pmod{p}$.
 
-The converse is straighforward, if $a^{(p-1)/2} \equiv -1 \pmod{p}$, from Proposition 4.2.1 it follows that $a$ is a quadratic nonresidue and therefore $x^2 \equiv a \pmod{p}$ has no solution.
+The converse is straightforward, if $a^{(p-1)/2} \equiv -1 \pmod{p}$, from Proposition 4.2.1 it follows that $a$ is a quadratic non-residue and therefore $x^2 \equiv a \pmod{p}$ has no solution.
 
 {\bf Proof of Lemma 4.3.1}. A clarification of the proof of this Lemma. First, this Lemma wants to map $a, 2a, 3a, \dots, \frac{p-1}{2}a$ to $(-p/2, p/2)$. But we are not using {\it all} numbers between $(-p/2, p/2)$ as the image. We are only using {\it half} of them obviously as 
 $a, 2a, 3a, \dots, \frac{p-1}{2}a$ is just half of the complete set of residues of $p$.
@@ -3783,8 +3893,6 @@ where going from line 2 to line 3 we have used the fact that the group is abelia
 \item Inverse element, take an element $x$ of $G$ and its inverse say $w$, then $x^2$ and $w^2$ are both in $H$, however, $x^2w^2 = (xw)(xw) = 1$ where we have used the fact that the group is abelian to reorder the multiplications
 \eit
 %
-
-
 
 {\bf Problem 4.3}. Use Theorem 4.1.7 to show that for $p \ge 5$ prime, 
 %
@@ -3990,7 +4098,7 @@ Since it is a fixed point $(a,b) = (b,a)$ thus $b = a$ and since $1 = b + a = a 
 \to 2 & \equiv & g^{(p-1) - 2n}
 \neea
 %
-we have expressed $a \equiv g^{2n}$ since $a$ is a quadratic residue and it has to be an even power of the primitive root as shown by Lemma 4.1.4. Since $p$ is priime $p-1$ is even and $p-1-2n$ is also even thus 2 must be a quadratic residue as well.
+we have expressed $a \equiv g^{2n}$ since $a$ is a quadratic residue and it has to be an even power of the primitive root as shown by Lemma 4.1.4. Since $p$ is prime $p-1$ is even and $p-1-2n$ is also even thus 2 must be a quadratic residue as well.
 
 Now we just need to prove the converse, if 2 is a quadratic residue then since $p$ is prime the unity $(\mathbb{Z}/p\mathbb{Z})^*$ is a field and 2 must have an inverse such that
 %
@@ -4080,7 +4188,7 @@ iii. $\left ( \frac{2}{n}\right ) = 1$ if $n \equiv \pm 1 \pmod{8}$ and $-1$ oth
 
 iv. Assume $a$ is positive and odd. Then $\left ( \frac{a}{n}\right ) = (-1)^{\frac{a-1}{2}\cdot\frac{n-1}{2}} \left (\frac{n}{a} \right ) $
 
-(a) An example would be $\left( \frac{2}{9}\right )$, remmeber that $n$ has to be odd
+(a) An example would be $\left( \frac{2}{9}\right )$, remember that $n$ has to be odd
 %
 \nbea
 \left( \frac{2}{9}\right ) & = & \left( \frac{2}{3}\right ) \left( \frac{2}{3}\right ) \\
@@ -4154,7 +4262,7 @@ To get an overall $+1$ we need an even number of $8k_i\pm3$ but $\pm3\cdot\pm3 \
 & = & \prod_{i=1}^k\prod_{j=1}^l \left ( \frac{q_j}{p_i} \right )^{e_i\cdot e_j} 
 \neea
 %
-where we have expanded $a$ through its primal constituents $a = \prod_{j=1}^l q_j^{e_j}$ and we can pull each $e_j$ out because each legendre symbol on the right hand side is a homomorphism as shown by Lemma 4.1.4
+where we have expanded $a$ through its primal constituents $a = \prod_{j=1}^l q_j^{e_j}$ and we can pull each $e_j$ out because each Legendre symbol on the right hand side is a homomorphism as shown by Lemma 4.1.4
 %
 \nbea
 \prod_{i=1}^k\prod_{j=1}^l \left ( \frac{q_j}{p_i} \right )^{e_i\cdot e_j} & = & \prod_{i=1}^k\prod_{j=1}^l (-1)^{e_j\cdot\frac{q_j-1}{2}\cdot e_i\cdot \frac{p_i-1}{2}} \left ( \frac{p_i}{q_j} \right )^{e_i\cdot e_j} 
@@ -4236,7 +4344,6 @@ Putting all together we have
 \left ( \frac{a}{n}\right ) & = & (-1)^{\frac{a-1}{2}\cdot\frac{n-1}{2}} \left ( \frac{n}{a}\right ) 
 \neea
 %
-
 
 {\bf Problem 4.10}. (*) Prove that for any $n \in \mathbb{Z}$, the integer $n^2 + n + 1$ does not have any divisors of the form $6k - 1$.
 
@@ -4670,7 +4777,7 @@ But in all seriousness what we need here is $-1$ that can't be decomposed except
 %
 thus if $n$ is prime it will never work as $(\mathbb{Z}/n\mathbb{Z})$ is a field and $ab \equiv 1$ has $p-1$ solutions and thus $-ab$ also has $p-1$ solutions. So for one $n$ must not be prime.
 
-We also know that the unity $(\mathbb{Z}/n\mathbb{Z})^*$ is always a gorup under multiplication for any $n$ whether prime or not thus every member of $(\mathbb{Z}/n\mathbb{Z})^*$ constitutes a solution for $1 \equiv ab$ and of course that of $-1 \equiv -ab$, the number of elements of $(\mathbb{Z}/n\mathbb{Z})^*$ is of course given by the euler totient function $\varphi(n)$.
+We also know that the unity $(\mathbb{Z}/n\mathbb{Z})^*$ is always a group under multiplication for any $n$ whether prime or not thus every member of $(\mathbb{Z}/n\mathbb{Z})^*$ constitutes a solution for $1 \equiv ab$ and of course that of $-1 \equiv -ab$, the number of elements of $(\mathbb{Z}/n\mathbb{Z})^*$ is of course given by the Euler totient function $\varphi(n)$.
 
 So if $\varphi(n)=1$ this will obviously work, $\varphi(n)=2$ will also work because then $(\mathbb{Z}/n\mathbb{Z})^*$ will have only two elements, one of them is obviously 1 and the other must be $-1$ because $\gcd(n,n-1)=1$ for $n > 1$ and therefore the decomposition of $-1$ can only be given by
 %
@@ -4741,20 +4848,20 @@ the same goes with $r_{3n-1}$ and $r_{3n-2}$
 
 {\bf Page 109}, ``the boundary condition is 0'', in physics we usually say the boundary terms are 0, this is the $uv$ term you get when integrating $\int udv$ by parts
 
-{\it A side note}, as mentioned a couple of times in the book, $\pi$ does not have the same simple and regular continued fraction and therefore the method used here to prove that $e$ is irrational does not work with $\pi$. Lambert's proof (reproduced from http://www.pi314.net/eng/lambert.php) that $\pi$ is irrational does utilize continued fraction but it's a different one, he used a continued fraction expansion for $\tan(x)$
+{\it A side note}, as mentioned a couple of times in the book, $\pi$ does not have the same simple and regular continued fraction as that of $e$ and therefore the method used here to prove that $e$ is irrational does not work with $\pi$. Lambert's proof (reproduced from http://www.pi314.net/eng/lambert.php) that $\pi$ is irrational does utilize continued fraction but it's a different one, he used a continued fraction expansion for $\tan(x)$
 %
 \nbea
 \tan(x) & = & \frac{x}{1 - \frac{x^2}{3 - \frac{x^2}{5 - \frac{x^2}{7 - \frac{1}{\ldots}}}}}
 \neea
 %
-Notice that we are using subtraction instead of addition for the continued fraction and the the numerators are $x$ and $x^2$ instead of $1$. You can derive the above by noting that
+Notice that we are using subtraction instead of addition for the continued fraction and that the numerators are $x$ and $x^2$ instead of $1$. You can derive the above by noting that
 %
 \nbea
 \tan(x) = \frac{\sin(x)}{\cos(x)} & = & \frac{\sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{(2n + 1)!} }{\sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n)!}} = \frac{x \cdot \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n + 1)!} }{\sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n)!}} \\
 & = & \frac{x}{\left ( \frac{\sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n)!}}{\sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n + 1)!}} \right )}
 \neea
 %
-We then expand the denominator as $1 + \Delta_1$ but first note that
+(and you see that you need $e$ to get the above expansion and so $\pi$ is more complicated than $e$ LOL). We then expand the denominator as $1 + \Delta_1$ but first note that
 %
 \nbea
 \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n)!} & = & \sum_{n=0}^{\infty} \frac{(-1)^n (2n + 1) x^{2n}}{(2n+1)!} \\
@@ -4791,7 +4898,7 @@ We can repeat the same game but this time with
 & = & 3 \cdot \sum_{n=0}^{\infty} \frac{(-1)^n (2n + 2) x^{2n}}{(2n + 3)!} + \sum_{n=1}^{\infty} \frac{(-1)^n (2n)(2n + 2) x^{2n}}{(2n + 3)!}
 \neea
 %
-where we have shifted the starting point of the second term to $n=1$ since it contains $(2n)$ in the numerator and we now see how we get $3$ for the next iteration of the contunued fraction and everytime we shift the starting point back to $n=0$ we will have to substitute $n+1$ for $n$ and we will get $(2n)(2n + 2) \to (2n + 2)(2n + 4)$ and $(2n + 3)! \to (2n + 5)!$ and so in the next iteration we will get 5 as the constant and so on ...
+where we have shifted the starting point of the second term to $n=1$ since it contains $(2n)$ in the numerator and we now see how we get $3$ for the next iteration of the continued fraction and every time we shift the starting point back to $n=0$ we will have to substitute $n+1$ for $n$ and we will get $(2n)(2n + 2) \to (2n + 2)(2n + 4)$ and $(2n + 3)! \to (2n + 5)!$ and so in the next iteration we will get 5 as the constant and so on ...
 
 Once we get this Lambert's proof goes on to show that if $\tan(x)$ is rational then $x$ is irrational, for $x = \pi$ we know that $\tan(\pi) = 0$ and so
 %
@@ -4855,7 +4962,7 @@ since $p_1 = \frac{a_{j+1}}{b_{j+1} + \frac{a_{j+2}}{\ldots}}$ according to the 
 p_1 = \frac{r}{p} & = & \frac{a_{j+1}}{b_{j+1} + p_2}
 \neea
 %
-we will see that $p_2 = s/r$ with $|p_2| < 1$ and $|s| < |r| < |p| < |q|$ and we will arrive at an infinite descent (recall that $s,r,p,q,\ldots \in \mathbb{Z}$), this is clearly a contradiction and $x$ must therefore be irrational. Now if the sub continued fraction is irrational the the full continued fraction is also irrational since $a_1, b_1, a_2, b_2, \ldots, a_{j-1}, b_{j-1}$ are all integers.
+we will see that $p_2 = s/r$ with $|p_2| < 1$ and $|s| < |r| < |p| < |q|$ and we will arrive at an infinite descent (recall that $s,r,p,q,\ldots \in \mathbb{Z}$), this is clearly a contradiction and $x$ must therefore be irrational. Now if the sub continued fraction is irrational the full continued fraction must also be irrational since $a_1, b_1, a_2, b_2, \ldots, a_{j-1}, b_{j-1}$ are all integers.
 
 Going back to our $\pi$ at hand we have
 %
@@ -4867,7 +4974,7 @@ and starting from $b_j = 11 > a_j = \pi^2$ and therefore the RHS is irrational b
 
 Note that we can't use Proposition 5.3.12 that says that the continued fraction of a rational number terminates to prove that $\pi$ is irrational because we don't know whether the continued fraction of $\pi$ terminates or not.
 
-Next, we cannot use Proposition 5.3.12 on the above proof by saying that since the continued fraction of $\tan(x)$ is infinite it must be irrational, \eg as a counter example $\tan(\pi/4) = 1$ is rational even though the continued fraction is infinite this is because it's of a different kind of continued fraction where the numerators are not always $1$ and it uses subtraction in the denominator instead of addition.
+Next, we cannot use Proposition 5.3.12 on the above proof by saying that since the continued fraction of $\tan(x)$ is infinite it must be irrational, \eg as a counter example $\tan(\pi/4) = 1$ is rational even though the continued fraction is infinite this is because it's a different kind of continued fraction where the numerators are not always $1$ and it uses subtraction in the denominators instead of addition.
 
 {\bf Page 111}, {\it Definition 5.5.1}, a quadratic irrational is an irrational number that is a solution to a quadratic equation with rational coefficients, thus it is a number of the form
 %
@@ -4894,7 +5001,7 @@ now, from the previous paragraph it was shown that $\alpha$ satisfies a quadrati
 B^2_n - 4A_nC_n = (b^2 - 4ac)(p_{n-1}q_{n-2} - q_{n-1}p_{n-2})^2 = b^2 - 4ac
 \neea
 %
-to get to the last equality we use Eq. 5.2.2, $p_nq_{n-1} - q_np_{n-1} = (-1)^{n-1}$
+to get to the last equality we use Eq. 5.2.2, $p_n q_{n-1} - q_n p_{n-1} = (-1)^{n-1}$
 
 {\bf Page 119}, middle paragraph, ``To prepare our proof of the implication $(\Longleftarrow)$ of Theorem 5.7.1 $\dots$, it suffices to show that any prime $p\equiv 1 \pmod{4}$ is a sum of two squares''
 
@@ -4921,7 +5028,7 @@ and
 To tackle this problem we just need to recall the definitions of $p_n$ and $q_n$, let's start with $p_n$ first
 %
 \nbea
-p_n & = & a_np_{n-1} + p_{n-2} \\
+p_n & = & a_n p_{n-1} + p_{n-2} \\
 \frac{p_n}{p_{n-1}} & = & a_n + \frac{p_{n-2}}{p_{n-1}} \\
 & = & a_n + \frac{1}{\frac{p_{n-1}}{p_{n-2}}}
 \neea
@@ -4964,7 +5071,7 @@ as $q_1 = a_1$ and $q_0 = 1$.
 
 {\bf Problem 5.2}. Show that every nonzero rational number can be represented in exactly two ways by a finite simple continued fraction. (For example, 2 can be represented by [1, 1] and [2], and 1/3 by [0, 3] and [0, 2, 1].)
 
-To solve this problem we need to return to the proof of Proposition 5.2.14, which utilizes Euclid's gcd algorithm. If the number in question $a/b$ has $\gcd(a,b)=1$ then the last remainder $r_n$ is 1, therefore $r_{n-1} > 1$ because otherwise the algorithm would have ended at $r_{n-1}$ instead of $r_n$. And so
+To solve this problem we need to return to the proof of Proposition 5.2.14, which utilizes Euclid's $\gcd$ algorithm. If the number in question $a/b$ has $\gcd(a,b)=1$ then the last remainder $r_n$ is 1, therefore $r_{n-1} > 1$ because otherwise the algorithm would have ended at $r_{n-1}$ instead of $r_n$. And so
 %
 \nbea
 r_{n-1} & = & r_n \cdot a_n \\
@@ -4972,7 +5079,7 @@ r_{n-1} & = & r_n \cdot a_n \\
 \to 1 & < & a_n
 \neea
 %
-Now, since $a_n > 1$ we can reexpress $[a_0, a_1, \dots, a_n] \to [a_0, a_1, \dots, a_n-1, 1]$ as
+Now, since $a_n > 1$ we can re-express $[a_0, a_1, \dots, a_n] \to [a_0, a_1, \dots, a_n-1, 1]$ as
 %
 \nbea
 [a_0, a_1, \dots, a_n-1, 1] & = &  [a_0, a_1, \dots, a_n-1 + \frac{1}{1}] \\
@@ -4985,9 +5092,9 @@ So we know that there are at least two ways of expressing $a/b$, the question no
 
 To answer this question we need to go back to Euclid's algorithm, this algorithm is based on the fact that we can express two numbers $a,b$ as $a = qb + r$ where $0 \le r < b$ and $q,r$ are unique. But what happens if we don't follow this rule and let $r \ge b$? In this case then $b = r\cdot 0 + b$ and one of the $a_i$ in the continued fractions will be zero but this is disallowed as $a_i > 0$
 
-{\bf Problem 5.3}. Evaluate the inﬁnite continued fraction $[2, \overline{1, 2, 1}]$.
+{\bf Problem 5.3}. Evaluate the infinite continued fraction $[2, \overline{1, 2, 1}]$.
 
-The overline means
+The over line means
 %
 \nbea
 [2, \overline{1, 2, 1}] & = & [2, 1, 2, 1, 1, 2, 1, 1, 2, 1, \dots]
@@ -5189,7 +5296,7 @@ r_{3n} & = & ((4n-2)k - 1)r_{3n-3} + \{((4n-6)k)r_{3n-6} + r_{3n-3} - ((4n-6)k -
 %
 \nbea
 T_0 & = & \frac{1}{k^0} \int_0^{1/k} \frac{(kt)^0 (kt - 1)^0}{0!}e^tdt \\
-& = & \int_0^{1/k} e^tdt \\
+& = & \int_0^{1/k} e^t dt \\
 & = & \left. e^t\right|^{1/k}_0 = e^{1/k} - 1
 \neea
 %
@@ -5212,9 +5319,9 @@ while $q_3e^{1/k} - p_3 = (2k - 1)e^{1/k} - (2k+1)$ and thus $T_1 = q_3e^{1/k} -
 (c) (iii) 
 %
 \nbea
-T_n (k) & = & \frac{1}{k^n} \int_0^{1/k} \frac{(kt)^n (kt - 1)^n}{n!}e^tdt \\
-& = & \left.\frac{1}{k^n}\frac{(kt)^n (kt - 1)^n}{n!}e^t \right|^{1/k}_0 - \frac{1}{k^n} \int_0^{1/k} \frac{nk(kt)^{n-1} (kt - 1)^n + (kt)^n nk(kt - 1)^{n-1}}{n!}e^tdt \\
-& = & -\frac{1}{k^{n-1}} \int_0^{1/k} \frac{(kt)^{n-1} (kt - 1)^n + (kt)^n (kt - 1)^{n-1}}{(n-1)!}e^tdt
+T_n (k) & = & \frac{1}{k^n} \int_0^{1/k} \frac{(kt)^n (kt - 1)^n}{n!}e^t dt \\
+& = & \left.\frac{1}{k^n}\frac{(kt)^n (kt - 1)^n}{n!}e^t \right|^{1/k}_0 - \frac{1}{k^n} \int_0^{1/k} \frac{nk(kt)^{n-1} (kt - 1)^n + (kt)^n nk(kt - 1)^{n-1}}{n!}e^t dt \\
+& = & -\frac{1}{k^{n-1}} \int_0^{1/k} \frac{(kt)^{n-1} (kt - 1)^n + (kt)^n (kt - 1)^{n-1}}{(n-1)!}e^t dt
 \neea
 %
 By now we should have seen enough evidence that the boundary terms are zero so we can ignore them in the future :) doing one term at a time
@@ -5299,7 +5406,7 @@ One last thing to do,
 %
 and we are done! :)
 
-{\bf Problem 5.7}. Let $d$ be an integer that is coprime to 10. Prove that the decimal
+{\bf Problem 5.7}. Let $d$ be an integer that is co-prime to 10. Prove that the decimal
 expansion of $\frac{1}{d}$ has a period equal to the order of 10 modulo $d$. (Hint:
 For every positive integer $r$, we have $\frac{1}{1-10^r} = \sum_{n\ge1}10^{-rn}$.)
 
@@ -5390,7 +5497,7 @@ x^2 + 2y^2 & \equiv & 0 \pmod{p} \\
 \left ( \frac{x}{y}\right )^2 & \equiv & -2 \pmod{p}
 \neea
 %
-and $-2$ is a quadratic residue modulo $p \equiv 1,3 \pmod{8}$ because $-1$ and $2$ are both quadratic residues modulo $p \equiv 1\pmod{8}$ and $-1$ and $2$ are both quadtaric {\it non}-residues modulo $p \equiv 3 \pmod{8}$
+and $-2$ is a quadratic residue modulo $p \equiv 1,3 \pmod{8}$ because $-1$ and $2$ are both quadratic residues modulo $p \equiv 1\pmod{8}$ and $-1$ and $2$ are both quadratic {\it non}-residues modulo $p \equiv 3 \pmod{8}$
 
 For the if proof we might be able to utilize the proof in Page 120 top. Here $r \in \mathbb{Z}$ such that $r^2 \equiv -2 \pmod{p}$ since $p \equiv 1,3 \pmod{8}$ means that $-2$ is a quadratic residue.
 
@@ -5498,7 +5605,7 @@ The thing I don't understand is as to how elliptic curves help alleviate this re
 
 From the definition of Lemma 2.2.5 we see that if $c \equiv e$ with $e$ the identity then it must be mapped to $(e, e)$. And when we go to the isomorphism $g$ then the flexibility of the elliptic curve factorization method is that as long as as least one of the component of the mapping is $\mathcal{O}$ (but not all of them are $\mathcal{O}$ as that would mean that the pre-image is $\mathcal{O}$) then it is a factor of $N$ but as to why this is so I'm not sure I guess I;m not clear as to what role $B$-power smooth plays in elliptic curve factorization \dunno
 
-``We will not define $E(\mathbb{Z}/N\mathbb{Z})$ when $N$ is composite'', this is because we need inverse of elements when computing addition through $\lambda$ which is the slope of the tangent and if an element does not have an inverse (if it is no coprime w.r.t. $N$) then we can not do the ``division'' required to compute the tangent $\lambda$.
+``We will not define $E(\mathbb{Z}/N\mathbb{Z})$ when $N$ is composite'', this is because we need inverse of elements when computing addition through $\lambda$ which is the slope of the tangent and if an element does not have an inverse (if it is no co-prime w.r.t. $N$) then we can not do the ``division'' required to compute the tangent $\lambda$.
 
 {\bf Page 141}, ``The quotient $E(\mathbb{Q})/E(\mathbb{Q})_{\tor}$ is a finitely generated free abelian group so it is (in) isomorphism to $\mathbb{Z}^r$ for some integer $r$''
 
@@ -5506,7 +5613,7 @@ Some explanations, the quotient group $A/B$ is the group generated by identifyin
 
 In case of $E(\mathbb{Q})/E(\mathbb{Q})_{\tor}$ we identify every finitely generated elements with one another and therefore all of them are identified with the identity element (since the identity is finitely generated, \ie there's a finite $w$ such that $w\cdot 0 = 0$). Therefore all finitely generated elements disappear from $E(\mathbb{Q})/E(\mathbb{Q})_{\tor}$.
 
-A free abelian group is a group that can be generated from a basis that is also a subset of the group, for concreteness let's choose the group operation to be addition and therefore the identity is 0. For example if we choose as the basis $\{x_1,x_1,\ldots,x_n\}$ then every other element in the group must be expressable as
+A free abelian group is a group that can be generated from a basis that is also a subset of the group, for concreteness let's choose the group operation to be addition and therefore the identity is 0. For example if we choose as the basis $\{x_1,x_1,\ldots,x_n\}$ then every other element in the group must be expressible as
 %
 \nbea
 a_1 x_1 + a_2x_2 + \ldots + a_n x_n
@@ -5565,7 +5672,7 @@ which means that $r_2 = r_1$, therefore when $\Delta = -16(4a^3 +27b^2 ) = 0$ we
 
 Geometrically speaking this means we have either cusps, isolated points or self crossings. At these problematic points we cannot get the tangent needed to add the point to itself, that's one problem.
 
-The second problem can be easily seen when we only have two distinct roots, if we add these two points by connecting a line through them, the resulting line will not instersect another point in the curve, \eg consider $y^2 = x^3-3x+2 = (x-1)(x-1)(x+2)$, see Fig.~\ref{fig:singular-curve}.
+The second problem can be easily seen when we only have two distinct roots, if we add these two points by connecting a line through them, the resulting line will not intersect another point in the curve, \eg consider $y^2 = x^3-3x+2 = (x-1)(x-1)(x+2)$, see Fig.~\ref{fig:singular-curve}.
 %
 \begin{figure}
 \centering
@@ -5621,7 +5728,7 @@ which is point at $(1.29, 0.383)$, very close to zero, see Fig.~\ref{fig:Problem
 \end{figure}
 %
 
-{\bf Problem 6.3}. Let $E$ be the elliptic curve over the ﬁnite ﬁeld $K = \mathbb{Z}/5\mathbb{Z}$ deﬁned by the equation
+{\bf Problem 6.3}. Let $E$ be the elliptic curve over the finite field $K = \mathbb{Z}/5\mathbb{Z}$ defined by the equation
 %
 \nbea
 y^2 = x^3 + x + 1.
@@ -5733,7 +5840,7 @@ Thus since $y^2 = x^3 + 1$ there are $\frac{(p-1)}{2}$ different values of $y^2$
 A finitely generated abelian group, $G$, is a group where every element, $x$, can be expressed as
 %
 \nbea
-x = a_1x_1 + a_2x_2 + \ldots + a_nx_n, ~~~~~~ a_i \in \mathbb{Z}
+x = a_1 x_1 + a_2 x_2 + \ldots + a_n x_n, ~~~~~~ a_i \in \mathbb{Z}
 \neea
 %
 Note that this doesn't mean that there is a finite number of elements because we can apply the generators infinitely many times, \ie $a_i$ can be infinite.
@@ -5812,7 +5919,7 @@ but from the above result $s_1|v_1 \to y_1^{v_1} = y_1^{s_1 w} = (e)^w = e$ and 
 
 Some remarks, my guess as to why we need to show that the intersection between $\langle y_1 \rangle$ and $H$ is that $\langle y_1\rangle$ itself is already a product of $x_1 x_2^{m_2} \ldots x_n^{m_n}$ and $H$ is a product of $\langle x_2, x_3, \ldots, x_n \rangle$ so $H$ might already be contained in $\langle y_1\rangle$ and in this case we can't say that $G$ s a product of $\langle y_1\rangle$ and $H$ but the demonstration above shows that $\langle y_1\rangle$ does not contain $H$ and $H$ certainly doesn't contain $\langle y_1\rangle$ as it doesn't contain $x_1$.
 
-Now if $G$ is generated by cyclic subgroups $\langle x_i \rangle$ then $G$ has elements of finite order iff $x_i$ has finite order (we can have a mix of finite and inifinte orders for different $x_i$ of course). Note that since $G$ is a finitely generated abelian group there are only finitely many $x_i$ and finitely many of them has finite order, and thus they can only generate finitely many elements of finite order. Therefore, since $G_{\tor}$ is a set of elements of finite order of $G$ it must contain finitely many elements.
+Now if $G$ is generated by cyclic subgroups $\langle x_i \rangle$ then $G$ has elements of finite order iff $x_i$ has finite order (we can have a mix of finite and infinite orders for different $x_i$ of course). Note that since $G$ is a finitely generated abelian group there are only finitely many $x_i$ and finitely many of them has finite order, and thus they can only generate finitely many elements of finite order. Therefore, since $G_{\tor}$ is a set of elements of finite order of $G$ it must contain finitely many elements.
 
 {\bf Problem 6.7}. Suppose $y^2 = x^3 +ax+b$ with $a, b \in \mathbb{Q}$ defines an elliptic curve. Show that there is another equation $Y^2 = X^3 + AX + B$ with $A, B \in \mathbb{Z}$ whose solutions are in bijection with the solutions to $y^2 = x^3 +ax+b$.
 
@@ -5858,9 +5965,9 @@ a^2 + b^2 & = & c^2 \\
 & = & (c + b)(c - b)
 \neea
 %
-since $c$ and $b$ are both odd we can express $2u = c+b, 2v = c-b \to c = u+v, b = u - v$ therefore $\gcd(u,v)=1$ because otherwise $c$ and $b$ would not be coprime.
+since $c$ and $b$ are both odd we can express $2u = c+b, 2v = c-b \to c = u+v, b = u - v$ therefore $\gcd(u,v)=1$ because otherwise $c$ and $b$ would not be co-prime.
 
-Since $u$ and $v$ are coprime they must be perfect squares because $a^2 = 4uv$, \ie $u = x^2, v = y^2$ and
+Since $u$ and $v$ are co-prime they must be perfect squares because $a^2 = 4uv$, \ie $u = x^2, v = y^2$ and
 %
 \nbea
 a^2 & = & 4x^2y^2 \\
@@ -5876,11 +5983,11 @@ b & = & u - v \\
 & = & x^2 - y^2
 \neea
 %
-and we are done (we can always $a \leftrightarrow b$ to get the other result). One small note is that $\gcd(x,y)=1$ because otherwise $a,b,c$ would not be coprime.
+and we are done (we can always $a \leftrightarrow b$ to get the other result). One small note is that $\gcd(x,y)=1$ because otherwise $a,b,c$ would not be co-prime.
 
-{\bf Problem 6.9} (*) Fermat's Last Theorem for exponent $4$ asserts that any solution to the equation $x^4 + y^4 = z^4$ with $x, y, z \in \mathbb{Z}$ satisfies $xyz = 0$. Prove Fermat’s Last Theorem for exponent $4$, as follows.
+{\bf Problem 6.9} (*) Fermat's Last Theorem for exponent $4$ asserts that any solution to the equation $x^4 + y^4 = z^4$ with $x, y, z \in \mathbb{Z}$ satisfies $xyz = 0$. Prove Fermat's Last Theorem for exponent $4$, as follows.
 
-(a) Show that if the equation $x^2 + y^4 = z^4$ has no integer solutions with $xyz \neq 0$, then Fermat’s Last Theorem for exponent 4 is true.
+(a) Show that if the equation $x^2 + y^4 = z^4$ has no integer solutions with $xyz \neq 0$, then Fermat's Last Theorem for exponent 4 is true.
 
 (b) Prove that $x^2 +y^4 = z^4$ has no integer solutions with $xyz \neq 0$ as follows. Suppose $n^2 +k^4 = m^4$ is a solution with $m > 0$ minimal among all solutions. Show that there exists a solution with $m$ smaller using Exercise 6.8 (consider two cases).
 
@@ -5913,7 +6020,7 @@ x^2 = z^4 - y^4 & = & (z^2 - y^2)(z^2 + y^2)
 %
 We know that $x,y^2,z^2$ form a Pythagorean triplet. Since $x^2$ is positive we know that $z > y$ and therefore $z$ must be odd, $y$, however, can be either even or odd ($z$ must be odd because according to the Pythagorean triplet formula $z^2 = m^2 + n^2$ with $m$ and $n$ having opposite parities).
 
-Because they are Pythagorean triplet, we only need to consider pairwise coprime solutions, \ie $\gcd(z^2,y^2)=\gcd(z^2,x)=\gcd(y^2,x)=1$. But this means that $x$, $y$, $z$ must be coprime as well.
+Because they are Pythagorean triplet, we only need to consider pairwise co-prime solutions, \ie $\gcd(z^2,y^2)=\gcd(z^2,x)=\gcd(y^2,x)=1$. But this means that $x$, $y$, $z$ must be co-prime as well.
 
 First if there's a common divisor $d$ between $(z^2 - y^2)$ and $(z^2 + y^2)$ then
 %
@@ -5922,7 +6029,7 @@ d &|& 2z^2 \\
 d &|& 2y^2
 \neea
 %
-Thus $d=1,2$ since $z$ and $y$ are coprime, therefore the only common divisors between $(z^2 - y^2),(z^2 + y^2)$ are either 1 or 2 which is expected since if $z$ and $y$ have opposite parities then the common divisors between them must be 1 and if $z$ and $y$ are both odd then the common divisor between $(z^2 - y^2)$ and $(z^2 + y^2)$ is 2.
+Thus $d=1,2$ since $z$ and $y$ are co-prime, therefore the only common divisors between $(z^2 - y^2),(z^2 + y^2)$ are either 1 or 2 which is expected since if $z$ and $y$ have opposite parities then the common divisors between them must be 1 and if $z$ and $y$ are both odd then the common divisor between $(z^2 - y^2)$ and $(z^2 + y^2)$ is 2.
 
 If the common divisor of $(z^2 - y^2)$ and $(z^2 + y^2)$ is 1 then by virtue of $x^2 = (z^2 - y^2)(z^2 + y^2)$ we have
 %
@@ -5947,9 +6054,9 @@ y^2 & = & d^2 - c^2 \\
 z^2 & = & d^2 + c^2
 \neea
 %
-Note that $c,d,z,y$ are all pairwise coprime, also since $z$ and $y$ are both odd, according to the Pythagorean triplet formula $c$ has to be even and $d$ has to be odd (to see this, from the first equation $y^2 = d^2 - c^2 \to y^2  + c^2= d^2$ and the largest number, $d$, is always odd).
+Note that $c,d,z,y$ are all pairwise co-prime, also since $z$ and $y$ are both odd, according to the Pythagorean triplet formula $c$ has to be even and $d$ has to be odd (to see this, from the first equation $y^2 = d^2 - c^2 \to y^2  + c^2= d^2$ and the largest number, $d$, is always odd).
 
-In either case we actually generate two other Pythagorean triplets $z^2 = y^2 + a^2$ and $z^2 + y^2 = b^2$ with four coprime variables (in the second case $d$ plays the role of $z$ of the first case, and $c \leftrightarrow y$, $y \leftrightarrow a$, $z \leftrightarrow b$). So now we can just concentrate on the first case where $z$ is odd, $y$ is even, $a$ is odd, and $b$ is odd.
+In either case we actually generate two other Pythagorean triplets $z^2 = y^2 + a^2$ and $z^2 + y^2 = b^2$ with four co-prime variables (in the second case $d$ plays the role of $z$ of the first case, and $c \leftrightarrow y$, $y \leftrightarrow a$, $z \leftrightarrow b$). So now we can just concentrate on the first case where $z$ is odd, $y$ is even, $a$ is odd, and $b$ is odd.
 
 From $z^2 = y^2 + a^2$ we have 
 %
@@ -6089,9 +6196,9 @@ y^2 & = & x^3 - x \\
 s^3 p^2 & = & q^2(r^3 - s^2r)
 \neea
 %
-This means that $s^3|q^2(r^3 - s^2r)$. Now suppose $\gcd(s,r^3 - s^2r) = d$ then $d|s \to d |s^2r$ thus $d|r^3$ thus $d = \gcd(s,r^3)$ but $s$ and $r$ are coprime thus $d = 1$ which in turn means that $s^3|q^2$ (and by the same token $s|q^2,~s^2|q^2$).
+This means that $s^3|q^2(r^3 - s^2r)$. Now suppose $\gcd(s,r^3 - s^2r) = d$ then $d|s \to d |s^2r$ thus $d|r^3$ thus $d = \gcd(s,r^3)$ but $s$ and $r$ are co-prime thus $d = 1$ which in turn means that $s^3|q^2$ (and by the same token $s|q^2,~s^2|q^2$).
 
-Working the other way we get $q^2 | s^3 p^2$ but $p$ and $q$ are coprime thus $q^2|s^3$ therefore $q^2 = s^3$.
+Working the other way we get $q^2 | s^3 p^2$ but $p$ and $q$ are co-prime thus $q^2|s^3$ therefore $q^2 = s^3$.
 
 Now if we write $q$ and $s$ in their primal constituents we get
 %
@@ -6128,7 +6235,7 @@ Now recall that $s = k^2$ and $r$ are co prime thus $r$ and $r^2 - k^4$ must be 
 
 If this is the case then $\ell \nmid (r^2 - k^4)$ which means that $r$ must contain $\ell^{2w}$ since $\ord_\ell(p^2)$ is even and since this is true for {\it any} prime factor $\ell$ this means that $r$ is a perfect square
 
-(d) Writing $r = m^2$ we get $p^2 = m^6 - m^2 k^4 = m^2(m^4 - k^4)$ and $m^2|p^2$. Again, noting that $r = m^2$ and $s^2 = k^4$ and $r$ and $s$ are coprime means that $m^2$ and $m^4 - k^4$ are also co prime. This means that $m^4 - k^4$ must be a perfect square since the LHS is a perfect square, \ie
+(d) Writing $r = m^2$ we get $p^2 = m^6 - m^2 k^4 = m^2(m^4 - k^4)$ and $m^2|p^2$. Again, noting that $r = m^2$ and $s^2 = k^4$ and $r$ and $s$ are co-prime means that $m^2$ and $m^4 - k^4$ are also co prime. This means that $m^4 - k^4$ must be a perfect square since the LHS is a perfect square, \ie
 %
 \nbea
 p^2 & = & m^2 (m^4 - k^4) \\
@@ -6154,9 +6261,9 @@ If $p = 0 \to y = 0$ then because $y^2 = x^3 - x$, $x$ has to be zero or $x = \p
 \underline{\textbf{\textit{Closing Remarks}}}
 \bigskip
 
-I started this book because I had such a great experience reading a number theory book way back during my undergraduate days. I picked this book because it was one of the shortest available (also note that all numerical examples were given using {\it Sage} because William Sstein is the developer of {\it Sage}, it's quite inconvenient for me as I'm used to Maxima).
+I started this book because I had such a great experience reading a number theory book way back during my undergraduate days. I picked this book because it was one of the shortest available (also note that all numerical examples were given using {\it Sage} because William Stein is the developer of {\it Sage}, it's quite inconvenient for me as I'm used to Maxima).
 
-In the beginning I was reading this book together with Vistor Shoup's book, I wanted to do it in parallel to get multiple view points of the same subject but it quickly became unmanageable timewise.
+In the beginning I was reading this book together with Vistor Shoup's book, I wanted to do it in parallel to get multiple view points of the same subject but it quickly became unmanageable time wise.
 
 This year (2016) has been particularly rough, lots of challenges and what not and this is why this has taken so long to complete, almost the whole freaking year, Rovelli's LQG book only took me roughly four months and it was almost twice as long as this one.
 
