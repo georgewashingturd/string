@@ -211,7 +211,7 @@
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 \DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
 
-
+\DeclareMathOperator{\re}{Re}
 
 
 \begin{document}
@@ -4565,8 +4565,118 @@ a^m - b^n & = & a^{m'd} - b^{n'd} = (a^{m'})^d - (b^{n'})^d \\
 \neea
 %
 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+I saw this problem of the week on KAIST (Korea Advance Institute of Science and Technology)
+
+Say we have a bunch of complex numbers $z_1,z_2,\ldots,z_n$ with $\sum_{k=1}^n z_k = 0$, prove that
+%
+\nbea
+\sum_{k=1}^{n} \left | z_{k+1} - z_k\right |^2 \ge 4\sin^2\left ( \frac{\pi}{n}\right ) \sum_{k=1}^n \left | z_k\right |^2
+\neea
+%
+with $z_{k+1} = z_1$ (needed for the upper limit of the sum when $k = n \to z_{k+1} = z_{n+1}$)
+
+My approach initially was not that great, \ie
+%
+\nbea
+\sum_{k=1}^{n} \left | z_{k+1} - z_k\right |^2 & = & \sum_{k=1}^{n} (z_{k+1} - z_k)\overline{(z_{k+1} - z_k)} \\
+& = & \sum_{k=1}^{n} (z_{k+1} - z_k)(\overline{z_{k+1}} - \overline{z_k}) \\
+& = & \sum_{k=1}^{n} z_{k+1}\overline{z_{k+1}} + z_k\overline{z_k} - z_{k+1}\overline{z_k} -  \overline{z_{k+1}}z_k\\
+& = & \sum_{k=1}^{n} |z_{k+1}|^2 + |z_k|^2 - 2 \re(z_{k+1}\overline{z_k})\\
+& = & 2 \sum_{k=1}^{n} |z_k|^2 - \re(z_{k}\overline{z_{k+1}})
+\neea
+%
+where we utilized $z_{n+1} = z_1$, I then stupidly proceeded by expanding $\sum_{k=1}^n z_k = 0$
+%
+\nbea
+z_k & = & -\sum_{i\neq k}^n z_i
+\neea
+%
+to get
+%
+\nbea
+-\sum_{k=1}^{n} \re(z_{k}\overline{z_{k+1}}) & = & -\sum_{k=1}^{n} \re \left ( \left (-\sum_{i\neq k}^n z_i \right )\overline{z_{k+1}} \right ) \\
+& = & \sum_{k=1}^{n} \re \left (\left ( z_{k+1} + \sum_{i\neq k,k+1}^n z_i \right )\overline{z_{k+1}} \right ) \\
+& = & \sum_{k=1}^{n} \re \left (|z_{k+1}|^2 + \overline{z_{k+1}}\sum_{i\neq k,k+1}^n z_i \right ) \\
+& = & \sum_{k=1}^{n} \re \left ( |z_{k+1}|^2 \right ) + \sum_{k=1}^{n}\overline{z_{k+1}}\left (\sum_{i\neq k,k+1}^n z_i \right ) \\
+& = & \sum_{k=1}^{n} |z_{k}|^2 + \sum_{k=1}^{n}\overline{z_{k+1}}\left (\sum_{i\neq k,k+1}^n z_i \right )
+\neea
+%
+
+%
+\nbea
+-\sum_{k=1}^{n} \re(\overline{z_{k}} z_{k+1}) & = & -\sum_{k=1}^{n} \re \left ( \overline{z_k} \left (-\sum_{i\neq k+1}^n z_i \right ) \right ) \\
+& = & \sum_{k=1}^{n} \re \left (\overline{z_{k}}\left ( z_k + \sum_{i\neq k,k+1}^n z_i \right ) \right ) \\
+& = & \sum_{k=1}^{n} \re \left (|z_k|^2 + \overline{z_k}\sum_{i\neq k,k+1}^n z_i \right ) \\
+& = & \sum_{k=1}^{n} \re \left ( |z_k|^2 \right ) + \sum_{k=1}^{n}\re \left (\overline{z_k}\left (\sum_{i\neq k,k+1}^n z_i \right ) \right )\\
+& = & \sum_{k=1}^{n} |z_{k}|^2 + \sum_{k=1}^{n}\re \left (\overline{z_k}\left (\sum_{i\neq k,k+1}^n z_i \right ) \right )
+\neea
+%
+
+where we again have utilized $z_{n+1} = z_1$, thus we have
+%
+\nbea
+\sum_{k=1}^{n} \left | z_{k+1} - z_k\right |^2 & = & 2 \sum_{k=1}^{n} |z_k|^2 - \re(z_{k}\overline{z_{k+1}}) \\
+& = & 2 \sum_{k=1}^{n} |z_k|^2 + \left ( |z_{k}|^2 + \overline{z_{k+1}}\left (\sum_{i\neq k,k+1}^n z_i \right ) \right ) \\
+& = & 4 \sum_{k=1}^{n} |z_k|^2 + 2\sum_{k=1}^{n} \overline{z_{k+1}}\left (\sum_{i\neq k,k+1}^n z_i \right ) \\
+& = & 4 \left ( \sum_{k=1}^{n} |z_k|^2 \right ) \left ( 1 + \frac{2\sum_{k=1}^{n} \overline{z_{k+1}}\left (\sum_{i\neq k,k+1}^n z_i \right )}{4 \sum_{k=1}^{n} |z_k|^2} \right )
+\neea
+%
+
+%
+\nbea
+\sum_{k=1}^{n} \left | z_{k+1} - z_k\right |^2 & = & 2 \sum_{k=1}^{n} |z_k|^2 - 2 \re(\overline{z_{k}}z_{k+1}) \\
+& = & 2 \left ( \sum_{k=1}^{n} |z_k|^2 \right )  \re \left ( 1 - \frac{\sum_{k=1}^{n} \overline{z_k}z_{k+1}}{\sum_{k=1}^{n} |z_k|^2} \right )
+\neea
+%
+what we want to do next is massage $\re \left ( 1 - \frac{\sum_{k=1}^{n} \overline{z_k}z_{k+1}}{\sum_{k=1}^{n} |z_k|^2} \right )$ into $1 - \cos(2x)$ because $1 - \cos(2x) = 2\sin^2(x)$
+
+%
+\nbea
+\overline{z_k}z_{k+1} & = & r_k e^{-i\theta_k}r_{k+1} e^{i\theta_{k+1}} \\
+& = & r_k r_{k+1} e^{i(\theta_{k+1} - \theta_k)}
+\neea
+%
+
+%
+\nbea
+-\frac{\sum_{k=1}^{n} \overline{z_k}z_{k+1}}{\sum_{k=1}^{n} |z_k|^2 } & = & -\frac{\sum_{k=1}^{n} r_k r_{k+1} e^{i(\theta_{k+1} - \theta_k)}}{\sum_{k=1}^{n} |z_k|^2} \\
+& = & -\frac{\sum_{k=1}^{n} r_k r_{k+1} e^{i(\theta_{k+1} - \theta_k)}}{\sum_{k=1}^{n} r_k^2}
+\neea
+%
+we can normalize the $r$'s so that the smallest would be $1$ and the rest $\ge 1$. Now, if only we can say that
+%
+\nbea
+-\frac{\sum_{k=1}^{n} r_k r_{k+1} e^{i(\theta_{k+1} - \theta_k)}}{\sum_{k=1}^{n} r_k^2} & \ge & -\frac{\sum_{k=1}^{n} r_{\rm avg} r_{\rm avg} e^{i\Delta_{\rm avg}}}{\sum_{k=1}^{n} r_{\rm avg}^2} \\
+& \ge & - \frac{r_{\rm avg}^2\sum_{k=1}^{n} e^{i\Delta_{\rm avg}}}{n r_{\rm avg}^2} \\
+& \ge & \frac{-n e^{i\Delta_{\rm avg}}}{n } \\
+-\frac{\sum_{k=1}^{n} r_k r_{k+1} e^{i(\theta_{k+1} - \theta_k)}}{\sum_{k=1}^{n} r_k^2} & \ge & - e^{i\Delta_{\rm avg}}
+\neea
+%
+where $\Delta_{\rm avg} = 2\pi/n$ then we are done but we can't unless
 
 
+In this way
+%
+\nbea
+\sum_{k=1}^{n} r^2_{\rm avg} & = & \sum_{k=1}^{n} \left ( \frac{\sum_{i=1}^{n} r_i}{n} \right ) ^2 \\
+& = & \frac{1}{n^2} \sum_{k=1}^{n} \left ( \sum_{i=1}^{n} r_i \right ) ^2 \\
+& = & \frac{1}{n^{\bcancel{2}}} \bcancel{n} \left ( \sum_{i=1}^{n} r_i \right ) ^2 \\
+& = & \frac{1}{n} \sum_{k=1}^{n} r_k^2  + \frac{1}{n} ({\rm cross~terms}) \\
+\to \sum_{k=1}^{n} r_k^2 & = & n \sum_{k=1}^{n} r^2_{\rm avg} - {\rm cross~terms}
+\neea
+%
+
+
+
+
+%
+\nbea
+\re \left (\sum_{k=1}^n z_k \right ) & = & \re (0) \\
+\re \left ( \sum_{k=1}^n r_k e^{i\theta_k} \right ) & = & 0
+\neea
+%
 
 
 
