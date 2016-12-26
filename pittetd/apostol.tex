@@ -1,0 +1,392 @@
+\documentclass[aps,preprint,preprintnumbers,nofootinbib,showpacs,prd]{revtex4-1}
+\usepackage{graphicx,color}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsmath,amssymb}
+\usepackage{multirow}
+\usepackage{amsthm}%        But you can't use \usewithpatch for several packages as in this line. The search 
+
+\usepackage{cancel}
+
+%%% for SLE
+\usepackage{dcolumn}   % needed for some tables
+\usepackage{bm}        % for math
+\usepackage{amssymb}   % for math
+\usepackage{multirow}
+%%% for SLE -End
+
+\usepackage{ulem}
+\usepackage{cancel}
+
+\usepackage{hyperref}
+
+\usepackage[top=1in, bottom=1.25in, left=1.1in, right=1.1in]{geometry}
+
+\usepackage{mathtools} % for \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+\usepackage{simplewick}
+
+\newcommand{\msout}[1]{\text{\sout{\ensuremath{#1}}}}
+
+
+%%%%%% My stuffs - Stef
+\newcommand{\lsim}{\mathrel{\mathop{\kern 0pt \rlap
+  {\raise.2ex\hbox{$<$}}}
+  \lower.9ex\hbox{\kern-.190em $\sim$}}}
+\newcommand{\gsim}{\mathrel{\mathop{\kern 0pt \rlap
+  {\raise.2ex\hbox{$>$}}}
+  \lower.9ex\hbox{\kern-.190em $\sim$}}}
+
+%
+% Key
+%
+\newcommand{\key}[1]{\medskip{\sffamily\bfseries\color{blue}#1}\par\medskip}
+%\newcommand{\key}[1]{}
+\newcommand{\q}[1] {\medskip{\sffamily\bfseries\color{red}#1}\par\medskip}
+\newcommand{\comment}[2]{{\color{red}{{\bf #1:}  #2}}}
+
+
+\newcommand{\ie}{{\it i.e.} }
+\newcommand{\eg}{{\it e.g.} }
+
+%
+% Energy scales
+%
+\newcommand{\ev}{{\,{\rm eV}}}
+\newcommand{\kev}{{\,{\rm keV}}}
+\newcommand{\mev}{{\,{\rm MeV}}}
+\newcommand{\gev}{{\,{\rm GeV}}}
+\newcommand{\tev}{{\,{\rm TeV}}}
+\newcommand{\fb}{{\,{\rm fb}}}
+\newcommand{\ifb}{{\,{\rm fb}^{-1}}}
+
+%
+% SUSY notations
+%
+\newcommand{\neu}{\tilde{\chi}^0}
+\newcommand{\neuo}{{\tilde{\chi}^0_1}}
+\newcommand{\neut}{{\tilde{\chi}^0_2}}
+\newcommand{\cha}{{\tilde{\chi}^\pm}}
+\newcommand{\chao}{{\tilde{\chi}^\pm_1}}
+\newcommand{\chaop}{{\tilde{\chi}^+_1}}
+\newcommand{\chaom}{{\tilde{\chi}^-_1}}
+\newcommand{\Wpm}{W^\pm}
+\newcommand{\chat}{{\tilde{\chi}^\pm_2}}
+\newcommand{\smu}{{\tilde{\mu}}}
+\newcommand{\smur}{\tilde{\mu}_R}
+\newcommand{\smul}{\tilde{\mu}_L}
+\newcommand{\sel}{{\tilde{e}}}
+\newcommand{\selr}{\tilde{e}_R}
+\newcommand{\sell}{\tilde{e}_L}
+\newcommand{\smurl}{\tilde{\mu}_{R,L}}
+
+\newcommand{\casea}{\texttt{IA}}
+\newcommand{\caseb}{\texttt{IB}}
+\newcommand{\casec}{\texttt{II}}
+
+\newcommand{\caseasix}{\texttt{IA-6}}
+
+%
+% Greek
+%
+\newcommand{\es}{{\epsilon}}
+\newcommand{\sg}{{\sigma}}
+\newcommand{\dt}{{\delta}}
+\newcommand{\kp}{{\kappa}}
+\newcommand{\lm}{{\lambda}}
+\newcommand{\Lm}{{\Lambda}}
+\newcommand{\gm}{{\gamma}}
+\newcommand{\mn}{{\mu\nu}}
+\newcommand{\Gm}{{\Gamma}}
+\newcommand{\tho}{{\theta_1}}
+\newcommand{\tht}{{\theta_2}}
+\newcommand{\lmo}{{\lambda_1}}
+\newcommand{\lmt}{{\lambda_2}}
+%
+% LaTeX equations
+%
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+
+\newcommand{\nbea}{\begin{eqnarray*}}
+\newcommand{\neea}{\end{eqnarray*}}
+\newcommand{\nbeq}{\begin{equation*}}
+\newcommand{\neeq}{\end{equation*}}
+
+\newcommand{\no}{{\nonumber}}
+\newcommand{\td}[1]{{\widetilde{#1}}}
+\newcommand{\sqt}{{\sqrt{2}}}
+%
+\newcommand{\me}{{\rlap/\!E}}
+\newcommand{\met}{{\rlap/\!E_T}}
+\newcommand{\rdmu}{{\partial^\mu}}
+\newcommand{\gmm}{{\gamma^\mu}}
+\newcommand{\gmb}{{\gamma^\beta}}
+\newcommand{\gma}{{\gamma^\alpha}}
+\newcommand{\gmn}{{\gamma^\nu}}
+\newcommand{\gmf}{{\gamma^5}}
+%
+% Roman expressions
+%
+\newcommand{\br}{{\rm Br}}
+\newcommand{\sign}{{\rm sign}}
+\newcommand{\Lg}{{\mathcal{L}}}
+\newcommand{\M}{{\mathcal{M}}}
+\newcommand{\tr}{{\rm Tr}}
+
+\newcommand{\msq}{{\overline{|\mathcal{M}|^2}}}
+
+%
+% kinematic variables
+%
+%\newcommand{\mc}{m^{\rm cusp}}
+%\newcommand{\mmax}{m^{\rm max}}
+%\newcommand{\mmin}{m^{\rm min}}
+%\newcommand{\mll}{m_{\ell\ell}}
+%\newcommand{\mllc}{m^{\rm cusp}_{\ell\ell}}
+%\newcommand{\mllmax}{m^{\rm max}_{\ell\ell}}
+%\newcommand{\mllmin}{m^{\rm min}_{\ell\ell}}
+%\newcommand{\elmax} {E_\ell^{\rm max}}
+%\newcommand{\elmin} {E_\ell^{\rm min}}
+\newcommand{\mxx}{m_{\chi\chi}}
+\newcommand{\mrec}{m_{\rm rec}}
+\newcommand{\mrecmin}{m_{\rm rec}^{\rm min}}
+\newcommand{\mrecc}{m_{\rm rec}^{\rm cusp}}
+\newcommand{\mrecmax}{m_{\rm rec}^{\rm max}}
+%\newcommand{\mpt}{\rlap/p_T}
+
+%%%song
+\newcommand{\cosmax}{|\cos\Theta|_{\rm max} }
+\newcommand{\maa}{m_{aa}}
+\newcommand{\maac}{m^{\rm cusp}_{aa}}
+\newcommand{\maamax}{m^{\rm max}_{aa}}
+\newcommand{\maamin}{m^{\rm min}_{aa}}
+\newcommand{\eamax} {E_a^{\rm max}}
+\newcommand{\eamin} {E_a^{\rm min}}
+\newcommand{\eaamax} {E_{aa}^{\rm max}}
+\newcommand{\eaacusp} {E_{aa}^{\rm cusp}}
+\newcommand{\eaamin} {E_{aa}^{\rm min}}
+\newcommand{\exxmax} {E_{\neuo \neuo}^{\rm max}}
+\newcommand{\exxcusp} {E_{\neuo \neuo}^{\rm cusp}}
+\newcommand{\exxmin} {E_{\neuo \neuo}^{\rm min}}
+%\newcommand{\mxx}{m_{XX}}
+%\newcommand{\mrec}{m_{\rm rec}}
+\newcommand{\erec}{E_{\rm rec}}
+%\newcommand{\mrecmin}{m_{\rm rec}^{\rm min}}
+%\newcommand{\mrecc}{m_{\rm rec}^{\rm cusp}}
+%\newcommand{\mrecmax}{m_{\rm rec}^{\rm max}}
+%%%song
+
+\newcommand{\mc}{m^{\rm cusp}}
+\newcommand{\mmax}{m^{\rm max}}
+\newcommand{\mmin}{m^{\rm min}}
+\newcommand{\mll}{m_{\mu\mu}}
+\newcommand{\mllc}{m^{\rm cusp}_{\mu\mu}}
+\newcommand{\mllmax}{m^{\rm max}_{\mu\mu}}
+\newcommand{\mllmin}{m^{\rm min}_{\mu\mu}}
+\newcommand{\mllcusp}{m^{\rm cusp}_{\mu\mu}}
+\newcommand{\elmax} {E_\mu^{\rm max}}
+\newcommand{\elmin} {E_\mu^{\rm min}}
+\newcommand{\elmaxw} {E_W^{\rm max}}
+\newcommand{\elminw} {E_W^{\rm min}}
+\newcommand{\R} {{\cal R}}
+
+\newcommand{\ewmax} {E_W^{\rm max}}
+\newcommand{\ewmin} {E_W^{\rm min}}
+\newcommand{\mwrec}{m_{WW}}
+\newcommand{\mwrecmin}{m_{WW}^{\rm min}}
+\newcommand{\mwrecc}{m_{WW}^{\rm cusp}}
+\newcommand{\mwrecmax}{m_{WW}^{\rm max}}
+
+\newcommand{\mpt}{{\rlap/p}_T}
+
+%%%%%% END My stuffs - Stef
+
+\newcommand{\dunno}{$ {}^{\mbox {--}}\backslash(^{\rm o}{}\underline{\hspace{0.2cm}}{\rm o})/^{\mbox {--}}$}
+
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\tor}{tor}
+
+
+
+
+
+\begin{document}
+
+\title{Apostol's Analytic Number Theory}
+\bigskip
+\author{Stefanus$^1$\\
+$^1$ Samsung Semiconductor Inc\\ San Jose, CA 95134 USA\\
+}
+%
+\date{\today}
+%
+\begin{abstract}
+Just for fun :)
+
+\end{abstract}
+%
+\maketitle
+
+\renewcommand{\theequation}{A.\arabic{equation}}  % redefine the command that creates the equation no.
+\setcounter{equation}{0}  % reset counter 
+
+\underline{\textbf{\textit{Chapter 2}}}
+\bigskip
+
+{\bf Problem 2.1} Find all integers $n$ such that
+%
+\nbea
+\begin{array}{l r c l c l r c l c l r c l}
+{\rm(a)} & \varphi(n) & = & n/2 & ~~~~~~~~~ & {\rm(b)} & \varphi(n) & = & \varphi(2n) & ~~~~~~~~~ & {\rm(c)} & \varphi(n) & = & 12
+\end{array}
+\neea
+%
+
+For (a), using the definition of $\varphi(n)$, $\varphi(n) = n \prod_{p|n} \left ( 1 - \frac{1}{p} \right )$
+%
+\nbea
+\frac{\bcancel{n}}{2} & = & \bcancel{n} \prod_{p|n} \left ( 1 - \frac{1}{p} \right ) \\
+\frac{1}{2} & = & \frac{\prod_{p|n} \left ( p - 1 \right )}{\prod_{p|n} p} \\
+\prod_{p|n} p & = & 2\prod_{p|n} \left ( p - 1 \right )
+\neea
+%
+if $n$ is odd the LHS is odd while the RHS is even, so it can't be. If $n$ is even the LHS only has one factor of 2 while the RHS has many so it will only work if $n=2$.
+
+For (b)
+%
+\nbea
+\bcancel{n} \prod_{p|n} \left ( 1 - \frac{1}{p} \right )  & = & 2\bcancel{n} \prod_{p|2n} \left ( 1 - \frac{1}{p} \right )
+\neea
+%
+If $n$ is even then
+%
+\nbea
+\prod_{p|2n} \left ( 1 - \frac{1}{p} \right ) & = & \prod_{p|n} \left ( 1 - \frac{1}{p} \right )
+\neea
+%
+and so
+%
+\nbea
+\prod_{p|n} \left ( 1 - \frac{1}{p} \right )  & = & 2\prod_{p|n} \left ( 1 - \frac{1}{p} \right ) \\
+\to 1 & = & 2
+\neea
+%
+which is impossible, so $n$ has to be odd, in that case
+%
+\nbea
+\prod_{p|2n} \left ( 1 - \frac{1}{p} \right ) & = & \left ( 1 - \frac{1}{2} \right ) \prod_{p|n} \left ( 1 - \frac{1}{p} \right ) \\
+& = & \frac{1}{2} \prod_{p|n} \left ( 1 - \frac{1}{p} \right )
+\neea
+%
+and therefore
+%
+\nbea
+\prod_{p|n} \left ( 1 - \frac{1}{p} \right )  & = & 2 \frac{1}{2} \prod_{p|n} \left ( 1 - \frac{1}{p} \right ) \\
+\to 1 & = & 1
+\neea
+%
+and therefore $\varphi(n) = \varphi(2n)$ for all odd $n$.
+
+For (c)
+%
+\nbea
+\varphi(n) = 12 & = & 2 \cdot 2 \cdot 3 \\
+& = & \prod_{p|n} p^{\alpha_p} - p^{\alpha_p-1} \\
+\varphi\left (\prod_{p|n} p^{\alpha_p} \right ) & = & \prod_{p|n}p^{\alpha_p-1} (p - 1)
+\neea
+%
+the only possible solution is $n=13$
+
+{\bf Problem 2.2}. For each of the following statements either give a proof or exhibit a counter example.
+
+(a) If $(m,n)=1$ then $(\varphi(m),\varphi(n)) = 1$
+
+(b) If $n$ is composite, then $(n, \varphi(n)) > 1$
+
+(c) If the same primes divide $m$ and $n$, then $n\varphi(m) = m\varphi(n)$
+
+For (a) a counter example will be $(3,4) = 1$, while $\varphi(3) = 2, ~\varphi(4) = 2$
+
+For (b) a counter example would be $n = 15$ which means that $\varphi(15) = 8$ and $(15,8) = 1$
+
+For (c) I think what it means by ``the same primes divide $m$ and $n$'' is that $m = \prod p^{\alpha_p}$ and $n = \prod p^{\beta_p}$, so they both have the same primes but they might have different exponents for each prime, in this case $\prod_{p|n} = \prod_{p|m}$
+%
+\nbea
+n\varphi(m) & = & n \left ( m \prod_{p|m} \left ( 1 - \frac{1}{p}\right ) \right ) \\
+& = & m \left ( n \prod_{p|n} \left ( 1 - \frac{1}{p}\right ) \right ) \\
+n\varphi(m) & = & m\varphi(n)
+\neea
+%
+
+{\bf Problem 2.3}. Prove that
+%
+\nbea
+\frac{n}{\varphi(n)} = \sum_{d|n} \frac{\mu^2(d)}{\varphi(d)}
+\neea
+%
+
+Since $\mu(n)$ and $\varphi(n)$ are both multiplicative so is $\mu^2/\varphi$, in that case $g(n) = \sum_{d|n} \frac{\mu^2(d)}{\varphi(d)}$ is also multiplicative. To determine $g(n)$ we need only compute $g(p^\alpha)$ for prime powers
+%
+\nbea
+g(p^\alpha) & = & \sum_{d|p^\alpha} \frac{\mu^2(d)}{\varphi(d)} \\
+& = & \frac{\mu^2(1)}{\varphi(1)} + \frac{\mu^2(p)}{\varphi(p)} + \ldots + \frac{\mu^2(p^\alpha)}{\varphi(p^\alpha)} \\
+& = & 1 + \frac{1}{p - 1} \\
+& = & \frac{p}{p - 1} \\
+& = & p^\alpha \cdot \frac{p}{p^\alpha(p - 1)} \\
+\to \sum_{d|p^\alpha} \frac{\mu^2(d)}{\varphi(d)}& = & \frac{p^\alpha}{\varphi(p^\alpha)}
+\neea
+%
+
+We can also prove it the other way around by assuming the LHS, to do this it is easiest to use the Mobius inversion formula
+%
+\nbea
+\frac{n}{\varphi(n)} = \sum_{d|n} g(d)
+\neea
+%
+and we want to find out what this $g(d)$ is, which is
+%
+\nbea
+g(n) & = & \sum_{d|n} \frac{d}{\varphi(d)} \mu\left ( \frac{n}{d}\right )
+\neea
+%
+The RHS is multiplicative so like above we just need to evaluate $g(p^\alpha)$ for prime powers
+%
+\nbea
+g(p^\alpha) & = & \sum_{d|p^\alpha} \frac{d}{\varphi(d)} \mu\left ( \frac{p^\alpha}{d}\right ) \\
+& = & \frac{p^{\alpha-1}}{\varphi(p^{\alpha-1})} \mu\left ( \frac{p^\alpha}{p^{\alpha-1}}\right ) + \frac{p^\alpha}{\varphi(p^\alpha)} \mu\left ( \frac{p^\alpha}{p^\alpha}\right ) \\
+& = & -\frac{p^{\alpha-1}}{\varphi(p^{\alpha-1})} + \frac{p^\alpha}{\varphi(p^\alpha)} \\
+& = & -\frac{p^\alpha}{\varphi(p^\alpha)}  + \frac{p^\alpha}{\varphi(p^\alpha)} \\
+& = & 0
+\neea
+%
+if $\alpha > 1$ and if $\alpha = 1$ we get
+%
+\nbea
+g(p) & = & \sum_{d|p} \frac{d}{\varphi(d)} \mu\left ( \frac{p}{d}\right ) \\
+& = & \frac{1}{\varphi(1)} \mu\left ( \frac{p}{1}\right ) + \frac{p}{\varphi(p)} \mu\left ( \frac{p}{p}\right ) \\
+& = & -1 + \frac{p}{\varphi(p)} \\
+& = & -1 + \frac{p}{p - 1} \\
+& = & \frac{1}{p - 1} \\
+g(p) & = & \frac{1}{\varphi(p)}
+\neea
+%
+This means that $g(p^\alpha) = 1/\varphi(p^\alpha)$ is $\alpha = 1$ and $g(p^\alpha) = 0$ if $\alpha > 1$, in other words $g(p^\alpha) = \mu^2(p^\alpha)/\varphi(p^\alpha)$
+
+
+
+
+
+
+
+
+\end{document}

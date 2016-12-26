@@ -4758,9 +4758,33 @@ z_4 & = & R_1 e^{i\Delta_{1}+i2\pi3/4} + R_2 e^{i\Delta_{2}+i2\pi2/3}  - R_3 e^{
 
 %
 \nbea
-\sum_{k=1}^n |z_{k+1} - z_k|^2 & = & |z_ - z_|^2 + |z_ - z_|^2 + |z_ - z_|^2 + |z_ - z_|^2 + 
+|(w+k)- n|^2 & = & |w + (k-n)|^2 \\
+& = & |w|^2 + |k-n|^2 + 2\re(\overline{w} (k-n))
 \neea
 %
+
+%
+\nbea
+|(-w+k)- n|^2 & = & |-w + (k-n)|^2 \\
+& = & |w|^2 + |k-n|^2 - 2\re(\overline{w} (k-n))
+\neea
+%
+
+%
+\nbea
+|g - (w+k)|^2 & = & |(g-w) - k|^2 \\
+& = & |g-w|^2 + |k|^2 - 2\re (\overline{k}(g-w))
+\neea
+%
+
+%
+\nbea
+|g - (w-k)|^2 & = & |(g-w) + k|^2 \\
+& = & |g-w|^2 + |k|^2 + 2\re (\overline{k}(g-w))
+\neea
+%
+
+Let $h = w+k$ and $t = -w+k$ so we replace $|h-n|^2$ with $|t-n|^2$ and $|g-h|^2$ with $|g+t|^2$
 
 
 
