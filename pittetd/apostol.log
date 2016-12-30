@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2016.3.16)  26 DEC 2016 13:40
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2016.3.16)  29 DEC 2016 19:33
 entering extended mode
 **D:/Github/string/pittetd/apostol.tex
 (D:/Github/string/pittetd/apostol.tex
@@ -613,19 +613,37 @@ Requested font "cmti12" at 12.0pt
  [1]
 Requested font "cmbxti10" at 12.0pt
  [2] [3]
-[4] (apostol.bbl) [5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 392.
+[4] [5] [6] [7] [8]
+Overfull \hbox (5.15947pt too wide) in alignment at lines 560--570
+ [][][] []
+ []
+
+[9]
+
+Package amsmath Warning: Foreign command \atopwithdelims;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on input line 582.
+
+[10]
+Requested font "cmex7" at 5.0pt
+Requested font "msam5" at 5.0pt
+Requested font "msbm5" at 5.0pt
+Requested font "cmbx5" at 5.0pt
+Requested font "cmmib5" at 5.0pt
+Requested font "cmbsy5" at 5.0pt
+ [11] [12] (apostol.bbl) [13]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 696.
  (apostol.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 392.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 392.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 696.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 696.
  ) 
 Here is how much of TeX's memory you used:
- 13311 strings out of 428721
- 184007 string characters out of 3167142
- 287668 words of memory out of 3000000
- 16566 multiletter control sequences out of 15000+200000
- 13131 words of font info for 48 fonts, out of 3000000 for 9000
+ 13323 strings out of 428721
+ 184124 string characters out of 3167142
+ 292668 words of memory out of 3000000
+ 16573 multiletter control sequences out of 15000+200000
+ 14692 words of font info for 54 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
- 36i,17n,38p,303b,399s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,17n,38p,710b,399s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on apostol.pdf (5 pages).
+Output written on apostol.pdf (13 pages).

@@ -382,6 +382,310 @@ g(p) & = & \frac{1}{\varphi(p)}
 %
 This means that $g(p^\alpha) = 1/\varphi(p^\alpha)$ is $\alpha = 1$ and $g(p^\alpha) = 0$ if $\alpha > 1$, in other words $g(p^\alpha) = \mu^2(p^\alpha)/\varphi(p^\alpha)$
 
+{\bf Problem 2.4}. Prove that $\varphi(n) > n/6$ for all $n$ with at most $8$ distinct prime factors.
+
+First, let's demystify this number $8$, the reason $8$ is involved is because if you multiply out $(p-1)/p$ for the first eight primes we get
+%
+\nbea
+\frac{1}{2}\cdot\frac{2}{3}\cdot\frac{4}{5}\cdot\frac{6}{7}\cdot\frac{10}{11}\cdot\frac{12}{13}\cdot\frac{16}{17}\cdot\frac{18}{19} & = & \frac{55296}{323323} \sim 0.171  > \frac{1}{6}
+\neea
+%
+but if we multiply the first nine
+%
+\nbea
+\frac{1}{2}\cdot\frac{2}{3}\cdot\frac{4}{5}\cdot\frac{6}{7}\cdot\frac{10}{11}\cdot\frac{12}{13}\cdot\frac{16}{17}\cdot\frac{18}{19}\cdot\frac{22}{23} & = & \frac{110592}{676039} \sim 0.164  < \frac{1}{6}
+\neea
+%
+So that's how we got the eight and of course if we chose any other eight primes we will get something bigger than $55296/323323>1/6$ because $n/(n+1)$ converges to 1 as $n \to \infty$, \ie $n/(n+1)$ gets bigger as $n$ gets bigger.
+
+Another reason we have to limit it to eight is because $n/(n+1) < 1$ and if we keep multiplying them we'll get a smaller and smaller number and after some point we will reach $< 1/6$.
+
+The rest is straightforward,
+%
+\nbea
+\frac{\varphi(n)}{n} & = & \prod_{p|n}\frac{p - 1}{p}
+\neea
+%
+so the argument above holds
+
+{\bf Problem 2.5}. Define $\nu(1) = 0$, and for $n > 1$ let $\nu(n)$ be the number of distinct prime factors of $n$. Let $f = \mu * \nu$ and prove that $f(n)$ is either 0 or 1.
+
+As the inverse of $\mu$ is $\mu^{-1} = u$, this means that
+%
+\nbea
+u * f & = & (u * \mu) * \nu \\
+& = & I * \nu \\
+u * f & = & \nu \\
+\to \nu(n) & = & \sum_{d|n} f(d)
+\neea
+%
+$\nu$ is obviously not multiplicative since $\nu(1) \neq 1,~\nu(pq) \neq \nu(p)\nu(q)$ but it is actually additive since $\nu(p^\alpha q^\beta) = \nu(p^\alpha) + \nu(q^\beta) = \nu(p) + \nu(q)$ where $p \neq q$ are distinct primes, so let's decompose $n$ into its primal constituents, $n = \prod_i p_i^{\alpha_i}$
+%
+\nbea
+\nu\left(\prod_i p_i^{\alpha_i}\right) & = & \sum_{d|n} f(d) \\
+\sum_i \nu\left(p_i^{\alpha_i}\right) & = & \sum_{d|n} f(d) \\
+\sum_i \nu\left(p_i\right) & = & \sum_{d|n} f(d)
+\neea
+%
+from here we can immediately see that $f(n)$ is given by
+%
+\nbea
+f(n) = \left\{
+\begin{array}{l}
+1 {\rm~if~} n {\rm ~is~prime} \\
+0 {\rm~otherwise}
+\end{array} \right.
+\neea
+%
+
+{\bf Problem 2.6}. Prove that
+%
+\nbea
+\sum_{d^2|n} \mu(d) & = & \mu^2(n)
+\neea
+%
+and, more generally,
+%
+\nbea
+\sum_{d^k|n} \mu(d) = \left \{
+\begin{array}{l c l}
+0 & & {\rm if~} m^k|n {\rm~for~some~} m > 1 \\
+1 & & {\rm otherwise}
+\end{array}\right.
+\neea
+%
+The last sum is extended over all positive divisors $d$ of $n$ whose $k$th power also divide $n$.
+
+The key point here is again ``multiplicative'', since $\mu(d)$ is multiplicative so is $\sum_{d^2|n} \mu(d)$ so we need to only consider $g(p^\alpha) = \sum_{d^2|p^\alpha} \mu(d)$ but note that even though the sum is over $d^2 \to \sum_{d^2|n}$, $\mu$ is only taking $d$, $\mu(d)$ and not $\mu(d^2)$
+%
+\nbea
+\sum_{d^2|p^\alpha} \mu(d) & = & \mu(1) + \mu(p) \\
+& = & 1 - 1 \\
+& = & 0
+\neea
+%
+The above holds if $\alpha > 1$ otherwise for $0 \le \alpha \le 1 \to \sum_{d^2|p^\alpha} \mu(d) = \mu(1) = +1$, in short
+%
+\nbea
+g(p^\alpha) = \sum_{d^2|p^\alpha} \mu(d) & = & \left \{
+\begin{array}{r c  l}
+0 && {\rm if ~} \alpha > 1 \\
+1 && {\rm if ~} 0 \le \alpha \le 1 \\
+\end{array}\right. \\
+& = & \mu^2(p^\alpha)
+\neea
+%
+The second part follows closely, again since it is multiplicative and again note that even though the sum is over $d^k \to \sum_{d^k|n}$, $\mu$ is only taking $d$, $\mu(d)$ and not $\mu(d^k)$
+%
+\nbea
+\sum_{d^k|p^\alpha} \mu(d) & = & \mu(1) + \mu(p) \\
+& = & 1 - 1 \\
+& = & 0
+\neea
+%
+if $\alpha > k$ otherwise for $0 \le \alpha \le k \to \sum_{d^k|p^\alpha} \mu(d) = \mu(1) = +1$, the only difference now is that we can't say it is equal to $\mu^2(p^\alpha)$ because say $\alpha = k-1 > 0 \to \mu(p^{k-1}) = 0$ but $\sum_{d^k|p^{k-1}} \mu(d) = \mu(1) = +1$
+
+{\bf Problem 2.7}. Let $\mu(p,d)$ denote the value of the Mobius function at the gcd of $p$ and $d$. Prove that for every prime $p$ we have
+%
+\nbea
+\sum_{d|n} \mu(d)\mu(p,d) = \left \{
+\begin{array}{l c l}
+1 && {\rm if~} n = 1 \\
+2 && {\rm if~} n = p^a, a \ge 1 \\
+0 && {\rm otherwise}.
+\end{array}\right.
+\neea
+%
+
+The thing is the gcd $(p,mn)$ is multiplicative as long as $(m,n)=1$ because $p$ is prime and once we expand $m$ and $n$ in their primal constituents it is evident, \ie $(p,mn) = (p,m)(p,n)$, therefore $\mu(p,mn) = \mu(p,m)\mu(p,n)$
+
+The first case is obvious $\sum_{d|1} \mu(d)\mu(p,d) = \mu(1)\mu(1) = 1$.
+
+The second case
+%
+\nbea
+\sum_{d|p^a} \mu(d)\mu(p,d) & = & \mu(1)\mu(p,1) + \mu(p)\mu(p,p) \\
+& = & \mu(1)\mu(1) + \mu(p)\mu(p) \\
+& = & (1)(1) + (-1)(-1) \\
+& = & 2
+\neea
+%
+
+To show the last case it's easiest to utilize the fact that $g(n) = \sum_{d|n}\mu(d)\mu(p,d)$ is multiplicative and now we just need to show $g(q^b), ~q\neq p$ as $g(p^a)$ is already covered above
+%
+\nbea
+g(q^b) = \sum_{d|q^b}\mu(d)\mu(p,d) & = & \mu(1)\mu(p,1) + \mu(q)\mu(p,q) \\
+& = & \mu(1)\mu(1) + \mu(q)\mu(1) \\
+& = & (1)(1) + (-1)(1) \\
+& = & 0
+\neea
+%
+
+{\bf Problem 2.8}. Prove that
+%
+\nbea
+\sum_{d|n} \mu(d) \log^m d = 0
+\neea
+%
+if $m \ge 1$ and $n$ has more than $m$ distinct prime factors. [{\it Hint:} Induction.]
+
+To use induction we need to prove the base case, the thing is that $\log$ is not multiplicative, so that's a bit hard. The base case should be $m = 1$ and then we go up from there to bigger $m$ ?!? \dunno
+
+But one thing I notice is that we only need to consider numbers with one power of distinct primes, \ie $n = p_1p_2\ldots p_k$ because $\mu(d)$ is zero if the powers of the primes are not zero that is
+%
+\nbea
+\sum_{d|n} \mu(d) \log^m d & = & \cancel{\mu(1) \log^m(1)} + \mu(p_1)\log^m(p_1) + \ldots + \mu(p_k)\log^m(p_k) + \\
+&& \mu(p_1p_2)\log^m(p_1p_2) + \ldots + \mu(p_{k-1}p_k)\log^m(p_{k-1}p_k) + \ldots + \\
+&& \mu(p_1p_2\ldots p_k)\log^m(p_1p_2\ldots p_k)
+\neea
+%
+and from the definition of $\mu(d)$ we know that if it has odd number of primes it's negative and it there are an even number of distinct primes $\mu$ is positive, therefore
+%
+\nbea
+\sum_{d|n} \mu(d) \log^m d & = & -(\log^m(p_1) + \ldots + \log^m(p_k)) \\
+&& +(\log^m(p_1p_2) + \ldots + \log^m(p_{k-1}p_k)) + \\
+&& -(\log^m(p_1p_2p_3)+ \ldots + \log^m(p_{k-2}p_{k-1}p_k)) +\\
+&& (-1)^k\log^m(p_1p_2\ldots p_k)
+\neea
+%
+Since log is additive we can expand them but before we do that let's denote $\log(p_k) = l_k$
+%
+\nbea
+\sum_{d|n} \mu(d) \log^m d & = & -\sum_{i_1 = (k|1)} l_{i_1}^m + \sum_{i_1, i_2 = (k|2)} (l_{i_1} + l_{i_2})^m - \sum_{i_1, i_2, i_3 = (k|3)} (l_{i_1} + l_{i_2} + l_{i_3})^m + \\
+&& \ldots + (-1)^k \sum_{i_1, i_2, \ldots , i_k = (k|k)} (l_{i_1} + l_{i_2} + \ldots + l_{i_k})
+\neea
+%
+where the notation $(k|j)$ means that all combinations of $k$ choose $j$, as a concrete example, say $m=4, ~k=5$ which is the minimum $k$ required
+%
+\nbea
+\sum_{d|n} \mu(d) \log^m d & = & -(l_1^4 + l_2^4 + l_3^4 + l_4^4 + l_5^4) + \\
+&& + ((l_1+l_2)^4 + (l_1+l_3)^4 + (l_1+l_4)^4 + (l_1+l_5)^4 + (l_2+l_3)^4 + (l_2+l_4)^4 +  \\ 
+&& ~~~~(l_2+l_5)^4 + (l_3+l_4)^4 + (l_3+l_5)^4 + (l_4+l_5)^4) + \\
+&& - ((l_1 + l_2 + l_3)^4 + (l_1 + l_2 + l_4)^4 + (l_1 + l_2 + l_5)^4 + (l_1 + l_3 + l_4)^4 + \\
+&& ~~~~ (l_1 + l_3 + l_5)^4  + (l_1 + l_4 + l_5)^4  + (l_2 + l_3 + l_4)^4 + (l_2 + l_3 + l_5)^4 + \\
+&& ~~~~ (l_2 + l_4 + l_5)^4 + (l_3 + l_4 + l_5)^4) \\
+&& + ((l_1 + l_2 + l_3 + l_4)^4 + (l_1 + l_2 + l_3 + l_5)^4 + (l_1 + l_2 + l_4 + l_5)^4 + \\
+&& ~~~~ (l_1 + l_3 + l_4 + l_5)^4 + (l_2 + l_3 + l_4 + l_5)^4) + \\
+&& - ((l_1 + l_2 + l_3 + l_4 + l_5)^4)
+\neea
+%
+Now we gather coefficients of same powers, say we collect all $l_1^4$, 
+%
+\nbea
+(5|1) & \to & (-1)l_1^4 \\
+(5|2) & \to & (+4)l_1^4 \\
+(5|3) & \to & (-6)l_1^4 \\
+(5|4) & \to & (+4)l_1^4 \\
+(5|5) & \to & (-1)l_1^4
+\neea
+%
+so it's basically the Pascal triangle coefficients, why is this? Well, for example, for $(5|1)$, first we fix {\bf one} $l$ and then choose a partner for it from the remaining {\bf four}, however in this case we only need one $l$ and we already fixed it, so we will just need {\bf zero} partner, \ie ${4 \choose 0} = 1$.
+
+For $(5|2)$ we first pick an $l$ and then choose a partner (again because $(5|${\bf 2}$)$ means we need {\bf 2} $l$'s in total) for it from 4 available choices, which is ${4 \choose 1}$, \ie this $l$ will appear ${4 \choose 1} = 4$ times, for $(5|3)$ it's the same thing we first pick an $l$ and then choose {\it two} partners for it, \ie  this $l$ will then appear ${4 \choose 2} = 6$ times, and for $(5|3)$, it's pick an $l$ and choose ${4 \choose 3} = 4$ partners and so on and therefore the coefficients of $l_1$ is just those of Pascal triangle's but with the signs alternating between plus and minus. And this is true for other $l$'s not just $l_1$.
+
+We now need to tackle the cross terms say $l_1^3l_2$, first thing to note that this cross product is always preceded by a constant (which again is from Pascal triangle), for $(l_1 + l_2)^4$ it is $4l_1^3l_2$, note that this coefficient is the same no matter how many terms are being exponentiated, \ie even for $(l_1 + l_2 + l_3 + \ldots + l_w)^4$, the coefficient for $l_1^3l_2$ is still 4 because it is still ${4 \choose 3}$ no matter what, this is because
+%
+\nbea
+(l_1 + l_2 + \ldots)^4 & = & \underbrace{(l_1 + l_2 + \ldots)}_\text{bin \#1}\underbrace{(l_1 + l_2 + \ldots)}_\text{bin \#2}\underbrace{(l_1 + l_2 + \ldots)}_\text{bin \#3}\underbrace{(l_1 + l_2 + \ldots)}_\text{bin \#4}
+\neea
+%
+To get $l_1^3l_2$ we need to gather {\bf three} $l_1$'s and we have {\bf four} bins to choose for as shown above that's why we have 4 choose 3, ${4 \choose 3} = 4$ possibilities. And as the number of bins are the same no matter how many $l$'s we have the number of possibilities is still the same.
+
+We also have other cross terms like $l_1^2l_3l_4$, in this case, we need to gather {\bf two} $l_1$'s from {\bf four} bins so it's ${4 \choose 2} = 6$, next we need to choose {\bf one} $l_3$ from the remaining {\bf two} bins which is ${2 \choose 1} = 2$ and once we've chosen the bin for $l_2$, the other bin will definitely contain $l_3$, so in total there are
+%
+\nbea
+{4 \choose 2}\times{2 \choose 1} & = & 6 \times 2 = 12
+\neea
+%
+and since the number of bins is constant no matter what this coefficient remains the same no matter how many $l$'s we have.
+
+So now for $4l_1^3l_2$ we have
+%
+\nbea
+(5|1) & \to & (0) \\
+(5|2) & \to & (+1)4l_1^3l_2 \\
+(5|3) & \to & (-3)4l_1^3l_2 \\
+(5|4) & \to & (+3)4l_1^3l_2 \\
+(5|5) & \to & (-1)4l_1^3l_2
+\neea
+%
+again Pascal triangle, why is this? This time we fix {\bf two} $l$'s (instead of just one for $l^4$ above), and then calculate how many partners this couple might have, for $(5|2)$, we only need {\bf two} in total so because we already fixed two of them we just need {\bf zero} partner from the three remaining ones, \ie ${3 \choose 0} = 1$. For $(5|3)$, again we fix {\bf two} $l$'s and choose one more partner (because in total we need 3) from the remaining three, \ie ${3 \choose 1} = 3$ and so on. This is also true for any two-term cross terms.
+
+And this pattern continues for higher cross terms like $l_1^2l_2l_3$, \eg for $(5|4)$ we fix {\bf three} $l$'s and then choose one partner from the remaining {\bf two}, which means ${2 \choose 1} = 2$.
+
+\bigskip
+In Exercises 10, 11, and 12, $d(n)$ denotes the number of positive divisors of $n$.
+
+{\bf Problem 2.10}. Prove that $\prod_{t|n} t = n^{d(n)/2}$.
+
+Again, let's decompose $n$ into its primal constituents $n = \prod_i^N p_i^{\alpha_i}$ then $d(n)$ is given by
+%
+\nbea
+d(n) = d\left(\prod_i^N p_i^{\alpha_i}\right) & = & \prod_i^N (\alpha_i + 1)
+\neea
+%
+To see why this is we just need to recall that the number of combinations an $N$-digit (base-10) number has is 
+%
+\nbea
+\# {\rm~of~combo} = \underbrace{10 \times 10 \times 10 \times \ldots \times 10}_\text{$N$ {\rm of~them}}
+\neea
+%
+because each digit can take 10 possible different values. For our case, each prime factor plays the role of a digit, however, each has different possible values, which is $(\alpha_i+1)$ because we can have $p_i^0,p_i^1,p_i^2,\ldots,p_N^{\alpha_N}$ so the total number of combinations for $\prod_i^N p_i^{\alpha_i}$ is
+%
+\nbea
+\# {\rm~of~combo} = \underbrace{(\alpha_1 + 1) (\alpha_2 + 1) (\alpha_3 + 1) \ldots (\alpha_N + 1)}_\text{$N$ {\rm prime~factors}}
+\neea
+%
+
+Next, we can decompose $\prod_{t|n} t$ in terms of its primal constituents as well, say we focus on $p_1$ of $\prod_i^N p_i^{\alpha_i}$, the divisors of $p_1^{\alpha_1}$ are $p_1^0, p_1^1, \ldots, p_1^{\alpha_1}$, so if we multiply all of them we have $p_1^{1 + 2 + 3 + \ldots + \alpha_1} = p_1^{\frac{\alpha_1(\alpha_1 + 1)}{2}} = \left ( p_1^{\alpha_1}\right )^{\frac{\alpha_1+1}{2}}$.
+
+But here $p_1^{\alpha_1}$ is not alone, each divisor of $p_1^{\alpha_1}$, \ie $p_1^{j}, ~0 \le j \le \alpha_1$, occurs $(\alpha_2+1)(\alpha_3+1)\ldots(\alpha_N+1)$ times, so the final exponent for $p_1$ in $\prod_{t|n} t$ is
+%
+\nbea
+\left (p_1^{\alpha_1}\right )^{\frac{(\alpha_1+1)}{2}(\alpha_2+1)(\alpha_3+1)\ldots(\alpha_N+1)} & = & \left (p_1^{\alpha_1}\right )^{d(n)/2}
+\neea
+%
+the same case goes for any other $p_i$, thus $\prod_{t|n}t = n^{d(n)/2}$. As a concrete example, take $n = p_1^2p_2^3$, the divisors of $n$ are
+%
+\nbea
+\begin{array}{c c c c c c c}
+p_1^0 ~~ p_2^0 & ~~~~~~~~ & p_1^0 ~~ p_2^1 & ~~~~~~~~ & p_1^0 ~~ p_2^2 & ~~~~~~~~ & p_1^0 ~~ p_2^3 \\
+p_1^1 ~~ p_2^0 & ~~~~~~~~ & p_1^1 ~~ p_2^1 & ~~~~~~~~ & p_1^1 ~~ p_2^2 & ~~~~~~~~ & p_1^1 ~~ p_2^3 \\
+p_1^2 ~~ p_2^0 & ~~~~~~~~ & p_1^2 ~~ p_2^1 & ~~~~~~~~ & p_1^2 ~~ p_2^2 & ~~~~~~~~ & p_1^2 ~~ p_2^3
+\end{array}
+\neea
+%
+so you can see that $(p_1^0~p_1^1~p_1^2)$ occurs $4=(\alpha_2+1)$ times $\to (p_1^0~p_1^1~p_1^2)^{\alpha_2+1}$.
+
+{\bf Problem 2.11}. Prove that $d(n)$ is odd if, and only if, $n$ is square.
+
+As shown above for $n = \prod_i^N p_i^{\alpha_i}$, $d(n) = \prod_i^N (\alpha_i + 1)$, so to get $d(n)$ to be odd we need {\it all} of $\alpha_i$ to be even so that $(\alpha_i + 1)$ is odd, therefore $n$ must be even
+
+{\bf Problem 2.12}. Prove that $\sum_{t|n} d(t)^3 = \left (\sum_{t|n} d(t)\right )^2$.
+
+The above relationship is evidently not true in general, we therefore need to utilize the properties of $d(t)$ to derive it. One thing to note is that $g(n) = \sum_{t|n} d(t)^3$ is multiplicative as $d(t)$ is. Therefore we just need to consider $g(p^\alpha) = \sum_{t|p^\alpha} d(t)^3$.
+
+My strategy would be to utilize induction. Assume that $\sum_{t|p^\alpha} d(t)^3 = \left (\sum_{t|p^\alpha} d(t)\right )^2$ is true up to some $p^\alpha$, we now want to know what happens with $p^{\alpha+1}$
+%
+\nbea
+\sum_{t|p^{\alpha+1}} d(t)^3 & = & d(p^{\alpha+1})^3 + \sum_{t|p^\alpha} d(t)^3
+\neea
+%
+and $d(p^{\alpha+1}) = \alpha+2$ thus
+%
+\nbea
+d(p^{\alpha+1})^3 + \sum_{t|p^\alpha} d(t)^3 & = & (\alpha + 2)^3 + \left ( \sum_{t|p^\alpha} d(t)\right )^2 \\
+& = & (\alpha + 2)^2(\alpha + 2) + \left ( \sum_{t|p^\alpha} d(t)\right )^2 \\
+& = & (\alpha + 2)^2 + (\alpha + 2)^2(\alpha + 1) + \left ( \sum_{t|p^\alpha} d(t)\right )^2 \\
+& = & d(p^{\alpha + 1})^2 + (\alpha + 2)\cdot 2 \frac{(\alpha + 2)(\alpha + 1)}{2} + \left ( \sum_{t|p^\alpha} d(t)\right )^2 \\
+& = & d(p^{\alpha + 1})^2 + 2 d(p^{\alpha+1})\left (\sum_{t|p^\alpha} d(t) \right ) + \left ( \sum_{t|p^\alpha} d(t)\right )^2 \\
+& = & \left ( d(p^{\alpha + 1}) + \sum_{t|p^\alpha} d(t) \right )^2 \\
+\sum_{t|p^{\alpha+1}} d(t)^3 & = & \left ( \sum_{t|p^{\alpha+1}} d(t) \right )^2
+\neea
+%
+Going to line 5 we have used the fact that $\sum_{t|p^\alpha} d(t) = \sum_{i=1}^{\alpha+1} i = \frac{(\alpha+1)(\alpha + 2)}{2} $ since $d(p^j) = j+1$. We can of course dispel induction for a bruter force approach by expanding $\sum_{t|p^\alpha+1} d(t)^3 = \sum_{i=1}^{\alpha+1} i^3$ but this requires us to know the formula for a sum of consecutive cubes \dunno
+
+
 
 
 
