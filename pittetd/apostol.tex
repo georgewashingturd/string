@@ -613,6 +613,31 @@ again Pascal triangle, why is this? This time we fix {\bf two} $l$'s (instead of
 
 And this pattern continues for higher cross terms like $l_1^2l_2l_3$, \eg for $(5|4)$ we fix {\bf three} $l$'s and then choose one partner from the remaining {\bf two}, which means ${2 \choose 1} = 2$.
 
+This pattern continues for any $k$, say we now have $k=6$ while $m$ stays the same, $m=4$, in this case we have $(6|1),(6|2),(6|3),(6|4),(6|5),(6|6)$, and to get the coefficients for different $l$ powers we use the same method as described above.
+
+Say you want to know the coefficient $l_1^4$ for each $(6|1),(6|2),(6|3),(6|4),(6|5),(6|6)$, then fix an $l$ and choose a partner for it depending on which combination $(6|j)$ you're on; for just a single $l$ the combination is ${6-1\choose j-1}$ and for three $l$'s like $l_1l_2l_3^2$ we fix three and then choose a partner resulting in ${6-3 \choose j-3}$ combo.
+
+And here we immediately see why the number of distinct primes $k$ must be larger than $m$, the exponent of $\log$, it's because if $k = m$ then on the last combo $(k=m|j=m)$ we will have ${m-m\choose m-m} = 1$ but these $m$ number of $l$'s, $l_1^{a_1}l_2^{a_2}\ldots l_m^{a_m}$, can only be found once and there'll be nothing to cancel it, the same is true if $k < m$, the longest $l$ combo $l_1^{a_1}l_2^{a_2}\ldots l_k^{a_k}$ is only generated once and there's nothing to cancel it to zero.
+
+As a concrete example take $m=3$ and $k=2$, we will then have
+%
+\nbea
+-(l_1^3 + l_2^3) + (l_1+l_2)^3 & = & 3l_1^2l_2 + 3l_1l_2^2
+\neea
+%
+and for $m=3$, $k=3$
+%
+\nbea
+-(l_1^3 + l_2^3 + l_3^3) + ((l_1+l_2)^3 + (l_1+l_3)^3 + (l_2+l_3)^3) - (l_1 + l_2 + l_3)^3 & = & -6l_1l_2l_3
+\neea
+%
+so you see the longest $l$ combo is not canceled whenever $k \le m$. But if $k > m$ then the longest $l$ combo is still $m$ and for every combo of the form $(k|m \le j \le k)$ we have a coefficient of ${k-m\choose j - m}$ which is just the Pascal triangle for $(1-1)^{k-m} = 0$
+
+
+In summary, the procedure is like this
+
+
+
 \bigskip
 In Exercises 10, 11, and 12, $d(n)$ denotes the number of positive divisors of $n$.
 
