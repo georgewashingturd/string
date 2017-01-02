@@ -579,7 +579,7 @@ Now we gather coefficients of same powers, say we collect all $l_1^4$,
 (5|5) & \to & (-1)l_1^4
 \neea
 %
-so it's basically the Pascal triangle coefficients, why is this? Well, for example, for $(5|1)$, first we fix {\bf one} $l$ and then choose a partner for it from the remaining {\bf four}, however in this case we only need one $l$ and we already fixed it, so we will just need {\bf zero} partner, \ie ${4 \choose 0} = 1$.
+so they're basically the Pascal triangle coefficients, why is this? Well, for example, for $(5|1)$, first we fix {\bf one} $l$ and then choose a partner for it from the remaining {\bf four}, however in this case we only need one $l$ and we already fixed it, so we will just need {\bf zero} partner, \ie ${4 \choose 0} = 1$.
 
 For $(5|2)$ we first pick an $l$ and then choose a partner (again because $(5|${\bf 2}$)$ means we need {\bf 2} $l$'s in total) for it from 4 available choices, which is ${4 \choose 1}$, \ie this $l$ will appear ${4 \choose 1} = 4$ times, for $(5|3)$ it's the same thing we first pick an $l$ and then choose {\it two} partners for it, \ie  this $l$ will then appear ${4 \choose 2} = 6$ times, and for $(5|3)$, it's pick an $l$ and choose ${4 \choose 3} = 4$ partners and so on and therefore the coefficients of $l_1$ is just those of Pascal triangle's but with the signs alternating between plus and minus. And this is true for other $l$'s not just $l_1$.
 
@@ -631,10 +631,48 @@ and for $m=3$, $k=3$
 -(l_1^3 + l_2^3 + l_3^3) + ((l_1+l_2)^3 + (l_1+l_3)^3 + (l_2+l_3)^3) - (l_1 + l_2 + l_3)^3 & = & -6l_1l_2l_3
 \neea
 %
-so you see the longest $l$ combo is not canceled whenever $k \le m$. But if $k > m$ then the longest $l$ combo is still $m$ and for every combo of the form $(k|m \le j \le k)$ we have a coefficient of ${k-m\choose j - m}$ which is just the Pascal triangle for $(1-1)^{k-m} = 0$
+so you see the longest $l$ combo is not canceled whenever $k \le m$. But if $k > m$ then the longest $l$ combo is still $m$ and for every combo of the form $(k|m \le j \le k)$ we have a coefficient of ${k-m\choose j - m}$ which is just the Pascal triangle for $(1-1)^{k-m} = 0$.
+
+In summary, there are three numbers involved, the exponent $m$, the number of distinct primes $k$, and lastly the dummy index $j$ as indicated below
+%
+\nbea
+\sum_{j=1}^{k} \sum_{(k|j)} \left ( l_{i_1} + \ldots + l_{i_j} \right )^m
+\neea
+%
+
+%
+\begin{table}[]
+\centering4
+\caption{Coefficients of various combo of $l$'s for different $j$'s with a given $k$ and $m$, note that the sum of the exponents of $l$'s is always $m$, $\sum_i a_i = m$}
+\label{Tab:1}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+~~~ ~ ~~~ & ~~~$\underbrace{l^m}_\text{one $l$}$~~~ & ~~$\underbrace{l_{b_1}^{a_1}l_{b_2}^{a_2}}_\text{2 $l$'s}$~~ & ~~$\underbrace{l_{b_1}^{a_1}l_{b_2}^{a_2}l_{b_3}^{a_3}}_\text{3 $l$'s}$~~ & ~~~~~ $\ldots$ ~~~~~ & $\underbrace{l_{b_1}^{a_1}l_{b_2}^{a_2}\ldots l_{b_m}^{a_m}}_\text{$m$ $l$'s}$ \\ \hline
+$(k|1)$ & ${k-1 \choose 1-1}$ & & & & \\ \hline
+$(k|2)$ & ${k-1 \choose 2-1}$ & ${k-2 \choose 2-2}$ & & & \\ \hline
+$(k|3)$ & ${k-1 \choose 3-1}$ & ${k-2 \choose 3-2}$ & ${k-3 \choose 3-3}$ & & \\ \hline
+$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & &\\ \hline
+$(k|m)$ & ${k-1 \choose m-1}$ & ${k-2 \choose m-2}$ & ${k-3 \choose m-3}$ & & ${k-m \choose m-m}$ \\ \hline
+$(k|m+1)$ & ${k-1 \choose (m+1)-1}$ & ${k-2 \choose (m+1)-2}$ & ${k-3 \choose (m+1)-3}$ & & ${k-m \choose (m+1)-m}$ \\ \hline
+$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & & $\vdots$ \\ \hline
+$(k|k)$ & ${k-1 \choose k-1}$ & ${k-2 \choose k-2}$ & ${k-3 \choose k-3}$ & & ${k-m \choose m-m}$ \\ \hline
+\end{tabular}
+\end{table}
+%
 
 
-In summary, the procedure is like this
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
