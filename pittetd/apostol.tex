@@ -617,7 +617,7 @@ This pattern continues for any $k$, say we now have $k=6$ while $m$ stays the sa
 
 Say you want to know the coefficient $l_1^4$ for each $(6|1),(6|2),(6|3),(6|4),(6|5),(6|6)$, then fix an $l$ and choose a partner for it depending on which combination $(6|j)$ you're on; for just a single $l$ the combination is ${6-1\choose j-1}$ and for three $l$'s like $l_1l_2l_3^2$ we fix three and then choose a partner resulting in ${6-3 \choose j-3}$ combo.
 
-And here we immediately see why the number of distinct primes $k$ must be larger than $m$, the exponent of $\log$, it's because if $k = m$ then on the last combo $(k=m|j=m)$ we will have ${m-m\choose m-m} = 1$ but these $m$ number of $l$'s, $l_1^{a_1}l_2^{a_2}\ldots l_m^{a_m}$, can only be found once and there'll be nothing to cancel it, the same is true if $k < m$, the longest $l$ combo $l_1^{a_1}l_2^{a_2}\ldots l_k^{a_k}$ is only generated once and there's nothing to cancel it to zero.
+And here we immediately see why the number of distinct primes $k$ must be larger than $m$, the exponent of $\log$, it's because if $k = m$ then on the last combo $(k=m|j=m)$ we will have ${m-m\choose m-m} = 1$ but these $l$'s, $l_1^{a_1}l_2^{a_2}\ldots l_m^{a_m}$ can only be found once and there'll be nothing to cancel it, the same is true if $k < m$, the longest $l$ combo $l_1^{a_1}l_2^{a_2}\ldots l_k^{a_k}$ is only generated once and there's nothing to cancel it to zero.
 
 As a concrete example take $m=3$ and $k=2$, we will then have
 %
@@ -639,23 +639,23 @@ In summary, there are three numbers involved, the exponent $m$, the number of di
 \sum_{j=1}^{k} \sum_{(k|j)} \left ( l_{i_1} + \ldots + l_{i_j} \right )^m
 \neea
 %
+and the pattern of these different combinations of $l$'s can be seen in Table~\ref{Tab:1} and we immediately see why they all sum to zero.
 
 %
 \begin{table}[]
-\centering4
+\centering
 \caption{Coefficients of various combo of $l$'s for different $j$'s with a given $k$ and $m$, note that the sum of the exponents of $l$'s is always $m$, $\sum_i a_i = m$}
 \label{Tab:1}
-\begin{tabular}{|c|c|c|c|c|c|}
-\hline
-~~~ ~ ~~~ & ~~~$\underbrace{l^m}_\text{one $l$}$~~~ & ~~$\underbrace{l_{b_1}^{a_1}l_{b_2}^{a_2}}_\text{2 $l$'s}$~~ & ~~$\underbrace{l_{b_1}^{a_1}l_{b_2}^{a_2}l_{b_3}^{a_3}}_\text{3 $l$'s}$~~ & ~~~~~ $\ldots$ ~~~~~ & $\underbrace{l_{b_1}^{a_1}l_{b_2}^{a_2}\ldots l_{b_m}^{a_m}}_\text{$m$ $l$'s}$ \\ \hline
-$(k|1)$ & ${k-1 \choose 1-1}$ & & & & \\ \hline
-$(k|2)$ & ${k-1 \choose 2-1}$ & ${k-2 \choose 2-2}$ & & & \\ \hline
-$(k|3)$ & ${k-1 \choose 3-1}$ & ${k-2 \choose 3-2}$ & ${k-3 \choose 3-3}$ & & \\ \hline
-$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & &\\ \hline
-$(k|m)$ & ${k-1 \choose m-1}$ & ${k-2 \choose m-2}$ & ${k-3 \choose m-3}$ & & ${k-m \choose m-m}$ \\ \hline
-$(k|m+1)$ & ${k-1 \choose (m+1)-1}$ & ${k-2 \choose (m+1)-2}$ & ${k-3 \choose (m+1)-3}$ & & ${k-m \choose (m+1)-m}$ \\ \hline
-$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & & $\vdots$ \\ \hline
-$(k|k)$ & ${k-1 \choose k-1}$ & ${k-2 \choose k-2}$ & ${k-3 \choose k-3}$ & & ${k-m \choose m-m}$ \\ \hline
+\begin{tabular}{c | c c c c c }
+~~~ ~ ~~~ & ~~~$\underbrace{l^m}_\text{one $l$}$~~~ & ~~$\underbrace{l_{b_1}^{a_1}l_{b_2}^{a_2}}_\text{2 $l$'s}$~~ & ~~$\underbrace{l_{b_1}^{a_1}l_{b_2}^{a_2}l_{b_3}^{a_3}}_\text{3 $l$'s}$~~ & ~~~ $\ldots$ ~~~ & $\underbrace{l_{b_1}^{a_1}l_{b_2}^{a_2}\ldots l_{b_m}^{a_m}}_\text{$m$ $l$'s}$ \\ \hline
+$(k|1)$ & ${k-1 \choose 1-1}$ & & & & \\ 
+$(k|2)$ & ${k-1 \choose 2-1}$ & ${k-2 \choose 2-2}$ & & & \\ 
+$(k|3)$ & ${k-1 \choose 3-1}$ & ${k-2 \choose 3-2}$ & ${k-3 \choose 3-3}$ & & \\ 
+$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & &\\ 
+$(k|m)$ & ${k-1 \choose m-1}$ & ${k-2 \choose m-2}$ & ${k-3 \choose m-3}$ & & ${k-m \choose m-m}$ \\ 
+$(k|m+1)$ & ${k-1 \choose (m+1)-1}$ & ${k-2 \choose (m+1)-2}$ & ${k-3 \choose (m+1)-3}$ & & ${k-m \choose (m+1)-m}$ \\ 
+$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & & $\vdots$ \\ 
+$(k|k)$ & ${k-1 \choose k-1}$ & ${k-2 \choose k-2}$ & ${k-3 \choose k-3}$ & & ${k-m \choose m-m}$ \\ 
 \end{tabular}
 \end{table}
 %
@@ -747,6 +747,141 @@ d(p^{\alpha+1})^3 + \sum_{t|p^\alpha} d(t)^3 & = & (\alpha + 2)^3 + \left ( \sum
 \neea
 %
 Going to line 5 we have used the fact that $\sum_{t|p^\alpha} d(t) = \sum_{i=1}^{\alpha+1} i = \frac{(\alpha+1)(\alpha + 2)}{2} $ since $d(p^j) = j+1$. We can of course dispel induction for a bruter force approach by expanding $\sum_{t|p^\alpha+1} d(t)^3 = \sum_{i=1}^{\alpha+1} i^3$ but this requires us to know the formula for a sum of consecutive cubes \dunno
+
+\bigskip
+\underline{\textbf{\textit{Chapter 3}}}
+\smallskip
+
+{\bf Section 3.3, Page 54}. ``Euler's summation formula, Theorem 3.1'', if you look carefully enough at the definition the lower limit of the sum, $\sum_{y<n\le x}$, is just a less than sign and {\bf not} and less than {\bf equal} sign, this is crucial as we go to the proof of Theorem 3.3
+
+{\bf PROOF of Theorem 3.1, Page 55}, there's some ``fudging'' going on here and not just once :) in the first line
+%
+\nbea
+\int_{n-1}^{n}[t] f'(t)dt & \to & \int_{n-1}^n (n-1)f'(t)dt
+\neea
+%
+so we assume that $[t] = n-1$ for the whole interval $[n-1,n]$, well this is true for if the interval excludes $n$, \ie $[n-1,n)$. So here's where the ``fudging'' comes in, in the definition of Riemann integral we can always remove a point since the area under a curve of just one point is zero $\to dt = 0$ so in this case we remove the end point $n$.
+
+The second ``fudging'' happens in Eq (6) when we go from $-\int_m^k \to -\int_y^x$, the area under the curve is definitely different for those two integrals unless $m=[y]=y$ and $k=[x]=x$ , let's see this with a concrete example say, $f(t) = t \to f'(t) = 1$ with $y = 1.5$ and $x = 3.1$, the integral $\int_y^x[t]f'(t)dt$ is given by
+%
+\nbea
+\int_{1.5}^{3.1}[t]f'(t)dt & = & \int_{1.5}^{2}dt + \int_{2}^{3}2dt+  \int_{3}^{3.1}3dt \\
+& = & (2-1.5) + 2(3-2) + 3(3.1-3) \\
+& = & 0.5 + 2 + 0.3 \\
+& = & 2.8
+\neea
+%
+while the integral $\int_{[y]}^{[x]}[t]f'(t)dt$ is given by
+%
+\nbea
+\int_{[1.5]}^{[3.1]}[t]f'(t)dt & = & \int_{1}^{2}dt + \int_{2}^{3}2dt \\
+& = & (2-1) + 2(3-2) \\
+& = & 3
+\neea
+%
+so ........ \dunno
+
+{\bf Page 55}, ``Integration by parts gives us $\dots$ and when this is combined with (6) we obtain (5)'', what we want to do here is to move everything to the LHS
+%
+\nbea
+\int_y^x f(t)dt = xf(x) - yf(y) - \int_y^xtf'(t)dt \\
+\to \int_y^x f(t)dt - xf(x) + yf(y) + \int_y^xtf'(t)dt & = & 0
+\neea
+%
+and we add this zero to (6) to get (5) sans the fudging discussed above :)
+
+{\bf PROOF of Theorem 3.2, Page 55} The peculiar thing here is the contant 1 which we get from $-f(y)([y]-y)$. The problem here is that the lower limit $y = 1$ and so $[y]-y = 1-1=0$, however, as explained above, the lower limit must not be an integer as $y < n$ and $n$ starts with $n=1$, the less than sign is crucial here.
+
+This means that $0 < y < 1$ and in this case $y$ has to be $y = 1^{-}$ such that we can take the limit $y \to 1$, so even though the lower limit of the integrals is $y=1$ we cannot just simply choose $y=1$, this manifests more strongly in the proof of Theorem 3.2 part (b) where in this case $f(y) = x^{-s}$
+%
+\nbea
+-f(y)([y]-y) & = & -\frac{1}{y^s} (0 - y) \\
+& = & \frac{1}{y^{s-1}}
+\neea
+%
+it won't equal 1 unless we take the limit $y \to 1$, we can however, choose any value of $y$ in the range $0 <y < 1$ say $y = 1/w$ where $0 < w < \infty$
+%
+\nbea
+\sum_{n\le x} \frac{1}{n^s} & = & \int_{1/w}^x \frac{dt}{t^s} - s\int_{1/w}^x\frac{t-[t]}{t^{s+1}} + \frac{[x]-x}{x^s} - \frac{0 - (1/w)}{(1/w)^s} \\
+& = & \frac{x^{1-s}}{1-s} - \frac{(1/w)^{1-s}}{1-s} - s\int_{1/w}^1\frac{t-[t]}{t^{s+1}} - s\int_{1}^x\frac{t-[t]}{t^{s+1}} - \frac{x-[x]}{x^s} + (1/w)^{1-s} \\
+& = & \frac{x^{1-s}}{1-s} - \frac{(1/w)^{1-s}}{1-s} - s\int_{1/w}^1\frac{t-[t]}{t^{s+1}} - s\int_{1}^x\frac{t-[t]}{t^{s+1}} - \frac{x-[x]}{x^s} + \frac{(1-s)(1/w)^{1-s}}{1-s}
+\neea
+%
+we now focus on the first integral on the RHS
+%
+\nbea
+-s\int_{1/w}^1\frac{t-[t]}{t^{s+1}} & = & -s\int_{1/w}^1\frac{t-[1/w]}{t^{s+1}} \\
+& = & -s\int_{1/w}^1\frac{t}{t^{s+1}} \\
+& = & -s\int_{1/w}^1\frac{1}{t^{s}} \\
+& = & -\frac{s}{1-s} + \frac{s (1/w)^{1-s}}{1-s}
+\neea
+%
+Combining everything we get
+%
+\nbea
+\sum_{n\le x} \frac{1}{n^s} & = & \frac{x^{1-s}}{1-s} - \bcancel{\frac{(1/w)^{1-s}}{1-s}} -\frac{s}{1-s} + \cancel{\frac{s(1/w)^{1-s}}{1-s}} - s\int_{1}^x\frac{t-[t]}{t^{s+1}} - \frac{x-[x]}{x^s} + \frac{(\bcancel{1}-\cancel{s})(1/w)^{1-s}}{1-s} \\
+& = & \frac{x^{1-s}}{1-s} +\frac{-1 + (1 - s)}{1-s} - s\int_{1}^x\frac{t-[t]}{t^{s+1}} - \frac{x-[x]}{x^s} \\
+& = & \frac{x^{1-s}}{1-s} - \frac{1}{1-s} + 1 - s\int_{1}^x\frac{t-[t]}{t^{s+1}} - \frac{x-[x]}{x^s}
+\neea
+%
+and we get the same result.
+
+The lesson here is that we need to be very careful in choosing and processing these limits otherwise we'll get the wrong result.
+
+{\bf Page 56}, first equation, the key here is that $t-[t] < 1$ and so the inequality holds
+
+{\bf Page 60}, ``It can be shown that $\xi(2) = \pi^2/6$'', an elementary proof of this fact is thorugh the Fourier series (not Fourier transform) of $x^2$
+%
+\nbea
+x^2 = \frac{a_0}{2} + \sum_{n=1}^\infty a_n\cos(nx) + \sum_{n=1}^\infty b_n\sin(nx)
+\neea
+%
+$b_n = 0$ for all $n$ because $x^2$ is an even function while
+%
+\nbea
+a_0 & = & \int_{-\pi}^{+\pi} x^2 \frac{dx}{\pi} \\
+& = & \frac{1}{3\pi} \left (\pi^3 - (-\pi)^3 \right ) \\
+& = & \frac{2\pi^2}{3}
+\neea
+%
+and
+%
+\nbea
+a_n & = & \int_{-\pi}^{+\pi} x^2 \cos(nx) \frac{dx}{\pi} \\
+& = & \left.\frac{2x}{n\pi}\sin(nx)\right|_{-\pi}^{+\pi} - 2\int_{-\pi}^{+\pi} x \sin(nx) \frac{dx}{n\pi}
+\neea
+%
+the boundary terms are zero since $\sin(\pm\pi) = 0$, we now do another integration by parts on the remaining integral
+%
+\nbea
+- 2\int_{-\pi}^{+\pi} x \sin(nx) \frac{dx}{n\pi} & = & \left.\frac{2x}{n^2\pi}\cos(nx)\right|_{-\pi}^{+\pi} - 2\int_{-\pi}^{+\pi}  \cos(nx) \frac{dx}{n^2\pi} \\
+& = & \left.\frac{2x}{n^2\pi}\cos(nx)\right|_{-\pi}^{+\pi}  + \left.\frac{-2}{n^3\pi}\sin(nx)\right|_{-\pi}^{+\pi} \\
+a_n & = & (-1)^n\frac{4}{n^2}
+\neea
+%
+where $\cos(\pm n\pi) = \cos(n\pi) = (-1)^n$, thus
+%
+\nbea
+x^2 & = & \frac{\pi^2}{3} + \sum_{n=1}^\infty (-1)^n\frac{4}{n^2} \cos(nx)
+\neea
+%
+setting $x=\pi$ we get
+%
+\nbea
+\pi^2 & = & \frac{\pi^2}{3} + \sum_{n=1}^\infty (-1)^n\frac{4}{n^2} \cos(n\pi) \\
+\frac{2\pi^2}{3} & = & \sum_{n=1}^\infty (-1)^{2n}\frac{4}{n^2} \\
+\to \frac{\pi^2}{6} & = & \sum_{n=1}^\infty \frac{1}{n^2}
+\neea
+%
+
+
+
+
+
+
+
+
+
 
 
 
