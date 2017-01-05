@@ -830,7 +830,7 @@ The lesson here is that we need to be very careful in choosing and processing th
 
 {\bf Page 56}, first equation, the key here is that $t-[t] < 1$ and so the inequality holds
 
-{\bf Page 60}, ``It can be shown that $\xi(2) = \pi^2/6$'', an elementary proof of this fact is thorugh the Fourier series (not Fourier transform) of $x^2$
+{\bf Page 60}, ``It can be shown that $\zeta(2) = \pi^2/6$'', an elementary proof of this fact can be obtained is through Fourier series (not Fourier transform) of $x^2$
 %
 \nbea
 x^2 = \frac{a_0}{2} + \sum_{n=1}^\infty a_n\cos(nx) + \sum_{n=1}^\infty b_n\sin(nx)
@@ -851,7 +851,7 @@ a_n & = & \int_{-\pi}^{+\pi} x^2 \cos(nx) \frac{dx}{\pi} \\
 & = & \left.\frac{2x}{n\pi}\sin(nx)\right|_{-\pi}^{+\pi} - 2\int_{-\pi}^{+\pi} x \sin(nx) \frac{dx}{n\pi}
 \neea
 %
-the boundary terms are zero since $\sin(\pm\pi) = 0$, we now do another integration by parts on the remaining integral
+the boundary terms are zero since $\sin(\pm n \pi) = 0$, we now do another integration by parts on the remaining integral
 %
 \nbea
 - 2\int_{-\pi}^{+\pi} x \sin(nx) \frac{dx}{n\pi} & = & \left.\frac{2x}{n^2\pi}\cos(nx)\right|_{-\pi}^{+\pi} - 2\int_{-\pi}^{+\pi}  \cos(nx) \frac{dx}{n^2\pi} \\
@@ -859,7 +859,7 @@ the boundary terms are zero since $\sin(\pm\pi) = 0$, we now do another integrat
 a_n & = & (-1)^n\frac{4}{n^2}
 \neea
 %
-where $\cos(\pm n\pi) = \cos(n\pi) = (-1)^n$, thus
+where $\cos(\pm n\pi) = \cos(n\pi) = (-1)^n$ and of course $\sin(\pm n \pi) = 0$, thus
 %
 \nbea
 x^2 & = & \frac{\pi^2}{3} + \sum_{n=1}^\infty (-1)^n\frac{4}{n^2} \cos(nx)
