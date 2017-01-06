@@ -966,12 +966,8 @@ n-12 - l & = & 3u + z \\
 \neea
 %
 
-%
-\nbea
-8m + 13 & = & 25j \\
-m & = & \frac{25j - 13}{8}
-\neea
-%
+
+but since $(25,8) = 1$ it must mean that $25|a$ and the smallest $a$ is $a=25$.
 
 %
 \nbea
@@ -979,9 +975,75 @@ m & = & \frac{25j - 13}{8}
 \neea
 %
 
+Using Bezout's lemma, since $\gcd(25,8) = 1$ we have
+%
+\nbea
+25x + 8y & = & 1 \\
+25x' + 8y' & = & 13
+\neea
+%
 
 
 
+OK, the strategy here is simple, although initially I wanted to see if I can utilize something from chapter 3 to solve this problem, maybe like putting a sum in front of those two terms and see what I get but let's just stay simple.
+
+The strategy here is to show that when we increase $n$ the change in the first square bracket is the same as the change in the second square bracket, let's now look at the first square bracket more closely, if we remove the constant 13 for now we have
+%
+\nbea
+\left \lbrack \frac{8n}{25} \right \rbrack
+\neea
+%
+the key here is that $25 = 8\cdot3 + 1$, that means everytime $n$ increases from $n = 3m$ to $n = 3m+1$, the square bracket also increases from $\left \lbrack \frac{8n}{25} \right \rbrack \to \left \lbrack \frac{8n}{25} \right \rbrack + 1$
+
+This is because in the language of mod what we have is
+%
+\nbea
+8\cdot 3 & \equiv & -1 \pmod{25}
+\neea
+%
+and thus $8\cdot(3m) \equiv -m \pmod{25}$ and once we have $8\cdot(3\cdot 8 + 1) \equiv 0 \pmod{25}$ therefore $8\cdot(25 + 3f)$
+
+%
+\nbea
+%\begin{array}{}
+8\cdot 3 + 13 & \equiv & -13 \pmod{25}
+%\end{array}
+\neea
+%
+
+%
+\nbea
+%\begin{array}{}
+8\cdot 1 + 13 & \equiv & -4 \pmod{25} \\
+8\cdot 4 + 13 & \equiv & -5 \pmod{25} \\
+8\cdot 7 + 13 & \equiv & -6 \pmod{25} \\
+8\cdot 10 + 13 & \equiv & -7 \pmod{25} \\
+8\cdot 13 + 13 & \equiv & -8 \pmod{25} \\
+%\end{array}
+\neea
+%
+and thus $8\cdot 14 + 13 \equiv 0 \pmod{25}$ meaning $8\cdot (13 + 3) + 13 \not\equiv -1 \pmod{25}$ instead $8\cdot(14 + 3) + 13 \equiv -1 \pmod{25}$
+
+At the same time $\left \lbrack \frac{n-17}{25} \right \rbrack$ will change value at transition from $n=16 \to n=17$ and this is in sync with $\left \lbrack \frac{8\cdot 16 + 13}{25} \right \rbrack \to \left \lbrack \frac{8\cdot 17 + 13}{25} \right \rbrack$
+
+the pattern repeats every 25 counts $n \to n + 25$ as 
+%
+\nbea
+8m + 13 & = & 25j \\
+8(m + 25) + 13 & = & 8m + 13 + 8\cdot 25 \\
+& = & 25(j + 8)
+\neea
+%
+
+%
+\nbea
+8(m + a) + 13 & = & 8m + 13 + 8\cdot a \\
+25h & = & 25j + 8a \\
+25(h-j) & = & 8a \\
+25 &|& 8a
+\neea
+%
+ditto with $\frac{n-17}{25}$
 
 
 
