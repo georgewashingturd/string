@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2016.3.16)  4 JAN 2017 23:32
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2016.3.16)  5 JAN 2017 18:18
 entering extended mode
 **D:/Github/string/pittetd/apostol.tex
 (D:/Github/string/pittetd/apostol.tex
@@ -648,11 +648,11 @@ Overfull \hbox (16.7518pt too wide) in alignment at lines 821--825
  [][][] []
  []
 
-[17] (apostol.bbl) [18]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 896.
+[17] [18] [19] [20] (apostol.bbl) [21]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1006.
  (apostol.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 896.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 896.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1006.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1006.
  ) 
 Here is how much of TeX's memory you used:
  13340 strings out of 428721
@@ -663,4 +663,4 @@ Here is how much of TeX's memory you used:
  1096 hyphenation exceptions out of 8191
  36i,17n,39p,710b,399s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on apostol.pdf (18 pages).
+Output written on apostol.pdf (21 pages).

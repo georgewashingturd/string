@@ -830,9 +830,30 @@ The lesson here is that we need to be very careful in choosing and processing th
 
 {\bf Page 56}, first equation, the key here is that $t-[t] < 1$ and so the inequality holds
 
-{\bf Page 58}, Figure 3.1, note that this figure is a bit deceptive, to calculate $\sum_{qd \le 10}$ we need to draw one hyperbola for every $qd = \{1,2,3,4,5,6,7,8,9,10\}$, in the figure there are only 3 hyperbolas drawn. Also, the way the sum is calculated is count {\bf all} integer points underneath the largest hyperbola, true that we have to count only points that lie on the hyperbolas but if we draw {\bf all} hyperbolas with $qd \le x$ we will cover all lattice points under the largest hyperbola curve.
+{\bf Page 56}, the value of $C$ (and $C(s)$), in the roughly middle section of the page we have
+%
+\nbea
+\lim_{x\to\infty}\left ( \sum_{n \le x} \frac{1}{n} - \log x\right) = 1 - \int_1^\infty \frac{t - [t]}{t^2} dt,
+\neea
+%
+and the RHS is $C$ and therefore $C$ equals the Euler's constant since the LHS is Euler's constant but it seems like this is only true when $x \to \infty$, which is to say that $C$ is independent of $x$, but recall that from earlier in the page
+%
+\nbea
+\sum_{n\le x} \frac{1}{n} & = & \log x + C + O\left ( \frac{1}{x}\right ) \\
+\to C & = & \sum_{n\le x} \frac{1}{n} - \log x - O\left ( \frac{1}{x}\right ) 
+\neea
+%
+It therefore seems like $C$ depends on $x$ after all, how can this be? The answer is that
+%
+\nbea
+\sum_{n\le x} \frac{1}{n} - \log x - O\left ( \frac{1}{x}\right ) & = & \lim_{x\to\infty}\left ( \sum_{n \le x} \frac{1}{n} - \log x\right)
+\neea
+%
+Thus the LHS does {\bf not} depend on $x$ after all even though it looks like it, this argument also applies to $C(s)$ lower down in the page
 
-{\bf Page 60}, ``It can be shown that $\zeta(2) = \pi^2/6$'', an elementary proof of this fact can be obtained from Fourier series (not Fourier transform) of $x^2$
+{\bf Page 58}, Figure 3.1, note that this figure is a bit deceptive, to calculate $\sum_{qd \le 10}$ we need to draw one hyperbola for every $qd = \{1,2,3,4,5,6,7,8,9,10\}$, in the figure there are only 3 hyperbolas drawn. Also, the way the sum is calculated is by counting {\bf all} lattice points underneath the largest hyperbola, true that we have to count only points that lie on the hyperbolas but if we draw {\bf all} hyperbolas with $qd \le x$ we will cover all lattice points under the largest hyperbolic curve.
+
+{\bf Page 60}, ``It can be shown that $\zeta(2) = \pi^2/6$'', an elementary proof of this fact can be obtained from the Fourier series ({\it not} Fourier transform) of $x^2$
 %
 \nbea
 x^2 = \frac{a_0}{2} + \sum_{n=1}^\infty a_n\cos(nx) + \sum_{n=1}^\infty b_n\sin(nx)
@@ -875,6 +896,95 @@ setting $x=\pi$ we get
 \to \frac{\pi^2}{6} & = & \sum_{n=1}^\infty \frac{1}{n^2}
 \neea
 %
+
+{\bf Page 61}, PROOF of Theorem 3.6,
+%
+\nbea
+\sum_{n\le x} \sigma_{-\beta}(n) & = & \sum_{n\le x} \sum_{d|n}\frac{1}{d^\beta} = \sum_{d\le x} \sum_{q\le x/d}\frac{1}{q^\beta}
+\neea
+%
+
+if $\beta \neq 1$ we have
+%
+\nbea
+\sum_{d\le x} \sum_{q\le x/d}\frac{1}{q^\beta} & = & \sum_{d\le x} \frac{(x/d)^{1-\beta}}{1-\beta} + \zeta(\beta) + O\left ((x/d)^{-\beta}\right ) \\
+& = & x\zeta(\beta) + \frac{x^{1-\beta}}{1-\beta} \sum_{d\le x} d^{\beta-1} + O\left (\frac{1}{x^\beta}\sum_{d\le x} d^{\beta}\right ) \\
+& = & x\zeta(\beta) + \frac{x^{1-\beta}}{1-\beta} \left ( \frac{x^\beta}{\beta} + O(x^{\beta-1}) \right ) + O\left (\frac{1}{x^\beta}\left (\frac{x^{\beta+1}}{\beta+1} + O(x^{\beta}) \right )\right ) \\
+& = & x\zeta(\beta) + O(x)  + O(1)  + O(x) + O(1) \\
+& = & x\zeta(\beta) + O(x)
+\neea
+%
+
+
+
+
+%
+\nbea
+\sum_{n\le x} \log n & = & \int_1^x \log t ~dt + \int _1^x \frac{(t - [t]) }{t} dt + \log x ([x] - x) - \lim_{y\to 1} \log y ([y] - y) \\
+& = & \bcancel{ x \log x} - x + 1 + \int _1^x \frac{(t - [t]) }{t} dt - \bcancel{x \log x}  + [x]\log x \\
+& = & [x]\log x - x + 1 + O(\log x) \\
+& = & O(x \log x)
+\neea
+%
+
+if $\beta = 1$ we have
+%
+\nbea
+\sum_{d\le x} \sum_{q\le x/d}\frac{1}{q^\beta} & = & \sum_{d\le x} \log \left ( \frac{x}{d}\right ) + C + O\left ( \frac{d}{x}\right ) \\
+& = & xC + x \log x - \sum_{d\le x} \log d + O\left ( \frac{1}{x} \sum_{d\le x} d\right ) \\
+& = & xC + x \log x - O(x \log x) + O\left ( \frac{1}{x} \left (\frac{x^2}{2} + O(x)\right )\right ) \\
+& = & xC + x \log x - O(x \log x) + O(x) + O(1)\\
+& = & xC + O(x \log x)
+\neea
+%
+
+{\bf Problem 22}. If $n$ is a positive integer, prove that
+%
+\nbea
+\left \lbrack \frac{8n + 13}{25} \right \rbrack - \left \lbrack \frac{n - 12 - \left \lbrack \frac{n-17}{25}\right \rbrack}{3} \right \rbrack
+\neea
+%
+is independent of $n$
+
+%
+\nbea
+8n + 13 & = & 25w + r \\
+8(n+1) + 13 & = & 25(w+1) + r' \\
+8 & = & 25 + r' - r \\
+\to r' - r & = & -17
+\neea
+%
+
+
+%
+\nbea
+n-12 - l & = & 3u + z \\
+(n+1) -12 - l' & = & 3(u+1) + z' \\
+1 - (l' - l) & = & 3 + z' - z \\
+(l'-l) & = & -2 + z - z' \\
+(l'-l) +(z'-z) & = & -2
+\neea
+%
+
+%
+\nbea
+8m + 13 & = & 25j \\
+m & = & \frac{25j - 13}{8}
+\neea
+%
+
+%
+\nbea
+\frac{\frac{25j - 13}{8} - 17}{25} & = & 
+\neea
+%
+
+
+
+
+
+
+
 
 
 
