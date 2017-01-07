@@ -940,17 +940,140 @@ if $\beta = 1$ we have
 
 {\bf Problem 20}. If $n$ is a positive integer prove that $[\sqrt{n} + \sqrt{n+1}] = [\sqrt{4n+2}]$
 
+This problem turns out to be trickier than I initially thought, the first order of business here is to see how $4n+2$ behaves, the $4n$ scream modulo 4 to me, so let's see.
+
+One thing we know is that only $4n+1$ and $4n$ can be perfect squares, for one thing the square of any odd number is $(2x+1)^2 = 4(x^2+x)+1$ and the square of any even number is $4x^2$ while we know that $2 \pmod{4}$ and $3 \pmod{4}$ are not quadratic residues modulo 4.
+
+To see why $4n+2$ can't be a perfect square, without going into congruence and modulo stuff, let's consider the opposite
+%
+\nbea
+2(2n+1) & = & m^2
+\neea
+%
+which means that $2|m^2$ and that in turn means $m = 2w$ and
+%
+\nbea
+\bcancel{2}(2n+1) & = & \bcancel{2}2w^2 \\
+1 & = & 2 (w^2 - n) \\
+\to 2 &|& 1
+\neea
+%
+which is a contradiction. For $4n+3$, it is an odd number and thus as shown above, if it is to be a perfect square
+%
+\nbea
+4n+3 & = & 4(x^2+x) + 1 \\
+4n + 2 & = & 4(x^2+x) \\
+2n + 1 & = & 2(x^2 + x) \\
+1 & = & 2 ((x^2+x) - n) \\
+\to 2 &|& 1
+\neea
+%
+which again is a contradiction and thus $4n+2$ and $4n+3$ cannot be perfect squares ever.
+
+Next, we will list  the natural numbers (including zero) and their corresponding square roots
+%
+\nbea
+\begin{array}{c|c|c}
+\sqrt{m} & ~~m~~ & m = 4n + j\\ \hline
+{\bf 0} & {\bf 0} & {\bf 4\cdot0 + 0} \\ \hline
+{\bf 1} & {\bf 1} & {\bf 4\cdot0 + 1} \\ \hline
+1.414 & 2 & 4\cdot0 + 2 \\
+1.732 & 3 & 4\cdot0 + 3 \\ \hline
+{\bf 2} & {\bf 4} & {\bf 4\cdot1 + 0} \\ \hline
+2.236 & 5 & 4\cdot1 + 1 \\
+2.449 & 6 & 4\cdot1 + 2 \\
+2.646 & 7 & 4\cdot1 + 3 \\
+2.828 & 8 & 4\cdot2 + 0 \\ \hline
+{\bf 3} & {\bf 9} & {\bf 4\cdot2 + 1} \\ \hline
+3.162 & 10 & 4\cdot2 + 2 \\
+3.317 & 11 & 4\cdot2 + 3 \\
+3.464 & 12 & 4\cdot3 + 0 \\
+3.606 & 13 & 4\cdot3 + 1 \\           
+3.742 & 14 & 4\cdot3 + 2 \\           
+3.873 & 15 & 4\cdot3 + 3 \\ \hline           
+{\bf 4} & {\bf 16} & {\bf 4\cdot4 + 0} \\ \hline          
+\end{array}
+\neea
+%
+so we see that $\sqrt{m} = \sqrt{4n+j}$ hits integer points only at $m=4n+0$ or $m=4n+1$ and in between any two consecutive integer $\sqrt{m}$'s (\eg between $\sqrt{m} = 3$ and $\sqrt{m} = 4$) the values of $\sqrt{m}$ in between them all share the same floor because the two consecutive integer $\sqrt{m}$'s only differ by one, this only means one thing
+%
+\nbea
+[\sqrt{4n+1}] = [\sqrt{4n+2}] = [\sqrt{4n+3}]
+\neea
+%
+
+Next we tackle $\sqrt{n} + \sqrt{n+1}$, if we square it
+%
+\nbea
+\left ( \sqrt{n} + \sqrt{n+1}\right )^2 & = & 2n + 1 + 2\sqrt{n^2 + n}
+\neea
+%
+Now the thing to note is that $n^2 < (n^2 + n) < (n + 1/2)^2$, at least for $n>0$, and so
+%
+\nbea
+2n + 1 + 2\sqrt{n^2} ~~<~~& 2n + 1 + 2\sqrt{n^2 + n}& ~~ < ~~ 2n + 1 + 2\sqrt{(n + 1/2)^2} \\
+4n + 1 ~~<~~& \left ( \sqrt{n} + \sqrt{n+1}\right )^2 & ~~ < ~~ 4n + 2 \\
+\sqrt{4n + 1} ~~<~~& \sqrt{n} + \sqrt{n+1} & ~~ < ~~ \sqrt{4n + 2}
+\neea
+%
+and if we take the floor of all three items above
+%
+\nbea
+\lbrack\sqrt{4n + 1}\rbrack ~~\le~~&\lbrack \sqrt{n} + \sqrt{n+1}\rbrack & ~~ \le ~~\lbrack \sqrt{4n + 2}\rbrack
+\neea
+%
+note that the inequality signs have all changed into less than {\bf equal} signs. At this point we need to be extra careful because even though $\sqrt{4n + 1}$ and $\sqrt{4n + 2}$ differ by less than one it can be that the three numbers $\sqrt{4n + 1},\sqrt{n} + \sqrt{n+1},\sqrt{4n + 2}$ straddle through an integer, for example say $\sqrt{4n + 1} = 15.91\ldots$ and $\sqrt{n} + \sqrt{n+1} = 15.92\ldots$ while $\sqrt{4n + 2} = 16.01\ldots$, in this case $[\sqrt{4n+1}]=[\sqrt{n} + \sqrt{n+1}] \neq [\sqrt{4n+2}]$ which works against us, so our argument has to be solid to establish the result we want.
+
+Lucky for us, from the above discussion we know that $[\sqrt{4n+1}]=[\sqrt{4n+2}]=[\sqrt{4n+3}]$ therefore since $\lbrack\sqrt{4n + 1}\rbrack \le \lbrack \sqrt{n} + \sqrt{n+1}\rbrack \le \lbrack \sqrt{4n + 2}\rbrack$ the only possibility is $[\sqrt{4n+1}]=[\sqrt{n} + \sqrt{n+1}] = [\sqrt{4n+2}]$ and also
+%
+\nbea
+[\sqrt{n} + \sqrt{n+1}]=[\sqrt{4n+1}]=[\sqrt{4n+2}]=[\sqrt{4n+3}]
+\neea
+%
+which is what we are after and more, for one thing we get equalities with $[\sqrt{4n+1}], [\sqrt{4n+3}]$ and it's obvious that this equality holds for $n=0$, therefore the question could've have been, for any integer $n \ge 0$, prove that the following is true $[\sqrt{n} + \sqrt{n+1}]=[\sqrt{4n+1}]=[\sqrt{4n+2}]=[\sqrt{4n+3}]$
+
+\bigskip
+\textit{\textbf{Various Failed Attempts}}
+\smallskip
+
+First thing I tried was the famous physicist formula for a square root $\sqrt{1+x}\approx 1 + \frac{1}{2}x$ and so
+%
+\nbea
+\left \lbrack \sqrt{n} + \sqrt{n+1}\right \rbrack & = & \left \lbrack \sqrt{n} + \sqrt{n}\sqrt{1 + \frac{1}{n}} \right \rbrack = \left \lbrack \sqrt{n} + \sqrt{n}\left (1 + \frac{1}{2n}\right ) \right \rbrack \\
+& = & \left \lbrack 2\sqrt{n} + \frac{1}{2\sqrt{n}} \right \rbrack
+\neea
+%
+and also
+%
+\nbea
+\left \lbrack \sqrt{4n+2}\right \rbrack & = & \left \lbrack 2\sqrt{n}\sqrt{1 + \frac{1}{2n}} \right \rbrack =  \left \lbrack 2\sqrt{n}\left (1 + \frac{1}{4n}\right ) \right \rbrack \\
+& = & \left \lbrack 2\sqrt{n}+ \frac{1}{2\sqrt{n}} \right \rbrack
+\neea
+%
+so to a physicist they're the same :)
+
+But joking aside I did try the Taylor expansion trick above, first I tried to estimate how big (or small) $\frac{1}{2\sqrt{n}}$ is, but this turns out not to be frutiful because I don't know how close $2\sqrt{n}$ is to an integer, because depending on how close it is, the correction term might or might not push it up to the next integer, and I don't see a clear way to tell how close $2\sqrt{n}$ is to an integer.
+
+Next, I did the Taylor expansion above to relate $\sqrt{n} + \sqrt{n+1}$ to $\sqrt{4n+2}$, but first, a couple of things to note, for small $x$
+%
+\nbea
+1 + \frac{1}{2}x & < & \sqrt{1+x} \\
+1 - \frac{1}{2}x & > & \sqrt{1-x}
+\neea
+%
+Expanding $\sqrt{n} + \sqrt{n+1}$
 %
 \nbea
 \sqrt{n} + \sqrt{n+1} & = & \sqrt{\left (\sqrt{n} + \sqrt{n+1} \right )^2} \\
 & = & \sqrt{2n + 1 + 2\sqrt{n(n+1)}} \\
 & = & \sqrt{2n + 1 + 2\sqrt{\left (n+\frac{1}{2}\right )^2 - \frac{1}{4}}} \\
 & = & \sqrt{2n + 1 + \sqrt{\left (2n+1\right )^2 - 1}} \\
-& = & \sqrt{2n + 1 + ((2n+1) -\Delta )} \\
-& = & \sqrt{4n + 2 -\Delta}
+& = & \sqrt{2n + 1 + \left((2n+1) -\frac{1}{2(2n+1)} \right)} \\
+& = & \sqrt{4n + 2 -\frac{1}{2(2n+1)}} \\
+\sqrt{n} + \sqrt{n+1} & < & \sqrt{4n+2} - \frac{1}{2(4n+2)^{3/2}}
 \neea
 %
-where $0 <\Delta < 1$, this means $\sqrt{n} + \sqrt{n+1} < \sqrt{4n + 2}$, next we would like to compare $\sqrt{4n + 2}$ to $\sqrt{n} + \sqrt{n+1} + \sqrt{\Delta}$
+a somewhat interesting result, next, let's denote $\Delta = \frac{1}{2(4n+2)^{3/2}}$, and I wanted to show that $\sqrt{n} + \sqrt{n+1} + \sqrt{\Delta}$ is bigger than $\sqrt{4n + 2}$
 %
 \nbea
 \sqrt{n} + \sqrt{n+1} + \sqrt{\Delta} & = & \sqrt{4n + 2 -\Delta} + \sqrt{\Delta} \\
@@ -965,33 +1088,26 @@ and since $0 < \Delta < 1$ it means that $0 < \sqrt{\Delta}<1$ and so
 Thus what we have is
 %
 \nbea
-\sqrt{n} + \sqrt{n+1} < & \sqrt{4n + 2} & < \sqrt{n} + \sqrt{n+1} + \sqrt{\Delta}
+\sqrt{n} + \sqrt{n+1}~~ <~~ & \sqrt{4n + 2} & ~~<~~ \sqrt{n} + \sqrt{n+1} + \sqrt{\Delta} \\
+\lbrack\sqrt{n} + \sqrt{n+1}\rbrack~~ \le~~ & \lbrack\sqrt{4n + 2}\rbrack & ~~\le~~ \lbrack\sqrt{n} + \sqrt{n+1} + \sqrt{\Delta}\rbrack
 \neea
 %
-we now need to be extra careful, $\sqrt{4n + 2}$ might not be an integer and it can be that say, $\sqrt{n} + \sqrt{n+1} = 15.9\ldots$ while $\sqrt{4n + 2} = 16.001\ldots$ and $\sqrt{n} + \sqrt{n+1} + \sqrt{\Delta} = 16.002\ldots$, in this case if we take the floor of all three entities we will get something like
+and I ran into the same straddle thing again, $\sqrt{4n + 2}$ might not be an integer and it can be that say, $\sqrt{n} + \sqrt{n+1} = 15.9\ldots$ while $\sqrt{4n + 2} = 16.001\ldots$ and $\sqrt{n} + \sqrt{n+1} + \sqrt{\Delta} = 16.002\ldots$, in this case $\lbrack\sqrt{n} + \sqrt{n+1}\rbrack \neq \lbrack\sqrt{4n + 2}\rbrack = \lbrack\sqrt{n} + \sqrt{n+1} + \sqrt{\Delta}\rbrack$.
+
+I wrongfully tried to remedy the situation by claiming that
 %
 \nbea
-\lbrack \sqrt{n} + \sqrt{n+1} \rbrack \le & \lbrack \sqrt{4n + 2} \rbrack & \le \lbrack \sqrt{n} + \sqrt{n+1} + \sqrt{\Delta}\rbrack 
+\lbrack \sqrt{n} + \sqrt{n+1} \rbrack ~~<~~ & \sqrt{4n + 2} & ~~<~~ \lbrack \sqrt{n} + \sqrt{n+1} + \sqrt{\Delta}\rbrack  \\
+\lbrack \sqrt{n} + \sqrt{n+1} \rbrack ~~<~~ & \sqrt{4n + 2} & ~~<~~ \lbrack \sqrt{n} + \sqrt{n+1} \rbrack + 1
 \neea
 %
-the less than equal sign is troublesome because in this case it can be that $\lbrack \sqrt{4n + 2} \rbrack = \lbrack \sqrt{n} + \sqrt{n+1} + \sqrt{\Delta}\rbrack = \lbrack \sqrt{n} + \sqrt{n+1} \rbrack + 1$.
+we can substitute $\lbrack \sqrt{n} + \sqrt{n+1} + \sqrt{\Delta}\rbrack$ with $\lbrack \sqrt{n} + \sqrt{n+1}\rbrack+1$ because $\lbrack \sqrt{n} + \sqrt{n+1} \rbrack + 1 \ge \lbrack \sqrt{n} + \sqrt{n+1} + \sqrt{\Delta} \rbrack$ and here since we are moving the upper bound we want the bigger one. The problem with the above argument is that for our numerical example $\sqrt{4n + 2} = 16.001\ldots$ and $\sqrt{n} + \sqrt{n+1} + \sqrt{\Delta} = 16.002\ldots$, $\sqrt{4n + 2} = \lbrack \sqrt{n} + \sqrt{n+1} \rbrack + 1$ and the inequality doesn't hold.
 
-The crucial info we need here is that
-%
-\nbea
-\lbrack \sqrt{n} + \sqrt{n+1} \rbrack < & \sqrt{4n + 2} & < \lbrack \sqrt{n} + \sqrt{n+1} + \sqrt{\Delta}\rbrack  \\
-\lbrack \sqrt{n} + \sqrt{n+1} \rbrack < & \sqrt{4n + 2} & < \lbrack \sqrt{n} + \sqrt{n+1} \rbrack + 1
-\neea
-%
-we can substitute $\lbrack \sqrt{n} + \sqrt{n+1} + \sqrt{\Delta}\rbrack$ with $\lbrack \sqrt{n} + \sqrt{n+1}\rbrack+1$ because $\sqrt{n} + \sqrt{n+1}$ and $\sqrt{n} + \sqrt{n+1} + \sqrt{\Delta}$ differ by $< 1$.
+So the key here is to make sure that there's no such straddling and that means that $\sqrt{4n+1}$ and $\sqrt{4n+2}$ lie in between the same two integers $[a,b)$ and that's how I got the observation about $4n+j$ above.
 
-Now since the outermost LHS and outermost RHS are integers and the inequalities are strict inequalities we can deduce that
-%
-\nbea
-\lbrack \sqrt{n} + \sqrt{n+1} \rbrack & = & \lbrack\sqrt{4n + 2}\rbrack
-\neea
-%
+For next attempts I was thinking that maybe I should process this whole thing in a different way maybe multiply and add them RHS and LHS or maybe I should get some identity that involves $[\sqrt{n}+\sqrt{n+1}]-[\sqrt{4n+2}]$ and requires this difference to be zero, for example $f(x) = g(x) + [\sqrt{n}+\sqrt{n+1}]-[\sqrt{4n+2}] = 0$ and we already know that $g(x)=0$ so the difference between those two square brackets must be zero, but I couldn't find such identity.
 
+The next thing I tried was to maybe multiply or divide, I tried division together with Taylor expansion
 %
 \nbea
 \frac{\sqrt{4n+2}}{\sqrt{n+1} + \sqrt{n}} & = & \frac{\sqrt{4n+2}}{\sqrt{n+1} + \sqrt{n}} \times \frac{\sqrt{n+1} - \sqrt{n}}{\sqrt{n+1} - \sqrt{n}} \\
@@ -1002,87 +1118,7 @@ Now since the outermost LHS and outermost RHS are integers and the inequalities 
 \frac{\sqrt{4n+2}}{\sqrt{n+1} + \sqrt{n}} & = & 1 + \frac{1}{4n}
 \neea
 %
-
-%
-\nbea
-\frac{1}{4n} \left ( \sqrt{n+1} + \sqrt{n} \right ) & = & \sqrt{\frac{1}{16n} + \frac{1}{16n^2}}
-\neea
-%
-
-
-
-%
-\nbea
-\sqrt{n} + \sqrt{n+1} & = & \sqrt{\left (\sqrt{n} + \sqrt{n+1} \right )^2} \\
-& = & \sqrt{2n + 1 + 2\sqrt{n(n+1)}} \\
-& = & \sqrt{2n + 1 + 2\sqrt{\left (n+\frac{1}{2}\right )^2 - \frac{1}{4}}} \\
-& = & \sqrt{2n + 1 + \sqrt{\left (2n+1\right )^2 - 1}} \\
-& = & \sqrt{2n + 1 + \left((2n+1) -\frac{1}{2(2n+1)} \right)} \\
-& = & \sqrt{4n + 2 -\frac{1}{2(2n+1)}} \\
-& = & \sqrt{4n+2} - \frac{1}{2(4n+2)^{3/2}}
-\neea
-%
-
-
-
-physicist's way, Taylor expansion
-%
-\nbea
-\sqrt{n+1} & = & \sqrt{n}\sqrt{1 + \frac{1}{n}} \\
-& = & \sqrt{n} \left ( 1 + \frac{1}{2}\left ( \frac{1}{n} \right)\right)
-\neea
-%
-
-
-
-
-Note that $4n + 2$ cannot be a perfect square because otherwise
-%
-\nbea
-2(2n+1) & = & m^2
-\neea
-%
-$\to m = 2w$ and
-%
-\nbea
-\bcancel{2}(2n+1) & = & \bcancel{2}2w^2 \\
-1 & = & 2 (w^2 - n) \\
-\to 2 &|& 1
-\neea
-%
-which is a contradiction, while $4n + 1$ is free to be a perfect square, in fact the square of any odd number is $(2x+1)^2 = 4(x^2+x) + 1$ thus as we let $n$ run from $1,2,\ldots$, we'll cover the square of every odd number except for $1^2$
-
-But if we look at $\sqrt{4n+1},\sqrt{4n+2},\sqrt{4n+3},\sqrt{4n+4}$ the value will increase ``linearly'' and since only $4n+1$ can be a perfect square, the above sequence will only hit an integer if $4n+1$ is a perfect square
-
-Why can't $4n+3$ be a perfect square, the answer lies in quadratic residue modulo 4
-%
-\nbea
-h^2 & = & 4n + 3 \\
-\to h^2 & \equiv & 3 \pmod{4}
-\neea
-% 
-and $3$ is not a quadratic residue modulo 4 and so there's no such $h$
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+and I wanted to see if the numerical values compute, \ie $1 + \frac{1}{4n}$ multiplied with $\sqrt{n}+\sqrt{n+1}$ will never produce a number that crosses/straddle an integer point but it was actually a silly idea, there's no easy way to verify this fact and along this silly line of thinking I was also trying to show that the difference between $\ceil{\sqrt{n} + \sqrt{n+1}} - \sqrt{n} + \sqrt{n+1}$ is always bigger than $d = [\sqrt{4n+2}] - [\sqrt{n} + \sqrt{n+1}]$ so that adding $d$ to $[\sqrt{n}+\sqrt{n+1}]$ would never cross an integer point.
 
 {\bf Problem 21}. Determine all positive integers $n$ such that $[\sqrt{n}]$ divides $n$
 
