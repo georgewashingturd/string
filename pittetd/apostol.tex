@@ -938,25 +938,153 @@ if $\beta = 1$ we have
 \neea
 %
 
-{\bf Problem 20}. If $n$ is a positive , $[\sqrt{n} + \sqrt{n+1}] = [\sqrt{4n+2}]$
+{\bf Problem 20}. If $n$ is a positive integer prove that $[\sqrt{n} + \sqrt{n+1}] = [\sqrt{4n+2}]$
 
 %
 \nbea
-\sqrt{n + 1} & = & \sqrt{n}\sqrt{1 + \frac{1}{n}} \\
-& = & \sqrt{n} \left ( 1 + \frac{1}{2}\left (\frac{1}{n}\right ) - \frac{1}{8}\left (\frac{1}{n}\right )^2 + \frac{1}{16}\left (\frac{1}{n}\right )^3 + \ldots  \right ) \\
-& = & \sqrt{n} \left ( 1 + \Delta \right )
+\sqrt{n} + \sqrt{n+1} & = & \sqrt{\left (\sqrt{n} + \sqrt{n+1} \right )^2} \\
+& = & \sqrt{2n + 1 + 2\sqrt{n(n+1)}} \\
+& = & \sqrt{2n + 1 + 2\sqrt{\left (n+\frac{1}{2}\right )^2 - \frac{1}{4}}} \\
+& = & \sqrt{2n + 1 + \sqrt{\left (2n+1\right )^2 - 1}} \\
+& = & \sqrt{2n + 1 + ((2n+1) -\Delta )} \\
+& = & \sqrt{4n + 2 -\Delta}
 \neea
 %
-with $\Delta < 1$
+where $0 <\Delta < 1$, this means $\sqrt{n} + \sqrt{n+1} < \sqrt{4n + 2}$, next we would like to compare $\sqrt{4n + 2}$ to $\sqrt{n} + \sqrt{n+1} + \sqrt{\Delta}$
 %
 \nbea
-\sqrt{4n + 2} & = & 2\sqrt{n}\sqrt{1 + \frac{1}{2n}} \\
-& = & 2\sqrt{n} \left ( 1 + \frac{1}{2}\left (\frac{1}{2n}\right ) - \frac{1}{8}\left (\frac{1}{2n}\right )^2 + \frac{1}{16}\left (\frac{1}{2n}\right )^3 + \ldots  \right ) \\
-& = & 2\sqrt{n} \left ( 1 + \tilde\Delta \right )
+\sqrt{n} + \sqrt{n+1} + \sqrt{\Delta} & = & \sqrt{4n + 2 -\Delta} + \sqrt{\Delta} \\
+\to \left ( \sqrt{4n + 2 -\Delta} + \sqrt{\Delta} \right )^2 & = & 4n + 2 - \Delta + \Delta + 2\sqrt{\Delta}(4n + 2 - \Delta) \\
+\to \left ( \sqrt{4n + 2 -\Delta} + \sqrt{\Delta} \right )^2 & > & \left ( \sqrt{4n + 2} \right )^2 \\
+\to \sqrt{4n + 2 -\Delta} + \sqrt{\Delta} & > & \sqrt{4n + 2} \\
+\to \sqrt{n} + \sqrt{n+1} + \sqrt{\Delta} & > & \sqrt{4n + 2}
+\neea
+%
+and since $0 < \Delta < 1$ it means that $0 < \sqrt{\Delta}<1$ and so
+
+Thus what we have is
+%
+\nbea
+\sqrt{n} + \sqrt{n+1} < & \sqrt{4n + 2} & < \sqrt{n} + \sqrt{n+1} + \sqrt{\Delta}
+\neea
+%
+we now need to be extra careful, $\sqrt{4n + 2}$ might not be an integer and it can be that say, $\sqrt{n} + \sqrt{n+1} = 15.9\ldots$ while $\sqrt{4n + 2} = 16.001\ldots$ and $\sqrt{n} + \sqrt{n+1} + \sqrt{\Delta} = 16.002\ldots$, in this case if we take the floor of all three entities we will get something like
+%
+\nbea
+\lbrack \sqrt{n} + \sqrt{n+1} \rbrack \le & \lbrack \sqrt{4n + 2} \rbrack & \le \lbrack \sqrt{n} + \sqrt{n+1} + \sqrt{\Delta}\rbrack 
+\neea
+%
+the less than equal sign is troublesome because in this case it can be that $\lbrack \sqrt{4n + 2} \rbrack = \lbrack \sqrt{n} + \sqrt{n+1} + \sqrt{\Delta}\rbrack = \lbrack \sqrt{n} + \sqrt{n+1} \rbrack + 1$.
+
+The crucial info we need here is that
+%
+\nbea
+\lbrack \sqrt{n} + \sqrt{n+1} \rbrack < & \sqrt{4n + 2} & < \lbrack \sqrt{n} + \sqrt{n+1} + \sqrt{\Delta}\rbrack  \\
+\lbrack \sqrt{n} + \sqrt{n+1} \rbrack < & \sqrt{4n + 2} & < \lbrack \sqrt{n} + \sqrt{n+1} \rbrack + 1
+\neea
+%
+we can substitute $\lbrack \sqrt{n} + \sqrt{n+1} + \sqrt{\Delta}\rbrack$ with $\lbrack \sqrt{n} + \sqrt{n+1}\rbrack+1$ because $\sqrt{n} + \sqrt{n+1}$ and $\sqrt{n} + \sqrt{n+1} + \sqrt{\Delta}$ differ by $< 1$.
+
+Now since the outermost LHS and outermost RHS are integers and the inequalities are strict inequalities we can deduce that
+%
+\nbea
+\lbrack \sqrt{n} + \sqrt{n+1} \rbrack & = & \lbrack\sqrt{4n + 2}\rbrack
 \neea
 %
 
-{\bf Problem 21}. Determine all $n$ where $[\sqrt{n}]$ divides $n$
+%
+\nbea
+\frac{\sqrt{4n+2}}{\sqrt{n+1} + \sqrt{n}} & = & \frac{\sqrt{4n+2}}{\sqrt{n+1} + \sqrt{n}} \times \frac{\sqrt{n+1} - \sqrt{n}}{\sqrt{n+1} - \sqrt{n}} \\
+& = & \frac{\sqrt{4n+2}\left (\sqrt{n}\sqrt{1+\frac{1}{n}} - \sqrt{n}\right)}{n+1 - n} \\
+& = & \frac{\sqrt{4n+2}\left (\sqrt{n}\left ( 1 + \frac{1}{2n}\right ) - \sqrt{n}\right)}{1} \\
+& = & \sqrt{4n+2}\left (\frac{1}{2\sqrt{n}}\right ) \\
+& = & \sqrt{1 + \frac{1}{2n}} \\
+\frac{\sqrt{4n+2}}{\sqrt{n+1} + \sqrt{n}} & = & 1 + \frac{1}{4n}
+\neea
+%
+
+%
+\nbea
+\frac{1}{4n} \left ( \sqrt{n+1} + \sqrt{n} \right ) & = & \sqrt{\frac{1}{16n} + \frac{1}{16n^2}}
+\neea
+%
+
+
+
+%
+\nbea
+\sqrt{n} + \sqrt{n+1} & = & \sqrt{\left (\sqrt{n} + \sqrt{n+1} \right )^2} \\
+& = & \sqrt{2n + 1 + 2\sqrt{n(n+1)}} \\
+& = & \sqrt{2n + 1 + 2\sqrt{\left (n+\frac{1}{2}\right )^2 - \frac{1}{4}}} \\
+& = & \sqrt{2n + 1 + \sqrt{\left (2n+1\right )^2 - 1}} \\
+& = & \sqrt{2n + 1 + \left((2n+1) -\frac{1}{2(2n+1)} \right)} \\
+& = & \sqrt{4n + 2 -\frac{1}{2(2n+1)}} \\
+& = & \sqrt{4n+2} - \frac{1}{2(4n+2)^{3/2}}
+\neea
+%
+
+
+
+physicist's way, Taylor expansion
+%
+\nbea
+\sqrt{n+1} & = & \sqrt{n}\sqrt{1 + \frac{1}{n}} \\
+& = & \sqrt{n} \left ( 1 + \frac{1}{2}\left ( \frac{1}{n} \right)\right)
+\neea
+%
+
+
+
+
+Note that $4n + 2$ cannot be a perfect square because otherwise
+%
+\nbea
+2(2n+1) & = & m^2
+\neea
+%
+$\to m = 2w$ and
+%
+\nbea
+\bcancel{2}(2n+1) & = & \bcancel{2}2w^2 \\
+1 & = & 2 (w^2 - n) \\
+\to 2 &|& 1
+\neea
+%
+which is a contradiction, while $4n + 1$ is free to be a perfect square, in fact the square of any odd number is $(2x+1)^2 = 4(x^2+x) + 1$ thus as we let $n$ run from $1,2,\ldots$, we'll cover the square of every odd number except for $1^2$
+
+But if we look at $\sqrt{4n+1},\sqrt{4n+2},\sqrt{4n+3},\sqrt{4n+4}$ the value will increase ``linearly'' and since only $4n+1$ can be a perfect square, the above sequence will only hit an integer if $4n+1$ is a perfect square
+
+Why can't $4n+3$ be a perfect square, the answer lies in quadratic residue modulo 4
+%
+\nbea
+h^2 & = & 4n + 3 \\
+\to h^2 & \equiv & 3 \pmod{4}
+\neea
+% 
+and $3$ is not a quadratic residue modulo 4 and so there's no such $h$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{\bf Problem 21}. Determine all positive integers $n$ such that $[\sqrt{n}]$ divides $n$
 
 First, fix $n = a^2$ this means that for all integers $m \in \{n+1,n+2,\ldots,(a+1)^2-1\}$, $[\sqrt{m}] = a$ and since $a|n$ any number $w = n+aq, ~ n \le w < (a+1)^2$ is divisible by $a = [\sqrt{n}]$ so they are
 %
@@ -964,6 +1092,7 @@ First, fix $n = a^2$ this means that for all integers $m \in \{n+1,n+2,\ldots,(a
 \{1,2,3,4,6,8,9,12,15,16,20,24,25,30,35,36,42,48,49,\ldots\}
 \neea
 %
+so given an $n$ calculate $a=[\sqrt{n}]$ if $\sqrt{n}$ is not an integer calculate $b = n - a^2$ and see if $a|b$
 
 
 {\bf Problem 22}. If $n$ is a positive integer, prove that
@@ -1015,41 +1144,31 @@ Using Bezout's lemma, since $\gcd(25,8) = 1$ we have
 
 OK, the strategy here is simple, although initially I wanted to see if I can utilize something from chapter 3 to solve this problem, maybe like putting a sum in front of those two terms and see what I get but let's just stay simple.
 
-The strategy here is to show that when we increase $n$ the change in the first square bracket is the same as the change in the second square bracket, let's now look at the first square bracket more closely, if we remove the constant 13 for now we have
-%
-\nbea
-\left \lbrack \frac{8n}{25} \right \rbrack
-\neea
-%
-the key here is that $25 = 8\cdot3 + 1$, that means everytime $n$ increases from $n = 3m$ to $n = 3m+1$, the square bracket also increases from $\left \lbrack \frac{8n}{25} \right \rbrack \to \left \lbrack \frac{8n}{25} \right \rbrack + 1$
-
-This is because in the language of mod what we have is
-%
-\nbea
-8\cdot 3 & \equiv & -1 \pmod{25}
-\neea
-%
-and thus $8\cdot(3m) \equiv -m \pmod{25}$ and once we have $8\cdot(3\cdot 8 + 1) \equiv 0 \pmod{25}$ therefore $8\cdot(25 + 3f)$
-
-%
-\nbea
-%\begin{array}{}
-8\cdot 3 + 13 & \equiv & -13 \pmod{25}
-%\end{array}
-\neea
-%
-
+The strategy here is to show that when we increase $n$ the change in the first square bracket is the same as the change in the second square bracket, let's now look at the first square bracket more closely,
 %
 \nbea
 %\begin{array}{}
 8\cdot 1 + 13 & \equiv & -4 \pmod{25} \\
-8\cdot 4 + 13 & \equiv & -5 \pmod{25} \\
-8\cdot 7 + 13 & \equiv & -6 \pmod{25} \\
-8\cdot 10 + 13 & \equiv & -7 \pmod{25} \\
-8\cdot 13 + 13 & \equiv & -8 \pmod{25} \\
+8\cdot 2 + 13 & \equiv & -5 \pmod{25} \\
+8\cdot 5 + 13 & \equiv & -6 \pmod{25} \\
+8\cdot 8 + 13 & \equiv & -7 \pmod{25} \\
+8\cdot 11 + 13 & \equiv & -8 \pmod{25} \\
+8\cdot 14 + 13 & \equiv & ~~0 \pmod{25} \\
+8\cdot 15 + 13 & \equiv & -1 \pmod{25} \\
+8\cdot 18 + 13 & \equiv & -2 \pmod{25} \\
+8\cdot 21 + 13 & \equiv & -3 \pmod{25}
 %\end{array}
 \neea
 %
+The first thing to note here is that from $n \to n+3$ we go from $-x \pmod{25} \to -(x+1) \pmod{25}$ this means that going from $n+1\to n+2 \to n+3$ will not change $\left \lbrack \frac{8n+13}{25} \right \rbrack$ because
+%
+\nbea
+8\cdot1 + 13 & = & 25\cdot0 + 21 \\
+8\cdot2 + 13 & = & 25\cdot0 + 21 \\
+\neea
+%
+
+
 and thus $8\cdot 14 + 13 \equiv 0 \pmod{25}$ meaning $8\cdot (13 + 3) + 13 \not\equiv -1 \pmod{25}$ instead $8\cdot(14 + 3) + 13 \equiv -1 \pmod{25}$
 
 At the same time $\left \lbrack \frac{n-17}{25} \right \rbrack$ will change value at transition from $n=16 \to n=17$ and this is in sync with $\left \lbrack \frac{8\cdot 16 + 13}{25} \right \rbrack \to \left \lbrack \frac{8\cdot 17 + 13}{25} \right \rbrack$
