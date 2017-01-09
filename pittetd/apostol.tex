@@ -1148,118 +1148,70 @@ is independent of $n$
 
 %
 \nbea
-8n + 13 & = & 25w + r \\
-8(n+1) + 13 & = & 25(w+1) + r' \\
-8 & = & 25 + r' - r \\
-\to r' - r & = & -17
+\begin{array}{c|c c c | c | c}
+n & \left\lbrack \frac{8n+13}{25}\right\rbrack & \left \lbrack \frac{n - 12 - \left \lbrack \frac{n-17}{25}\right \rbrack}{3} \right \rbrack & \left\lbrack\frac{n-17}{25}\right\rbrack & 8n+13 \pmod{25} & n-17 \pmod{25}\\ \hline
+-1 & 0 & -4 & -1 & 5 & 7 \\
+0 & 0 & -4 & -1 & 13 & 8 \\ \hline
+1 & 0 & -4 & -1 & {\bf -4} & 9 \\ \hline
+2 & 1 & -3 & -1 & 4 & 10 \\
+3 & 1 & -3 & -1 & 12 & 11 \\ \hline
+4 & 1 & -3 & -1 & {\bf -5} & 12 \\ \hline
+5 & 2 & -2 & -1 & 3 & 13 \\
+6 & 2 & -2 & -1 & 11 & 14 \\ \hline
+7 & 2 & -2 & -1 & {\bf -6} & 15 \\ \hline
+8 & 3 & -1 & -1 & 2 & 16 \\
+9 & 3 & -1 & -1 & 10 & 17 \\ \hline
+10 & 3 & -1 & -1 & {\bf -7} & 18 \\ \hline
+11 & 4 & 0 & -1 & 1 & 19 \\
+12 & 4 & 0 & -1 & 9 & 20 \\ \hline
+13 & 4 & 0 & -1 & {\bf -8} & 21 \\ \hline
+14 & 5 & 1 & -1 & {\bf 0} & 22 \\ \hline
+15 & 5 & 1 & -1 & 8 & 23 \\
+16 & 5 & 1 & -1 & 16 & 24 \\ \hline
+{\bf 17} & {\bf 5} & {\bf 1} & {\bf 0} & {\bf -1} & {\bf 0} \\ \hline
+18 & 6 & 2 & 0 & 7 & 1 \\
+19 & 6 & 2 & 0 & 15 & 2 \\ \hline
+20 & 6 & 2 & 0 & {\bf -2} & 3\\ \hline
+\end{array}
 \neea
 %
-
-
-%
-\nbea
-n-12 - l & = & 3u + z \\
-(n+1) -12 - l' & = & 3(u+1) + z' \\
-1 - (l' - l) & = & 3 + z' - z \\
-(l'-l) & = & -2 + z - z' \\
-(l'-l) +(z'-z) & = & -2
-\neea
-%
-
-
-but since $(25,8) = 1$ it must mean that $25|a$ and the smallest $a$ is $a=25$.
-
-%
-\nbea
-\frac{\frac{25j - 13}{8} - 17}{25} & = & 
-\neea
-%
-
-Using Bezout's lemma, since $\gcd(25,8) = 1$ we have
-%
-\nbea
-25x + 8y & = & 1 \\
-25x' + 8y' & = & 13
-\neea
-%
-
-
-
 OK, the strategy here is simple, although initially I wanted to see if I can utilize something from chapter 3 to solve this problem, maybe like putting a sum in front of those two terms and see what I get but let's just stay simple.
 
-The strategy here is to show that when we increase $n$ the change in the first square bracket is the same as the change in the second square bracket, let's now look at the first square bracket more closely,
-%
-\nbea
-%\begin{array}{}
-8\cdot 1 + 13 & \equiv & -4 \pmod{25} \\
-8\cdot 4 + 13 & \equiv & -5 \pmod{25} \\
-8\cdot 7 + 13 & \equiv & -6 \pmod{25} \\
-8\cdot 10 + 13 & \equiv & -7 \pmod{25} \\
-8\cdot 13 + 13 & \equiv & -8 \pmod{25} \\
-8\cdot 14 + 13 & \equiv & ~~0 \pmod{25} \\
-8\cdot 17 + 13 & \equiv & -1 \pmod{25} \\
-8\cdot 20 + 13 & \equiv & -2 \pmod{25} \\
-8\cdot 23 + 13 & \equiv & -3 \pmod{25}
-%\end{array}
-\neea
-%
-First note $8\cdot 1 + 13 \equiv -4 \pmod{25}$ means that $8\cdot1+13$ is only 4 away (less than 8 away) from the next multiple of $25$, thus if we increase $n=1\to n=2$, the quotient increases by one, \ie $[(8\cdot1+13)/25]=0 \to [(8\cdot2+13)/25]=1$. This means that everytime $8n+13 \equiv -x\pmod{25}$ where $0 < x \le 8$, increasing $n$ by one increases the quotient by one as well.
+The strategy here is to show that when we increase $n$ the change in the first square bracket is the same as the change in the second square bracket, the above table says it all and it looks like it is true even when $n$ is negative. As for the reason why this works the above table also says it all :)
 
-Next thing to note is that the remainder $-x\pmod{25}$ will decrease to $-(x+1)\pmod{25}$ everytime $n\to n+3$ which makes sense since $8\cdot3 = 24$, adding one more 8 to 24 will cross 25 and will increase the quotient by 1 and therefore the quotient increases everytime $n\to n+3$ although a special care needs to be taken whenever $8n+13 \equiv 0\pmod{25}$, in this case increasing $n\to n+3$ does not increase the quotient.
+For the first square bracket, the denominator is 25 and the numerator is $8n$, $8\cdot3=24$ so roughly every 3 increments the quotient increases by one while for the second square bracket, the $-12$ does nothing as it's a multiple of 3, the numerator (barring the other square bracket) is just $n$ and thus the quotient increases every 3 increments as well.
 
-As a concrete example, let's start with $n=2$, the quotient will only change when $n=2+3=5$, thus, $n=2,3,4$ all have the same quotient, \ie $[8\cdot2+13]=[8\cdot3+13]=[8\cdot4+13]=1$, the exception to this is at the beginning when $n=1$, the quotient changes when $n=1\to n=1+1$.
+The only exception to the rules is when $n=14$ as $8\cdot14+13$ is a multiple of 25 and thus the quotient only increases when $n$ increases by 4 instead of three, but this shift in pattern is also followed by the second square bracket thanks to $-\left \lbrack \frac{n-17}{25} \right \rbrack$, this bracket plays into effect when $n=17$, it increases its value by one as to delay (due to the minus sign in front of it) the second square bracket from increasing its value by one.
 
-This whole pattern repeats every 25 counts, \ie $n \to n+25$, as
+We just need to show this pattern for the first 25 entries because the whole thing repeats every 25 counts, \ie $n \to n+25$, as
 %
 \nbea
 8m + 13 & = & 25q + r \\
 \to 8(m+25) + 13 & = & 25q + r + (8\cdot 25) \\
-8(m+25) + 13 & = & 25(q + 8) + r
+8(m+25) + 13 & = & 25(q + 8) + r \\
+\to \left \lbrack \frac{8(n+25)+13}{25} \right \rbrack & = & \left \lbrack \frac{8n+13}{25} \right \rbrack + 8
 \neea
 %
-the quotient will of course increase but the remainder (which controls when the quotient changes) remains the same
-
-
-
-means that if we add one more 8 we get $8\cdot2+13 \equiv (-4+8) \pmod{25} \equiv 4 \pmod{25}$ which means that the quotient increases
-
-
-
-
-
-
-
-The first thing to note here is that starting from $n=2$ changing $n \to n+3$ we go from $-x \pmod{25} \to -(x+1) \pmod{25}$ this means that going from $n \to n+1\to n+2$ will not change $\left \lbrack \frac{8n+13}{25} \right \rbrack$ because
+thus the first square bracket increases by 8 everytime $n \to n+25$ while the nested square bracket changes by
 %
 \nbea
-8\cdot1 + 13 & = & 25\cdot0 + 21 \\
-8\cdot2 + 13 & = & 25\cdot0 + 21 \\
+h -17 & = & 25q' + r' \\
+\to (h+25) - 17 & = & 25q' + r' + 25 \\
+(h+25) - 17 & = & 25(q' + 1) + r' \\
+\to \left \lbrack \frac{(n+25)-17}{25} \right \rbrack & = & \left \lbrack \frac{n-17}{25} \right \rbrack + 1
 \neea
 %
-
-
-and thus $8\cdot 14 + 13 \equiv 0 \pmod{25}$ meaning $8\cdot (13 + 3) + 13 \not\equiv -1 \pmod{25}$ instead $8\cdot(14 + 3) + 13 \equiv -1 \pmod{25}$
-
-At the same time $\left \lbrack \frac{n-17}{25} \right \rbrack$ will change value at transition from $n=16 \to n=17$ and this is in sync with $\left \lbrack \frac{8\cdot 16 + 13}{25} \right \rbrack \to \left \lbrack \frac{8\cdot 17 + 13}{25} \right \rbrack$
-
-the pattern repeats every 25 counts $n \to n + 25$ as 
+so in total the second square bracket also changes by 8 as shwon below
 %
 \nbea
-8m + 13 & = & 25j \\
-8(m + 25) + 13 & = & 8m + 13 + 8\cdot 25 \\
-& = & 25(j + 8)
+l - 12 - \left \lbrack \frac{l-17}{25} \right \rbrack & = & 3q'' + r'' \\
+\to (l+25) - 12 - \left \lbrack \frac{(l+25)-17}{25} \right \rbrack & = & 3q'' + r'' + 25 - 1\\
+(l+25) - 12 - \left \lbrack \frac{(l+25)-17}{25} \right \rbrack  & = & 3(q'' + 8) + r'' \\
+\to \left \lbrack \frac{(n+25) - 12 - \left \lbrack \frac{(n+25)-17}{25} \right \rbrack}{3} \right \rbrack  & = & \left \lbrack \frac{n - 12 - \left \lbrack \frac{n-17}{25} \right \rbrack}{3}\right \rbrack + 8
 \neea
 %
 
-%
-\nbea
-8(m + a) + 13 & = & 8m + 13 + 8\cdot a \\
-25h & = & 25j + 8a \\
-25(h-j) & = & 8a \\
-25 &|& 8a
-\neea
-%
-ditto with $\frac{n-17}{25}$
+
 
 
 
