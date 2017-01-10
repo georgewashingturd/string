@@ -790,7 +790,7 @@ so ........ \dunno
 %
 and we add this zero to (6) to get (5) sans the fudging discussed above :)
 
-{\bf PROOF of Theorem 3.2, Page 55} The peculiar thing here is the contant 1 which we get from $-f(y)([y]-y)$. The problem here is that the lower limit $y = 1$ and so $[y]-y = 1-1=0$, however, as explained above, the lower limit must not be an integer as $y < n$ and $n$ starts with $n=1$, the less than sign is crucial here.
+{\bf PROOF of Theorem 3.2, Page 55} The peculiar thing here is the constant 1 which we get from $-f(y)([y]-y)$. The problem here is that the lower limit $y = 1$ and so $[y]-y = 1-1=0$, however, as explained above, the lower limit must not be an integer as $y < n$ and $n$ starts with $n=1$, the less than sign is crucial here.
 
 This means that $0 < y < 1$ and in this case $y$ has to be $y = 1^{-}$ such that we can take the limit $y \to 1$, so even though the lower limit of the integrals is $y=1$ we cannot just simply choose $y=1$, this manifests more strongly in the proof of Theorem 3.2 part (b) where in this case $f(y) = x^{-s}$
 %
@@ -874,7 +874,7 @@ a_n & = & \int_{-\pi}^{+\pi} x^2 \cos(nx) \frac{dx}{\pi} \\
 & = & \left.\frac{2x}{n\pi}\sin(nx)\right|_{-\pi}^{+\pi} - 2\int_{-\pi}^{+\pi} x \sin(nx) \frac{dx}{n\pi}
 \neea
 %
-the boundary terms are zero since $\sin(\pm\pi) = 0$, we now do another integration by parts on the remaining integral
+the boundary terms are zero since $\sin(\pm n\pi) = 0$, we now do another integration by parts on the remaining integral
 %
 \nbea
 - 2\int_{-\pi}^{+\pi} x \sin(nx) \frac{dx}{n\pi} & = & \left.\frac{2x}{n^2\pi}\cos(nx)\right|_{-\pi}^{+\pi} - 2\int_{-\pi}^{+\pi}  \cos(nx) \frac{dx}{n^2\pi} \\
@@ -1052,7 +1052,7 @@ and also
 %
 so to a physicist they're the same :)
 
-But joking aside I did try the Taylor expansion trick above, first I tried to estimate how big (or small) $\frac{1}{2\sqrt{n}}$ is, but this turns out not to be frutiful because I don't know how close $2\sqrt{n}$ is to an integer, because depending on how close it is, the correction term might or might not push it up to the next integer, and I don't see a clear way to tell how close $2\sqrt{n}$ is to an integer.
+But joking aside I did try the Taylor expansion trick above, first I tried to estimate how big (or small) $\frac{1}{2\sqrt{n}}$ is, but this turns out not to be fruitful because I don't know how close $2\sqrt{n}$ is to an integer, because depending on how close it is, the correction term might or might not push it up to the next integer, and I don't see a clear way to tell how close $2\sqrt{n}$ is to an integer.
 
 Next, I did the Taylor expansion above to relate $\sqrt{n} + \sqrt{n+1}$ to $\sqrt{4n+2}$, but first, a couple of things to note, for small $x$
 %
@@ -1136,7 +1136,9 @@ now let's solve for $a$ generously provided by our friend the quadratic formula 
 a & = & \frac{-w\pm\sqrt{w^2+4n}}{2}
 \neea
 %
-for $a$ to have an integer solution $w^2+4n$ must be a perfect square and as described in Problem 3.20, $4n+j$ can be a perfect square if and only if $j=0,1$ so therefore as long as $w=0,1,2$ (which are the valid values for $w$) the above will have a solution but $w=0$ means that $4n$ is a perfect square which means that $n$ is a perfect square. Therefore as long as either $n$ is a perfect square or $4n+1$ or $4n+4$ is a perfect square, $n$ is divisible by $[\sqrt{n}]$.
+for $a$ to have an integer solution $w^2+4n$ must be a perfect square and as described in Problem 3.20, $4n+j$ can be a perfect square if and only if $j=0,1$ so therefore as long as $w=0,1,2$ (which are the valid values for $w$) the above will have a solution. Next thing we need to check is that the solution is an integer, if $w$ is even then $\sqrt{w^2 + 4n}$ is even and the whole numerator is even, if $w$ is odd $\sqrt{w^2 + 4n}$ is also odd and therefore the whole numerator will be even as well so it checks out.
+
+Also $w=0$ means that $4n$ is a perfect square which means that $n$ is a perfect square. Therefore as long as either $n$ is a perfect square or $4n+1$ or $4n+4$ is a perfect square, $n$ is divisible by $[\sqrt{n}]$.
 
 {\bf Problem 22}. If $n$ is a positive integer, prove that
 %
@@ -1192,7 +1194,7 @@ We just need to show this pattern for the first 25 entries because the whole thi
 \to \left \lbrack \frac{8(n+25)+13}{25} \right \rbrack & = & \left \lbrack \frac{8n+13}{25} \right \rbrack + 8
 \neea
 %
-thus the first square bracket increases by 8 everytime $n \to n+25$ while the nested square bracket changes by
+thus the first square bracket increases by 8 every time $n \to n+25$ while the nested square bracket changes by
 %
 \nbea
 h -17 & = & 25q' + r' \\
@@ -1201,7 +1203,7 @@ h -17 & = & 25q' + r' \\
 \to \left \lbrack \frac{(n+25)-17}{25} \right \rbrack & = & \left \lbrack \frac{n-17}{25} \right \rbrack + 1
 \neea
 %
-so in total the second square bracket also changes by 8 as shwon below
+so in total the second square bracket also changes by 8 as shown below
 %
 \nbea
 l - 12 - \left \lbrack \frac{l-17}{25} \right \rbrack & = & 3q'' + r'' \\
