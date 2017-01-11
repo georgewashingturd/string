@@ -240,6 +240,196 @@ Just for fun :)
 \renewcommand{\theequation}{A.\arabic{equation}}  % redefine the command that creates the equation no.
 \setcounter{equation}{0}  % reset counter 
 
+\bigskip
+\underline{\textbf{\textit{Chapter 1}}}
+\bigskip
+
+{\bf Problem 1.11}. Prove that $n^4 + 4$ is composite if $n > 1$.
+
+This problem can be easily solved by completing the square
+%
+\nbea
+n^4 + 4 & = & (n^2)^2 + 2^2 \\
+& = & (n^2 + 2)^2 - (2n)^2 \\
+& = & (n^2 + 2 - 2n)(n^2 + 2 + 2n)
+\neea
+%
+But, suppose you're not aware of completing the square trick, here's what you can do. Since $4$ is even if $n$ is also even then $n^4 + 4$ is guaranteed to be composite. What if $n$ is odd? Let's see
+%
+\nbea
+\begin{array}{r c r c r c r}
+3^4 + 4 & = & 8\underline{1} &+& 4 &=& 8\underline{5} \\
+5^4 + 4 & = & 62\underline{5} &+& 4 &=& 62\underline{9} \\
+7^4 + 4 & = & 240\underline{1} &+& 4 &=& 240\underline{5} \\
+9^4 + 4 & = & 656\underline{1} &+& 4 &=& 656\underline{5} \\
+11^4 + 4 & = & 1464\underline{1} &+& 4 &=& 1464\underline{5} \\
+13^4 + 4 & = & 2856\underline{1} &+& 4 &=& 2856\underline{5} \\
+15^4 + 4 & = & 5062\underline{5} &+& 4 &=& 5062\underline{9}
+\end{array}
+\neea
+%
+so we see that if $n \not\equiv 0 \pmod{5}$ then $n^4 \equiv 1 \pmod{10}$ and therefore $n^4 + 4 \equiv 0 \pmod{5}$ and if $n \equiv 0 \pmod{5}$ then $n^4 + 4 \equiv -1 \pmod{5}$, does this always apply? well, let's do everything in mod 5 then
+%
+\nbea
+\begin{array}{r c l c r c l}
+n & \equiv & 1\pmod{5} & \to & 1^4 + 4 & \equiv & 0 \pmod {5} \\
+n & \equiv & 2\pmod{5} & \to & 2^4 + 4 & \equiv & 0 \pmod {5} \\
+n & \equiv & 3\pmod{5} & \to & 3^4 + 4 & \equiv & 0 \pmod {5} \\
+n & \equiv & 4\pmod{5} & \to & 4^4 + 4 & \equiv & 0 \pmod {5} \\
+n & \equiv & 5\pmod{5} & \to & 5^4 + 4 & \equiv & 4 \pmod {5}
+\end{array}
+\neea
+%
+So it is true, for $n \not\equiv 0 \pmod{5}$, $n^4 + 4 \equiv 0 \pmod{5}$ and thus $5|n^4 + 4$ and $n^4 + 4$ is composite, except for $n=1$ of course where $1^4 + 4 = 5$ which is prime.
+
+Our task is to now see if we can prove that $n^4 + 4 \equiv 4 \pmod{5}$ is composite. We know that if $n$ is even then we are done, our task now is to see what happens if $n$ is odd and a multiple of $5$, \ie to check whether $(5(2k+1))^4 + 4$ is composite.
+
+A strategy would be to show explicitly that we can factorize $(5(2k+1))^4 + 4 = (5a + 2)(5b + 2)$. The way I did it was to try out different $k$'s and see if there's a pattern to $a$ and $b$
+%
+\nbea
+\begin{array}{r c l c r c l r c l c r c l r c l}
+k &=& 0 & ~\to~ & a &=& 3 &,~b&=&7 &~~~& \frac{a}{2k+1} &=& \underline{0}3 &,~b-a &=& 4  + 8\cdot \underline{0}\\
+k &=& 1 & ~\to~ & a &=& 39 &,~b&=&51 &~~~& \frac{a}{2k+1} &=& \underline{1}3 &,~b-a &=& 4 + 8\cdot \underline{1} \\
+k &=& 2 & ~\to~ & a &=& 115 &,~b&=&135 &~~~& \frac{a}{2k+1} &=& \underline{2}3 &,~b-a &=& 4  + 8\cdot \underline{2}\\
+k &=& 3 & ~\to~ & a &=& 231 &,~b&=&259 &~~~& \frac{a}{2k+1} &=& \underline{3}3 &,~b-a &=& 4  + 8\cdot \underline{3}\\
+k &=& 4 & ~\to~ & a &=& 387 &,~b&=&423 &~~~& \frac{a}{2k+1} &=& \underline{4}3 &,~b-a &=& 4  + 8\cdot \underline{4}\\
+k &=& 5 & ~\to~ & a &=& 583 &,~b&=&627 &~~~& \frac{a}{2k+1} &=& \underline{5}3 &,~b-a &=& 4  + 8\cdot \underline{5}\\
+k &=& 6 & ~\to~ & a &=& 819 &,~b&=&871 &~~~& \frac{a}{2k+1} &=& \underline{6}3 &,~b-a &=& 4  + 8\cdot \underline{6}\\
+k &=& 7 & ~\to~ & a &=& 1095 &,~b&=&1155 &~~~& \frac{a}{2k+1} &=& \underline{7}3 &,~b-a &=& 4  + 8\cdot \underline{7}
+\end{array}
+\neea
+%
+so it seems like $a = (2k+1)(10k+3) = 20k^2+16k+3$ and $b = a + 4 + 8k= 20k^2+24k+7$ and indeed if we expand
+%
+\nbea
+(5a + 2)(5b + 2) & = & (5(20k^2+16k+3) + 2)(5(20k^2+24k+7) + 2) \\
+& = & 10000k^4+20000k^3+15000k^2+5000k+625 + 4 \\
+& = & (5(2k+1))^4 + 4
+\neea
+%
+so indeed $(5(2k+1))^4 + 4$ can be factorized into $(5(20k^2+16k+3) + 2)(5(20k^2+24k+7) + 2)$ therefore they must be composite.
+
+So in short, if $n \not\equiv 0 \pmod{5}$ then $5|n^4 + 4$ and if $5|n$ then $(5(2k+1))^4 + 4 = (5(20k^2+16k+3) + 2)(5(20k^2+24k+7) + 2)$ and therefore $n^4 + 4$ is composite for $n>1$.
+
+{\bf Problem 1.16}. Prove that if $2^n - 1$ is prime then $n$ is prime
+
+The trick we need to know here is that
+%
+\nbea
+x^n - 1 & = & (x - 1)(x^{n-1} + x^{n-2} + \dots + 1)
+\neea
+%
+Thus if $n$ is not prime we must have $n = ab$
+%
+\nbea
+2^n - 1 & = & 2^{ab} - 1 = (2^a)^b - 1 \\
+\to (2^a)^b - 1 & = & (2^a - 1)((2^a)^{b-1} + (2^a)^{b-2} + \dots + 1)
+\neea
+%
+and thus $2^n - 1$ is not prime, we can immediately generalize this to if $a^m - b^n$ is prime with $a,b > 1$ then $\gcd(m,n) = 1$ because otherwise
+%
+\nbea
+a^m - b^n & = & a^{m'd} - b^{n'd} = (a^{m'})^d - (b^{n'})^d \\
+& = & \left (a^{m'} - b^{n'} \right ) \left ((a^{m'})^{d-1} + (a^{m'})^{d-2} (b^{n'})+ \dots + (a^{m'})(b^{n'})^{d-2} + (b^{n'})^{d-1} \right )
+\neea
+%
+
+{\bf Problem 1.18}. If $m\neq n$ compute $\gcd\left( a^{2m}+1, a^{2n}+1\right)$ in terms of $a$. [{\it Hint:} Let $A_n = a^{2n}+1$ and show that $A_n|(A_m-2)$ if $m>n$.]
+
+%
+\nbea
+A_m - 2 & = & a^{2m}+1 - 2 \\
+& = & a^{2m} - 1 \\
+& = & (a^{2n} + 1)(a^{2m-2n} - a^{2m-2n-2n} + a^{2m - 2n - 2n - 2n} -  \ldots - 1)
+\neea
+%
+so $(a^{2n} + 1)|(a^{2m} - 1)$ if $m = nk$ where $k$ is even.
+
+If $A_n|(A_m - 2)$ and $d=\gcd(A_n,A_m) > 1$ then $d|(A_m-2)$ as well, this means that since $d|A_m$, $d|2$ so $d$ is either $2$ or $1$ depending on whether $a$ is even or odd, if $a$ is even $a^{2w} + 1$ is odd and so $d=1$ otherwise $d=2$.
+
+If $A_n\nmid (A_m-2)$ then
+
+%
+\nbea
+A_m & = & a^{2m}+1 \\
+& = & (a^{2n} + 1)(a^{2m-2n} - a^{2m-2n-2n} + a^{2m - 2n - 2n - 2n} -  \ldots + 1)
+\neea
+%
+so in this case $(a^{2n} + 1)|(a^{2m} - 1)$ if $m = nk$ where $k$ is {\it odd}.
+
+%
+\nbea
+a^{2h}-1 & = & (a^{2j} + 1)(a^{2h-2j} - a^{2h-2j-2j} + \dots - 1)
+\neea
+%
+so here $h = jw$ and $w$ must be even.
+
+Without loss of generality let's assume that $m > n$. If $d = \gcd(a^{2n}+1, a^{2m}+1)$ then $d|(a^{2m}+1) - (a^{2n}+1) \to d|a^{2n}(a^{2(m-n)} - 1)$, if $d|a^{2n}$ then since $d|(a^{2n}+1)$ this means that $d|(a^{2n}+1 - a^{2n}) \to d|1$ which is not that interesting.
+
+
+
+The interesting part is when $d|(a^{2(m-n)} - 1)$ and since $m > n \to m = nq + r$ in this case 
+%
+\nbea
+d &|& ((a^{2(nq+r-n)} - 1) + (a^{2n} + 1)) \\
+d &|& ((a^{2(n(q-1)+r)} - 1) + (a^{2n} + 1)) \\
+d &|& (a^{2(n(q-1)+r)} + a^{2n}) \\
+d &|& a^{2n}(a^{2(n(q-2)+r)} + 1)
+\neea
+%
+if $q > 1$ if $q=1$ and since $0 \le r < n$ we have $n = rq' + r'$
+%
+\nbea
+d &|& ((a^{2(n+r-n)} - 1) + (a^{2n} + 1)) \\
+d &|& ((a^{2r} - 1) + (a^{2n} + 1)) \\
+d &|& (a^{2r} + a^{2n}) \\
+d &|& a^{2r}(a^{2(r(q'-1)+r')} + 1)
+\neea
+%
+
+%
+\nbea
+d &|& ((a^{2(m-n)} - 1) + (a^{2n} + 1)) \\
+d &|& a^{2(m-n)} + a^{2n} \\
+d &|& a^{2n}(a^{2(m-n - n)} + 1) ~~~~~~~~~~~~{\rm if~} 2m-2n>2n \\
+d &|& a^{2(m-n)}(a^{2(n-(m-n))} + 1) ~~~~~{\rm if~} 2m-2n<2n
+\neea
+%
+
+
+
+
+
+
+we could've added $(a^{2m} + 1)$ to $(a^{2(m-n)} - 1)$ instead with similar final conclusion.
+
+For either case if $d | a^{2n}$ or $d | a^{2(m-n)}$, just like above it'll mean that $d|1$ which is not interesting. The more interesting case is that we can repeat the process as many times as we like until we reach something like
+%
+\nbea
+d &|& a^{2w}(a^{2(xm+yn)}+1)
+\neea
+%
+where $xm+yn$ is such that $(a^{2(xm+yn)}+1)$ the smallest possible $a^{2u}+1$ that is divisible by $d$. Note that everytime we do the above procedure we will get $d|a^{2u}+1$ where $a^{2u} + 1$ is smaller than the one before.
+
+Thanks to Bezout the smallest $xm+yn$ is of course $\gcd(m,n)$
+
+
+
+{\bf Problem 1.19}. The {\it Fibonacci sequence} $1,1,2,3,5,8,13,21,34,\dots$ is defined by the recursion formula $a_{n+1} = a_n + a_{n-1}$, with $a_1 = a_2 = 1$. Prove that $(a_n,a_{n+1})=1$ for each $n$.
+
+The suitable action is to induce :) We know that $(a_1,a_2) = (1,1) = 1$, that's the base case, now say it is true that up to $n = m$, $(a_{m-1},a_m)=1$, now assume the opposite for say $d = (a_m,a_{m+1}) > 1$ then
+%
+\nbea
+a_{m+1} & = & a_n + a_{m-1} \\
+(a_{m+1} - a_n) & = &  a_{m-1} \\
+d(a'_{m+1} - a'_n) & = &  a_{m-1} \\
+d &|& a_{m-1}
+\neea
+%
+thus $(a_{m-1},a_m) = d > 1$ which is a contradiction, therefore $d=1$
+
+
+\bigskip
 \underline{\textbf{\textit{Chapter 2}}}
 \bigskip
 
