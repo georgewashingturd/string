@@ -355,7 +355,7 @@ A_m & = & a^{2m}+1 \\
 & = & (a^{2n} + 1)(a^{2m-2n} - a^{2m-2n-2n} + a^{2m - 2n - 2n - 2n} -  \ldots + 1)
 \neea
 %
-so in this case $(a^{2n} + 1)|(a^{2m} - 1)$ if $m = nk$ where $k$ is {\it odd}.
+so in this case $(a^{2n} + 1)|(a^{2m} + 1)$ if $m = nk$ where $k$ is {\it odd}.
 
 %
 \nbea
@@ -377,15 +377,25 @@ d &|& (a^{2(n(q-1)+r)} + a^{2n}) \\
 d &|& a^{2n}(a^{2(n(q-2)+r)} + 1)
 \neea
 %
-if $q > 1$ if $q=1$ and since $0 \le r < n$ we have $n = rq' + r'$
+just like before, if $d|a^{2n}$ then $d|1$, so we ignore this case, the other case is $d | (a^{2(n(q-2)+r)} + 1)$. Now, if $q-2 > 2$ we can repeat the process but this time by taking the difference
 %
 \nbea
-d &|& ((a^{2(n+r-n)} - 1) + (a^{2n} + 1)) \\
-d &|& ((a^{2r} - 1) + (a^{2n} + 1)) \\
-d &|& (a^{2r} + a^{2n}) \\
-d &|& a^{2r}(a^{2(r(q'-1)+r')} + 1)
+d &|& ((a^{2(n(q-2)+r)} + 1) - (a^{2n} + 1)) \\
+d &|& ((a^{2(n(q-1)+r)} + 1) - (a^{2n} + 1)) \\
+d &|& (a^{2(n(q-1)+r)} - a^{2n}) \\
+d &|& a^{2n}(a^{2(n(q-3)+r)} - 1)
 \neea
 %
+again, we can repeat the process but this time by taking the sum just like before, once we reach $n(q-q) + r = r$ (or if $q=1$ to begin with we will reach this step immediately) since $0 \le r < n$ we will now express $n = rq' + r'$ (depending on whether $q$ was even or odd we might have plus or minus in front of the constant 1 for simplicity we will choose plus)
+%
+\nbea
+d &|& ((a^{2n} + 1) - (a^{2r} + 1)) \\
+d &|& ((a^{2(rq'+r')} + 1) - (a^{2r} + 1)) \\
+d &|& (a^{2(rq'+r')} - a^{2r}) \\
+d &|& a^{2r'}(a^{2(r(q'-1)+r')} - 1)
+\neea
+%
+and the process continues with the same exact pattern as Euclid's algorithm to find gcd between two numbers and that's what we will find, the $\gcd(m,n) = g$, \ie we will eventually get $d|(a^{2g} \pm 1)$ we can of course continue one step further to get $d|(a^{2m}+1)\to d|2$ but this is not needed.
 
 %
 \nbea
