@@ -336,43 +336,12 @@ a^m - b^n & = & a^{m'd} - b^{n'd} = (a^{m'})^d - (b^{n'})^d \\
 
 {\bf Problem 1.18}. If $m\neq n$ compute $\gcd\left( a^{2m}+1, a^{2n}+1\right)$ in terms of $a$. [{\it Hint:} Let $A_n = a^{2n}+1$ and show that $A_n|(A_m-2)$ if $m>n$.]
 
-%
-\nbea
-A_m - 2 & = & a^{2m}+1 - 2 \\
-& = & a^{2m} - 1 \\
-& = & (a^{2n} + 1)(a^{2m-2n} - a^{2m-2n-2n} + a^{2m - 2n - 2n - 2n} -  \ldots - 1)
-\neea
-%
-so $(a^{2n} + 1)|(a^{2m} - 1)$ if $m = nk$ where $k$ is even.
-
-If $A_n|(A_m - 2)$ and $d=\gcd(A_n,A_m) > 1$ then $d|(A_m-2)$ as well, this means that since $d|A_m$, $d|2$ so $d$ is either $2$ or $1$ depending on whether $a$ is even or odd, if $a$ is even $a^{2w} + 1$ is odd and so $d=1$ otherwise $d=2$.
-
-If $A_n\nmid (A_m-2)$ then
-
-%
-\nbea
-A_m & = & a^{2m}+1 \\
-& = & (a^{2n} + 1)(a^{2m-2n} - a^{2m-2n-2n} + a^{2m - 2n - 2n - 2n} -  \ldots + 1)
-\neea
-%
-so in this case $(a^{2n} + 1)|(a^{2m} + 1)$ if $m = nk$ where $k$ is {\it odd}.
-
-%
-\nbea
-a^{2h}-1 & = & (a^{2j} + 1)(a^{2h-2j} - a^{2h-2j-2j} + \dots - 1)
-\neea
-%
-so here $h = jw$ and $w$ must be even.
-
 Without loss of generality let's assume that $m > n$. If $d = \gcd(a^{2n}+1, a^{2m}+1)$ then $d|(a^{2m}+1) - (a^{2n}+1) \to d|a^{2n}(a^{2(m-n)} - 1)$, if $d|a^{2n}$ then since $d|(a^{2n}+1)$ this means that $d|(a^{2n}+1 - a^{2n}) \to d|1$ which is not that interesting.
 
-
-
-The interesting part is when $d|(a^{2(m-n)} - 1)$ and since $m > n \to m = nq + r$ in this case 
+The interesting part is when $d|(a^{2(m-n)} - 1)$ and since $m > n \to m = nq + r$, in this case 
 %
 \nbea
 d &|& ((a^{2(nq+r-n)} - 1) + (a^{2n} + 1)) \\
-d &|& ((a^{2(n(q-1)+r)} - 1) + (a^{2n} + 1)) \\
 d &|& (a^{2(n(q-1)+r)} + a^{2n}) \\
 d &|& a^{2n}(a^{2(n(q-2)+r)} + 1)
 \neea
@@ -381,8 +350,7 @@ just like before, if $d|a^{2n}$ then $d|1$, so we ignore this case, the other ca
 %
 \nbea
 d &|& ((a^{2(n(q-2)+r)} + 1) - (a^{2n} + 1)) \\
-d &|& ((a^{2(n(q-1)+r)} + 1) - (a^{2n} + 1)) \\
-d &|& (a^{2(n(q-1)+r)} - a^{2n}) \\
+d &|& (a^{2(n(q-2)+r)} - a^{2n}) \\
 d &|& a^{2n}(a^{2(n(q-3)+r)} - 1)
 \neea
 %
@@ -395,35 +363,52 @@ d &|& (a^{2(rq'+r')} - a^{2r}) \\
 d &|& a^{2r'}(a^{2(r(q'-1)+r')} - 1)
 \neea
 %
-and the process continues with the same exact pattern as Euclid's algorithm to find gcd between two numbers and that's what we will find, the $\gcd(m,n) = g$, \ie we will eventually get $d|(a^{2g} \pm 1)$ we can of course continue one step further to get $d|(a^{2m}+1)\to d|2$ but this is not needed.
+and the process continues with the same exact pattern as Euclid's algorithm for finding the gcd between two numbers and that's what we will find, the $\gcd(m,n) = g$, \ie we will eventually get $d|(a^{2g} \pm 1)$ we can of course continue one step further to get $d|0$ (a tautology) or $d|2$ but this depends on a few things that we'll discuss later.
 
+The next piece of information we need is the following
 %
 \nbea
-d &|& ((a^{2(m-n)} - 1) + (a^{2n} + 1)) \\
-d &|& a^{2(m-n)} + a^{2n} \\
-d &|& a^{2n}(a^{2(m-n - n)} + 1) ~~~~~~~~~~~~{\rm if~} 2m-2n>2n \\
-d &|& a^{2(m-n)}(a^{2(n-(m-n))} + 1) ~~~~~{\rm if~} 2m-2n<2n
+a^{2s} - 1 & = & (a^{2r} + 1)(a^{2s-2r} - a^{2s-2r-2r} + a^{2s - 2r - 2r - 2r} -  \ldots - 1)
 \neea
 %
-
-
-
-
-
-
-we could've added $(a^{2m} + 1)$ to $(a^{2(m-n)} - 1)$ instead with similar final conclusion.
-
-For either case if $d | a^{2n}$ or $d | a^{2(m-n)}$, just like above it'll mean that $d|1$ which is not interesting. The more interesting case is that we can repeat the process as many times as we like until we reach something like
+so $(a^{2r} + 1)|(a^{2s} - 1)$ if $s = rk$ where $k$ is {\it even} because we want the constant $1$ in the second bracket of the RHS to have a minus sign and the pattern of the second bracket is $+-+-+-+-\ldots$~, next,
 %
 \nbea
-d &|& a^{2w}(a^{2(xm+yn)}+1)
+a^{2s} + 1 & = & (a^{2r} + 1)(a^{2s-2r} - a^{2s-2r-2r} + a^{2s - 2r - 2r - 2r} -  \ldots + 1)
 \neea
 %
-where $xm+yn$ is such that $(a^{2(xm+yn)}+1)$ the smallest possible $a^{2u}+1$ that is divisible by $d$. Note that everytime we do the above procedure we will get $d|a^{2u}+1$ where $a^{2u} + 1$ is smaller than the one before.
+by the same token $(a^{2r} + 1)|(a^{2s} + 1)$ only if $s = rk$ where $k$ is {\it odd} and last one $(a^{2r} - 1)\nmid(a^{2s} + 1)$ this is because the second bracket of the RHS must all have positive sign but the $-1$ requires a minus sign. And of course we know about
+%
+\nbea
+a^{2s} - 1 & = & (a^{2r} - 1)(a^{2s-2r} + a^{2s-2r-2r} + a^{2s - 2r - 2r - 2r} +  \ldots + 1)
+\neea
+%
+as long as $r|s$.
 
-Thanks to Bezout the smallest $xm+yn$ is of course $\gcd(m,n)$
+Going back to our case $d|(a^{2g}\pm1)$, first thing to note is that this means $d \le a^{2g}\pm1$. Next, let's tackle it case by case, first case, $d|(a^{2g}+1)$, we know that $d$ divides both $a^{2m}+1$ and $a^{2n}+1$ and we also know that since $m = gk_m$ and $n = gk_n$ (note that $g = \gcd(m,n)$) if $k_m$ and $k_n$ are both odd then since $d \le a^{2g} + 1$ and $(a^{2g}+1)$ divides both this means that $a^{2m}+1$ and $a^{2n}+1$, $d = a^{2g}+1$.
 
+But if one of or both of $k_m$ or $k_n$ are even then we have something different :) Let's just assume that $k_n$ is even (this will not change the conclusion and only simplify things), now let $h = \gcd(a^{2g}+1, a^{2n}+1)$ where $n=gk_n$, this also means
+%
+\nbea
+h &|& (a^{2n}+1) - (a^{2g}+1) \\
+\to h &|& (a^{2g(k_n-1)}-1) \\
+h &|& (a^{2g(k_n-2)}+1) \\
+h &|& (a^{2g(k_n-3)}-1) \\
+&\vdots& \\
+h &|& (a^{2g(k_n-k_n)}+1) \\
+\to h &|& 2
+\neea
+%
+the last constant $1$ has a plus sign in front of it because $k_n$ is even, this means that since $d|a^{2g}+1$ and $d|a^{2n}+1$, $d \le h$ but since $h \le 2 \to d \le 2$, therefore if $a$ is odd $a^{w} + 1$ is even and $d=2$ (because $d$ is the {\it greatest} common divisor) but if $a$ is even then $a^w+1$ is odd and $d=1$.
 
+If $d|a^{2g}-1$ then we know that from the above discussion that $(a^{2g}-1)\nmid (a^{2m} + 1), ~(a^{2g}-1)\nmid (a^{2n} + 1)$, however since $g|m,~ g|n$ the following is true $(a^{2g}-1)| (a^{2m} - 1), (a^{2g}-1)| (a^{2n} - 1)$. But this means that any common divisor $x$ between $a^{2g}-1$ and $a^{2m,n}+1$ must also divide $a^{2m,n}-1$ that is
+%
+\nbea
+x &|& (a^{2m,n}+1) - (a^{2m,n}-1) \\
+x &|& 2
+\neea
+%
+which means that $d \le x \to d \le 2$, so again depending on whether $a$ is even or odd we get $d=1$ or $d=2$ respectively.
 
 {\bf Problem 1.19}. The {\it Fibonacci sequence} $1,1,2,3,5,8,13,21,34,\dots$ is defined by the recursion formula $a_{n+1} = a_n + a_{n-1}$, with $a_1 = a_2 = 1$. Prove that $(a_n,a_{n+1})=1$ for each $n$.
 
@@ -1097,13 +1082,47 @@ setting $x=\pi$ we get
 \neea
 %
 
-{\bf Page 61}, PROOF of Theorem 3.6,
+{\bf Page 61}, PROOF of Theorem 3.6, this is rather odd the sum is usually split into the following (see Theorem 3.4 and 3.5)
+%
+\nbea
+\sum_{n \le x} \sigma_\alpha(n) & \to & \sum_{n\le x}\sum_{q|n} q^\alpha = \sum_{d \le x} \left ( \sum_{q \le x/d} q^\alpha \right )
+\neea
+%
+but for Theorem 3.6 it's split another way (with a dramatically different final result)
+%
+\nbea
+\sum_{n \le x} \sigma_{-\beta}(n) & \to & \sum_{n \le x}\sum_{d|n} \frac{1}{d^\beta} = \sum_{d\le x} \left ( \frac{1}{d^\beta} \sum_{q \le x/d} 1 \right )
+\neea
+%
+although the two are equivalent counting wise but once you use Euler's summation formula you get a completely different result. To see that the two are equivalent let's just calculate something simple, say $\sum_{n \le 5} \sigma_{\alpha}(n)$ where $\alpha = -\beta$, the original definition gives us
+%
+\nbea
+\sum_{n \le 5} \sigma_{-\beta}(n) & \to & \sum_{n \le x}\sum_{d|n} \frac{1}{d^\beta} \\
+& = & \sum_{d|1} \frac{1}{d^\beta} + \sum_{d|2} \frac{1}{d^\beta} + \sum_{d|3} \frac{1}{d^\beta} + \sum_{d|4} \frac{1}{d^\beta} + \sum_{d|5} \frac{1}{d^\beta} \\
+& = & \left ( \frac{1}{1^\beta} \right ) + \left ( \frac{1}{1^\beta} + \frac{1}{2^\beta} \right ) + \left ( \frac{1}{1^\beta} + \frac{1}{3^\beta} \right ) + \left ( \frac{1}{1^\beta} + \frac{1}{2^\beta} + \frac{1}{4^\beta} \right ) + \left ( \frac{1}{1^\beta} + \frac{1}{5^\beta} \right ) \\
+& = & \left ( \frac{1}{1^\beta} \times 5 \right ) + \left ( \frac{1}{2^\beta} \times 2 \right ) + \left ( \frac{1}{3^\beta} \times 1 \right ) + \left ( \frac{1}{4^\beta} \times 1 \right ) + \left ( \frac{1}{5^\beta} \times 1 \right )
+\neea
+%
+while Theorem 3.6 decomposition gives us
+%
+\nbea
+\sum_{d\le 5} \left ( \frac{1}{d^\beta} \sum_{q \le 5/d} 1 \right ) & = & \left ( \frac{1}{1^\beta} \sum_{q \le 5/1} 1 \right ) + \left ( \frac{1}{2^\beta} \sum_{q \le 5/2} 1 \right ) + \left ( \frac{1}{3^\beta} \sum_{q \le 5/3} 1 \right ) + \left ( \frac{1}{4^\beta} \sum_{q \le 5/4} 1 \right ) + \left ( \frac{1}{5^\beta} \sum_{q \le 5/5} 1 \right ) \\
+& = & \left ( \frac{1}{1^\beta} \times 5 \right ) + \left ( \frac{1}{2^\beta} \times 2 \right ) + \left ( \frac{1}{3^\beta} \times 1 \right ) + \left ( \frac{1}{4^\beta} \times 1 \right ) + \left ( \frac{1}{5^\beta} \times 1 \right )
+\neea
+%
+and lastly Theorem 3.4 and 3.5 decomposition generates
+%
+\nbea
+\sum_{d \le 5} \left ( \sum_{q \le 5/d} q^\alpha \right ) & = & \left ( \sum_{q \le 5/1} q^\alpha \right ) + \left ( \sum_{q \le 5/2} q^\alpha \right ) + \left ( \sum_{q \le 5/3} q^\alpha \right ) + \left ( \sum_{q \le 5/4} q^\alpha \right ) + \left ( \sum_{q \le 5/5} q^\alpha \right ) \\
+& = & \left ( 5 \times 1^\alpha\right ) + \left ( 2 \times 2^\alpha\right ) + \left ( 1 \times 3^\alpha\right ) + \left ( 1 \times 4^\alpha\right ) + \left ( 1 \times 5^\alpha\right )
+\neea
+%
+so you see that all three are equivalent but now let's apply Theorem 3.4 and 3.5's decomposition tot he proof of Theorem 3.6
 %
 \nbea
 \sum_{n\le x} \sigma_{-\beta}(n) & = & \sum_{n\le x} \sum_{d|n}\frac{1}{d^\beta} = \sum_{d\le x} \sum_{q\le x/d}\frac{1}{q^\beta}
 \neea
 %
-
 if $\beta \neq 1$ we have
 %
 \nbea
@@ -1114,10 +1133,7 @@ if $\beta \neq 1$ we have
 & = & x\zeta(\beta) + O(x)
 \neea
 %
-
-
-
-
+For $\beta=1$ first we need to calculate $\sum_{n\le x} \log n$
 %
 \nbea
 \sum_{n\le x} \log n & = & \int_1^x \log t ~dt + \int _1^x \frac{(t - [t]) }{t} dt + \log x ([x] - x) - \lim_{y\to 1} \log y ([y] - y) \\
@@ -1126,8 +1142,9 @@ if $\beta \neq 1$ we have
 & = & O(x \log x)
 \neea
 %
+the above is actually given in the book on Page 68 and on that page the $x\log x$ wasn't canceled using $- \bcancel{x \log x}  + [x]\log x$ instead, the latter terms were grouped as $ \log x ([x] - x) \to O(\log x)$ since $|[x] - x| \le 1$, so this summation integration thingy is kinda somewhat random
 
-if $\beta = 1$ we have
+While if $\beta = 1$ we have
 %
 \nbea
 \sum_{d\le x} \sum_{q\le x/d}\frac{1}{q^\beta} & = & \sum_{d\le x} \log \left ( \frac{x}{d}\right ) + C + O\left ( \frac{d}{x}\right ) \\
@@ -1137,6 +1154,18 @@ if $\beta = 1$ we have
 & = & xC + O(x \log x)
 \neea
 %
+so the result is very different from the book's, now if we apply Theorem 3.6's decomposition to Theorem 3.5 we will get
+%
+\nbea
+\sum_{n \le x} \sigma_\alpha(n) & = & \sum_{n \le x} \sum_{d|n} d^{\alpha} = \sum_{d \le x} d^\alpha \sum_{q \le x/d} 1 \\
+& = & \sum_{d \le x} d^\alpha \left ( \frac{x}{d} + O(1) \right ) = x \sum_{d \le x} d^{\alpha-1} + O \left ( \sum_{d \le x} d^\alpha \right ) \\
+& = & \left ( \frac{x^{\alpha+1}}{\alpha}  + O(x^{\alpha}) \right ) + O\left ( \frac{x^{\alpha+2}}{\alpha+1} + O\left( x^{\alpha + 2}\right )\right ) \\
+& = & \frac{x^{\alpha+1}}{\alpha}  + O(x^{\alpha}) + O\left( x^{\alpha + 2}\right )
+\neea
+%
+so here we see why the different decomposition, the thing is that we want to maximize the leading terms and minimize the big Oh terms, in our examples above for $\sigma_{-\beta}$ our big Oh is bigger than the ones in the book and for $\sigma_\alpha$ not only our big Oh is bigger but our leading term is also smaller, so that's the reason why we have different decompositions. But of course the trick is knowing which decomposition to use beforehand which is not that obvious for someone new.
+
+{\bf Page 62}, PROOF of Theorem 3.8, the thing to note here is that the visibility between two points is translationally  invariant (as long as we translate using integer increments), you can translate the two points to any two other points and the visibility will be the same.
 
 {\bf Problem 20}. If $n$ is a positive integer prove that $[\sqrt{n} + \sqrt{n+1}] = [\sqrt{4n+2}]$
 
