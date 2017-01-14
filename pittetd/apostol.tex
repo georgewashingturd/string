@@ -423,6 +423,49 @@ d &|& a_{m-1}
 %
 thus $(a_{m-1},a_m) = d > 1$ which is a contradiction, therefore $d=1$
 
+{\bf Problem 1.24}. Prove the following multiplicative property of the gcd:
+%
+\nbea
+(ah,bk) = (a,b)(h,k)\left ( \frac{a}{(a,b)},\frac{k}{(h,k)}\right )\left ( \frac{b}{(a,b)},\frac{h}{(h,k)}\right )
+\neea
+%
+In particular this shows that $(ah,bk) = (a,k)(b,h)$ whenever $(a,b)=(h,k)=1$.
+
+{\bf Problem 1.28}. If $a>1$ then $(a^m-1,a^n-1)=a^{(m,n)}-1$.
+
+%
+\nbea
+(a^m-1,a^n-1) & = & ((a^d-1)f(m/d),(a^d-1)f(n/d)) \\
+& = & (a^d-1,a^d-1)(f(m/d),f(n/d)) \left ( a^m-1,\frac{a^{n-1}-1}{(a-1,a^{n-1}-1)}\right ) \\
+& = & (a-1) \left ( a^m-1,\frac{a^{n-1}-1}{a-1}\right ) \\
+& = & (a-1) \left ( a^m-1,(a^{n-2} + a^{n-3} + \ldots + 1)\right ) \\
+\neea
+%
+
+%
+\nbea
+(a^m-1,a^n-1) & = & ((a^d-1)f(m/d),(a^d-1)f(n/d)) \\
+& = & (a^d-1,a^d-1)(f(m/d),f(n/d)) \times \\
+&& \left ( \frac{a^d-1}{(a^d-1,f(m/d))}\frac{f(n/d)}{(a^d-1,f(n/d))}\right )\left ( \frac{f(m/d)}{(a^d-1,f(m/d))}\frac{a^d-1}{(a^d-1,f(n/d))}\right )
+\neea
+%
+
+where $f(m/d) = \left ( (a^d)^{m/d-1} + (a^d)^{m/d-2} + \ldots + a^d + 1 \right )$, now let $g$ be a common divisor of $(a^d-1)$ and $f(m/d)$ this means that
+%
+\nbea
+g &|& f(m/d) - (a^d - 1) \\
+g &|& (a^d)^{m/d-1} + (a^d)^{m/d-2} + \ldots + 2 \\
+\to g &|& a^d ((a^d)^{m/d-2} + (a^d)^{m/d-3} + \ldots + 2)
+\neea
+%
+or more specifically this means $g|a^d$ but since $d|a^d-1$
+%
+\nbea
+g &|& a^d - (a^d-1) \\
+\to g &|& 1
+\neea
+%
+therefore $(a^d-1,f(m/d)) = 1$, this is obviously true for $f(n/d)$ too, \ie $()$
 
 \bigskip
 \underline{\textbf{\textit{Chapter 2}}}
