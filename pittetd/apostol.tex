@@ -431,7 +431,98 @@ thus $(a_{m-1},a_m) = d > 1$ which is a contradiction, therefore $d=1$
 %
 In particular this shows that $(ah,bk) = (a,k)(b,h)$ whenever $(a,b)=(h,k)=1$.
 
+Let's solve this the way a physicist might have done it. First, the whole situation is symmetrical under $a \leftrightarrow b$ and $h \leftrightarrow k$ and $ab \leftrightarrow hk$ therefore a first guess would be
+%
+\nbea
+(ab,hk) & = & (a,h)(b,k)(a,k)(b,h)
+\neea
+%
+but this immediately fails when $a=p,b=p,h=p,k=1$
+%
+\nbea
+(p\cdot p, p\cdot 1) & = & (p,p)(p,1)(p,1)(p,p) \\
+& = & p^2
+\neea
+%
+so this means that we have to remove some overcountings, \ie we have to divide the whole thing with something like this
+%
+\nbea
+(ab,hk) & = & (a,h)(b,k)\frac{(a,k)(b,h)}{(a,b)(h,k)}
+\neea
+%
+we divide by both $(a,b)$ and $(h,k)$ because the $ab \leftrightarrow hk$ symmetry, but again this is overdoing it, for example for $a=pp,b=1,h=p,k=p$
+%
+\nbea
+(pp\cdot1, p\cdot p) & = & (pp,p)(1,p)\frac{(pp,p)(1,p)}{(pp,1)(p,p)} \\
+& = & (p)(1)\frac{(p)(1)}{(1)(p)} \\
+& = & p
+\neea
+%
+the next choice that makes sense would then be to absorb those denominators into the numerators and to still respect the symmetry we will have
+%
+\nbea
+(ah,bk) = (a,b)(h,k)\left ( \frac{a}{(a,b)},\frac{k}{(h,k)}\right )\left ( \frac{b}{(a,b)},\frac{h}{(h,k)}\right )
+\neea
+%
+and that turns out to be correct :) There are two reasons I chose to do the above problem, one, it's fun to apply what I learned during my physics PhD on a math problem and two we will need this result to solve Problem 1.28.
+
 {\bf Problem 1.28}. If $a>1$ then $(a^m-1,a^n-1)=a^{(m,n)}-1$.
+
+I have actually solved this problem when I was doing Stein's elementary number theory book, it's Problem 2.25 of that book but here I'll do it differently :) 
+
+{\bf Proposition 1.28.1}, $\gcd(x^n + x^{n-1} + \ldots + x + 1,x-1) = \gcd(x-1,n+1)$
+
+{\it Proof}. Say there's a common divisor $d$ of $\sum_{i=1}^{n+1} x^{i-1} = x^n + x^{n-1} + \ldots + x + 1 $ and $x-1$, since it divides $x-1$ it also divides
+%
+\nbea
+d &|& x - 1 \\
+d &|& (x-1)(x+1) = x^2 - 1 \\
+d &|& (x-1)(x^2 + x + 1) = x^3 - 1 \\
+& \vdots & \\
+d &|& (x-1)(x^{n-1} + x^{n-2} + \ldots + 1) = x^n - 1
+\neea
+%
+if we sum all of them, $d$ will still be a divisor of the sum
+%
+\nbea
+\left (x^n + x^{n-1} + \ldots + 1\right ) - \left \{ (x^n-1) + (x^{n-1}-1) + \ldots + (x-1)\right\} & = & n + 1
+\neea
+%
+therefore $d|(n+1)$ since this is true for any common divisor $d$, it is also true for the gcd so if $g=\gcd\left(\sum_{i=1}^{n+1} x^{i-1}, x-1\right)$ then $g|(n+1)$ but this still doesn't guarantee that $g=\gcd(x-1,n+1)$ but we can turn the above argument on its head, say $h = \gcd(x-1,n+1)$, since $h$ divides $x-1$, just like before it must also divide $x^2-1,x^3-1,\dots,x^n+1$, if we sum all of these and also $n+1$ we get
+%
+\nbea
+\left \{ (x^n-1) + (x^{n-1}-1) + \ldots + (x-1)\right\} + (n+1) & = & x^n + x^{n-1} + \ldots + 1
+\neea
+%
+and so $h$ must also divide $x^n + x^{n-1} + \ldots + 1$ and that is that :) well almost, just one more little detail, what this says is that $h|\sum_{i=1}^{n+1} x^{i-1}$ and $g|(n+1)$ but it doesn't say $h=g$? say they are different, $h\neq g$, then one of them must be smaller, say $h > g$, now from the above discussion we know that $h$ is also a common divisor of $(\sum_{i=1}^{n+1} x^{i-1}, x-1)$ but if $h>g$ then $g$ is not the {\bf greatest} common divisor and we can choose $h$ to be the $\gcd(\sum_{i=1}^{n+1} x^{i-1}, x-1)$, the other way is also true, if $g > h$ then since $g$ is a common divisor of $(x-1,n+1)$ then we can choose $g$ as the gcd instead of $h$ and therefore $\gcd(\sum_{i=1}^{n+1} x^{i-1}, x-1)=\gcd(x-1,n+1)$.
+
+One important thing to note here is that {\bf the gcd depends on the value of} $x$, this is somewhat interesting.
+
+There's another way to see why the above is true, note that $\sum_{i=1}^{n+1} x^{i-1}$ is just a geometric series
+%
+\nbea
+\sum_{i=1}^{n+1} x^{i-1} = x^n + x^{n-1} + \dots + x + 1 = \frac{x^{n+1}-1}{x-1}
+\neea
+%
+now if we set $x = (n+1) + 1$, from the numerator we get
+%
+\nbea
+\left\{(n+1)+1\right\}^{n+1} - 1 & = & {n+1\choose 0}(n+1)^{n+1} + {n+1\choose 1}(n+1)^{n} + \ldots + {n+1\choose n}(n+1) + \bcancel{1} - \bcancel{1}
+\neea
+%
+if we divide the above with $x-1 = (n+1) + 1 - 1 = (n+1)$ we get
+%
+\nbea
+\frac{x^{n+1}-1}{x-1} & = & {n+1\choose 0}(n+1)^{n} + {n+1\choose 1}(n+1)^{n-1} + \ldots + {n+1\choose n} \\
+& = & {n+1\choose 0}(n+1)^{n} + {n+1\choose 1}(n+1)^{n-1} + \ldots + (n+1) \\
+& = & (n+1) \left \{ {n+1\choose 0}(n+1)^{n-1} + {n+1\choose 1}(n+1)^{n-2} + \ldots + 1 \right \} \\
+\to & = & (x-1) \left \{ {n+1\choose 0}(x-1)^{n-1} + {n+1\choose 1}(x-1)^{n-2} + \ldots + 1 \right \}
+\neea
+%
+so the key here is that although the last binomial coefficient ${n+1\choose n}$ is independent of what value we choose for $x$, if we judiciously choose $x-1$ we can pull out a factor of $x-1$ out of the terms like above, on the other hand, if $x-1$ has no common factor with ${n+1\choose n}=(n+1)$ then we cannot pull a common factor out and that's the key.
+
+{\bf Proposition 1.28.2}, $\gcd(x^n + x^{n-1} + \ldots + 1,x^m + x^{m-1} + \ldots + 1) = \sum_{i=0}^{\gcd(n+1,m+1)}x^{i}$
+
 
 %
 \nbea
