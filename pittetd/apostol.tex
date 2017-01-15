@@ -431,13 +431,13 @@ thus $(a_{m-1},a_m) = d > 1$ which is a contradiction, therefore $d=1$
 %
 In particular this shows that $(ah,bk) = (a,k)(b,h)$ whenever $(a,b)=(h,k)=1$.
 
-Let's solve this the way a physicist might have done it. First, the whole situation is symmetrical under $a \leftrightarrow b$ and $h \leftrightarrow k$ and $ab \leftrightarrow hk$ therefore a first guess would be
+Let's solve this the way a physicist might have done it. First, the whole situation is symmetrical under $a \leftrightarrow h$ and $b \leftrightarrow k$ and $ah \leftrightarrow bk$ therefore a first guess would be
 %
 \nbea
-(ab,hk) & = & (a,h)(b,k)(a,k)(b,h)
+(ah,bk) & = & (a,b)(h,k)(a,k)(b,h)
 \neea
 %
-but this immediately fails when $a=p,b=p,h=p,k=1$
+but this immediately fails when $a=p,h=p,b=p,k=1$
 %
 \nbea
 (p\cdot p, p\cdot 1) & = & (p,p)(p,1)(p,1)(p,p) \\
@@ -447,14 +447,14 @@ but this immediately fails when $a=p,b=p,h=p,k=1$
 so this means that we have to remove some overcountings, \ie we have to divide the whole thing with something like this
 %
 \nbea
-(ab,hk) & = & (a,h)(b,k)\frac{(a,k)(b,h)}{(a,b)(h,k)}
+(ah,bk) & = & (a,b)(h,k)\frac{(a,k)(b,h)}{(a,b)(h,k)}
 \neea
 %
-we divide by both $(a,b)$ and $(h,k)$ because the $ab \leftrightarrow hk$ symmetry, but again this is overdoing it, for example for $a=pp,b=1,h=p,k=p$
+we divide by both $(a,b)$ and $(h,k)$ because the $ab \leftrightarrow hk$ symmetry, but again this is overdoing it, for example for $a=pp,h=1,b=p,k=p$
 %
 \nbea
-(pp\cdot1, p\cdot p) & = & (pp,p)(1,p)\frac{(pp,p)(1,p)}{(pp,1)(p,p)} \\
-& = & (p)(1)\frac{(p)(1)}{(1)(p)} \\
+(pp\cdot1, p\cdot p) & = & (pp,p)(1,p)\frac{(pp,p)(1,p)}{(pp,p)(1,p)} \\
+& = & (p)(1)\frac{(p)(1)}{(p)(1)} \\
 & = & p
 \neea
 %
@@ -464,7 +464,29 @@ the next choice that makes sense would then be to absorb those denominators into
 (ah,bk) = (a,b)(h,k)\left ( \frac{a}{(a,b)},\frac{k}{(h,k)}\right )\left ( \frac{b}{(a,b)},\frac{h}{(h,k)}\right )
 \neea
 %
-and that turns out to be correct :) There are two reasons I chose to do the above problem, one, it's fun to apply what I learned during my physics PhD on a math problem and two we will need this result to solve Problem 1.28.
+and that turns out to be correct :) Well for consistency we should do the nested test
+%
+\nbea
+(a(hh'),b) & = & ((ah)h',b) \\
+(a,b)(hh',1) \left ( \frac{a}{(a,b)},\frac{1}{(hh',1)}\right )\left ( \frac{b}{(a,b)},\frac{hh'}{(hh',1)}\right ) & = & (ah,b)(h',1)\left ( \frac{ah}{(ah,b)},\frac{1}{(h',1)}\right )\left ( \frac{b}{(ah,b)},\frac{h'}{(h',1)}\right ) \\
+(a,b) \left ( \frac{b}{(a,b)},hh'\right ) & = & (ah,b)\left ( \frac{b}{(ah,b)},h'\right )
+\neea
+%
+we now reapply the same formula to both LHS and RHS to see if this is consistent, first the LHS
+%
+\nbea
+(a,b) \left ( \frac{b}{(a,b)},hh'\right ) & = & (a,b) \left\{\left ( \frac{b}{(a,b)},h\right )  \left ( \frac{b}{(a,b)\left(\frac{b}{(a,b)}, h\right)},h'\right ) \right\}
+\neea
+%
+and now the RHS
+%
+\nbea
+(ah,b)\left ( \frac{b}{(ah,b)},h'\right ) & = & \left \{ (a,b)\left(\frac{b}{(a,b)},h\right) \right \} \left ( \frac{b}{(a,b)\left(h,\frac{b}{(a,b)}\right)},h'\right ) 
+\neea
+%
+and they are apparently the same :)
+
+There are two reasons I chose to do the above problem, one, it's fun to apply what I learned during my physics PhD on a math problem and two we will need this result to solve Problem 1.28.
 
 {\bf Problem 1.28}. If $a>1$ then $(a^m-1,a^n-1)=a^{(m,n)}-1$.
 
@@ -531,7 +553,7 @@ so the key here is that although the last binomial coefficient ${n+1\choose n}$ 
 %
 therefore since $d|\sum_{i=0}^{N}x^{b_i} \to d|1$, therefore since {\it every} non-composite divisor is 1 the $\gcd(x^{a}, \sum_{i=0}^{N}x^{b_i})=1$ (note that any other divisor is a (possibly duplicate) product of the non-composite divisors)
 
-{\bf Proposition 1.28.3}, $\gcd(x^n + x^{n-1} + \ldots + 1,x^m + x^{m-1} + \ldots + 1) = \sum_{i=0}^{\gcd(n+1,m+1)}x^{i}$
+{\bf Proposition 1.28.3}, $\gcd(x^n + x^{n-1} + \ldots + 1,x^m + x^{m-1} + \ldots + 1) = \sum_{i=0}^{\gcd(n+1,m+1)-1}x^{i}$
 
 {\it Proof}. This one is actually quite interesting, the sequence $x^n + x^{n-1} + \ldots + x + 1$ can be thought of just a number $\to n+1$, let's see a concrete example, say we have
 %
@@ -622,36 +644,50 @@ Now $g=\gcd(f_n,f_m)$ and by definition gcd is divisible by all common divisors 
 
 Now note that $g|f_n \to h f_g| f_g\cdot g_{n/g} \to h | g_{n/g}$ but again by the proof Proposition 1.28.2 noting that $g_n = \sum_{i=0}^{N} x^{b_i}$, $\gcd(h,g_{n/g})=1 \to h=1$ and thus $g = f_g$.
 
-Therefore, the final conclusion is $\gcd(x^n + x^{n-1} + \ldots + 1,x^m + x^{m-1} + \ldots + 1) = \sum_{i=0}^{\gcd(n+1,m+1)}x^{i}$
+Therefore, the final conclusion is $\gcd(x^n + x^{n-1} + \ldots + 1,x^m + x^{m-1} + \ldots + 1) = \sum_{i=0}^{\gcd(n+1,m+1)-1}x^{i}$
 
 Now back to {\bf Problem 1.28}, first step is to utilize the result of Problem 1.24, let's denote $d = \gcd(m,n)$ and utilizing a similar notation to that of Proposition 1.28.3
 %
 \nbea
 (a^m-1,a^n-1) & = & ((a^d-1)f_{m/d},(a^d-1)f_{n/d}) \\
 & = & (a^d-1,a^d-1)(f_{m/d},f_{n/d}) \times \\
-&& \left ( \frac{a^d-1}{(a^d-1,f_{m/d})}\frac{f_{n/d}}{(a^d-1,f_{n/d})}\right )\left ( \frac{f_{m/d}}{(a^d-1,f_{m/d})}\frac{a^d-1}{(a^d-1,f_{n/d})}\right )
+&& \left ( \frac{a^d-1}{(a^d-1,a^d-1)},\frac{f_{n/d}}{(f_{m/d},f_{n/d})}\right )\left ( \frac{a^d-1}{(a^d-1,a^d-1)},\frac{f_{m/d}}{(f_{m/d},f_{n/d})}\right ) \\
+& = & (a^d-1)(f_{m/d},f_{n/d}) \left ( 1, \frac{f_{n/d}}{(f_{m/d},f_{n/d})}\right )\left ( 1,\frac{f_{m/d}}{(f_{m/d},f_{n/d})}\right ) \\
+& = & (a^d-1)(f_{m/d},f_{n/d})
 \neea
 %
-where now $f_{m/d} = \left ( (a^d)^{m/d-1} + (a^d)^{m/d-2} + \ldots + a^d + 1 \right )$, now by Proposition 1.28.3 $\gcd(f_{m/d},f_{n/d}) = \gcd(m/d,n/d)=1$.
-
-Next, 
-
-let $g$ be a common divisor of $(a^d-1)$ and $f(m/d)$ this means that
+where now $f_{m/d} = \left ( (a^d)^{m/d-1} + (a^d)^{m/d-2} + \ldots + a^d + 1 \right )$, by Proposition 1.28.3 $\gcd(f_{m/d},f_{n/d}) = \gcd(m/d,n/d)=1$ and we are done :) well of course if we have chosen $a,h,b,k$ differently we will not get the answer as easily, \eg 
 %
 \nbea
-g &|& f(m/d) - (a^d - 1) \\
-g &|& (a^d)^{m/d-1} + (a^d)^{m/d-2} + \ldots + 2 \\
-\to g &|& a^d ((a^d)^{m/d-2} + (a^d)^{m/d-3} + \ldots + 2)
+(a^m-1,a^n-1) & = & ((a^d-1)f_{m/d},f_{n/d}(a^d-1)) \\
+& = & (a^d-1,f_{n/d})(f_{m/d},a^d-1) \times \\
+&& \left ( \frac{a^d-1}{(a^d-1,f_{n/d})},\frac{a^d-1}{(f_{m/d},a^d-1)}\right )\left ( \frac{f_{n/d}}{(a^d-1,f_{n/d})},\frac{f_{m/d}}{(f_{m/d},a^d-1)}\right ) \\
+& = & (a^d-1,n/d)(m/d,a^d-1) \left ( \frac{a^d-1}{(a^d-1,n/d)},\frac{a^d-1}{(m/d,a^d-1)}\right ) \\
+& = & (a^d-1)
 \neea
 %
-or more specifically this means $g|a^d$ but since $d|a^d-1$
+from line 2 to 3 we have used tha fact that since $(f_{m/d},f_{n/d}) = 1$ therefore $(f_{m/d}/t,f_{n/d}/s) = 1$, going into the last line might need a bit more explanation, let's denote
 %
 \nbea
-g &|& a^d - (a^d-1) \\
-\to g &|& 1
+(a^d-1,n/d) & = & c_n \\
+(a^d-1,m/d) & = & c_m
 \neea
 %
-therefore $(a^d-1,f(m/d)) = 1$, this is obviously true for $f(n/d)$ too, \ie $()$
+now since $\gcd(m/d,n/d)=1$ we have
+%
+\nbea
+a^d - 1 & = & c_a c_m c_n
+\neea
+%
+therefore
+%
+\nbea
+(a^d-1,n/d)(m/d,a^d-1) \left ( \frac{a^d-1}{(a^d-1,n/d)},\frac{a^d-1}{(m/d,a^d-1)}\right ) & = & c_n c_m (c_a c_m, c_a c_n)\\
+& = & c_n c_m c_a \\
+& = & a^d - 1
+\neea
+%
+so depending on how stupidly you make your choices, you might have to suffer a bit more :)
 
 \bigskip
 \underline{\textbf{\textit{Chapter 2}}}
