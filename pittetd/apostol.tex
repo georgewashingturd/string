@@ -521,27 +521,122 @@ if we divide the above with $x-1 = (n+1) + 1 - 1 = (n+1)$ we get
 %
 so the key here is that although the last binomial coefficient ${n+1\choose n}$ is independent of what value we choose for $x$, if we judiciously choose $x-1$ we can pull out a factor of $x-1$ out of the terms like above, on the other hand, if $x-1$ has no common factor with ${n+1\choose n}=(n+1)$ then we cannot pull a common factor out and that's the key.
 
-{\bf Proposition 1.28.2}, $\gcd(x^n + x^{n-1} + \ldots + 1,x^m + x^{m-1} + \ldots + 1) = \sum_{i=0}^{\gcd(n+1,m+1)}x^{i}$
+{\bf Proposition 1.28.2}, $\gcd(x^{a}, \sum_{i=0}^{N}x^{b_i})=1$ where $a \ge 0, b_0 = 0, ~b_{i\neq 0} \neq 0$
 
-
+{\it Proof}. Say we have a {\it non-composite} common divisor, $d$, of $x^a$ and $\sum_{i=0}^{N}x^{b_i}$ (non-composite so we cover primes and 1), since $d$ is non-composite and $d|x^a$ we have $d|x$ and
 %
 \nbea
-(a^m-1,a^n-1) & = & ((a^d-1)f(m/d),(a^d-1)f(n/d)) \\
-& = & (a^d-1,a^d-1)(f(m/d),f(n/d)) \left ( a^m-1,\frac{a^{n-1}-1}{(a-1,a^{n-1}-1)}\right ) \\
-& = & (a-1) \left ( a^m-1,\frac{a^{n-1}-1}{a-1}\right ) \\
-& = & (a-1) \left ( a^m-1,(a^{n-2} + a^{n-3} + \ldots + 1)\right ) \\
+\sum_{i=0}^{N}x^{b_i} & = & 1 + d\sum_{i=1}^{N}d^{b_i-1} x^{b_i}
 \neea
 %
+therefore since $d|\sum_{i=0}^{N}x^{b_i} \to d|1$, therefore since {\it every} non-composite divisor is 1 the $\gcd(x^{a}, \sum_{i=0}^{N}x^{b_i})=1$ (note that any other divisor is a (possibly duplicate) product of the non-composite divisors)
 
+{\bf Proposition 1.28.3}, $\gcd(x^n + x^{n-1} + \ldots + 1,x^m + x^{m-1} + \ldots + 1) = \sum_{i=0}^{\gcd(n+1,m+1)}x^{i}$
+
+{\it Proof}. This one is actually quite interesting, the sequence $x^n + x^{n-1} + \ldots + x + 1$ can be thought of just a number $\to n+1$, let's see a concrete example, say we have
 %
 \nbea
-(a^m-1,a^n-1) & = & ((a^d-1)f(m/d),(a^d-1)f(n/d)) \\
-& = & (a^d-1,a^d-1)(f(m/d),f(n/d)) \times \\
-&& \left ( \frac{a^d-1}{(a^d-1,f(m/d))}\frac{f(n/d)}{(a^d-1,f(n/d))}\right )\left ( \frac{f(m/d)}{(a^d-1,f(m/d))}\frac{a^d-1}{(a^d-1,f(n/d))}\right )
+x^{11} + x^{10}+x^9+x^8+x^7+x^6+x^5 + x^4 + x^3 + x^2 + x + 1
 \neea
 %
+and we want to know what we get if we divide it by $x^2+x+1$, in this we can easily factorize the above
+%
+\nbea
+(x^2 + x + 1)(x^9 + x^6 + x^3 + 1)
+\neea
+%
+and there you go, we can immediately see the pattern, if $(n+1)|(m+1)$ then
+%
+\nbea
+x^m + x^{m-1} + \ldots + x + 1 & = &(x^n + x^{n-1} + \ldots + x + 1) (x^{(n+1)\cdot(s - 1)} + x^{(n+1)\cdot(s - 2)} + \ldots + x^{(n+1)} + 1) \\
+\to \sum_{i=0}^{m} x^i & = & \left ( \sum_{j=0}^{n} x^j \right ) \left ( \sum_{k=0}^{s-1} x^{(n+1)\cdot k} \right )
+\neea
+%
+where $s = (m+1)/(n+1)$ but this also means something else, say we have $\sum_{i=0}^{n}x^i$, we can always produce a higher powered sequence by multiplying it with another sequence according to the rules above, \ie
+%
+\nbea
+\left ( \sum_{j=0}^{n} x^j \right ) \left ( \sum_{k=0}^{w} x^{(n+1)\cdot k} \right ) & = & \sum_{i=0}^{((n+1)\cdot(w+1)) - 1} x^i
+\neea
+%
+since what matters here is whether $(n+1)|(m+1)$, let's come up with a better notation to eliminate this $\pm1$ offset, say $f_{n} = \sum_{i=0}^{n-1}x^i$ and $g_{w} = \sum_{i=0}^{w-1} x^{(n+1)\cdot i}$ such that
+%
+\nbea
+f_n \cdot g_w & = & f_{n\cdot w}
+\neea
+%
+in other words what we care most here is the number of terms in the sequence and {\bf not} the highest power of the sequence. With this notation we can treat these sequences just like natural numbers, the most important thing we want to apply to them is Bezout's lemma that says for any number $a$ and $b$ there are $c$ and $d$ such that
+%
+\nbea
+ac + bd & = & \gcd(a,b)
+\neea
+%
+we are now ready to utilize Bezout, say we have two sequences $f_m$ and $f_n$ where $\gcd(m,n)=1$ and say we have a {\it non-composite} common divisor, $d \to d|f_m,~d|f_n$, of those two (non-composite because I want to include primes and 1, recall that 1 is not prime nor composite), this means that
+%
+\nbea
+d &|& f_n\cdot g_y = f_{n\cdot y} \\
+d &|& f_m\cdot g_z = f_{m\cdot z}
+\neea
+%
+such that $ny - mz = 1$ which is guaranteed by Bezout (here we have assumed that $ny > mz$ but the conclusion still applies even if $mz > ny$), now let's take the difference
+%
+\nbea
+f_{n\cdot y} - f_{m\cdot z} & = & (x^{ny-1} + x^{ny-2} + \ldots + x + 1) - (x^{mz-1} + x^{mz-2} + \ldots + x + 1) \\
+& = & (x^{mz} + x^{mz-1} + \ldots + x + 1) - (x^{mz-1} + x^{mz-2} + \ldots + x + 1) \\
+& = & x^{mz}
+\neea
+%
+which in turn means
+%
+\nbea
+d &|& f_{n\cdot y} - f_{m\cdot z} \\
+\to d &|& x^{mz}
+\neea
+%
+now since $d$ is non-composite $\to d|x$ but since $d|f_n$ this also means that $d|1$, since {\it every} non-composite common divisor of $f_n$ and $f_m$, $\gcd(f_n,f_m) = 1$ when $\gcd(m,n)=1$.
 
-where $f(m/d) = \left ( (a^d)^{m/d-1} + (a^d)^{m/d-2} + \ldots + a^d + 1 \right )$, now let $g$ be a common divisor of $(a^d-1)$ and $f(m/d)$ this means that
+Now if $g = \gcd(m,n) > 1$ what we have from Bezout is $ny - mz = g$
+%
+\nbea
+f_{n\cdot y} - f_{m\cdot z} & = & (x^{ny-1} + x^{ny-2} + \ldots + x + 1) - (x^{mz-1} + x^{mz-2} + \ldots + x + 1) \\
+& = & (x^{mz+g-1} + x^{mz+g-2} + \ldots + x + 1) - (x^{mz-1} + x^{mz-2} + \ldots + x + 1) \\
+& = & x^{mz+g-1} + x^{mz+g-2} + \ldots + x^{mz} \\
+& = & x^{mz}\left ( x^{g-1} + x^{g-2} + \ldots + 1 \right ) \\
+f_{n\cdot y} - f_{m\cdot z} & = & x^{mz} \cdot f_g
+\neea
+%
+Also note that
+%
+\nbea
+f_{n} & = & f_g\cdot g_{n/g} \\
+f_{m} & = & f_g\cdot g_{m/g}
+\neea
+%
+this all means that since $g|f_n, ~g|f_m$
+%
+\nbea
+g &|& \left(f_{n\cdot y} - f_{m\cdot z}\right) \\
+g &|& \left(x^{mz} \cdot f_g\right)
+\neea
+%
+Now $g=\gcd(f_n,f_m)$ and by definition gcd is divisible by all common divisors so in this case it is divisible by $f_g \to f_g|g$ and since $g | (x^{mz} \cdot f_g)$ and by Proposition 1.28.2 $\gcd(x^{mz}, f_g)=1$ this means that $g = hf_g$ where $h|x^{mz}$ and we now need to figure out what $h$ is.
+
+Now note that $g|f_n \to h f_g| f_g\cdot g_{n/g} \to h | g_{n/g}$ but again by the proof Proposition 1.28.2 noting that $g_n = \sum_{i=0}^{N} x^{b_i}$, $\gcd(h,g_{n/g})=1 \to h=1$ and thus $g = f_g$.
+
+Therefore, the final conclusion is $\gcd(x^n + x^{n-1} + \ldots + 1,x^m + x^{m-1} + \ldots + 1) = \sum_{i=0}^{\gcd(n+1,m+1)}x^{i}$
+
+Now back to {\bf Problem 1.28}, first step is to utilize the result of Problem 1.24, let's denote $d = \gcd(m,n)$ and utilizing a similar notation to that of Proposition 1.28.3
+%
+\nbea
+(a^m-1,a^n-1) & = & ((a^d-1)f_{m/d},(a^d-1)f_{n/d}) \\
+& = & (a^d-1,a^d-1)(f_{m/d},f_{n/d}) \times \\
+&& \left ( \frac{a^d-1}{(a^d-1,f_{m/d})}\frac{f_{n/d}}{(a^d-1,f_{n/d})}\right )\left ( \frac{f_{m/d}}{(a^d-1,f_{m/d})}\frac{a^d-1}{(a^d-1,f_{n/d})}\right )
+\neea
+%
+where now $f_{m/d} = \left ( (a^d)^{m/d-1} + (a^d)^{m/d-2} + \ldots + a^d + 1 \right )$, now by Proposition 1.28.3 $\gcd(f_{m/d},f_{n/d}) = \gcd(m/d,n/d)=1$.
+
+Next, 
+
+let $g$ be a common divisor of $(a^d-1)$ and $f(m/d)$ this means that
 %
 \nbea
 g &|& f(m/d) - (a^d - 1) \\
