@@ -311,6 +311,22 @@ so indeed $(5(2k+1))^4 + 4$ can be factorized into $(5(20k^2+16k+3) + 2)(5(20k^2
 
 So in short, if $n \not\equiv 0 \pmod{5}$ then $5|n^4 + 4$ and if $5|n$ then $(5(2k+1))^4 + 4 = (5(20k^2+16k+3) + 2)(5(20k^2+24k+7) + 2)$ and therefore $n^4 + 4$ is composite for $n>1$.
 
+{\bf Problem 1.15}. Prove that every $n \ge 12$ is the sum of two composite numbers.
+
+Here I assume the composite numbers are positive otherwise it is just a restatement of Bezout's lemma. Although this question looks tough initially it's actually very simple, for any even numbers $\ge 12$ we have
+%
+\nbea
+2(6 + n) & = & 4 + 2(4+n)
+\neea
+%
+with $n \ge 0$ and for any odd number $\ge 13$ we have
+%
+\nbea
+2(6 + n) + 1 & = & 9 + 2(2 + n)
+\neea
+%
+again with $n \ge 0$
+
 {\bf Problem 1.16}. Prove that if $2^n - 1$ is prime then $n$ is prime
 
 The trick we need to know here is that
@@ -333,6 +349,20 @@ a^m - b^n & = & a^{m'd} - b^{n'd} = (a^{m'})^d - (b^{n'})^d \\
 & = & \left (a^{m'} - b^{n'} \right ) \left ((a^{m'})^{d-1} + (a^{m'})^{d-2} (b^{n'})+ \dots + (a^{m'})(b^{n'})^{d-2} + (b^{n'})^{d-1} \right )
 \neea
 %
+
+{\bf Problem 1.17}. Prove that if $2^n + 1$ is prime, then $n$ is a power of 2.
+
+The key point we need to know here is
+%
+\nbea
+x^m + 1 & = & (x^h + 1)(x^{m-h} - x^{m-h-h} + x^{m-h-h-h} - \ldots + 1)
+\neea
+%
+since the signs alternate from plus to minus on the RHS, the above factorization can only occur if $h|m$ and that $m/h$ is {\bf odd}. Another piece of info we need is that $(x^h-1)\nmid(x^m+1)$ for any $h$ due to the same reason.
+
+Now say $n$ in the $2^n+1$ is even $\to n=2w \to 2^{2w} + 1$, now if $w$ is odd then $2^{2w} + 1$ is divisible by $2^2 + 1$, if $w$ is even we can repeat the process $w = 2t \to 2^{4t} + 1$ and again, if $t$ is odd then $2^{4t} + 1$ is divisible by $2^4 + 1$ but if $t$ is even then we again repeat the process. So the only way it is not divisible by $2^z+1$ is that the remaining factors are all even and it only happens when $n$ is a power of 2.
+
+If $n$ is odd and composite then all factors of $n$ are odd and therefore $2^n+1$ is divisible by $2^u+1$ where $u|n$, the only case left is when $n$ is prime but in this case $2^n+1$ is immediately divisible by $2^1 + 1$ which is kind of a cool fact actually that any $2^n+1$ where $n$ is prime is divisible by 3 :)
 
 {\bf Problem 1.18}. If $m\neq n$ compute $\gcd\left( a^{2m}+1, a^{2n}+1\right)$ in terms of $a$. [{\it Hint:} Let $A_n = a^{2n}+1$ and show that $A_n|(A_m-2)$ if $m>n$.]
 
