@@ -518,6 +518,58 @@ and they are apparently the same :)
 
 There are two reasons I chose to do the above problem, one, it's fun to apply what I learned during my physics PhD on a math problem and two we will need this result to solve Problem 1.28.
 
+{\bf Problem 1.27}. (a) If $(a,b)=1$ then for every $n > ab$ there exist positive $x$ and $y$ such that $n = ax + by$.
+
+(b) If $(a,b)=1$ there are no positive $x$ and $y$ such that $ab = ax + by$.
+
+(a) Without loss of generality let $b > a$ (since one of them has to be the bigger one anyway) and therefore $b = aq + r$, now let
+
+From Bezout we know that there are $s,t$ such that
+%
+\nbea
+as + bt & = & 1 \\
+ab + as + bt & = & ab + 1
+\neea
+%
+but one of them, $s,t$, has to be negative so let's write it as
+%
+\nbea
+as - b|t| & = & 1
+\neea
+%
+
+%
+\nbea
+n & = & ab + w \\
+& = & a(aq+r) + w \\
+& = & aqa + ar + w
+
+ax + by \\
+ax + (aq+r)y\\
+ax + aqy + ry = aqa + ar + 1\\
+a(x-r) + aq(y-a) + ry = 1
+a(x + qy) + ry
+\neea
+%
+
+(b) Say assume the opposite that we have positive $x$ and positive $y$
+%
+\nbea
+ab & = & ax + by \\
+a(b-x) & = & by \\
+\to a &|& y
+\neea
+%
+and by the same token $b|x$ therefore
+%
+\nbea
+ab & = & a(bx') + b(ay') \\
+\bcancel{ab} & = & \bcancel{ab}(x' + y') \\
+1 & = & x' + y'
+\neea
+%
+therefore one of $x$ and $y$ has to be zero and it is a contradiction since $x$ and $y$ have to be positive
+
 {\bf Problem 1.28}. If $a>1$ then $(a^m-1,a^n-1)=a^{(m,n)}-1$.
 
 I have actually solved this problem when I was doing Stein's elementary number theory book, it's Problem 2.25 of that book but here I'll do it differently :) 
