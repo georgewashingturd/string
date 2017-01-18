@@ -325,7 +325,7 @@ with $n \ge 0$ and for any odd number $\ge 13$ we have
 2(6 + n) + 1 & = & 9 + 2(2 + n)
 \neea
 %
-again with $n \ge 0$
+again with $n \ge 0$ and the reason we start with 12 is because between 1 and 12 only $8=4+4$ and $10=4+6$ are sums of composite numbers but for 12 and above, every number is a sum of composite numbers.
 
 {\bf Problem 1.16}. Prove that if $2^n - 1$ is prime then $n$ is prime
 
@@ -358,7 +358,7 @@ The key point we need to know here is
 x^m + 1 & = & (x^h + 1)(x^{m-h} - x^{m-h-h} + x^{m-h-h-h} - \ldots + 1)
 \neea
 %
-since the signs alternate from plus to minus on the RHS, the above factorization can only occur if $h|m$ and that $m/h$ is {\bf odd}. Another piece of info we need is that $(x^h-1)\nmid(x^m+1)$ for any $h$ due to the same reason.
+since the signs alternate from plus to minus on the RHS, the above factorization can only occur if $h|m$ and that $m/h$ is {\bf odd}. Another piece of info we need is that $(x^h-1)\nmid(x^m+1)$ for any $h$ due to the same reason and so we need not care about nor consider $x^h-1$.
 
 Now say $n$ in the $2^n+1$ is even $\to n=2w \to 2^{2w} + 1$, now if $w$ is odd then $2^{2w} + 1$ is divisible by $2^2 + 1$, if $w$ is even we can repeat the process $w = 2t \to 2^{4t} + 1$ and again, if $t$ is odd then $2^{4t} + 1$ is divisible by $2^4 + 1$ but if $t$ is even then we again repeat the process. So the only way it is not divisible by $2^z+1$ is that the remaining factors are all even and it only happens when $n$ is a power of 2.
 
@@ -696,7 +696,7 @@ where now $f_{m/d} = \left ( (a^d)^{m/d-1} + (a^d)^{m/d-2} + \ldots + a^d + 1 \r
 & = & (a^d-1)
 \neea
 %
-from line 2 to 3 we have used tha fact that since $(f_{m/d},f_{n/d}) = 1$ therefore $(f_{m/d}/t,f_{n/d}/s) = 1$, going into the last line might need a bit more explanation, let's denote
+from line 2 to 3 we have used the fact that since $(f_{m/d},f_{n/d}) = 1$ therefore $(f_{m/d}/t,f_{n/d}/s) = 1$, going into the last line might need a bit more explanation, let's denote
 %
 \nbea
 (a^d-1,n/d) & = & c_n \\
@@ -1139,22 +1139,6 @@ $(k|k)$ & ${k-1 \choose k-1}$ & ${k-2 \choose k-2}$ & ${k-3 \choose k-3}$ & & ${
 \end{tabular}
 \end{table}
 %
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 \bigskip
 In Exercises 10, 11, and 12, $d(n)$ denotes the number of positive divisors of $n$.
