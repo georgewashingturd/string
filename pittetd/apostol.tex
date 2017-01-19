@@ -522,35 +522,50 @@ There are two reasons I chose to do the above problem, one, it's fun to apply wh
 
 (b) If $(a,b)=1$ there are no positive $x$ and $y$ such that $ab = ax + by$.
 
-(a) Without loss of generality let $b > a$ (since one of them has to be the bigger one anyway) and therefore $b = aq + r$, now let
-
-From Bezout we know that there are $s,t$ such that
+(a) This question is actually quite tricky, at first I tried using Bezout's lemma (or the extended gcd method) but didn't get anywhere fast, the problem is, say we start with Bezout, since $(a,b)=1$ we have
 %
 \nbea
-as + bt & = & 1 \\
+as + bt & = & 1
+\neea
+%
+where one of $s,t$ must be negative, next we add $ab$ to both sides
+%
+\nbea
 ab + as + bt & = & ab + 1
 \neea
 %
-but one of them, $s,t$, has to be negative so let's write it as
+we now need to show that the negative one among $s,t$ is smaller than $a$ or $b$ and therefore we can add $ab$ to it and make it positive, but it's not that straightforward to show that this is the case, the break for me came when I realized that we can use congruence modulo mumbo jumbo :)
+
+Without loss of generality assume $b > a$, then for any $w \pmod{b}$
 %
 \nbea
-as - b|t| & = & 1
+ah & = & w \pmod{b}
 \neea
 %
-
+we can find a solution $h \pmod{b}$ because $(a,b)=1$, but this also means
 %
 \nbea
-n & = & ab + w \\
-& = & a(aq+r) + w \\
-& = & aqa + ar + w
-
-ax + by \\
-ax + (aq+r)y\\
-ax + aqy + ry = aqa + ar + 1\\
-a(x-r) + aq(y-a) + ry = 1
-a(x + qy) + ry
+ah & = & bm + w
 \neea
 %
+where $0<h<b$ and $m \ge 0$, now since $ah > bm$ and $b > a$ this means that $m < h$, now we can shift things around and add $ab$ to both sides
+%
+\nbea
+ah - bm & = & w \\
+\to ah + b(a-m) & = & ab + w
+\neea
+%
+and those are our $x$ and $y$, for $n = uab$ where $u$ is a positive integer we have
+%
+\nbea
+a(b) + b((u-1)a) & = & uab
+\neea
+%
+the ones we are missing are the ones in between multiples of $ab$, \eg $n = uab + w$ where $ 0 < w < b$ if $w > b$ we can absorb it into $w = bq + w'$
+
+There are two lemmas we need to know to utilize congruence for this problem. The first one is that if we have a number $q$, the set of remainders of $q$, $S = \{0,1,2,\ldots,q-1\}$, if we pick any number from that set, say $p, 0 < p < q$ with $(p,q)=1$ then if we multiply $pS = T$, the new set $T$ is also a set of the remainders of $q$ (most probably shifted by some multiples of $q$).
+
+Why is this so? because 
 
 (b) Say assume the opposite that we have positive $x$ and positive $y$
 %
