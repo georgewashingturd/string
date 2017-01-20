@@ -536,36 +536,51 @@ ab + as + bt & = & ab + 1
 %
 we now need to show that the negative one among $s,t$ is smaller than $a$ or $b$ and therefore we can add $ab$ to it and make it positive, but it's not that straightforward to show that this is the case, the break for me came when I realized that we can use congruence modulo mumbo jumbo :)
 
-Without loss of generality assume $b > a$, then for any $w \pmod{b}$
-%
-\nbea
-ah & = & w \pmod{b}
-\neea
-%
-we can find a solution $h \pmod{b}$ because $(a,b)=1$, but this also means
-%
-\nbea
-ah & = & bm + w
-\neea
-%
-where $0<h<b$ and $m \ge 0$, now since $ah > bm$ and $b > a$ this means that $m < h$, now we can shift things around and add $ab$ to both sides
-%
-\nbea
-ah - bm & = & w \\
-\to ah + b(a-m) & = & ab + w
-\neea
-%
-and those are our $x$ and $y$, for $n = uab$ where $u$ is a positive integer we have
-%
-\nbea
-a(b) + b((u-1)a) & = & uab
-\neea
-%
-the ones we are missing are the ones in between multiples of $ab$, \eg $n = uab + w$ where $ 0 < w < b$ if $w > b$ we can absorb it into $w = bq + w'$
+Without loss of generality assume $b > a$, next, we need to lay some ground work. First some notation, we call a set $S = \{0,1,2,\ldots,b-1\}$ as a set of the remainders of $b$. Now we can shift $S$ by multiples of $b$ to get say $T = nb + S = \{nb + 0, nb + 1, \ldots, nb + b-1\}$ where $n$ is any integer and we call $T$ to be equivalent to $S$ because if we take the remainders of the elements of $T$ with respect to $b$ we'll get back $S$. We can also shift the elements by {\it different} multiples of $b$ with the same result. Another property of the set of the remainders of $b$ is that every element is unique. By unique we mean that the difference between any two elements is {\it not} a multiple of $b$. To simplify things we'll use the symbol $c \equiv d$ if $c$ and $d$ differ by a multiple of $b$ and therefore equivalent, and $c \not \equiv d$ if $c$ and $d$ do {\bf not} differ by a multiple of $b$ and therefore $c$ and $d$ are unique (not equivalent).
 
-There are two lemmas we need to know to utilize congruence for this problem. The first one is that if we have a number $q$, the set of remainders of $q$, $S = \{0,1,2,\ldots,q-1\}$, if we pick any number from that set, say $p, 0 < p < q$ with $(p,q)=1$ then if we multiply $pS = T$, the new set $T$ is also a set of the remainders of $q$ (most probably shifted by some multiples of $q$).
+With the above set, we can now move forward to the next important result. If  we multiply a set of remainders of $b$, say $S$ with a number say $a$ that is co-prime to $b$, \ie $(a,b)=1$, then $aS$ is also a set of remainders of $b$ and $aS$ is equivalent to any set of remainders of $b$.
 
-Why is this so? because 
+{\it Proof}. First we will show that the elements of $aS$ are all unique as defined above, to prove this let's assume the opposite, say $aw$ and $au$ differ by a multiple of $b$, where $w,u \in S$ and $w \not\equiv u$ where the symbol $\not\equiv$ means $w$ and $u$ do {\bf not} differ by a multiple of $b$, then
+%
+\nbea
+aw & = & bq + au \\
+a(w-u) & = & bq \\
+\to b &|& a(w-u)
+\neea
+%
+but since $(a,b)=1$ this means that $b|(w-u) \to w \equiv u$ but this is a contradiction since $w \not\equiv u$, therefore every member of $aS$ is unique but since the total number of elements of $\#aS = \#S$, this means $aS$ is also a set of remainders of $b$.
+
+The next thing we need to note is that by the same argument above since $(a,b)=1$, $aw \equiv 0$ only if $w \equiv 0$ and if $w \not \equiv 0$ then $aw \not\equiv 0$.
+
+Using the above result, we can say that for every $0 < h < b$ (we skip $h=0$ for now) we can express
+%
+\nbea
+ah & = & bf + r
+\neea
+%
+where again $(a,b)=1$ and $0 < r < b$. Now since $a,h > 0$ therefore $r$ cannot be 0 (recall that $ah \equiv 0 \to r\equiv 0$ only if $h \equiv 0$) instead $0 < r < b$, this means that $f > 0$. Since both sides are positive $\to ah > bf$, but since $b > h$, for $ah > bf$, $f$ must be smaller than $a$, this result $f < a$ is the key. We can now move things around
+%
+\nbea
+ah - bf & = & r \\
+\to ah + b(a-f) & = & ab + r
+\neea
+%
+since $f < a$, $(a-f) > 0$ and this is our positive $x$ and $y$, almost. We need to show it for {\bf all} $n > ab$. But we can now build the case for {\bf all} $n$.
+
+In the above we have shown that there are positive $x$ and $y$ such that $ax + by = n$ for $ab < n < ab+b$. First, the above can be easily modified for any $n = vab + r$, $v > 1$
+%
+\nbea
+(v-1)ab + ah + b(a-f) & = & (v-1)ab + ab + r \\
+a((v-1)b + h) + b(a-f) & = & vab + r
+\neea
+%
+so the only cases left are the ones where $n = vab$, $v > 1$ but this can be easily dealt with
+%
+\nbea
+a(b) + b\{(v-1)a\}& = & vab
+\neea
+%
+and that's all there is to it :) how about $ax + by = ab$? that will be dealt with in part (b)
 
 (b) Say assume the opposite that we have positive $x$ and positive $y$
 %
