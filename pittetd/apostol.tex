@@ -1325,7 +1325,18 @@ while the integral $\int_{[y]}^{[x]}[t]f'(t)dt$ is given by
 & = & 3
 \neea
 %
-so ........ \dunno
+so obviously $-\int_m^k \neq -\int_y^x$ but this is ok because
+%
+\nbea
+-\int_y^x [t]f'(t)dt & = & -\int_m^k [t]f'(t)dt +\int_m^y [t]f'(t)dt -\int_k^x [t]f'(t)dt \\
+\to -\int_m^k [t]f'(t)dt +kf(k) - mf(m) & = & -\int_y^x [t]f'(t)dt + \left ( kf(k) + \int_k^x [t]f'(t)dt\right ) \\
+&& + \left (-\int_m^y [t]f'(t)dt - mf(m) \right) \\
+& = & -\int_y^x [t]f'(t)dt + \left ( \bcancel{kf(k)} +[x]f(x) - \bcancel{[k]f(k)} \right ) \\
+&& + \left (- [y]f(y) + \bcancel{[m]f(m)} - \bcancel{mf(m)} \right) \\
+& = & -\int_y^x [t]f'(t)dt + kf(x) - mf(y)
+\neea
+%
+recall that $k = [x]$ and $m=[y]$.
 
 {\bf Page 55}, ``Integration by parts gives us $\dots$ and when this is combined with (6) we obtain (5)'', what we want to do here is to move everything to the LHS
 %
@@ -1529,6 +1540,37 @@ so here we see why the different decomposition, the thing is that we want to max
 {\bf Page 62}, PROOF of Theorem 3.8, the thing to note here is that the visibility between two points is translationally  invariant (as long as we translate using integer increments), you can translate the two points to any two other points and the visibility will be the same. And if we think of them as vectors then $(a-m,b-n)$ is the the vector pointing to $(a,b)$ from $(m,n)$.
 
 It is also symmetric under reflection w.r.t $x$ or $y$ or $x$ followed by $y$ or vice versa but not under rotation, maybe under boost? \dunno although I'm not sure if these symmetries will bring about any new information about the Euler totient function or any other arithmetical functions ...
+
+{\bf Page 68}, last line
+%
+\nbea
+x \sum_{n=2}^{\infty} \frac{\log~n}{n(n-1)} & = & O(x).
+\neea
+%
+this is because $\sum_{n=2}^{\infty} \frac{\log~n}{n(n-1)}$ is a convergent series, how do we see this, first we use integral test to show that $\sum_{n=2}^{\infty} \frac{\log~n}{n^2}$ is convergent and then use limit comparison test to show that $\sum_{n=2}^{\infty} \frac{\log~x}{n(n-1)}$ is also convergent. First
+%
+\nbea
+\int_2^\infty \frac{\log~x}{x^2} & = & \left. -\frac{\log~x}{x} - \frac{1}{x} \right |_2^\infty \\
+& = & 0 - \left ( -\frac{\log~2}{2} - \frac{1}{2} \right ) \\
+& = & \frac{1 + \log~2}{2}
+\neea
+%
+because $\lim_{x\to\infty}\frac{\log~x}{x} = 0$ so $\int_2^\infty \frac{\log~x}{x^2}$ is convergent. Now, the integral test says that  if $\int_k^\infty f(x) dx$ is convergent then $\sum_{n=k}^{\infty} a(n)$ is also convergent, and if the integral is divergent the sum is too, and of course here $f(n) = a(n)$, therefore $\sum_{n=2}^{\infty} \frac{\log~n}{n^2}$ is also convergent.
+
+The limit comparison test says that if we have two series $\sum a(n)$ and $\sum b(n)$ with $a(n)\ge0,~b(n) > 0$, if the following limit exists
+%
+\nbea
+c & = & \lim_{n\to\infty} \frac{a(n)}{b(n)}
+\neea
+%
+and $c$ is {\bf positive} and finite then either both series diverge or both converge. So we now need to take the limit
+%
+\nbea
+\lim_{n\to\infty}\frac{\frac{\log~n}{n^2}}{\frac{\log~n}{n(n-1)}} & = & \lim_{n\to\infty} \frac{n^2 - n}{n^2} \\
+& = & 1
+\neea
+%
+so the limit is finite and positive and since $\sum_{n=2}^{\infty} \frac{\log~n}{n^2}$ is convergent therefore $\sum_{n=2}^{\infty} \frac{\log~n}{n(n-1)}$ is also convergent.
 
 {\bf Problem 20}. If $n$ is a positive integer prove that $[\sqrt{n} + \sqrt{n+1}] = [\sqrt{4n+2}]$
 
