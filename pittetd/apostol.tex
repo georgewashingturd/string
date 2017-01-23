@@ -1336,7 +1336,7 @@ so obviously $-\int_m^k \neq -\int_y^x$ but this is ok because
 & = & -\int_y^x [t]f'(t)dt + kf(x) - mf(y)
 \neea
 %
-recall that $k = [x]$ and $m=[y]$.
+recall that $k = [x]$ and $m=[y]$. Note that in the last line the parameters for $f$ have changed from $f(k),f(m) \to f(x),f(y)$ and so it is a legit move.
 
 {\bf Page 55}, ``Integration by parts gives us $\dots$ and when this is combined with (6) we obtain (5)'', what we want to do here is to move everything to the LHS
 %
@@ -1345,7 +1345,7 @@ recall that $k = [x]$ and $m=[y]$.
 \to \int_y^x f(t)dt - xf(x) + yf(y) + \int_y^xtf'(t)dt & = & 0
 \neea
 %
-and we add this zero to (6) to get (5) sans the fudging discussed above :)
+and we add this zero to (6) to get (5) sans the ``fudgings'' discussed above :)
 
 {\bf PROOF of Theorem 3.2, Page 55} The peculiar thing here is the constant 1 which we get from $-f(y)([y]-y)$. The problem here is that the lower limit $y = 1$ and so $[y]-y = 1-1=0$, however, as explained above, the lower limit must not be an integer as $y < n$ and $n$ starts with $n=1$, the less than sign is crucial here.
 
@@ -1541,6 +1541,27 @@ so here we see why the different decomposition, the thing is that we want to max
 
 It is also symmetric under reflection w.r.t $x$ or $y$ or $x$ followed by $y$ or vice versa but not under rotation, maybe under boost? \dunno although I'm not sure if these symmetries will bring about any new information about the Euler totient function or any other arithmetical functions ...
 
+{\bf Page 65}, Theorem 3.10, let's recap some definitions, the asterisk product is defnied as
+%
+\nbea
+(f * g)(n) & = & \sum_{d|n} f(d) g\left(\frac{n}{d}\right)
+\neea
+%
+and the circle product is defined as
+%
+\nbea
+\left ( \alpha \circ F \right ) (x) & = & \sum_{n\le x}\alpha(n) F\left ( \frac{x}{n}\right )
+\neea
+%
+where $\alpha$ is an aritmetical function while $F$ is a real function with $F(x) = 0$ for $0 < x < 1$. Therefore
+%
+\nbea
+H(x) & = & \sum_{n \le x}h(n) \\
+& = & \sum_{n \le x} (f * g)(n) U\left ( \frac{x}{n}\right ) \\
+& = & (f * g) \circ U
+\neea
+%
+
 {\bf Page 68}, last line
 %
 \nbea
@@ -1570,7 +1591,7 @@ and $c$ is {\bf positive} and finite then either both series diverge or both con
 & = & 1
 \neea
 %
-so the limit is finite and positive and since $\sum_{n=2}^{\infty} \frac{\log~n}{n^2}$ is convergent therefore $\sum_{n=2}^{\infty} \frac{\log~n}{n(n-1)}$ is also convergent.
+so the limit is finite and positive and since $\sum_{n=2}^{\infty} \frac{\log~n}{n^2}$ is convergent therefore $\sum_{n=2}^{\infty} \frac{\log~n}{n(n-1)}$ is must also be convergent.
 
 {\bf Problem 20}. If $n$ is a positive integer prove that $[\sqrt{n} + \sqrt{n+1}] = [\sqrt{4n+2}]$
 
