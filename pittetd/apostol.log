@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  22 JAN 2017 21:00
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  22 JAN 2017 22:38
 entering extended mode
 **C:/Users/User/Documents/GitHub/string/pittetd/apostol.tex
 (C:/Users/User/Documents/GitHub/string/pittetd/apostol.tex
@@ -674,16 +674,16 @@ Overfull \hbox (49.72408pt too wide) in alignment at lines 1480--1483
  []
 
 [35] [36] [37] [38] [39] [40]
-Overfull \hbox (10.86467pt too wide) in paragraph at lines 1686--1689
+Overfull \hbox (10.86467pt too wide) in paragraph at lines 1688--1691
 \OT1/cmr/m/n/12 which is what we are af-ter and more, for one thing we get equa
 l-i-ties with $[[]]\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 [[]]$
  []
 
 [41] [42] [43] [44] [45] [46] [47] (apostol.bbl) [48]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1893.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1895.
  (apostol.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1893.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1893.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1895.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1895.
  ) 
 Here is how much of TeX's memory you used:
  13335 strings out of 428755
