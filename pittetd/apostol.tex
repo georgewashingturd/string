@@ -1595,7 +1595,7 @@ so the limit is finite and positive and since $\sum_{n=2}^{\infty} \frac{\log~n}
 
 I actually tried doing integral test straight on $\sum_{n=2}^{\infty} \frac{\log~n}{n(n-1)}$ but the integral turned out to be complicated and so I used the two step method above :)
 
-{\bf Problem 20}. If $n$ is a positive integer prove that $[\sqrt{n} + \sqrt{n+1}] = [\sqrt{4n+2}]$
+{\bf Problem 3.20}. If $n$ is a positive integer prove that $[\sqrt{n} + \sqrt{n+1}] = [\sqrt{4n+2}]$
 
 This problem turns out to be trickier than I initially thought, the first order of business here is to see how $4n+2$ behaves, the $4n$ scream modulo 4 to me, so let's see.
 
@@ -1777,7 +1777,7 @@ The next thing I tried was to maybe multiply or divide, I tried division togethe
 %
 and I wanted to see if the numerical values compute, \ie $1 + \frac{1}{4n}$ multiplied with $\sqrt{n}+\sqrt{n+1}$ will never produce a number that crosses/straddle an integer point but it was actually a silly idea, there's no easy way to verify this fact and along this silly line of thinking I was also trying to show that the difference between $\ceil{\sqrt{n} + \sqrt{n+1}} - \sqrt{n} + \sqrt{n+1}$ is always bigger than $d = [\sqrt{4n+2}] - [\sqrt{n} + \sqrt{n+1}]$ so that adding $d$ to $[\sqrt{n}+\sqrt{n+1}]$ would never cross an integer point.
 
-{\bf Problem 21}. Determine all positive integers $n$ such that $[\sqrt{n}]$ divides $n$
+{\bf Problem 3.21}. Determine all positive integers $n$ such that $[\sqrt{n}]$ divides $n$
 
 Say we have a perfect square $m = a^2$, take a number $n=m+k$, if $k = aw$ then $n=a^2+aw$ is divisible by $a=[\sqrt{n}]$, the caveat here is that to make sure $a = [\sqrt{n}]$, we must restrict $w$ such that $n < (a+1)^2$ which means that
 %
@@ -1797,7 +1797,7 @@ for $a$ to have an integer solution $w^2+4n$ must be a perfect square and as des
 
 Also $w=0$ means that $4n$ is a perfect square which means that $n$ is a perfect square. Therefore as long as either $n$ is a perfect square or $4n+1$ or $4n+4$ is a perfect square, $n$ is divisible by $[\sqrt{n}]$.
 
-{\bf Problem 22}. If $n$ is a positive integer, prove that
+{\bf Problem 3.22}. If $n$ is a positive integer, prove that
 %
 \nbea
 \left \lbrack \frac{8n + 13}{25} \right \rbrack - \left \lbrack \frac{n - 12 - \left \lbrack \frac{n-17}{25}\right \rbrack}{3} \right \rbrack
@@ -1870,6 +1870,211 @@ l - 12 - \left \lbrack \frac{l-17}{25} \right \rbrack & = & 3q'' + r'' \\
 \neea
 %
 
+{\bf Problem 3.24}. Prove that
+%
+\nbea
+\sum_{n \le x} \left \lbrack \sqrt{\frac{x}{n}} \right \rbrack & = & \sum_{n \le \sqrt{x}} \left \lbrack \frac{x}{n^2} \right \rbrack
+\neea
+%
+
+Here I'll just give the outline of my proof since the pattern is pretty obvious, there's however a much smarter solution due to Greg Hurst that I'll reproduce here.
+
+My strategy is to use induction since the base case $x = 1$ is obvious, the next thing to show is that what happens when $x$ is not an integer, it turns out that for this particular problem $\sum_{n \le x} = \sum_{n \le [x]}$ and we'll see why for a minute.
+
+The pattern is more manifest from the RHS, let's see it with a couple of examples, say $x = 13$
+%
+\nbea
+\sum_{n \le \sqrt{13}} \left \lbrack \frac{x}{n^2} \right \rbrack = \sum_{n \le 3.6055} \left \lbrack \frac{x}{n^2} \right \rbrack & = & \left \lbrack \frac{13}{1^2} \right \rbrack + \left \lbrack \frac{13}{2^2} \right \rbrack + \left \lbrack \frac{13}{3^2} \right \rbrack \\
+& = & \left \lbrack \frac{13}{1} \right \rbrack + \left \lbrack \frac{13}{4} \right \rbrack + \left \lbrack \frac{13}{9} \right \rbrack \\
+\neea
+%
+from the above example we can learn a few things, one, it is now straightforward to see that $\sum_{n \le x} = \sum_{n \le [x]}$ because say we add $0 < \Delta < 1$ to $13$ above since $\Delta$ is {\bf less than one}, $[\sqrt{13 + \Delta}] = [\sqrt{13}]$ since if $x$ is not a perfect square the only chance is to add one to $x$, if the $\Delta$ is less than one then $x + \Delta$ has no hope of becoming a perfect square, and also
+%
+\nbea
+\left \lbrack \frac{x}{n^2} \right \rbrack & = & \left \lbrack \frac{x + \Delta}{n^2} \right \rbrack
+\neea
+%
+if $0 < \Delta < 1$ for the same reason that if we express $x = n^2q + r$, since $0 \le r < n^2$ adding $0 < \Delta < 1$ still maintains the range of $0 < r  + \Delta< n^2$ and thus
+%
+\nbea
+\left \lbrack \frac{x + \Delta}{n^2} \right \rbrack & = & \left \lbrack \frac{n^2q}{n^2} + \frac{r + \Delta}{n^2} \right  \rbrack \\
+& = & \left \lbrack q + \frac{r + \Delta}{n^2} \right \rbrack \\
+& = & \left \lbrack q + \frac{r}{n^2} \right \rbrack
+\neea
+%
+since $0 <\frac{r + \Delta}{n^2} < 1$ just as $0 \le \frac{r}{n^2} < 1$. And here we also see that if $x$ is already a multiple of a perfect square adding $0 < \Delta < 1$ doesn't do anything.
+
+For the LHS it's a bit harder to see that $\sum_{n \le x} = \sum_{n \le [x]}$ but it's practically the same, if $\frac{x}{n}$ is not a perfect square adding $0 < \Delta < 1$ to $x$ doesn't do anything because the only way $\left \lbrack \sqrt{\frac{x + \Delta}{n}} \right \rbrack \neq \left \lbrack \sqrt{\frac{x}{n}} \right \rbrack$ is if $\frac{x + \Delta}{n}$ is a perfect square while $\frac{x}{n}$ is not.
+
+But if $\frac{x}{n}$ is not a perfect square, to make it a perfect square we have to increment $\frac{x}{n}$ by at least one, in our case however, $0 < \frac{\Delta}{n} < 1$ so it doesn't do anything. And of course if $\frac{x}{n}$ is already a perfect square, adding $ 0< \Delta < 1$ to $x$ doesn't change anything.
+
+So we have seen that the case for non-integer $x$ is the same as integer $x$, therefore we can just consider integer $x$, so let's begin our induction. The base case is $x = 1$ and it's self-evident :)
+
+Notice that increasing $x \to x+1$ will increase both LHS and RHS by at {\it least} one. For the RHS this is due to $\left\lbrack\frac{x}{1^2}\right\rbrack$, increasing $x$ bby one will definitely increase this term, for the LHS this is because increasing $x$ by one means that we have one more value for the dummy index $n$ and the additional term $\sqrt{\frac{x+1}{n=x+1}}$ is a new term for $x+1$ that wasn't there for $x$.
+
+Now what happens if we increase $x \to x+1$? For the RHS it's simple, if $x$ were not a multiple of some $n^2$ and $x+1$ is then $\left \lbrack \frac{x + 1}{n^2} \right \rbrack = \left \lbrack \frac{x}{n^2} \right \rbrack + 1$ otherwise there's no change for that {\bf particular} $n^2$.
+
+How about the LHS? it's pretty much the same although not as apparent as the RHS. For $\sqrt{\frac{x+1}{n}} \neq \sqrt{\frac{x}{n}}$ for a {\bf particular} $n$, we must have $\frac{x+1}{n}$ to be a perfect square while $\frac{x}{n}$ is not.
+
+To see it more clearly let us relabel things, say for the RHS we are focusing on a particular $n^2 = m^2$, so now for the LHS we want to see when $\frac{x}{n}$ will be equal $m^2$, not that $x$ is the same for both LHS and RHS, so if $x$ is not a multiple of $m^2$, on the RHS $\left \lbrack \frac{x}{m^2}\right\rbrack$ and $x+1$ is, then on the RHS we get an increment of $1$.
+
+On the LHS since $m^2 \nmid x$, there's no $n$ such that $\frac{x}{n}$ is $m^2$, but since $m^2|x+1$, there's now an $n=y$ on the LHS such that $\frac{x+1}{y} = m^2$ and thus $\left \lbrack \sqrt{\frac{x+1}{y}} \right \rbrack = \left \lbrack \sqrt{\frac{x}{y}} \right \rbrack + 1$ and so the LHS also increases by one. Note that $\frac{x+1}{y}$ must be exactly $m^2$ due to the square root
+
+But now there's a catch, if $y > 1$ then what happens to all $w \neq y$, $\left \lbrack \sqrt{\frac{x+1}{w}} \right \rbrack$? will they also change? Well, the answer is no because $x+1 = ym^2$ so it can't also be $wm^2$ with $w \neq y$.
+
+Next question will be why $\frac{x+1}{y}$ has to be exactly $m^2$ why not some $km^2$? Now if $k$ is not a perfect square what we have is that neither $\frac{x+1}{y}$ nor $\frac{x}{y}$ is a perfect square and by the reasoning explained above, increasing $x$ doesn't do anything, \ie $\left\lbrack\sqrt{\frac{x+1}{y}}\right\rbrack = \left\lbrack\sqrt{\frac{x}{y}}\right\rbrack$.
+
+Now how about $k = s^2 \to \frac{x+1}{y} = s^2m^2$? in this case there would be $n = s^2$ such that $\frac{x+1}{s^2} = m^2$ and this is possible since obviously $s^2 < x+1$. But this also means that $\frac{x}{s^2}$ is not a perfect square and increasing $x\to x+1$ has the same effect as discussed above except that we have $s^2$ instead of $m^2$. There's also $n=m^2$ such that $\frac{x+1}{m^2} = s^2$ and in this case we have another increment in the LHS and of course there's also $\frac{x+1}{y} = s^2m^2$ and so we have three separate increments of $\left \lbrack\sqrt{\frac{x}{n}}\right\rbrack$ in the LHS which are also mirrored on the RHS, $\left \lbrack \frac{x+1}{s^2} \right\rbrack$, $\left \lbrack \frac{x+1}{m^2} \right\rbrack$, $\left \lbrack \frac{x+1}{s^2m^2} \right\rbrack$, so the increments are always in sync between LHS and RHS.
+
+And that's all there is to it, to reduce obscurity an example is fitting. Take for example going from $x = 7 \to 8 \to 9$ for the LHS with $x = 7$ we have
+%
+\nbea
+\left \lbrack \sqrt{\frac{7}{2}}\right \rbrack = \left \lbrack \sqrt{\frac{7}{3}}\right \rbrack = \ldots = \left \lbrack \sqrt{\frac{7}{7}}\right \rbrack = 1
+\neea
+%
+while 
+%
+\nbea
+\left \lbrack \sqrt{\frac{7}{1}}\right \rbrack = 2
+\neea
+%
+while the RHS is
+%
+\nbea
+\left \lbrack \frac{7}{1}\right \rbrack+\left \lbrack \frac{7}{4}\right \rbrack
+\neea
+%
+now going from $7\to8$ we have on the LHS
+%
+\nbea
+\left \lbrack \sqrt{\frac{8}{3}}\right \rbrack = \left \lbrack \sqrt{\frac{8}{4}}\right \rbrack = \ldots = \left \lbrack \sqrt{\frac{8}{8}}\right \rbrack = 1
+\neea
+%
+while 
+%
+\nbea
+\left \lbrack \sqrt{\frac{8}{1}}\right \rbrack = \left \lbrack \sqrt{\frac{8}{2}}\right \rbrack = 2
+\neea
+%
+because now while $\frac{7}{2} \neq 4$, $\frac{8}{2} = 4$ and so here $y=2$, $x = 7$, and $m^2 = 4$ and as advertised
+%
+\nbea
+\left \lbrack \sqrt{\frac{x+1}{y}}\right \rbrack & = & \left \lbrack \sqrt{\frac{x}{y}}\right \rbrack + 1
+\neea
+%
+{\bf only} for $y = 2$ and for the RHS we have
+%
+\nbea
+\left \lbrack \frac{8}{4}\right \rbrack = \left \lbrack \frac{7}{4}\right \rbrack + 1
+\neea
+%
+
+Now going from $8\to9$, with $x=9$ we have
+%
+\nbea
+\left \lbrack \sqrt{\frac{9}{3}}\right \rbrack = \left \lbrack \sqrt{\frac{9}{4}}\right \rbrack = \ldots = \left \lbrack \sqrt{\frac{9}{9}}\right \rbrack = 1
+\neea
+%
+but now
+%
+\nbea
+\left \lbrack \sqrt{\frac{9}{1}}\right \rbrack = 3 & ~~~~~~~~~~~~ & \left \lbrack \sqrt{\frac{9}{2}}\right \rbrack = 2
+\neea
+%
+and in this case $x = 8$, $y = 1$, and $m^2 = 9$
+%
+\nbea
+\left \lbrack \sqrt{\frac{x+1}{y}}\right \rbrack & = & \left \lbrack \sqrt{\frac{x}{y}}\right \rbrack + 1
+\neea
+%
+{\bf only} for $y = 1$ and for the RHS we have and additional term
+%
+\nbea
+\left \lbrack \frac{9}{9}\right \rbrack = 1
+\neea
+%
+apart from $\left \lbrack \frac{9}{4}\right \rbrack$ and $\left \lbrack \frac{9}{1}\right \rbrack$. 
+
+The clever proof by Greg Hurst utilizes Theorem 3.11 and by introducing a new square indicator arithmetical function, $s(n)$ where $s(n)=1$ if $n$ is a perfect square and $0$ otherwise, then
+%
+\nbea
+\left \lbrack \sqrt{x} \right \rbrack & = & \# {\rm~of~perfect~squares~} \le x = S(x) = \sum_{n\le x}s(n)
+\neea
+%
+the above is an astute and important observation, in that $\left\lbrack \sqrt{x}\right\rbrack$ itself already counts the number of perfect squares less than $x$.
+
+From Theorem 3.11 that states, if $F(x) = \sum_{n \le x} f(n)$ we have
+%
+\nbea
+\sum_{n\le x}\sum_{d|n} f(d) = \sum_{n\le x} f(n)\left\lbrack\frac{x}{n}\right\rbrack = \sum_{n\le x}F\left (\frac{x}{n}\right )
+\neea
+%
+so here we set $F(x) = S(x) = \left\lbrack\sqrt{x}\right\rbrack$
+%
+\nbea
+\sum_{n\le x} \left \lbrack \frac{x}{n}\right \rbrack = \sum_{n\le x}S\left (\frac{x}{n}\right ) = \sum_{n\le x} s(n) \left \lbrack\frac{x}{n} \right\rbrack
+\neea
+%
+but since $s(n)$ is either 1 or 0 and it's only 1 if $n=m^2$ we have 
+%
+\nbea
+\sum_{n\le x} s(n) \left \lbrack\frac{x}{n} \right\rbrack & = & \sum_{m^2\le x} \left\lbrack \frac{x}{m^2}\right \rbrack = \sum_{m\le \sqrt{x}} \left\lbrack \frac{x}{m^2}\right \rbrack
+\neea
+%
+So at first glance it seems to be a lot simpler to utilize Theorem 3.11 to solve this problem, however, recall that to prove Theorem 3.11 we need to have the concept of arithmetical functions, Dirichlet products, and generalized Dirichlet products, to say the least while induction is well basic :)
+
+\bigskip
+\underline{\textbf{\textit{Chapter 4}}}
+\bigskip
+
+{\bf Page 80}, Theorem 4.5, Eq (12)m the proof of this theorem assumes that Eq (11) is true, \ie $\lim_{x\to\infty} \frac{\pi(x)\log~x}{x} = 1$ is true, but if this is true we can immediately substitute it, $\lim_{x\to\infty} \pi(x) = \frac{x}{\log~x}$, to Eq (12)
+%
+\nbea
+\lim_{x\to\infty} \frac{\pi(x)\log~\pi(x)}{x} & = & \lim_{x\to\infty} \frac{\pi(x)\log~\left (\frac{x}{\log~x} \right )}{x} \\
+& = & \lim_{x\to\infty} \frac{\pi(x)\log~x}{x} - \frac{\pi(x)\log \log~x}{x} \\
+& = & \lim_{x\to\infty} \frac{\pi(x)\log~x}{x}
+\neea
+%
+since $\lim_{x\to\infty} \frac{\pi(x)\log \log~x}{x} = 0$ which can be easily seen by applying L'Hospital's rule
+%
+\nbea
+\lim_{x\to\infty} \frac{\pi(x)\log \log~x}{x} & = & \lim_{x\to\infty} \left (\frac{\bcancel{x}}{\log~x}\right ) \left (\frac{\log \log~x}{\bcancel{x}}\right ) \\
+& = & \lim_{x\to\infty} \frac{\log \log~x}{\log~x} ~~~\longrightarrow ~~~{\rm apply~L'Hospital~next}\\
+& = & \lim_{x\to\infty}\frac{\left(\frac{1}{\log~x}\right)\left(\frac{1}{x}\right)}{\frac{1}{x}} \\
+& = & \lim_{x\to\infty}\frac{1}{\log~x} \\
+& = & 0
+\neea
+%
+
+{\bf Page 81}, somewhere mid page, this is quite a neat trick
+%
+\nbea
+\frac{p_{n+1}}{n\log~n} & = & \frac{p_{n+1}}{(n+1)\log~(n+1)} \frac{(n+1)\log~(n+1)}{n\log~n}
+\neea
+%
+but we have assumed that $\lim_{n\to\infty}\frac{p_{n}}{n\log~n} = 1$ thus $\lim_{n+1\to\infty}\frac{p_{n+1}}{(n+1)\log~(n+1)} = 1$ as well, the other term we use L'Hospital again
+%
+\nbea
+\lim_{n\to\infty} \frac{(n+1)\log~(n+1)}{n\log~n} & = & \lim_{n\to\infty} \frac{\log~(n+1) + (n+1)/(n+1)}{\log~n + n/n} \\
+& = & \lim_{n\to\infty} \frac{\log~(n+1) + 1}{\log~n+1} \\
+& = & \lim_{n\to\infty} \frac{\frac{1}{n+1}}{\frac{1}{n}} \\
+& = & 1
+\neea
+%
+where we have used L'Hospital twice.
+
+{\bf Page 82}, PROOF of Theorem 4.6, ``and the other one is easily verified by induction'' and this refers to $2^n < {2n \choose n}$.
+
+For the RHS, going from $n\to n+1$ we get
+%
+\nbea
+{2(n+1) \choose (n+1)} & = & \frac{2(n+1)!}{(n+1)!(n+1)!} \\
+& = & \frac{(2n+2)(2n+1)(2n)!}{(n+1)(n+1)n!n!} \\
+& = & 2 \left(\frac{2n+1}{n+1}\right ){2n \choose n} \\
+& > & 2 {2n \choose n}
+\neea
+%
+while for the LHS $2^{n+1} = 2\cdot 2^n$ and thus the RHS is always bigger.
 
 
 

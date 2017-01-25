@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  22 JAN 2017 22:38
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  24 JAN 2017 19:45
 entering extended mode
 **C:/Users/User/Documents/GitHub/string/pittetd/apostol.tex
 (C:/Users/User/Documents/GitHub/string/pittetd/apostol.tex
@@ -679,11 +679,12 @@ Overfull \hbox (10.86467pt too wide) in paragraph at lines 1688--1691
 l-i-ties with $[[]]\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 [[]]$
  []
 
-[41] [42] [43] [44] [45] [46] [47] (apostol.bbl) [48]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1895.
+[41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] (apostol.bbl)
+[53]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2100.
  (apostol.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1895.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1895.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 2100.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 2100.
  ) 
 Here is how much of TeX's memory you used:
  13335 strings out of 428755
@@ -692,6 +693,6 @@ Here is how much of TeX's memory you used:
  16551 multiletter control sequences out of 15000+200000
  16861 words of font info for 62 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
- 36i,17n,38p,1045b,399s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,18n,38p,1045b,399s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on apostol.pdf (48 pages).
+Output written on apostol.pdf (53 pages).
