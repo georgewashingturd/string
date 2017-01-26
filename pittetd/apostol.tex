@@ -1332,7 +1332,7 @@ so obviously $-\int_m^k \neq -\int_y^x$ but this is ok because
 \to -\int_m^k [t]f'(t)dt +kf(k) - mf(m) & = & -\int_y^x [t]f'(t)dt + \left ( kf(k) + \int_k^x [t]f'(t)dt\right ) \\
 && + \left (-\int_m^y [t]f'(t)dt - mf(m) \right) \\
 & = & -\int_y^x [t]f'(t)dt + \left ( \bcancel{kf(k)} +[x]f(x) - \bcancel{[k]f(k)} \right ) \\
-&& + \left (- [y]f(y) + \bcancel{[m]f(m)} - \bcancel{mf(m)} \right) \\
+&& + \left (- [y]f(y) + \cancel{[m]f(m)} - \cancel{mf(m)} \right) \\
 & = & -\int_y^x [t]f'(t)dt + kf(x) - mf(y)
 \neea
 %
@@ -1561,6 +1561,20 @@ H(x) & = & \sum_{n \le x}h(n) \\
 & = & (f * g) \circ U
 \neea
 %
+
+{\bf Page 67}, Theorem 3.14, this is actually a pretty neat theorem because it relates the factorial of $x$ to prime numbers less than $x$, but I believe it can be straightforwardly proven using induction. And as to why this works, visually we can see it below with an example for  $\alpha(p)$ with $x=10$ and $p=2$, each column shows the number of 2's in each number (we only consider even numbers here obviously)
+%
+\nbea
+\begin{array}{c c c c c l}
+   &    &   & 2  &  & \longrightarrow x/p^3 = 10/2^3 = 1 {\rm~factor~of~} 2\\
+   & 2 &    & 2 &   & \longrightarrow x/p^2 = 10/2^2 = 2 {\rm~factor~of~} 2\\
+2 & 2 & 2 & 2 & 2 & \longrightarrow x/p^1 = 10/2^1 = 5 {\rm~factor~of~} 2\\
+\uparrow & \uparrow & \uparrow & \uparrow & \uparrow \\
+2 & 4 & 6 & 8 & 10 & \longrightarrow {\rm a~total~of~}5+2+1=8{\rm~factors~of~}2
+\end{array}
+\neea
+%
+and I believe there's a small typo in the {\it Note} under Eq (20), it should've read ``The sum for $\alpha(p)$ is finite since $\left \lbrack x/p^m\right \rbrack = 0$ for $p^m>x$.'' and {\bf not} ``for $p > x$''.
 
 {\bf Page 68}, last line
 %
@@ -2076,8 +2090,42 @@ For the RHS, going from $n\to n+1$ we get
 %
 while for the LHS $2^{n+1} = 2\cdot 2^n$ and thus the RHS is always bigger.
 
+{\bf Page 82}, PROOF of Theorem 4.6, last equation bottom of page, $m$ only needs to run from 1 to
+%
+\nbea
+p^m & = & n \\
+\log~p^m & = & \log~n \\
+m & = & \frac{\log~n}{\log~p}
+\neea
+%
 
+{\bf Page 83}, mid page, ``For those primes $p$ in the interval $n < p \le 2n$ we have $\left\lbrack 2n/p\right\rbrack - 2\left\lbrack n/p\right\rbrack = 1$'', just note that $p > n$ and so $\left\lbrack n/p\right\rbrack=0$ while for $\left\lbrack 2n/p\right\rbrack$ if $p=2n$ it's 1, otherwise since $p > n$, $2n/p$ it will be greater than 1 but less than 2.
 
+{\bf Page 83}, bottom page, ``the sum of the left telescopes'', a telescoping series is a series whose partial sums eventually only have a fixed number of terms after cancellation (taken from Wikipedia). In this case
+%
+\nbea
+&& \left\{\vartheta(2^{k+1}) - \vartheta(2^k)\right\} + \left\{\vartheta(2^{k}) - \vartheta(2^{k-1})\right\} + \ldots + \left\{\vartheta(2^{1}) - \vartheta(2^0)\right\} \\
+&& ~~~ = \vartheta(2^{k+1}) - \vartheta(2^0) \\
+&& ~~~ = \vartheta(2^{k+1}) - \vartheta(1)
+\neea
+%
+but
+%
+\nbea
+\vartheta(x) & = & \sum_{p\le x} \log~p \\
+\to \vartheta(1) & = & 0
+\neea
+%
+on the RHS
+%
+\nbea
+2^{k+1}\log~2 + 2^{k}\log~2 + \ldots + 2^{0+1}\log~2 & = & \left ( 2^{k+1} + 2^k + \ldots + 2\right )\log~2 \\
+& = & 2\left ( 2^{k} + 2^{k-1} + \ldots + 1\right )\log~2 \\
+& = & 2 \left ( \frac{2^{k+1}-1}{2-1}\right ) \log~2 \\
+& = & (2^{k+2}-2) \log~2 \\
+& < & 2^{k+2}\log~2
+\neea
+%
 
 
 
