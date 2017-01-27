@@ -2035,7 +2035,7 @@ but since $s(n)$ is either 1 or 0 and it's only 1 if $n=m^2$ we have
 \sum_{n\le x} s(n) \left \lbrack\frac{x}{n} \right\rbrack & = & \sum_{m^2\le x} \left\lbrack \frac{x}{m^2}\right \rbrack = \sum_{m\le \sqrt{x}} \left\lbrack \frac{x}{m^2}\right \rbrack
 \neea
 %
-So at first glance it seems to be a lot simpler to utilize Theorem 3.11 to solve this problem, however, recall that to prove Theorem 3.11 we need to have the concept of arithmetical functions, Dirichlet products, and generalized Dirichlet products, to say the least while induction is well basic :)
+So at first glance it seems to be a lot simpler to utilize Theorem 3.11 to solve this problem, however, recall that to prove Theorem 3.11 we need to have the concept of arithmetical functions, Dirichlet products, and generalized Dirichlet products, to say the least while induction is well basic :) but on the other hand, we do need proper tools to solve problems and in this case induction might not be the proper tool.
 
 \bigskip
 \underline{\textbf{\textit{Chapter 4}}}
@@ -2126,6 +2126,76 @@ on the RHS
 & < & 2^{k+2}\log~2
 \neea
 %
+
+{\bf Page 82-84}, some comments on the PROOF of Theorem 4.6, this is a pretty sick proof, so far it's the longest in the book, it started with something unrelated to $\pi(x)$, \ie ${2n \choose n}$, and it moves on from there.
+
+One key point that is used repeatedly is the fact that $\pi(n) \le n$ , the other is we need a summation involving only primes $\sum_{p \le x}$, this we can get from $\vartheta(x)$ or sums involving von Mangoldt functions
+
+But the final step utilizing $0 <\alpha<1 \to (\pi(n) - \pi(n^\alpha))\log~n^\alpha$ is really sick, not to mention using the fact that the function $f(x) = x^{-c} \log~x$ has a peak at $x = e^{1/c}$. There's a lot to learn here people .........
+
+{\bf Page 85}, top of page, another ridiculous trick, $\log x \le (2/e)\sqrt{x}$, let's see how this might come about, maybe we need something involving $\sqrt{p_n}$, and we want to see if we have a function $f(x) = C\sqrt{x} - \log~x$ we want to find out what constant $C$ will guarantee that $f(x) > 0, ~x \ge 1$, first let's take the derivative
+%
+\nbea
+\frac{df(x)}{dx} & = & C/2 \frac{1}{\sqrt{x}} - \frac{1}{x}
+\neea
+%
+it's zero when
+%
+\nbea
+C/2 \frac{1}{\sqrt{x}} - \frac{1}{x} & = & 0 \\
+C/2x & = & \sqrt{x} \\
+C^2/4 x^2 & = & x \\
+\to x & = & 4/C^2
+\neea
+%
+and also when $x\to\infty$, now let's see if this is a maximum or minimum
+%
+\nbea
+C/2 \frac{1}{\sqrt{x}} - \frac{1}{x} & \to & -C/4 \frac{1}{\left (\sqrt{x}\right )^3} + \frac{1}{x^2} \\
+& = & -C/4 \frac{1}{\left (\sqrt{4/C^2}\right )^3} + \frac{1}{(4/C^2)^2} \\
+& = & \frac{-C^4}{32} + \frac{C^4}{16} \\
+& = & \frac{C^4}{32}
+\neea
+%
+since this is positive it is a minimum point, good so now we need to make sure that this point is positive to ensure that $C\sqrt{x} - \log x \ge 0$
+%
+\nbea
+C\sqrt{4/C^2} - \log (4/C^2) & = & 2 - 2 \log (2/C) \\
+& = & 2 - 2 \log 2 + 2\log C
+\neea
+%
+and what we want is
+%
+\nbea
+2 - 2 \log 2 + 2\log C & \ge & 0 \\
+\log C & \ge & \log 2 - 1 \\
+C & \ge & \frac{2}{e}
+\neea
+%
+but since we want the tightest bound we pick the smallest $C = 2/e$ so at least some of the mystery of this $2/e$ number is solved :)
+
+{\bf Page 85}, before Section 4.6, ``$\sum_{n=1}^{\infty} 1/p_n$ diverges, by comparison with $\sum_{n=2}^{\infty}1/(n\log~n)$''
+
+I think here we need to use the limit comparison test, since $p_n < 12(n\log~n + n\log~12/e)$, and we can do this because $a_n, b_n > 0$ where $\sum a_n \equiv \sum_{n=2}^{\infty} 1/(n \log~n)$ and $\sum b_n \equiv \sum_{n=1}^{\infty}1/\{12(n\log~n + n\log~12/e)\}$. Note that since $p_n < 12(n\log~n + n\log~12/e)$, $1/p_n > 1/12(n\log~n + n\log~12/e)$, so if the series $\sum_{n=1}^{\infty}1/\{12(n\log~n + n\log~12/e)\}$ diverges so does the series for $1/p_n$.
+
+What we want to show is first that $\sum_{n=2}^{\infty} 1/(n \log~n)$ diverges, we can do this using the integral test
+%
+\nbea
+\int_2^\infty \frac{1}{x \log x} dx & = & \left . \log \log x \right |_2^{\infty} \\
+& = & \log \log \infty - \log \log 2 \\
+& = & \infty
+\neea
+%
+so $\sum_{n=2}^{\infty} 1/(n \log~n)$ diverges, next we calculate the ratio $c = \lim_{n\to\infty}\frac{a_n}{b_n}$
+%
+\nbea
+\lim_{n\to\infty} \frac{\frac{1}{n\log~n}}{\frac{1}{12(n\log~n + n\log~12/e)}} & = & \lim_{n\to\infty} \frac{12 \cancel{n \log~n}}{\cancel{n\log~n}} + \frac{12\cancel{n}\log~12/e}{\cancel{n}\log~n} \\
+& = & \lim_{n\to\infty} 12 + \frac{12 \log~12/e}{\log~n} \\
+& = & 12
+\neea
+%
+so since this is a positive finite number and one series diverges the other must too.
+
 
 
 

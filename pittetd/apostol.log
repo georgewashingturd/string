@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  25 JAN 2017 19:03
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  26 JAN 2017 18:55
 entering extended mode
 **C:/Users/User/Documents/GitHub/string/pittetd/apostol.tex
 (C:/Users/User/Documents/GitHub/string/pittetd/apostol.tex
@@ -679,12 +679,18 @@ Overfull \hbox (10.86467pt too wide) in paragraph at lines 1702--1705
 l-i-ties with $[[]]\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 [[]]$
  []
 
-[41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [53] (apostol.bbl)
-[54]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2148.
+[41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [53] [54] [55]
+Overfull \hbox (10.87949pt too wide) in paragraph at lines 2177--2178
+[]\OT1/cmr/bx/n/12 Page 85\OT1/cmr/m/n/12 , be-fore Sec-tion 4.6, ``$[][] 1\OML
+/cmm/m/it/12 =p[]$ \OT1/cmr/m/n/12 di-verges, by com-par-i-son with $[][] 1\OML
+/cmm/m/it/12 =\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 n []  []n\OT1/cmr/m/n/12 )$'' 
+ []
+
+(apostol.bbl) [56]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2218.
  (apostol.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 2148.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 2148.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 2218.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 2218.
  ) 
 Here is how much of TeX's memory you used:
  13335 strings out of 428755
@@ -695,4 +701,4 @@ Here is how much of TeX's memory you used:
  1096 hyphenation exceptions out of 8191
  36i,18n,38p,1045b,399s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on apostol.pdf (54 pages).
+Output written on apostol.pdf (56 pages).
