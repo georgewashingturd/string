@@ -2099,6 +2099,48 @@ m & = & \frac{\log~n}{\log~p}
 \neea
 %
 
+{\bf page 83}, Eq (18), in the last inequality he has used the fact that
+%
+\nbea
+\frac{\log 2}{2} = 0.34657 > \frac{1}{4}
+\neea
+%
+but it is also bigger than $\frac{1}{3}$, if it's me I'd choose $\frac{\log 2}{2} > \frac{1}{3}$ for a tighter bound.
+
+Next, for $\pi(2n+1)$, for the last inequality
+%
+\nbea
+\frac{2n}{2n+1} \ge \frac{2}{3}
+\neea
+%
+is because the minimum is achieved when $n=1 \to \frac{2n}{2n+1} = \frac{2}{3}$, but if had we used $\frac{1}{3}$ for Eq(18) we would get as the lower bound
+%
+\nbea
+\frac{2}{9} \frac{n}{\log n} < \pi(n)
+\neea
+%
+which is slightly better than $\frac{1}{6}$ :) and if we are willing to put a condition, by $n=13\to \pi(2n+1) = \pi(27)$
+%
+\nbea
+\frac{\log2}{2}\frac{2n}{2n+1} & \to & \frac{\log2}{2}\frac{26}{27} = 0.33373\ldots > \frac{1}{3}
+\neea
+%
+so we have
+%
+\nbea
+\pi(n) > \frac{1}{3}\frac{n}{\log n}, ~{\rm for}~n\ge27
+\neea
+%
+however, we don't actually need the qualifier $n\ge27$ after all, if we list all values of $\pi(n)$ and $\frac{1}{3}\frac{n}{\log n}$ for $2 \le n \le 27$, it is immediately evident that $\pi(n) > \frac{1}{3}\frac{n}{\log n}$ and so it is true for all $n \ge 2$.
+
+Using the technique of the PROOF of Theorem 4.6 the best we can do is when
+%
+\nbea
+\lim_{n\to\infty}\frac{\log2}{2}\frac{2n}{2n+1} & = & \frac{\log 2}{2} = 0.34657359\ldots
+\neea
+%
+and so $\frac{1}{3}\frac{n}{\log n}$ seems to be the best we can get
+
 {\bf Page 83}, mid page, ``For those primes $p$ in the interval $n < p \le 2n$ we have $\left\lbrack 2n/p\right\rbrack - 2\left\lbrack n/p\right\rbrack = 1$'', just note that $p > n$ and so $\left\lbrack n/p\right\rbrack=0$ while for $\left\lbrack 2n/p\right\rbrack$ if $p=2n$ it's 1, otherwise since $p > n$, $2n/p$ it will be greater than 1 but less than 2.
 
 {\bf Page 83}, bottom page, ``the sum of the left telescopes'', a telescoping series is a series whose partial sums eventually only have a fixed number of terms after cancellation (taken from Wikipedia). In this case
@@ -2124,6 +2166,25 @@ on the RHS
 & = & 2 \left ( \frac{2^{k+1}-1}{2-1}\right ) \log~2 \\
 & = & (2^{k+2}-2) \log~2 \\
 & < & 2^{k+2}\log~2
+\neea
+%
+
+{\bf Page 84}, last step of PROOF of Theorem 4.6, just some comments
+%
+\nbea
+6\log 2 + \frac{3}{e} & = & 5.2625
+\neea
+%
+this is definitely less than 6 and will give a tighter bound but $6$ looks neater :) However, this will give a better bound for Theorem 4.7 as well so the upper bound will become
+%
+\nbea
+p_n < \left(12\log 2 + \frac{6}{e}\right) \left(n\log n + n\log\frac{ \left(12\log 2 + \frac{6}{e}\right)}{e}\right)
+\neea
+%
+But as I've shown above the lower bound can be improved further to $\frac{1}{3}\frac{n}{\log n} < \pi(n)$ and thus the upper bound of Theorem 4.7 can be reduced to
+%
+\nbea
+p_n < 6 \left(n\log n + n\log\frac{6}{e}\right)
 \neea
 %
 
@@ -2173,6 +2234,33 @@ C & \ge & \frac{2}{e}
 \neea
 %
 but since we want the tightest bound we pick the smallest $C = 2/e$ so at least some of the mystery of this $2/e$ number is solved :)
+
+{\bf Page 85}, upper bound of Theorem 4.7 can be improved (significantly?) by noting that the lower bound of Theorem 4.6 gives the upper bound for Theorem 4.7 and the upper bound for Theorem 4.6 gives the lower bound for Theorem 4.7.
+
+Above the lower bound of Theorem 4.6 has been improved from $\frac{1}{6}\frac{n}{\log n} \to \frac{1}{3}\frac{n}{\log n}$ but I believe we can do better, from the empirical values of the prime counting function $\pi(n)$ we see that $\pi(n) > \frac{n}{\log n}$ for $n \ge 11$ and so
+%
+\nbea
+\pi(p_n) & > & \frac{n}{\log n} \\
+n & > & \frac{p_n}{\log p_n} \\
+\to p_n & < & n \log p_n
+\neea
+%
+at least for $n \ge 11$ but direct inspection shows that this is already true for $n \ge 4$, to include all $n$ we need $p_n < 2.89 n\log p_n$ which is roughtly $3\log p_n$ which was the implication of $\frac{1}{3}\frac{n}{\log n} < \pi(n)$ as shown above, so I'll take $n \ge 4$ :) 
+
+Continuing with $p_n < n\log p_n$ with the steps outlined in the book we get
+%
+\nbea
+p_n & < & 2n\log n + 2 n\log\frac{2}{e}
+\neea
+%
+But four numbers are not too much to check, so listing all the numbers we see that with a slight modification we get
+%
+\nbea
+p_n & \le & 2n\log n + 2n
+\neea
+%
+with equality only for $n=1, p_n=2$, the only dodgy thing about this assertion is that we based it on the empirical fact of $\frac{n}{\log n}< \pi(n)$ for $n \ge 11$ and it's not a solid proof.
+
 
 {\bf Page 85}, before Section 4.6, ``$\sum_{n=1}^{\infty} 1/p_n$ diverges, by comparison with $\sum_{n=2}^{\infty}1/(n\log~n)$''
 
@@ -2239,7 +2327,6 @@ Another interesting find is that when we set a constant multiplier $C n\log n$, 
 we exclude $n_0 = 1$ because $\log 1 = 0$ :) Now if $C 2 \log 2 < p_2$ and from above we know that as $n\to\infty$, $Cn\log n = C p_n > p_n$, and if $C > 1$ then it must mean that there's some $n_0$ where the inequality changes sign, and this point is our $n_0$. And of course if $C2 \log 2 > p_2$ then $n_0 = 2$.
 
 The only thing I can't prove right now is that this ratio $(Cn\log n)/p_n$ is a monotonic smooth function and it doesn't vacillate too much from less than one to greater than one.
-
 
 
 
