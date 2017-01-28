@@ -2196,10 +2196,49 @@ so $\sum_{n=2}^{\infty} 1/(n \log~n)$ diverges, next we calculate the ratio $c =
 %
 so since this is a positive finite number and one series diverges the other must too.
 
+{\bf Some comments on Theorem 4.6 and Theorem 4.7}, taking the limit of the ratio of the upper bound we get
+%
+\nbea
+\lim_{n\to\infty} \frac{12 n \log n + 12 n \log\frac{12}{e}}{p_n} & = & \lim_{n\to\infty} 12 \frac{\bcancel{p_n}}{\bcancel{p_n}\log p_n} \log \left ( \frac{p_n}{\log p_n}\right ) + 12 \frac{\bcancel{p_n}}{\bcancel{p_n}\log p_n} \log\frac{12}{e} \\
+& = & \lim_{n\to\infty} 12 \frac{\bcancel{\log p_n}}{\bcancel{\log p_n}} - 12 \frac{\log \log p_n}{\log p_n} + \frac{12}{\log p_n} \log\frac{12}{e} \\
+& = & 12
+\neea
+%
+since $\lim_{x\to\infty} \frac{\log\log x}{\log x} = 0$ just by doing L'Hospital twice and note that here $n=\pi(p_n)$ and so we can use the asymptotic form of $\pi(p_n)$. This gives me an idea, this means that
+%
+\nbea
+\lim_{n\to\infty} \frac{n \log n}{p_n} & = & \lim_{n\to\infty} \frac{\bcancel{p_n}}{\bcancel{p_n}\log p_n} \log \left ( \frac{p_n}{\log p_n}\right ) \\
+& = & \lim_{n\to\infty} \frac{\bcancel{\log p_n}}{\bcancel{\log p_n}} - \frac{\log \log p_n}{\log p_n} \\
+& = & 1
+\neea
+%
+and so $n\log n$ actually gives quite a good estimate of $p_n$ when $n$ is big enough but when $n$ is small it's no good of course, \eg $n\log n=0$ when $n=1$, even when $n=10000$, $n\log n = 92103.4$ while $p_{10000} = 104729$ but we are close enough and it gives a starting point to search for the next prime number. The curious thing is that up to $n=$ one billion, $n\log n < p_n$ still, does this mean that our lower bound is no good? \dunno
 
+Another interesting thing is that if we take the limit of the ratio of the difference of the upper and lower bound to $p_n$ itself we have
+%
+\nbea
+\lim_{n\to\infty} \frac{12 n \log n + 12 n \log\frac{12}{e} - \tfrac{1}{6} n \log n}{p_n} & = & \lim_{n\to\infty} 11\tfrac{5}{6} \frac{\bcancel{p_n}}{\bcancel{p_n}\log p_n} \log \left ( \frac{p_n}{\log p_n}\right ) + 12 \frac{\bcancel{p_n}}{\bcancel{p_n}\log p_n} \log\frac{12}{e} \\
+& = & \lim_{n\to\infty} 11\tfrac{5}{6} \frac{\bcancel{\log p_n}}{\bcancel{\log p_n}} - 11\tfrac{5}{6} \frac{\log \log p_n}{\log p_n} + \frac{12}{\log p_n} \log\frac{12}{e} \\
+& = & 11\tfrac{5}{6}
+\neea
+%
+so the {\bf difference} between the upper and lower bounds is bigger than the prime number itself, almost 12 times bigger.
 
+Another interesting find is that when we set a constant multiplier $C n\log n$, if $C = 1$ it seems that $n\log n < p_n$, but if $C=1.1$, $C n \log n > p_n$ when $n > 43$ so once $C > 1$, $Cn\log n > p_n$ after some $n$, or in other words
 
+\underline{\textit {Proposition}}, if $C > 1$ then there's a positive $n_0 > 1$ such that $Cn\log n > p_n$ whenever $n \ge n_0$ and $Cn\log n < p_n$ when $n < n_0$ and if $C\le1$ then $C n\log n < p_n$ for all $n$
 
+{\it Incomplete Proof}, the reasoning goes as follows, we know that
+%
+\nbea
+\lim_{n\to\infty}\frac{Cn\log n}{p_n} & = &  \lim_{n\to\infty} \frac{C \bcancel{p_n}}{\bcancel{p_n}\log p_n} \log \left ( \frac{p_n}{\log p_n}\right ) \\
+& = & \lim_{n\to\infty} \frac{C \bcancel{\log p_n}}{\bcancel{\log p_n}} - \frac{C \log \log p_n}{\log p_n} \\
+& = & C
+\neea
+%
+we exclude $n_0 = 1$ because $\log 1 = 0$ :) Now if $C 2 \log 2 < p_2$ and from above we know that as $n\to\infty$, $Cn\log n = C p_n > p_n$, and if $C > 1$ then it must mean that there's some $n_0$ where the inequality changes sign, and this point is our $n_0$. And of course if $C2 \log 2 > p_2$ then $n_0 = 2$.
+
+The only thing I can't prove right now is that this ratio $(Cn\log n)/p_n$ is a monotonic smooth function and it doesn't vacillate too much from less than one to greater than one.
 
 
 
