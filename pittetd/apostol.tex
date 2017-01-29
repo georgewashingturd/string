@@ -2353,8 +2353,13 @@ Another interesting find is that when we set a constant multiplier $C n\log n$, 
 %
 we exclude $n_0 = 1$ because $\log 1 = 0$ :) Now if $C 2 \log 2 < p_2$ and from above we know that as $n\to\infty$, $Cn\log n = C p_n > p_n$, and if $C > 1$ then it must mean that there's some $n_0$ where the inequality changes sign, and this point is our $n_0$. And of course if $C2 \log 2 > p_2$ then $n_0 = 2$.
 
-The only thing I can't prove right now is that this ratio $(Cn\log n)/p_n$ is a monotonic smooth function and it doesn't vacillate too much from less than one to greater than one.
-
+The only thing I can't prove right now is that this ratio $(Cn\log n)/p_n$ is a monotonic smooth function and it doesn't vacillate too much from less than one to greater than one. But I believe the following is true, for $n \ge 1$
+%
+\nbea
+n\log n < p_n \le 2n\log n + 2
+\neea
+%
+where equality is only achieved when $n=1$
 
 
 
