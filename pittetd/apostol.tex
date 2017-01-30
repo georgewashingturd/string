@@ -2184,10 +2184,10 @@ which gives actual numerical values of $\alpha_+=1.572967072$ or $\alpha_-=0.732
 \frac{4\log 2}{\alpha_-} + \frac{1}{e(1-\alpha_-)} & = & \frac{\sqrt{e\log2}(4e\log2-1)^2}{\sqrt{e\log2}(4e^2\log2 + e) - 4e^2\log2} = 5.160347754
 \neea
 %
-so the choice of $2/3$ for $\alpha$ is so that we can get the constant factor of $6$, to get a tighter bound we can choose $\alpha_+$ and in this way we'll get $\pi(n) < 1.120588573 \frac{n}{\log n}$ and so we ha tighter the lower and upper bounds to
+so the choice of $2/3$ for $\alpha$ is so that we can get the constant factor of $6$, to get a tighter bound we can choose $\alpha_+$, however, $0 <\alpha < 1$ and so we have to choose $\alpha_-$ and in this way we'll get $\pi(n) < 5.160347754 \frac{n}{\log n}$ and so we have tighter lower and upper bounds
 %
 \nbea
-\frac{1}{3}\frac{n}{\log n} < \pi(n) < 1.120588573 \frac{n}{\log n}
+\frac{1}{3}\frac{n}{\log n} < \pi(n) < 5.160347754 \frac{n}{\log n}
 \neea
 %
 
@@ -2281,13 +2281,13 @@ But four numbers are not too much to check, so listing all the numbers we see th
 p_n & \le & 2n\log n + 2n
 \neea
 %
-with equality only for $n=1, p_n=2$, the only dodgy thing about this assertion is that we based it on the empirical fact of $\frac{n}{\log n}< \pi(n)$ for $n \ge 11$ and it's not a solid proof. Combining this with our earlier result $1.120588573 \frac{n}{\log n}<\pi(n)$ we get
+with equality only for $n=1, p_n=2$, the only dodgy thing about this assertion is that we based it on the empirical fact of $\frac{n}{\log n}< \pi(n)$ for $n \ge 11$ and it's not a solid proof. Combining this with our earlier result $5.160347754 \frac{n}{\log n}<\pi(n)$ we get
 %
 \nbea
-0.892388182 ~ n\log n < p_n < 2n\log n + 2n
+0.193785389 ~ n\log n < p_n < 2n\log n + 2n
 \neea
 %
-where $0.892388182$ is just $1/1.120588573$.
+where $0.193785389$ is just $1/5.160347754$.
 
 {\bf Page 85}, before Section 4.6, ``$\sum_{n=1}^{\infty} 1/p_n$ diverges, by comparison with $\sum_{n=2}^{\infty}1/(n\log~n)$''
 
