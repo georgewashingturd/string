@@ -2359,7 +2359,33 @@ The only thing I can't prove right now is that this ratio $(Cn\log n)/p_n$ is a 
 n\log n < p_n \le 2n\log n + 2
 \neea
 %
-where equality is only achieved when $n=1$
+where equality is only achieved when $n=1$.
+
+One last thing I want to say is that Theorem 4.6 and 4.7 do not use anything special to deduce the bounds for $\pi(n)$ and $p_n$, not even complex analysis, they are just using careful observations about arithmetical functions which make them really cool theorems :)
+
+{\bf Page 86}, third last equation, this is a trick that is used over and over again
+%
+\nbea
+\sum_{x/2 < n \le x} \left\lbrack \frac{x}{n} \right \rbrack & = & \sum_{x/2 < n \le x} 1
+\neea
+%
+the thing to note here is the limits of the sum, since $x/2 < n$, this meant that $x/n < 2$ and since $n\le x$, this also means that $x/n$ is at least one, and so since this is less than two and at least one, $[x/n] = 1$.
+
+{\bf Page 87}, top of page, this telescoping series technique is used again here, it was first used in the PROOF of Theorem 4.6, bottom of Page 83, so looks like it is a useful tool to be kept in our arsenal :)
+
+{\bf Page 90}, mid page, ``Therefore if we take $f(t) = 1/\log t$ in Theorem 4.2'', Theorem 4.2 is Abel's lemma, Eq (4)
+%
+\nbea
+\sum_{y < n \le x} a(n)f(n) & = & A(x)f(x) - A(y)f(y) - \int_y^x A(t)f'(t) dt
+\neea
+%
+with $A(x) = \sum_{n\le x} a(n)$. The confusing thing here is that the same symbols in Theorem 4.2 are used for different things in Theorem 4.12, here $a(n)$ in Theorem 4.2 is $1/p = (\log p/p)\times(1/\log p)$
+%
+\nbea
+\sum_{2^- < n \le x}\frac{\log p}{p} \frac{1}{\log p} & = & \frac{A(x)}{\log x} - \frac{A(2^-)}{\log 2^-} + \int_2^x A(t)f'(t) dt
+\neea
+%
+where $2^-$ is something slightly less than 2 such that $2$ is included in the sum, but then $A(2^-)=0$.
 
 
 
