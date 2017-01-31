@@ -2385,7 +2385,81 @@ with $A(x) = \sum_{n\le x} a(n)$. The confusing thing here is that the same symb
 \sum_{2^- < n \le x}\frac{\log p}{p} \frac{1}{\log p} & = & \frac{A(x)}{\log x} - \frac{A(2^-)}{\log 2^-} + \int_2^x A(t)f'(t) dt
 \neea
 %
-where $2^-$ is something slightly less than 2 such that $2$ is included in the sum, but then $A(2^-)=0$.
+where $2^-$ is something less than 2 such that $2$ is included in the sum, but then $A(2^-)=0$.
+
+{\bf Page 92}, the derivation of Eq (34) bottom half of page, here Theorem 3.10 is utilized, Theorem 3.10 is
+%
+\nbea
+H(x) = \sum_{n\le x}f(n)G\left(\frac{x}{n}\right) = \sum_{n\le x}g(n)F\left(\frac{x}{n}\right)
+\neea
+%
+as mentioned in the text, here $f=\mu$, $g=\Lambda$ and so
+%
+\nbea
+-\sum_{n\le x} \mu(n)\log n & = & \sum_{n\le x}\sum_{d|n} \mu(d)\Lambda\left(\frac{n}{d}\right) \\
+& = & \sum_{n\le x} \mu * \Lambda  = \sum_{n\le x} f * g, ~~~ h = f * g\\
+& = & \sum_{n \le x} h(n) \\
+-\sum_{n\le x} \mu(n)\log n & = & H(x)
+\neea
+%
+but from Theorem 3.10 we have
+%
+\nbea
+H(x) = -\sum_{n\le x} \mu(n)\log n & = & \sum_{n\le x}f(n)G\left(\frac{x}{n}\right) \\
+& = & \sum_{n\le x} \mu(n) \sum_{m\le x/n} \Lambda(m) \\
+& = & \sum_{n\le x} \mu(n)  \psi \left ( \frac{x}{n}\right )
+\neea
+%
+where we have used the definition of Chebyshev's function, Page 75, $\psi(x) = \sum_{n\le x} \Lambda(n)$.
+
+{\bf Page 92}, bottom page last inequality, this is just the definition of limit for $x\to\infty$, the definition of limit for $x\to a$ with $a$ finite is, $\lim_{x\to a} f(x) = L$ if for every number $\varepsilon>0$ there's a number $\delta>0$ such that $|f(x)-L|<\varepsilon$ whenever $0 < |x-a| <\delta$.
+
+While the definition of limit $x\to-\infty$ is $\lim_{x\to\-\infty}f(x) = L$ if for every number $\varepsilon>0$ there is $N<0$ such that $|f(x)-L|<\varepsilon$ whenever $x < N$.
+
+{\bf Page 95}, middish page, ``express each summand'', the Mobius inversion formula is
+%
+\nbea
+f(n) = \sum_{d|n} g(d) &\longleftrightarrow& g(n) = \sum_{d|n} f(d)\mu\left(\frac{n}{d}\right)
+\neea
+%
+%
+\nbea
+\sigma_0 = \sum_{d|n} 1 &\longleftrightarrow& 1 = \sum_{d|n}\sigma_0(d)\mu\left(\frac{n}{d}\right) = \sum_{d|n}\mu(d)\sigma_0\left(\frac{n}{d}\right)
+\neea
+%
+since $f*g = g*f$. Next, $\Lambda(n) = \sum_{d|n}\mu(d)\log\frac{n}{d}$, here we need to start with Theorem 2.10, $\log n = \sum_{d|n}\Lambda(d)$ and then use the Mobius inversion formula
+%
+\nbea
+\log n = \sum_{d|n}\Lambda(d) &\longleftrightarrow& \Lambda(n) = \sum_{d|n} (\log d) \mu\left ( \frac{n}{d} \right ) = \sum_{d|n} \mu (d) \log\left ( \frac{n}{d} \right )
+\neea
+%
+while $\left \lbrack \frac{1}{n}\right \rbrack = \sum_{d|n} \mu(d)$ is just Theorem 2.1 or just the restatement of $\mu * u = I$ where $I(n) = \left \lbrack \frac{1}{n}\right \rbrack$.
+
+{\bf Page 96}, expansion of $F(x)$ top mid page, the expansion of $\sum_{n\le x} \log n$ is given on top of Page 68 using the Euler's summation formula
+%
+\nbea
+\sum_{n\le x}\log n & = & \int_1^x \log t dt + \int_1^x\frac{t-[t]}{t} dt - (x-[x])\log x \\
+& = & x\log x - x + 1 + \int_1^x\frac{t-[t]}{t}dt + O(\log x)
+\neea
+%
+and since $t-[t]\le 1$ we have
+%
+\nbea
+\int_1^x\frac{t-[t]}{t}dt & = & O\left(\int_1^x\frac{1}{t}dt\right) = O(\log x)
+\neea
+%
+and so
+%
+\nbea
+1 + \int_1^x\frac{t-[t]}{t}dt + O(\log x) & = & 1 + O(\log x) + O(\log x) = O(\log x) \\
+\to x\log x - x + 1 + \int_1^x\frac{t-[t]}{t}dt + O(\log x) & = & x\log x - x + O(\log x)
+\neea
+%
+while for $-2C\sum_{n\le x}1$ we use Theorem 3.2 (d), $\sum_{n\le x}n^\alpha = \frac{x^{\alpha+1}}{\alpha+1} + O(x^\alpha)$, $\alpha\ge 0$ so in this case $\alpha=0$ and that's why we get the $O(1)$.
+
+{\bf Page 96}, ``$|F(x)| \le B\sqrt{x}$ for all $x\ge 1$'', why does $x$ starts with 1? it is because of the definition of the Big Oh notation, see page 53, ``If $g(x) > 0$ for all $x\ge a$ $\ldots$'', here $g(x) = \sqrt{x}$, and $\sqrt{x} > 0$ starting from $x \ge 1$ (we are considering integer $x$ here)
+
+{\bf Page 96}, Eq (41), to get the last equality please recall that $ab = x$ as mentioned on bottom of Page 95
 
 
 
