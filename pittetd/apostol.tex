@@ -2435,6 +2435,17 @@ since $f*g = g*f$. Next, $\Lambda(n) = \sum_{d|n}\mu(d)\log\frac{n}{d}$, here we
 %
 while $\left \lbrack \frac{1}{n}\right \rbrack = \sum_{d|n} \mu(d)$ is just Theorem 2.1 or just the restatement of $\mu * u = I$ where $I(n) = \left \lbrack \frac{1}{n}\right \rbrack$.
 
+{\bf Page 95}, ``This implies (38)'', mid bot page, what it's saying is that
+%
+\nbea
+[x] - \psi(x) - 2C & = & \sum_{\substack{q,d\\ qd\le x}}\mu(d)f(q) \\
+\to \psi(x) & = & [x] - \sum_{\substack{q,d\\ qd\le x}}\mu(d)f(q) - 2C \\
+& = & x + O(1) - \sum_{\substack{q,d\\ qd\le x}}\mu(d)f(q) - 2C \\
+\psi(x) & = & x - \sum_{\substack{q,d\\ qd\le x}}\mu(d)f(q)  + O(1)
+\neea
+%
+where we have used the fact that $[x] = x + O(1)$ and $O(1) - 2C = O(1)$
+
 {\bf Page 96}, expansion of $F(x)$ top mid page, the expansion of $\sum_{n\le x} \log n$ is given on top of Page 68 using the Euler's summation formula
 %
 \nbea
@@ -2460,6 +2471,62 @@ while for $-2C\sum_{n\le x}1$ we use Theorem 3.2 (d), $\sum_{n\le x}n^\alpha = \
 {\bf Page 96}, ``$|F(x)| \le B\sqrt{x}$ for all $x\ge 1$'', why does $x$ starts with 1? it is because of the definition of the Big Oh notation, see page 53, ``If $g(x) > 0$ for all $x\ge a$ $\ldots$'', here $g(x) = \sqrt{x}$, and $\sqrt{x} > 0$ starting from $x \ge 1$ (we are considering integer $x$ here)
 
 {\bf Page 96}, Eq (41), to get the last equality please recall that $ab = x$ as mentioned on bottom of Page 95
+
+{\bf Page 96}, bottom half of page, ``Since $M(x) = O(x)$ as $x\to\infty$'', it's interesting that he didn't even use the definition of the limit for $\lim_{x\to\infty} M(x)/x = 0$ although that is what we are trying to prove, that $\lim_{x\to\infty} M(x)/x = 0$ implies the prime number theorem but here we are just using the definition of Big Oh.
+
+The definition of Big Oh is that for all $x\ge c$ such that $g(x) > 0~\ldots$, here $g(x) = x$ since $f(x) = O(x)$ where $f(x) = M(x)$, so that must mean there's a positive constant $W$ such that
+%
+\nbea
+|M(x)| \ge Wx ~~~{\rm for~all~} x \ge c
+\neea
+%
+in this case the constant $W = \varepsilon/K$, the purpose of this whole Big Oh thing is because we want to re-use $\varepsilon$ for all three terms on RHS of Eq (40), so in this case we set $W$ and go about looking for $c$.
+
+Had he used the definition of limit, he wouldn't have achieved much, this is because the definition of limit is quite strict, ``for {\bf every} number $\varepsilon>0$'', while with the Big Oh we can fix $\varepsilon$ to a certain value.
+ 
+{\bf Page 97}, after Eq (44), the chain of inequalities, recall that 
+%
+\nbea
+M(x) & = & \sum_{n\le x}\mu(n)
+\neea
+%
+and since $\mu(n)$ is just $\pm 1, 0$, $M(x) < x$ and so we can replace $M(b)$ with $< b$, this is how we get the second inequality. To get third inequality we must recall from Page 95 (before Eq (42)) that
+%
+\nbea
+\frac{A}{\sqrt{a}} < \varepsilon
+\neea
+%
+and so $A < \varepsilon\sqrt{a}$, but the assumption here is that since $x=ab$ we choose $a$ such that $a < b$ or $x > a^2$ and so we can replace $\varepsilon\sqrt{a}$ with $<\varepsilon\sqrt{b}$.
+
+{\bf Page 92-97}, comments on Theorem 4.14 and Theorem 4.15, note that what we are trying to prove here is that the prime number theorem implies $\lim_{x\to\infty} M(x)/x = 0$ and vice versa, but note that in the PROOF of Theorem 4.14 what we are doing was
+%
+\nbea
+{\rm prime~number~theorem~} \Rightarrow \lim_{x\to\infty}\frac{\psi(x)}{x} = 1 \Rightarrow \lim_{x\to\infty}\frac{H(x)}{x\log x} = 0 \Rightarrow \lim_{x\to\infty}\frac{M(x)}{x} = 0
+\neea
+%
+so it's quite a treacherous path :) while for the PROOF of Theorem 4.15 it's even crazier as we start with
+%
+\nbea
+\psi(x) & = & x - \sum_{\substack{q,d\\ qd\le x}}\mu(d)f(q)  + O(1)
+\neea
+%
+to Theorem 3.17
+%
+\nbea
+\sum_{\substack{q,d\\ qd\le x}}\mu(d)f(q) & = & \sum_{n\le b}\mu(n)F\left ( \frac{x}{n}\right ) + \sum_{n\le a} f(n)M\left(\frac{x}{n}\right) - F(a)M(b)
+\neea
+%
+where $M(x) = \sum_{n\le x}\mu(n)$ and then we used various other Theorems and finally utilized $\lim_{x\to\infty} M(x)/x = 0$ in the form of $M(x) = o(x)$ as $x\to\infty$ (and there's a typo in the book, it uses big Oh instead of small oh) to finally prove the prime number theorem in the form of $\psi(x) \sim x$ :)
+
+Another important thing needed for Theorem 4.15 is that since we deal with the three terms of the RHS of Eq (40) separately, the condition for $x$, \ie for the first term $x\ge1$, for the second $x>c$, and for the third and last one $x> a^3, x > ac$, these conditions on $x$ have to be consistent, so the argument used to prove Theorem 4.15 is actually a quite delicate one.
+
+{\bf Page 97}, Eq (45), this is the small $o$h notation, in this case
+%
+\nbea
+\lim_{x\to\infty} \frac{A(x)}{1} = 0
+\neea
+%
+so it just means $\lim_{x\to\infty}A(x) = 0$ :)
 
 
 
