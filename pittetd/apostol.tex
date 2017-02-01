@@ -2528,6 +2528,53 @@ Another important thing needed for Theorem 4.15 is that since we deal with the t
 %
 so it just means $\lim_{x\to\infty}A(x) = 0$ :)
 
+{\bf Page 100}, bottom half of page, ``Actually, we shall only use the weaker estimate'', the thing is that
+%
+\nbea
+\log^2 x & > & \sqrt{x} ~~~~~ {\rm for~} x < 5504 \\
+\log^2 x & < & \sqrt{x} ~~~~~ {\rm for~} x \ge 5504
+\neea
+%
+so in this case $\log^2 x = O(\sqrt{x})$.
+
+{\bf Page 101} Theorem 4.9 is
+%
+\nbea
+\sum_{n\le x}\frac{\Lambda(n)}{n} & = & \log x + O(1)
+\neea
+%
+but first we need to know
+%
+\nbea
+\sum_{n\le x} \Lambda(n) = \sum_{n\le x}\frac{\Lambda(n)}{n} n & = & A(x)x - \int_2^xA(t)dt \\
+& = & (\log x + O(1))x - \int_2^x \{\log t + O(1)\}dt \\
+& = & x\log x + O(x) - \left \{ \left.t\log t - t\right|_2^x + O\left(\int_2^x dt\right) \right \} \\
+& = & \bcancel{x\log x} + O(x) - \left\{ \bcancel{x\log x} - x - (2\log 2 - 2) + O(x) \right\} \\
+& = & O(x)
+\neea
+%
+where $A(x) = \sum_{n\le x}\Lambda(n)/n$ and $A(2^-) = 0$ because $\Lambda(2^-) = 0$ and therefore $A(y)y = A(2^-)(2^-) = 0$, we have used Abel's lemma of course :)
+
+And so
+%
+\nbea
+\sum_{n\le x}\left(\frac{x}{n}-C-1\right)\Lambda(n) & = & x\sum_{n\le x}\frac{\Lambda(n)}{n} - (C+1)\sum_{n\le x}\Lambda(n) \\
+& = & x(\log x + O(1)) - (C+1)O(x) \\
+& = & x\log x + O(x)
+\neea
+%
+combining everything
+%
+\nbea
+&& (x-C-1)\log x+\sum_{n\le x}\left(\frac{x}{n}-C-1\right)\Lambda(n) + O(x) \\
+&& ~~~~~ = x\log x - (C+1)\log x + x\log x + O(x) + O(x) \\
+&& ~~~~~ = 2x\log x+O(x) - (C+1) \log x \\
+&& ~~~~~ = 2x\log x+O(x)
+\neea
+%
+the thing here is that $\log x < x$ so we can lump $\log x$ into $O(x)$ me hope :)
+
+
 
 
 
