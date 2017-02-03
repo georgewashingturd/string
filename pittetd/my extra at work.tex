@@ -4786,6 +4786,78 @@ z_4 & = & R_1 e^{i\Delta_{1}+i2\pi3/4} + R_2 e^{i\Delta_{2}+i2\pi2/3}  - R_3 e^{
 
 Let $h = w+k$ and $t = -w+k$ so we replace $|h-n|^2$ with $|t-n|^2$ and $|g-h|^2$ with $|g+t|^2$
 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+$\chi_j(a) := \omega^{ja}$
+%
+\nbea
+\hat f(\chi_j) & = & \sum_{a\in G}\chi_j(a)f(a) \\
+& = & \sum_{k=1}^{n}\omega^{jk}f(k) \\
+& = & \sum_{k=1}^{n}\omega^{jk}z_k \\
+\neea
+%
+
+%
+\nbea
+\hat g(\chi_j) & = & \sum_{a\in G}\chi_j(a)g(a) \\
+& = & \sum_{k=1}^{n}\omega^{jk}g(k) \\
+& = & \sum_{k=1}^{n}\omega^{jk}(z_{k+1} - z_k) \\
+& = & \sum_{k=1}^{n}\omega^{jk} z_{k+1} - \sum_{k=1}^{n}\omega^{jk} z_k \\
+& = & \sum_{k=2}^{n+1}\omega^{j(k-1)} z_{k} - \sum_{k=1}^{n}\omega^{jk} z_k \\
+& = & \sum_{k=2}^{n}\omega^{j(k-1)} z_{k} - \sum_{k=2}^{n}\omega^{jk} z_k + \omega^{jn}z_{n+1} - \omega^{j}z_1 \\
+& = & \sum_{k=2}^{n}\omega^{j(k-1)} z_{k} - \sum_{k=2}^{n}\omega^{j}\omega^{j(k-1)} z_k + 1\cdot z_1 - \omega^{j}z_1 \\
+& = & \left (1 - \omega^j\right )\sum_{k=2}^{n}\omega^{j(k-1)} z_{k}+ (1 - \omega^{j})z_1 \\
+& = & \left (1 - \omega^j\right )\sum_{k=1}^{n}\omega^{j(k-1)} z_{k} \\
+& = & \left (1 - \omega^j\right )\omega^{-j}\sum_{k=1}^{n}\omega^{jk} z_{k} \\
+& = & \left (\omega^{-j} - 1\right )\sum_{k=1}^{n}\omega^{jk} z_{k} \\
+\hat g(\chi_j) & = & \left (\omega^{-j} - 1\right )\hat f(\chi_j)
+\neea
+%
+
+%
+\nbea
+f(k) & = & \frac{1}{n}\sum_{\chi\in\hat G} \hat f(\chi) \chi(-k) \\
+& = & \frac{1}{n} \left (\hat f(\chi_1) \chi_1(-k) + \hat f(\chi_{n-1}) \chi_{n-1}(-k) \right ) \\
+& = & \frac{1}{n} \left (\sum_{l=1}^{n}\omega^{l}z_l \omega^{-k} + \sum_{l=1}^{n}\omega^{(n-1)l}z_l\omega^{(n-1)(-k)} \right ) \\
+\neea
+%
+
+%
+\nbea
+f(k) & = & \frac{1}{n}\sum_{\chi\in\hat G} \hat f(\chi) \chi(-k) \\
+& = & \frac{1}{n} \sum_{j=1}^{n} \sum_{m=1}^{n} \omega^{jm} z_m \omega^{-jk} \\
+& = & \frac{1}{n} \sum_{j=1}^{n} \sum_{m=1}^{n} \omega^{j(m-k)} z_m \\
+& = & \frac{1}{n} \sum_{j=1}^{n} \left (z_k + \sum_{\substack{m=1\\m\neq k}}^{n} \omega^{j(m-k)} z_m \right) \\
+& = & \frac{1}{n} n z_k + \frac{1}{n} \sum_{j=1}^{n} \sum_{\substack{m=1\\m\neq k}}^{n} \omega^{j(m-k)} z_m \\
+& = & z_k + \frac{1}{n} \sum_{\substack{m=1\\m\neq k}}^{n} z_m \left ( \sum_{j=1}^{n} \omega^{j(m-k)} \right ) \\
+& = & z_k
+\neea
+%
+
+
+
+
+
+
+
+
+
+%
+\nbea
+\hat g(\chi) & = & \sum_{a\in G}\chi(a)g(a) \\
+& = & \sum_{k=1}^{n}\omega^{jk}g(k) \\
+& = & \sum_{k=1}^{n}\omega^{jk}(z_{k+1} - z_k) \\
+& = & \sum_{k=1}^{n}\omega^{jk} z_{k+1} - \sum_{k=0}^{n-1}\omega^{j(k+1)} z_{k+1} \\
+& = & \sum_{k=1}^{n-1}\omega^{jk} z_{k+1} - \sum_{k=1}^{n-1}\omega^{j(k+1)} z_{k+1}  + \omega^{jn} z_{n+1} - \omega^{j}z_1\\
+& = & \sum_{k=1}^{n-1}\omega^{jk} z_{k+1} - \omega^{j}\sum_{k=1}^{n-1}\omega^{jk} z_{k+1}  + 1\cdot z_{1} - \omega^{j}z_1\\
+& = & \left (1 - \omega^{j}\right )\sum_{k=1}^{n-1}\omega^{jk} z_{k+1} + (1-\omega^j)z_1 \\
+& = & \left (1 - \omega^{j}\right )\sum_{k=1}^{n}\omega^{jk} z_{k+1} \\
+& = & \left (1 - \omega^{j}\right )\sum_{k=1}^{n}\omega^{-j}\omega^{j(k+1)} z_{k+1} \\
+& = & \left (\omega^{-j} - 1\right )\sum_{k=1}^{n}\omega^{jk} z_{k} \\
+& = & \left (\omega^{-j} - 1\right )\hat f(\chi)
+\neea
+%
+
 
 
 
