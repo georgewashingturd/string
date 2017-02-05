@@ -4788,39 +4788,167 @@ Let $h = w+k$ and $t = -w+k$ so we replace $|h-n|^2$ with $|t-n|^2$ and $|g-h|^2
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-$\chi_j(a) := \omega^{ja}$
+The best solution I found for this problem is the one utilizing Fourier transform on finite abelian groups. To understand this new Fourier transform better, let's draw a parallel with the usual Fourier trnasform we already know
+
+What we have here is an abelian group $G$ that plays the role of the real line $\mathbb{R}$, what we are transforming is a function $f$ on $G$, \ie $f(a)$, $a\in G$ and we are transforming it from $G$ into the space of characters $\widehat G$ which plays the role of the frequency line $\omega$ and so we are transforming $f(a) \leftrightarrow \hat f(\chi)$, $\chi \in \widehat G$, where $\chi$ is called a character, so the parallel is
 %
 \nbea
-\hat f(\chi_j) & = & \sum_{a\in G}\chi_j(a)f(a) \\
+G &\longleftrightarrow& \mathbb{R} \\
+\widehat G &\longleftrightarrow& \{\omega\} \\
+f(a) &\longleftrightarrow& f(x), ~~~~ a\in G\\
+\hat f(\chi) &\longleftrightarrow& \hat f(\omega), ~~~~ \chi \in \widehat G
+\neea
+%
+
+Next, what are these characters? a character is a map from the abelian group $G$ to a group of {\bf multiplicative} non-zero group of complex numbers, so it maps an abelian group to a multiplicative group, \ie
+%
+\nbea
+\chi(a+b) & = & \chi(a)\chi(b)
+\neea
+%
+where $a,b \in G$
+
+Since $G$ is a finite abelian group, there must be an (additive) order to the group in the sense that $na = e$, where $e$ is the identity. This has to be true since the group is finite, therefore
+%
+\nbea
+\chi(na) &=& \chi(a)^n = \chi(e) = 1
+\neea
+%
+therefore the characters are the $n$ roots of unity. The set of characters is called $\widehat G$ and $\widehat G$ itself forms an abelian group because, say we have two characters $\chi$ and $\psi$
+%
+\nbea
+(\chi\psi)(a) & = & \chi(a)\psi(a)
+\neea
+%
+and since $\chi(a)$ and $\psi(a)$ are just complex numbers, the above is commutative, thus $\widehat G$ is an abelian group and it is the dual of $G$.
+
+Note that in the above we only define the relatioships between $G$ and $\widehat G$, we still need to define functions on these two spaces in order to do Fourier transforms. A function $f$ on $G$ is a map from $G$ into the complex plane.
+
+Next we also define an inner product between two {\bf functions} on $G$
+%
+\nbea
+(f,g) & = & \frac{1}{n} \sum_{a\in G} \overline{f(a)}g(a)
+\neea
+%
+where $\overline{f(a)}$ is the conjugate of $f(a)$. The set $\widehat G$ actually provides basis for functions $f, g$ on $G$, this is just like in normal Fourier transform, going into frequency space we are just changing basis so in this case since $\widehat G$ plays the role of the space of frequency $\widehat G$ also provides bases for functions on $G$, \ie
+%
+\nbea
+f(a) & = & \sum_{\chi \in \widehat G} c_\chi \chi(a)
+\neea
+%
+where $c_\chi = (\chi, f)$, this is something we can do because $\chi$ itself is also a map from $G$ to the complex plane just like $f$.
+
+The usual orthogonality relations hold, \ie
+%
+\nbea
+\sum_{a\in G} \overline{\chi(a)} \psi(b) & = & \left \{
+\begin{array}{l}
+n {\rm ~~~~~if~} \chi=\psi \\
+0~~~{\rm otherwise}
+\end{array}
+\right. \\
+\sum_{\chi \in \widehat G} \overline{\chi(a)} \chi(b) & = & \left \{
+\begin{array}{l}
+n {\rm ~~~~~if~} a=b \\
+0~~~{\rm otherwise}
+\end{array}
+\right.
+\neea
+%
+which is the usual relation that states that two frequencies are orthogonal to each other. We also need to define functions on $\widehat G$, $\widehat f(\chi)$ is a map from $\widehat G$ to the complex plane and the same applies, \ie there's an inner product for $(\widehat f,\widehat g)$ as well.
+
+We can now define the Fourier transform that takes $f(a)$ to $\widehat f(\chi)$
+%
+\nbea
+\widehat f (\chi) & = & \sum_{a\in G}\chi(a)f(a), ~~~~~ a\in G, ~ \chi\in \widehat G
+\neea
+%
+and the inverse is derived from the fact that $f(a) = \sum_{\chi \in \widehat G} c_\chi \chi(a)$, we now denote $c_\chi = \frac{1}{n} \widehat f(\overline \chi)$
+%
+\nbea
+\widehat f (\chi) & = & \sum_{a\in G}\chi(a)f(a) \\
+\to \sum_{\chi \in \widehat G} \overline{\chi(b)} \widehat f (\chi)  & = & \sum_{\chi \in \widehat G} \overline{\chi(b)} \sum_{a\in G}\chi(a)f(a) \\
+& = & \sum_{a\in G} \left (\sum_{\chi \in \widehat G} \overline{\chi(b)} \chi(a) \right ) f(a) \\
+& = & \sum_{a\in G} n ~\delta_{ab}~ f(a) \\
+& = & n~f(b) \\
+\to f(b) & = & \frac{1}{n} \sum_{\chi \in \widehat G} \widehat f (\chi) \overline{\chi(b)}
+\neea
+%
+since $\chi(a)$ is an $n$th root of unity we have the following
+%
+\nbea
+\chi(-a) = \chi(a)^{-1} = \overline{\chi(a)}
+\neea
+%
+so here is our pair of transforms
+%
+\nbea
+\widehat f (\chi) & = & \sum_{a\in G}\chi(a)f(a) \\
+f(a) & = & \frac{1}{n} \sum_{\chi \in \widehat G} \widehat f (\chi) {\chi(-a)}
+\neea
+%
+for me the only thing that's a bit hard to comprehend is $\widehat f(\chi)$ because $\chi$ itself is a map, and so $\widehat f(\chi)$ is a map of a map, note that it is {\bf not} $\widehat f(\chi(a))$, it's not a map from $G$ to the complex plane!
+
+One important result from all this is 
+%
+\nbea
+(f,g) & = & \frac{1}{n} \sum_{a\in G} \overline{f(a)} g(a) \\
+& = & \frac{1}{n} \sum_{a\in G} \left (\frac{1}{n} \sum_{\chi \in \widehat G} \overline{\widehat f (\chi)} \overline{\chi(-a)} \right ) \left ( \frac{1}{n} \sum_{\psi \in \widehat G} \widehat g (\psi) {\psi(-a)} \right ) \\
+& = & \frac{1}{n^3} \sum_{\chi \in \widehat G} \sum_{\psi \in \widehat G} \overline{\widehat f (\chi)} \widehat g (\psi) \left (\sum_{a\in G} \overline{\chi(-a)} \psi(-a)\right ) \\
+& = & \frac{1}{n^3} \sum_{\chi \in \widehat G} \sum_{\psi \in \widehat G} \overline{\widehat f (\chi)} \widehat g (\psi) ~n~\delta_{\chi\psi} \\
+& = & \frac{1}{n^2} \sum_{\chi \in \widehat G} \overline{\widehat f (\chi)} \widehat g (\chi) \\
+(f,g) & = & \frac{1}{n} \left ( \widehat f,\widehat g\right )
+\neea
+%
+which is the relation between the inner product in $G$ space and $\widehat G$ space, \ie the usual Plancherel formula for Fourier transform.
+
+There's a form of $\chi$ that is often useful, since the characters are the roots of unity a good choice for them would be
+%
+\nbea
+\chi_j(a) := \omega^{ja}
+\neea
+%
+where $\omega$ is the primitive $n$th root of unity, \ie $\omega = e^{2\pi i/n}$, where in this case $a\in G = \mathbb{Z}/n\mathbb{Z}$, a group of the residues of $n$, the consequences of this choice are
+%
+\nbea
+\chi_j & = & \left(\chi_1\right)^j \\
+\chi_j & = & \chi_k ~~~{\rm if~and~only~if~} j \equiv k \pmod{n} \\
+\widehat G & = & \{\chi_0,\chi_1,\chi_2,\ldots,\chi_{n-1}\}
+\neea
+%
+
+We now have all the ingredients to tackle our original problem. For this problem we pick our finite ableian group $G = \mathbb{Z}/n\mathbb{Z}$ and we define two functions
+%
+\nbea
+f(k) & = & z_k \\
+g(k) & = & z_{k+1} - z_k
+\neea
+%
+where $k\in G$ and as the problem states $\sum_{k=1}^n z_k = 0$ and as stated above we pick our characters to be $\chi_j(a) = \omega^{ja}$ where $\omega = e^{2\pi i/n}$. We now perform the Fourier transform, first for $f(k)$
+%
+\nbea
+\widehat f(\chi_j) & = & \sum_{a\in G}\chi_j(a)f(a) \\
 & = & \sum_{k=1}^{n}\omega^{jk}f(k) \\
 & = & \sum_{k=1}^{n}\omega^{jk}z_k \\
 \neea
 %
-
+next for $g(k)$
 %
 \nbea
-\hat g(\chi_j) & = & \sum_{a\in G}\chi_j(a)g(a) = \sum_{k=1}^{n}\omega^{jk}g(k) = \sum_{k=1}^{n}\omega^{jk}(z_{k+1} - z_k) \\
+\widehat g(\chi_j) & = & \sum_{a\in G}\chi_j(a)g(a) = \sum_{k=1}^{n}\omega^{jk}g(k) = \sum_{k=1}^{n}\omega^{jk}(z_{k+1} - z_k) \\
 & = & \sum_{k=1}^{n}\omega^{jk} z_{k+1} - \sum_{k=1}^{n}\omega^{jk} z_k = \sum_{k=2}^{n+1}\omega^{j(k-1)} z_{k} - \sum_{k=1}^{n}\omega^{jk} z_k \\
 & = & \sum_{k=2}^{n}\omega^{j(k-1)} z_{k} - \sum_{k=2}^{n}\omega^{jk} z_k + \omega^{jn}z_{n+1} - \omega^{j}z_1 \\
 & = & \sum_{k=2}^{n}\omega^{j(k-1)} z_{k} - \sum_{k=2}^{n}\omega^{j}\omega^{j(k-1)} z_k + 1\cdot z_1 - \omega^{j}z_1 \\
 & = & \left (1 - \omega^j\right )\sum_{k=2}^{n}\omega^{j(k-1)} z_{k}+ (1 - \omega^{j})z_1 \\
 & = & \left (1 - \omega^j\right )\sum_{k=1}^{n}\omega^{j(k-1)} z_{k} = \left (1 - \omega^j\right )\omega^{-j}\sum_{k=1}^{n}\omega^{jk} z_{k} \\
 & = & \left (\omega^{-j} - 1\right )\sum_{k=1}^{n}\omega^{jk} z_{k} \\
-\hat g(\chi_j) & = & \left (\omega^{-j} - 1\right )\hat f(\chi_j)
+\widehat g(\chi_j) & = & \left (\omega^{-j} - 1\right )\widehat f(\chi_j)
 \neea
 %
-
+And as a check, let's do the inverse Fourier transform explicitly for $\widehat f(\chi_j)$
 %
 \nbea
-f(k) & = & \frac{1}{n}\sum_{\chi\in\hat G} \hat f(\chi) \chi(-k) \\
-& = & \frac{1}{n} \left (\hat f(\chi_1) \chi_1(-k) + \hat f(\chi_{n-1}) \chi_{n-1}(-k) \right ) \\
-& = & \frac{1}{n} \left (\sum_{l=1}^{n}\omega^{l}z_l \omega^{-k} + \sum_{l=1}^{n}\omega^{(n-1)l}z_l\omega^{(n-1)(-k)} \right ) \\
-\neea
-%
-
-%
-\nbea
-f(k) & = & \frac{1}{n}\sum_{\chi\in\hat G} \hat f(\chi) \chi(-k) \\
+f(k) & = & \frac{1}{n}\sum_{\chi\in\hat G} \widehat f(\chi) \chi(-k) \\
 & = & \frac{1}{n} \sum_{j=1}^{n} \sum_{m=1}^{n} \omega^{jm} z_m \omega^{-jk} = \frac{1}{n} \sum_{j=1}^{n} \sum_{m=1}^{n} \omega^{j(m-k)} z_m \\
 & = & \frac{1}{n} \sum_{j=1}^{n} \left (z_k + \sum_{\substack{m=1\\m\neq k}}^{n} \omega^{j(m-k)} z_m \right) \\
 & = & \frac{1}{n} n z_k + \frac{1}{n} \sum_{j=1}^{n} \sum_{\substack{m=1\\m\neq k}}^{n} \omega^{j(m-k)} z_m \\
@@ -4828,6 +4956,116 @@ f(k) & = & \frac{1}{n}\sum_{\chi\in\hat G} \hat f(\chi) \chi(-k) \\
 f(k) & = & z_k
 \neea
 %
+to get to the last line we need the fact that the sum of the $n$ roots of unity is zero (even when exponentiated as long as the exponent is not a multiple of $n$, see next section for proofs in two different flavors :)
+
+Next we take the inner product of $\widehat g(\chi_j)$ with itself
+%
+\nbea
+(\widehat g, \widehat g) & = & \sum_{j=1}^{n} \overline{(\omega^{-j}-1)} (\omega^{-j}-1) (\widehat f(\chi_j), \widehat f(\chi_j)) \\
+\to \sum_{j=1}^{n}|\widehat g(\chi_j)|^2 & = & \sum_{j=1}^{n} |e^{-(2\pi i) j/n}-1|^2 |\widehat f(\chi_j)|^2
+\neea
+%
+Now a fact we need is that for $0<j < n$, $|e^{-(2\pi i) j/n}-1|^2$ is smallest when $j=1$ and so
+%
+\nbea
+|\widehat g(\chi_j)|^2 & \ge & |e^{-(2\pi i)/n}-1|^2 |\widehat f(\chi_j)|^2
+\neea
+%
+however, if $j=0$ we have $|1-1|^2 = 0$ so the above inequality doesn't work because $|e^{-(2\pi i)/n}-1|^2 > 0$, the good thing is that we have $\sum_{k=1}^n z_k = 0$, this means that
+%
+\nbea
+\widehat f(\chi_0) & = & \sum_{k=1}^n \omega^{0}z_k \\
+& = & \sum_{k=1}^n z_k \\
+\widehat f(\chi_0) & = & 0
+\neea
+%
+and so
+%
+\nbea
+|\widehat g(\chi_0)|^2 & = & |e^{-(2\pi i) 0/n}-1|^2 |\widehat f(\chi_0)|^2 \\
+& = & |1-1|^2 |\widehat{ f}(\chi_0)|^2 \\
+& = & 0 \\
+& = & |e^{-(2\pi i)/n}-1|^2 |\widehat f(\chi_0)|^2, ~~~~~{\rm since~} f(\chi_0) = 0 \\
+\to |\widehat g(\chi_0)|^2 & \ge & |e^{-(2\pi i)/n}-1|^2 |\widehat f(\chi_0)|^2
+\neea
+%
+therefore $|\widehat g(\chi_j)|^2 \ge |e^{-(2\pi i)/n}-1|^2 |\widehat f(\chi_j)|^2$ is true for all $j$.
+
+Next note that
+%
+\nbea
+|e^{-(2\pi i)/n}-1|^2 & = & 4\sin^2\left(\frac{\pi}{n}\right)
+\neea
+%
+and so
+%
+\nbea
+\sum_{j=1}^{n}|\widehat g(\chi_j)|^2 & \ge & |e^{-(2\pi i)/n}-1|^2 \sum_{j=1}^{n} |\widehat f(\chi_j)|^2 \\
+\to \sum_{j=1}^{n}|\widehat g(\chi_j)|^2 & \ge & 4\sin^2\left(\frac{\pi}{n}\right) \sum_{j=1}^{n} |\widehat f(\chi_j)|^2
+\neea
+%
+all we need to do now is apply Plancherel's formula
+%
+\nbea
+\sum_{j=1}^{n}|\widehat g(\chi_j)|^2 & = & (\widehat g,\widehat g) \\
+& = & n (g,g) \\
+& = & n \sum_{k=1}^n \overline{(z_{k+1} - z_k)}(z_{k+1} - z_k) \\
+\sum_{j=1}^{n}|\widehat g(\chi_j)|^2 & = & n \sum_{k=1}^n |z_{k+1} - z_k|^2
+\neea
+%
+and by the same token $\sum_{j=1}^{n}|\widehat f(\chi_j)|^2 = \sum_{k=1}^n|z_k|^2$ therefore
+%
+\nbea
+\sum_{j=1}^{n}|\widehat g(\chi_j)|^2 & \ge & 4\sin^2\left(\frac{\pi}{n}\right) \sum_{j=1}^{n} |\widehat f(\chi_j)|^2 \\
+\to \bcancel{n} \sum_{k=1}^n |z_{k+1} - z_k|^2 & \ge & \bcancel{n}~4\sin^2\left(\frac{\pi}{n}\right) \sum_{k=1}^n|z_k|^2
+\neea
+%
+which is the result we want.
+
+%
+\nbea
+\sum_{j=1}^n |\widehat g(\chi_j)|^2 = \sum_{j=1}^{n} |e^{-(2\pi i)j/n}-1|^2|\widehat f(\chi_j)|^2 & ~\stackrel{?}{=}~ & |e^{-(2\pi i)/n}-1|^2 \sum_{j=1}^{n} |\widehat f(\chi_j)|^2
+\neea
+%
+equality above can be achieved when $\widehat f(\chi_j) = 0$ for $j\neq 1,n-1$, this is because
+%
+\nbea
+|e^{-(2\pi i)/n}-1|^2 & = & |e^{-(2\pi i)(n-1)/n}-1|^2
+\neea
+%
+
+Recall the inverse Fourier transform
+%
+\nbea
+h(k) & = & \frac{1}{n} \sum_{j=1}^n \widehat h(\chi_j)\chi_j(k) \\
+& = & \frac{1}{n} \sum_{j=1}^n \widehat c_j \chi_j(k)
+\neea
+%
+because $\widehat h$ is a map from $\widehat G$ to complex numbers and thus $\widehat h (\chi_j)$ is just a complex number. What we want to find out now is a function $h(k)$ with $\widehat h(\chi_j) = 0$ for all $2 \le j \le n-2 $, \ie
+%
+\nbea
+h(k) & = & \frac{1}{n} \sum_{j=1}^n \widehat h(\chi_j)\chi_j(k) \\
+& = & \frac{1}{n} \left ( \widehat c_1 \chi_1(k) + \widehat c_{n-1} \chi_{n-1}(k) \right ) \\
+& = & \frac{1}{n} \left ( \widehat c_1 \omega^{k} + \widehat c_{n-1} \omega^{(n-1)k} \right ) \\
+& = & \frac{1}{n} \left ( \widehat c_1 e^{(2\pi i)k/n} + \widehat c_{n-1} e^{(2\pi i)(n-1)k/n} \right ) \\
+& = & \frac{1}{n} \left ( \widehat c_1 e^{(2\pi i)k/n} + \widehat c_{n-1} e^{-(2\pi i)k/n} \right )
+\neea
+%
+therefore if
+%
+\nbea
+z_k & = & A e^{(2\pi i)k/n} + B e^{-(2\pi i)k/n}
+\neea
+%
+where $A$ and $B$ are complex numbers we will have
+%
+\nbea
+\sum_{k=1}^n |z_{k+1} - z_k|^2 & = & 4\sin^2\left(\frac{\pi}{n}\right) \sum_{k=1}^n|z_k|^2
+\neea
+%
+
+
+===================================================================
 
 {\bf Proposition}, the sum of $n$ roots of unity to any integer power (who's not a multiple of $n$) is zero, \ie $\sum_{m=1}^{n} \left (e^{\frac{2\pi i m}{n}}\right )^w$, where $w$ is an integer and not a multiple of $n$
 
@@ -4867,13 +5105,47 @@ e^{i\theta} \left ( e^{\frac{2\pi i 1}{3}} + e^{\frac{2\pi i 2}{3}} + e^{\frac{2
 %
 we get the same final result as that of the non rotated ones of course since we rotated them to each other, however, if we think about them as vectors, the sum of those three original vectors is also a vector, a single vector is not rotationally invariant unless it's the rotation axis itself, but in this case we are rotating in the $x-y$ plane while the vector itself lies on the plane so it can't be the rotation axis and on top of that we are not rotating by $2\pi$, we are rotating only by $2\pi/3$, so the only way that the rotated vector is the same as itself is if this vector is a zero vector, the argument of course works for any $n$ not just three, and this is how a physicist proves things, we don't just manipulate equations we also give intuitions on why things work, or maybe that's just me :)
 
-We can now move on to the next task where we exponentiate the roots, the sum will still be zero as long as the exponent is not a multiple of $n$ for the reason showed above, if the exponent is not a multiple of $n$, let's see it with an example, say $n=15$ and the exponent $w=12$ and now the roots are
+We can now move on to the next task where we exponentiate the roots, the sum will still be zero as long as the exponent is not a multiple of $n$ for the reason showed above, the rest is just a case of counting and modulo. Note that the roots are of the form
 %
 \nbea
-e^{\frac{2\pi i k}{15} 12}~~~~~~~~, 1\le k \le 15
+e^{2\pi i k/n} ~~~~~~~~~~~~ 0\le l \le n-1
 \neea
 %
-now if $k=5$ we will have $2\pi 5\cdot 12/15 = 2\pi 60/15 = 2 \pi 4$ and so $e^{2\pi i 5\cdot 12/15} = e^{2\pi i 4} = 1$
+so the set of different $k$ values forms the set of remainders of $n$, let's see how this works with a concrete example, set $n=15$. Say we now exponentiate the roots $(e^{2\pi i k/15})^w$ with $w=12$, the pattern is as follows
+%
+\nbea
+\begin{array}{r c l c r c l c l c r c l}
+k&=&1&\to&12\cdot k&=&12&\equiv&12 \pmod{15} & \to & e^{(2\pi i) 1\cdot 12 / 15} &=& e^{(2\pi i) 4 / 5}\\
+k&=&2&\to&12\cdot k&=&24&\equiv&9 \pmod{15}  & \to & e^{(2\pi i) 2\cdot12 / 15} &=& e^{(2\pi i) 3 / 5}\\
+k&=&3&\to&12\cdot k&=&36&\equiv&6 \pmod{15}  & \to & e^{(2\pi i) 3\cdot 12 / 15} &=& e^{(2\pi i) 2 / 5}\\
+k&=&4&\to&12\cdot k&=&48&\equiv&3 \pmod{15}  & \to & e^{(2\pi i) 4\cdot 12 / 15} &=& e^{(2\pi i) 1 / 5}\\
+k&=&5&\to&12\cdot k&=&60&\equiv&0 \pmod{15}  & \to & e^{(2\pi i) 5\cdot 12 / 15} &=& e^{(2\pi i) 0 / 5}\\ \hline
+k&=&6&\to&12\cdot k&=&72&\equiv&12 \pmod{15}  & \to & e^{(2\pi i) 6\cdot 12 / 15} &=& e^{(2\pi i) 4 / 5} \\
+k&=&7&\to&12\cdot k&=&84&\equiv&9 \pmod{15}  & \to & e^{(2\pi i) 7\cdot 12 / 15} &=& e^{(2\pi i) 3 / 5}\\
+k&=&8&\to&12\cdot k&=&96&\equiv&6 \pmod{15}  & \to & e^{(2\pi i) 8\cdot 12 / 15} &=& e^{(2\pi i) 2 / 5}\\
+k&=&9&\to&12\cdot k&=&108&\equiv&3 \pmod{15}  & \to & e^{(2\pi i) 9\cdot 12 / 15} &=& e^{(2\pi i) 1 / 5}\\
+k&=&10&\to&12\cdot k&=&120&\equiv&0 \pmod{15}  & \to & e^{(2\pi i) 10\cdot 12 / 15} &=& e^{(2\pi i) 0 / 5}\\ \hline
+k&=&11&\to&12\cdot k&=&132&\equiv&12 \pmod{15}  & \to & e^{(2\pi i) 11\cdot 12 / 15} &=& e^{(2\pi i) 4 / 5} \\
+k&=&12&\to&12\cdot k&=&144&\equiv&9 \pmod{15}  & \to & e^{(2\pi i) 12\cdot 12 / 15} &=& e^{(2\pi i) 3 / 5}\\
+k&=&13&\to&12\cdot k&=&156&\equiv&6 \pmod{15}  & \to & e^{(2\pi i) 13\cdot 12 / 15} &=& e^{(2\pi i) 2 / 5}\\
+k&=&14&\to&12\cdot k&=&168&\equiv&3 \pmod{15}  & \to & e^{(2\pi i) 14\cdot 12 / 15} &=& e^{(2\pi i) 1 / 5}\\
+k&=&15&\to&12\cdot k&=&168&\equiv&0 \pmod{15}  & \to & e^{(2\pi i) 15\cdot 12 / 15} &=& e^{(2\pi i) 0 / 5}\\
+\end{array}
+\neea
+%
+from the above we immediately see that
+%
+\nbea
+\sum_{k=1}^{15} \left (e^{(2\pi i)k/15}\right )^{12} & = & 3 \sum_{j=1}^5 e^{(2\pi i)j/5}
+\neea
+%
+or more generally
+%
+\nbea
+\sum_{k=1}^{n} \left (e^{(2\pi i)k/n}\right )^{w} & = & \gcd(w,n) \times \sum_{j=1}^{s} e^{(2\pi i)j/s}, ~~~~~{\rm where~} s=\frac{n}{\gcd(w,n)}
+\neea
+%
+and the above covers all cases of $w$ including it being a multiple of $n$ :) and from this we immediately see that the sum of the exponentiated roots of unity is zero as long as the exponent is not a multiple of $n$.
 
 
 
@@ -4881,21 +5153,6 @@ now if $k=5$ we will have $2\pi 5\cdot 12/15 = 2\pi 60/15 = 2 \pi 4$ and so $e^{
 what we need is transformation that preserves distance not angles, conformal transformations preserve angles not distances and so the inequality is not preserved across transformations
 
 
-%
-\nbea
-\hat g(\chi) & = & \sum_{a\in G}\chi(a)g(a) \\
-& = & \sum_{k=1}^{n}\omega^{jk}g(k) \\
-& = & \sum_{k=1}^{n}\omega^{jk}(z_{k+1} - z_k) \\
-& = & \sum_{k=1}^{n}\omega^{jk} z_{k+1} - \sum_{k=0}^{n-1}\omega^{j(k+1)} z_{k+1} \\
-& = & \sum_{k=1}^{n-1}\omega^{jk} z_{k+1} - \sum_{k=1}^{n-1}\omega^{j(k+1)} z_{k+1}  + \omega^{jn} z_{n+1} - \omega^{j}z_1\\
-& = & \sum_{k=1}^{n-1}\omega^{jk} z_{k+1} - \omega^{j}\sum_{k=1}^{n-1}\omega^{jk} z_{k+1}  + 1\cdot z_{1} - \omega^{j}z_1\\
-& = & \left (1 - \omega^{j}\right )\sum_{k=1}^{n-1}\omega^{jk} z_{k+1} + (1-\omega^j)z_1 \\
-& = & \left (1 - \omega^{j}\right )\sum_{k=1}^{n}\omega^{jk} z_{k+1} \\
-& = & \left (1 - \omega^{j}\right )\sum_{k=1}^{n}\omega^{-j}\omega^{j(k+1)} z_{k+1} \\
-& = & \left (\omega^{-j} - 1\right )\sum_{k=1}^{n}\omega^{jk} z_{k} \\
-& = & \left (\omega^{-j} - 1\right )\hat f(\chi)
-\neea
-%
 
 
 
