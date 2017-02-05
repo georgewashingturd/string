@@ -4642,7 +4642,8 @@ what we want to do next is massage $\re \left ( 1 - \frac{\sum_{k=1}^{n} \overli
 %
 \nbea
 -\frac{\sum_{k=1}^{n} \overline{z_k}z_{k+1}}{\sum_{k=1}^{n} |z_k|^2 } & = & -\frac{\sum_{k=1}^{n} r_k r_{k+1} e^{i(\theta_{k+1} - \theta_k)}}{\sum_{k=1}^{n} |z_k|^2} \\
-& = & -\frac{\sum_{k=1}^{n} r_k r_{k+1} e^{i(\theta_{k+1} - \theta_k)}}{\sum_{k=1}^{n} r_k^2}
+& = & -\frac{\sum_{k=1}^{n} r_k r_{k+1} e^{i(\theta_{k+1} - \theta_k)}}{\sum_{k=1}^{n} r_k^2} \\
+& = & -\frac{\sum_{k=1}^{n} r_k r_{k+1} \cos{(\theta_{k+1} - \theta_k)}}{\sum_{k=1}^{n} r_k^2}
 \neea
 %
 we can normalize the $r$'s so that the smallest would be $1$ and the rest $\ge 1$. Now, if only we can say that
@@ -4788,7 +4789,7 @@ Let $h = w+k$ and $t = -w+k$ so we replace $|h-n|^2$ with $|t-n|^2$ and $|g-h|^2
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-The best solution I found for this problem is the one utilizing Fourier transform on finite abelian groups. To understand this new Fourier transform better, let's draw a parallel with the usual Fourier trnasform we already know
+The best solution I found on KAIST website for this problem is the one utilizing Fourier transform on finite abelian groups. To understand this new Fourier transform better, let's draw a parallel with the usual Fourier trnasform we already know
 
 What we have here is an abelian group $G$ that plays the role of the real line $\mathbb{R}$, what we are transforming is a function $f$ on $G$, \ie $f(a)$, $a\in G$ and we are transforming it from $G$ into the space of characters $\widehat G$ which plays the role of the frequency line $\omega$ and so we are transforming $f(a) \leftrightarrow \hat f(\chi)$, $\chi \in \widehat G$, where $\chi$ is called a character, so the parallel is
 %
@@ -4917,7 +4918,7 @@ where $\omega$ is the primitive $n$th root of unity, \ie $\omega = e^{2\pi i/n}$
 \neea
 %
 
-We now have all the ingredients to tackle our original problem. For this problem we pick our finite ableian group $G = \mathbb{Z}/n\mathbb{Z}$ and we define two functions
+We now have all the ingredients to tackle our original problem. For this problem we pick our finite abelian group $G = \mathbb{Z}/n\mathbb{Z}$ and we define two functions
 %
 \nbea
 f(k) & = & z_k \\
@@ -5057,12 +5058,28 @@ therefore if
 z_k & = & A e^{(2\pi i)k/n} + B e^{-(2\pi i)k/n}
 \neea
 %
-where $A$ and $B$ are complex numbers we will have
+where $A$ and $B$ are {\bf constant} complex numbers that do not depend on $k$ we will have
 %
 \nbea
 \sum_{k=1}^n |z_{k+1} - z_k|^2 & = & 4\sin^2\left(\frac{\pi}{n}\right) \sum_{k=1}^n|z_k|^2
 \neea
 %
+
+\bigskip
+\underline{\textit{\textbf{Various failed attempts}}}
+\bigskip
+
+I first tried a different representation of the complex numbers $z_k$, noting that
+%
+\nbea
+4\sin^2(\pi/n)\sum_{k=1}^n|z_k|^2
+\neea
+%
+is just the square of the difference of two vectors $\vec z_k$ where $z_k = |z_k| e^{(2 \pi i)k/n}$, a scaled $n$th root of unity.
+
+Since $\sum_{k=1}^n z_k = 0$, I visually think of it vectors emanating fom the origin, so the first step is to find the longest vector and then draw the scaled $n$ roots of unity on top of it. So now we have one less vector
+
+what we need is transformation that preserves distance not angles, conformal transformations preserve angles not distances and so the inequality is not preserved across transformations
 
 
 ===================================================================
@@ -5150,7 +5167,7 @@ and the above covers all cases of $w$ including it being a multiple of $n$ :) an
 
 
 
-what we need is transformation that preserves distance not angles, conformal transformations preserve angles not distances and so the inequality is not preserved across transformations
+
 
 
 

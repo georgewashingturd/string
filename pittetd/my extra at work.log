@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  4 FEB 2017 16:08
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  4 FEB 2017 19:06
 entering extended mode
 **"C:/Users/User/Documents/GitHub/string/pittetd/my extra at work.tex"
 ("C:/Users/User/Documents/GitHub/string/pittetd/my extra at work.tex"
@@ -819,33 +819,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 4568--4569
  []
 
 [128] [129] [130] [131]
-Overfull \hbox (9.93507pt too wide) in alignment at lines 4691--4695
+Overfull \hbox (9.93507pt too wide) in alignment at lines 4692--4696
  [][][] []
  []
 
 [132] [133]
-Underfull \hbox (badness 10000) in paragraph at lines 4789--4790
+Underfull \hbox (badness 10000) in paragraph at lines 4790--4791
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 =-=-=-
  []
 
 
-Overfull \hbox (1.63957pt too wide) in paragraph at lines 4789--4790
+Overfull \hbox (1.63957pt too wide) in paragraph at lines 4790--4791
 \OT1/cmr/m/n/12 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 -=-=-=-
  []
 
-[134] [135] [136] [137] [138] [139] [140]
-Overfull \hbox (171.99907pt too wide) in paragraph at lines 5068--5069
+[134] [135] [136] [137] [138] [139] [140] [141]
+Overfull \hbox (171.99907pt too wide) in paragraph at lines 5085--5086
 []\OT1/cmr/m/n/12 =============================================================
 ====== 
  []
 
-[141] [142] [143] ("my extra at work.bbl") [144]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 5169.
+[142] [143] ("my extra at work.bbl") [144]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 5186.
  ("my extra at work.aux")
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 5169.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 5169.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 5186.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 5186.
  ) 
 Here is how much of TeX's memory you used:
  13408 strings out of 428755
