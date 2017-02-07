@@ -4577,218 +4577,6 @@ Say we have a bunch of complex numbers $z_1,z_2,\ldots,z_n$ with $\sum_{k=1}^n z
 %
 with $z_{k+1} = z_1$ (needed for the upper limit of the sum when $k = n \to z_{k+1} = z_{n+1}$)
 
-My approach initially was not that great, \ie
-%
-\nbea
-\sum_{k=1}^{n} \left | z_{k+1} - z_k\right |^2 & = & \sum_{k=1}^{n} (z_{k+1} - z_k)\overline{(z_{k+1} - z_k)} \\
-& = & \sum_{k=1}^{n} (z_{k+1} - z_k)(\overline{z_{k+1}} - \overline{z_k}) \\
-& = & \sum_{k=1}^{n} z_{k+1}\overline{z_{k+1}} + z_k\overline{z_k} - z_{k+1}\overline{z_k} -  \overline{z_{k+1}}z_k\\
-& = & \sum_{k=1}^{n} |z_{k+1}|^2 + |z_k|^2 - 2 \re(z_{k+1}\overline{z_k})\\
-& = & 2 \sum_{k=1}^{n} |z_k|^2 - \re(z_{k}\overline{z_{k+1}})
-\neea
-%
-where we utilized $z_{n+1} = z_1$, I then stupidly proceeded by expanding $\sum_{k=1}^n z_k = 0$
-%
-\nbea
-z_k & = & -\sum_{i\neq k}^n z_i
-\neea
-%
-to get
-%
-\nbea
--\sum_{k=1}^{n} \re(z_{k}\overline{z_{k+1}}) & = & -\sum_{k=1}^{n} \re \left ( \left (-\sum_{i\neq k}^n z_i \right )\overline{z_{k+1}} \right ) \\
-& = & \sum_{k=1}^{n} \re \left (\left ( z_{k+1} + \sum_{i\neq k,k+1}^n z_i \right )\overline{z_{k+1}} \right ) \\
-& = & \sum_{k=1}^{n} \re \left (|z_{k+1}|^2 + \overline{z_{k+1}}\sum_{i\neq k,k+1}^n z_i \right ) \\
-& = & \sum_{k=1}^{n} \re \left ( |z_{k+1}|^2 \right ) + \sum_{k=1}^{n}\overline{z_{k+1}}\left (\sum_{i\neq k,k+1}^n z_i \right ) \\
-& = & \sum_{k=1}^{n} |z_{k}|^2 + \sum_{k=1}^{n}\overline{z_{k+1}}\left (\sum_{i\neq k,k+1}^n z_i \right )
-\neea
-%
-
-%
-\nbea
--\sum_{k=1}^{n} \re(\overline{z_{k}} z_{k+1}) & = & -\sum_{k=1}^{n} \re \left ( \overline{z_k} \left (-\sum_{i\neq k+1}^n z_i \right ) \right ) \\
-& = & \sum_{k=1}^{n} \re \left (\overline{z_{k}}\left ( z_k + \sum_{i\neq k,k+1}^n z_i \right ) \right ) \\
-& = & \sum_{k=1}^{n} \re \left (|z_k|^2 + \overline{z_k}\sum_{i\neq k,k+1}^n z_i \right ) \\
-& = & \sum_{k=1}^{n} \re \left ( |z_k|^2 \right ) + \sum_{k=1}^{n}\re \left (\overline{z_k}\left (\sum_{i\neq k,k+1}^n z_i \right ) \right )\\
-& = & \sum_{k=1}^{n} |z_{k}|^2 + \sum_{k=1}^{n}\re \left (\overline{z_k}\left (\sum_{i\neq k,k+1}^n z_i \right ) \right )
-\neea
-%
-
-where we again have utilized $z_{n+1} = z_1$, thus we have
-%
-\nbea
-\sum_{k=1}^{n} \left | z_{k+1} - z_k\right |^2 & = & 2 \sum_{k=1}^{n} |z_k|^2 - \re(z_{k}\overline{z_{k+1}}) \\
-& = & 2 \sum_{k=1}^{n} |z_k|^2 + \left ( |z_{k}|^2 + \overline{z_{k+1}}\left (\sum_{i\neq k,k+1}^n z_i \right ) \right ) \\
-& = & 4 \sum_{k=1}^{n} |z_k|^2 + 2\sum_{k=1}^{n} \overline{z_{k+1}}\left (\sum_{i\neq k,k+1}^n z_i \right ) \\
-& = & 4 \left ( \sum_{k=1}^{n} |z_k|^2 \right ) \left ( 1 + \frac{2\sum_{k=1}^{n} \overline{z_{k+1}}\left (\sum_{i\neq k,k+1}^n z_i \right )}{4 \sum_{k=1}^{n} |z_k|^2} \right )
-\neea
-%
-
-%
-\nbea
-\sum_{k=1}^{n} \left | z_{k+1} - z_k\right |^2 & = & 2 \sum_{k=1}^{n} |z_k|^2 - 2 \re(\overline{z_{k}}z_{k+1}) \\
-& = & 2 \left ( \sum_{k=1}^{n} |z_k|^2 \right )  \re \left ( 1 - \frac{\sum_{k=1}^{n} \overline{z_k}z_{k+1}}{\sum_{k=1}^{n} |z_k|^2} \right )
-\neea
-%
-what we want to do next is massage $\re \left ( 1 - \frac{\sum_{k=1}^{n} \overline{z_k}z_{k+1}}{\sum_{k=1}^{n} |z_k|^2} \right )$ into $1 - \cos(2x)$ because $1 - \cos(2x) = 2\sin^2(x)$
-
-%
-\nbea
-\overline{z_k}z_{k+1} & = & r_k e^{-i\theta_k}r_{k+1} e^{i\theta_{k+1}} \\
-& = & r_k r_{k+1} e^{i(\theta_{k+1} - \theta_k)}
-\neea
-%
-
-%
-\nbea
--\frac{\sum_{k=1}^{n} \overline{z_k}z_{k+1}}{\sum_{k=1}^{n} |z_k|^2 } & = & -\frac{\sum_{k=1}^{n} r_k r_{k+1} e^{i(\theta_{k+1} - \theta_k)}}{\sum_{k=1}^{n} |z_k|^2} \\
-& = & -\frac{\sum_{k=1}^{n} r_k r_{k+1} e^{i(\theta_{k+1} - \theta_k)}}{\sum_{k=1}^{n} r_k^2} \\
-& = & -\frac{\sum_{k=1}^{n} r_k r_{k+1} \cos{(\theta_{k+1} - \theta_k)}}{\sum_{k=1}^{n} r_k^2}
-\neea
-%
-we can normalize the $r$'s so that the smallest would be $1$ and the rest $\ge 1$. Now, if only we can say that
-%
-\nbea
--\frac{\sum_{k=1}^{n} r_k r_{k+1} e^{i(\theta_{k+1} - \theta_k)}}{\sum_{k=1}^{n} r_k^2} & \ge & -\frac{\sum_{k=1}^{n} r_{\rm avg} r_{\rm avg} e^{i\Delta_{\rm avg}}}{\sum_{k=1}^{n} r_{\rm avg}^2} \\
-& \ge & - \frac{r_{\rm avg}^2\sum_{k=1}^{n} e^{i\Delta_{\rm avg}}}{n r_{\rm avg}^2} \\
-& \ge & \frac{-n e^{i\Delta_{\rm avg}}}{n } \\
--\frac{\sum_{k=1}^{n} r_k r_{k+1} e^{i(\theta_{k+1} - \theta_k)}}{\sum_{k=1}^{n} r_k^2} & \ge & - e^{i\Delta_{\rm avg}}
-\neea
-%
-where $\Delta_{\rm avg} = 2\pi/n$ then we are done but we can't unless
-
-
-In this way
-%
-\nbea
-\sum_{k=1}^{n} r^2_{\rm avg} & = & \sum_{k=1}^{n} \left ( \frac{\sum_{i=1}^{n} r_i}{n} \right ) ^2 \\
-& = & \frac{1}{n^2} \sum_{k=1}^{n} \left ( \sum_{i=1}^{n} r_i \right ) ^2 \\
-& = & \frac{1}{n^{\bcancel{2}}} \bcancel{n} \left ( \sum_{i=1}^{n} r_i \right ) ^2 \\
-& = & \frac{1}{n} \sum_{k=1}^{n} r_k^2  + \frac{1}{n} ({\rm cross~terms}) \\
-\to \sum_{k=1}^{n} r_k^2 & = & n \sum_{k=1}^{n} r^2_{\rm avg} - {\rm cross~terms}
-\neea
-%
-
-
-
-
-%
-\nbea
-\re \left (\sum_{k=1}^n z_k \right ) & = & \re (0) \\
-\re \left ( \sum_{k=1}^n r_k e^{i\theta_k} \right ) & = & 0
-\neea
-%
-
-%
-\nbea
-z_1 & = & R_1 e^{i\Delta_{1}} \\
-z_2 & = & R_1 e^{i\Delta_{1}+i2\pi1/4} + R_2 e^{i\Delta_{2}} \\
-z_3 & = & R_1 e^{i\Delta_{1}+i2\pi2/4} + R_2 e^{i\Delta_{2}+i2\pi1/3}  + R_3 e^{\Delta_{3}}\\
-z_4 & = & R_1 e^{i\Delta_{1}+i2\pi3/4} + R_2 e^{i\Delta_{2}+i2\pi2/3}  - R_3 e^{\Delta_{3}}
-\neea
-%
-
-%
-\nbea
-|z_2 - z_1|^2 & = & |R_1 e^{i\Delta_{1}+i2\pi1/4} + R_2 e^{i\Delta_{2}} - R_1 e^{i\Delta_{1}}|^2 \\
-& = & |R_1 e^{i\Delta_{1}+i2\pi1/4} - R_1 e^{i\Delta_{1}}|^2 + |R_2 e^{i\Delta_{2}}|^2 + 2 \re ((R_1 e^{i\Delta_{1}+i2\pi1/4} - R_1 e^{i\Delta_{1}})(R_2 e^{-i\Delta_{2}}))\\
-& = & R^2_1|e^{i2\pi1/4} - 1|^2 + R^2_2 + 2\re( R_1 R_2 e^{i\Delta_1 - i\Delta_2}(e^{i2\pi1/4} - 1))
-\neea
-%
-
-%
-\nbea
-|z_3 - z_2|^2 & = & | R_1 e^{i\Delta_{1}+i2\pi2/4} + R_2 e^{i\Delta_{2}+i2\pi1/3}  + R_3 e^{\Delta_{3}} - (R_1 e^{i\Delta_{1}+i2\pi1/4} + R_2 e^{i\Delta_{2}} )|^2 \\
-& = & | (R_1 e^{i\Delta_{1}+i2\pi2/4} - R_1 e^{i\Delta_{1}+i2\pi1/4}) + (R_2 e^{i\Delta_{2}+i2\pi1/3} - R_2 e^{i\Delta_{2}})  + R_3 e^{i\Delta_{3}} |^2 \\
-& = & R^2_1 |e^{i2\pi1/4}|^2|e^{i2\pi1/4} - 1|^2 + R^2_2 |e^{i2\pi1/3} - 1|^2 + R^2_3 + \\
-&& 2\re(R_1R_2e^{i\Delta_1 - i\Delta_2}e^{i2\pi1/4}(e^{i2\pi1/4}-1)(e^{-i2\pi1/3}-1)) + \\
-&& 2\re(R_1R_3e^{i\Delta_1 - i\Delta_3}e^{i2\pi1/4}(e^{i2\pi1/4}-1)) + \\
-&& 2\re(R_2 R_3 e^{i\Delta_2 - i\Delta_3}(e^{i2\pi1/3} - 1))
-\neea
-%
-
-%
-\nbea
-|z_4 - z_3|^2 & = & R^2_1 |e^{i2\pi2/4}|^2|e^{i2\pi1/4} - 1|^2 + R^2_2|e^{i2\pi1/3}|^2|e^{i2\pi1/3} - 1|^2 + 4R^2_3 + \\
-&& 2\re(R_1R_2e^{i\Delta_1 - i\Delta_2}e^{i2\pi2/4}e^{-i2\pi1/3}(e^{i2\pi1/4}-1)(e^{-i2\pi1/3}-1)) + \\
-&& -2\re(R_1 2R_3e^{i\Delta_1 - i\Delta_3}e^{i2\pi2/4}(e^{i2\pi1/4}-1)) + \\
-&& -2\re(R_2 2R_3 e^{i\Delta_2 - i\Delta_3}e^{i2\pi1/3}(e^{i2\pi1/3} - 1))
-\neea
-%
-
-%
-\nbea
-|z_1 - z_4|^2 & = & R^2_1 |e^{i2\pi3/4}|^2|e^{i2\pi1/4} - 1|^2 + R^2_2 + R_3^2 + \\
-&& 2\re(R_1R_2e^{i\Delta_1 - i\Delta_2}e^{i2\pi3/4}e^{-i2\pi2/3}(e^{i2\pi1/4}-1)) + \\
-&& 2\re(R_1R_3e^{i\Delta_1 - i\Delta_3}e^{i2\pi3/4}(e^{i2\pi1/4}-1)) + \\
-&& -2\re(R_2R_3e^{i\Delta_2 - i\Delta_3}e^{i2\pi2/3})
-\neea
-%
-
-%
-\nbea
-|z_1|^2 & = & R^2_1
-\neea
-%
-
-%
-\nbea
-|z_2|^2 & = & R_1^2 |e^{i2\pi1/4}|^2 + R^2_2 + 2\re(R_1R_2 e^{i\Delta_1-i\Delta_2}(e^{i2\pi1/4}))
-\neea
-%
-
-%
-\nbea
-|z_3|^2 & = & R_1^2|e^{i2\pi2/4}|^2 + R_2^2 |e^{i2\pi1/3}|^2 + R^2_3 + \\
-&& 2\re(R_1R_2 e^{i\Delta_1 - i\Delta_2} e^{i2\pi2/4}e^{-i2\pi1/3}) + \\
-&& 2 \re(R_1R_3 e^{i\Delta_1 - i\Delta_3} e^{i2\pi2/4}) + \\
-&& 2 \re(R_2R_3 e^{i\Delta_2 - i\Delta_3} e^{i2\pi1/3})
-\neea
-%
-
-%
-\nbea
-|z_4|^2 & = & R_1^2|e^{i2\pi3/4}|^2 + R_2^2 |e^{i2\pi2/3}|^2 + R^2_3 + \\
-&& 2\re(R_1R_2 e^{i\Delta_1 - i\Delta_2} e^{i2\pi3/4}e^{-i2\pi2/3}) + \\
-&& -2 \re(R_1R_3 e^{i\Delta_1 - i\Delta_3} e^{i2\pi3/4}) + \\
-&& -2 \re(R_2R_3 e^{i\Delta_2 - i\Delta_3} e^{i2\pi1/3})
-\neea
-%
-
-
-
-%
-\nbea
-|(w+k)- n|^2 & = & |w + (k-n)|^2 \\
-& = & |w|^2 + |k-n|^2 + 2\re(\overline{w} (k-n))
-\neea
-%
-
-%
-\nbea
-|(-w+k)- n|^2 & = & |-w + (k-n)|^2 \\
-& = & |w|^2 + |k-n|^2 - 2\re(\overline{w} (k-n))
-\neea
-%
-
-%
-\nbea
-|g - (w+k)|^2 & = & |(g-w) - k|^2 \\
-& = & |g-w|^2 + |k|^2 - 2\re (\overline{k}(g-w))
-\neea
-%
-
-%
-\nbea
-|g - (w-k)|^2 & = & |(g-w) + k|^2 \\
-& = & |g-w|^2 + |k|^2 + 2\re (\overline{k}(g-w))
-\neea
-%
-
-Let $h = w+k$ and $t = -w+k$ so we replace $|h-n|^2$ with $|t-n|^2$ and $|g-h|^2$ with $|g+t|^2$
-
--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
 The best solution I found on KAIST website for this problem is the one utilizing Fourier transform on finite abelian groups. To understand this new Fourier transform better, let's draw a parallel with the usual Fourier trnasform we already know
 
 What we have here is an abelian group $G$ that plays the role of the real line $\mathbb{R}$, what we are transforming is a function $f$ on $G$, \ie $f(a)$, $a\in G$ and we are transforming it from $G$ into the space of characters $\widehat G$ which plays the role of the frequency line $\omega$ and so we are transforming $f(a) \leftrightarrow \hat f(\chi)$, $\chi \in \widehat G$, where $\chi$ is called a character, so the parallel is
@@ -5069,21 +4857,129 @@ where $A$ and $B$ are {\bf constant} complex numbers that do not depend on $k$ w
 \underline{\textit{\textbf{Various failed attempts}}}
 \bigskip
 
-I first tried a different representation of the complex numbers $z_k$, noting that
+I'll start with my most successful attempt and then go down hill from there :) I'm a visual person and so I think of these complex numbers as vectors (and mathematically it is OK to do that). The complex number squared norm $|z|^2$ is just a dot product $|z|^2 = \vec z \cdot \vec z$, so our problem becomes
 %
 \nbea
-4\sin^2(\pi/n)\sum_{k=1}^n|z_k|^2
+\sum_{k=1}^n z_k = 0 & ~~~\Longrightarrow~~~ & \sum_{k=1}^n \vec z_k = 0 \\
+\sum_{k=1}^n |z_{k+1} - z_k|^2 & ~~~\Longrightarrow~~~ & \sum_{k=1}^n (\vec z_{k+1} - \vec z_k)\cdot(\vec z_{k+1} - \vec z_k) = \sum_{k=1}^n (\vec z_{k+1} - \vec z_k)^2
 \neea
 %
-is just the square of the difference of two vectors $\vec z_k$ where $z_k = |z_k| e^{(2 \pi i)k/n}$, a scaled $n$th root of unity.
+I wanted to see what pattern I could find and I wounded up being able to show that
+%
+\nbea
+\sum_{k=1}^n |z_{k+1} - z_k|^2 & \ge & 4\sin^2\left(\frac{\pi}{n}\right) \sum_{k=1}^n|z_k|^2
+\neea
+%
+for up to $n=4$ but the pattern I found wasn't helpful, the cases for $n=1$ and $n=2$ are trivial, so let's start with $n=3$, in this case
+%
+\nbea
+\sum_{k=1}^3 |z_{k+1} - z_k|^2 & = & \sum_{k=1}^3 (\vec z_{k+1} - \vec z_k)^2 = (\vec z_2-\vec z_1)^2 + (\vec z_3-\vec z_2)^2 + (\vec z_1-\vec z_3)^2 \\
+& = & (\vec z_2^{\;2} + \vec z_1^{\;2} - 2\vec z_2\cdot\vec z_1) + (\vec z_3^{\;2} + \vec z_2^{\;2} - 2\vec z_3\cdot\vec z_2) + (\vec z_1^{\;2} + \vec z_3^{\;2} - 2\vec z_1\cdot\vec z_3) \\
+& = & 2(\vec z_1^{\;2}+\vec z_2^{\;2}+\vec z_3^{\;2}) +( - 2\vec z_2\cdot\vec z_1 - 2\vec z_3\cdot\vec z_2 - 2\vec z_1\cdot\vec z_3)
+\neea
+%
+What we need now is
+%
+\nbea
+0 = (\vec z_1+\vec z_2+\vec z_3)^2 & = & \vec z_1^{\;2}+\vec z_2^{\;2}+\vec z_3^{\;2} +2\vec z_1\cdot\vec z_2+2\vec z_1\cdot\vec z_3+2\vec z_2\cdot\vec z_3 \\
+\to -2\vec z_1\cdot\vec z_2-2\vec z_1\cdot\vec z_3-2\vec z_2\cdot\vec z_3 & = & \vec z_1^{\;2}+\vec z_2^{\;2}+\vec z_3^{\;2} > 0
+\neea
+%
+all thanks to our constraint $\sum_{k=1}^n \vec z_k = 0$ and therefore
+%
+\nbea
+\sum_{k=1}^3 (\vec z_{k+1} - \vec z_k)^2 & = & 2(\vec z_1^{\;2}+\vec z_2^{\;2}+\vec z_3^{\;2}) + (\vec z_1^{\;2}+\vec z_2^{\;2}+\vec z_3^{\;2}) \\
+& = & 3(\vec z_1^{\;2}+\vec z_2^{\;2}+\vec z_3^{\;2}) \\
+& \ge & 4 \sin^2\left(\frac{\pi}{3}\right)(\vec z_1^{\;2}+\vec z_2^{\;2}+\vec z_3^{\;2})
+\neea
+%
+since $4 \sin^2\left(\frac{\pi}{3}\right) = 3$, now for $n=4$ we get
+%
+\nbea
+\sum_{k=1}^4 |z_{k+1} - z_k|^2 & = & \sum_{k=1}^4 (\vec z_{k+1} - \vec z_k)^2 = (\vec z_2-\vec z_1)^2 + (\vec z_3-\vec z_2)^2 + (\vec z_4-\vec z_3)^2 + (\vec z_1-\vec z_4)^2 \\
+& = & 2(\vec z_1^{\;2}+\vec z_2^{\;2}+\vec z_3^{\;2}+\vec z_4^{\;2}) +( - 2\vec z_2\cdot\vec z_1 - 2\vec z_3\cdot\vec z_2 - 2\vec z_4\cdot\vec z_3 - 2\vec z_1\cdot\vec z_4)
+\neea
+%
+and
+%
+\nbea
+0 = (\vec z_1+\vec z_2+\vec z_3+\vec z_4)^2 & = & \vec z_1^{\;2}+\vec z_2^{\;2}+\vec z_3^{\;2}+\vec z_4^{\;2} +2\vec z_1\cdot\vec z_2+2\vec z_1\cdot\vec z_3+2\vec z_1\cdot\vec z_4+ \\
+&& 2\vec z_2\cdot\vec z_3+2\vec z_2\cdot\vec z_4+2\vec z_3\cdot\vec z_4 \\
+\to -2\vec z_1\cdot\vec z_2-2\vec z_2\cdot\vec z_3-2\vec z_3\cdot\vec z_4-2\vec z_1\cdot\vec z_4 & = & \vec z_1^{\;2}+\vec z_2^{\;2}+\vec z_3^{\;2}+\vec z_4^{\;2} + 2\vec z_1\cdot\vec z_3 + 2\vec z_2\cdot\vec z_4 \\
+& = & (\vec z_1 + \vec z_3)^2 + (\vec z_2 + \vec z_4)^2
+\neea
+%
+and therefore
+%
+\nbea
+\sum_{k=1}^4 (\vec z_{k+1} - \vec z_k)^2 & = & 2(\vec z_1^{\;2}+\vec z_2^{\;2}+\vec z_3^{\;2}+\vec z_4^{\;2}) +( - 2\vec z_2\cdot\vec z_1 - 2\vec z_3\cdot\vec z_2 - 2\vec z_4\cdot\vec z_3 - 2\vec z_1\cdot\vec z_4) \\
+& = & 2(\vec z_1^{\;2}+\vec z_2^{\;2}+\vec z_3^{\;2}+\vec z_4^{\;2}) + (\vec z_1 + \vec z_3)^2 + (\vec z_2 + \vec z_4)^2 \\
+& \ge & 2(\vec z_1^{\;2}+\vec z_2^{\;2}+\vec z_3^{\;2}+\vec z_4^{\;2}) \\
+\to \sum_{k=1}^4 (\vec z_{k+1} - \vec z_k)^2  & \ge & 4\sin^2\left(\frac{\pi}{4}\right)\sum_{k=1}^4 \vec z_k^{\;2}
+\neea
+%
+because $4\sin^2\left(\frac{\pi}{4}\right) = 2$, up next is $n=5$, this is an interesting one, we skip the boring stuffs and get right into
+%
+\nbea
+0 = \left ( \sum_{k=1}^5 \vec z_k \right)^2 = \sum_{k=1}^5 \vec z_k^{\;2} & + & 2 \vec z_1 \cdot \vec z_2 + 2 \vec z_1 \cdot \vec z_3 + 2 \vec z_1 \cdot \vec z_4 + 2 \vec z_1 \cdot \vec z_5 \\
+& + & 2 \vec z_2 \cdot \vec z_3  + 2 \vec z_2 \cdot \vec z_4  + 2 \vec z_2 \cdot \vec z_5 \\
+& + & 2 \vec z_3 \cdot \vec z_4  + 2 \vec z_3 \cdot \vec z_5 \\
+& + & 2 \vec z_4 \cdot \vec z_5
+\neea
+%
+and so
+%
+\nbea
+-2 \vec z_2 \cdot \vec z_1 -2 \vec z_3 \cdot \vec z_2 -2 \vec z_4 \cdot \vec z_3 -2 \vec z_5 \cdot \vec z_4 -2 \vec z_1 \cdot \vec z_5 & = & (\vec z_1^{\;2} + \vec z_3^{\;2} + 2 \vec z_1 \cdot \vec z_3) + (\vec z_2^{\;2} + \vec z_4^{\;2} + 2 \vec z_2 \cdot \vec z_4) + \vec z_5^{\;2} \\
+&& + 2 \vec z_1 \cdot \vec z_4 + 2 \vec z_2 \cdot \vec z_5 + 2 \vec z_3 \cdot \vec z_5 \\
+& = & (\vec z_1+\vec z_3)^2 + (\vec z_2+ \vec z_4)^2 + \cancel{\vec z_5^{\;2}} \\
+&& + (\vec z_1 + \vec z_4)^2 -\vec z_1^{\;2} -\vec z_4^{\;2} + (\vec z_2 + \vec z_5)^2 -\vec z_2^{\;2} -\vec z_5^{\;2} \\
+&& + (\vec z_3 + \vec z_5)^2 -\vec z_3^{\;2} -\cancel{\vec z_5^{\;2}} \\
+& = & (\vec z_1+\vec z_3)^2 + (\vec z_2+ \vec z_4)^2 + (\vec z_1 + \vec z_4)^2 + (\vec z_2 + \vec z_5)^2 \\
+&& + (\vec z_3 + \vec z_5)^2 -\vec z_1^{\;2}-\vec z_2^{\;2}-\vec z_3^{\;2}-\vec z_4^{\;2}-\vec z_5^{\;2}
+\neea
+%
+we can simplify the above by denoting $\vec z_{mn} = \vec z_m + \vec z_n$ and so
+%
+\nbea
+-2 \vec z_2 \cdot \vec z_1 -2 \vec z_3 \cdot \vec z_2 -2 \vec z_4 \cdot \vec z_3 -2 \vec z_5 \cdot \vec z_4 -2 \vec z_1 \cdot \vec z_5 & = & \vec z_{13}^{\;2} + \vec z_{24}^{\;2} + \vec z_{14}^{\;2} + \vec z_{25}^{\;2} + \vec z_{35}^{\;2} - \sum_{k=1}^n\vec z_k^{\;2}
+\neea
+%
+substituting this back into our original equation (which I didn't explicitly show)
+%
+\nbea
+\sum_{k=1}^n (z_{k+1} - z_k)^2 & = & 2 \left (\sum_{k=1}^n \vec z_k^{\;2}\right) -2 \vec z_2 \cdot \vec z_1 -2 \vec z_3 \cdot \vec z_2 -2 \vec z_4 \cdot \vec z_3 -2 \vec z_5 \cdot \vec z_4 -2 \vec z_1 \cdot \vec z_5 \\
+& = & \bcancel{2} \left(\sum_{k=1}^n \vec z_k^{\;2}\right) + \vec z_{13}^{\;2} + \vec z_{24}^{\;2} + \vec z_{14}^{\;2} + \vec z_{25}^{\;2} + \vec z_{35}^{\;2} - \cancel{\sum_{k=1}^n\vec z_k^{\;2}} \\
+& = & \left(\sum_{k=1}^n \vec z_k^{\;2}\right) + \vec z_{13}^{\;2} + \vec z_{24}^{\;2} + \vec z_{14}^{\;2} + \vec z_{25}^{\;2} + \vec z_{35}^{\;2}
+\neea
+%
+At this point I don't know what to do anymore but we can see the pattern,
+%
+\nbea
+\begin{array}{r c l c r c l c r c l}
+n & = & 3 & \longrightarrow & \sum_{k=1}^3 (\vec z_{k+1}-\vec z_k)^2 & = & 3\left(\sum_{k=1}^3 \vec z_k^{\;2}\right) &~~~~& 4\sin^2\left(\frac{\pi}{3}\right)&=& 3\\
+n & = & 4 & \longrightarrow & \sum_{k=1}^4 (\vec z_{k+1}-\vec z_k)^2 & = & 2 \left(\sum_{k=1}^4 \vec z_k^{\;2}\right) + \vec z_{13}^{\;2}+\vec z_{24}^{\;2} &~~~~& 4\sin^2\left(\frac{\pi}{4}\right)&=& 2\\
+n & = & 5 & \longrightarrow & \sum_{k=1}^5 (\vec z_{k+1}-\vec z_k)^2 & = & 1 \left(\sum_{k=1}^5 \vec z_k^{\;2}\right) + \vec z_{13}^{\;2} + \vec z_{24}^{\;2} + \vec z_{14}^{\;2} + \vec z_{25}^{\;2} + \vec z_{35}^{\;2} &~~~~& 4\sin^2\left(\frac{\pi}{5}\right)&=& 1.3819
+\end{array}
+\neea
+%
+So we see that the coefficient multiplying $\sum_{k=1}^n \vec z_k^{\;2}$ decreases by 1 every time we increase $n$ by 1, for $n=6$ it is actually $0$, and we also see that this coefficient is bigger than $4\sin^2(\pi/n)$ for $n \le 4$ but starting from $n=5$, this coefficient is smaller than $4\sin^2(\pi/5)$ and so it is no longer straightforward to show that $\sum_{k=1}^5 (\vec z_{k+1}-\vec z_k)^2 \ge 4\sin^2\left(\frac{\pi}{5}\right) \sum_{k=1}^5 \vec z_k^{\;2}$. Another thing to note is that for $n=3$ we have $\sum_{k=1}^3 (\vec z_{k+1}-\vec z_k)^2 = 4\sin^2\left(\frac{\pi}{3}\right) \sum_{k=1}^5 \vec z_k^{\;2}$, the general formula is
+%
+\nbea
+\sum_{k=1}^n (\vec z_{k+1} - \vec z_k)^2 & = & (6 - n)\left(\sum_{k=1}^n \vec z_k^{\;2}\right ) + \sum_{\substack{i,j\\{\rm not~adjacent}}} (\vec z_{i} + \vec z_j)^{2}
+\neea
+%
+the second sum in the RHS is over all non adjacent indices except for $i,j=1,n$ so basically non adjacent modulo $n$ and it is not repeatable, \ie $i=1,j=3$ is the same as $i=3,j=1$ and so only one of them will be included and of course $i\neq j$. However, this is not a useful pattern for this problem.
 
-Since $\sum_{k=1}^n z_k = 0$, I visually think of it vectors emanating fom the origin, so the first step is to find the longest vector and then draw the scaled $n$ roots of unity on top of it. So now we have one less vector
+The next attempt was equally unsuccessful as I was caught in a misleading pattern, seeing that $|e^{2\pi i/n}-1|^2 = 4\sin^2(\pi/n)$ I tried to decompose $z_1,z_2,z_3,\ldots,z_n$ in terms of different rotated $n$ roots of unity with different scales, \ie
+%
+\nbea
+\{R_1 e^{\Delta_1+2\pi i k_1/n}\},\{R_2 e^{\Delta_2+2\pi i k_2/(n-1)}\},\ldots,\{R_{n-1} e^{\Delta_{n-1}+2\pi i k_{n-1}/2}\}
+\neea
+%
+where $0\le k_j < n-j+1$, if we count the number of degrees of freedom we have $n-1$ $R$'s and $n-1$ $\Delta$'s a total of $2n-2$ degrees of freedom while $z_k$ have $2n$ degrees of freedom but the constraint $\sum_{k=1}^n z_k = 0$ is actually {\bf two} constraints, one for the real part and another for the imaginary part, so the total degrees of freedom is also $2n-2$.
 
-what we need is transformation that preserves distance not angles, conformal transformations preserve angles not distances and so the inequality is not preserved across transformations
-
-
-
-
+The key idea behind this decomposition is that I visually think of it vectors emanating fom the origin, so the first step is to find the longest vector and then draw the scaled $n$ roots of unity on top of this vector and then take the difference between the other roots of unity w.r.t. the other vectors. I then draw the $n-1$ difference vectors as emanating from the origin and repeat the process. But this strategy is not useful either because take for example $n=3$
 %
 \nbea
 z_1 & = & R_1 e^{i\Delta_{1}} \\
@@ -5091,7 +4987,7 @@ z_2 & = & R_1 e^{i\Delta_{1}+i2\pi1/3} + R_2 e^{i\Delta_{2}} \\
 z_3 & = & R_1 e^{i\Delta_{1}+i2\pi2/3} - R_2 e^{i\Delta_{2}}
 \neea
 %
-
+the difference squares are
 %
 \nbea
 |z_2-z_1|^2 & = & |R_1 e^{i\Delta_{1}+i2\pi1/3} + R_2 e^{i\Delta_{2}} - R_1 e^{i\Delta_{1}}|^2 \\
@@ -5100,7 +4996,7 @@ z_3 & = & R_1 e^{i\Delta_{1}+i2\pi2/3} - R_2 e^{i\Delta_{2}}
 & = & R_1^2|e^{i2\pi1/3} - 1|^2 + R_2^2 + 2R_1R_2\re(e^{i(\Delta_1-\Delta_2)})(e^{i2\pi1/3} - 1)
 \neea
 %
-
+followed by
 %
 \nbea
 |z_3-z_2|^2 & = & |R_1 e^{i\Delta_{1}+i2\pi2/3} - R_2 e^{i\Delta_{2}} - R_1 e^{i\Delta_{1}+i2\pi1/3} - R_2 e^{i\Delta_{2}}|^2 \\
@@ -5110,17 +5006,7 @@ z_3 & = & R_1 e^{i\Delta_{1}+i2\pi2/3} - R_2 e^{i\Delta_{2}}
 & = & R_1^2|e^{i2\pi1/3} - 1|^2 + 4R_2^2 - 4R_1R_2\re (e^{i2\pi1/3})(e^{i(\Delta_1-\Delta_2)})(e^{i2\pi1/3} - 1)
 \neea
 %
-
-%
-\nbea
-|z_2-z_3|^2 & = & |R_1 e^{i\Delta_{1}+i2\pi1/3} + R_2 e^{i\Delta_{2}} - R_1 e^{i\Delta_{1}+i2\pi2/3} + R_2 e^{i\Delta_{2}} - |^2 \\
-& = & |R_1 e^{i\Delta_{1}+i2\pi1/3} - R_1 e^{i\Delta_{1}+i2\pi2/3} + 2 R_2 e^{i\Delta_{2}}|^2 \\
-& = & |R_1 e^{i\Delta_{1}+i2\pi1/3} - R_1 e^{i\Delta_{1}+i2\pi2/3}|^2 + |2 R_2 e^{i\Delta_{2}}|^2 + 2\re(R_1 e^{i\Delta_{1}+i2\pi1/3} - R_1 e^{i\Delta_{1}+i2\pi2/3})(2 R_2 e^{-i\Delta_{2}}) \\
-& = & R_1^2|1-e^{i2\pi1/3}|^2 + 4R_2^2 + 4R_1R_2\re (e^{i\Delta_{1}+i2\pi1/3} - e^{i\Delta_{1}+i2\pi2/3})(e^{-i\Delta_{2}}) \\
-& = & R_1^2|e^{i2\pi1/3} - 1|^2 + 4R_2^2 + 4R_1R_2\re (e^{i2\pi1/3})(e^{i(\Delta_1-\Delta_2)})(1-e^{i2\pi1/3})
-\neea
-%
-
+and the last one is
 %
 \nbea
 |z_1 - z_3|^2 & = & |R_1 e^{i\Delta_{1}} - R_1 e^{i\Delta_{1}+i2\pi2/3} + R_2 e^{i\Delta_{2}}|^2 \\
@@ -5129,34 +5015,27 @@ z_3 & = & R_1 e^{i\Delta_{1}+i2\pi2/3} - R_2 e^{i\Delta_{2}}
 & = & R^2_1|e^{i2\pi1/3} - 1|^2 + R_2^2 + 2R_1R_2\re(e^{i2\pi2/3})(e^{i(\Delta_1-\Delta_2)})(e^{i2\pi1/3} - 1)
 \neea
 %
-
+adding all three differences
 %
 \nbea
 &&|z_2-z_1|^2 + |z_3-z_2|^2 + |z_1-z_3|^2 \\
-& = & 3R^2_1|e^{i2\pi1/3} - 1|^2 + 6R_2^2 + 2R_1R_2\re\left ((e^{i(\Delta_1-\Delta_2)})(e^{i2\pi1/3} - 1)\{e^{i2\pi3/3} - 2e^{i2\pi1/3} + e^{i2\pi2/3}\} \right)\\
-& = & 3R^2_1|e^{i2\pi1/3} - 1|^2 + 6R_2^2 + 2R_1R_2\re\left ((e^{i(\Delta_1-\Delta_2)})(e^{i2\pi1/3} - 1)\{- 3e^{i2\pi1/3}\} \right)\\
-& = & 3R^2_1|e^{i2\pi1/3} - 1|^2 + 6R_2^2 + -6R_1R_2\re\left ((e^{i(\Delta_1-\Delta_2)})(e^{i2\pi1/3} - 1)\{e^{i2\pi1/3}\} \right)
+&& ~~~= 3R^2_1|e^{i2\pi1/3} - 1|^2 + 6R_2^2 + 2R_1R_2\re\left ((e^{i(\Delta_1-\Delta_2)})(e^{i2\pi1/3} - 1)\{e^{i2\pi3/3} - 2e^{i2\pi1/3} + e^{i2\pi2/3}\} \right)\\
+&&~~~= 3R^2_1|e^{i2\pi1/3} - 1|^2 + 6R_2^2 + 2R_1R_2\re\left ((e^{i(\Delta_1-\Delta_2)})(e^{i2\pi1/3} - 1)\{- 3e^{i2\pi1/3}\} \right)\\
+&&~~~= 3R^2_1|e^{i2\pi1/3} - 1|^2 + 6R_2^2 +6R_1R_2\re\left ((e^{i(\Delta_1-\Delta_2)})(1-e^{i2\pi1/3})\{e^{i2\pi1/3}\} \right)
 \neea
 %
-
+noting that the sum of $n$ roots of unity is zero while the sum of the modulus square of each is
 %
 \nbea
 |z_1|^2 & = & R_1^2 \\
 |z_2|^2 & = & R_1^2 + R_2^2 + 2R_1R_2\re(e^{i\Delta_{1}+i2\pi1/3})(e^{-i\Delta_{2}}) \\
-|z_3|^2 & = & R_1^2 + R_2^2 - 2R_1R_2\re(e^{i\Delta_{1}+i2\pi1/3})(e^{-i\Delta_{2}})
+|z_3|^2 & = & R_1^2 + R_2^2 - 2R_1R_2\re(e^{i\Delta_{1}+i2\pi1/3})(e^{-i\Delta_{2}}) \\
+\to |e^{i2\pi1/3} - 1|^2\left(|z_1|^2 + |z_2|^2 + |z_3|^2\right) & = & 3R_1^2|e^{i2\pi1/3} - 1|^2 + |e^{i2\pi1/3} - 1|^22R^2_2
 \neea
 %
+and again I don't know how to relate the two, the main problem in all this is how difficult it is to utilize the key constraint $\sum_{k=1^n} z_k = 0$.
 
-Show that there doesn't exist a relation ≻≻ between complex numbers such that
-
-(i) For any two complex numbers z,wz,w, one and only one of the following is true: z≻w,w≻z,z≻w,w≻z, or z=wz=w
-(ii) For all z1,z2,z3∈Cz1,z2,z3∈C the relation z1≻z2z1≻z2 implies z1+z3≻z2+z3z1+z3≻z2+z3.
-
-(iii) For all z1,z2,z3∈Cz1,z2,z3∈C with z3≻0z3≻0, then z1≻z2z1≻z2 implies z1z3≻z2z3z1z3≻z2z3.
-
-
-
-
+And the last attempt I had was conformal mapping, I wanted to conformally map $z_k$'s to the $n$ roots of unity because it obviously satisfies the inequality but the problem is that what we need is transformation that preserves distance not angles, conformal transformations preserve angles not distances and so the inequality is not preserved across transformations so the inequality disappears after the inverse conformal map.
 
 ===================================================================
 
@@ -5198,13 +5077,7 @@ e^{i\theta} \left ( e^{\frac{2\pi i 1}{3}} + e^{\frac{2\pi i 2}{3}} + e^{\frac{2
 %
 we get the same final result as that of the non rotated ones of course since we rotated them to each other, however, if we think about them as vectors, the sum of those three original vectors is also a vector, a single vector is not rotationally invariant unless it's the rotation axis itself, but in this case we are rotating in the $x-y$ plane while the vector itself lies on the plane so it can't be the rotation axis and on top of that we are not rotating by $2\pi$, we are rotating only by $2\pi/3$, so the only way that the rotated vector is the same as itself is if this vector is a zero vector, the argument of course works for any $n$ not just three, and this is how a physicist proves things, we don't just manipulate equations we also give intuitions on why things work, or maybe that's just me :)
 
-We can now move on to the next task where we exponentiate the roots, the sum will still be zero as long as the exponent is not a multiple of $n$ for the reason showed above, the rest is just a case of counting and modulo. Note that the roots are of the form
-%
-\nbea
-e^{2\pi i k/n} ~~~~~~~~~~~~ 0\le l \le n-1
-\neea
-%
-so the set of different $k$ values forms the set of remainders of $n$, let's see how this works with a concrete example, set $n=15$. Say we now exponentiate the roots $(e^{2\pi i k/15})^w$ with $w=12$, the pattern is as follows
+We can now move on to the next task where we exponentiate the roots, the sum will still be zero as long as the exponent is not a multiple of $n$ for the reason showed above, the rest is just a case of counting and modulo. Note that the roots are of the form, $e^{2\pi i k/n}$, $0\le l \le n-1$ so the set of different $k$ values forms the set of remainders of $n$, let's see how this works with a concrete example, set $n=15$. Say we now exponentiate the roots $(e^{2\pi i k/15})^w$ with $w=12$, the pattern is as follows
 %
 \nbea
 \begin{array}{r c l c r c l c l c r c l}
@@ -5240,8 +5113,26 @@ or more generally
 %
 and the above covers all cases of $w$ including it being a multiple of $n$ :) and from this we immediately see that the sum of the exponentiated roots of unity is zero as long as the exponent is not a multiple of $n$.
 
+-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=
+
+Something interesting about the complex numbers, one, we cannot order complex numbers such as $z > w$, total ordering is defined as
+\bit
+\item For any two complex numbers $z,w$, one and only one of the following is true: $z>w$, $w>z$, or $z=w$
+\item For all $z_1, z_2, z_3 \in \mathbb{C}$ the relation $z_1 >z_2$ implies $z_1+z_3>z_2+z_3$
+\item For all $z_1,z_2,z_3 \in \mathbb{C}$ with $z_3>0$, then $z_1>z_2$ implies $z_1z_3>z_2z_3$
+\eit
 
 
+
+
+
+
+
+
+
+
+
+ball projection, the north pole absolutely cannot be mapped
 
 
 

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  5 FEB 2017 15:46
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  6 FEB 2017 21:43
 entering extended mode
 **"C:/Users/User/Documents/GitHub/string/pittetd/my extra at work.tex"
 ("C:/Users/User/Documents/GitHub/string/pittetd/my extra at work.tex"
@@ -818,87 +818,66 @@ Underfull \hbox (badness 10000) in paragraph at lines 4568--4569
 =-=-=-
  []
 
-[128] [129] [130] [131]
-Overfull \hbox (9.93507pt too wide) in alignment at lines 4692--4696
+[128] [129] [130] [131] [132] [133] [134] [135] [136]
+Overfull \hbox (27.60042pt too wide) in alignment at lines 4905--4910
  [][][] []
  []
 
-[132] [133]
-Underfull \hbox (badness 10000) in paragraph at lines 4790--4791
-[]\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-=-=-=-
- []
-
-
-Overfull \hbox (1.63957pt too wide) in paragraph at lines 4790--4791
-\OT1/cmr/m/n/12 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
--=-=-=-
- []
-
-[134] [135] [136] [137] [138] [139] [140] [141]
-Overfull \hbox (0.79628pt too wide) in alignment at lines 5096--5101
+[137]
+Overfull \hbox (43.84346pt too wide) in alignment at lines 4932--4940
  [][][] []
  []
 
+[138]
+Overfull \hbox (62.83934pt too wide) in alignment at lines 4958--4964
+ [][][] []
+ []
 
-Overfull \hbox (76.08777pt too wide) in alignment at lines 5105--5111
+[139]
+Overfull \hbox (0.79628pt too wide) in alignment at lines 4992--4997
  [][][] []
  []
 
 
-Overfull \hbox (75.8932pt too wide) in alignment at lines 5115--5121
- [][][] []
- []
-
-[142]
-Overfull \hbox (0.79628pt too wide) in alignment at lines 5125--5130
+Overfull \hbox (76.08777pt too wide) in alignment at lines 5001--5007
  [][][] []
  []
 
 
-Overfull \hbox (10.3091pt too wide) in alignment at lines 5134--5139
+Overfull \hbox (0.79628pt too wide) in alignment at lines 5011--5016
  [][][] []
  []
 
-Missing character: There is no ≻ in font cmr12!
-Missing character: There is no ≻ in font cmr12!
-Missing character: There is no ≻ in font cmr12!
-Missing character: There is no ≻ in font cmr12!
-Missing character: There is no ≻ in font cmr12!
-Missing character: There is no ≻ in font cmr12!
-Missing character: There is no ∈ in font cmr12!
-Missing character: There is no ∈ in font cmr12!
-Missing character: There is no ≻ in font cmr12!
-Missing character: There is no ≻ in font cmr12!
-Missing character: There is no ≻ in font cmr12!
-Missing character: There is no ≻ in font cmr12!
-Missing character: There is no ∈ in font cmr12!
-Missing character: There is no ∈ in font cmr12!
-Missing character: There is no ≻ in font cmr12!
-Missing character: There is no ≻ in font cmr12!
-Missing character: There is no ≻ in font cmr12!
-Missing character: There is no ≻ in font cmr12!
-Missing character: There is no ≻ in font cmr12!
-Missing character: There is no ≻ in font cmr12!
+[140]
+Overfull \hbox (22.05898pt too wide) in alignment at lines 5020--5025
+ [][][] []
+ []
 
-Overfull \hbox (171.99907pt too wide) in paragraph at lines 5161--5162
+
+Overfull \hbox (171.99907pt too wide) in paragraph at lines 5040--5041
 []\OT1/cmr/m/n/12 =============================================================
 ====== 
  []
 
-[143] [144] [145] ("my extra at work.bbl") [146]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 5262.
+[141] [142] [143]
+Overfull \hbox (2.27861pt too wide) in paragraph at lines 5116--5117
+[]\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=
+-=-=-=--=-
+ []
+
+("my extra at work.bbl") [144]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 5153.
  ("my extra at work.aux")
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 5262.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 5262.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 5153.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 5153.
  ) 
 Here is how much of TeX's memory you used:
  13408 strings out of 428755
  185132 string characters out of 3166785
- 298014 words of memory out of 3000000
+ 300958 words of memory out of 3000000
  16598 multiletter control sequences out of 15000+200000
  17684 words of font info for 67 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
  36i,19n,38p,999b,569s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on my extra at work.pdf (146 pages).
+Output written on my extra at work.pdf (144 pages).
