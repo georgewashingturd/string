@@ -4611,7 +4611,7 @@ therefore the characters are the $n$ roots of unity. The set of characters is ca
 %
 and since $\chi(a)$ and $\psi(a)$ are just complex numbers, the above is commutative, thus $\widehat G$ is an abelian group and it is the dual of $G$.
 
-Note that in the above we only define the relatioships between $G$ and $\widehat G$, we still need to define functions on these two spaces in order to do Fourier transforms. A function $f$ on $G$ is a map from $G$ into the complex plane.
+Note that in the above we only define the relationships between $G$ and $\widehat G$, we still need to define functions on these two spaces in order to do Fourier transforms. A function $f$ on $G$ is a map from $G$ into the complex plane.
 
 Next we also define an inner product between two {\bf functions} on $G$
 %
@@ -5115,24 +5115,66 @@ and the above covers all cases of $w$ including it being a multiple of $n$ :) an
 
 -=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=
 
-Something interesting about the complex numbers, one, we cannot order complex numbers such as $z > w$, total ordering is defined as
+Something interesting about the complex numbers, one, when mapping the complex plane to a sphere (usually called the Riemann projection) we can map {\bf every} point in the plane to a point on the sphere in a one-to-one fashion but not every point on the sphere has a corresponding point on the plane, there is one point that is not mappable, it is the north (or south) pole depending how you do the projection.
+
+Note that it's not that in the limit of $x\to\pm\infty$ we get the north pole or the limit $y\to\pm i\infty$ we get the north pole, as stated above {\bf every} point on the plane is mapped onto the sphere but the north pole is not mappable at all. So the complex numbers are made up by the complex plane {\bf plus} one point ``at infinity''.
+
+One reason for this is because we cannot order complex numbers such as $z > w$ unlike the real line, by the way total ordering is defined as
 \bit
 \item For any two complex numbers $z,w$, one and only one of the following is true: $z>w$, $w>z$, or $z=w$
 \item For all $z_1, z_2, z_3 \in \mathbb{C}$ the relation $z_1 >z_2$ implies $z_1+z_3>z_2+z_3$
 \item For all $z_1,z_2,z_3 \in \mathbb{C}$ with $z_3>0$, then $z_1>z_2$ implies $z_1z_3>z_2z_3$
 \eit
 
+To demonstrate this let's start by assuming that $0 < i$ in this case
+%
+\nbea
+(i)0 & < & i^2 \\
+0 & < & -1
+\neea
+%
+note that in multiplying both sides we need to make sure that we multiply by something $> 0$ otherwise the inequality sign will flip, in this case $i > 0$ so we're ok. Another ting to note here is that $0 < -1$ by itself is not necessarily wrong since we have not made any assumption about anything yet.
+
+Next, since $-1 > 0$
+%
+\nbea
+(-1)0 & < & (-1)^2 \\
+0 & < & 1
+\neea
+%
+Going back to the first inequality above $0 < -1$
+%
+\nbea
+0 + 1 & < & -1 + 1 \\
+1 & < & 0
+\neea
+%
+so combining the two we get
+%
+\nbea
+1 < 0 < 1
+\neea
+%
+so no total ordering, if we start with $i < 0$
+%
+\nbea
+i^2 & > & (i)0 \\
+-1 & > & 0
+\neea
+%
+and we get the same conclusion, note that the inequality sign flipped because now $i < 0$, another way to look at it is
+%
+\nbea
+0 & < & i \\
+0 & < & -1 \\
+\to 0 & < & -i
+\neea
+%
+so if $0 < i$ it's also true that $0 < -i$, note that in the above we were just following the definition for total ordering described above.
 
 
 
 
-
-
-
-
-
-
-ball projection, the north pole absolutely cannot be mapped
 
 
 
