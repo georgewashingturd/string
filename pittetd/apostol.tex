@@ -2590,6 +2590,141 @@ the thing here is that $\log x < x$ so we can lump $\log x$ into $O(x)$ me hope 
 
 {\bf Page 132}, top page, ``The integer $n$ is also called the {\it order of the element} $a$'', note that the terminology {\it order} was already used for the size of the finite group
 
+{\bf Problem 6.2}. Let $G$ be a finite group of order $n$ with identity element $e$. If $a_1,\ldots,a_n$ are $n$ elements of $G$, not necessarily distinct, prove that there are integers $p$ and $q$ with $1\le p \le q \le n$ such that $a_p a_{p+1} \ldots a_q = e$.
+
+I'd like to rephrase the problem as if you randomly pick $n$ elements of a finite group of order $n$ one at a time, multiply them (also one at a time) and put it back in (so an elements can be picked multiple times), at some point you'll encounter $e$ within this product, here's how
+
+Say you take the first element $a_1$, your current product is just $a_1$ for now and let's call the product $c_1$ which in this case is just $a_1$, put $a_1$ back in the pool, then you pick another element $a_2$, your current product is now $a_1 a_2$, where $a_2$ can also be just $a_1$, but by the closure property, $a_1a_2$ must be an element in the group as well let's call this $c_2$.
+
+If we continue this process $n$ times, we will get $n$ products, $c_1, \ldots,c_n$, if all of the $c$'s are different, since they are all elements of the group then one of them must be the identity.
+
+Now if say some of the $c$'s are the same, say $c_i = c_j$
+%
+\nbea
+c_i & = & a_1 a_2 \ldots a_i \\
+c_j & = & a_1 a_2 \ldots a_i a_{i+1}\ldots a_j
+\neea
+%
+this means that somewhere along the process we have encountered the identity, \ie since
+%
+\nbea
+a_1 a_2 \ldots a_i & = & a_1 a_2 \ldots a_i a_{i+1}\ldots a_j \\
+\to a_{i+1}a_{i+2}\ldots a_j & = & e
+\neea
+%
+Q.E.D :) the key point here is that we are choosing $n$ random elements and therefore multiplying $n$ times and therefore generating $n$ elements so therefore it either must cover the whole group or if not then some of them are duplicates, and obviously if it's less than $n$ it won't work
+
+\bigskip
+\underline{\textbf{\textit{Chapter 7}}}
+\bigskip
+
+{\bf Page 146}, after Eq (1), ``there can be no more than one prime in the progression if $d>1$'', the reason there can be at least one prime is when $n=0$ and $h=d$ is prime.
+
+{\bf Page 147}, lower half of page somewhere within the proof of Theorem 7.2, ``and it cannot be $-2$, because it is divisible by $p$'', what does it refer too? the thing is
+%
+\nbea
+(-1)^{(p-1)/2} &\equiv& 1 \pmod{p} \\
+\to (-1)^{(p-1)/2} - 1 &\equiv& 0 \pmod{p}
+\neea
+%
+so if $(-1)^{(p-1)/2} - 1 = -2$ then
+%
+\nbea
+-2&\equiv& 0 \pmod{p}
+\neea
+%
+which is a contradiction because then $p$ must be equal to $2$ but we have shown that $p > N$.
+
+{\bf Page 149}, first line, top of page, ``The convergence of each of these series was shown in Theorem 6.18.'' The series in question are
+%
+\nbea
+L(1,\chi) & = & \sum_{n=1}^\infty \frac{\chi(n)}{n}, \\
+L'(1,\chi) & = & -\sum_{n=1}^\infty \frac{\chi(n)\log n}{n}.
+\neea
+%
+and Theorem 6.18 states that
+%
+\nbea
+\sum_{n\le x}^\infty \frac{\chi(n)}{n} & = & \sum_{n=1}^\infty \frac{\chi(n)}{n} + O\left(\frac{1}{x}\right) \\
+\sum_{n\le x}^\infty \frac{\chi(n)\log n}{n} & = & \sum_{n=1}^\infty \frac{\chi(n)\log n}{n} + O\left(\frac{\log x}{x}\right)
+\neea
+%
+and this ladies and gentlemen is a statement about convergence :) I think this is a sick trick, well, there's been loads of sick tricks in this book maybe I should tabulate all of them someday but in this case, following Theorem 6.18
+%
+\nbea
+L(1,\chi) = \sum_{n=1}^\infty \frac{\chi(n)}{n} & = & \sum_{n\le x}^\infty \frac{\chi(n)}{n} - O\left(\frac{1}{x}\right)
+\neea
+%
+note that according to the definition of Big Oh $O(1/x) \neq -O(1/x)$ because of ``there exist a constant $M>0$ $\ldots$'',  in any case, from the definition of Big Oh, for all $x \ge a$ there exists a constant $M>0$ such that
+%
+\nbea
+O\left( \frac{1}{x}\right ) &\le& M \frac{1}{x}, ~~~ x \ge a
+\neea
+%
+therefore if we choose $x=a$ we will have
+%
+\nbea
+O\left( \frac{1}{x}\right ) &\le& M \frac{1}{a}
+\neea
+%
+and $\sum_{n \le a}\frac{\chi(n)}{n}$ is definitely bounded since $a$ is finite, therefore the sum (or rather in this case the difference) of the two is also bounded and $L(1,\chi)$ is bounded, very clever indeed and obviously the same argument applies to $L'(1,\chi)$ as well.
+
+{\bf Page 150}, Eq (8), note that the key assumption for Dirichlet's theorem is that $\gcd(h,k)=1$, so it's always interesting as to how this key information is utilized in the proof, it is actually only used in passing going into Eq(8), \ie from ensuring that $\sum_r \chi_r(m)\overline\chi_r(n)$ is not zero by making $n=h$ relatively prime to $k$ and more interestingly this fact that $\gcd(h,k)=1$ is not used anymore in the rest of the proof or in the proofs of the other lemmas $\ldots$
+
+{\bf Page 154}, first line, top of page, ``Lemma 7.6 shows that the right member of (18) is $O(1)$'', what is this right member? LOL the right member is the second term of the RHS of Eq (18), \ie
+%
+\nbea
+\frac{1}{\varphi(k)} \sum_{r=2}^{\varphi(k)}\sum_{p\le x}\frac{\chi_r(p)\log p}{p}
+\neea
+%
+why is this $O(1)$ if $L(1,\chi_r)\neq0$? because from Page 153 last equation we have
+%
+\nbea
+\sum_{p\le x}\frac{\chi_r(p)\log p}{p} & = & -L'(1,\chi_r)\sum_{n\le x}\frac{\mu(n)\chi_r(n)}{n} + O(1)
+\neea
+%
+the key thing here is that $L'(1,\chi_r)$ is finite as stated on Page 149 first line and since from Lemma 7.6 $\sum_{n\le x}\frac{\mu(n)\chi_r(n)}{n} = O(1)$ we have $-L'(1,\chi_r)\sum_{n\le x}\frac{\mu(n)\chi_r(n)}{n} = -L'(1,\chi_r)O(1) = O(1)$.
+
+{\bf Page 155}, Theorem 7.10, on the surface it seems like Theorem 7.10 is just Eq (19), \ie the asymptotic formula for $\pi_a(x)$ but this is not so, in Theorem 7.10, we only get the asymptotic formula for $\pi_a(x)$ {\bf if} we assume that $\pi_a \sim \pi_b$ for all $a,b$ co-prime to $k$ while in Eq (19) we make no such assumption.
+
+\bigskip
+\underline{\textbf{\textit{Chapter 8}}}
+\bigskip
+
+{\bf Page 157}, second paragraph, ``A simpler example is the greatest common divisor $(n,k)$ regarded as a function of $n$'', this is actually genius, seeing the $\gcd$ as a function of $n$, the proof of $\gcd(n,k) = \gcd(n+k,k)$ is given in Stein's ent.pdf but it's straightforward enough that I'll do my own version here :) Stein's proof is really cool though
+
+Say $(n+k,k) = r \neq s = (n,k)$, then since $r=(n+k,k)$, $r|(n+k)-k \to r|n$, so $r$ is common divisor of $n$ and $k$ if $r > s$ then it's a contradiction since $s$ is the {\bf greatest} common divisor between $n$ and $k$, alright so $r \le s$ but if $r < s$ we get another contradiction since $s$ definitely is a common divisor between $n+k$ and $k$ but since $s > r$ then $r$ is definitely not the {\bf greatest} common divisor of $n+k$ and $k$ so the only conclusion is that $r=s$.
+
+{\bf Page 159}, top of page, ``the difference $P(z) - Q(z)$ would vanish at $k$ distinct points, hence $P(z)=Q(z)$ since both polynomials have degree $\le k-1$''.
+
+The key point here is ``have degree $\le k-1$''. First consider two straight lines, \ie two degree one polynomials, if these two lines have two points in common then the two lines must be the same because 
+%
+\nbea
+\begin{array}{r c c c l c c c l}
+& & {\rm First~Line} & & & ~~~~~~~ & {\rm Second~Line} \\
+{\rm first~point~} (x_1,y_1) & \longrightarrow & a_1 x_1 + b_1 & = & y_1 & ~~~~~~~ & a_2 x_1 + b_2 & = & y_1 \\
+{\rm second~point~} (x_2,y_2) & \longrightarrow & a_1 x_2 + b_1 & = & y_2 & ~~~~~~~ & a_2 x_2 + b_2 & = & y_2
+\end{array}
+\neea
+%
+with the solutions
+%
+\nbea
+\begin{array}{r c l c r c l}
+a_1 & = & \frac{y_1-y_2}{x_1-x_2} & ~~~~~~~ & a_2 & = & \frac{y_1-y_2}{x_1-x_2} \\
+b_1 & = & -\frac{x_2y_1-x_1y_2}{x_1-x_2} & ~~~~~~~ & b_2 & = & -\frac{x_2y_1-x_1y_2}{x_1-x_2}
+\end{array}
+\neea
+%
+so we have two same exact lines, moral of the story is since each line has two constants and there are two points these two constant unknowns ($(a_1,b_1)$ for line 1 and $(a_2,b_2)$ for line 2) are uniquely determined by the two points, so the two lines have the same coefficients and therefore the same. The situation is the same for higher order polynomials we will just have more unknowns with the corresponding more equations.
+
+
+
+
+
+
+
+
 
 
 
