@@ -5133,7 +5133,7 @@ To demonstrate this let's start by assuming that $0 < i$ in this case
 0 & < & -1
 \neea
 %
-note that in multiplying both sides we need to make sure that we multiply by something $> 0$ otherwise the inequality sign will flip, in this case $i > 0$ so we're ok. Another ting to note here is that $0 < -1$ by itself is not necessarily wrong since we have not made any assumption about anything yet.
+note that in multiplying both sides we need to make sure that we multiply by something $> 0$ otherwise the inequality sign will flip, in this case $i > 0$ so we're ok. Another thing to note here is that $0 < -1$ by itself is not necessarily wrong since we have not made any assumption about anything yet and we are on the complex plane now not on the real line.
 
 Next, since $-1 > 0$
 %
@@ -5171,6 +5171,32 @@ and we get the same conclusion, note that the inequality sign flipped because no
 \neea
 %
 so if $0 < i$ it's also true that $0 < -i$, note that in the above we were just following the definition for total ordering described above.
+
+-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=
+
+Saw this somewhere, show that
+%
+\nbea
+\sum_{n=1}^\infty \frac{2}{n(n+1)} & = & 1+\frac{1}{3}+\frac{1}{6}+\frac{1}{10}+\ldots = 2
+\neea
+%
+historically this was first proved by Pietro Mengoli in 1650, the real gist of the story is that Mengoli couldn't deduce the value of the sum $\sum_n 1/n^2$ which is similar to the one above (this quadratic harmonic series was finally solved by Euler, neither Leibnitz nor Bernoulli could do it). So back to the original problem, my approach was to split $\frac{2}{n(n+1)}$ into a sum of two fractions
+%
+\nbea
+\frac{2}{n(n+1)} & = & \frac{A}{n}+\frac{B}{n+1} \\
+& = & \frac{An+A+Bn}{n(n+1)}
+\neea
+%
+this means that $A = 2$ and $B=-2$ and thus the series can be written as
+%
+\nbea
+\sum_{n=1}^\infty \frac{2}{n(n+1)} & = & \sum_{n=1}^\infty \left(\frac{2}{n} - \frac{2}{n+1}\right) \\
+& = & \sum_{n=1}^\infty \frac{2}{n} - \sum_{n=1}^\infty \frac{2}{n+1} \\
+& = & \sum_{n=1}^\infty \frac{2}{n} - \sum_{n=2}^\infty \frac{2}{n} \\ 
+& = & 2
+\neea
+%
+so the series more or less ``telescopes'' and we are left with just the first term although I believe the mehod above is not legit as we turned a (convergent?) series into a conditionally convergent series? \dunno
 
 
 
