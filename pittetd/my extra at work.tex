@@ -5191,19 +5191,290 @@ this means that $A = 2$ and $B=-2$ and thus the series can be written as
 %
 \nbea
 \sum_{n=1}^\infty \frac{2}{n(n+1)} & = & \sum_{n=1}^\infty \left(\frac{2}{n} - \frac{2}{n+1}\right) \\
-& = & \sum_{n=1}^\infty \frac{2}{n} - \sum_{n=1}^\infty \frac{2}{n+1} \\
-& = & \sum_{n=1}^\infty \frac{2}{n} - \sum_{n=2}^\infty \frac{2}{n} \\ 
+& = & \left(\frac{2}{1} - \frac{2}{2}\right) + \left(\frac{2}{2} - \frac{2}{3}\right) + \left(\frac{2}{3} - \frac{2}{4}\right) + \left(\frac{2}{4} - \right. \ldots \\
+& = & \frac{2}{1} + \left( - \frac{2}{2} + \frac{2}{2} \right) + \left( - \frac{2}{3}+ \frac{2}{3}\right) + \left( - \frac{2}{4}+ \frac{2}{4}\right) + \ldots \\
 & = & 2
 \neea
 %
-so the series more or less ``telescopes'' and we are left with just the first term although I believe the mehod above is not legit as we turned a (convergent?) series into a conditionally convergent series? \dunno
+so the series more or less ``telescopes'' and we are left with just the first term although I believe the method above is not legit as we turned an (absolutely?) convergent series into a conditionally convergent series? \dunno ~~~but to then again it might still be ok because if we denote
+%
+\nbea
+H_n & = & \frac{2}{n} -\frac{2}{n+1} \\
+\to S(k) & = & \sum_{n=1}^k H_n \\
+& = & \frac{2}{1} - \frac{2}{k+1}
+\neea
+%
+and if we take the limit $k\to\infty$
+%
+\nbea
+\lim_{k\to\infty} S(k) & = & \frac{2}{1} - \frac{2}{\infty} \\
+& = & 2
+\neea
+%
+the only trick remaining is showing that
+%
+\nbea
+\sum_{n=1}^\infty \frac{2}{n(n+1)} & = & \lim_{k\to\infty} S(k)
+\neea
+%
+which can be shown by noting that if the sum is not infinite the two agree, \ie
+%
+\nbea
+\sum_{n=1}^k \frac{2}{n(n+1)} & = & S(k)
+\neea
+%
+so if we take both sides to infinity we get
+%
+\nbea
+\to \lim_{k\to\infty}\sum_{n=1}^k \frac{2}{n(n+1)} & = & \lim_{k\to\infty} S(k) \\
+\sum_{n=1}^\infty \frac{2}{n(n+1)} & = & 2
+\neea
+%
+sounds a lot like a roundabout way of saying the same thing LOL \dunno
 
+-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=
 
+{\bf Exercise 1.2.1}, Page 12, Imitate this argument to get a formula for the hexagonal numbers $h(n)$.
 
+A triangular number, $t_n$ is a number where $t_1=1$ and $t_2 = 3$ and because it's 3 it's a triangular number, the explicit formula is
+%
+\nbea
+t_n & = & \frac{n(n+1)}{2}
+\neea
+%
+which is just $1 + 2 + \ldots + n$.
 
+For the hexagonal number we have $\Delta^2h(n) = 6-2 = 4$ and so $\Delta h(n) = 4n + C$ such that
+%
+\nbea
+\Delta^2h(n) = \Delta(\Delta h(n)) = \Delta(4n+C) = (4(n+1)+C) - (4n+C) = 4
+\neea
+%
+This means that $h(n)$ should contain $Cn+D$ such that $\Delta h(n) = (C(n+1) + D) - (Cn+D) = C$ but this should not be the only term $h(n)$ contains, it should also contain a term whose difference is $4n$ because $\Delta h(n)$ contains $4n$ and that is provided by
+%
+\nbea
+\Delta(4t(n-1)) = 4t(n) - 4t(n-1) = 4\frac{n(n+1)}{2} - 4\frac{n(n-1)}{2} = 4n
+\neea
+%
+so
+%
+\nbea
+h(n) = 4t(n-1) + Cn + D = 2n(n-1) + Cn + D
+\neea
+%
+applying initial conditions $h(1) = 1$ and $h(2) = 6$
+%
+\nbea
+0 + C + D & = & 1 \\
+4 + 2C + D & = & 6
+\neea
+%
+giving $C=1$ and $D=0$, so
+%
+\nbea
+h(n) & = & 2n(n-1) + n = n(2n-1)
+\neea
+%
+This seems to be correct since it gives
+%
+\nbea
+\begin{array}{r c c c c c c c c c}
+h(n): & 1 & 6 & 15 & 28 & 45 & 66 & 91 & 120 & \ldots, \\
+\Delta h(n): & 5 & 9 & 13 & 17 & 21 & 25 & 29 & 33 & \ldots, \\
+\Delta^2h(n): & 4 & 4 & 4 & 4 & 4 & 4 & 4 & 4 & \ldots .
+\end{array}
+\neea
+%
+and in general $\ldots$
 
+{\bf Exercise 1.2.4}, Page 14, find a formula for polygonal numbers with $a$ sides, for any $a$, \ie a function $f(n)$ with
+%
+\nbea
+\Delta^2f(n) = a - 2, & ~~~~~~~~~~~~ & {\rm with~} f(1) = 1 {\rm ~and~} f(2) = a.
+\neea
+%
 
+Using the result from Exercise 1.2.1 the generic formula we have is
+%
+\nbea
+f(n) = (a-2)t(n-1) + Cn + D = (a-2)n(n-1)/2 + Cn + D
+\neea
+%
+applying initial conditions
+%
+\nbea
+0 + C + D & = & 1 \\
+(a-2) + 2C + D & = & a
+\neea
+%
+which means it's actually independent of $a$, interesting, and therefore $C=1$ and $D=0$ all the time $\ldots$ and therefore
+%
+\nbea
+f(n) & = & n\left\lbrack\left(\frac{a}{2}-1\right)n - \frac{a}{2} + 2\right\rbrack
+\neea
+%
+the good thing about this is that it works for {\bf any} $a$, zero, positive and negative.
 
+{\bf Exercise 1.2.5}, Page 16, verify that
+%
+\nbea
+n^{\underline 1} + 3n^{\underline 2} + n^{\underline 3} & = & n^3
+\neea
+%
+Now use this fact to find formulas for
+%
+\nbea
+\sum_{0\le k <n+1} k^3.
+\neea
+%
+
+%
+\nbea
+n^{\underline 1} & = & n\\
+3n^{\underline 2} & = & 3n(n-1) \\
+& = & 3n^2 - 3n \\
+n^{\underline 3} & = & n(n-1)(n-2) \\
+& = & n^3 - 3n^2 + 2n
+\neea
+%
+so it's obvious if we sum them we get $n^3$, now we need to ``integrate'' these things
+%
+\nbea
+\Sigma (n^{\underline 1} + 3n^{\underline 2} + n^{\underline 3}) & = & \frac{n^{\underline 2}}{2} + \bcancel{3}\frac{n^{\underline 3}}{\bcancel{3}} + \frac{n^{\underline 4}}{4}
+\neea
+%
+using this in the big sum we get
+%
+\nbea
+\sum_{0\le k <n+1} k^3 & = & \left.\Sigma(n^{\underline 1} + 3n^{\underline 2} + n^{\underline 3})\right|_0^{n+1} \\
+& = & \left.\frac{n^{\underline 2}}{2} + n^{\underline 3} + \frac{n^{\underline 4}}{4}\right|_0^{n+1} \\
+& = & \frac{(n+1)^{\underline 2}}{2} + (n+1)^{\underline 3} + \frac{(n+1)^{\underline 4}}{4} \\
+& = & \frac{(n+1)n}{2} + (n+1)n(n-1) + \frac{(n+1)n(n-1)(n-2)}{4} \\
+& = & \frac{n(n+1)\{2 + 4(n-1) + (n-1)(n-2)\}}{4} \\
+& = & \frac{n^2(n+1)^2}{4}
+\neea
+%
+
+{\bf Exercise 1.2.12}, Page 21, Use the fact that if $\Delta f(k) = g(k)$ and $a$ is any constant, then $\Delta (f(k+a)) = g(k+a)$, and the fact that $2(k-1)^{\underline {-2}} = 1/t_k$ to find the sum of the reciprocals of the first $n$ triangular numbers
+%
+\nbea
+\frac{1}{t_1} + \frac{1}{t_2} + \ldots + \frac{1}{t_n}.
+\neea
+%
+Next compute
+%
+\nbea
+\frac{1}{T_1} + \frac{1}{T_2} + \ldots + \frac{1}{T_n},
+\neea
+%
+the sum of the reciprocals of the first $n$ tetrahedral numbers.
+
+So what we want is
+%
+\nbea
+\sum_{1\le k < n+1} \frac{1}{t_k} & = & \left.\Sigma \frac{1}{t_k} \right |_{1}^{n+1} \\
+& = & \left.\Sigma 2(k-1)^{\underline{-2}} \right |_{1}^{n+1} \\
+& = & \left.\Sigma \frac{2(k-1)^{\underline{-1}}}{-2+1} \right |_{1}^{n+1} \\
+& = & -2 \left \lbrack (n)^{\underline{-1}} - 0^{\underline{-1}}\right\rbrack \\
+& = & -2\left\lbrack\frac{1}{(n+1)} - \frac{1}{0+1}\right\rbrack \\
+& = & \frac{2n}{n+1}
+\neea
+%
+the thing to note here is that $0^{\underline{-1}}$ is {\bf not} zero it is actually $1/(0+1) = 1$. For the tetrahedral numbers we know that it is given in Eq. 1.4 and 1.5
+%
+\nbea
+T_n & = & \frac{n(n+1)(n+2)}{6} \\
+\to \frac{1}{T_n} & = & 6~\frac{1}{n(n+1)(n+2)}\\
+& = & 6 (n-1)^{\underline{-3}}
+\neea
+%
+so the sum is also pretty much the same
+%
+\nbea
+\sum_{1\le k < n+1} \frac{1}{T_k} & = & \left.\Sigma \frac{1}{T_k} \right |_{1}^{n+1} \\
+& = & \left.\Sigma 6(k-1)^{\underline{-3}} \right |_{1}^{n+1} \\
+& = & \left.\Sigma \frac{6(k-1)^{\underline{-2}}}{-3+1} \right |_{1}^{n+1} \\
+& = & -3 \left \lbrack (n)^{\underline{-2}} - 0^{\underline{-2}}\right\rbrack \\
+& = & -3\left\lbrack\frac{1}{(n+1)(n+2)} - \frac{1}{(0+1)(0+2)}\right\rbrack \\
+& = & \frac{3(n^2+3n)}{2(n+1)(n+2)}
+\neea
+%
+
+{\bf Exercise 1.2.13}, Page 23, Use Summation by Parts and the Fundamental Theorem to compute $\sum_{0\le k<n}H_k$. (Hint: You can write $H_k = H_k \cdot 1 = H_k\cdot k^{\underline 0}$.) Your answer will have Harmonic numbers in it of course.
+
+%
+\nbea
+\Sigma H_k & = & \Sigma (H_k \cdot 1) = \Sigma (H_k\cdot k^{\underline 0})
+\neea
+%
+I don't know how to integrate $H_k$ (since that is the question we are trying to answer here) but I know how to differentiate it, the derivative is just $k^{\underline{-1}}$ so we'll take $u = H_k$ such that $\Delta u = k^{\underline{-1}}$ and so we'll take $\Delta v = k^{\underline 0}$ such that $v = k^{\underline 1}$.
+
+Next we need $\Sigma(\Delta u\cdot Ev)$
+%
+\nbea
+\Sigma(\Delta u\cdot Ev) & = & \Sigma(k^{\underline{-1}} \cdot (k+1)^{\underline 1}) \\
+& = & \Sigma\left(\frac{1}{\bcancel{(k+1)}}\cdot \bcancel{(k+1)}k \right) \\
+& = & \frac{k^{\underline 2}}{2}
+\neea
+%
+so we have
+%
+\nbea
+\Sigma (u\cdot\Delta v) & = & uv - \Sigma(\Delta u\cdot Ev) \\
+\to \Sigma (H_k\cdot k^{\underline 0}) & = & H_k k^{\underline 1} - \frac{k^{\underline 2}}{2}
+\neea
+%
+to verify let's differentiate it
+%
+\nbea
+\Delta\left(H_k k^{\underline 1} - \frac{k^{\underline 2}}{2}\right) & = & k^{\underline {-1}}(k+1)^{\underline 1} + H_k k^{\underline 0} - k^{\underline 1} \\
+& = & \frac{(k+1)k}{k+1} + H_k - k \\
+& = & H_k
+\neea
+%
+note that the product rule here is different, there's a shift involved, see Page 22, and therefore
+%
+\nbea
+\sum_{0 \le k < n} H_k\cdot k^{\underline 0} & = & \left.\Sigma(u\cdot\Delta v)\right|_0^{n} \\
+& = & \left. \left( H_k k^{\underline 1} - \frac{k^{\underline 2}}{2}\right)\right |_0^n\\
+& = & n\left(H_n - \frac{n-1}{2}\right)
+\neea
+%
+
+{\bf Exercise 1.2.14}, Page 23, Use Summation by Parts and the Fundamental Theorem to compute $\sum_{0\le k <n}k2^k$. (Hint: You need the first part of Exercise 1.2.9.)
+
+The thing to note here is that $2^k$ is like $e$ its derivative is itself
+%
+\nbea
+\Delta 2^k & = & 2^{k+1} - 2^k \\
+& = & 2^k
+\neea
+%
+so we will want this to be $\Delta v = 2^k$ such that $v = 2^k$ and $u = k = k^{\underline 1}$ such that $\Delta u = k^{\underline 0} = 1$ and so
+%
+\nbea
+\Sigma(u\cdot \Delta v) & = & uv - \Sigma(\Delta u\cdot Ev) \\
+& = & k^{\underline 1} 2^k - \Sigma\left(k^{\underline 1} 2^{k+1}\right) \\
+& = & k2^k - \Sigma(2^{k+1}) \\
+& = & k2^k - 2^{k+1} \\
+& = & 2^k(k - 2)
+\neea
+%
+to verify let's differentiate the above
+%
+\nbea
+\Delta\left\{ 2^k(k - 2) \right\} & = & 2^k ((k+1)-2) + 2^k \\
+& = & k2^k
+\neea
+%
+so it's correct and again the thing to note is that the product rule here now involves a shift, moving on
+%
+\nbea
+\sum_{0\le k <n} k2^k & = & \left. \left( 2^k(k - 2) \right) \right |_0^n \\
+& = & 2^n(n-2) - (-2) \\
+& = & 2^n(n-2) + 2
+\neea
+%
 
 
 

@@ -2669,6 +2669,14 @@ O\left( \frac{1}{x}\right ) &\le& M \frac{1}{a}
 %
 and $\sum_{n \le a}\frac{\chi(n)}{n}$ is definitely bounded since $a$ is finite, therefore the sum (or rather in this case the difference) of the two is also bounded and $L(1,\chi)$ is bounded, very clever indeed and obviously the same argument applies to $L'(1,\chi)$ as well.
 
+Note that just because a function is bounded doesn't mean that it has or converges to a limit, take $\sin x$ for example, it is bounded between $-1$ and $1$ but it has no limit as $x\to\infty$ but in the cases involving Big Oh, this distinction doesn't matter too much because let's say we have $\sin(x) O(x)$
+%
+\nbea
+\sin (x) O(x) & \sim & O(x)
+\neea
+%
+because $\sin(x)$ is bounded so $|\sin(x)| \le M x \to \sin(x) \sim O(x)$.
+
 {\bf Page 150}, Eq (8), note that the key assumption for Dirichlet's theorem is that $\gcd(h,k)=1$, so it's always interesting as to how this key information is utilized in the proof, it is actually only used in passing going into Eq(8), \ie from ensuring that $\sum_r \chi_r(m)\overline\chi_r(n)$ is not zero by making $n=h$ relatively prime to $k$ and more interestingly this fact that $\gcd(h,k)=1$ is not used anymore in the rest of the proof or in the proofs of the other lemmas $\ldots$
 
 {\bf Page 154}, first line, top of page, ``Lemma 7.6 shows that the right member of (18) is $O(1)$'', what is this right member? LOL the right member is the second term of the RHS of Eq (18), \ie
