@@ -24,6 +24,7 @@
 
 \usepackage{mathtools} % for \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 
+
 \newcommand{\msout}[1]{\text{\sout{\ensuremath{#1}}}}
 
 
@@ -538,27 +539,95 @@ so it's correct and again the thing to note is that the product rule here now in
 
 -=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=
 
-An interesting way to factorize $1-z^n$
+{\bf Exercise 2.1.7}, Page 30, we know that $6=2^1\cdot3$ and $28=2^2\cdot 7$ are perfect numbers. The next ones are $496=2^4\cdot31$ and $8128=2^6\cdot127$ (check this!). What is the pattern in $3,7,31,127,\ldots$ ? What is the pattern in the exponents $1,2,4,6,\ldots$ ? Try to make a conjecture about perfect numbers. Euclid, in his {\it Elements}, proved a general theorem about perfect numbers around the year 300 B.C.
+
 %
 \nbea
-1-z^n & = &(1-e^{(2\pi i) 1/n}z)(1-e^{(2\pi i) 2/n}z) \ldots (1-e^{(2\pi i) n/n}z) \\
-& = & \sum_{k=1}^{n} (1-e^{(2\pi i)k/n}z)
+3 & = & 2^2 - 1 \\
+7 & = & 2^3 - 1 \\
+31 & = & 2^5 - 1\\
+127 & = & 2^7 - 1
 \neea
 %
-so if we do partial fractions on say
+so the exponents are $2,3,5,7$ which are all primes and are all one more that the $1,2,4,6$ so it looks like the formula for even perfect numbers are
 %
 \nbea
-(1-z^6)(1-z^{15}) & = & (1-z^3)(\ldots)\times(1-z^3)(\ldots) \\
-& = & (1-e^{(2\pi i) j/n}z) (\ldots) \times (1-e^{(2\pi i) j/n}z)(\ldots)
+2^{p-1}\cdot (2^p - 1)
 \neea
 %
+where $p$ is prime.
 
+{\bf Exercise 2.1.8}, Page 30, \#2 and \#3 are the interesting ones since the exponents of the $2^p-1$ are 11 and 13 and they are both prime so $2^{10}(2^{11}-1)$ and $2^{12}(2^{13}-1)$ are also prime, let's start with \#2
 
+%
+\nbea
+2096128 & = & 2^{10}(2^11-1) = 2^{10}\cdot 23 \cdot 89 \\
+\to \sigma(2096128) & = & \sigma(2^{10}) \sigma(23) \sigma(89) \\
+& = & (2^11-1) (23+1)(89+1) \\
+& = & 4421520 \\
+\to s(2096128) & = & \sigma(2096128) - 2096128  = 2325392\\
+& \neq & 2096128
+\neea
+%
+so even though 11, the exponent of $2^{11}-1$ is prime, $2^{10}(2^{11}-1)$ is not perfect, while
+%
+\nbea
+33550336 & = & 2^{12}(2^{13}-1) = 2^{12} \cdot 8191 \\
+\to \sigma(33550336) & = & \sigma(2^{12})\sigma(8191) \\
+& = & (2^{13}-1)(8191+1) \\
+& = & 8191\cdot(8191+1) \\
+& = & 67100672 \\
+\to s(33550336) & = & \sigma(33550336) - 33550336 = 33550336
+\neea
+%
+so it is a perfect number, thus the formula has to be correctec to only include $2^p-1$ that is prime (and $p$ itself is also prime)
 
+{\bf Exercise 2.1.12}, Page 31, there is an interesting theorem about perfect numbers and sums of cubes. For example,
+%
+\nbea
+28 = 1^3 + 3^3
+\neea
+%
+Try to make a conjecture about what is true. Ignore the first perfect number, 6; it doesn't fit the pattern.
+%
+\nbea
+28 & = & 1^3 + 3^3\\
+496 & = & 1^3 + 3^3 + 5^3 + 7^3\\
+8128 & = & 1^3 + 3^3 + 5^3 + 7^3 + 9^3 + 11^3 + 13^3 + 15^3
+\neea
+%
+the pattern is given by the next exercise
 
+{\bf Exercise 2.1.12}, Page 31,
+%
+\nbea
+1^3 + 3^3 + 5^3 + \ldots + (2N-1)^3 & = & \left(1^3 + 2^3 + 3^3 + \ldots + (2N)^3\right) - \left(2^3+4^3+6^3 + \ldots+(2N)^3\right) \\
+& = & \frac{(2N)^2(2N+1)^2}{4} - 2^3\left(1^3 + 2^3 + 3^3 + \ldots+N^3\right) \\
+& = & \frac{4N^2(2N+1)^2}{4} - 2^3 \frac{N^2(N+1)^2}{4} \\
+& = & N^2(2N+1)^2 - 2N^2(N+1)^2 \\
+& = & N^2 \left( 4N^2 + 4N + 1 - 2N^2 - 4N - 2\right) \\
+& = & N^2(2N^2-1)
+\neea
+%
+so $N=2^{(p-1)/2}$ where $p$ is prime and $2^p-1$ is also prime
 
-
-
+{\bf Exercise 2.1.16}, Page 33, Suppose $m$ and $n$ are integers such that $\sigma(m) = m + n = \sigma(n)$. What can you say is true about $s(m)$ and $s(n)$?
+%
+\nbea
+s(m) & = & \sigma(m) - m \\
+& = & m+n-m \\
+s(m)& = & n
+\neea
+%
+and
+%
+\nbea
+s(n) & = & \sigma(n) - n\\
+& = & m+n-n \\
+s(n)& = & m
+\neea
+%
+so a pair of amicable numbers $m$ and $n$ are those such that $s(m)=n$ and $s(n) = m$ and therefore $\sigma(m)=\sigma(n) = m+n$
 
 
 
