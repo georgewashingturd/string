@@ -1,0 +1,592 @@
+\documentclass[aps,preprint,preprintnumbers,nofootinbib,showpacs,prd]{revtex4-1}
+\usepackage{graphicx,color}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsmath,amssymb}
+\usepackage{multirow}
+\usepackage{amsthm}%        But you can't use \usewithpatch for several packages as in this line. The search 
+
+\usepackage{cancel}
+
+%%% for SLE
+\usepackage{dcolumn}   % needed for some tables
+\usepackage{bm}        % for math
+\usepackage{amssymb}   % for math
+\usepackage{multirow}
+%%% for SLE -End
+
+\usepackage{ulem}
+\usepackage{cancel}
+
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage[top=1in, bottom=1.25in, left=1.1in, right=1.1in]{geometry}
+
+\usepackage{mathtools} % for \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+\newcommand{\msout}[1]{\text{\sout{\ensuremath{#1}}}}
+
+
+%%%%%% My stuffs - Stef
+\newcommand{\lsim}{\mathrel{\mathop{\kern 0pt \rlap
+  {\raise.2ex\hbox{$<$}}}
+  \lower.9ex\hbox{\kern-.190em $\sim$}}}
+\newcommand{\gsim}{\mathrel{\mathop{\kern 0pt \rlap
+  {\raise.2ex\hbox{$>$}}}
+  \lower.9ex\hbox{\kern-.190em $\sim$}}}
+
+%
+% Key
+%
+\newcommand{\key}[1]{\medskip{\sffamily\bfseries\color{blue}#1}\par\medskip}
+%\newcommand{\key}[1]{}
+\newcommand{\q}[1] {\medskip{\sffamily\bfseries\color{red}#1}\par\medskip}
+\newcommand{\comment}[2]{{\color{red}{{\bf #1:}  #2}}}
+
+
+\newcommand{\ie}{{\it i.e.} }
+\newcommand{\eg}{{\it e.g.} }
+
+%
+% Energy scales
+%
+\newcommand{\ev}{{\,{\rm eV}}}
+\newcommand{\kev}{{\,{\rm keV}}}
+\newcommand{\mev}{{\,{\rm MeV}}}
+\newcommand{\gev}{{\,{\rm GeV}}}
+\newcommand{\tev}{{\,{\rm TeV}}}
+\newcommand{\fb}{{\,{\rm fb}}}
+\newcommand{\ifb}{{\,{\rm fb}^{-1}}}
+
+%
+% SUSY notations
+%
+\newcommand{\neu}{\tilde{\chi}^0}
+\newcommand{\neuo}{{\tilde{\chi}^0_1}}
+\newcommand{\neut}{{\tilde{\chi}^0_2}}
+\newcommand{\cha}{{\tilde{\chi}^\pm}}
+\newcommand{\chao}{{\tilde{\chi}^\pm_1}}
+\newcommand{\chaop}{{\tilde{\chi}^+_1}}
+\newcommand{\chaom}{{\tilde{\chi}^-_1}}
+\newcommand{\Wpm}{W^\pm}
+\newcommand{\chat}{{\tilde{\chi}^\pm_2}}
+\newcommand{\smu}{{\tilde{\mu}}}
+\newcommand{\smur}{\tilde{\mu}_R}
+\newcommand{\smul}{\tilde{\mu}_L}
+\newcommand{\sel}{{\tilde{e}}}
+\newcommand{\selr}{\tilde{e}_R}
+\newcommand{\sell}{\tilde{e}_L}
+\newcommand{\smurl}{\tilde{\mu}_{R,L}}
+
+\newcommand{\casea}{\texttt{IA}}
+\newcommand{\caseb}{\texttt{IB}}
+\newcommand{\casec}{\texttt{II}}
+
+\newcommand{\caseasix}{\texttt{IA-6}}
+
+%
+% Greek
+%
+\newcommand{\es}{{\epsilon}}
+\newcommand{\sg}{{\sigma}}
+\newcommand{\dt}{{\delta}}
+\newcommand{\kp}{{\kappa}}
+\newcommand{\lm}{{\lambda}}
+\newcommand{\Lm}{{\Lambda}}
+\newcommand{\gm}{{\gamma}}
+\newcommand{\mn}{{\mu\nu}}
+\newcommand{\Gm}{{\Gamma}}
+\newcommand{\tho}{{\theta_1}}
+\newcommand{\tht}{{\theta_2}}
+\newcommand{\lmo}{{\lambda_1}}
+\newcommand{\lmt}{{\lambda_2}}
+%
+% LaTeX equations
+%
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+
+\newcommand{\nbea}{\begin{eqnarray*}}
+\newcommand{\neea}{\end{eqnarray*}}
+\newcommand{\nbeq}{\begin{equation*}}
+\newcommand{\neeq}{\end{equation*}}
+
+\newcommand{\no}{{\nonumber}}
+\newcommand{\td}[1]{{\widetilde{#1}}}
+\newcommand{\sqt}{{\sqrt{2}}}
+%
+\newcommand{\me}{{\rlap/\!E}}
+\newcommand{\met}{{\rlap/\!E_T}}
+\newcommand{\rdmu}{{\partial^\mu}}
+\newcommand{\gmm}{{\gamma^\mu}}
+\newcommand{\gmb}{{\gamma^\beta}}
+\newcommand{\gma}{{\gamma^\alpha}}
+\newcommand{\gmn}{{\gamma^\nu}}
+\newcommand{\gmf}{{\gamma^5}}
+%
+% Roman expressions
+%
+\newcommand{\br}{{\rm Br}}
+\newcommand{\sign}{{\rm sign}}
+\newcommand{\Lg}{{\mathcal{L}}}
+\newcommand{\M}{{\mathcal{M}}}
+\newcommand{\tr}{{\rm Tr}}
+
+\newcommand{\msq}{{\overline{|\mathcal{M}|^2}}}
+
+%
+% kinematic variables
+%
+%\newcommand{\mc}{m^{\rm cusp}}
+%\newcommand{\mmax}{m^{\rm max}}
+%\newcommand{\mmin}{m^{\rm min}}
+%\newcommand{\mll}{m_{\ell\ell}}
+%\newcommand{\mllc}{m^{\rm cusp}_{\ell\ell}}
+%\newcommand{\mllmax}{m^{\rm max}_{\ell\ell}}
+%\newcommand{\mllmin}{m^{\rm min}_{\ell\ell}}
+%\newcommand{\elmax} {E_\ell^{\rm max}}
+%\newcommand{\elmin} {E_\ell^{\rm min}}
+\newcommand{\mxx}{m_{\chi\chi}}
+\newcommand{\mrec}{m_{\rm rec}}
+\newcommand{\mrecmin}{m_{\rm rec}^{\rm min}}
+\newcommand{\mrecc}{m_{\rm rec}^{\rm cusp}}
+\newcommand{\mrecmax}{m_{\rm rec}^{\rm max}}
+%\newcommand{\mpt}{\rlap/p_T}
+
+%%%song
+\newcommand{\cosmax}{|\cos\Theta|_{\rm max} }
+\newcommand{\maa}{m_{aa}}
+\newcommand{\maac}{m^{\rm cusp}_{aa}}
+\newcommand{\maamax}{m^{\rm max}_{aa}}
+\newcommand{\maamin}{m^{\rm min}_{aa}}
+\newcommand{\eamax} {E_a^{\rm max}}
+\newcommand{\eamin} {E_a^{\rm min}}
+\newcommand{\eaamax} {E_{aa}^{\rm max}}
+\newcommand{\eaacusp} {E_{aa}^{\rm cusp}}
+\newcommand{\eaamin} {E_{aa}^{\rm min}}
+\newcommand{\exxmax} {E_{\neuo \neuo}^{\rm max}}
+\newcommand{\exxcusp} {E_{\neuo \neuo}^{\rm cusp}}
+\newcommand{\exxmin} {E_{\neuo \neuo}^{\rm min}}
+%\newcommand{\mxx}{m_{XX}}
+%\newcommand{\mrec}{m_{\rm rec}}
+\newcommand{\erec}{E_{\rm rec}}
+%\newcommand{\mrecmin}{m_{\rm rec}^{\rm min}}
+%\newcommand{\mrecc}{m_{\rm rec}^{\rm cusp}}
+%\newcommand{\mrecmax}{m_{\rm rec}^{\rm max}}
+%%%song
+
+\newcommand{\mc}{m^{\rm cusp}}
+\newcommand{\mmax}{m^{\rm max}}
+\newcommand{\mmin}{m^{\rm min}}
+\newcommand{\mll}{m_{\mu\mu}}
+\newcommand{\mllc}{m^{\rm cusp}_{\mu\mu}}
+\newcommand{\mllmax}{m^{\rm max}_{\mu\mu}}
+\newcommand{\mllmin}{m^{\rm min}_{\mu\mu}}
+\newcommand{\mllcusp}{m^{\rm cusp}_{\mu\mu}}
+\newcommand{\elmax} {E_\mu^{\rm max}}
+\newcommand{\elmin} {E_\mu^{\rm min}}
+\newcommand{\elmaxw} {E_W^{\rm max}}
+\newcommand{\elminw} {E_W^{\rm min}}
+\newcommand{\R} {{\cal R}}
+
+\newcommand{\ewmax} {E_W^{\rm max}}
+\newcommand{\ewmin} {E_W^{\rm min}}
+\newcommand{\mwrec}{m_{WW}}
+\newcommand{\mwrecmin}{m_{WW}^{\rm min}}
+\newcommand{\mwrecc}{m_{WW}^{\rm cusp}}
+\newcommand{\mwrecmax}{m_{WW}^{\rm max}}
+
+\newcommand{\mpt}{{\rlap/p}_T}
+
+%%%%%% END My stuffs - Stef
+
+\newcommand{\dunno}{$ {}^{\mbox {--}}\backslash(^{\rm o}{}\underline{\hspace{0.2cm}}{\rm o})/^{\mbox {--}}$}
+
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+
+\DeclareMathOperator{\re}{Re}
+
+
+\begin{document}
+
+\title{Jeffrey Stopple's Primer of Analytic Number Theory Book}
+\bigskip
+\author{Stefanus Koesno$^1$\\
+$^1$ Somewhere in California\\ San Jose, CA 95134 USA\\
+}
+%
+\date{\today}
+%
+\begin{abstract}
+Very good book, had a lot of fun
+
+\end{abstract}
+%
+\maketitle
+
+\renewcommand{\theequation}{A.\arabic{equation}}  % redefine the command that creates the equation no.
+\setcounter{equation}{0}  % reset counter 
+
+Saw this somewhere, show that
+%
+\nbea
+\sum_{n=1}^\infty \frac{2}{n(n+1)} & = & 1+\frac{1}{3}+\frac{1}{6}+\frac{1}{10}+\ldots = 2
+\neea
+%
+historically this was first proved by Pietro Mengoli in 1650, the real gist of the story is that Mengoli couldn't deduce the value of the sum $\sum_n 1/n^2$ which is similar to the one above (this quadratic harmonic series was finally solved by Euler, neither Leibnitz nor Bernoulli could do it). So back to the original problem, my approach was to split $\frac{2}{n(n+1)}$ into a sum of two fractions
+%
+\nbea
+\frac{2}{n(n+1)} & = & \frac{A}{n}+\frac{B}{n+1} \\
+& = & \frac{An+A+Bn}{n(n+1)}
+\neea
+%
+this means that $A = 2$ and $B=-2$ and thus the series can be written as
+%
+\nbea
+\sum_{n=1}^\infty \frac{2}{n(n+1)} & = & \sum_{n=1}^\infty \left(\frac{2}{n} - \frac{2}{n+1}\right) \\
+& = & \left(\frac{2}{1} - \frac{2}{2}\right) + \left(\frac{2}{2} - \frac{2}{3}\right) + \left(\frac{2}{3} - \frac{2}{4}\right) + \left(\frac{2}{4} - \right. \ldots \\
+& = & \frac{2}{1} + \left( - \frac{2}{2} + \frac{2}{2} \right) + \left( - \frac{2}{3}+ \frac{2}{3}\right) + \left( - \frac{2}{4}+ \frac{2}{4}\right) + \ldots \\
+& = & 2
+\neea
+%
+so the series more or less ``telescopes'' and we are left with just the first term although I believe the method above is not legit as we turned an (absolutely?) convergent series into a conditionally convergent series? \dunno ~~~but to then again it might still be ok because if we denote
+%
+\nbea
+H_n & = & \frac{2}{n} -\frac{2}{n+1} \\
+\to S(k) & = & \sum_{n=1}^k H_n \\
+& = & \frac{2}{1} - \frac{2}{k+1}
+\neea
+%
+and if we take the limit $k\to\infty$
+%
+\nbea
+\lim_{k\to\infty} S(k) & = & \frac{2}{1} - \frac{2}{\infty} \\
+& = & 2
+\neea
+%
+the only trick remaining is showing that
+%
+\nbea
+\sum_{n=1}^\infty \frac{2}{n(n+1)} & = & \lim_{k\to\infty} S(k)
+\neea
+%
+which can be shown by noting that if the sum is not infinite the two agree, \ie
+%
+\nbea
+\sum_{n=1}^k \frac{2}{n(n+1)} & = & S(k)
+\neea
+%
+so if we take both sides to infinity we get
+%
+\nbea
+\to \lim_{k\to\infty}\sum_{n=1}^k \frac{2}{n(n+1)} & = & \lim_{k\to\infty} S(k) \\
+\sum_{n=1}^\infty \frac{2}{n(n+1)} & = & 2
+\neea
+%
+sounds a lot like a roundabout way of saying the same thing LOL \dunno
+
+-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=
+
+{\bf Exercise 1.2.1}, Page 12, Imitate this argument to get a formula for the hexagonal numbers $h(n)$.
+
+A triangular number, $t_n$ is a number where $t_1=1$ and $t_2 = 3$ and because it's 3 it's a triangular number, the explicit formula is
+%
+\nbea
+t_n & = & \frac{n(n+1)}{2}
+\neea
+%
+which is just $1 + 2 + \ldots + n$.
+
+For the hexagonal number we have $\Delta^2h(n) = 6-2 = 4$ and so $\Delta h(n) = 4n + C$ such that
+%
+\nbea
+\Delta^2h(n) = \Delta(\Delta h(n)) = \Delta(4n+C) = (4(n+1)+C) - (4n+C) = 4
+\neea
+%
+This means that $h(n)$ should contain $Cn+D$ such that $\Delta h(n) = (C(n+1) + D) - (Cn+D) = C$ but this should not be the only term $h(n)$ contains, it should also contain a term whose difference is $4n$ because $\Delta h(n)$ contains $4n$ and that is provided by
+%
+\nbea
+\Delta(4t(n-1)) = 4t(n) - 4t(n-1) = 4\frac{n(n+1)}{2} - 4\frac{n(n-1)}{2} = 4n
+\neea
+%
+so
+%
+\nbea
+h(n) = 4t(n-1) + Cn + D = 2n(n-1) + Cn + D
+\neea
+%
+applying initial conditions $h(1) = 1$ and $h(2) = 6$
+%
+\nbea
+0 + C + D & = & 1 \\
+4 + 2C + D & = & 6
+\neea
+%
+giving $C=1$ and $D=0$, so
+%
+\nbea
+h(n) & = & 2n(n-1) + n = n(2n-1)
+\neea
+%
+This seems to be correct since it gives
+%
+\nbea
+\begin{array}{r c c c c c c c c c}
+h(n): & 1 & 6 & 15 & 28 & 45 & 66 & 91 & 120 & \ldots, \\
+\Delta h(n): & 5 & 9 & 13 & 17 & 21 & 25 & 29 & 33 & \ldots, \\
+\Delta^2h(n): & 4 & 4 & 4 & 4 & 4 & 4 & 4 & 4 & \ldots .
+\end{array}
+\neea
+%
+and in general $\ldots$
+
+{\bf Exercise 1.2.4}, Page 14, find a formula for polygonal numbers with $a$ sides, for any $a$, \ie a function $f(n)$ with
+%
+\nbea
+\Delta^2f(n) = a - 2, & ~~~~~~~~~~~~ & {\rm with~} f(1) = 1 {\rm ~and~} f(2) = a.
+\neea
+%
+
+Using the result from Exercise 1.2.1 the generic formula we have is
+%
+\nbea
+f(n) = (a-2)t(n-1) + Cn + D = (a-2)n(n-1)/2 + Cn + D
+\neea
+%
+applying initial conditions
+%
+\nbea
+0 + C + D & = & 1 \\
+(a-2) + 2C + D & = & a
+\neea
+%
+which means it's actually independent of $a$, interesting, and therefore $C=1$ and $D=0$ all the time $\ldots$ and therefore
+%
+\nbea
+f(n) & = & n\left\lbrack\left(\frac{a}{2}-1\right)n - \frac{a}{2} + 2\right\rbrack
+\neea
+%
+the good thing about this is that it works for {\bf any} $a$, zero, positive and negative.
+
+{\bf Exercise 1.2.5}, Page 16, verify that
+%
+\nbea
+n^{\underline 1} + 3n^{\underline 2} + n^{\underline 3} & = & n^3
+\neea
+%
+Now use this fact to find formulas for
+%
+\nbea
+\sum_{0\le k <n+1} k^3.
+\neea
+%
+
+%
+\nbea
+n^{\underline 1} & = & n\\
+3n^{\underline 2} & = & 3n(n-1) \\
+& = & 3n^2 - 3n \\
+n^{\underline 3} & = & n(n-1)(n-2) \\
+& = & n^3 - 3n^2 + 2n
+\neea
+%
+so it's obvious if we sum them we get $n^3$, now we need to ``integrate'' these things
+%
+\nbea
+\Sigma (n^{\underline 1} + 3n^{\underline 2} + n^{\underline 3}) & = & \frac{n^{\underline 2}}{2} + \bcancel{3}\frac{n^{\underline 3}}{\bcancel{3}} + \frac{n^{\underline 4}}{4}
+\neea
+%
+using this in the big sum we get
+%
+\nbea
+\sum_{0\le k <n+1} k^3 & = & \left.\Sigma(n^{\underline 1} + 3n^{\underline 2} + n^{\underline 3})\right|_0^{n+1} \\
+& = & \left.\frac{n^{\underline 2}}{2} + n^{\underline 3} + \frac{n^{\underline 4}}{4}\right|_0^{n+1} \\
+& = & \frac{(n+1)^{\underline 2}}{2} + (n+1)^{\underline 3} + \frac{(n+1)^{\underline 4}}{4} \\
+& = & \frac{(n+1)n}{2} + (n+1)n(n-1) + \frac{(n+1)n(n-1)(n-2)}{4} \\
+& = & \frac{n(n+1)\{2 + 4(n-1) + (n-1)(n-2)\}}{4} \\
+& = & \frac{n^2(n+1)^2}{4}
+\neea
+%
+
+{\bf Exercise 1.2.12}, Page 21, Use the fact that if $\Delta f(k) = g(k)$ and $a$ is any constant, then $\Delta (f(k+a)) = g(k+a)$, and the fact that $2(k-1)^{\underline {-2}} = 1/t_k$ to find the sum of the reciprocals of the first $n$ triangular numbers
+%
+\nbea
+\frac{1}{t_1} + \frac{1}{t_2} + \ldots + \frac{1}{t_n}.
+\neea
+%
+Next compute
+%
+\nbea
+\frac{1}{T_1} + \frac{1}{T_2} + \ldots + \frac{1}{T_n},
+\neea
+%
+the sum of the reciprocals of the first $n$ tetrahedral numbers.
+
+So what we want is
+%
+\nbea
+\sum_{1\le k < n+1} \frac{1}{t_k} & = & \left.\Sigma \frac{1}{t_k} \right |_{1}^{n+1} \\
+& = & \left.\Sigma 2(k-1)^{\underline{-2}} \right |_{1}^{n+1} \\
+& = & \left.\Sigma \frac{2(k-1)^{\underline{-1}}}{-2+1} \right |_{1}^{n+1} \\
+& = & -2 \left \lbrack (n)^{\underline{-1}} - 0^{\underline{-1}}\right\rbrack \\
+& = & -2\left\lbrack\frac{1}{(n+1)} - \frac{1}{0+1}\right\rbrack \\
+& = & \frac{2n}{n+1}
+\neea
+%
+the thing to note here is that $0^{\underline{-1}}$ is {\bf not} zero it is actually $1/(0+1) = 1$. For the tetrahedral numbers we know that it is given in Eq. 1.4 and 1.5
+%
+\nbea
+T_n & = & \frac{n(n+1)(n+2)}{6} \\
+\to \frac{1}{T_n} & = & 6~\frac{1}{n(n+1)(n+2)}\\
+& = & 6 (n-1)^{\underline{-3}}
+\neea
+%
+so the sum is also pretty much the same
+%
+\nbea
+\sum_{1\le k < n+1} \frac{1}{T_k} & = & \left.\Sigma \frac{1}{T_k} \right |_{1}^{n+1} \\
+& = & \left.\Sigma 6(k-1)^{\underline{-3}} \right |_{1}^{n+1} \\
+& = & \left.\Sigma \frac{6(k-1)^{\underline{-2}}}{-3+1} \right |_{1}^{n+1} \\
+& = & -3 \left \lbrack (n)^{\underline{-2}} - 0^{\underline{-2}}\right\rbrack \\
+& = & -3\left\lbrack\frac{1}{(n+1)(n+2)} - \frac{1}{(0+1)(0+2)}\right\rbrack \\
+& = & \frac{3(n^2+3n)}{2(n+1)(n+2)}
+\neea
+%
+
+{\bf Exercise 1.2.13}, Page 23, Use Summation by Parts and the Fundamental Theorem to compute $\sum_{0\le k<n}H_k$. (Hint: You can write $H_k = H_k \cdot 1 = H_k\cdot k^{\underline 0}$.) Your answer will have Harmonic numbers in it of course.
+
+%
+\nbea
+\Sigma H_k & = & \Sigma (H_k \cdot 1) = \Sigma (H_k\cdot k^{\underline 0})
+\neea
+%
+I don't know how to integrate $H_k$ (since that is the question we are trying to answer here) but I know how to differentiate it, the derivative is just $k^{\underline{-1}}$ so we'll take $u = H_k$ such that $\Delta u = k^{\underline{-1}}$ and so we'll take $\Delta v = k^{\underline 0}$ such that $v = k^{\underline 1}$.
+
+Next we need $\Sigma(\Delta u\cdot Ev)$
+%
+\nbea
+\Sigma(\Delta u\cdot Ev) & = & \Sigma(k^{\underline{-1}} \cdot (k+1)^{\underline 1}) \\
+& = & \Sigma\left(\frac{1}{\bcancel{(k+1)}}\cdot \bcancel{(k+1)}k \right) \\
+& = & \frac{k^{\underline 2}}{2}
+\neea
+%
+so we have
+%
+\nbea
+\Sigma (u\cdot\Delta v) & = & uv - \Sigma(\Delta u\cdot Ev) \\
+\to \Sigma (H_k\cdot k^{\underline 0}) & = & H_k k^{\underline 1} - \frac{k^{\underline 2}}{2}
+\neea
+%
+to verify let's differentiate it
+%
+\nbea
+\Delta\left(H_k k^{\underline 1} - \frac{k^{\underline 2}}{2}\right) & = & k^{\underline {-1}}(k+1)^{\underline 1} + H_k k^{\underline 0} - k^{\underline 1} \\
+& = & \frac{(k+1)k}{k+1} + H_k - k \\
+& = & H_k
+\neea
+%
+note that the product rule here is different, there's a shift involved, see Page 22, and therefore
+%
+\nbea
+\sum_{0 \le k < n} H_k\cdot k^{\underline 0} & = & \left.\Sigma(u\cdot\Delta v)\right|_0^{n} \\
+& = & \left. \left( H_k k^{\underline 1} - \frac{k^{\underline 2}}{2}\right)\right |_0^n\\
+& = & n\left(H_n - \frac{n-1}{2}\right)
+\neea
+%
+
+{\bf Exercise 1.2.14}, Page 23, Use Summation by Parts and the Fundamental Theorem to compute $\sum_{0\le k <n}k2^k$. (Hint: You need the first part of Exercise 1.2.9.)
+
+The thing to note here is that $2^k$ is like $e$ its derivative is itself
+%
+\nbea
+\Delta 2^k & = & 2^{k+1} - 2^k \\
+& = & 2^k
+\neea
+%
+so we will want this to be $\Delta v = 2^k$ such that $v = 2^k$ and $u = k = k^{\underline 1}$ such that $\Delta u = k^{\underline 0} = 1$ and so
+%
+\nbea
+\Sigma(u\cdot \Delta v) & = & uv - \Sigma(\Delta u\cdot Ev) \\
+& = & k^{\underline 1} 2^k - \Sigma\left(k^{\underline 1} 2^{k+1}\right) \\
+& = & k2^k - \Sigma(2^{k+1}) \\
+& = & k2^k - 2^{k+1} \\
+& = & 2^k(k - 2)
+\neea
+%
+to verify let's differentiate the above
+%
+\nbea
+\Delta\left\{ 2^k(k - 2) \right\} & = & 2^k ((k+1)-2) + 2^k \\
+& = & k2^k
+\neea
+%
+so it's correct and again the thing to note is that the product rule here now involves a shift, moving on
+%
+\nbea
+\sum_{0\le k <n} k2^k & = & \left. \left( 2^k(k - 2) \right) \right |_0^n \\
+& = & 2^n(n-2) - (-2) \\
+& = & 2^n(n-2) + 2
+\neea
+%
+
+-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=
+
+An interesting way to factorize $1-z^n$
+%
+\nbea
+1-z^n & = &(1-e^{(2\pi i) 1/n}z)(1-e^{(2\pi i) 2/n}z) \ldots (1-e^{(2\pi i) n/n}z) \\
+& = & \sum_{k=1}^{n} (1-e^{(2\pi i)k/n}z)
+\neea
+%
+so if we do partial fractions on say
+%
+\nbea
+(1-z^6)(1-z^{15}) & = & (1-z^3)(\ldots)\times(1-z^3)(\ldots) \\
+& = & (1-e^{(2\pi i) j/n}z) (\ldots) \times (1-e^{(2\pi i) j/n}z)(\ldots)
+\neea
+%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
