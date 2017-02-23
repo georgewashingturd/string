@@ -627,12 +627,132 @@ s(n) & = & \sigma(n) - n\\
 s(n)& = & m
 \neea
 %
-so a pair of amicable numbers $m$ and $n$ are those such that $s(m)=n$ and $s(n) = m$ and therefore $\sigma(m)=\sigma(n) = m+n$
+so a pair of amicable numbers $m$ and $n$ are those such that $s(m)=n$ and $s(n) = m$ and therefore $\sigma(m)=\sigma(n) = m+n$.
+
+\bigskip
+\underline{\textbf{\textit{Chapter 3}}}
+\bigskip
+
+Lessons from Chapter 3
+%
+\bit
+\item Area is equal to length if the width is one, this is the trick used over and over, once you morphed length into area you can use integrals
+\eit
+
+\bigskip
+\underline{\textbf{\textit{Chapter 4}}}
+\bigskip
+
+His notion of average order is slightly different than that of Apostol's
+
+{\bf Exercise 4.2.4}, Page 76, the differences are
+%
+\nbea
+\frac{1}{3} - \frac{27}{82} & = & 0.0040650406504065040650406504065 \\
+\frac{27}{82} - \frac{15}{46} & = & 0.00318133616118769883351007423118 \\
+\frac{15}{46} - \frac{12}{37} & = & 0.00176263219741480611045828437133
+\neea
+%
+very small indeed, roughly one part in a thousand
+
+{\bf Page 80}, {\bf Corollary}. {\it The average order of $\sigma(n)$ is $\zeta(2)n$.} Note that here he's talking about average order quite differently from Apostol, his reasoning here is since
+%
+\nbea
+\sum_{k=1}^n \sigma(k) &\sim& \zeta(2)\frac{n^2}{2} \\
+\sum_{k=1}^n \zeta(2) k &\sim& \zeta(2)\frac{n^2}{2} \\
+\to \sum_{k=1}^n \sigma(k) &\sim& \sum_{k=1}^n \zeta(2) k
+\neea
+%
+so since both sides are summed exactly the same each term as the same average order? \dunno
+
+\bigskip
+\underline{\textbf{\textit{Interlude 1}}}
+\bigskip
+
+{\bf Exercise I1.3.4}, Page 95, from the {\it definition} of $\log(x)$ as an integral over $1/t$
+%
+\nbea
+\log(xy) & = & \int_1^{xy} \frac{1}{t} dt \\
+& = & \int_1^x \frac{1}{t} dt + \int_x^{xy} \frac{1}{t} dt \\
+& = & \log(x) + \int_x^{xy} \frac{1}{t} dt
+\neea
+%
+The second term in the RHS can be massaged using the usual change of variable $s = xt$ such that $t = s/x$ and $dt = ds/x$ and so
+%
+\nbea
+\int_x^{xy} \frac{1}{t} dt & = & \int_1^{y} \frac{\bcancel{x}}{s} \frac{ds}{\bcancel{x}} \\
+& = & \log(y)
+\neea
+%
+and so $\log(xy) = \log(x) + \log(y)$, we can actually do the change of variable in a slightly different way
+%
+\nbea
+\int_x^{xy} \frac{1}{t} dt & = & \int_1^{y} \frac{x}{x}\times\frac{1}{t} dt \\
+& = & \int_x^{xy} \frac{1}{(xt)} d(xt), ~~~~~ s=xt \\
+& = & \int_1^{y} \frac{1}{s} ds \\
+\neea
+%
+it was OK to do that because here $x$ is constant w.r.t the integration. A more interesting thing would be $\log(x/y)$ in this case
+%
+\nbea
+\log(x/y) & = & \int_1^{x/y} \frac{1}{t} dt \\
+& = & \int_1^{x} \frac{1}{t} dt - \int_{x/y}^{x} \frac{1}{t} dt
+\neea
+%
+here is a subtraction because $x/y < x$, the next steps are the same as previous case's.
+
+\bigskip
+\underline{\textbf{\textit{Chapter 5}}}
+\bigskip
+
+{\bf Page 107}, lower half of page, nearing the funny trick to prove the Theorem we have
+%
+\nbea
+\pi(2n+1) & < & 2\frac{2n+1}{\log(2n)} \\
+& < & 2\frac{2n+1}{\log(2n+1)}\frac{\log(2n+1)}{\log(2n)}
+\neea
+%
+and for $n=30$, $\frac{\log(2n+1)}{\log(2n)} = 1.00403710574428$ so we can just adjust the constant 2 to $2.008\ldots$ or something :) and we can certainly do approximation this way as well
+%
+\nbea
+\frac{\log(2n+1)}{\log(2n)} & = & \frac{\log(2n)+\log(1+1/2n)}{\log(2n)} \\
+& \approx & 1
+\neea
+%
+But actually if you numerically calculate $3.39 \frac{n}{\log(n)}+1$ and $2\frac{2n+1}{\log(2n+1)}$ starting at $n=67$, $3.39 \frac{n}{\log(n)}+1 < 2\frac{2n+1}{\log(2n+1)}$ and we can sort of prove this. Let's do a change of variables, $y=\log(2n+1)$, such that $2n+1 = e^y$ and $n = (e^y-1)/2$
+%
+\nbea
+\neea
+%
+
+%
+\nbea
+4\log^2(n)(\log(2n+1)-1) - 3.39 \log^2(2n+1)(\log(n)-1) \\
+4\log^2(n)\log(2n+1)+3.39 \log^2(2n+1) - 4\log^2(n) - 3.39 \log^2(2n+1)\log(n)
+\neea
+%
 
 
+{\bf Page 108}, Theorem that says
+%
+\nbea
+\frac{1}{2}\frac{x}{\log(x)} < \pi(x)
+\neea
+%
+for $x\ge15$. In fact we can say that this is true for $x\ge3$, 15 numbers are not too much to check so if you just calculate all 15 of them you'll see that this inequality holds for $x\ge3$ \dunno
 
-
-
+{\bf Page 108}, Lemma, this is actually Theorem 3.14 of Apostol, so here's I replicate my own explanation of why this is true, visually we can see it below with an example for  $\alpha(p)$ with $x=10$ and $p=2$, each column shows the number of 2's in each number (we only consider even numbers here obviously)
+%
+\nbea
+\begin{array}{c c c c c l}
+   &    &   & 2  &  & \longrightarrow x/p^3 = 10/2^3 = 1 {\rm~factor~of~} 2\\
+   & 2 &    & 2 &   & \longrightarrow x/p^2 = 10/2^2 = 2 {\rm~factor~of~} 2\\
+2 & 2 & 2 & 2 & 2 & \longrightarrow x/p^1 = 10/2^1 = 5 {\rm~factor~of~} 2\\
+\uparrow & \uparrow & \uparrow & \uparrow & \uparrow \\
+2 & 4 & 6 & 8 & 10 & \longrightarrow {\rm a~total~of~}5+2+1=8{\rm~factors~of~}2
+\end{array}
+\neea
+%
 
 
 
