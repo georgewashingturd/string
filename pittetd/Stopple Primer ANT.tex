@@ -719,18 +719,56 @@ and for $n=30$, $\frac{\log(2n+1)}{\log(2n)} = 1.00403710574428$ so we can just 
 & \approx & 1
 \neea
 %
-But actually if you numerically calculate $3.39 \frac{n}{\log(n)}+1$ and $2\frac{2n+1}{\log(2n+1)}$ starting at $n=67$, $3.39 \frac{n}{\log(n)}+1 < 2\frac{2n+1}{\log(2n+1)}$ and we can sort of prove this. Let's do a change of variables, $y=\log(2n+1)$, such that $2n+1 = e^y$ and $n = (e^y-1)/2$
-%
-\nbea
-\neea
-%
+But actually if you numerically calculate $3.39 \frac{n}{\log(n)}+1$ and $2\frac{2n+1}{\log(2n+1)}$ starting at $n=67$, $3.39 \frac{n}{\log(n)}+1 < 2\frac{2n+1}{\log(2n+1)}$ and we can sort of prove this. 
 
+Even simpler, we can compare $4n/\log(2n)$ and $2(2n+1)/\log(2n+1)$, let's take their ratio
 %
 \nbea
-4\log^2(n)(\log(2n+1)-1) - 3.39 \log^2(2n+1)(\log(n)-1) \\
-4\log^2(n)\log(2n+1)+3.39 \log^2(2n+1) - 4\log^2(n) - 3.39 \log^2(2n+1)\log(n)
+\frac{2(2n+1)/\log(2n+1)}{4n/\log(2n)} & = & \frac{4n+2}{\log(2n+1)}\frac{\log(2n)}{4n}\\
+& = & \frac{4n+2}{4n} \frac{\log(2n)}{\log(2n+1)} \\
+& = & \left(1 + \frac{1}{2n}\right)\frac{\log(2n)}{\log(2n) + \log\left(1 + \frac{1}{2n}\right)} \\
+& = & \left(1 + \frac{1}{2n}\right) \frac{1}{1 + \frac{\log\left(1 + \frac{1}{2n}\right)}{\log(2n)}}
 \neea
 %
+if $\frac{\log\left(1 + \frac{1}{2n}\right)}{\log(2n)}$ is smaller than $\frac{1}{2n}$ than the whole ratio is greater than one and $2(2n+1)/\log(2n+1) > 4n/\log(2n)$. So again we take the ratio
+%
+\nbea
+\frac{1/2n}{\log\left(1 + \frac{1}{2n}\right)/\log(2n)} & = & \frac{\log(2n)}{2n\log\left(1 + \frac{1}{2n}\right)} \\
+& = & \frac{\log(2n)}{\log\left(1 + \frac{1}{2n}\right)^{2n}}
+\neea
+%
+Now
+%
+\nbea
+\lim_{n\to\infty} \left(1 + \frac{1}{n}\right)^{n}
+\neea
+%
+is the definition of $e$ and it takes its minimum value when $n=1$ and as $n$ grows it grows bigger, we can see this using the binomial expansion (there's a derivation showing exactly this by Gilles Cazelais and I'll reproduce it here), first denote
+%
+\nbea
+t_n & = & \left(1+\frac{1}{n}\right)^n
+\neea
+%
+and so
+%
+\nbea
+t_n  & = & \sum_{k=0}^n {n \choose k}\left(\frac{1}{n}\right)^k \\
+& = & 1 + n\left(\frac{1}{n}\right) + \frac{n(n-1)}{2!}\left(\frac{1}{n^2}\right)+ \frac{n(n-1)(n-2)}{3!}\left(\frac{1}{n^3}\right) + \ldots + \frac{n(n-1)(n-2)\ldots 1}{n!}\left(\frac{1}{n^n}\right) \\
+& = & 1 + 1 + \frac{1}{2!}\left(1-\frac{1}{n}\right) + \frac{1}{3!}\left(1-\frac{1}{n}\right)\left(1-\frac{2}{n}\right) + \ldots + \frac{1}{n!}\left(1-\frac{1}{n}\right)\left(1-\frac{2}{n}\right)\ldots \left(1-\frac{n-1}{n}\right)
+\neea
+%
+the two key observations here are
+%
+\nbea
+0 < \left(1-\frac{k}{n}\right) <1, & {\rm ~~~~~~~and~~~~~~~} & \left(1-\frac{k}{n}\right) < \left(1-\frac{k}{n+1}\right)
+\neea
+%
+this means that $t_n < t_{n+1}$, in our case we only care about even $n$'s but the conclusion is the same $t_{2n}<t_{2(n+1)}$.
+
+So when $n < \infty$, $\log\left(1 + \frac{1}{2n}\right)^{2n} < \log(e) < 1$. Now we need the numerator to be $>1$ so we need to take $n\ge2$ to ensure $2n > e$ and this is good enough for us.
+
+So in conclusion, $\frac{1/2n}{\log\left(1 + \frac{1}{2n}\right)/\log(2n)} > 1$ means that $\left(1 + \frac{1}{2n}\right) \frac{1}{1 + \log\left(1 + \frac{1}{2n}\right)/\log(2n)} > 1$ and that finally means that $2(2n+1)/\log(2n+1) > 4n/\log(2n)$ and since $3.39 \frac{n}{\log(n)}+1 < 4n/\log(2n)$ it also means that $3.39 \frac{n}{\log(n)}+1 < 2(2n+1)/\log(2n+1)$.
+
 
 
 {\bf Page 108}, Theorem that says
