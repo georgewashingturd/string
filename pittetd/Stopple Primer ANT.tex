@@ -699,7 +699,7 @@ it was OK to do that because here $x$ is constant w.r.t the integration. A more 
 & = & \int_1^{x} \frac{1}{t} dt - \int_{x/y}^{x} \frac{1}{t} dt
 \neea
 %
-here is a subtraction because $x/y < x$, the next steps are the same as previous case's.
+here we have a subtraction because $x/y < x$, the next steps are the same as previous case's.
 
 \bigskip
 \underline{\textbf{\textit{Chapter 5}}}
@@ -792,7 +792,168 @@ for $x\ge15$. In fact we can say that this is true for $x\ge3$, 15 numbers are n
 \neea
 %
 
+\bigskip
+\underline{\textbf{\textit{Interlude 2}}}
+\bigskip
 
+{\bf Page 124}, the ``inverse'' of $\sin(x)$, here
+%
+\nbea
+\sin(x) & = & x + O(x^3) \\
+\to \frac{1}{\sin(x)} & = & \frac{1}{x} + O(x)
+\neea
+%
+and it says that he got this ``by long division'', the long division he mentioned was about guessing what the outcoe of a division of two polynomials by expecting the result to be $a_0 + a_1x + a_2x^2 + \ldots$, the thing is it doesn't cover $1/x$ so let's say here we include $1/x$ so
+%
+\nbea
+\frac{1}{\sin(x)} & = & a_{-1}\frac{1}{x} + a_0 + a_1 x + \ldots \\
+\to 1 & = & \sin(x) \frac{1}{\sin(x)} \\
+& = & \left\{x + O(x^3)\right \}\left\{a_{-1}\frac{1}{x} + a_0 + a_1 x + \ldots\right\} \\
+& = & a_{-1} + a_0 x + a_1 x^2 + O(x^2) + O(x^3) + O(x^4) + \ldots
+\neea
+%
+this means that $a_{-1} = 1$ and the rest is $O(x)$, why? because here we are talking about Big Oh in $x\to 0$ instead of $x\to\infty$ and so $O(x)$ gives a bigger error than $O(x^2)$ and so on.
+
+And we actually don't need to do long division to do this we can immediately approximate it using
+%
+\nbea
+\frac{1}{\sin(x)} & = & \frac{1}{x + O(x^3)} \\
+& = & \frac{1}{x} \left(\frac{1}{1+O(x^2)}\right) \\
+& = & \frac{1}{x} \left(1-O(x^2)+O(x^4)-\ldots \right) \\
+& = & \frac{1}{x} - O(x) + O(x^3)-\ldots
+\neea
+%
+and we pick $O(x)$ as the biggest error since $x\to0$
+
+{\bf Exercise I2.4.2}, Page 126, the geometric series
+%
+\nbea
+1 + \frac{1}{10} + \frac{1}{100} + \frac{1}{1000} + \frac{1}{10000} + \ldots
+\neea
+%
+is the distance where Achilles caught up with the turtle, why? because the turtle first traveled 1 km, and by the time Achilles traveled 1 km the turtle traveled 1/10 km and so on, if ti's still not convincing let's calculate the time it took Achilles to catch up with the turtle, the turtle had a 1 km head start and so the time taken by Achilles to travel $1+d$ km the turtle spent the same amount of time to travel $d$ km
+%
+\nbea
+\frac{d}{v_t} & = & \frac{1+d}{10v_t} \\
+d & = & \frac{1}{9}
+\neea
+%
+so the total distance traveled is $1 + \frac{1}{9} = \frac{10}{9}$ which is the sum of the infinite geometric series above and the time needed for Achilles to catch up with the turtle is $1/9v_t$ so it does depend on the turtle's speed, the thing that matters here is the ratio between Achilles's to the turtles speed because that controls the $r$ in the geometric series.
+
+{\bf Exercise I2.6.4}, Page 132, sub-problem 1, there's No Exercise I2.9, I believe it should have been Exercise I2.2.1, but second, I stupidly explicitly computed the sum $\sum_{n=0}^{2N}(-1)^nt^{2n}$, since $n$ takes on the values $0$ to $2N$, there are odd numbers of them and the first and last $n$ are even, so there's one less odd $n$
+%
+\nbea
+\sum_{n=0}^{2N}(-1)^nt^{2n} & = & \sum_{n=0}^{N}(-1)^{2n}t^{4n} + \sum_{n=0}^{N-1}(-1)^{2n+1}t^{4n+2} \\
+& = & t^{4N} + \sum_{n=0}^{N-1}t^{4n} - t^2 \sum_{n=0}^{N-1}t^{4n} \\
+& = & t^{4N} + (1 - t^2) \sum_{n=0}^{N-1}(t^{4})^{n} \\
+& = & t^{4N} + (1 - t^2) \frac{1-(t^4)^{N}}{1-t^4} \\
+& = & t^{4N} + \frac{1-(t^4)^{N}}{1+t^2} \\
+& = & \frac{1}{1+t^2} + \frac{t^{4N} + t^{4N+2} - t^{4N}}{1+t^2} \\
+& = & \frac{1}{1+t^2} + \frac{t^{4N+2}}{1+t^2} 
+\neea
+%
+
+2. The integral of the first term in the RHS can be done using trig substitution noting that $1+\tan^2(u) = \cos^2(u)$ and so let $t=\tan(u)$ $dt = \sec^2(u)du$
+%
+\nbea
+\int \frac{1}{1+t^2} dt & = & \int \frac{1}{1+\tan^2(u)}\sec^2(u)du \\
+& = & \int \cos^2(u)\sec^2(u) du \\
+& = & u \\
+& = &\arctan(t)
+\neea
+%
+and so
+%
+\nbea
+\int_0^1 \frac{1}{1+t^2} dt & = & \arctan(1) - \arctan(0) \\
+& = & \frac{\pi}{4}
+\neea
+%
+
+3. Property v is that if $g(x) < f(x)$ in the range of $a \le x \le b$ then $\int_a^b g(x) < \int_a^b f(x)$ and in this case
+%
+\nbea
+\frac{t^{4N+2}}{1+t^2} < t^{4N+2}
+\neea
+%
+and so the integral of the LHS is also smaller than the integral of the RHS and
+
+4. The integral of the RHS is
+%
+\nbea
+\int_0^1 t^{4N+2} & = & \frac{1^{4N+3}}{4N+3} = \frac{1}{4N+3} \\
+\lim_{N\to\infty} \frac{1}{4N+3} & = & 0
+\neea
+%
+and since $\int_0^1\frac{t^{4N+2}}{1+t^2} < \int_0^1 t^{4N+2}$ it is also zero.
+
+{\bf Page 134}, Proof of Theorem about the limit test, since the book doesn't show the case for $L>1$ let me do it here, it's very similar, first pick a real number $r$ between $L$ and $1$ that is bigger than 1 but smaller than $L$, again the choice given in the book works, $r = (L+1)/2$ and this means
+%
+\nbea
+\frac{|c_{n+1}|}{|c_n|} = L > r
+\neea
+%
+and therefore
+%
+\nbea
+|c_{N+k}| > r^k|c_N|
+\neea
+%
+but now since $r > 1$, the series $|c_N|\sum_{k=0}^\infty r^k$ diverges and so $\sum_{k=0}^\infty |c_{N+k}|=\sum_{n=N}^\infty|c_n|$ also diverges.
+
+{\bf Exercise I2.6.8}, Page 135, the series $L(x)$ is the Euler's dilogarithm function
+%
+\nbea
+L(x) & = & \int_0^x \frac{-\log(1-t)}{t} dt \\
+& = & \int_0^x \frac{1}{t}\sum_{k=1}^\infty \frac{1}{k} t^k \\
+& = & \int_0^x \sum_{k=1}^\infty \frac{1}{k} t^{k-1} \\
+& = & \sum_{k=1}^\infty \int_0^x \frac{1}{k} t^{k-1} \\
+& = & \sum_{k=1}^\infty\frac{x^k}{k^2}
+\neea
+%
+using the limit test we get
+%
+\nbea
+\frac{|x^{k+1}/(k+1)^2|}{|x^k/k^2|} & = & \frac{|x|k^2}{(k+1)^2} \\
+\to \lim_{k\to\infty} \frac{|x|k^2}{(k+1)^2} & = & |x|
+\neea
+%
+so the radius of convergence is $R=1$.
+
+{\bf Exercise I2.6.11}, Page 137, this is an interesting exercise, the first step is just an integration $\int 1/(1+x) = \log(1+x)$, if we take the difference between the degree $n$ Taylor approximation and the actual function $\log(1+x)$ is (the thing to note here is that the lower bound of the integral depends on where we do the Taylor expansion, here we choose 0 because if we choose $-1$, $\log(1-1)$ blows up so the integral will blow up as well)
+%
+\nbea
+E_n(x) & = & \frac{1}{n!} \int_{0}^x(x-t)^nf^{(n+1)}(t) dt \\
+& = & \frac{1}{\cancel{n!}} \int_{0}^x(x-t)^n \frac{(-1)^n\cancel{n!}}{(1+t)^{n+1}} dt \\
+& \le & (x-0)^n \int_{0}^x \frac{(-1)^n}{(1+t)^{n+1}} dt 
+\neea
+%
+from the hint
+%
+\nbea
+\frac{(-1)^n}{(1+t)^{n+1}} \le \frac{1}{(1+t)^{n+1}} \le 1
+\neea
+%
+moving forward
+%
+\nbea
+E_n(x) & \le & x^n \int_{0}^x \frac{1}{(1+t)^{n+1}} dt \\ 
+& = & x^n \left(\left.-\frac{1}{n(1+t)^{n}}\right|_0^x\right)
+\neea
+%
+setting $x$ to 1 we get
+%
+\nbea
+x^n \left(\left.-\frac{1}{n(1+t)^{n}}\right|_0^x\right) & = & -\frac{1}{n(1+1)^{n}} + \frac{1}{n} \\
+& = & \frac{1}{n} \left(1 - \frac{1}{2^n}\right) \\
+\to |E_n(1)|& \le & \frac{1}{n}
+\neea
+%
+since $\left(1 - \frac{1}{2^n}\right) < 1$, but I couldn't figure out why $|E_n(1)|\le \frac{1}{n+1}$, although as $n$ gets bigger $\frac{1}{n} \left(1 - \frac{1}{2^n}\right)$ gets real close to $\frac{1}{n+1}$ as the limit of the ratio between the two is 1.
+
+Although the real question here is that whether we can set $x=1$ since the radius of convergence is $R=1$, I was initially surprised by this as the expansion of $\log(1+x)$ should work if $x \ge 1$, it's not legit if $x=-1$ but $x\ge 1$ should be fine but if you do the limit test the radius is indeed 1.
+
+{\bf Page 139}, about convergence, we cannot rearrange terms but within each partial sums we can rearrange them because  each partial sum is finite? \dunno
 
 
 
