@@ -5493,7 +5493,23 @@ so if we do partial fractions on say
 \neea
 %
 
+-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=
 
+$\log(n) = O\left(n^{\frac{1}{k}}\right)$, for any finite $k$, Big Oh means that there are $n_0$ and a constant $C$ such that for $n\ge n_0$, $\log(n)\le Cn^{\frac{1}{k}}$, first let's find $n_0$, we can choose $n_0 = M^k$ and so we have
+%
+\nbea
+\log(M^k) & < & C (M^k)^{1/k} \\
+k\log(M) & < & C M
+\neea
+%
+so here we can choose $C = k$ since we know that $\log(n) < n$, we now need to show that the inequality is true for all $n \ge M^k$, to show this we can take the slope of both functions $C(n^{1/k-1})/k$ for the RHS and $1/n$ for the LHS, if we take the ratio
+%
+\nbea
+\frac{C(n^{1/k-1})/k}{1/n} & = & C\frac{n^{\frac{1}{k}}}{k}, ~~~~~ C = k \\
+& = & n^{\frac1k} 
+\neea
+%
+but starting from $n=M^{k}$ the ratio of the slopes will be $M > 1$. In conclusion $\log(n) < k n^{1/k}$ starting from $M^k$ and the slope of the RHS is bigger than the slope of the LHS at {\bf any} point beyond that, therefore the RHS is always bigger than the LHS after $n=M^k$ and $\log(n) = O(n^{1/k})$ for any finite $k$.
 
 
 

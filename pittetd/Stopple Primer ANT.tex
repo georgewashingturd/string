@@ -840,6 +840,26 @@ d & = & \frac{1}{9}
 %
 so the total distance traveled is $1 + \frac{1}{9} = \frac{10}{9}$ which is the sum of the infinite geometric series above and the time needed for Achilles to catch up with the turtle is $1/9v_t$ so it does depend on the turtle's speed, the thing that matters here is the ratio between Achilles's to the turtles speed because that controls the $r$ in the geometric series.
 
+{\bf Exercise I2.6.3}, Page 132, the first step is actually quite unnecessary, we need not induction :) first note that
+%
+\nbea
+\frac{1}{2} H_N & = & \frac{1}{2} + \frac{1}{4} + \frac{1}{6} + \ldots \frac{1}{2N}
+\neea
+%
+therefore
+%
+\nbea
+H_{2N} - \frac{1}{2}H_N & = & 1 + \frac{1}{3} + \frac{1}{5} + \frac{1}{7} + \ldots \frac{1}{2N-1}
+\neea
+%
+\ie the odd harmonic series, if we repeat the process one more time
+%
+\nbea
+H_{2N} - \frac{1}{2}H_N - \frac{1}{2}H_N & = & 1 -\frac{1}{2}+ \frac{1}{3} -\frac{1}{4}+ \frac{1}{5} - \frac{1}{6} +\frac{1}{7} + \ldots \frac{1}{2N-1} - \frac{1}{2N}
+\neea
+%
+which is what we want and so we immediately see that what we need is $H_{2N} - H_N$
+
 {\bf Exercise I2.6.4}, Page 132, sub-problem 1, there's No Exercise I2.9, I believe it should have been Exercise I2.2.1, but second, I stupidly explicitly computed the sum $\sum_{n=0}^{2N}(-1)^nt^{2n}$, since $n$ takes on the values $0$ to $2N$, there are odd numbers of them and the first and last $n$ are even, so there's one less odd $n$
 %
 \nbea
@@ -853,7 +873,7 @@ so the total distance traveled is $1 + \frac{1}{9} = \frac{10}{9}$ which is the 
 \neea
 %
 
-2. The integral of the first term in the RHS can be done using trig substitution noting that $1+\tan^2(u) = \cos^2(u)$ and so let $t=\tan(u)$ $dt = \sec^2(u)du$
+2. The integral of the first term in the RHS can be done using trig substitution noting that $1+\tan^2(u) = \cos^2(u)$ and so let $t=\tan(u)$, $dt = \sec^2(u)du$
 %
 \nbea
 \int \frac{1}{1+t^2} dt & = & \int \frac{1}{1+\tan^2(u)}\sec^2(u)du \\
@@ -951,9 +971,50 @@ x^n \left(\left.-\frac{1}{n(1+t)^{n}}\right|_0^x\right) & = & -\frac{1}{n(1+1)^{
 %
 since $\left(1 - \frac{1}{2^n}\right) < 1$, but I couldn't figure out why $|E_n(1)|\le \frac{1}{n+1}$, although as $n$ gets bigger $\frac{1}{n} \left(1 - \frac{1}{2^n}\right)$ gets real close to $\frac{1}{n+1}$ as the limit of the ratio between the two is 1.
 
-Although the real question here is that whether we can set $x=1$ since the radius of convergence is $R=1$, I was initially surprised by this as the expansion of $\log(1+x)$ should work if $x \ge 1$, it's not legit if $x=-1$ but $x\ge 1$ should be fine but if you do the limit test the radius is indeed 1.
+Although the real question here is that whether we can set $x=1$ since the radius of convergence is $R=1$ (recall that at the radius itself the behavior is unknown, so it may be good or bad), I was initially surprised by this as the expansion of $\log(1+x)$ should work if $x \ge 1$, it's not legit if $x=-1$ but $x\ge 1$ should be fine but if you do the limit test the radius is indeed 1.
 
 {\bf Page 139}, about convergence, we cannot rearrange terms but within each partial sums we can rearrange them because  each partial sum is finite? \dunno
+
+%
+\begin{figure}
+\centering
+  \includegraphics[width=.7\linewidth]{ExerciseI2_6_12.png}
+  \caption{Plot of $1/x\log(x)$ and rectangles of height $1/n\log(n)$ and width 1.}
+\label{fig:I2.6.12}
+\end{figure}
+%
+{\bf Exercise I2.6.12}, Page 136, please see Fig.~\ref{fig:I2.6.12}. This means that
+%
+\nbea
+\sum_{n=2}^N \frac{1}{n\log(n)} > \int_2^{N+1} \frac{1}{x\log(x)} dx
+\neea
+%
+note the upper limit of the integral, next
+%
+\nbea
+\int_2^{N+1} \frac{1}{x\log(x)} dx & = & \left.\log(\log(x))\right|_2^{N+1} \\
+& = & \log(\log(N+1)) - \log(\log(2))
+\neea
+%
+which goes to infinity when $N\to\infty$.
+
+{\bf Page 143}, proof of Abel's Theorem Part I, ``Because $f_m(x)$ is just a polynomial, it is continuous. So, for some $\delta>0$, it is true that $|f_m(x) - f_m(1)|<\epsilon/3$ whenever $|x-1|<\delta$''. Recall the definition of continuity, $f(x)$ is continuous at $x=a$ if and only if
+%
+\nbea
+\lim_{x\to a} f(x) & = & f(a)
+\neea
+%
+and from the definition of limit, ``for every $\epsilon$ we can find a $\delta$ such that $|f(x) - f(a)|<\epsilon$ when $0 <|x-a|<\delta$''.
+
+The next question is whether the $\delta$'s are all the same, here we have three $\delta$'s, so if they are al different we just pick the biggest one because the definition of limit/continuity only requires that for every $\epsilon$ we can find a $\delta$ and so the $\delta$ is a free variable.
+
+\bigskip
+\underline{\textit{\textbf{Chapter 6}}}
+\bigskip
+
+{\bf Page 147}, Euler's proof of the quadratic harmonic series, from Eq 6.2 we can see that we have every quadratic numbers in the denominators, $4,9,16,\ldots$ therefore we will be able to make any quartic and other even powers, but it's almost impossible to make odd powers
+
+{\bf Page 154}, two typos, first mid of page, the substitution is reversed it should've been $x = 2iz$ instead of the other way around stated in the book, bottom of page, formula for $\cot(z)$, an overall factor of $\frac{1}{2^n}$ is missing.
 
 
 
