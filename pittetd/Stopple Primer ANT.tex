@@ -1016,6 +1016,143 @@ The next question is whether the $\delta$'s are all the same, here we have three
 
 {\bf Page 154}, two typos, first mid of page, the substitution is reversed it should've been $x = 2iz$ instead of the other way around stated in the book, bottom of page, formula for $\cot(z)$, an overall factor of $\frac{1}{2^n}$ is missing.
 
+\bigskip
+\underline{\textit{\textbf{Chapter 8}}}
+\bigskip
+
+{\bf Exercise 8.2.1}, Page 199, first we expand
+%
+\nbea
+1 - 2^{1-s} & = & 1 - e^{(1-s)\log(2)} \\
+& = & 1 - \left ( \sum_{n=0}^\infty \frac{1}{n!} \lbrack(1-s)\log(2)\rbrack^n \right ) \\
+& = & \sum_{n=1}^\infty \frac{1}{n!} (-1)^{n+1} (s-1)^n \log^n(2)
+\neea
+%
+we now calculate the expansion for $1/(1 - 2^{1-s})$, we use long division for this, or we can use geometric series if $|s| > 1$
+%
+\nbea
+1 & = & (1 - 2^{1-s})\times\frac{1}{(1 - 2^{1-s})} \\
+& = & \left(\sum_{n=1}^\infty \frac{1}{n!} (-1)^{n+1} (s-1)^n \log^n(2)\right)\times\left(\sum_{k=-1}^\infty a_k(s-1)^k\right)
+\neea
+%
+and so
+%
+\nbea
+1 & = & \log(2) a_{-1} \\
+0 & = & \log(2) a_0 - \frac{1}{2!}\log^2(2) a_{-1} \\
+0 & = & \log(2) a_1 - \frac{1}{2!}\log^2(2) a_{0} + \frac{1}{3!}\log^3(2) a_{-1} \\
+0 & = & \log(2) a_2 - \frac{1}{2!}\log^2(2) a_{1} + \frac{1}{3!}\log^3(2) a_{0} - \frac{1}{4!}\log^4(2) a_{-1}
+\neea
+%
+and so $a_{-1} = 1/\log(2)$, $a_0 = 1/2$, $a_1 = (1/12)\log(2)$, $a_2 = 0$, $a_3 = \ldots$.
+
+Now, as the book says that $\Phi(s) = \log(2) + O(s-1)$, since if we Taylor expand around $s=1$ we know that $\Phi(1) = \log(2)$, so the first term is indeed $\log(2)$ and since we are expanding around $s=1$ the correction terms are of order $O(s-1)$ (note that here $O(s-1)$ is bigger than $O((s-1)^m)$ since $s\to1$). Now from the definition
+%
+\nbea
+\zeta(s) & = & \frac{1}{1-2^{1-s}} \Phi(s) \\
+& = & \left( \frac{1}{\log(2)}\frac{1}{s-1} + \frac{1}{2} + \frac{\log(2)}{12}(s-1) + \ldots \right)\left( \log(2) + O(s-1)\right) \\
+& = & \frac{1}{s-1} + O(1)
+\neea
+%
+again recall here we are interested in $s\to1$ and so $O(1)$ is the biggest error, all other Big Oh are in $O((s-1)^m),~m \ge 1$
+
+{\bf Exercise8.2.2}, Page 202, let's apply Euler operators using Maxima, so
+%
+\nbea
+x\frac{d}{dx}\frac{-x}{(1+x)^2} & = & x\frac{d}{dx}\sum_{n=1}^\infty (-1)^n n x^n \\
+\frac{x(x-1)}{(x+1)^3} & = & \sum_{n=0}^\infty (-1)^{n} {n}^2 x^{n}
+\neea
+%
+and so $\Phi(-2) = 0$ and therefore $\zeta(-2)=0$, continuing $\mathcal{E}$
+%
+\nbea
+\mathcal{E}^2\left(\frac{-x}{(1+x)^2}\right) & = & -\frac{x(x^2-4x+1)}{(x+1)^4} \\
+\mathcal{E}^3\left(\frac{-x}{(1+x)^2}\right) & = & \frac{x(x^3-11x^2+11x-1)}{(x+1)^5} \\
+\mathcal{E}^4\left(\frac{-x}{(1+x)^2}\right) & = & -\frac{x(x^4-26x^3+66x^2-26x+1)}{(x+1)^6} \\
+\mathcal{E}^5\left(\frac{-x}{(1+x)^2}\right) & = & \frac{x(x^5-57x^4+302x^3-302x^2+57x-1)}{(x+1)^7} \\
+\mathcal{E}^6\left(\frac{-x}{(1+x)^2}\right) & = & -\frac{x(x^6-120x^5+1191x^4-2416x^3+1191x^2-120x+1)}{(x+1)^8}
+\neea
+%
+and the $\Phi(s)$'s are $-1$ times the above and so and connecting it to the next exercise
+%
+\nbea
+\begin{array}{r c l c c c l}
+\zeta(-1) & = & (1-2^2)^{-1}\Phi(-1) & = & -\frac{1}{12} & = & -\frac{1}{2} \times \frac{1}{6}\\
+\zeta(-2) & = & (1-2^3)^{-1}\Phi(-2) & = & 0 \\
+\zeta(-3) & = & (1-2^4)^{-1}\Phi(-3) & = & \frac{1}{120}  & = & -\frac{1}{4} \times -\frac{1}{30}\\
+\zeta(-4) & = & (1-2^5)^{-1}\Phi(-4) & = & 0 \\
+\zeta(-5) & = & (1-2^6)^{-1}\Phi(-5) & = & -\frac{1}{252} & = & -\frac{1}{6} \times \frac{1}{42}\\
+\zeta(-6) & = & (1-2^7)^{-1}\Phi(-6) & = & 0 \\
+\zeta(-7) & = & (1-2^8)^{-1}\Phi(-7) & = & \frac{1}{240} & = & -\frac{1}{8} \times-\frac{1}{30}
+\end{array}
+\neea
+%
+
+{\bf Exercise 8.2.3}, Page 203, the conjecture here is that according to the list above, $\zeta(-2n)=0$ and $\zeta(-(2n+1)) = -\frac{1}{2(n+1)}\times B_{2(n+1)}$, $n\ge0$
+
+{\bf Exercise 8.3.2}, Page 209, Assuming $s>0$ is real, change variables by $x=t^s$ in the integral (8.4), this means $dx=st^{s-1}dt$
+%
+\nbea
+\Gamma(s) & = & \int_0^\infty e^{-t}t^{s-1}dt \\
+& = & \int_0^\infty e^{-x^{1/s}} \frac{dx}{s}
+\neea
+%
+now change $s\to 1/s$
+%
+\nbea
+\Gamma(1/s) & = & s \int_0^\infty e^{-x^s} dx
+\neea
+%
+using the ``normal'' Gamma function relationship
+%
+\nbea
+\Gamma(s+1) & = & s\Gamma(s)
+\neea
+%
+now substituting for $s\to1/s$
+%
+\nbea
+\Gamma(1+1/s) & = & \frac{1}{s}\Gamma(1/s) \\
+& = & \frac{\cancel{s}}{\bcancel{s}} \int_0^\infty e^{-x^s} dx
+\neea
+%
+so even for the $1/s$ Gamma, the relation is still the same
+%
+\nbea
+\Gamma(1/s+1) & = & \frac{1}{s}\Gamma(1/s)
+\neea
+%
+and so
+%
+\nbea
+\Gamma(5/2) & = & \frac{3}{2} \Gamma(3/2) \\
+& = & \frac{3\sqrt{\pi}}{4}
+\neea
+%
+and $\Gamma(7/2) = 15\sqrt{\pi}/8,~\Gamma(9/2) = 105\sqrt{\pi}/16$ and so the general formula is
+%
+\nbea
+\Gamma(n+1/2) & = & \frac{(2n-1)!!}{2^n}
+\neea
+%
+and now
+%
+\nbea
+\Gamma(1/2) & = & 2 \Gamma(3/2) \\
+& = & \sqrt{\pi}
+\neea
+%
+and
+%
+\nbea
+\Gamma(-1/2) & = & -2 \Gamma(1/2) \\
+& = & -2\sqrt{\pi}
+\neea
+%
+
+
+
+
 
 
 
