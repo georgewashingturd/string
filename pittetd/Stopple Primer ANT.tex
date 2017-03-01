@@ -1149,8 +1149,45 @@ and
 & = & -2\sqrt{\pi}
 \neea
 %
+Note that the goal of this whole exercise is to massage the Gamma function into a Gaussian integral so that we can evaluate it.
 
+{\bf Page 211}, Eq (8.7), there's a typo, it should have been $s=-(2k-1)$, it's for negative odd integers that we have simple poles
 
+{\bf Exercise 8.4.1}, Page 212, What are the singular parts for the Laurent expansions of $\Gamma(s)$, here we can use (8.5)
+%
+\nbea
+\Gamma(s) & = & \sum_{k=0}^\infty \frac{(-1)^k}{k!} \frac{1}{s+k} + \int_1^\infty e^{-t}t^{s-1}dt
+\neea
+%
+so near $s=-2n+1$ we have
+%
+\nbea
+\Gamma(s) & = & \frac{(-1)^{2n-1}}{(2n-1)!} \frac{1}{(s+(2n-1))} + O((s+(2n-1)))
+\neea
+%
+and so
+%
+\nbea
+\Gamma(s)^{-1} & = & \frac{(2n-1)!}{(-1)^{2n-1}} (s+(2n-1)) + O((s+(2n-1))^2)
+\neea
+%
+and around $s=-2n+1$
+%
+\nbea
+F(s) + G(s) & = & \frac{B_{2n}}{(2n)!}\frac{1}{(s + (2n-1))} + O(1)
+\neea
+%
+and so
+%
+\nbea
+\zeta(-2n+1) & = & \Gamma(s)^{-1} \lbrack F(s) + G(s)\rbrack\\
+& = & \left(\frac{(2n-1)!}{(-1)^{2n-1}} (s+(2n-1)) + O((s+(2n-1))^2)\right) \left\lbrack  \frac{B_{2n}}{(2n)!}\frac{1}{(s + (2n-1))} + O(1) \right\rbrack \\
+& = & \frac{(-1)^{2n-1}B_{2n}}{2n} + O(1) \\
+& = & -\frac{B_{2n}}{2n} + O(1)
+\neea
+%
+
+{\bf Page 213}, lower half of the page, the formula for $\zeta(2n)$ is given in Chapter 6, Page 154 from the expansion of $z\cot(z)$
 
 
 
