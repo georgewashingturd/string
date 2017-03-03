@@ -1189,6 +1189,80 @@ and so
 
 {\bf Page 213}, lower half of the page, the formula for $\zeta(2n)$ is given in Chapter 6, Page 154 from the expansion of $z\cot(z)$
 
+\bigskip
+\underline{\textit{\textbf{Chapter 10}}}
+\bigskip
+
+{\bf Page 234}, Theorem of Eq (10.5), the {\it proof} of this theorem is actually not a proof, more like a validation check, what it actually does is that first, it shows that the Mellin transform of $\Psi(x)$
+%
+\nbea
+-s\mathcal{M}\Psi(s) & = & \frac{\zeta'(s)}{\zeta(s)}
+\neea
+%
+and then we show the Mellin transform of each term in $\Psi(s)$ to correspond to the terms in $\frac{\zeta'(s)}{\zeta(s)}$, but it did not show how $\Psi(x)$ was derived in the first place.
+
+{\bf Page 236}, last sentence, this is related to Eq (10.5), we know that $\Psi(x)$ is real and so
+%
+\nbea
+\overline{\Psi(x)} & = & \Psi(x) \\
+\to \sum_\rho \frac{x^{\overline\rho}}{\overline\rho} & = & \sum_\rho \frac{x^{\rho}}{\rho}
+\neea
+%
+and therefore the zeros $\rho$ must come in pairs of $\rho$ and $\overline\rho$
+
+{\bf Page 244 to Page 247}, proof of Theorem, Eq (10.11), again this proof doesn't show how Riemann derived the explicit formula for $\Pi(x)$, it only shows that it is consistent by showing the relationship on Page 246
+%
+\nbea
+\mathcal{E}\Psi(x) = \Pi(x) + \mathcal{E}(\Pi(x)\cdot\log(x))
+\neea
+%
+since we know the explicit formula for $\Psi(x)$, the first and crucial step is of course showing
+%
+\nbea
+\log(\zeta(s)) = s\mathcal{M}\Pi(s)
+\neea
+%
+of Eq (10.12)
+
+So to summarize, the two explicit formulae, one from Von Mangoldt and one from Riemann, but the main formula is of course Riemann's explicit formula for $\Pi(x)$ and $\pi(x)$, so here's ahow everything is connected to the zeta function
+\bit
+\item First, we show that the zeta function can be represented as the Hadamard's Product
+\item Next, we show that the log derivative of the conventional zeta function is just a sum of Von Mangoldt's functions, $\Psi(x)$
+\item Using this equality we now substitute the Hadamard's product for the conventional zeta function and show that Von Mangoldt's function $\Psi(x)$ can be explicitly formulated by taking the ``inverse'' Mellin transform of the log derivative of Hadamard's product and this is how the Von Mangoldt's function $\Psi(x)$ is related to the zeros of the zeta function
+\item With all this set, we now relate the Von Mangoldt's function to the Riemann prime counting function $\Pi(x) = \sum_k \frac{1}{k}\pi(x^{1/k})$, the relationship is quite complicated $\mathcal{E}\Psi(x) = \Pi(x) + \mathcal{E}(\Pi(x)\cdot\log(x))$
+\item And this is how the Riemann prime counting function is related to the zeros of the zeta function, and using the generalized Mobius inversion we get $\pi(x)$ as a sum of $\Pi(x)$ and now we can express the original prime counting function $\pi(x)$ in terms of the zeros of the zeta function
+\eit
+
+{\bf Exercise 10.4.1}, Page 246, for $\alpha=1, \rho,$ or $2n$, show that
+%
+\nbea
+x\frac{d}{dx}\left(\frac{x^\alpha}{\alpha}\right) = -{\rm Li}(x^\alpha) +x\frac{d}{dx} ({\rm Li}(x^\alpha)\cdot\log(x))
+\neea
+%
+I think it's easier to start with the second term of the RHS
+%
+\nbea
+x\frac{d}{dx} ({\rm Li}(x^\alpha)\cdot\log(x)) & = & x \log(x) \frac{d}{dx} {\rm Li}(x^\alpha) + x{\rm Li}(x^\alpha)\frac{d}{dx} \log(x) \\
+& = & x\log(x)\frac{d}{dx}\left(\int_0^{x^\alpha}\frac{dt}{\log(t)}\right) + x{\rm Li}(x^\alpha)\frac{1}{x} \\
+& = & x\log(x) \frac{1}{\log(x^\alpha)}\cdot\frac{d}{dx}(x^\alpha) + {\rm Li}(x^\alpha) \\
+& = & \frac{\bcancel{\alpha \log(x)}~~ x^\alpha}{\bcancel{\log(x^\alpha)}} + {\rm Li}(x^\alpha) \\
+& = & x^\alpha + {\rm Li}(x^\alpha)
+\neea
+%
+
+{\bf Page 249 and Page 250}, proof of Theorem, Eq (10.15), to get the last line on Page 249
+%
+\nbea
+\re\{\log(z)\} & = & \re \{\log(r e^{i\theta})\} \\
+& = & \re\{\log(r) + i(\theta + 2\pi n)\} \\
+& = & \re\{\log(r)\} \\
+& = & \re\{\log(|z|)\} \\
+& = & \log(|z|)
+\neea
+%
+the actual kick here is on Page 250, where ``suppose that $t$ is $\ldots$ a zero of the form $1+i\gamma$'' and it leads to a contradiction so this covers the case for $\re(\rho) = 1$, how about the other boundary $\re(\rho) = 0$ ~~~ \dunno
+
+Also, here $\epsilon\to0$ from $> 1$, the other thing is that we try to take the limit $\epsilon\to1$ from below the argument for the Big Oh still works so we will still have a contradiction except for the fact that $\zeta(s)$ is only defined for $\re(s) > 1$ so the limit must be taken from above
 
 
 

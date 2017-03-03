@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  28 FEB 2017 22:20
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  2 MAR 2017 23:18
 entering extended mode
 **"C:/Users/User/Documents/GitHub/string/pittetd/Stopple Primer ANT.tex"
 ("C:/Users/User/Documents/GitHub/string/pittetd/Stopple Primer ANT.tex"
@@ -651,19 +651,19 @@ Overfull \hbox (22.51157pt too wide) in alignment at lines 1182--1187
  [][][] []
  []
 
-("Stopple Primer ANT.bbl") [25]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1215.
+[25] [26] ("Stopple Primer ANT.bbl") [27]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1289.
  ("Stopple Primer ANT.aux")
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1215.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1215.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1289.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1289.
  ) 
 Here is how much of TeX's memory you used:
- 13320 strings out of 428755
- 183886 string characters out of 3166785
+ 13321 strings out of 428755
+ 183896 string characters out of 3166785
  287570 words of memory out of 3000000
- 16531 multiletter control sequences out of 15000+200000
+ 16532 multiletter control sequences out of 15000+200000
  13625 words of font info for 51 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
- 36i,18n,38p,542b,399s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,18n,38p,542b,403s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on Stopple Primer ANT.pdf (25 pages).
+Output written on Stopple Primer ANT.pdf (27 pages).
