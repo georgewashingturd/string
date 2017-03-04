@@ -1250,20 +1250,6 @@ x\frac{d}{dx} ({\rm Li}(x^\alpha)\cdot\log(x)) & = & x \log(x) \frac{d}{dx} {\rm
 \neea
 %
 
-{\bf Page 249 and Page 250}, proof of Theorem, Eq (10.15), to get the last line on Page 249
-%
-\nbea
-\re\{\log(z)\} & = & \re \{\log(r e^{i\theta})\} \\
-& = & \re\{\log(r) + i(\theta + 2\pi n)\} \\
-& = & \re\{\log(r)\} \\
-& = & \re\{\log(|z|)\} \\
-& = & \log(|z|)
-\neea
-%
-the actual kick here is on Page 250, where ``suppose that $t$ is $\ldots$ a zero of the form $1+i\gamma$'' and it leads to a contradiction so this covers the case for $\re(\rho) = 1$, how about the other boundary $\re(\rho) = 0$ ~~~ \dunno
-
-Also, here $\epsilon\to0$ from $> 1$, the other thing is that we try to take the limit $\epsilon\to1$ from below the argument for the Big Oh still works so we will still have a contradiction except for the fact that $\zeta(s)$ is only defined for $\re(s) > 1$ so the limit must be taken from above
-
 {\bf Page 248}, top of page, on inverting $\Pi(x)$, this is almost the same strategy as the one used for Euler's product of the zeta function, first
 %
 \nbea
@@ -1386,7 +1372,7 @@ G(x) & = & \sum_{n=1}^\infty a_n \left(\sum_{m=1}^\infty b_m G\left (\left(x^n\r
 \to \sum_{d|c} a_{d} b_{\frac{c}{d}} & = & \delta_{c,1}
 \neea
 %
-with the same conclusion (and again we are rearranging the double sum into a sum for a fixed exponent for $x$ and a sum for the factors of $c$). This is more or less the generalization of our previous case involving $\Pi(x)$ and $\pi(x)$, note that since $\sum_{c|d}$ involves all factors of $c$ we can swap $a_{\frac{c}{d}}  b_{d} ~\leftrightarrow~ a_c  b_{\frac{c}{d}}$. The series $\sum_{n=0}^\infty \frac{f_n}{n^s}$ is normally called Dirichlet series in the literature.
+with the same conclusion (and again we are rearranging the double sum into a sum for a fixed exponent for $x$ and a sum for the factors of $c$). This is more or less the generalization of our previous case involving $\Pi(x)$ and $\pi(x)$, note that since $\sum_{c|d}$ involves all factors of $c$ we can swap $a_{\frac{c}{d}}  b_{d} ~\leftrightarrow~ a_d  b_{\frac{c}{d}}$. The series $\sum_{n=0}^\infty \frac{f_n}{n^s}$ is normally called Dirichlet series in the literature.
 
 Mobius then cleverly applied this good finding on our beloved geometric series by setting $a_n=1$ and $b_n=\mu(n)$ for all $n$
 %
@@ -1415,19 +1401,34 @@ therefore
 %
 \nbea
 x & = & \sum_{n=1}^\infty \mu(n) \frac{x^n}{1-x^n} \\
-\to 1 + O(\epsilon) & = & \sum_{n=1}^\infty \mu(n) \left(\frac{1}{n\epsilon}+O(1) \right) \\
-O(\epsilon) & = & \sum_{n=1}^\infty \frac{\mu(n)}{n}+O(\epsilon) \\
-\to O(\epsilon) & = & \sum_{n=1}^\infty \frac{\mu(n)}{n}
+1 + \epsilon & = & \sum_{n=1}^\infty \mu(n) \left(\frac{1}{n\epsilon}+O(1) \right)
 \neea
 %
-and this means that $\sum_{n=1}^\infty \frac{\mu(n)}{n} = 0$
+multiplying both sides by $\epsilon$
+%
+\nbea
+\epsilon + \epsilon^2 & = & \sum_{n=1}^\infty \frac{\mu(n)}{n}+O\left(\epsilon\sum_{n=1}^\infty \frac{\mu(n)}{n}\right)
+\neea
+%
+the thing to note here is that the above is true for any $\epsilon$, this means that $\sum_{n=1}^\infty \frac{\mu(n)}{n}$ is finite, but if it's finite since $\epsilon\to0$ the only choice is $\sum_{n=1}^\infty \frac{\mu(n)}{n} = 0$
+
+{\bf Page 249 and Page 250}, proof of Theorem, Eq (10.15), to get the last line on Page 249
+%
+\nbea
+\re\{\log(z)\} & = & \re \{\log(r e^{i\theta})\} \\
+& = & \re\{\log(r) + i(\theta + 2\pi n)\} \\
+& = & \re\{\log(r)\} \\
+& = & \re\{\log(|z|)\} \\
+& = & \log(|z|)
+\neea
+%
+the actual kick here is on Page 250, where ``suppose that $t$ is $\ldots$ a zero of the form $1+i\gamma$'' and it leads to a contradiction so this covers the case for $\re(\rho) = 1$, how about the other boundary $\re(\rho) = 0$, since we have shown that there's no zero with $\re(\rho) = 1$, by symmetry, $\Lambda(1-s) = \Lambda(s)$, there is no zero with $\re(\rho)=0$ either.
+
+Also, here $\epsilon\to0$ from $> 1$, the other thing is that we try to take the limit $\epsilon\to1$ from below the argument for the Big Oh still works so we will still have a contradiction except for the fact that $\zeta(s)$ is only defined for $\re(s) > 1$ so the limit must be taken from above
 
 \bigskip
 \underline{\textit{\textbf{Interlude 4}}}
 \bigskip
-
-
-
 
 {\bf Page 258}, Hensel's Lemma, this is my alternative proof, also I found the statement that $x_{j+1}$ to be unique is not quite right, even for the example of $a=-1$ and $p=5$, $x_1=2$, I can get $x_2 = 32$ and $32^2 = 1024 = -1 + 25\cdot 41$, in his example his $x_2 = 7$ with $7^2 = 49 = -1 + 25\cdot 2$ so I believe what he meant by unique is that it is unique modulo $p^{j+1}$.
 
