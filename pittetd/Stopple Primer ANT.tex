@@ -1233,11 +1233,38 @@ So to summarize, we have two explicit formulae, one from Von Mangoldt and one fr
 \item And this is how the Riemann prime counting function is related to the zeros of the zeta function, and using the generalized Mobius inversion we get $\pi(x)$ as a sum of $\Pi(x)$ and now we can express the original prime counting function $\pi(x)$ in terms of the zeros of the zeta function
 \eit
 
+{\bf Exercise 10.4.1}, Page 246, for $\alpha=1, \rho,$ or $2n$, show that
+%
+\nbea
+x\frac{d}{dx}\left(\frac{x^\alpha}{\alpha}\right) = -{\rm Li}(x^\alpha) +x\frac{d}{dx} ({\rm Li}(x^\alpha)\cdot\log(x))
+\neea
+%
+I think it's easier to start with the second term of the RHS
+%
+\nbea
+x\frac{d}{dx} ({\rm Li}(x^\alpha)\cdot\log(x)) & = & x \log(x) \frac{d}{dx} {\rm Li}(x^\alpha) + x{\rm Li}(x^\alpha)\frac{d}{dx} \log(x) \\
+& = & x\log(x)\frac{d}{dx}\left(\int_0^{x^\alpha}\frac{dt}{\log(t)}\right) + x{\rm Li}(x^\alpha)\frac{1}{x} \\
+& = & x\log(x) \frac{1}{\log(x^\alpha)}\cdot\frac{d}{dx}(x^\alpha) + {\rm Li}(x^\alpha) \\
+& = & \frac{\bcancel{\alpha \log(x)}~~ x^\alpha}{\bcancel{\log(x^\alpha)}} + {\rm Li}(x^\alpha) \\
+& = & x^\alpha + {\rm Li}(x^\alpha)
+\neea
+%
 
+{\bf Page 249 and Page 250}, proof of Theorem, Eq (10.15), to get the last line on Page 249
+%
+\nbea
+\re\{\log(z)\} & = & \re \{\log(r e^{i\theta})\} \\
+& = & \re\{\log(r) + i(\theta + 2\pi n)\} \\
+& = & \re\{\log(r)\} \\
+& = & \re\{\log(|z|)\} \\
+& = & \log(|z|)
+\neea
+%
+the actual kick here is on Page 250, where ``suppose that $t$ is $\ldots$ a zero of the form $1+i\gamma$'' and it leads to a contradiction so this covers the case for $\re(\rho) = 1$, how about the other boundary $\re(\rho) = 0$ ~~~ \dunno
 
+Also, here $\epsilon\to0$ from $> 1$, the other thing is that we try to take the limit $\epsilon\to1$ from below the argument for the Big Oh still works so we will still have a contradiction except for the fact that $\zeta(s)$ is only defined for $\re(s) > 1$ so the limit must be taken from above
 
-
-On inverting $\Pi(x)$, this is almost the same strategy as the one used for Euler's product of the zeta function, first
+{\bf Page 248}, top of page, on inverting $\Pi(x)$, this is almost the same strategy as the one used for Euler's product of the zeta function, first
 %
 \nbea
 \frac{1}{2} \Pi(x^{1/2}) & = & \frac{1}{2}\pi(x^{1/2}) + \frac{1}{4}\pi(x^{1/4}) + \frac{1}{6}\pi(x^{1/6}) + \ldots
@@ -1256,10 +1283,10 @@ removes any term $\frac{1}{k}\pi(x^{1/k})$ with $k$ a multiple of two, so we kin
 \pi(x) & = & \Pi(x) - \frac{1}{2}\Pi(x^{1/2}) - \frac{1}{3}\Pi(x^{1/3}) + \frac{1}{6}\Pi(x^{1/6}) + \ldots
 \neea
 %
-and this is how we get the inversion. This can also be achieved using the generalized Mobius inversion formula as follows
+but it's a bit hard to keep track these subtractions and addition, but this is how we get the inversion. An easier (and more historically accurate) way is to use the generalized Mobius inversion formula as follows
 %
 \nbea
-G(x) = \sum_{n=1}^\infty \frac{1}{n} F(x^{1/n}) &\longleftrightarrow& F(x) = \sum_{n=1}^\infty \frac{\mu(n)}{n} G(x^{1/n})
+G(x) = \sum_{n=1}^\infty \frac{1}{n} F(x^{1/n}) &~~~~~\longleftrightarrow~~~~~& F(x) = \sum_{n=1}^\infty \frac{\mu(n)}{n} G(x^{1/n})
 \neea
 %
 but how do we see that this is correct, the easiest way is back substitution
@@ -1297,7 +1324,7 @@ taking $s=1$ in the zeta function, taking the reciprocal
 because each $\frac{1}{p}$ carries a minus sign in front of it, and there's only one factor for each prime so there won't be anything of the form $\frac{1}{3^2}$ or $\frac{1}{5^9}$, \ie anything with duplicate primes. And since the initial product is over all primes we cover all $n$ with distinct primes and so the $\sum_{n=1}^\infty$ in the last line and also for a single prime the sign is always minus and for an odd number of prime as well and for an even number of primes the sign will be positive, this is the definition of $\mu(n)$. More generally
 %
 \nbea
-\zeta(s) = \sum_{n=1}^\infty \frac{1}{n^s} &\longleftrightarrow& \frac{1}{\zeta(s)} = \sum_{n=1}^\infty \frac{\mu(n)}{n^s}
+\zeta(s) = \sum_{n=1}^\infty \frac{1}{n^s} &~~~~~\longleftrightarrow~~~~~& \frac{1}{\zeta(s)} = \sum_{n=1}^\infty \frac{\mu(n)}{n^s}
 \neea
 %
 the proof of which is exactly the same for the case of $s=1$.
@@ -1321,19 +1348,12 @@ a_1 & = & \sum_{d|1}\mu(d) \\
 which is consistent and for all other $a_{n>1} = 0 = \sum_{d|c>1}\mu(d) = 0$ which means that $\sum_{d|c}\mu(d) = \delta_{c,1}$
 
 
-
-
-
-
-
-
-
-
+{\bf Page 248}, middle of page, ``a consequence of Prime Number Theorem says that $\sum_n \mu(n)/n=0$'', this result can be obtained without the prime number theorem, it is in fact a very clever trick by Mobius as follows.
 
 With the above trick Mobius showed that $\sum_{n=1}^\infty \frac{\mu(n)}{n} = 0$, here's how. First, just like above the following relationship is also true
 %
 \nbea
-G(x) = \sum_{n=1}^\infty a_n F(x) &\longleftrightarrow& F(x) = \sum_{n=1} b_n G(x)
+G(x) = \sum_{n=1}^\infty a_n F(x) &~~~~~\longleftrightarrow~~~~~& F(x) = \sum_{n=1} b_n G(x)
 \neea
 %
 express $G(x)$, $F(x)$ in terms of power series
@@ -1341,7 +1361,7 @@ express $G(x)$, $F(x)$ in terms of power series
 \nbea
 \sum_{j=0}^\infty g_j x^j & = & \sum_{n=1}^\infty a_n \left(\sum_{m=1}^\infty b_m \left(\sum_{i=0}^\infty g_i x^i\right)\right) \\
 & = &\sum_{i=0}^\infty \left( \sum_{n=1}^\infty\sum_{m=1}^\infty a_n  b_m \right) g_i x^i \\
-& = &\sum_{i=0}^\infty \left( \sum_{c=1}^\infty\sum_{d|c} a_{\frac{c}{d}}  b_{d} \right) g_i x^i \\
+& = &\sum_{i=0}^\infty \left( \sum_{c=1}^\infty\sum_{d|c} a_{\frac{c}{d}}  b_{d} \right) g_i x^i
 \neea
 %
 again comparing coefficients of same power of $x$ on both sides we get that
@@ -1354,7 +1374,7 @@ again comparing coefficients of same power of $x$ on both sides we get that
 this can be immediately generalized into
 %
 \nbea
-G(x) = \sum_{n=1}^\infty a_n F(x^n) &\longleftrightarrow& F(x) = \sum_{n=1}^\infty b_n G(x^n)
+G(x) = \sum_{n=1}^\infty a_n F(x^n) &~~~~~\longleftrightarrow~~~~~& F(x) = \sum_{n=1}^\infty b_n G(x^n)
 \neea
 %
 because by the same token as before (but not expanding each function into power series)
@@ -1371,7 +1391,7 @@ with the same conclusion (and again we are rearranging the double sum into a sum
 Mobius then cleverly applied this good finding on our beloved geometric series by setting $a_n=1$ and $b_n=\mu(n)$ for all $n$
 %
 \nbea
-\frac{x}{1-x} = \sum_{n=1}^\infty x^n &\longleftrightarrow& x = \sum_{n=1}^\infty \mu(n) \frac{x^n}{1-x^n}
+\frac{x}{1-x} = \sum_{n=1}^\infty x^n &~~~~~\longleftrightarrow~~~~~& x = \sum_{n=1}^\infty \mu(n) \frac{x^n}{1-x^n}
 \neea
 %
 again since as shown above that $\sum_{d|c}\mu(d) = \delta_{c,1}$. He then noticed that if $x\to1$ we have $1-x = \epsilon$ and
@@ -1402,19 +1422,16 @@ O(\epsilon) & = & \sum_{n=1}^\infty \frac{\mu(n)}{n}+O(\epsilon) \\
 %
 and this means that $\sum_{n=1}^\infty \frac{\mu(n)}{n} = 0$
 
+\bigskip
+\underline{\textit{\textbf{Interlude 4}}}
+\bigskip
 
 
 
 
+{\bf Page 258}, Hensel's Lemma, this is my alternative proof, also I found the statement that $x_{j+1}$ to be unique is not quite right, even for the example of $a=-1$ and $p=5$, $x_1=2$, I can get $x_2 = 32$ and $32^2 = 1024 = -1 + 25\cdot 41$, in his example his $x_2 = 7$ with $7^2 = 49 = -1 + 25\cdot 2$ so I believe what he meant by unique is that it is unique modulo $p^{j+1}$.
 
-
-
-
-
-
-Hensel's Lemma
-
-say there's a solution to $x_j^2 \equiv a \pmod{p^j}$, if there's another solution at all, it must be of the form
+Now here is my proof, say there's a solution to $x_j^2 \equiv a \pmod{p^j}$, if there's another solution at all, it must be of the form
 %
 \nbea
 x_{j+1} & = & x_j + mp^j \\
@@ -1450,49 +1467,27 @@ n+ 2x_jm & = & 2w
 %
 this means that $n$ has to be even and so it's not guaranteed that as long as $x_j^2 \equiv a \pmod{2^j}$ we'll have another solution $x_{j+1}^2 \equiv a \pmod{2^{j+1}}$, only on certain cases this will hold, but the case for odd $p$ will {\it always} hold.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-{\bf Exercise 10.4.1}, Page 246, for $\alpha=1, \rho,$ or $2n$, show that
+Coming back to uniqueness modulo $p^{j+1}$, from Bezout's lemma we know that if $\gcd(a,b)=d$ there exist $x,y$ such that $ax+by=d$, it so happens that these $x,y$ are not unique, any other
 %
 \nbea
-x\frac{d}{dx}\left(\frac{x^\alpha}{\alpha}\right) = -{\rm Li}(x^\alpha) +x\frac{d}{dx} ({\rm Li}(x^\alpha)\cdot\log(x))
+x' = x + c\cdot\frac{b}{d} & ~~~~~~~~~ & y' = y - c\cdot\frac{a}{d}
 \neea
 %
-I think it's easier to start with the second term of the RHS
+also work where $c$ is any integer. Applying it to our case, what we have is
 %
 \nbea
-x\frac{d}{dx} ({\rm Li}(x^\alpha)\cdot\log(x)) & = & x \log(x) \frac{d}{dx} {\rm Li}(x^\alpha) + x{\rm Li}(x^\alpha)\frac{d}{dx} \log(x) \\
-& = & x\log(x)\frac{d}{dx}\left(\int_0^{x^\alpha}\frac{dt}{\log(t)}\right) + x{\rm Li}(x^\alpha)\frac{1}{x} \\
-& = & x\log(x) \frac{1}{\log(x^\alpha)}\cdot\frac{d}{dx}(x^\alpha) + {\rm Li}(x^\alpha) \\
-& = & \frac{\bcancel{\alpha \log(x)}~~ x^\alpha}{\bcancel{\log(x^\alpha)}} + {\rm Li}(x^\alpha) \\
-& = & x^\alpha + {\rm Li}(x^\alpha)
+1 & = & 2x_j(-m') + pw' \\
+\to n & = & 2x_j(-m) + pw
 \neea
 %
-
-{\bf Page 249 and Page 250}, proof of Theorem, Eq (10.15), to get the last line on Page 249
+and so any $-M' = -m' - c\cdot p \to -M = (-m - ncp)$ is also a solution for any integer $c$, note that this $M$ plays its role in
 %
 \nbea
-\re\{\log(z)\} & = & \re \{\log(r e^{i\theta})\} \\
-& = & \re\{\log(r) + i(\theta + 2\pi n)\} \\
-& = & \re\{\log(r)\} \\
-& = & \re\{\log(|z|)\} \\
-& = & \log(|z|)
+x_{j+1} & = & x_j + Mp^j \\
+& = & x_j + mp^j + ncp^{j+1}
 \neea
 %
-the actual kick here is on Page 250, where ``suppose that $t$ is $\ldots$ a zero of the form $1+i\gamma$'' and it leads to a contradiction so this covers the case for $\re(\rho) = 1$, how about the other boundary $\re(\rho) = 0$ ~~~ \dunno
-
-Also, here $\epsilon\to0$ from $> 1$, the other thing is that we try to take the limit $\epsilon\to1$ from below the argument for the Big Oh still works so we will still have a contradiction except for the fact that $\zeta(s)$ is only defined for $\re(s) > 1$ so the limit must be taken from above
+and so it differs from another $x_{j+1}$ by a multiple of $p^{j+1}$
 
 
 
