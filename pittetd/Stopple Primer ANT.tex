@@ -1224,7 +1224,7 @@ since we know the explicit formula for $\Psi(x)$, the first and crucial step is 
 %
 of Eq (10.12)
 
-So to summarize, the two explicit formulae, one from Von Mangoldt and one from Riemann, but the main formula is of course Riemann's explicit formula for $\Pi(x)$ and $\pi(x)$, so here's ahow everything is connected to the zeta function
+So to summarize, we have two explicit formulae, one from Von Mangoldt and one from Riemann, but the main formula is of course Riemann's explicit formula for $\Pi(x)$ and $\pi(x)$, so here's how everything is connected to the zeta function
 \bit
 \item First, we show that the zeta function can be represented as the Hadamard's Product
 \item Next, we show that the log derivative of the conventional zeta function is just a sum of Von Mangoldt's functions, $\Psi(x)$
@@ -1232,6 +1232,236 @@ So to summarize, the two explicit formulae, one from Von Mangoldt and one from R
 \item With all this set, we now relate the Von Mangoldt's function to the Riemann prime counting function $\Pi(x) = \sum_k \frac{1}{k}\pi(x^{1/k})$, the relationship is quite complicated $\mathcal{E}\Psi(x) = \Pi(x) + \mathcal{E}(\Pi(x)\cdot\log(x))$
 \item And this is how the Riemann prime counting function is related to the zeros of the zeta function, and using the generalized Mobius inversion we get $\pi(x)$ as a sum of $\Pi(x)$ and now we can express the original prime counting function $\pi(x)$ in terms of the zeros of the zeta function
 \eit
+
+
+
+
+
+On inverting $\Pi(x)$, this is almost the same strategy as the one used for Euler's product of the zeta function, first
+%
+\nbea
+\frac{1}{2} \Pi(x^{1/2}) & = & \frac{1}{2}\pi(x^{1/2}) + \frac{1}{4}\pi(x^{1/4}) + \frac{1}{6}\pi(x^{1/6}) + \ldots
+\neea
+%
+subtracting this from $\Pi(x)$
+%
+\nbea
+\Pi(x) - \frac{1}{2} \Pi(x^{1/2}) & = & \left (\pi(x) + \cancel{\frac{1}{2}\pi(x^{1/2})} + \frac{1}{3}\pi(x^{1/3}) + \ldots + \cancel{\frac{1}{6}\pi(x^{1/6})} + \ldots \right) - \\
+&& ~~~~~~~~~\left ( \cancel{\frac{1}{2}\pi(x^{1/2})} + \frac{1}{4}\pi(x^{1/4}) + \cancel{\frac{1}{6}\pi(x^{1/6})} + \ldots\right )
+\neea
+%
+removes any term $\frac{1}{k}\pi(x^{1/k})$ with $k$ a multiple of two, so we kind of see the pattern, we need to keep subtracting $\Pi(x^{1/p})$ where $p$ is prime, but, as the example above shows, $\frac{1}{6}\pi(x^{1/6})$ is already removed by $-\Pi(x^{1/2})$, subtracting $\Pi(x^{1/3})$ will doubly remove $\frac{1}{6}\pi(x^{1/6})$, therefore we need to add this back and note that the first term of $\Pi(x)$, \ie $\pi(x)$ is never removed with these subtractions
+%
+\nbea
+\pi(x) & = & \Pi(x) - \frac{1}{2}\Pi(x^{1/2}) - \frac{1}{3}\Pi(x^{1/3}) + \frac{1}{6}\Pi(x^{1/6}) + \ldots
+\neea
+%
+and this is how we get the inversion. This can also be achieved using the generalized Mobius inversion formula as follows
+%
+\nbea
+G(x) = \sum_{n=1}^\infty \frac{1}{n} F(x^{1/n}) &\longleftrightarrow& F(x) = \sum_{n=1}^\infty \frac{\mu(n)}{n} G(x^{1/n})
+\neea
+%
+but how do we see that this is correct, the easiest way is back substitution
+%
+\nbea
+G(x) & = & \sum_{n=1}^\infty \frac{1}{n} F(x^{1/n}) \\
+& = & \sum_{n=1}^\infty \frac{1}{n} \left(\sum_{m=1}^\infty \frac{\mu(m)}{m} G\left(\left(x^{1/n}\right)^{1/m}\right)\right) \\
+& = & \sum_{n=1}^\infty\sum_{m=1}^\infty \frac{\mu(m)}{mn} G\left(x^{1/(nm)}\right)
+\neea
+%
+we now rearrange the sum as follow, group all $G\left(x^{1/(nm)}\right)$ with the same $mn=c$ and so
+%
+\nbea
+\sum_{n=1}^\infty\sum_{m=1}^\infty \frac{\mu(m)}{mn} G\left(x^{1/(nm)}\right) & = & \sum_{c=1}^\infty G\left(x^{1/c}\right) \sum_{d|c} \frac{\mu(d)}{d\left(\frac{c}{d}\right)} \\
+& = & \sum_{c=1}^\infty G\left(x^{1/c}\right) \sum_{d|c} \frac{\mu(d)}{c} \\
+& = & \sum_{c=1}^\infty G\left(x^{1/c}\right) \frac{1}{c} \sum_{d|c} \mu(d) \\
+& = & \sum_{c=1}^\infty G\left(x^{1/c}\right) \frac{1}{c} \delta_{c,1} \\
+& = & G(x)
+\neea
+%
+so it works, the only thing left to fill is that why $\sum_{d|c} \mu(d) = \delta_{c,1}$ where $\delta_{c,1}$ is kronecker delta, there's a proof of this in a direct way in Apostol but let's not do it that way, let start with the Euler's product
+%
+\nbea
+\sum_{n=1}^\infty \frac{1}{n} & = & \prod_p \left(1 - \frac{1}{p}\right)^{-1}
+\neea
+%
+taking $s=1$ in the zeta function, taking the reciprocal
+%
+\nbea
+\frac{1}{\sum_{n=1}^\infty \frac{1}{n}} & = & \prod_p \left(1 - \frac{1}{p}\right) \\
+& = & \left(1 - \frac{1}{2}\right)\left(1 - \frac{1}{3}\right)\left(1 - \frac{1}{5}\right)\ldots \\
+& = & \sum_{n=1}^\infty \frac{\mu(n)}{n}
+\neea
+%
+because each $\frac{1}{p}$ carries a minus sign in front of it, and there's only one factor for each prime so there won't be anything of the form $\frac{1}{3^2}$ or $\frac{1}{5^9}$, \ie anything with duplicate primes. And since the initial product is over all primes we cover all $n$ with distinct primes and so the $\sum_{n=1}^\infty$ in the last line and also for a single prime the sign is always minus and for an odd number of prime as well and for an even number of primes the sign will be positive, this is the definition of $\mu(n)$. More generally
+%
+\nbea
+\zeta(s) = \sum_{n=1}^\infty \frac{1}{n^s} &\longleftrightarrow& \frac{1}{\zeta(s)} = \sum_{n=1}^\infty \frac{\mu(n)}{n^s}
+\neea
+%
+the proof of which is exactly the same for the case of $s=1$.
+
+So what does it have to do with $\sum_{d|c} \mu(d) = \delta_{c,1}$? well, let's multiply them
+%
+\nbea
+\left(\prod_p \left(1 - \frac{1}{p^s}\right)^{-1}\right) \left(\prod_p \left(1 - \frac{1}{p^s}\right) \right) & = & \sum_{n=1}^\infty \frac{1}{n^s}\sum_{m=1}^\infty \frac{\mu(m)}{m^s}\\
+1 & = & \sum_{n=1}^\infty\sum_{m=1}^\infty \frac{\mu(m)}{(mn)^s} \\
+\sum_{c=1}\frac{a_n}{c^s} & = & \sum_{c=1}^\infty\sum_{d|c} \frac{\mu(d)}{c^s} \\
+\sum_{c=1}\frac{a_n}{c^s} & = & \sum_{c=1}^\infty \frac{\left(\sum_{d|c}\mu(d)\right)}{c^s}
+\neea
+%
+where $a_n = 1$ where $n=1$ and $a_n=0$ otherwise, we now only need to compare the coefficient for each $1/c^s$ and in this case it's very easy
+%
+\nbea
+a_1 & = & \sum_{d|1}\mu(d) \\
+\to 1 & = & \mu(1)
+\neea
+%
+which is consistent and for all other $a_{n>1} = 0 = \sum_{d|c>1}\mu(d) = 0$ which means that $\sum_{d|c}\mu(d) = \delta_{c,1}$
+
+
+
+
+
+
+
+
+
+
+
+With the above trick Mobius showed that $\sum_{n=1}^\infty \frac{\mu(n)}{n} = 0$, here's how. First, just like above the following relationship is also true
+%
+\nbea
+G(x) = \sum_{n=1}^\infty a_n F(x) &\longleftrightarrow& F(x) = \sum_{n=1} b_n G(x)
+\neea
+%
+express $G(x)$, $F(x)$ in terms of power series
+%
+\nbea
+\sum_{j=0}^\infty g_j x^j & = & \sum_{n=1}^\infty a_n \left(\sum_{m=1}^\infty b_m \left(\sum_{i=0}^\infty g_i x^i\right)\right) \\
+& = &\sum_{i=0}^\infty \left( \sum_{n=1}^\infty\sum_{m=1}^\infty a_n  b_m \right) g_i x^i \\
+& = &\sum_{i=0}^\infty \left( \sum_{c=1}^\infty\sum_{d|c} a_{\frac{c}{d}}  b_{d} \right) g_i x^i \\
+\neea
+%
+again comparing coefficients of same power of $x$ on both sides we get that
+%
+\nbea
+1 = \sum_{c=1}^\infty\sum_{d|c} a_{\frac{c}{d}}  b_{d} & = & \sum_{c=1}^\infty\sum_{d|c} a_c  b_{\frac{c}{d}} \\
+\to \sum_{d|c} a_c  b_{\frac{c}{d}} & = & \delta_{c,1}
+\neea
+%
+this can be immediately generalized into
+%
+\nbea
+G(x) = \sum_{n=1}^\infty a_n F(x^n) &\longleftrightarrow& F(x) = \sum_{n=1}^\infty b_n G(x^n)
+\neea
+%
+because by the same token as before (but not expanding each function into power series)
+%
+\nbea
+G(x) & = & \sum_{n=1}^\infty a_n \left(\sum_{m=1}^\infty b_m G\left (\left(x^n\right)^m\right)\right) \\
+& = & \sum_{n=1}^\infty \sum_{m=1}^\infty a_n b_m G(x^{nm}) \\
+& = & \sum_{c=1}^\infty G(x^c) \sum_{d|c} a_{d} b_{\frac{c}{d}} \\
+\to \sum_{d|c} a_{d} b_{\frac{c}{d}} & = & \delta_{c,1}
+\neea
+%
+with the same conclusion (and again we are rearranging the double sum into a sum for a fixed exponent for $x$ and a sum for the factors of $c$). This is more or less the generalization of our previous case involving $\Pi(x)$ and $\pi(x)$, note that since $\sum_{c|d}$ involves all factors of $c$ we can swap $a_{\frac{c}{d}}  b_{d} ~\leftrightarrow~ a_c  b_{\frac{c}{d}}$. The series $\sum_{n=0}^\infty \frac{f_n}{n^s}$ is normally called Dirichlet series in the literature.
+
+Mobius then cleverly applied this good finding on our beloved geometric series by setting $a_n=1$ and $b_n=\mu(n)$ for all $n$
+%
+\nbea
+\frac{x}{1-x} = \sum_{n=1}^\infty x^n &\longleftrightarrow& x = \sum_{n=1}^\infty \mu(n) \frac{x^n}{1-x^n}
+\neea
+%
+again since as shown above that $\sum_{d|c}\mu(d) = \delta_{c,1}$. He then noticed that if $x\to1$ we have $1-x = \epsilon$ and
+%
+\nbea
+1-x^n & = & 1- (1-\epsilon)^n \\
+& = & 1 - ( 1 - n\epsilon + O(\epsilon^2) ) \\
+& = & n\epsilon + O(\epsilon^2)
+\neea
+%
+where we just expanded $(1-\epsilon)^n$ using the binomial theorem, therefore
+%
+\nbea
+\frac{x^n}{1-x^n} & = & \frac{1 + O(\epsilon)}{n\epsilon + O(\epsilon^2)} \\
+& = & \frac{1}{n\epsilon}(1+O(\epsilon))\left(\frac{1}{1 + O(\epsilon)}\right) \\
+& = & \frac{1}{n\epsilon}(1+O(\epsilon))\left(1 + O(\epsilon)\right) \\
+& = & \frac{1}{n\epsilon}+O(1)
+\neea
+%
+therefore
+%
+\nbea
+x & = & \sum_{n=1}^\infty \mu(n) \frac{x^n}{1-x^n} \\
+\to 1 + O(\epsilon) & = & \sum_{n=1}^\infty \mu(n) \left(\frac{1}{n\epsilon}+O(1) \right) \\
+O(\epsilon) & = & \sum_{n=1}^\infty \frac{\mu(n)}{n}+O(\epsilon) \\
+\to O(\epsilon) & = & \sum_{n=1}^\infty \frac{\mu(n)}{n}
+\neea
+%
+and this means that $\sum_{n=1}^\infty \frac{\mu(n)}{n} = 0$
+
+
+
+
+
+
+
+
+
+
+
+Hensel's Lemma
+
+say there's a solution to $x_j^2 \equiv a \pmod{p^j}$, if there's another solution at all, it must be of the form
+%
+\nbea
+x_{j+1} & = & x_j + mp^j \\
+\to x_{j+1}^2 & = & (x_j + mp^j)^2 \\
+& = & x^2_j + 2x_jmp^j + m^2p^{2j} \\
+& = & (a + np^j) + 2x_jmp^j + m^2p^{2j}
+\neea
+%
+for the RHS to be $a \pmod{p^{j+1}}$, $n+ 2x_jm$ must be a multiple of $p$ and this is actually guaranteed by Bezout's lemma, here's how. What we need is
+%
+\nbea
+n+ 2x_jm & = & pw
+\neea
+%
+if $\gcd(2x_j,p)=1$ then we are done since Bezout guarantee that there would be an $m'$ and a $w'$ such that
+%
+\nbea
+1 & = & (2x_j)m' + pw'
+\neea
+%
+multiplying both sides by $n$ we get our solution, but what if $\gcd(2x_j,p) = d > 1$? since $p$ is prime, the only possible values for $d$ is $d=p=2$ or $d = p$, first let's take $d = p \neq 2$, this means that $p|x_j$ since $p\nmid 2$
+%
+\nbea
+x_j^2 & = & a +p^jn \\
+p(p{x'}_j^2) & = & a +p(p^{j-1}n)
+\neea
+%
+but this means that $a \equiv 0 \pmod{p}$, which is not allowed by the assumption of the lemma, \ie $a \not\equiv 0 \pmod{p}$ right at the beginning of the lemma, so the only other alternative is $d = p = 2$, but this case is excluded because the lemma only concerns odd $p$ :) but why won't $p=2$ work? if you look back at our crucial equation
+%
+\nbea
+n+ 2x_jm & = & 2w
+\neea
+%
+this means that $n$ has to be even and so it's not guaranteed that as long as $x_j^2 \equiv a \pmod{2^j}$ we'll have another solution $x_{j+1}^2 \equiv a \pmod{2^{j+1}}$, only on certain cases this will hold, but the case for odd $p$ will {\it always} hold.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 {\bf Exercise 10.4.1}, Page 246, for $\alpha=1, \rho,$ or $2n$, show that
 %
