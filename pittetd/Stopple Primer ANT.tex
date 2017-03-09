@@ -1878,7 +1878,7 @@ recall that the role of $n^2$ here is played by $F(x,y)/\sqrt{|d|}$ and also the
 
 The second complication with this is that $F(x,y)$ might not cover all integers like the exponent of a normal geometric series would. The main issue with this is that 1 might not even be represented by $F$, \ie $F(x,y) \neq 1$ for any $x,y$. According to the Theorem on Page 305, in order for $n=1$ to be represented by $F$ we need to be able to find $m$ such that $m^2 \equiv d \pmod{4}$ with $0 \le m < 2$, since we are talking modulo 4 there are only 4 choices for $d$, \ie $d \equiv 0,1,2,3 \pmod{4}$ so if $d \equiv 2,3 \pmod{4}$, $n=1$ will not be represented by $F$.
 
-The good thing for us is that we are dealing with a 2 by 2 matrices, the form $F$ is represented by (see Page 298)
+One thing that might help us is that we are dealing with a 2 by 2 matrices, the form $F$ is represented by (see Page 298)
 %
 \nbea
 \left(
@@ -1889,71 +1889,29 @@ a & \frac{b}{2} \\
 \right)
 \neea
 %
-this is not just a 2 by 2 matrix but also a symmetric matrix, one property of symmetric matrices is that they can be diagonalized by an orthogonal matrix, \ie a matrix whose transpose is its own inverse, therefore we can find $M$ that can diagonalize the above symmetric matrix, one such $M$ is
-%
-\nbea
-\left(
-\begin{array}{c c}
-\smallskip
-\sqrt{c} & 0 \\
--\frac{b}{\sqrt{c}} & \frac{1}{\sqrt{c}}
-\end{array}
-\right)
-%
-\left(
-\begin{array}{c c}
-a & \frac{b}{2} \\
-\frac{b}{2} & c
-\end{array}
-\right)
-%
-\left(
-\begin{array}{c c}
-\sqrt{c} & -\frac{b}{\sqrt{c}} \\
-0 & \frac{1}{\sqrt{c}}
-\end{array}
-\right) = 
-%
-\left(
-\begin{array}{c c}
-\frac{4ac - b^2}{4} & 0 \\
-0 & 1
-\end{array}
-\right)
-\neea
-%
-we see that the resulting matrix has the new $a = -d/4$ and since $d<0$ this new form also has a positive $a$ and therefore is always positive, and the determinant of $M$ here is 1, this is the origin of the funny $\sqrt{c}$. The way I found $M$ above is by writing down a generic 2 by 2 matrix multiplying it out with $F$ and find an easy configuration that will diagonalize $M$.
+this is not just a 2 by 2 matrix but also a symmetric matrix, one property of symmetric matrices is that they can be diagonalized by an orthogonal matrix, \ie a matrix whose transpose is its own inverse, therefore we can find $M$ that can diagonalize the above symmetric matrix. In general that is true, however, we are dealing with integers matrices only, and so the determinant has to be $\pm1$ to guarantee the inverse of $M$ to also be a matrix of  integers.
 
-So the sensible thing to do here is to diagonalize $F$ to untangle our sum over $(x,y)$, utilizing our choice of $M$ above (and to avoid clutter let's denote $A = -d/4 = |d|/4$ as $d < 0$)
+So the sensible thing to do here is to denote the minimum of $F(x,y) = \bar F$ and
 %
 \nbea
-\sum_{\substack{(x,y)\\(x,y)\neq(0,0)}} v^{F(x,y)/\sqrt{|d|}} & = & \sum_{\substack{(x,y)\\(x,y)\neq(0,0)}} v^{(Ax^2 + y^2)/\sqrt{|d|}} \\
-& = & \left(2\sum_{x=1}^\infty v^{Ax^2/\sqrt{|d|}}\right)\left(2\sum_{y=1}^\infty v^{y^2/\sqrt{|d|}}\right) \\
-& = & 4\left(\sum_{x=1}^\infty \left(v^{A/\sqrt{|d|}}\right)^{x^2}\right)\left(\sum_{y=1}^\infty \left(v^{1/\sqrt{|d|}}\right)^{y^2} \right)
+\sum_{\substack{(x,y)\\(x,y)\neq(0,0)}} v^{F(x,y)/\sqrt{|d|}} & = & Kv^{\bar F/\sqrt{|d|}} + O\left(v^{(\bar F + \Delta)/\sqrt{|d|}}\right)
 \neea
 %
-the factor of 2 above is because we change the sum $\sum_{-\infty}^\infty \to \sum_1^\infty$. With the above form, this time we can utilize the geometric series, taking the limit $v\to0$
+where $\Delta$ is the difference between the minimum of $F$ to the next higher value and $K$ is the multiplicity of $\bar F$, \ie the number of ways $\bar F$ is represented by $F$, note that since a constant multiplier makes no difference in Big Oh, \eg $K O(x) = O(x)$, we have omitted the constant multiplier inside the Big Oh. And it is now obvious that we do not need $F$ to represent every integer. We can massage this further, first take $w = v^{\bar F/\sqrt{|d|}}$ such that
 %
 \nbea
-4\left(\sum_{x=1}^\infty \left(v^{A/\sqrt{|d|}}\right)^{x^2}\right)\left(\sum_{y=1}^\infty \left(v^{1/\sqrt{|d|}}\right)^{y^2} \right) & = & 4\left(v^{A/\sqrt{|d|}} + O\left(v^{4A/\sqrt{|d|}}\right) \right)\left(v^{1/\sqrt{|d|}} + O\left(v^{4/\sqrt{|d|}} \right)\right) \\
-& = & 4\left(v^{(A+1)/\sqrt{|d|}} + O\left(v^{(A+4)/\sqrt{|d|}} \right)\right)
+v^{(\bar F+ \Delta)/\sqrt{|d|}} & = & w^{\frac{\bar F + \Delta}{\bar F}} \\
+Kv^{\bar F/\sqrt{|d|}} + O\left(v^{(\bar F + \Delta)/\sqrt{|d|}} \right) & = & Kw + O\left(w^{\frac{\bar F + \Delta}{\bar F}}\right)
 \neea
 %
-note that here we are taking the limit $v\to0$ and so the smallest exponent gives the biggest error and so our choice of Big Oh. We can massage this further, first take $w = v^{(A+1)/\sqrt{|d|}}$ such that
+note that $\frac{\bar F + \Delta}{\bar F} > 1$ and so $w^{\frac{\bar F + \Delta}{\bar F}} < w$ as $w\to0$ and by this trick we do not need $F$ to represent 1. Now for the rest of the argument on Chapter 9 to work we need to set $w = \exp(-2\pi t)$
 %
 \nbea
-v^{(A+4)/\sqrt{|d|}} & = & w^{\frac{A+4}{A+1}} \\
-\to 4\left(v^{(A+1)/\sqrt{|d|}} + O\left(v^{(A+4)/\sqrt{|d|}} \right)\right) & = & 4w + O\left(w^{\frac{A+4}{A+1}}\right)
-\neea
-%
-note that constant multiplication doesn't change Big Oh, \eg $4O(x) = O(x)$. Now for the rest of the argument on Chapter 9 to work we need to set $w = \exp(-2\pi t)$
-%
-\nbea
-f(t,F) & = & 4\exp(-2\pi t) + O(\exp(-2\pi t(A+4)/(A+1))) \\
+f(t,F) & = & K\exp(-2\pi t) + O(\exp(-2\pi t(\bar F+\Delta)/\bar F)) \\
 \to \Theta(t,F) & = & 1 + O(\exp(-2\pi t))
 \neea
 %
-this shows that $\left|\int_1^\infty f(t,F)t^s \frac{dt}{t}\right|$ is finite because $\left|\int_1^\infty 4\exp(-2\pi t) t^s \frac{dt}{t}\right|$ is finite and this is for $t\to\infty$. For $t\to0$ we have
+this shows that $\left|\int_1^\infty f(t,F)t^s \frac{dt}{t}\right|$ is finite because $\left|\int_1^\infty K\exp(-2\pi t) t^s \frac{dt}{t}\right|$ is finite when $t\to\infty$. For $t\to0$ we have
 %
 \nbea
 f(t,F) & = & \Theta(t,F) - 1 \\
@@ -1970,13 +1928,13 @@ for $t \to 0$ and substituting this into $\left|\int_0^1 f(t,F)t^s \frac{dt}{t}\
 & = & \frac{1}{s-1} - \frac{1}{s}
 \neea
 %
-I have included the $-1$ from $f(t,F) = t^{-1}(1 + O(\exp(-2\pi t^{-1}))) - 1$ to see if its integral is indeed finite, $O(\exp(-2\pi t^{-1})) < 1$ as $t\to0$ and so its integral is also smaller and so we are safe to integrate away :) Therefore the integral of every Big Oh terms above are just finite numbers, combining everything we have (and to reduce clutter let's denote $K = 2\pi(A+4)/(A+1) > 2\pi$ and assume $s$ is real for simplicity otherwise we need to put absolute value in everything with the same final result)
+I have included the $-1$ from $f(t,F) = t^{-1}(1 + O(\exp(-2\pi t^{-1}))) - 1$ to see if its integral is indeed finite, $O(\exp(-2\pi t^{-1})) < 1$ as $t\to0$ and so its integral is also smaller and so we are safe to integrate away :) Therefore the integral of every Big Oh terms above are just finite numbers, combining everything we have (and to reduce clutter let's denote $J = 2\pi(\bar F+4)/\bar F > 2\pi$ and assume $s$ is real for simplicity otherwise we need to put absolute value in everything with the same final result)
 %
 \nbea
 \Lambda(s,F) & = & \int_0^\infty f(t,F)t^s \frac{dt}{t} \\
 & = & \int_0^1 f(t,F)t^s \frac{dt}{t} + \int_1^\infty f(t,F)t^s \frac{dt}{t} \\
-& = & \int_0^1 \left(t^{-1}\left(1 + O\left(e^{-2\pi t^{-1}}\right)\right) - 1\right) t^s \frac{dt}{t} + \int_1^\infty \left (4e^{-2\pi t} + O\left(e^{-K t}\right)\right)t^s \frac{dt}{t} \\
-& = & \int_0^1 t^{s}\frac{dt}{t^2} +O\left(\int_0^1 e^{-2\pi t^{-1}}t^s\frac{dt}{t^2}\right) - \int_0^1 t^{s} \frac{dt}{t} + \int_1^\infty 4e^{-2\pi t}t^s \frac{dt}{t} + O\left(\int_1^\infty e^{-K t}t^s \frac{dt}{t}\right) \\
+& = & \int_0^1 \left(t^{-1}\left(1 + O\left(e^{-2\pi t^{-1}}\right)\right) - 1\right) t^s \frac{dt}{t} + \int_1^\infty \left (Ke^{-2\pi t} + O\left(e^{-J t}\right)\right)t^s \frac{dt}{t} \\
+& = & \int_0^1 t^{s}\frac{dt}{t^2} +O\left(\int_0^1 e^{-2\pi t^{-1}}t^s\frac{dt}{t^2}\right) - \int_0^1 t^{s} \frac{dt}{t} + \int_1^\infty Ke^{-2\pi t}t^s \frac{dt}{t} + O\left(\int_1^\infty e^{-J t}t^s \frac{dt}{t}\right) \\
 & = & \frac{1}{s-1} + O(1) - \frac{1}{s} + O(1) + O(1) \\
 & = & \frac{1}{s-1} + O(1)
 \neea
@@ -1990,7 +1948,7 @@ Also note that the limit of
 and so the second Big Oh above is finite.
 
 
-
+QUANTUM MECHANICS $<x|a><b|x> = <x|y><y|a><b|z><z|x>$
 
 
 
