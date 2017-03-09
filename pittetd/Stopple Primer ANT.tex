@@ -1518,8 +1518,476 @@ and this is how Fermat's Last Theorem is connected to elliptical curves, see als
 
 {\bf Page 289}, Theorem Eq (12.4), if you forget what $a(p)$ is, it is defined on Page 287, $a(p) = p+1-N_p$
 
+{\bf Page 291}, lower half of page, ``The discriminant $\ldots$ $\Delta=-16(4A^3 + 27B^2)$; for the finitely many primes $p$ dividing $\Delta$, the Euler factor at $p$ has a different definition.'' This is because $p|\Delta$ means that $\Delta \equiv 0 \pmod{p}$, zero discriminant means we have singular points on the curve, either a crossing or a kink, so that's why the meaning is different :)
 
+\bigskip
+\underline{\textit{\textbf{Chapter 13}}}
+\bigskip
 
+These theorems are easy to prove in one direction but hard in the other, if there are $x,y$ such that $x^2 + y^2 = p$ then
+%
+\nbea
+x^2 + y^2 & = & p \\
+\to x^2 + y^2 & \equiv & 0 \pmod{p} \\
+x^2 & \equiv & -y^2 \pmod{p} \\
+\left(\frac{x^2}{y^2}\right) & \equiv & -1 \pmod{p}
+\neea
+%
+and so $-1$ is a quadratic residue modulo $p$, this means that
+%
+\nbea
+(-1)^{\frac{p-1}{2}} & = & +1 \\
+\to p & = & 4n + 1
+\neea
+%
+but proving that there are $x^2,y^2 < p$ such that $x^2+y^2=p$ given that $p = 4n+1$ is difficult, the thing is that even if we show that $-1$ is a quadratic residue, the only thing we are saying is that we can find $x^2 + y^2 = pn$ but $n$ is not necessarily 1 (we can get this by reversing the process above regarding $-1$ modulo $p$). The same tactic can be used $x^2 + |N|y^2 = p$. The proof of the converse for $p\equiv 1 \pmod{4} \Rightarrow x^2+y^2 = p$ can be found on Stein's ent.pdf on the chapter of continued fraction, his proof is really cool, another popular proof is by Euler but it's quite tedious.
+
+{\bf Page 298}, top paragraph, we are changing $(x,y)$ into $(-y,x)$ instead of $(y,x)$ because we want the determinant to be $+1$, $(y,x)$ will have determinant $-1$
+
+{\bf Page 299}, on Proof of Theorem, What guarantee do we have that by reducing the sum $a+c$ we will not reduce $c$ into negative territory? The reason is the discriminant $d = b^2 - 4ac < 0$ and so $b^2$ cannot be bigger than $4ac$, and doing the $M$ transformations will not change the discriminant. So in this case $c$ will not become negative to maintain $d$ and $a$ stays the same after every transformation and so $4ac$ will not change sign.
+
+But the more important question is whether $|b| \le a$ before $c$ reaches its minimum point? because by then we cannot reduce $b$ any more. The only recourse is to then reduce $b$ using the other transformation that maintains $c$ but reduces $b$ and $a$, but we have the same question, will we reach the minimum of $a$ before reaching $b \le a \le c$? ~ \dunno
+
+{\bf Page 299}, bottom of page, ``$b^2\equiv d \pmod{4}$ and, thus, $b\equiv d\mod2$'', this is because the only quadratic residue modulo 4 is $0$ and $1$, if $b^2 \equiv 0 \pmod{4}$ then
+%
+\nbea
+b^2 & = & 4n \\
+b & = & 2m \\
+\to b & \equiv & 0 \pmod{2}
+\neea
+%
+and the same goes if $b^2\equiv 1 \pmod{4} = 1  + 4n$, this means that $b$ is odd, therefore $b \equiv 1\pmod{2}$. The above statement is not true in general but modulo 4 is quite special
+
+{\bf Page 301}, Theorem at the bottom of page, the wording is very confusing, what it is saying is that every form with discriminant $d$ is equivalent to one form satisfying $|b| \le a \le c$, the thing here is that since $b$ is in absolute value we have two choices $\pm b$, and the theorem says that $b \ge 0$, but then there's an if that confuses the whole thing.
+
+If you see the proof you'll see that if $b=0$ or $|b|=a$ or $c=a$ then $\{a,b,c\} \sim \{a,-b,c\}$, so, if say a form is equivalent to $\{a,-|b|,c\}$, by the statement above it is also equivalent to $\{a,|b|,c\}$ as long as $b=0$ or $|b|=a$ or $c=a$. This is because if $F$ is equivalent to $G$ and $G$ is equivalent to $H$ then $F$ is equivalent to $H$. So it is equivalent to exactly one form with $b\ge 0$.
+
+If $b\neq0$ nor $|b|\neq a$ nor $c\neq a$ then the form is still equivalent to a form except that we don't know whether $b$ is positive, negative, or zero. That's all
+
+{\bf Page 302}, before and Eq (13.5), this is now strict inequality because now we are not considering $b\ge 0$, so we don't have the cases of $|b|=a$ or $c=a$ and so none of them are equal.
+
+{\bf Page 302}, ``Then, $a=F'(1,0)=F(r,s)$. From (13.5) $\ldots$'', it's most likely not from (13.5) not, more likely from (13.2), the definition of $F(x,y)$, substituting $x=r, y=s$
+%
+\nbea
+a & = & ar^2 + brs + cs^2
+\neea
+%
+and so $r = \pm1$ and $s=0$.
+
+{\bf Page 302}, second last paragraph, again some ambiguity, ``A form that satisfies the inequalities (13.4) is called REDUCED''. The thing here is that it only concerns the inequality not so much the ``and $b\ge0~\ldots$'', just the inequality. 
+
+{\bf Page 303}, the inequality in the first paragraph, I believe the plus sign should have been a minus sign, because if $a=c$ then
+%
+\nbea
+4ac = 4c^2 & = & b^2 - d \\
+\to c & = & \sqrt{\frac{b^2 - d}{4}}
+\neea
+%
+
+{\bf Page 303}, some remarks on the preceding theorems, they give us an algorithm to compute the number of classes but not the explicit formula for the number of classes, if you want the number of classes you need to run through the algorithm.
+
+{\bf Exercise 13.1.10}, Page 305, show that $5$ is not represented by any form of discriminant $-23$ but that 3 is. Show that $6$ is represented more than one way, this will be an interesting exercise to do :)
+
+First, if an integer $n$ is represented by a form with a discriminant $d$ then we can find an equivalent form $\{n,m,l\}$ where $m^2 \equiv d \pmod{4n}$ and $0\le m<2n$.
+
+So as a necessary condition we need to find out if $m^2 \equiv d \pmod{4n}$, here $n=5$, $d=-23$ and so we need to find $m^2 \equiv -23 \pmod{4\cdot5}$, \ie $m^2 \equiv -23 \pmod{20} \equiv 17 \pmod{20}$ but sadly 17 is not a quadratic residue modulo 20, the quadratic residues are $1,4,9,16,5,0$.
+
+For $n=6$ what we want is $m^2 \equiv -23 \pmod{4\cdot6} \equiv 1 \pmod{24}$ and 1 is obviously a quadratic residue modulo 24, the roots of 1 modulo 24 are $1, 5, 7, 11,13,17,19,23$, so those are the possible values for $m$
+
+{\bf Page 303 and Page 305 and Page 306}, Theorem regarding representation and equivalence to $\{n,m,l\}$ and counting how many representations a form can have. So what it actually means is that the same form can contain multiple different $m$'s and hence the same class can represent different $m$'s, of course with the same $n$. What confused me initially was that I thought each $m$ must belong to its own class, but this seems to not be so and it makes sense.
+
+Say there are two points $F(r,s) = n$ and $F(r',s') = n$, and these two points represent different $m$'s and there's nothing preventing these two points from representing different $m$'s if you follow the procedure of the Theorem, but these two points are produced by the same form $F$ and thus one form (or one class) can indeed represent two (or more) different $m$'s. And of course some form might not represent $n$ at all and in this case $r_F(n) = 0$.
+
+{\bf Page 306}, here the factor of $\frac{1}{w}$ is more for $r_d(n)$, if we do not divide by $w$ then we will double count several points, for example, for $d < -4$, for each $m$ we have $F(r,s)$ and $F(-r,-s)$ representing the {\bf same} $m$ if we do not divide by $w=2$, when we sum $r_F(n)$ over classes to get $r_d(n)$, we will count both $F(r,s)$ and $F(-r,-s)$ but these two points represent the same $m$ and we would have double counted.
+
+{\bf Page 307} Proof of Theorem, the application Chinese remainder theorem here is what is called the Chinese Remainder Map in Shoup's number theory book, basically
+%
+\nbea
+m & \equiv & (m_{11},m_{12}) \pmod{p_1^{j_1}} \\
+ & \vdots & \\
+m & \equiv & (m_{k1},m_{k2}) \pmod{p_k^{j_k}}
+\neea
+%
+note that $d \equiv m^2$ is fixed as it is the discriminant (and these different values of $m$'s give the same value of $m^2$), so basically you have some kind of a binary map
+%
+\nbea
+m \equiv d & \equiv & (m_1, m_2, \ldots, m_k)
+\neea
+%
+where each $m_i$ can take the value of either $m_{i1}$ or $m_{i2}$ modulo $p_i^{j_i}$, since there are only two choices for each bin and there are $k$ bins, there are therefore $2^k$ combinations. Note that the $m$ modulo $q$'s are fixed since there is only one solution for each $q$ so they do not change the number of combinations.
+
+This is a powerful way of looking at things since this Chinese Remainder Map is unique for each number, see Shoup's book for details.
+
+{\bf Page 307}, Proof of Theorem, the statement ``'' is there to set the base case for Hensel's lemma. Because if we have two solutions for $p$ then we again have two solutions for $p^2$ and of course another two for $p^3$ and so on, recall that Hensel's lemma only applies once you have a base case, you can't just claim that there are two solutions $x^2$ for some modulo $p^{j+1}$
+
+{\bf Page 308}, bottom of page, the definition of $\left(\frac{d}{2}\right)$, the funny thing is that what happens when $d \equiv 3,7 \pmod{8}$? $0,2,4,6 \pmod{8}$ are all even so they're covered by the first case but from the proof of Lemma on Page 309, $\left(\frac{d}{2}\right) = \left(\frac{2}{|d|}\right)$ with $d$ odd we can see the pattern is more like
+%
+\nbea
+\left(\frac{d}{2}\right) & = & (-1)^{(d^2-1)/8}
+\neea
+%
+because
+%
+\nbea
+((1 \pmod{8})^2 - 1)/8 & = & (1^2 + 2\cdot1\cdot8m + 8^2m^2 - 1)/8 \\
+& = & 2m + 8m^2 \\
+\to (-1)^{2m + 8m^2} & = & +1 \\
+((5 \pmod{8})^2 - 1)/8 & = & (25^2 + 2\cdot5\cdot8m + 8^2m^2 - 1)/8 \\
+& = & 3 + 10m + 8m^2 \\
+\to (-1)^{3 + 10m + 8m^2} & = & -1
+\neea
+%
+and so, doing the same thing for $3,7 \pmod{8}$ we get
+%
+\nbea
+((3 \pmod{8})^2 - 1)/8 & = & (3^2 + 2\cdot3\cdot8m + 8^2m^2 - 1)/8 \\
+& = & 1 + 6m + 8m^2 \\
+\to (-1)^{1 + 6m + 8m^2} & = & -1 \\
+((7\pmod{8})^2 - 1)/8 & = & (7^2 + 2\cdot7\cdot8m + 8^2m^2 - 1)/8 \\
+& = & 6 + 14m + 8m^2 \\
+\to (-1)^{6 + 14m + 8m^2} & = & +1
+\neea
+%
+so I think the full rule is
+%
+\nbea
+\left(\frac{d}{2}\right) & = &
+\left \{
+\begin{array}{l c l}
+0, & ~~~ & {\rm~if~} 2|d,\\
++1, & ~~~ & {\rm~if~} d \equiv 1,7 \pmod{8},\\
+-1, & ~~~ & {\rm~if~} d \equiv 3,5 \pmod{8}.
+\end{array}
+\right.
+\neea
+%
+
+{\bf Page 310}, upper half of page, typo on the definition of $L(s,\chi_d)$, it should have been
+%
+\nbea
+L(s,\chi_d) & = & \sum_{n=1}^\infty \chi_d(n) n^{-s}
+\neea
+%
+
+{\bf Page 311}, definition of $\zeta(s,F)$, there's an apostrophe on the sum, this is because we are only summing over $(x,y) \neq (0,0)$.
+
+{\bf Page 312}, bottom half of page, ``Thin Air Equation'' LOL I also wonder about these thin air equations as to how the heck people came up with these ``Let $x=\ldots$ and then somehow it miraculously solved the problem''
+
+{\bf Page 312}, Lemma (Thin Air Equation, Part I), to get to the last line, let's process it term by term
+%
+\nbea
+\sum_{k=0}^\infty \chi_d(p)^k p^{-ks} & = & \chi_d(p)^0 p^{-0\cdot s} + \chi_d(p)^1 p^{-1\cdot s} + \sum_{k=2}^\infty \chi_d(p)^k p^{-ks} \\
+& = & 1 + \chi_d(p) p^{-s} + \sum_{k=2}^\infty \chi_d(p)^k p^{-ks}
+\neea
+%
+the second term on the RHS is
+%
+\nbea
+\sum_{k=0}^\infty \chi_d(p)^k p^{-(k+1)s} & = & \sum_{k=1}^\infty \chi_d(p)^{k-1} p^{-ks} \\
+& = & \chi_d(p)^{1-1} p^{-1\cdot s} + \sum_{k=2}^\infty \chi_d(p)^{k-1} p^{-ks} \\
+& = & p^{-s} + \sum_{k=2}^\infty \chi_d(p)^{k-1} p^{-ks}
+\neea
+%
+and so combining the two
+%
+\nbea
+\sum_{k=0}^\infty \chi_d(p)^k p^{-ks} + \sum_{k=0}^\infty \chi_d(p)^k p^{-(k+1)s} & = & \left(1 + \chi_d(p) p^{-s} + \sum_{k=2}^\infty \chi_d(p)^k p^{-ks}\right) + \left(p^{-s} + \sum_{k=2}^\infty \chi_d(p)^{k-1} p^{-ks} \right) \\
+& = & 1 + (1 + \chi_d(p))p^{-s} + \sum_{k=2}^\infty (\chi_d(p)^{k-1} + \chi_d(p)^k)p^{-ks}
+\neea
+%
+
+{\bf Page 313}, top of page, ``If we now multiply all the Euler factors together, the coefficient of $n^{-s}$ is $r_d(n)$, according to (13.7)''. First, the equation above the aforementioned sentence, if $\chi_d(p) = 1$ we have
+%
+\nbea
+1 + (1 + 1)p^{-s} + \sum_{k=2}^\infty (1 + 1)p^{-ks} & = & 1 + 2\sum_{k=1}^\infty p^{-ks}
+\neea
+%
+so the sum over $k$ starts with $k=1$. Next, note that 
+%
+\nbea
+\chi_d(p) & = & \left(\frac{d}{p}\right)
+\neea
+%
+and Eq (13.7) is
+%
+\nbea
+r_d(n) & = & \left \{
+\begin{array}{l c l}
+0, & ~~~ & {\rm if~} p^2|n {\rm ~for~some~} p|d, \\
+\prod_{\substack{p|n\\ (p,d)=1}} \left\{1 + \left(\frac{d}{p}\right)\right\}, & ~~~ & {\rm otherwise}.
+\end{array}
+\right.
+\neea
+%
+Now let's say that $n = p_1^{j_1}p_2^{j_2}p_3^{j_3}p_4$ and $p_1|d$, $p_2\nmid d$, $p_3\nmid d$ and $p_4|d$ and also
+%
+\nbea
+\chi_d(p_1) & = & \left (\frac{d}{p_1}\right) = 0 \\
+\chi_d(p_2) & = & \left (\frac{d}{p_2}\right) = +1 \\
+\chi_d(p_3) & = & \left (\frac{d}{p_3}\right) = -1 \\
+\chi_d(p_4) & = & \left (\frac{d}{p_4}\right) = 0
+\neea
+%
+the above is to cover all of the cases in Eq (13.7), therefore
+%
+\nbea
+\frac{1 + p_1^{-s}}{1-\chi_d(p_1)p_1^{-s}} & = & 1 + p_1^{-s} \\
+\frac{1 + p_2^{-s}}{1-\chi_d(p_2)p_2^{-s}} & = & 1 + 2\sum_{k=1}^\infty p_2^{-ks} \\
+\frac{1 + p_3^{-s}}{1-\chi_d(p_3)p_3^{-s}} & = & 1 \\
+\frac{1 + p_4^{-s}}{1-\chi_d(p_4)p_4^{-s}} & = & 1 + p_4^{-s}
+\neea
+%
+combining everything
+%
+\nbea
+\prod_{p_i} \frac{1 + p_i^{-s}}{1-\chi_d(p_i)p_i^{-s}} & = & \left(1 + p_1^{-s}\right)\left(1 + 2\sum_{k=1}^\infty p_2^{-ks}\right)\left(1\right)\left(1 + p_4^{-s}\right)
+\neea
+%
+while $r_d(n) = 0$ as expected from Eq (13.7) since $p_1|d$ and we see that it's consistent since there's no term in the product with $p_1^{-j_1}$ and there's no $p_3^{-j_3}$ either, so the product cannot form $n^{-s}$.
+
+The only way we can form $n^{-s}$ is if we remove $p_1^{j_1}$ or changing it into $p_1^{1}$ and we need to remove$p_3^{j_3}$ entirely from $n$, $p_1$ is a problem because if its exponent is higher than 1 it causes zero by first case of (13.7), changing it into $p_1^{1}$ is ok because even though it divides $d$ it's not included in the product of (13.7) and we still have the corresponding factor from the Thin Air Equation above, $p_3$ has to be removed entirely because $(p_3,d) = 1$ so it's included in the product of (13.7) and since $\left(\frac{d}{p_3}\right)=-1$ it always reduces the product in (13.7) to zero.
+
+{\bf Page 313}, compare the definition of $\Theta$ here to the one in Chapter 9
+%
+\nbea
+\Theta(t) = \sum_{-\infty}^\infty \exp(-\pi k^2t) & {\rm ~~~~~~~~~~~~vs~~~~~~~~~~~} & \Theta(t,F) = \sum_{(x,y)} \exp(-2\pi t F(x,y)/\sqrt{|d|})
+\neea
+%
+so the difference here is that we have an extra factor of 2 in front of $\pi$ and the role of $k^2$ is replaced by $F(x,y)/\sqrt{|d|}$ which sort of makes sense since $F$ is a quadratic form. The one thing to note (from Page 314) is that the symmetry involves $t$ instead of $\sqrt{t}$.
+
+{\bf Exercise 13.2.2}, Page 314, imitate the results in Section 9.3 to show that
+%
+\nbea
+\Lambda(s,F) & = & \int_0^\infty (\Theta(t,F) - 1)t^s \frac{dt}{t}
+\neea
+%
+Then, show that
+%
+\nbea
+\Lambda(s,F) & = & \frac{1}{s-1} - \frac{1}{s} \\
+&& + \int_{1}^\infty (\Theta(t,F)-1)t^s\frac{dt}{t} + \int_1^\infty(\Theta(t,F')-1)t^{1-s}\frac{dt}{t}
+\neea
+%
+
+Imitating Section 9.3, first we observe that
+%
+\nbea
+\Lambda(s,d) & = & 2|d|^{s/2} (2\pi)^{-s} \Gamma(s)\zeta(s,d)
+\neea
+%
+from Eq (13.9) and from section 9.3 (replacing $s/2 \to s$ and $\pi \to2\pi$)
+%
+\nbea
+\int_0^\infty \exp(-2\pi n^2 t)t^{s/2} \frac{dt}{t} & = & n^{-s} \Gamma(s) (2\pi)^{-s/2} \\
+\to \sum_{n=1}^\infty \int_0^\infty \exp(-2\pi n^2 t)t^{s} \frac{dt}{t} & = & \sum_{n=1}^\infty n^{-2s} \Gamma(s) (2\pi)^{-s} \\
+ & = & \zeta(2s) \Gamma(s) (2\pi)^{-s}
+\neea
+%
+for our case we replace $n^2 \to F(x,y)/\sqrt{|d|}$ and so $n \to \sqrt{F(x,y)/\sqrt{|d|}}$ therefore
+%
+\nbea
+\int_0^\infty \exp(-2\pi t F(x,y)/\sqrt{|d|})t^{s} \frac{dt}{t} & = & \left(\sqrt{F(x,y)/\sqrt{|d|}}\right)^{-2s} \Gamma(s) (2\pi)^{-s} \\
+\to \sum_{(x,y)} \int_0^\infty \exp(-2\pi t F(x,y)/\sqrt{|d|})t^{s} \frac{dt}{t} & = & \sum_{(x,y)} F^{-s}(x,y) |d|^{s/2} \Gamma(s) (2\pi)^{-s} \\
+\int_0^\infty \left (\sum_{\substack{(x,y)\\(x,y)\neq(0,0)}} \exp(-2\pi t F(x,y)/\sqrt{|d|})\right ) t^{s} \frac{dt}{t} & = & \left(\sum_{\substack{(x,y)\\(x,y)\neq(0,0)}}  F^{-s}(x,y) \right) |d|^{s/2} \Gamma(s) (2\pi)^{-s} \\
+\int_0^\infty f(t,F) t^{s} \frac{dt}{t} & = & \left(2 \zeta(s,d) \right) |d|^{s/2} \Gamma(s) (2\pi)^{-s} \\
+& = & 2 |d|^{s/2} (2\pi)^{-s} \Gamma(s) \zeta(s,d) \\
+& = & \Lambda(s,d)
+\neea
+%
+note that the definition of $\zeta(s,F)$ omits $(x,y) = (0,0)$ while the definition of $\Theta(t,F)$ includes $(x,y) = (0,0)$ so
+%
+\nbea
+f(t,F) & = & \sum_{\substack{(x,y)\\(x,y)\neq(0,0)}} \exp(-2\pi t F(x,y)/\sqrt{|d|}) \\
+& = & -\exp(-2\pi t F(0,0)/\sqrt{|d|}) + \exp(-2\pi t F(0,0)/\sqrt{|d|}) + \sum_{\substack{(x,y)\\(x,y)\neq(0,0)}} \exp(-2\pi t F(x,y)/\sqrt{|d|}) \\
+& = & -1 + \sum_{(x,y)} \exp(-2\pi t F(x,y)/\sqrt{|d|}) \\
+& = & -1 + \Theta(t,F)
+\neea
+%
+putting everything together we have
+%
+\nbea
+\Lambda(s,F) & = & \int_0^\infty (\Theta(t,F) - 1)t^s \frac{dt}{t}
+\neea
+%
+
+Moving on
+%
+\nbea
+f(t,F) & = & -1 + \Theta(t,F) \\
+\to \Theta(t,F) & = & 1 + f(t,F)
+\neea
+%
+utilizing (13.8)
+%
+\nbea
+\Theta(t, F) & = & t^{-1}\Theta(t^{-1},F') \\
+1 + f(t,F) & = & t^{-1} (1 + f(t^{-1},F')) \\
+\to f(t,F) & = & (t^{-1} - 1) + t^{-1}f(t^{-1},F')
+\neea
+%
+splitting the integral into two pieces
+%
+\nbea
+\int_0^\infty f(t,F) t^{s} \frac{dt}{t} & = & \int_0^1 f(t,F) t^{s} \frac{dt}{t} + \int_1^\infty f(t,F) t^{s} \frac{dt}{t} \\
+& = & \int_0^1 (t^{-1} - 1) t^{s} \frac{dt}{t} + \int_0^1 t^{-1}f(t^{-1},F')t^s \frac{dt}{t} + \int_1^\infty f(t,F) t^{s} \frac{dt}{t}
+\neea
+%
+the first integral on the RHS is
+%
+\nbea
+\int_0^1 (t^{-1} - 1) t^{s} \frac{dt}{t} & = & \int_0^1 t^{s-2} - t^{s-1} dt \\
+& = & \left.\frac{t^{s-1}}{s-1}\right|_{0}^{1} - \left.\frac{t^{s}}{s}\right|_{0}^{1} \\
+& = & \frac{1}{s-1} - \frac{1}{s}
+\neea
+%
+the second integral above is
+%
+\nbea
+\int_0^1 t^{-1}f(t^{-1},F')t^s \frac{dt}{t}
+\neea
+%
+changing variable $\tau = 1/t$, $d\tau = -1/t^2 dt \to dt = -d\tau/\tau^2$
+%
+\nbea
+\int_0^1 t^{-1}f(t^{-1},F')t^s \frac{dt}{t} & = & -\int_\infty^1 \tau f(\tau,F') \tau^{-s}\tau \frac{d\tau}{\tau^2} \\
+& = & \int_1^\infty f(\tau,F') \tau^{1-s} \frac{d\tau}{\tau} \\
+& = & \int_1^\infty f(t,F') t^{1-s} \frac{dt}{t}
+\neea
+%
+putting everything together we have
+%
+\nbea
+\Lambda(s,F) & = & \left(\frac{1}{s-1} - \frac{1}{s} + \int_1^\infty(\Theta(t,F')-1)t^{1-s}\frac{dt}{t} \right) + \int_{1}^\infty (\Theta(t,F)-1)t^s\frac{dt}{t}
+\neea
+%
+
+{\bf Page 314}, bottom of page, ``An analysis of the integrals $\ldots$ of (13.10), just like in Chapter 9 $\ldots$'', to analyze this integral we don't use the second integral in (13.10), instead we use the first one
+%
+\nbea
+\Lambda(s,F) & = & \int_0^\infty (\Theta(t,F) - 1)t^s \frac{dt}{t} \\
+& = & \int_0^1 (\Theta(t,F) - 1)t^s \frac{dt}{t} + \int_1^\infty (\Theta(t,F) - 1)t^s \frac{dt}{t}
+\neea
+%
+just like in Chapter 9 by breaking the integral into two pieces (which wasn't explicitly shown in Chapter 9). First we compare with the following ``geometric series''
+%
+\nbea
+\sum_{\substack{(x,y)\\(x,y)\neq(0,0)}} v^{F(x,y)/\sqrt{|d|}} & = & v + O(v^2)
+\neea
+%
+recall that the role of $n^2$ here is played by $F(x,y)/\sqrt{|d|}$ and also the sum over $x,y$ in $f(t,F)$ omits $(0,0)$. But there are complications with this. First, $F(x,y)$ can be negative but thanks to the explanation on Page 297, the value of $F(x,y)$ has the same sign as the sign of $a$, so $F(x,y)$ is either positive for all $x,y$ or negative for all $x,y$ and ``luckily'' for us according to the statement on Page 298 we only consider $F(x,y)$ that is always positive, \ie $a>0$ (of course $d$ must be negative for this to hold).
+
+The second complication with this is that $F(x,y)$ might not cover all integers like the exponent of a normal geometric series would. The main issue with this is that 1 might not even be represented by $F$, \ie $F(x,y) \neq 1$ for any $x,y$. According to the Theorem on Page 305, in order for $n=1$ to be represented by $F$ we need to be able to find $m$ such that $m^2 \equiv d \pmod{4}$ with $0 \le m < 2$, since we are talking modulo 4 there are only 4 choices for $d$, \ie $d \equiv 0,1,2,3 \pmod{4}$ so if $d \equiv 2,3 \pmod{4}$, $n=1$ will not be represented by $F$.
+
+The good thing for us is that we are dealing with a 2 by 2 matrices, the form $F$ is represented by (see Page 298)
+%
+\nbea
+\left(
+\begin{array}{c c}
+a & \frac{b}{2} \\
+\frac{b}{2} & c
+\end{array}
+\right)
+\neea
+%
+this is not just a 2 by 2 matrix but also a symmetric matrix, one property of symmetric matrices is that they can be diagonalized by an orthogonal matrix, \ie a matrix whose transpose is its own inverse, therefore we can find $M$ that can diagonalize the above symmetric matrix, one such $M$ is
+%
+\nbea
+\left(
+\begin{array}{c c}
+\smallskip
+\sqrt{c} & 0 \\
+-\frac{b}{\sqrt{c}} & \frac{1}{\sqrt{c}}
+\end{array}
+\right)
+%
+\left(
+\begin{array}{c c}
+a & \frac{b}{2} \\
+\frac{b}{2} & c
+\end{array}
+\right)
+%
+\left(
+\begin{array}{c c}
+\sqrt{c} & -\frac{b}{\sqrt{c}} \\
+0 & \frac{1}{\sqrt{c}}
+\end{array}
+\right) = 
+%
+\left(
+\begin{array}{c c}
+\frac{4ac - b^2}{4} & 0 \\
+0 & 1
+\end{array}
+\right)
+\neea
+%
+we see that the resulting matrix has the new $a = -d/4$ and since $d<0$ this new form also has a positive $a$ and therefore is always positive, and the determinant of $M$ here is 1, this is the origin of the funny $\sqrt{c}$. The way I found $M$ above is by writing down a generic 2 by 2 matrix multiplying it out with $F$ and find an easy configuration that will diagonalize $M$.
+
+So the sensible thing to do here is to diagonalize $F$ to untangle our sum over $(x,y)$, utilizing our choice of $M$ above (and to avoid clutter let's denote $A = -d/4 = |d|/4$ as $d < 0$)
+%
+\nbea
+\sum_{\substack{(x,y)\\(x,y)\neq(0,0)}} v^{F(x,y)/\sqrt{|d|}} & = & \sum_{\substack{(x,y)\\(x,y)\neq(0,0)}} v^{(Ax^2 + y^2)/\sqrt{|d|}} \\
+& = & \left(2\sum_{x=1}^\infty v^{Ax^2/\sqrt{|d|}}\right)\left(2\sum_{y=1}^\infty v^{y^2/\sqrt{|d|}}\right) \\
+& = & 4\left(\sum_{x=1}^\infty \left(v^{A/\sqrt{|d|}}\right)^{x^2}\right)\left(\sum_{y=1}^\infty \left(v^{1/\sqrt{|d|}}\right)^{y^2} \right)
+\neea
+%
+the factor of 2 above is because we change the sum $\sum_{-\infty}^\infty \to \sum_1^\infty$. With the above form, this time we can utilize the geometric series, taking the limit $v\to0$
+%
+\nbea
+4\left(\sum_{x=1}^\infty \left(v^{A/\sqrt{|d|}}\right)^{x^2}\right)\left(\sum_{y=1}^\infty \left(v^{1/\sqrt{|d|}}\right)^{y^2} \right) & = & 4\left(v^{A/\sqrt{|d|}} + O\left(v^{4A/\sqrt{|d|}}\right) \right)\left(v^{1/\sqrt{|d|}} + O\left(v^{4/\sqrt{|d|}} \right)\right) \\
+& = & 4\left(v^{(A+1)/\sqrt{|d|}} + O\left(v^{(A+4)/\sqrt{|d|}} \right)\right)
+\neea
+%
+note that here we are taking the limit $v\to0$ and so the smallest exponent gives the biggest error and so our choice of Big Oh. We can massage this further, first take $w = v^{(A+1)/\sqrt{|d|}}$ such that
+%
+\nbea
+v^{(A+4)/\sqrt{|d|}} & = & w^{\frac{A+4}{A+1}} \\
+\to 4\left(v^{(A+1)/\sqrt{|d|}} + O\left(v^{(A+4)/\sqrt{|d|}} \right)\right) & = & 4w + O\left(w^{\frac{A+4}{A+1}}\right)
+\neea
+%
+note that constant multiplication doesn't change Big Oh, \eg $4O(x) = O(x)$. Now for the rest of the argument on Chapter 9 to work we need to set $w = \exp(-2\pi t)$
+%
+\nbea
+f(t,F) & = & 4\exp(-2\pi t) + O(\exp(-2\pi t(A+4)/(A+1))) \\
+\to \Theta(t,F) & = & 1 + O(\exp(-2\pi t))
+\neea
+%
+this shows that $\left|\int_1^\infty f(t,F)t^s \frac{dt}{t}\right|$ is finite because $\left|\int_1^\infty 4\exp(-2\pi t) t^s \frac{dt}{t}\right|$ is finite and this is for $t\to\infty$. For $t\to0$ we have
+%
+\nbea
+f(t,F) & = & \Theta(t,F) - 1 \\
+& = & t^{-1}\Theta(t^{-1},F') - 1 \\
+& = & t^{-1}(1 + O(\exp(-2\pi t^{-1}))) - 1 \\
+& \sim & t^{-1}
+\neea
+%
+for $t \to 0$ and substituting this into $\left|\int_0^1 f(t,F)t^s \frac{dt}{t}\right|$ we get
+%
+\nbea
+\int_0^1 \left|t^{-1}t^{s-1}\right| - \left|t^{s-1}\right|  dt & = & \int_0^1 t^{\re(s) - 2} - t^{\re(s) - 1} dt \\
+& = & \left.\frac{t^{\re(s) - 1}}{s-1}\right|_0^1 -\left.\frac{t^{\re(s)}}{s}\right|_0^1 \\
+& = & \frac{1}{s-1} - \frac{1}{s}
+\neea
+%
+I have included the $-1$ from $f(t,F) = t^{-1}(1 + O(\exp(-2\pi t^{-1}))) - 1$ to see if its integral is indeed finite, $O(\exp(-2\pi t^{-1})) < 1$ as $t\to0$ and so its integral is also smaller and so we are safe to integrate away :) Therefore the integral of every Big Oh terms above are just finite numbers, combining everything we have (and to reduce clutter let's denote $K = 2\pi(A+4)/(A+1) > 2\pi$ and assume $s$ is real for simplicity otherwise we need to put absolute value in everything with the same final result)
+%
+\nbea
+\Lambda(s,F) & = & \int_0^\infty f(t,F)t^s \frac{dt}{t} \\
+& = & \int_0^1 f(t,F)t^s \frac{dt}{t} + \int_1^\infty f(t,F)t^s \frac{dt}{t} \\
+& = & \int_0^1 \left(t^{-1}\left(1 + O\left(e^{-2\pi t^{-1}}\right)\right) - 1\right) t^s \frac{dt}{t} + \int_1^\infty \left (4e^{-2\pi t} + O\left(e^{-K t}\right)\right)t^s \frac{dt}{t} \\
+& = & \int_0^1 t^{s}\frac{dt}{t^2} +O\left(\int_0^1 e^{-2\pi t^{-1}}t^s\frac{dt}{t^2}\right) - \int_0^1 t^{s} \frac{dt}{t} + \int_1^\infty 4e^{-2\pi t}t^s \frac{dt}{t} + O\left(\int_1^\infty e^{-K t}t^s \frac{dt}{t}\right) \\
+& = & \frac{1}{s-1} + O(1) - \frac{1}{s} + O(1) + O(1) \\
+& = & \frac{1}{s-1} + O(1)
+\neea
+%
+Also note that the limit of
+%
+\nbea
+\lim_{x\to 0} \frac{e^{-x^{-1}}}{x^k} & = & \lim_{x\to\infty} \frac{e^{-x}}{x^k} = 0
+\neea
+%
+and so the second Big Oh above is finite.
 
 
 
