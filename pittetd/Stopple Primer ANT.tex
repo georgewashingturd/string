@@ -1524,7 +1524,7 @@ and this is how Fermat's Last Theorem is connected to elliptical curves, see als
 \underline{\textit{\textbf{Chapter 13}}}
 \bigskip
 
-These theorems are easy to prove in one direction but hard in the other, if there are $x,y$ such that $x^2 + y^2 = p$ then
+{\bf Page 295}. These theorems are easy to prove in one direction but hard in the other, if there are $x,y$ such that $x^2 + y^2 = p$ then
 %
 \nbea
 x^2 + y^2 & = & p \\
@@ -1542,7 +1542,68 @@ and so $-1$ is a quadratic residue modulo $p$, this means that
 %
 but proving that there are $x^2,y^2 < p$ such that $x^2+y^2=p$ given that $p = 4n+1$ is difficult, the thing is that even if we show that $-1$ is a quadratic residue, the only thing we are saying is that we can find $x^2 + y^2 = pn$ but $n$ is not necessarily 1 (we can get this by reversing the process above regarding $-1$ modulo $p$). The same tactic can be used $x^2 + |N|y^2 = p$. The proof of the converse for $p\equiv 1 \pmod{4} \Rightarrow x^2+y^2 = p$ can be found on Stein's ent.pdf on the chapter of continued fraction, his proof is really cool, another popular proof is by Euler but it's quite tedious.
 
+{\bf Page 297}, upper half of page. The determinant of a product of matrices is the product of the determinants and so having determinant one preserves the group structure. If it had been $-1$ the determinants would oscillate between $+1$ and $-1$ when we do the group operation.
+
 {\bf Page 298}, top paragraph, we are changing $(x,y)$ into $(-y,x)$ instead of $(y,x)$ because we want the determinant to be $+1$, $(y,x)$ will have determinant $-1$
+
+{bf Page 298}, upper half of page. Note that this is \underline{\textbf{\textit{not}}} a similarity transform, it looks similar but it's not. If you take a product between a vector and a matrix say $FV$, to do a similarity transform we need to transform both the vector and the matrix, \ie
+%
+\nbea
+M(FV) & = & M(FM^{-1}MV) \\
+& = & (MFM^{-1})MV
+\neea
+%
+because if you change the basis for the vector you need to change it for the matrix as well so if you sandwich the matrix between two vectors like what we are doing to calculate $F(x,y)$ what you get is
+%
+\nbea
+VFV & \to & VM^{-1}(MFM^{-1})MV
+\neea
+%
+and this is a similarity transform, it preserves the sandwich product and there are {\bf four} copies of $M$ not just two like the one in the book, let's see this with a simple example. Changing $(x,y) \to (-y,x)$ for $2x^2 + 3y^2$
+%
+\nbea
+\left(
+\begin{array}{c c}
+0 & -1 \\
+1 & 0
+\end{array}
+\right)
+\left(
+\begin{array}{c c}
+2 & 0 \\
+0 & 3
+\end{array}
+\right)
+\left(
+\begin{array}{c c}
+0 & 1 \\
+-1 & 0
+\end{array}
+\right) & = & 
+\left(
+\begin{array}{c c}
+3 & 0 \\
+0 & 2
+\end{array}
+\right)
+\neea
+%
+which means that
+%
+\nbea
+F'(x,y) & = & 3x^2 + 2y^2
+\neea
+%
+so for the same $(x,y)$ value, \eg $(5,7)$
+%
+\nbea
+F'(5,7) & \neq & F(5,7) \\
+173 & \neq & 197
+\neea
+%
+if this were a similarity transform $F'(5,7)$ would be equal to $F(5,7)$.
+
+Note also that since the matrix $F$ is symmetric, it can be diagonalized using orthogonal matrices, \ie matrices that have their transpose as their inverse. But this info is not relevant to us.
 
 {\bf Page 299}, on Proof of Theorem, What guarantee do we have that by reducing the sum $a+c$ we will not reduce $c$ into negative territory? The reason is the discriminant $d = b^2 - 4ac < 0$ and so $b^2$ cannot be bigger than $4ac$, and doing the $M$ transformations will not change the discriminant. So in this case $c$ will not become negative to maintain $d$ and $a$ stays the same after every transformation and so $4ac$ will not change sign.
 
@@ -1868,13 +1929,13 @@ putting everything together we have
 & = & \int_0^1 (\Theta(t,F) - 1)t^s \frac{dt}{t} + \int_1^\infty (\Theta(t,F) - 1)t^s \frac{dt}{t}
 \neea
 %
-just like in Chapter 9 by breaking the integral into two pieces (which wasn't explicitly shown in Chapter 9). First we compare with the following ``geometric series''
+just like in Chapter 9 by breaking the integral into two pieces (which wasn't explicitly shown in Chapter 9). First we compare with the following similar sum w.r.t the sum of $f(t,F)$
 %
 \nbea
 \sum_{\substack{(x,y)\\(x,y)\neq(0,0)}} v^{F(x,y)/\sqrt{|d|}} & = & v + O(v^2)
 \neea
 %
-recall that the role of $n^2$ here is played by $F(x,y)/\sqrt{|d|}$ and also the sum over $x,y$ in $f(t,F)$ omits $(0,0)$. But there are complications with this. First, $F(x,y)$ can be negative but thanks to the explanation on Page 297, the value of $F(x,y)$ has the same sign as the sign of $a$, so $F(x,y)$ is either positive for all $x,y$ or negative for all $x,y$ and ``luckily'' for us according to the statement on Page 298 we only consider $F(x,y)$ that is always positive, \ie $a>0$ (of course $d$ must be negative for this to hold).
+recall that the sum over $x,y$ in $f(t,F)$ omits $(0,0)$. But there are complications with this. First, $F(x,y)$ can be negative but thanks to the explanation on Page 297, the value of $F(x,y)$ has the same sign as the sign of $a$, so $F(x,y)$ is either positive for all $x,y$ or negative for all $x,y$ and ``luckily'' for us according to the statement on Page 298 we only consider $F(x,y)$ that is always positive, \ie $a>0$ (of course $d$ must be negative for this to hold).
 
 The second complication with this is that $F(x,y)$ might not cover all integers like the exponent of a normal geometric series would. The main issue with this is that 1 might not even be represented by $F$, \ie $F(x,y) \neq 1$ for any $x,y$. According to the Theorem on Page 305, in order for $n=1$ to be represented by $F$ we need to be able to find $m$ such that $m^2 \equiv d \pmod{4}$ with $0 \le m < 2$, since we are talking modulo 4 there are only 4 choices for $d$, \ie $d \equiv 0,1,2,3 \pmod{4}$ so if $d \equiv 2,3 \pmod{4}$, $n=1$ will not be represented by $F$.
 
@@ -1883,28 +1944,30 @@ One thing that might help us is that we are dealing with a 2 by 2 matrices, the 
 \nbea
 \left(
 \begin{array}{c c}
-a & \frac{b}{2} \\
-\frac{b}{2} & c
+a & b/2 \\
+b/2 & c
 \end{array}
 \right)
 \neea
 %
-this is not just a 2 by 2 matrix but also a symmetric matrix, one property of symmetric matrices is that they can be diagonalized by an orthogonal matrix, \ie a matrix whose transpose is its own inverse, therefore we can find $M$ that can diagonalize the above symmetric matrix. In general that is true, however, we are dealing with integers matrices only, and so the determinant has to be $\pm1$ to guarantee the inverse of $M$ to also be a matrix of  integers.
+this is not just a 2 by 2 matrix but also a symmetric matrix, one property of symmetric matrices is that they can be diagonalized by an orthogonal matrix, \ie a matrix whose transpose is its own inverse, therefore we can find an orthogonal $M$ that can diagonalize the above symmetric matrix. In general that is true, however, we are dealing with integer matrices only, furthermore the determinant of $M$ has to be $\pm1$ to guarantee that the inverse of $M$ is also a matrix of integers. And as such, in many cases we won't be able to find such integer matrix $M$ to diagonalize $F$.
 
-So the sensible thing to do here is to denote the minimum of $F(x,y) = \bar F$ and
+So the sensible thing to do here is to denote the minimum of $F(x,y) = \bar F$ and write
 %
 \nbea
 \sum_{\substack{(x,y)\\(x,y)\neq(0,0)}} v^{F(x,y)/\sqrt{|d|}} & = & Kv^{\bar F/\sqrt{|d|}} + O\left(v^{(\bar F + \Delta)/\sqrt{|d|}}\right)
 \neea
 %
-where $\Delta$ is the difference between the minimum of $F$ to the next higher value and $K$ is the multiplicity of $\bar F$, \ie the number of ways $\bar F$ is represented by $F$, note that since a constant multiplier makes no difference in Big Oh, \eg $K O(x) = O(x)$, we have omitted the constant multiplier inside the Big Oh. And it is now obvious that we do not need $F$ to represent every integer. We can massage this further, first take $w = v^{\bar F/\sqrt{|d|}}$ such that
+where $\Delta$ is the difference between the minimum of $F$ and the next higher value of $F$ and $K$ is the multiplicity of $\bar F$, \ie the number of ways $\bar F$ is represented by $F$, note that since a constant multiplier makes no difference in Big Oh, \eg $K O(x) = O(x)$, we have omitted the constant multiplier for the Big Oh term. And it is now obvious that we do not need $F$ to represent every integer. If we massage this further by taking $w = v^{\bar F/\sqrt{|d|}}$
 %
 \nbea
 v^{(\bar F+ \Delta)/\sqrt{|d|}} & = & w^{\frac{\bar F + \Delta}{\bar F}} \\
 Kv^{\bar F/\sqrt{|d|}} + O\left(v^{(\bar F + \Delta)/\sqrt{|d|}} \right) & = & Kw + O\left(w^{\frac{\bar F + \Delta}{\bar F}}\right)
 \neea
 %
-note that $\frac{\bar F + \Delta}{\bar F} > 1$ and so $w^{\frac{\bar F + \Delta}{\bar F}} < w$ as $w\to0$ and by this trick we do not need $F$ to represent 1. Now for the rest of the argument on Chapter 9 to work we need to set $w = \exp(-2\pi t)$
+where $\frac{\bar F + \Delta}{\bar F} > 1$ and so $w^{\frac{\bar F + \Delta}{\bar F}} < w$ as $w\to0$ and by this trick we do not need $F$ to represent 1. Also note that $K$ is guaranteed to be finite since it is the number solutions to $m^2 \equiv d \pmod{4\bar F}$.
+
+Now for the rest of the argument on Chapter 9 to work we need to set $w = \exp(-2\pi t)$
 %
 \nbea
 f(t,F) & = & K\exp(-2\pi t) + O(\exp(-2\pi t(\bar F+\Delta)/\bar F)) \\
@@ -1920,7 +1983,7 @@ f(t,F) & = & \Theta(t,F) - 1 \\
 & \sim & t^{-1}
 \neea
 %
-for $t \to 0$ and substituting this into $\left|\int_0^1 f(t,F)t^s \frac{dt}{t}\right|$ we get
+substituting this into $\left|\int_0^1 f(t,F)t^s \frac{dt}{t}\right|$ we get
 %
 \nbea
 \int_0^1 \left|t^{-1}t^{s-1}\right| - \left|t^{s-1}\right|  dt & = & \int_0^1 t^{\re(s) - 2} - t^{\re(s) - 1} dt \\
@@ -1928,7 +1991,7 @@ for $t \to 0$ and substituting this into $\left|\int_0^1 f(t,F)t^s \frac{dt}{t}\
 & = & \frac{1}{s-1} - \frac{1}{s}
 \neea
 %
-I have included the $-1$ from $f(t,F) = t^{-1}(1 + O(\exp(-2\pi t^{-1}))) - 1$ to see if its integral is indeed finite, $O(\exp(-2\pi t^{-1})) < 1$ as $t\to0$ and so its integral is also smaller and so we are safe to integrate away :) Therefore the integral of every Big Oh terms above are just finite numbers, combining everything we have (and to reduce clutter let's denote $J = 2\pi(\bar F+4)/\bar F > 2\pi$ and assume $s$ is real for simplicity otherwise we need to put absolute value in everything with the same final result)
+I have included the $-1$ from $f(t,F) = t^{-1}(1 + O(\exp(-2\pi t^{-1}))) - 1$ to see if its integral is indeed finite, $O(\exp(-2\pi t^{-1})) < 1$ as $t\to0$ and so its integral is also smaller and so we are safe to integrate away :) Therefore the integral of every Big Oh terms above are just finite numbers, combining everything we have (and to reduce clutter let's denote $J = 2\pi(\bar F+4)/\bar F > 2\pi$ and assume $s$ is real and positive for simplicity's sake otherwise we need to put absolute value in everything with the same final result)
 %
 \nbea
 \Lambda(s,F) & = & \int_0^\infty f(t,F)t^s \frac{dt}{t} \\
@@ -1948,7 +2011,15 @@ Also note that the limit of
 and so the second Big Oh above is finite.
 
 
-QUANTUM MECHANICS $<x|a><b|x> = <x|y><y|a><b|z><z|x>$
+
+
+
+
+
+
+
+
+
 
 
 
