@@ -1730,6 +1730,14 @@ L(s,\chi_d) & = & \sum_{n=1}^\infty \chi_d(n) n^{-s}
 \neea
 %
 
+{\bf Page 311}, Analytic Class Number Theorem, this version seems to contradict the one from Eq (11.6) of Page 273
+%
+\nbea
+L(1,\chi_d) = \frac{\pi h}{\sqrt{|d|}} &{\rm~~~~~~~~~vs~~~~~~~~~}& L(1,\chi_d) = \frac{h}{\sqrt{d}}\log(\epsilon)
+\neea
+%
+the thing to remember is that the one on the left from Chapter 13 is for $d < -4$ and the one on the right from Chapter 11 is for $d > 0$, but what happens when $-4 \le d \le 0$ ~~~ \dunno
+
 {\bf Page 311}, definition of $\zeta(s,F)$, there's an apostrophe on the sum, this is because we are only summing over $(x,y) \neq (0,0)$.
 
 {\bf Page 312}, bottom half of page, ``Thin Air Equation'' LOL I also wonder about these thin air equations as to how the heck people came up with these ``Let $x=\ldots$ and then somehow it miraculously solved the problem''
@@ -2009,6 +2017,93 @@ Also note that the limit of
 \neea
 %
 and so the second Big Oh above is finite.
+
+{\bf Page 318}, Abel's Theorem, Part II says that if a partial sums $\sum_{k=1}^n a_k$ is bounded, not necessarily convergent then the series $\sum_{k=1}^\infty a_k/k^\sigma$ is convergent for all $\sigma > 0$ and in this case the partial sum is $\sum\chi_d$ and the series is $L(\sigma,\chi_d)$.
+
+{\bf Page 319}, first equation, there's a typo, it should have been $A(N)$ instead of $A(n)$ in the first term.
+
+{\bf Page 319}, lower half of page before Exercise 13.3.1, ``We should have first proven that the series for $L'(\sigma,\chi_d)$ converges $\ldots$ One estimates the tail $\ldots$''
+
+if we follow the same steps used previously we get (note that we can pull $|d|$ out of the sum because $\left( \frac{\log(k)}{k^\sigma} - \frac{\log(k+1)}{(k+1)^\sigma} \right)$ is positive)
+%
+\nbea
+\sum_{M\le k < N} \chi_d(k) \log(k) k^{-\sigma} & = & A(N)\frac{\log(N)}{N^\sigma} - A(M)\frac{\log(M)}{M^\sigma} + \sum_{M\le k < N} A(k+1) \left( \frac{\log(k)}{k^\sigma} - \frac{\log(k+1)}{(k+1)^\sigma} \right) \\
+& \ll & |d|\frac{\log(N)}{N^\sigma} - |d|\frac{\log(M)}{M^\sigma} + |d| \sum_{M\le k < N} \left( \frac{\log(k)}{k^\sigma} - \frac{\log(k+1)}{(k+1)^\sigma} \right) \\
+& \ll & |d|\frac{\log(N)}{N^\sigma} - |d|\frac{\log(M)}{M^\sigma} + |d| \left( \frac{\log(M)}{M^\sigma} - \frac{\log(N)}{N^\sigma} \right) \\
+& \ll & 0
+\neea
+%
+taking $M,N\to\infty$ makes $\frac{\log(M)}{M^\sigma}, \frac{\log(N)}{N^\sigma}\to0$ even for $\sigma\le 1$, although it will still be zero even without taking the limit and so the RHS bounded and not just bounded but it vanishes. But ler's remember that this is only the tail portion and so the full sum is converges.
+
+{\bf Exercise 13.3.1}, Page 319, Prove that for $1-1/\log|d| \le \sigma \le 1$, $L(\sigma,\chi_d) \ll \log|d|$
+
+Imitating the proof of the previous lemma we have
+%
+\nbea
+\left|\sum_{n<|d|} \chi_d(n) n^{-\sigma}\right| & < & \sum_{n<|d|} \frac{e}{n} \\
+& \ll & \int_1^{|d|} \frac{1}{x} dx = log|d|
+\neea
+%
+and for the tail we have
+%
+\nbea
+\sum_{|d|\le k < N} \chi_d(k) k^{-\sigma} & \ll & |d|\frac{1}{N^\sigma} + |d| \left ( \frac{1}{|d|^\sigma} - \frac{1}{N^\sigma} \right) \\
+& \ll & e
+\neea
+%
+as $N\to\infty$, $1/N^\sigma \to 0$ and $|d|/|d|^\sigma\le e$ and so
+%
+\nbea
+\sum_{n} \chi_d(n) n^{-\sigma} & \ll & \log|d| + e \\
+& \ll & \log|d|
+\neea
+%
+
+{\bf Page 321}, remark below Figure 13.2, ``from the proof of (13.13) I expect $C=1/(2e)$ will work'', I'm not sure how he got this, from the proof of (13.13) on Page 318 we have
+%
+\nbea
+\sum_{n<|d|} \log(n)\frac{e}{n} & \ll & \int_1^{|d|} \frac{\log(x)}{x} dx = (\log|d|)^2 \\
+\to \sum_{n<|d|} \log(n)\frac{e}{n} & = & O(\log^2|d|)
+\neea
+%
+but this only means that for $|d| > |d_0|$, $\sum_{n<|d|} \log(n)\frac{e}{n} \le K\log^2|d|$ for some $K > 0$ but here we want $|d_0|$ to start from $5$ as the analytic class number formula is only defined for $d < -4$ since Page's theorem is true for all $d < -4$.
+
+Another thing to consider is the tail of $L'(\sigma,\chi_d)$ and so in total we want
+%
+\nbea
+\sum_{n<|d|} \log(n)\frac{e}{n}  + e\log|d|& < & K\log^2|d|
+\neea
+%
+for some $K>0$ and $|d| > 4$. If you just numerically calculate $\sum_{n<|d|} \log(n)\frac{1}{n} + \log|d|$ and $\log^2|d|$, you'll see that $\log^2|d|$ will be bigger starting from $|d| = 5$ which is what we want and so $K=e$ would suffice, but if you want the inequality to hold starting from $|d|=1$, $K=2e$ will suffice, so I don't know why he chose $C = 1/(2e)$ ~~~\dunno
+
+{\bf Page 321}, bottom half of page,
+%
+\nbea
+1 - \frac{1}{\log|d|} < 1 - \frac{C}{\sqrt{|d|}(\log|d|)^2}
+\neea
+%
+while it is true that $\sqrt{|d|}(\log|d|)^2 > \log|d|$ for $|d| > 2$ or so, if $C$ is really big like $10^{10^{10}}$, the above will not be true but I guess the point is that we can find a $C>0$ so that the above would work because the Theorem we want to prove only says that there will be a constant $C>0$.
+
+{\bf Page 322}, last sentence, ``principal class'', this is also mentioned on Page 323, this was mentioned back on Page 298, from $d=b^2-4ac$, it must be that $d \equiv 0,1 \pmod{4}$, therefore forms of the form $x^2 - d/4y^2$ and $x^2 + xy + (1-d)/4 y^2$ are called principal forms.
+
+{\bf Page 323}, Eq (13.14), when summing over classes the integral is not multiplied by $h$ although $1/s(s-1)$ was multiplied by $h$, this might be because the integral is only a correction term (\ie a Big Oh, and Big Oh doesn't change when multiplied by a constant). The second reason might be that because (13.14) is an inequality.
+
+{\bf Page 323}, argument using GRH in the middle of the page, what it's saying is that if GRH is true then all zeros will be {\bf only} on the vertical line $\re(s) = 1/2$. Therefore if the function is negative for near $s=1^-$  then it must be negative for all $1/2 < s < 1$, because if it has both negative and all positive values then it must cross zero but the zero is only on $s=1/2$.
+
+If GRH is not true then there is a zero not on $s=1/2$ and so the function is negative from $\beta < s < 1$ because if it's zero at $s=1^-$ then for it to flip to positive it must cross zero and the zero is at $s=\beta$
+
+{\bf Page 325}, upper half of page, ``the maximum for $f(s)$ on this interval occurs at the left endpoint'', by left endpoint it means the leftmost term of the inequality $1 - \frac{C}{\log|d|} < \beta < 1$, this is because $f(s) = s - s^2$ so the smaller $s$ is the bigger $f(s)$ will be.
+
+{\bf Page 326}, sentence after Figure 13.3, ``Siegel's theorem implies that for every $\epsilon > 0 ~\ldots$'',not sure how he got this sine the theorem is an asymptotic relation that only applies when $|d|\to\infty$ while this one is true for every $|d|$, although if you can adjust $C(\epsilon)$ then you might be able to do it as the definition of the asymptotic means that
+%
+\nbea
+\left|\frac{h}{d^{1/2}} - 1\right| < \epsilon &{\rm~~~when~~~}& |d| > M
+\neea
+%
+so by adjusting $C(\epsilon)$ you can always make $h > C(\epsilon) |d|^{1/2-\epsilon}$
+
+
+
 
 
 
