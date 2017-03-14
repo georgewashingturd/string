@@ -2740,6 +2740,170 @@ so we have two same exact lines, moral of the story is since each line has two c
 
 
 
+ So to prove that
+ %
+ \nbea
+ \sum_{d|n}\varphi(d) & = & n
+ \neea
+ %
+ we can start from Mobius inversion formula, what we want to find out is
+ %
+ \nbea
+ f(n) & = & \sum_{d|n} \varphi(d) \\
+ \to \varphi(n) & = & \sum_{d|n}\mu(d) f\left(\frac{n}{d}\right)
+ \neea
+ %
+as we can prove Mobius inversion formula without involving the totient function $\varphi(n)$. So our job now becomes that of guessing what this $f(n)$ is.
+
+Another ingredient we need is the definition of $\varphi$, we can get this by showing that 
+%
+\nbea
+\varphi(n) & = & \prod_i^N (p_i^{\alpha_i} - p_i^{\alpha_i-1}) \\
+& = & \left ( p_1^{\alpha_1} - p_1^{\alpha_1-1}\right ) \left ( p_2^{\alpha_2} - p_2^{\alpha_2-1}\right ) \left ( p_3^{\alpha_3} - p_3^{\alpha_3-1}\right ) \ldots \left ( p_N^{\alpha_N} - p_N^{\alpha_N-1}\right )
+\neea
+%
+like what Stein did in his ent.pdf book, this is actually the same as the one given in Apostol's book $\varphi(n) = n\prod_i\left(1-\frac{1}{p_i}\right)$, you just need to extract each $p_i^{\alpha_i}$ from $n$ and multiply it with the corresponding $\left(1-\frac{1}{p_i}\right)$.
+
+So what's the purpose of expanding this product, the purpose is we can now turn this into a sum
+%
+\nbea
+\varphi(n) & = & n + (-1)^1\sum_{i}\frac{n}{p_i} + (-1)^2\sum_{i,j}\frac{n}{p_i p_j} +(-1)^3\sum_{i,j,k}\frac{n}{p_i p_j p_k} + \ldots + (-1)^N\sum_{i,j,k,\ldots,N} \frac{n}{p_i p_j p_k \ldots p_N} \\
+& = & \mu(1)n + \sum_{i}\mu(p_i)\frac{n}{p_i} + \sum_{i,j}\mu(p_ip_j)\frac{n}{p_i p_j} + \sum_{i,j,k} \mu(p_ip_jp_k)\frac{n}{p_i p_j p_k} + \ldots \\
+&& ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ + \sum_{i,j,k,\ldots,N} \mu(p_i p_j p_k \ldots p_N)\frac{n}{p_i p_j p_k \ldots p_N} \\
+\varphi(n) & = & \sum_{d|n}\mu(d)\left ( \frac{n}{d}\right )
+\neea
+%
+first the sum $\sum_{i,j,\ldots}$ are for {\bf distinct} primes $p_i,p_j,\ldots$, this is due to the definition of $\varphi(n) = n\prod_i\left(1-\frac{1}{p_i}\right)$, next, $(-1)^N = \mu(p_i p_j\ldots p_N)$ by definition and so we see that by MObius inversion formula
+%
+\nbea
+f(n) & = & \sum_{d|n}\varphi(d) \\
+\to f(n) & = & n
+\neea
+%
+
+
+
+Another way of proving this without the Mobius inversion formula is to use the multiplicity of $\varphi$, this means
+%
+\nbea
+\sum_{d|n} \varphi(d) & = & \left(\sum_{d_1|p_1^{\alpha_1}}\varphi(d_1)\right)\left(\sum_{d_2|p_2^{\alpha_i}}\varphi(d_2)\right) \ldots \left(\sum_{d_N|p_N^{\alpha_N}}\varphi(d_N)\right)
+\neea
+%
+now
+%
+\nbea
+\sum_{d|p^{\alpha}}\varphi(d) & = & \varphi(1) + \varphi(p) + \varphi(p^2) + \ldots + \varphi(p^\alpha) \\
+& = & 1 + (p-1) + (p^2 - p) + \ldots + (p^\alpha - p^{\alpha-1}) \\
+& = & \sum_{j=0}^\alpha p^j - \sum_{k=0}^{\alpha-1}p^k \\
+& = & \frac{p^{\alpha+1}-1}{p-1} - \frac{p^{\alpha}-1}{p-1} = \frac{p^{\alpha+1}-p^\alpha}{p-1} = \frac{p^{\alpha}(p-1)}{p-1}\\
+& = & p^\alpha
+\neea
+%
+and so
+%
+\nbea
+\sum_{d|n} \varphi(d) & = & \left(p_1^{\alpha_1}\right)\left(p_2^{\alpha_2}\right) \ldots \left(p_N^{\alpha_N}\right) \\
+& = & n
+\neea
+%
+
+
+One thing though the form of $\varphi(n) = n\prod_i\left(1 - \frac{1}{p_i}\right)$ reminds me of the Dirichlet $L$-functions, can we say anything about it? for example
+%
+\nbea
+\zeta(1) = \sum_{k=1}^\infty \frac{1}{k} & = & \prod_{p=2}^\infty\left(1-\frac{1}{p}\right)^{-1} \\
+& = & \prod_{p=2}^\infty \frac{p}{\varphi(p)}
+\neea
+%
+or in a more enlightening way
+%
+\nbea
+\infty = \sum_{k=1}^\infty \frac{1}{k} & = & \lim_{n\to\infty} \frac{n}{\varphi(n)} \\
+\to 0 & = & \lim_{n\to\infty}\frac{\varphi(n)}{n}
+\neea
+%
+although it is somewhat more complicated than it looks, what does $n\to\infty$ mean? does it mean $2^\infty\cdot 3^\infty\cdot 5^\infty\ldots$, if this is the case then
+%
+\nbea
+\lim_{n\to\infty}\frac{\varphi(n)}{n} & = & \prod_{p=2}^\infty \left(1-\frac{1}{p}\right) \\
+& = & \prod_{p=2}^\infty \frac{\varphi(p)}{p} \\
+& = & \frac{\prod_{p=2}^\infty \varphi(p)}{\prod_{p=2}^\infty p} \\
+\lim_{n\to\infty} \varphi(n) \frac{\prod_{p=2}^\infty p}{\prod_{p=2}^\infty p^\infty} & = & \prod_{p=2}^\infty \varphi(p) \\
+\lim_{n\to\infty} \varphi(n) \frac{1}{\prod_{p=2}^\infty p^\infty} & = & \prod_{p=2}^\infty \varphi(p) \\
+\lim_{n\to\infty}\frac{\varphi(n)}{n} & = & \prod_{p=2}^\infty \varphi(p)
+\neea
+%
+which is a contradiction since the LHS is zero while the RHS is obviously not ~\dunno~ apart from this funny contradiction, maybe we should define
+%
+\nbea
+\bar\varphi(n) & = & n\prod_i\left(1-\frac{1}{p_i^{\alpha_i}}\right)
+\neea
+%
+such that $\bar\varphi(p^s) =p^s\prod_i\left(1-\frac{1}{p^{s}}\right) = p^s-1$ so it treats powers of prime the same as just a prime, this way
+%
+\nbea
+\zeta(s) & = & \prod \frac{p^s}{\bar\varphi(p^s)}
+\neea
+%
+although I'm not sure what value this function has :) ~~~\dunno
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
