@@ -2740,19 +2740,19 @@ so we have two same exact lines, moral of the story is since each line has two c
 
 
 
- So to prove that
- %
- \nbea
- \sum_{d|n}\varphi(d) & = & n
- \neea
- %
- we can start from Mobius inversion formula, what we want to find out is
- %
- \nbea
- f(n) & = & \sum_{d|n} \varphi(d) \\
- \to \varphi(n) & = & \sum_{d|n}\mu(d) f\left(\frac{n}{d}\right)
- \neea
- %
+{\bf Theorem 2.2}, So to prove that
+%
+\nbea
+\sum_{d|n}\varphi(d) & = & n
+\neea
+%
+we can start from Mobius inversion formula, what we want to find out is
+%
+\nbea
+f(n) & = & \sum_{d|n} \varphi(d) \\
+\to \varphi(n) & = & \sum_{d|n}\mu(d) f\left(\frac{n}{d}\right)
+\neea
+%
 as we can prove Mobius inversion formula without involving the totient function $\varphi(n)$. So our job now becomes that of guessing what this $f(n)$ is.
 
 Another ingredient we need is the definition of $\varphi$, we can get this by showing that 
@@ -2850,28 +2850,312 @@ although I'm not sure what value this function has :) ~~~\dunno
 
 
 
+{\bf Theorem 2.1}. The same can be said about $\mu(n)$, using the Mobius inversion formula
+%
+\nbea
+f(n) & = & \sum_{d|n}\mu(d) \cdot 1 \\
+\to 1 & = & \sum_{d|n} f(d)
+\neea
+%
+and so a very probable choice is (since $f(d)$ is an arithmetical function, the target space is the space of integers so we can't have fractions)
+%
+\nbea
+f(d) & = & \delta_{1,d} \\
+& = & \left\lbrack \frac{1}{d} \right\rbrack
+\neea
+%
+where $\delta_{1,d}$ is the kronecker delta.
+
+Next, can we say that $\mu(n)$ is multiplicative? I think the answer is yes because odd + even = odd and odd + odd = even and of course even + even = even (this is all about the number of distinct prime factors) and so
+%
+\nbea
+\sum_{d|n}\mu(d) & = & \left(\sum_{d_1|p_1^{\alpha_1}}\mu(d_1)\right)\left(\sum_{d_2|p_2^{\alpha_2}}\mu(d_2)\right) \ldots \left(\sum_{d_N|p_N^{\alpha_N}}\mu(d_N)\right) \\
+& = & \left(1+\mu(p_1)\right)\left(1+\mu(p_2)\right) \ldots \left(1+\mu(p_N)\right) \\
+& = & (1-1)(1-1) \ldots (1-1) \\
+& = & 0
+\neea
+%
+unless $n=1$ of course and so
+%
+\nbea
+\sum_{d|n}\mu(d) & = & \delta_{1,n}
+\neea
+%
+
+{\bf Theorem 2.3}, this one was already covered during the discussion of Theorem 2.2 above
+
+{\bf Theorem 2.4}, we can do this following Stein's steps, first by showing that $\varphi(n)$ is multiplicative and then showing that $\varphi(p^\alpha) = p^\alpha - p^{\alpha-1}$
+
+{\bf Theorem 2.5 (b)}, the appearance of $d$ of the RHS gave it away that we should use the explicit formula $\varphi(n) = n\prod\left(1-\frac{1}{p}\right)$ for this. Although we can still use the multiplicative property to show this. First we know that if $(m,n) = d = p_1^{\alpha_1} p_2^{\alpha_2} \ldots p_N^{\alpha_N}$, this means that
+%
+\nbea
+m & = & p_1^{\alpha_1 + \beta_1} p_2^{\alpha_2 + \beta_2} \ldots p_N^{\alpha_N + \beta_N} q_1^{\gamma_1} q_2^{\gamma_2} \ldots q_M^{\gamma_M} \\
+n & = & p_1^{\alpha_1} p_2^{\alpha_2} \ldots p_N^{\alpha_N} w_1^{\delta_1}w_2^{\delta_2}\ldots w_J^{\delta_J}
+\neea
+%
+other combinations, \ie the exponent of each $p_i$ is sometimes higher in $m$ and sometimes higher in $n$ but it will not change the conclusion
+%
+\nbea
+\varphi(mn) & = & \varphi\left(q_1^{\gamma_1} \ldots q_M^{\gamma_M} \left\{p_1^{\alpha_1 + \beta_1} \ldots p_N^{\alpha_N + \beta_N}\right\} \left\{ p_1^{\alpha_1} \ldots p_N^{\alpha_N}\right \} w_1^{\delta_1}\ldots w_J^{\delta_J} \right) \\
+& = & \varphi\left(q_1^{\gamma_1} \ldots q_M^{\gamma_M} \left\{p_1^{2\alpha_1 + \beta_1} \ldots p_N^{2\alpha_N + \beta_N}\right\} w_1^{\delta_1}\ldots w_J^{\delta_J} \right) \\
+& = &  \varphi\left(q_1^{\gamma_1} \ldots q_M^{\gamma_M}\right) \varphi\left(p_1^{2\alpha_1 + \beta_1} \ldots p_N^{2\alpha_N + \beta_N}\right) \varphi\left(w_1^{\delta_1}\ldots w_J^{\delta_J} \right)
+\neea
+%
+the terms in the three brackets above are relatively prime, for the middle one we have
+%
+\nbea
+\varphi\left(p_1^{2\alpha_1 + \beta_1} \ldots p_N^{2\alpha_N + \beta_N}\right) & = & \varphi\left(p_1^{2\alpha_1 + \beta_1}\right) \ldots \varphi\left(p_1^{2\alpha_N + \beta_N}\right)
+\neea
+%
+and for each one of them we have
+%
+\nbea
+\varphi(p^{\alpha+\beta} p^\alpha) & = & p^{2\alpha+\beta} - p^{2\alpha+\beta - 1} \\
+& = & p^{2\alpha + \beta - 1}(p - 1)
+\neea
+%
+while the product will be
+%
+\nbea
+\varphi(p^{\alpha+\beta}) \varphi(p^\alpha) & = & (p^{\alpha+\beta} - p^{\alpha+\beta - 1})(p^{\alpha} - p^{\alpha - 1}) \\
+& = & p^{2\alpha+\beta} - p^{2\alpha +\beta - 1}  - p^{2\alpha+\beta - 1} +  p^{2\alpha+\beta - 2} \\
+& = & p^{2\alpha+\beta - 1}(p - 1 - 1 + p^{-1})
+\neea
+%
+the ratio of the two is given by
+%
+\nbea
+\frac{\varphi(p^{\alpha+\beta} p^\alpha)}{\varphi(p^{\alpha+\beta}) \varphi(p^\alpha)} & = & \frac{p-1}{p - 1 + p^{-1} -  1} \\
+& = & \frac{1}{1 + \frac{\frac{1}{p} - 1}{p-1}} \\
+& = & \frac{p}{p + \frac{1 - p}{p-1}} \\
+& = & \frac{p}{p - 1}
+\neea
+%
+on the other hand
+%
+\nbea
+\frac{p^\alpha}{\varphi(p^\alpha)} & = & \frac{p^\alpha}{p^{\alpha-1}(p-1)} \\
+& = & \frac{p}{p-1}
+\neea
+%
+combining everything (or at least the last few items)
+%
+\nbea
+\varphi\left(p_1^{2\alpha_1 + \beta_1}\right) \ldots \varphi\left(p_1^{2\alpha_N + \beta_N}\right) & = & \left( \varphi\left(p_1^{\alpha_1 + \beta_1}\right)\varphi\left(p_1^{\alpha_1}\right) \frac{p_1^{\alpha_1}}{\varphi(p_1^{\alpha_1})} \right) \ldots \left( \varphi\left(p_N^{\alpha_N + \beta_N}\right)\varphi\left(p_N^{\alpha_1}\right) \frac{p_N^{\alpha_N}}{\varphi(p_N^{\alpha_N})} \right) \\
+& = & \left( \varphi\left(p_1^{\alpha_1 + \beta_1}\right) \ldots \varphi\left(p_N^{\alpha_N + \beta_N}\right) \right)  \left( \varphi\left(p_1^{\alpha_1}\right) \ldots \varphi\left(p_N^{\alpha_1}\right)  \right) \left( \frac{p_1^{\alpha_1}}{\varphi(p_1^{\alpha_1})} \ldots \frac{p_N^{\alpha_N}}{\varphi(p_N^{\alpha_N})} \right)\\
+& = & \left( \varphi\left(p_1^{\alpha_1 + \beta_1}\right) \ldots \varphi\left(p_N^{\alpha_N + \beta_N}\right) \right)  \left( \varphi\left(p_1^{\alpha_1}\right) \ldots \varphi\left(p_N^{\alpha_1}\right)  \right) \frac{d}{\varphi(d)}
+\neea
+%
+a lot of work for not much gain :)
+
+But the lesson here is that this multiplicative property goes a long way, the way I'll structure this chapter will be similar to that of Stein's ent.pdf. First set up the Euler Totient function $\varphi$, show what it is for a prime, then for a power of prime and then that it is multiplicative and we get the rest.
+
+{\bf Theorem 2.10} same old same old, just expand $n$ in terms of its primal constituents
+
+{\bf Theorem 2.11} straightforward, just use Mobius inversion and properties of $\log$ but the key point here is that we can always add zero or multiply by one, the usual tricks in mathematics, if we reverse the flow
+%
+\nbea
+-\sum_{d|n}\mu(d)\log d & = & -\sum_{d|n}\mu(d)\log d + 0 \\
+& = & -\sum_{d|n}\mu(d)\log d + \sum_{d|n}\mu(d)\log n \\
+& = & \sum_{d|n}\mu(d)\log \frac{n}{d} \\
+& = & \Lambda(n)
+\neea
+%
+a more interesting question is what happens if I multiply it by one?
+
+The interesting thing here is that the Formal Power Series weren't used much in the book, at least up till the Chapter I'm reading which is Chapter 7 ~ \dunno Are there cool applications of these power series?
 
 
 
 
 
+\bigskip
+\underline{\textit{\textbf{Chapter 3}}}
+\bigskip
+
+{\bf Theorem 3.1}, Euler's summation formula is just integral test as mentioned by Stopple in his fantastic book which can be easily understood graphically
+
+{\bf Theorem 3.2 (b)} This is interesting
+%
+\nbea
+\sum_{n\le x}\frac{1}{n^s} & = & \frac{x^{1-s}}{1-s} + \zeta(s) + O(x^{-s}), ~~~{\rm if~} s> 0,~s\neq1
+\neea
+%
+The odd thing is that $\zeta(s) = \sum_{n}^\infty \frac{1}{n^s}$ so it already includes the LHS
+%
+\nbea
+\sum_{n\le x}\frac{1}{n^s} & = & \frac{x^{1-s}}{1-s} + \zeta(s) + O(x^{-s}) \\
+\to \sum_{n\le x}\frac{1}{n^s} & = & \frac{x^{1-s}}{1-s} + \sum_{n\le \infty}\frac{1}{n^s} + O(x^{-s}) \\
+\sum_{n\le x}\frac{1}{n^s} - \sum_{n\le \infty}\frac{1}{n^s} & = & \frac{x^{1-s}}{1-s} + O(x^{-s}) \\
+-\sum_{n > x}\frac{1}{n^s} & = & \frac{x^{1-s}}{1-s} + O(x^{-s})
+\neea
+%
+which is just the tail of the zeta function, but to me it is just odd that the RHS is something bigger than the LHS minus something negative for $s > 1$
 
 
 
+{\bf Page 61}. Average order of $\varphi(n)$, Eq (12), I think we need Euler's product for the zeta function to get this result
+%
+\nbea
+\frac{1}{\zeta(2)} & = & \prod_p^\infty \left(1-\frac{1}{p^2}\right) \\
+& = & 1 + (-1)^1\sum_{p} \frac{1}{p^2} + (-1)^2\sum_{\substack{p,q\\p\neq q}} \frac{1}{p^2q^2} + (-1)^3\sum_{\substack{p,q,r\\p\neq q \neq r}} \frac{1}{p^2q^2r^2} + \ldots \\
+& = & 1 + \sum_{p} \frac{\mu(p)}{p^2} + \sum_{\substack{p,q\\p\neq q}} \frac{\mu(pq)}{p^2q^2} + \sum_{\substack{p,q,r\\p\neq q \neq r}} \frac{\mu(pqr)}{p^2q^2r^2} + \ldots \\
+& = & \sum_{n=1}^\infty \frac{\mu(n)}{n^2}
+\neea
+%
+
+{\bf Theorem 3.7}, to get the main term we can roughly guess, for $n=p$ prime we have $\varphi(p) = p-1$ and for composite $n$ we have
+%
+\nbea
+\varphi(n) & = & n\prod_i\left(1-\frac{1}{p_i}\right) \\
+& \approx & n
+\neea
+%
+and so
+%
+\nbea
+\sum_{n\le x} \varphi(n) & \approx & \sum_{n \le x} n \\
+& \approx & x^2
+\neea
+%
+but to get the constant term in front of the $x^2$ is the hard part
+
+{\bf Theorem 3.10}, reason and use for this theorem? The purpose here is that you want to sum a convolution, \ie
+%
+\nbea
+\sum_{n \le x} f * g & = & \sum_{n \le x} \left(\sum_{d|n} f(d) g\left(\frac{n}{d}\right)\right) \\
+& = & \sum_{\substack{d,q\\dq\le x}} f(d) g(q) \\
+& = & \sum_{d\le x} \sum_{q \le x/d} f(d) g(q) \\
+& = & \sum_{d\le x} f(d) \left (\sum_{q \le x/d} g(q) \right )\\
+& = & \sum_{d\le x} f(d) G\left(\frac{x}{d}\right)
+\neea
+%
+if we swap the roles of $d \leftrightarrow n/d$ in the first line we get (since $f * g = g * f$)
+%
+\nbea
+\sum_{n \le x} f * g & = & \sum_{n \le x} \left(\sum_{d|n} f\left(\frac{n}{d}\right) g\left(d\right)\right) \\
+& = & \sum_{d\le x} \left (\sum_{q \le x/d} f(q) \right ) g(d) \\
+& = & \sum_{d\le x} F\left(\frac{x}{d}\right) g(d)
+\neea
+%
+
+{\bf Theorem 3.11}, it is just a clever application {\bf not} of Theorem 3.10, is is a clever application of the usual math trick again, multiplying something by 1
+
+{\bf Theorem 3.13}, a straightforward estimate is
+%
+\nbea
+\sum_{n\le x} \frac{\mu(n)}{n} & \le & \sum_{n\le x} \frac{1}{n}
+\neea
+%
+but the RHS is always bigger than 1 so it's not of much use to us, deploying a similar strategy to that of Page 61 Eq (12) we get
+%
+\nbea
+\sum_{n}^{\infty} \frac{\mu(n)}{n} & = & \prod_p^\infty \left(1 - \frac{1}{p}\right) = \frac{1}{\zeta(1)}
+\neea
+%
+where $\zeta(1)$ is just the harmonic series and it blows up so by the above relationship
+%
+\nbea
+\sum_{n}^{\infty} \frac{\mu(n)}{n} & = & 0
+\neea
+%
+My original idea is that if I limit the sum on the LHS to a finite $x, ~n\le x$ then we can limit the product of the primes to a finite number of primes as well but this is not the case because removing one prime from the product removes not just one term but all terms that are multiple of that prime while removing (or adding) one term in the sum only removes one term. So in this case, dealing with infinity is actually easier :)
+
+In summary, for finite $x$,
+%
+\nbea
+\sum_{n\le x}\frac{\mu(n)}{n} & \neq & \prod_{i}^{N}\left(1-\frac{1}{p_i}\right)
+\neea
+%
+except for some obvious values like $x=2$, note that $p_i$ is the $i^{\rm th}$ prime.
+
+This Theorem is actually deeper than it looks, for one thing it's not that straightforward to show that $\sum_{n\le x}\mu(n)/n$ is bounded, if we do a comparison test, the comparison we can do is with the harmonic series, but the harmonic series diverges, if we take the limit test we get
+%
+\nbea
+\lim_{n\to\infty} \frac{|c_n|}{|c_{n+1}|} & = & \frac{|\mu(n)|/|n|}{|\mu(n+1)|/|n+1|} \\
+& = & \frac{n+1}{n} \\
+& = & 1
+\neea
+%
+so it's inconclusive, although there are some caveats that we have ignored, \ie $\mu(n)$ can be zero, so $\ldots$ ~ \dunno
+
+For integral test, we might try some oscillating function with some envelope, but I don't know what that function will be, the only functions that oscillates together with the prime is Riemann's $\Pi(x)$ which requires the zeros of the zeta function LOL
+
+Another idea is to define a new arithmetic function say $\nu(n)$ =  number of distinct prime factors of $n$ and then compare $\mu(n)/n$ to this one $\nu(n)/n$ to check whether the series  for $\mu(n)/n$ converges or whether it is bounded.
+
+\underline{\textit{\textbf{*New Tool Alert*}}}. But in this proof we learn a new tool, which is
+%
+\nbea
+\{y\} = y - [y]
+\neea
+%
+and so $0\le\{y\} < 1$. We need to utilize this tool because first we need to convert $[x/n]$ into $x/n$, once this is done, the rest is quite simple.
+
+Some comments, on Page 67 we have something like
+%
+\nbea
+1 + \sum_{n\le x}\mu(n)\left\{\frac{x}{n}\right\}
+\neea
+%
+we might be tempted to turn away from the tool, from the fact that $\mu(n)$ is either $-1,0,$ or $1$ and the sum is for $n \le x$
+%
+\nbea
+\sum_{n\le x}\mu(n) & \le & [x] - 1
+\neea
+%
+this is because we are summing over $n=1,2,\ldots, [x]$ and $\mu(2) = -1$ so it is guaranteed to be strictly less than $[x]$, the complication we have now is that $0 \le \{x/n\} < 1$ so we don't know which one is smaller, because the $\pm1$'s are now weighted
+%
+\nbea
+\sum_{n\le x}\mu(n) & \stackrel{?}{\substack{>\\<}} & \sum_{n\le x}\mu(n) \left\{\frac{x}{n} \right\}
+\neea
+%
+since we don't know how far away $\{x/n\}$ is from $1$ for each $n$ we don't know if we can set the limit at $[x] - 1$, so the correct way is to do what the book does, discard the $\mu(n)$ from the sum instead of discarding our newly acquired tool, so the tool must stay for this to work.
+
+The next clever thing is the last step, separating the first term from the sum, had we not done that we wouldn't have been able to get rid of the annoying 1 in front of the sum because
+%
+\nbea
+\sum_{n\le x}\left\{\frac{x}{n}\right\} &<& [x] \\
+\to 1 + \sum_{n\le x}\left\{\frac{x}{n}\right\} &<& 1+[x] 
+\neea
+%
+and now I do believe that this is the best proof there is for this Theorem, as an aside, this means that we can tighten the inequality for the sum above
+%
+\nbea
+\sum_{n\le x}\left\{\frac{x}{n}\right\} & = & \{x\} + \sum_{2\le n\le x}\left\{\frac{x}{n}\right\} \\
+& < & \{x\} + [x] - 1 \\
+& < & x - 1
+\neea
+%
+which is an amazing result in itself
+%
+\nbea
+\sum_{n\le x}\left\{\frac{x}{n}\right\} & = & \sum_{n\le x}\frac{x}{n} - \sum_{n\le x}\left\lbrack\frac{x}{n}\right\rbrack \\
+& = & 
+\neea
+%
 
 
+%
+\nbea
+\sum_{n\le x}\left\lbrack\frac{x}{n}\right\rbrack & = & \sum_{n\le x} \sum_{d|n} 1 \\
+& = & \sum_{n\le x} d(n) \\
+& = & x\log x + (2C-1)x + O(\sqrt{x})
+\neea
+%
 
+%
+\nbea
+\sum_{n\le x}\frac{x}{n} & = & x\sum_{n\le x}\frac{1}{n} \\
+& = & x\log x + xC + O\left(1\right)
+\neea
+%
 
-
-
-
-
-
-
-
-
-
-
+%
+\nbea
+\sum_{n\le x}\frac{x}{n} - \sum_{n\le x}\left\lbrack\frac{x}{n}\right\rbrack & = & \left(x\log x + xC + O\left(1\right)\right) - \left(x\log x + (2C-1)x + O(\sqrt{x})\right) \\
+& = & (1-C)x + O(\sqrt{x})
+\neea
+%
 
 
 
