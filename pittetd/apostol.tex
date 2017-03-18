@@ -3127,14 +3127,101 @@ and now I do believe that this is the best proof there is for this Theorem, as a
 \neea
 %
 which is an amazing result in itself
+
+\underline{\textit{\textbf{Idiot Alert}}}, numerically speaking, after some time messing up with Maxima, 
 %
 \nbea
-\sum_{n\le x}\left\{\frac{x}{n}\right\} & = & \sum_{n\le x}\frac{x}{n} - \sum_{n\le x}\left\lbrack\frac{x}{n}\right\rbrack \\
-& = & 
+\sum_{n\le x}\left\{\frac{x}{n}\right\} & < & 0.62 x
 \neea
 %
+which makes sense since roughly speaking $\left\{\frac{x}{n}\right\} = 1/2$ on average and proving this is another problem by itself. For our current problem, if $x$ is an integer then
+%
+\nbea
+\sum_{n\le x} \left\{\frac{x}{n}\right\} & = & \left\{\frac{x}{1}\right\} + \left(\sum_{2\le n\le x-1} \left\{\frac{x}{n}\right\}\right) + \left\{\frac{x}{x}\right\} \\
+& = & 0 + \left(\sum_{2\le n\le x-1} \left\{\frac{x}{n}\right\}\right) + 0
+\neea
+%
+now since $x$ is an integer
+%
+\nbea
+\left\{\frac{x}{n}\right\} & = & \frac{x}{n} - \left\lbrack\frac{x}{n}\right\rbrack \\
+& = & \frac{x {\rm~mod~} n}{n}
+\neea
+%
+and therefore
+%
+\nbea
+\sum_{2\le n\le x-1} \left\{\frac{x}{n}\right\} & \le & \sum_{2\le n\le x-1} \frac{n-1}{n} \\
+\to \sum_{n\le x} \left\{\frac{x}{n}\right\} & \le & x-2 - \sum_{2\le n\le x-1} \frac{1}{n} \\
+& < & x-2 - \log(x/2)
+\neea
+%
+But if we now change $x$ into a real number things might get hairy. For one if for some $n$ we have $\{[x]/n\} = (n-1)/n$ and if the difference $x-[x]$ is very close to 1 like $0.999\ldots$ we will have
+%
+\nbea
+\left\{\frac{x}{n}\right\}\approx \frac{n-1}{n} + \frac{1}{n} & \approx & 1
+\neea
+%
+and so the upper bound of the sum becomes
+%
+\nbea
+\sum_{n\le x} \left\{\frac{x}{n}\right\} & = & \left\{\frac{x}{1}\right\} + \left\{\frac{x}{[x]}\right\} + \sum_{2\le n\le x-1} \frac{n}{n} \\
+& < & 1 + 1 + x-2 \\
+& < & x
+\neea
+%
+well of course this is assuming $\{[x]/n\} = (n-1)/n$ for all $n$, \ie $[x] \equiv -1 \pmod{n}$ for all $n\le x$ which more than likely not true. Although it's a bit hard to tell since Chinese Remainder Theorem can't be directly applied if the mods are not all co-prime.
 
+But we can still salvage this situation :) in a quite stupid way. For example, take $x = 5.999\ldots$
+%
+\nbea
+\left\{\frac{5.999\ldots}{5}\right\} + \left\{\frac{5.999\ldots}{4}\right\} & = & 0.1999\ldots + 0.4999\ldots \\
+& < & 1
+\neea
+%
+and actually this phenomenon is already true starting from $[x] = 4$, and so
+%
+\nbea
+\sum_{n\le x} \left\{\frac{x}{n}\right\} & = & \left\{\frac{x}{1}\right\} + \left(\left\{\frac{x}{[x]}\right\} + \left\{\frac{x}{[x]-1}\right\}\right) + \sum_{2\le n\le x-2} \frac{n}{n} \\
+& < & 1 + (1) + x-3 \\
+& < & x - 1
+\neea
+%
+and it works, yay :) but we need to show that the case for $x < 4$ works too, we can do this manually of course, say $x_3 = 3+\Delta,~[x_3] = 3,~0<\Delta<1$
+%
+\nbea
+1 + \sum_{n\le x_3} \left\{\frac{x}{n}\right\} & = & 1 + \left( \left(0+\Delta\right) + \left(\frac{1}{2}+\frac{\Delta}{2}\right) + \left(0+\frac{\Delta}{3}\right) \right) \\
+& = & \frac{9+11\Delta}{6} \\
+& < & \frac{18+6\Delta}{6} \\
+& < & x_3
+\neea
+%
+for $x_2 = 2 + \Delta,~[x_2]=2$ we have
+%
+\nbea
+1 + \sum_{n\le x_2} \left\{\frac{x}{n}\right\} & = & 1 + \left( \left(0+\Delta\right) + \left(0+\frac{\Delta}{2}\right) \right) \\
+& = & \frac{2+3\Delta}{2} \\
+& < & \frac{4+2\Delta}{2} \\
+& < & x_2
+\neea
+%
+and for $x_1 = 1 + \Delta,~[x_1]=1$ the above will yield $1 + \sum_{n\le x_1} \left\{\frac{x}{n}\right\} = 1 + \Delta = x$ so everything is fine. So this is a very long about way to do the last step of the proof :)
 
+\underline{\textbf{\textit{\#Conjecture\#}}}
+%
+\nbea
+0.083x < \sum_{n\le x}\left\{\frac{x}{n}\right\} < 0.62 x
+\neea
+%
+note that the lower bound is only for $x \ge 3$ because for $x=1,2$ it is zero, I don't know how to prove this or if tools gathered from this book will allow me to prove the above but another stupid thing below might help a bit :)
+
+\underline{\textit{Another stupid method}} to calculate the above is
+%
+\nbea
+\sum_{n\le x}\left\{\frac{x}{n}\right\} & = & \sum_{n\le x}\frac{x}{n} - \sum_{n\le x}\left\lbrack\frac{x}{n}\right\rbrack 
+\neea
+%
+and then substituting definition for each term
 %
 \nbea
 \sum_{n\le x}\left\lbrack\frac{x}{n}\right\rbrack & = & \sum_{n\le x} \sum_{d|n} 1 \\
@@ -3142,30 +3229,156 @@ which is an amazing result in itself
 & = & x\log x + (2C-1)x + O(\sqrt{x})
 \neea
 %
-
+and
 %
 \nbea
 \sum_{n\le x}\frac{x}{n} & = & x\sum_{n\le x}\frac{1}{n} \\
 & = & x\log x + xC + O\left(1\right)
 \neea
 %
-
+but this time instead of Big Oh we need the actual constant for this to work, but first
 %
 \nbea
-\sum_{n\le x}\frac{x}{n} - \sum_{n\le x}\left\lbrack\frac{x}{n}\right\rbrack & = & \left(x\log x + xC + O\left(1\right)\right) - \left(x\log x + (2C-1)x + O(\sqrt{x})\right) \\
-& = & (1-C)x + O(\sqrt{x})
+\sum_{n\le x}\left\{\frac{x}{n}\right\} = \sum_{n\le x}\frac{x}{n} - \sum_{n\le x}\left\lbrack\frac{x}{n}\right\rbrack & = & \left(x\log x + xC + O\left(1\right)\right) - \left(x\log x + (2C-1)x + O(\sqrt{x})\right)
 \neea
 %
-and according to the derivation of the two Big Oh's above, the $O(1)$ is from $xO(1/x)$ which was derived on Page 55, and $O(\sqrt{x})$ was derived on Page 59, the actual constant terms for the Big Oh's are
+so for the second big bracket on the RHS we need to {\bf minimize} its value since there's a minus sign in front of it, this is because we want to get the {\bf upper} bound of the LHS.
+
+Tracing through its derivation and carefully dismembering each Big Oh, first
+%
+\nbea
+\sum_{n\le x}d(n) & = & 2\sum_{d\le\sqrt{x}} \left(\left\lbrack\frac{x}{d}\right\rbrack - d \right) + [\sqrt{x}] \\
+& = & 2\sum_{d\le\sqrt{x}} \left(\frac{x}{d} - \left\{\frac{x}{d}\right\} - d \right) + [\sqrt{x}] \\
+& = & 2x\sum_{d\le\sqrt{x}} \frac{1}{d} -2\sum_{d\le\sqrt{x}}\left\{\frac{x}{d}\right\} -2\sum_{d\le\sqrt{x}} d + [\sqrt{x}]
+\neea
+%
+minimizing term by term
+%
+\nbea
+\sum_{d\le\sqrt{x}} \frac{1}{d} & \to & \log \sqrt{x} + C + \left(\int_{\sqrt{x}}^\infty\frac{\{t\}}{t^2}dt\right) - \frac{\{\sqrt{x}\}}{\sqrt{x}}
+\neea
+%
+There's something interesting about the integral
+%
+\nbea
+\int_{1}^N\frac{\{t\}}{t^k}dt & = & \int_{1}^N\frac{t-[t]}{t^k}dt, ~~~ k \ge 0
+\neea
+%
+if we plot $\frac{t-[t]}{t^k}$ we see something interesting in Fig.~\ref{fig:Thm313}, this means that
+%
+\begin{figure}
+\centering
+  \includegraphics[width=1.1\linewidth]{Thm_3_13.png}
+  \caption{Plot of $\frac{t-[t]}{t}$, $\frac{t-[t]}{t^2}$, and $\frac{t-[t]}{t^4}$ in blue lines and the series $\frac{1}{n+1}$, $\frac{1}{(n+1)^2}$, and $\frac{1}{(n+1)^4}$ in red.}
+\label{fig:Thm313}
+\end{figure}
+%
+%
+\nbea
+\int_{1}^N\frac{t-[t]}{t^k}dt & > & \frac{1}{2}\sum_{n=2}^N \frac{1}{n^k}
+\neea
+%
+for $k \ge 1$, the factor $1/2$ comes from drawing a triangle under the rectangle and its area is half that of the rectangle's,  utilizing this we get
+%
+\nbea
+\int_{\sqrt{x}}^\infty\frac{\{t\}}{t^2}dt & > & \frac{1}{2}\sum_{n=\sqrt{x}}^\infty \frac{1}{n^2}
+\neea
+%
+and of course
+%
+\nbea
+\sum_{n=i}^j\frac{1}{n^2} & > & \int_i^{j+1}\frac{1}{t^2} dt \\
+\to \frac{1}{2}\sum_{n=\sqrt{x}}^\infty \frac{1}{n^2} & > & \frac{1}{2} \int_{\sqrt{x}}^\infty\frac{1}{t^2}dt
+\neea
+%
+and finally
+%
+\nbea
+\int_{\sqrt{x}}^\infty\frac{\{t\}}{t^2}dt & > & \frac{1}{2} \int_{\sqrt{x}}^\infty\frac{1}{t^2}dt
+\neea
+%
+combining everything we've got so far
+%
+\nbea
+2x\sum_{d\le\sqrt{x}} \frac{1}{d} & > & x\log x + 2xC + x\int_{\sqrt{x}}^\infty\frac{1}{t^2}dt - 2\sqrt{x}\{\sqrt{x}\} \\
+& > & x\log x + 2xC + \sqrt{x} - 2\sqrt{x}\{\sqrt{x}\}
+\neea
+%
+The next term we need to minimize (this time we need to include to constant term since here it is negative)
+%
+\nbea
+-2\sum_{d\le\sqrt{x}} d & = & -x + 1 -2\int_1^{\sqrt{x}} \{t\}dt - 2 + 2\{\sqrt{x}\}\sqrt{x}
+\neea
+%
+and of course, the tricky integral term's lower bound can be calculated using Fig.~\ref{fig:Thm313}, it is just a series of triangles and this time it is actually just a series of triangles there's no approximation, so the area under the curve is
+%
+\nbea
+\int_1^{\sqrt{x}} \{t\}dt & = & \frac{1}{2} \sum_{1}^{\sqrt{x}} 1 = \frac{\sqrt{x}}{2}
+\neea
+%
+so we get
+%
+\nbea
+-2\sum_{d\le\sqrt{x}} d & = & -x - 1 -\sqrt{x} + 2\{\sqrt{x}\}\sqrt{x}
+\neea
+%
+next is the trickiest term $-2\sum_{d\le\sqrt{x}}\left\{\frac{x}{d}\right\}$, this one is a bit hard to get since the sum is only until $\le \sqrt{x}$ and not $x$ and so we need to get the worst estimate (\ie the worst minimum)
+%
+\nbea
+-2\sum_{d\le\sqrt{x}}\left\{\frac{x}{d}\right\} & \to & -2\sqrt{x}
+\neea
+%
+combining everything together
+%
+\nbea
+&& 2x\sum_{d\le\sqrt{x}} \frac{1}{d} -2\sum_{d\le\sqrt{x}} d -2\sum_{d\le\sqrt{x}}\left\{\frac{x}{d}\right\}+ [\sqrt{x}] \\
+&& ~~~~~~~~~~~~\Longrightarrow x\log x + 2xC + \sqrt{x} - 2\sqrt{x}\{\sqrt{x}\} -x - 1 -\sqrt{x} + 2\{\sqrt{x}\}\sqrt{x} - 2\sqrt{x} + [\sqrt{x}] \\
+&& ~~~~~~~~~~~~~~>~ x\log x + (2C-1)x - 1 - 2\sqrt{x} + [\sqrt{x}]
+\neea
+%
+
+For $\sum_{n\le x}\frac{x}{n}$ we want to {\bf maximize} this sucker
+%
+\nbea
+\sum_{n\le x}\frac{x}{n} & < & x\log x + xC + 1 - \{x\}
+\neea
+%
+and so
+%
+\nbea
+\sum_{n\le x}\frac{x}{n} - \sum_{n\le x} \left\lbrack\frac{x}{n}\right\rbrack & \le & (x\log x + xC + 1 - \{x\}) - (x\log x + (2C-1)x - 1 - 2\sqrt{x} + [\sqrt{x}]) \\
+& \le & (1-C)x + 2\sqrt{x} + 2 - \{x\} - [\sqrt{x}] \\
+& \le & (1-C)x + \sqrt{x} + 2
+\neea
+%
+too bad the maximum of the RHS is $3.423x$ when $x=1$ but starting from $x=43$ we get $< 0.62x$ so it's not too bad, and the first 43 cases we can check by hand (or Maxima nowadays), so we have just proved our upper bound.
+
+For the lower bound we'll do the same thing
 
 
 
+if we add 1 to this to get our original problem
+%
+\nbea
+1 + \sum_{n\le x}\left\{\frac{x}{n}\right\} & = & 1 + \sum_{n\le x}\frac{x}{n} - \sum_{n\le x} \left\lbrack\frac{x}{n}\right\rbrack \\
+& \le & (1-C)x + 6\sqrt{x} - [\sqrt{x}]
+\neea
+%
+since the Euler's constant $C < 0.57721\ldots$ and we are calculating the upper bound we can set $C=0.57721$
+%
+\nbea
+1 + \sum_{n\le x}\left\{\frac{x}{n}\right\} & \le & 0.42279x + 6\sqrt{x} - [\sqrt{x}]
+\neea
+%
+and starting from $x\ge 78$ we get
+%
+\nbea
+\frac{1 + \sum_{n\le x}\left\{\frac{x}{n}\right\}}{x} & < & 1
+\neea
+%
+so with this method at least we can prove Theorem 3.13 starting from $x\ge78$ LOL
 
-
-
-
-
-
+This might not look too good but it does give us some boost into proving our \underline{\textit{\#Conjecture\#}} above
 
 
 
