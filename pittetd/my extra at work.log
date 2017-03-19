@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  18 MAR 2017 23:01
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  19 MAR 2017 00:10
 entering extended mode
 **"C:/Users/User/Documents/GitHub/string/pittetd/my extra at work.tex"
 ("C:/Users/User/Documents/GitHub/string/pittetd/my extra at work.tex"
@@ -896,11 +896,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 5514--5515
  []
 
 [153] [154] [155] [156] [157] ("my extra at work.bbl") [158]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 5753.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 5756.
 
 ("my extra at work.aux")
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 5753.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 5753.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 5756.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 5756.
  ) 
 Here is how much of TeX's memory you used:
  13408 strings out of 428755

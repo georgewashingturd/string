@@ -5708,20 +5708,23 @@ now we know that $(a,b)=1$ and so $(a-b,a+b)=1$ too otherwise
 d | 2a ~~~{\rm and}~~~ d|2b
 \neea
 %
-and so $d|2$ but remember that $a-b$ and $a+b$ are odd so $d|1$, this means that $3{y'}^2 = a-b = 2^2{a'}^2 - {b'}^2$ and ${y''}^2 = a+b=2^2{a'}^2 + {b'}^2$ as dictated by mod 4 but this is just a formula for the Pythagorean triplet, \ie
+and so $d|2$ but remember that $a-b$ and $a+b$ are odd so $d|1$, this means that $3{y'}^2 = a-b = 2^2{a'}^2 - {b'}^2$ and ${y''}^2 = a+b=2^2{a'}^2 + {b'}^2$ as dictated by mod 4 but if we do mod 3, for the first one we get
 %
 \nbea
-(3{y'}^2)^2 + (2\cdot2{a'}{b'})^2 & = & ({y''}^2)^2 \\
-9 {y'}^4 + 4 (2a'b')^2 & = & ({y''}^2)^2
+3{y'}^2 & = & 2^2{a'}^2 - {b'}^2 \\
+0 \pmod{3} & \equiv & {a'}^2 - {b'}^2
 \neea
 %
-but note also that
+now if $a'\equiv0\pmod{3}$ then $b'$ must too but then it's a contradiction since $(a',b')=1$, if $3|b'$ this contradiction also holds, this means that $a' \equiv \pm1\pmod{3}$ and so is $b'$ but if this is the case then
 %
 \nbea
-z & = & a^2 + b^2 \\
-& = & (2^2{a'}^2)^2 + ({b'}^2)^2
+2^2{a'}^2 + {b'}^2 & \equiv & 2 \pmod{3} \\
+\to {y''}^2 & \equiv & 2 \pmod{3}
 \neea
 %
+but this is a contradiction since $2$ is not a quadratic residue modulo 3.
+
+This leaves us with just the last case $x^4 + 36y^4 = z^2$, where $(x^2,6y^2,z) = 1$, if $3|x$ or $2|x$ we will get the our previous case
 
 
 
