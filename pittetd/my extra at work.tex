@@ -5511,12 +5511,217 @@ so here we can choose $C = k$ since we know that $\log(n) < n$, we now need to s
 %
 but starting from $n=M^{k}$ the ratio of the slopes will be $M > 1$. In conclusion $\log(n) < k n^{1/k}$ starting from $M^k$ and the slope of the RHS is bigger than the slope of the LHS at {\bf any} point beyond that, therefore the RHS is always bigger than the LHS after $n=M^k$ and $\log(n) = O(n^{1/k})$ for any finite $k$.
 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+Proof that $n=1,2,3$ are not congruent numbers. A congruent number is an integer that is also the area of a triangle with rational sides.
 
+If $n=1$ is conruent then by definition
+%
+\nbea
+1 & = & \frac{ab}{2}
+\neea
+%
+since $a,b$ are rationals
+%
+\nbea
+1 & = & \frac{1}{2} \frac{AB}{A'B'} \\
+2A'B' & = & AB
+\neea
+%
+and since $(A,A')=(B,B')=1$ it must be that $A = 2B',~B=A'$ or $A=B',~B=2A'$, in any case the conclusion will be the same, since $a^2 + b^2 = c^2$
+%
+\nbea
+\frac{A^2}{{A'}^2} + \frac{4{A'}^2}{A^2} & = & \frac{C^2}{{C'}^2} \\
+A^4 + 4{A'}^4 & = & \frac{A^2{A'}^2}{{C'}^2} C^2
+\neea
+%
+now due to $(A,A')=1$, $A'|C'$, otherwise we'll have a contradiction where $(A,A')>1$, also the LHS in an integer and the RHS must be as well and since $(C,C')=1$ so let's denote
+%
+\nbea
+\frac{A^2{A'}^2}{{C'}^2} & = & D^2
+\neea
+%
+with $D|A$ but since $(A,A')=1$ we have $D^2 = 4$ and therefore $A$ is even and we have
+%
+\nbea
+16{\bar A}^4 + 4{A'}^4 & = & 4C^2 \\
+4{\bar A}^4 + {A'}^4 & = & C^2
+\neea
+%
+with $(4{\bar A},A',C) = 1$, this is because $(A,A')=1$ and since $A$ is even $A'$ must be odd and $A'$ must not have 2 as a divisor and of course if $(A,C)>1$ then $(A,A')>1$ as well, the same is true if $(A',C)>1$.
 
+Following the same steps for $n=2$ we will have something like
+%
+\nbea
+A^4 + 16{A'}^4 & = & \frac{A^2{A'}^2}{{C'}^2} C^2
+\neea
+%
+so now $D^2|16$, so $D^2=4$ or $D^2=16$ so
+%
+\nbea
+16{\bar A}^4 + 16{A'}^4 & = & 4C^2,~~~D^2 = 4 \\
+256{\bar A}^4 + 16{A'}^4 & = & 16C^2,~~~D^2 = 16
+\neea
+%
+or in other words
+%
+\nbea
+4{\bar A}^4 + 4{A'}^4 & = & C^2,~~~D^2 = 4 \\
+16{\bar A}^4 + {A'}^4 & = & C^2,~~~D^2 = 16
+\neea
+%
+for the first case of $D^2=4$, it implies that $4|C^2$ and so we have
+%
+\nbea
+{\bar A}^4 + {A'}^4 & = & {\bar C}^2,~~~D^2 = 4 \\
+(2{\bar A})^4 + {A'}^4 & = & C^2,~~~D^2 = 16
+\neea
+%
+this is an easy case as these cases are not allowed as shown somewhere earlier in this document :) this leads to Fermat's Last Theorem for $n=4$.
 
+We have a more complicated version for $n=3$
+%
+\nbea
+A^4 + 36{A'}^4 & = & \frac{A^2{A'}^2}{{C'}^2} C^2
+\neea
+%
+and so $D^2|36$, it's either $D^2 = 4$ or $D^2=9$ or $D^2=36$
+ %
+\nbea
+16{\bar A}^4 + 36{A'}^4 & = & ~4C^2,~~~D^2 = 4 \\
+81{\bar A}^4 + 36{A'}^4 & = & ~9C^2,~~~D^2 = 9 \\
+1296{\bar A}^4 + 36{A'}^4 & = & 36C^2,~~~D^2 = 36
+\neea
+%
+simplifying we have
+%
+\nbea
+4{\bar A}^4 + 9{A'}^4 & = & C^2,~~~D^2 = 4 \\
+9{\bar A}^4 + 4{A'}^4 & = & C^2,~~~D^2 = 9 \\
+36{\bar A}^4 + {A'}^4 & = & C^2,~~~D^2 = 36
+\neea
+%
+the first 2 cases are equivalent because if say for the first case $(\bar A,9) > 1$ or in the second case $(\bar A,4) > 1$ then it means that $D^2=36$ and we have the third case.
 
+So what we have is now equations of the form (the case for $n=2$ is already taken care of as stated above)
+%
+\nbea
+x^4 + 4y^4 & = & z^2, ~~~ n=1 \\
+4x^4 + 9y^4 & = & z^2, ~~~ n=3 \\
+x^4 + 36y^4 & = & z^2, ~~~ n=3
+\neea
+%
+here we just need to assume that $(x,y,z)=1$, \ie they are all co-prime, let's tackle them one by one, first case $x^4 + 4y^4 = z^2$.
 
+Since we will utilize th Pythagorean formula we need $(x^2,2y^2,z)=1$ but in our assumption only $(x,y,z)=1$ is true, this means that $x$ can be even, but if $x$ is even we have
+%
+\nbea
+(2x')^4 + 4y^4 & = & z^2 \\
+\to 4{x'}^4 + y^4 & = & {z'}^2
+\neea
+%
+with $(x',y,z')=1$ and also $(2{x'}^2,y^2,z^2)=1$, and so we have the same problem :) so our minimalistic assumption is OK and it implies the necessary assumption for the Pythagorean formula.
+
+First let's assume $y$ is odd, according to the usual Pythagorean formula
+%
+\nbea
+x^2 = a^2 - b^2, ~~~\bcancel{2}y^2= \bcancel{2}ab
+\neea
+%
+but $a,b$ are of opposite parities this means that $y$ is even which is a contradiction, so $y$ must be even and according to the Pythagorean formula above $y^2 = ab$, but we have $(a,b)=1$ and so $a = {a'}^2, b = {b'}^2$ this means
+%
+\nbea
+x^2 & = & a^2 - b^2 \\
+& = & {a'}^4 - {b'}^4
+\neea
+%
+which is disallowed due to the precursor of FLT $n=4$ as shown somewhere earlier in this document :)
+
+We now move on to the first case of $n=3$
+%
+\nbea
+4x^4 + 9y^4 & = & z^2
+\neea
+%
+This case is a bit more complicated than the previous one, first, if $y$ is even we have
+%
+\nbea
+4x^4 + 9\cdot 16{y'}^4 & = & z^2 \\
+x^4 + 36{y'}^4 & = & {z'}^2
+\neea
+%
+but $3|x$ is still allowed, however, if this is the case we have 
+%
+\nbea
+81 {x'}^4 + 36{y'}^4 & = & {z'}^2 \\
+9 {x'}^4 + 4{y'}^4 & = & {z''}^2
+\neea
+%
+which is the original problem with an extra Pythagorean co-primeness, if $3\nmid x$ we have the other case $x^4 + 36{y'}^4 = {z'}^2$.
+
+Next if $3|x$
+%
+\nbea
+4\cdot81 {x'}^4 + 9y^4 & = & z^2 \\
+36{x'}^4 + y^4 & = & {z'}^2
+\neea
+%
+and if we have $2|y$ we have
+%
+\nbea
+36 {x'}^4 + 16{y'}^4 & = & {z'}^2 \\
+9 {x'}^4 + 4{y'}^4 & = & {z''}^2
+\neea
+%
+and so we have the original problem with Pythagorean co-primeness and if $2\nmid y$ we have the other case $36{x'}^4 + y^4 = {z'}^2$.
+
+So in any case we have $(2x^2,3y^2,z)=1$ with $4x^4 + 9y^4 = z^2$, first assume $x$ odd
+%
+\nbea
+2x^2=2ab
+\neea
+%
+and since $ab$ is even $x$ is too, which is a contradiction so $x$ must be even
+%
+\nbea
+4(2{x'})^4 + 9y^4 & = & z^2 \\
+(2^3{x'}^2)^2 + 9y^4 & = & z^2
+\neea
+%
+and
+%
+\nbea
+2^3{x'}^2 = 2ab \to (2{x'})^2 = ab
+\neea
+%
+this means $a = 2^2{a'}^2,~b = {b'}^2$ or vice versa but the conclusion is the same
+%
+\nbea
+3y^2 & = & (2^2{a'}^2)^2 - ({b'}^2)^2 \\
+& = & (2^2{a'}^2 - {b'}^2)(2^2{a'}^2 + {b'}^2) \\
+& = & (a - b)(a + b)
+\neea
+%
+now we know that $(a,b)=1$ and so $(a-b,a+b)=1$ too otherwise
+%
+\nbea
+d | 2a ~~~{\rm and}~~~ d|2b
+\neea
+%
+and so $d|2$ but remember that $a-b$ and $a+b$ are odd so $d|1$, this means that $3{y'}^2 = a-b = 2^2{a'}^2 - {b'}^2$ and ${y''}^2 = a+b=2^2{a'}^2 + {b'}^2$ as dictated by mod 4 but this is just a formula for the Pythagorean triplet, \ie
+%
+\nbea
+(3{y'}^2)^2 + (2\cdot2{a'}{b'})^2 & = & ({y''}^2)^2 \\
+9 {y'}^4 + 4 (2a'b')^2 & = & ({y''}^2)^2
+\neea
+%
+but note also that
+%
+\nbea
+z & = & a^2 + b^2 \\
+& = & (2^2{a'}^2)^2 + ({b'}^2)^2
+\neea
+%
 
 
 
