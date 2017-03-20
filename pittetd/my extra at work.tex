@@ -5724,14 +5724,119 @@ now if $a'\equiv0\pmod{3}$ then $b'$ must too but then it's a contradiction sinc
 %
 but this is a contradiction since $2$ is not a quadratic residue modulo 3.
 
-This leaves us with just the last case $x^4 + 36y^4 = z^2$, where $(x^2,6y^2,z) = 1$, if $3|x$ or $2|x$ we will get the our previous case
+This leaves us with just the last case $x^4 + 36y^4 = z^2$, where $(x^2,6y^2,z) = 1$, if $3|x$ or $2|x$ we will just get our previous case. Again $y$ must be even otherwise if $y$ is odd then $6y^2 = 2ab$ and since $a, b$ have opposite parities $y$ must be even which is a contradiction. ine, $y$ is even and $x$ is odd and $x^2 = a^2 - b^2,~3y^2=ab$ according to the Pythagorean formula.
 
+If $a$ is even ($b$ must then be odd) we will have
+%
+\nbea
+x^2 + b^2 & = & a^2 \\
+2 & \equiv & 0 \pmod{4}
+\neea
+%
+since $x$ is odd but this is a contradiction so $a$ must be odd and due to $(a,b)=1$ and $3y^2 = ab$ this means that either $a = 3{a'}^2, ~b={b'}^2$ or $a = {a'}^2, ~b=3{b'}^2$ where in both cases $a$ is odd and $b$ is even.
 
+If $a = 3{a'}^2, ~b={b'}^2$ then
+%
+\nbea
+x^2 + b^2 & = & (3 {a'}^2)^2
+\neea
+%
+which according to the Pytahgorean formula
+%
+\nbea
+3{a'}^2 & = & c^2 + d^2 \\
+\to -1 & \equiv & 1 \pmod{4}
+\neea
+%
+a contradiction and so it must be that $a = {a'}^2, ~b=3{b'}^2$
+%
+\nbea
+x^2 & = & ({a'}^2)^2 - ({3{b'}}^2)^2\\
+x^2 & = &  ({a'}^2 - {3{b'}}^2)({a'}^2 + {3{b'}}^2)
+\neea
+%
+now say that $\gcd({a'}^2 - {3{b'}}^2,{a'}^2 + {3{b'}}^2) = g$ then $g|2{a'}^2$ and $g|6{b'}^2$ but $g$ is odd and $({a'}^2,3{b'}^2)=1$ and so $g|3$ but if $g=3$ then
+%
+\nbea
+g\cdot k & = & {a'}^2 - 3{b'}^2 \\
+\to 3\cdot k & = & {a'}^2 - 3{b'}^2 \\
+3(k + {b'}^2) & = & {a'}^2 \\
+3 &|& a'
+\neea
+%
+which is a contradiction since $({a'}^2,3{b'}^2)=1$ and so $\gcd({a'}^2 - {3{b'}}^2,{a'}^2 + {3{b'}}^2) = g = 1$. Since $x^2 = ({a'}^2 - {3{b'}}^2)({a'}^2 + {3{b'}}^2)$ this means that
+%
+\nbea
+{a'}^2 - {3{b'}}^2 & = & {x'}^2 \\
+{a'}^2 + {3{b'}}^2 & = & {x''}^2
+\neea
+%
+At this point we need another strategy because we cannot do mod 3 or mod 4 to show contradiction, this case is actually quite tough, we will actually invoke Fermat's infinite descent argument, from our original problem
+%
+\nbea
+x^4 + 36y^4 & = & z^2 \\
+\to (x^2 - 6y^2)^2 + 3(2xy)^2 & = & z^2 \\
+\to (x^2 + 6y^2)^2 - 3(2xy)^2 & = & z^2
+\neea
+%
+rearranging
+%
+\nbea
+z^2 - 3(2xy)^2 & = & (x^2 - 6y^2)^2 \\
+z^2 + 3(2xy)^2 & = & (x^2 + 6y^2)^2
+\neea
+%
+and we see a familiar pattern above that will allow us to invoke infinite descent. From $x^2 = ({a'}^2)^2 - ({3{b'}}^2)^2 \to x^2 + ({3{b'}}^2)^2 = ({a'}^2)^2$ and noting that $x$ is odd and therefore ${3{b'}}^2$ is even we get
+%
+\nbea
+{a'}^2 & = & c^2 + d^2  = (c-d)^2 + 2cd = (c+d)^2 - 2cd\\
+3{b'}^2 & = & 2cd \\
+x & = & c^2 - d^2 = (c-d)(c+d)
+\neea
+%
+so we see that
+%
+\nbea
+x^2 = (c-d)^2(c+d)^2 & = & ({a'}^2 - {3{b'}}^2)({a'}^2 + {3{b'}}^2)
+\neea
+%
+and from the definition of ${a'}^2$ above it is obvious that
+%
+\nbea
+{a'}^2 - {3{b'}}^2 & = & (c-d)^2 = {x'}^2 \\
+{a'}^2 + {3{b'}}^2 & = & (c+d)^2 = {x''}^2
+\neea
+%
+and from $3{b'}^2 = 2cd$ and noting that $(c,d)=1$ we get four options (but two of them are equivalent), we can choose $c$ to be even and $d$ odd or vice versa, let's take the first option first, for this particular option we have two choices below
+%
+\nbea
+3{b'}^2 = 2 (3\cdot2 {c'}^2){d'}^2 &~~~~~~{\rm or}~~~~~~& 3{b'}^2 = 2 (2 {c'}^2)(3{d'}^2)\\
+\to c = 6{c'}^2,~d={d'}^2 &~~~~~~{\rm or}~~~~~~& c = 2{c'}^2,~d=3{d'}^2
+\neea
+%
+the other two options we get by setting $d$ even and $c$ odd which will give us the same conclusion, let's take the first option first $c = 6{c'}^2,~d={d'}^2$
+%
+\nbea
+{a'}^2 - {3{b'}}^2 & = & {x'}^2 \\
+{a'}^2 - 3(2c'd')^2 & = & (c-d)^2 \\
+{a'}^2 - 3(2c'd')^2 & = & (6{c'}^2-{d'}^2)^2 \\
+{a'}^2 - 3(2d'c')^2 & = & ({d'}^2 - 6{c'}^2)^2
+\neea
+%
+and from ${a'}^2 + {3{b'}}^2 = {x''}^2$ we get ${a'}^2 + 3(2d'c')^2 = ({d'} + 6{c'})^2$ thus we have an infinite descent.
 
+If we take the second option $c = 2{c'}^2,~d=3{d'}^2$
+%
+\nbea
+{a'}^2 - {3{b'}}^2 & = & {x'}^2 \\
+{a'}^2 - 3(2c'd')^2 & = & (c-d)^2 \\
+{a'}^2 - 3(2c'd')^2 & = & (2{c'}^2-3{d'}^2)^2 \\
+{a'}^2 & = & 4{c'}^4 + 9{d'}^4
+\neea
+%
+but we have previously shown that this case has no solution.
 
-
-
-
+From this we can see how tough it is to show that an integer is a congruent number or not, even for $n=4$ it is already quite tought since we have to consider multiple cases.
 
 
 
