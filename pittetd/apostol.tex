@@ -3213,9 +3213,15 @@ and for $x_1 = 1 + \Delta,~[x_1]=1$ the above will yield $1 + \sum_{n\le x_1} \l
 0.083x < \sum_{n\le x}\left\{\frac{x}{n}\right\} < 0.62 x
 \neea
 %
-note that the lower bound is only for $x \ge 3$ because for $x=1,2$ it is zero, I don't know how to prove this or if tools gathered from this book will allow me to prove the above but another stupid thing below might help a bit :)
+and
+%
+\nbea
+\lim_{x\to\infty}\frac{\sum_{n\le x}\left\{\frac{x}{n}\right\}}{x} & = & 1-C
+\neea
+%
+note that the lower bound is only for $x \ge 3$ because for $x=1,2$ it is zero and $C$ is Euler's constant $0.57721\ldots$, let's use the tools gathered from this book to prove the above :)
 
-\underline{\textit{Another stupid method}} to calculate the above is
+\underline{\textit{Another stupid attempt}} to calculate the above is
 %
 \nbea
 \sum_{n\le x}\left\{\frac{x}{n}\right\} & = & \sum_{n\le x}\frac{x}{n} - \sum_{n\le x}\left\lbrack\frac{x}{n}\right\rbrack 
@@ -3351,10 +3357,80 @@ and so
 & \le & (1-C)x + \sqrt{x} + 2
 \neea
 %
-too bad the maximum of the RHS is $3.423x$ when $x=1$ but starting from $x=43$ we get $< 0.62x$ so it's not too bad, and the first 43 cases we can check by hand (or Maxima nowadays), so we have just proved our upper bound.
+too bad the maximum of the RHS is $3.423x$ when $x=1$ but starting from $x=43$ we get $< 0.62x$ so it's not too bad, and the first 43 cases we can check by hand (or Maxima nowadays, see script below), so we have just proved our upper bound.
+%
+\begin{verbatim}
+for i:1 thru 43 do
+block(
+    m:0,
+    for j:1 thru i do
+    block(
+        a:(i/j)-floor(i/j),
+        a:a+(D/j),
+        m:m+a
+    ),
+    block(
+        ms:ratsimp((31/50)*(i+D)-m),
+        dc:coeff(expand(ms),D,1),
+        dz:coeff(expand(ms),D,0),
+        if (dz < dc) then
+        block(
+            display(i),
+            display(ms,dd)
+        )
+    )
+);
+\end{verbatim}
+%
+note that $31/50 = 0.62$ and {\it coeff} extracts the  coefficient of certain power of $D$ (short for $\Delta$), here we are simulating real  numbers by adding $D/j$ to each term where $0\le D <1$. So for example we want to see the sum for $n<4$, we just do the sum for $n\le 3$ and set $x=3+\Delta$, where $0\le\Delta<1$ and for each term
+%
+\nbea
+\left\{\frac{3+\Delta}{n}\right\} & = & \frac{3}{n} - \frac{\Delta}{n} - \left\lbrack\frac{3}{n}\right\rbrack
+\neea
+%
+because $[(3+\Delta)/n] = [3/n]$ since $0\le\Delta<1$. At the end we compare the total sum to $0.62(x + \Delta)$ to see if the sum is smaller and indeed it is.
 
-For the lower bound we'll do the same thing
+For the lower bound we'll do the same thing, maximizing term by term
+%
+\nbea
+\sum_{d\le\sqrt{x}} \frac{1}{d} & = & \log \sqrt{x} + C + \left(\int_{\sqrt{x}}^\infty\frac{\{t\}}{t^2}dt\right) - \frac{\{\sqrt{x}\}}{\sqrt{x}} \\
+& = &  \log \sqrt{x} + C + \sum_{\sqrt{x}}^\infty\frac{1}{n^2} - \frac{\{\sqrt{x}\}}{\sqrt{x}} \\
+& = &  \log \sqrt{x} + C + \int_{\sqrt{x}-1}^\infty\frac{1}{t^2}dt - \frac{\{\sqrt{x}\}}{\sqrt{x}} \\
+& = &  \log \sqrt{x} + C + \frac{1}{\sqrt{x}-1} - \frac{\{\sqrt{x}\}}{\sqrt{x}}
+\neea
+%
+The next term we need to maximize
+%
+\nbea
+-2\sum_{d\le\sqrt{x}} d & = & -x + 1 -2\int_1^{\sqrt{x}} \{t\}dt - 2 + 2\{\sqrt{x}\}\sqrt{x} \\
+& \to & -x - 1 + 2\{\sqrt{x}\}\sqrt{x}
+\neea
+%
 
+%
+\nbea
+&& 2x\sum_{d\le\sqrt{x}} \frac{1}{d} -2\sum_{d\le\sqrt{x}}\left\{\frac{x}{d}\right\} -2\sum_{d\le\sqrt{x}} d + [\sqrt{x}] \\
+&& ~~~~~~~~~\Longrightarrow x\log x + 2xC + \frac{2x}{\sqrt{x}-1} - 2\sqrt{x}\{\sqrt{x}\} -x - 1 + 2\{\sqrt{x}\}\sqrt{x} + [\sqrt{x}] \\
+&& ~~~~~~~~~~ <~ x\log x + 2xC + \frac{2x}{\sqrt{x}-1} -x - 1+ [\sqrt{x}]
+\neea
+%
+
+For $\sum_{n\le x}\frac{x}{n}$ we want to {\bf minimize} this sucker
+%
+\nbea
+\sum_{n\le x}\frac{x}{n} & > & x\log x + xC - \{x\}
+\neea
+%
+
+Combining everything
+%
+\nbea
+\sum_{n\le x}\frac{x}{n} - \sum_{n\le x} \left\lbrack\frac{x}{n}\right\rbrack & > & (x\log x + xC - \{x\}) - \left(x\log x + 2xC + \frac{2x}{\sqrt{x}-1} -x - 1+ [\sqrt{x}]\right) \\
+& > & (1-C)x - \frac{2x}{\sqrt{x}-1} + 1 - \{x\} - [\sqrt{x}] \\
+& > & (1-C)x - \frac{2x}{\sqrt{x}-1} + 1 - \sqrt{x}
+\neea
+%
+and we'll only get our lower bound after $x\ge86$
 
 
 if we add 1 to this to get our original problem
