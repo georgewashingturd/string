@@ -3395,66 +3395,102 @@ For the lower bound we'll do the same thing, maximizing term by term
 \nbea
 \sum_{d\le\sqrt{x}} \frac{1}{d} & = & \log \sqrt{x} + C + \left(\int_{\sqrt{x}}^\infty\frac{\{t\}}{t^2}dt\right) - \frac{\{\sqrt{x}\}}{\sqrt{x}} \\
 & = &  \log \sqrt{x} + C + \sum_{\sqrt{x}}^\infty\frac{1}{n^2} - \frac{\{\sqrt{x}\}}{\sqrt{x}} \\
-& = &  \log \sqrt{x} + C + \int_{\sqrt{x}-1}^\infty\frac{1}{t^2}dt - \frac{\{\sqrt{x}\}}{\sqrt{x}} \\
+& = &  \log \sqrt{x} + C + \int_{\sqrt{x}}^\infty\frac{1}{(t-1)^2}dt - \frac{\{\sqrt{x}\}}{\sqrt{x}} \\
 & = &  \log \sqrt{x} + C + \frac{1}{\sqrt{x}-1} - \frac{\{\sqrt{x}\}}{\sqrt{x}}
 \neea
 %
-The next term we need to maximize
+from line 2 to 3 we have used the fact that
+%
+\nbea
+\int_1^{N+1} \frac{1}{t^2} < \sum_{n=1}^N \frac{1}{n^2} < 1+\int_{2}^{N+1}\frac{1}{(t-1)^2}
+\neea
+%
+but if we do not start the sum from 1 we do not need to include the constant 1 as we can easily see from Fig.~\ref{fig:lowerbound}
+%
+\begin{figure}
+\centering
+  \includegraphics[width=1.0\linewidth]{lowerbound.png}
+  \caption{Plot of $\frac{1}{(t-1)^2}$, $\sum_{n=1}^6\frac{1}{n^2}$ on the left, and $\frac{1}{(t-1)^2}$, $\sum_{n=2}^6\frac{1}{n^2}$ on the right.}
+\label{fig:lowerbound}
+\end{figure}
+%
+The next term we need to maximize is
 %
 \nbea
 -2\sum_{d\le\sqrt{x}} d & = & -x + 1 -2\int_1^{\sqrt{x}} \{t\}dt - 2 + 2\{\sqrt{x}\}\sqrt{x} \\
 & \to & -x - 1 + 2\{\sqrt{x}\}\sqrt{x}
 \neea
 %
-
+Combining what we have
 %
 \nbea
 && 2x\sum_{d\le\sqrt{x}} \frac{1}{d} -2\sum_{d\le\sqrt{x}}\left\{\frac{x}{d}\right\} -2\sum_{d\le\sqrt{x}} d + [\sqrt{x}] \\
 && ~~~~~~~~~\Longrightarrow x\log x + 2xC + \frac{2x}{\sqrt{x}-1} - 2\sqrt{x}\{\sqrt{x}\} -x - 1 + 2\{\sqrt{x}\}\sqrt{x} + [\sqrt{x}] \\
-&& ~~~~~~~~~~ <~ x\log x + 2xC + \frac{2x}{\sqrt{x}-1} -x - 1+ [\sqrt{x}]
+&& ~~~~~~~~~~ <~ x\log x + 2xC  + \frac{2x}{\sqrt{x}-1} -x - 1+ [\sqrt{x}]
 \neea
 %
-
 For $\sum_{n\le x}\frac{x}{n}$ we want to {\bf minimize} this sucker
 %
 \nbea
 \sum_{n\le x}\frac{x}{n} & > & x\log x + xC - \{x\}
 \neea
 %
-
-Combining everything
+Putting everything together
 %
 \nbea
-\sum_{n\le x}\frac{x}{n} - \sum_{n\le x} \left\lbrack\frac{x}{n}\right\rbrack & > & (x\log x + xC - \{x\}) - \left(x\log x + 2xC + \frac{2x}{\sqrt{x}-1} -x - 1+ [\sqrt{x}]\right) \\
+\sum_{n\le x}\frac{x}{n} - \sum_{n\le x} \left\lbrack\frac{x}{n}\right\rbrack & > & (x\log x + xC - \{x\}) - \left(x\log x + 2xC ++2x  \frac{2x}{\sqrt{x}-1} -x - 1+ [\sqrt{x}]\right) \\
 & > & (1-C)x - \frac{2x}{\sqrt{x}-1} + 1 - \{x\} - [\sqrt{x}] \\
-& > & (1-C)x - \frac{2x}{\sqrt{x}-1} + 1 - \sqrt{x}
+& > & (1-C)x -  \frac{2x}{\sqrt{x}-1} + 1 - \sqrt{x}
 \neea
 %
-and we'll only get our lower bound after $x\ge86$
+but we'll only get our lower bound after $x\ge86$ which we can check using Maxima as follows
+%
+\begin{verbatim}
+for i:3 thru 86 do
+block(
+    m:0,
+    for j:1 thru i do
+    block(
+        a:(i/j)-floor(i/j),
+        m:m+a
+    ),
+    if (m < 0.083*i) then
+    block(
+        display(i),
+        display(m)
+    )
+);
+\end{verbatim}
+%
+and we see that the lower and upper bounds both approach the same value $1-C$ as $x\to\infty$ and so the lowest value is for $x=4$ because in this case $x=4$ happens to produce the lower bound (note that just because it asymptotically increasing doesn't mean it increases at every $x$ but for our case it so happens that $x=4$ produces the lowest value)
+
+
+
+
 
 
 if we add 1 to this to get our original problem
 %
 \nbea
 1 + \sum_{n\le x}\left\{\frac{x}{n}\right\} & = & 1 + \sum_{n\le x}\frac{x}{n} - \sum_{n\le x} \left\lbrack\frac{x}{n}\right\rbrack \\
-& \le & (1-C)x + 6\sqrt{x} - [\sqrt{x}]
+& \le & (1-C)x + \sqrt{x} + 2
 \neea
 %
 since the Euler's constant $C < 0.57721\ldots$ and we are calculating the upper bound we can set $C=0.57721$
 %
 \nbea
-1 + \sum_{n\le x}\left\{\frac{x}{n}\right\} & \le & 0.42279x + 6\sqrt{x} - [\sqrt{x}]
+1 + \sum_{n\le x}\left\{\frac{x}{n}\right\} & \le & 0.42279x + \sqrt{x}  + 2
 \neea
 %
-and starting from $x\ge 78$ we get
+and starting from $x\ge 11$ we get
 %
 \nbea
 \frac{1 + \sum_{n\le x}\left\{\frac{x}{n}\right\}}{x} & < & 1
 \neea
 %
-so with this method at least we can prove Theorem 3.13 starting from $x\ge78$ LOL
+so with this method at least we can prove Theorem 3.13 starting from $x\ge11$ LOL
 
-This might not look too good but it does give us some boost into proving our \underline{\textit{\#Conjecture\#}} above
+
 
 
 

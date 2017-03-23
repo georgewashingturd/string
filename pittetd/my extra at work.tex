@@ -5836,9 +5836,123 @@ If we take the second option $c = 2{c'}^2,~d=3{d'}^2$
 %
 but we have previously shown that this case has no solution.
 
-From this we can see how tough it is to show that an integer is a congruent number or not, even for $n=4$ it is already quite tough since we have to consider multiple cases.
+From this we can see that it's quite tricky to show that an integer is a congruent number, although for $n=2^m$ the situation is somewhat different :)
+
+For completeness sake let's do $n=4$, in this case we will get something like
+%
+\nbea
+A^4 + 64{A'}^4 & = & D^2C^2
+\neea
+%
+from this we get the following
+%
+\nbea
+4x^4 + 16y^4 = z^2 &~~~~~~{\rm or}~~~~~~& x^4 + 64 y^4 = z^2
+\neea
+%
+For the first option it must mean that $4|z^2$ and so we can divide by four throughout and get $x^4 + 4y^2 = {z'}^2$ but we have shown this case for $n=1$ and there's no solution. For the second option we get $x^4 + 4(2y)^4 = z^2$ which again is the same form and so $n=4$ is not a congruent number.
+
+From the fact that 2 and 4 are not congruent we can conclude that any power of two, $2^m$, is not congruent, why is this? because $n$ is congruent if and only if $ns^2$ is congruent which can be easily shown as follows, if $n$ is congruent, $n=ab/2$ then $ns^2 = (as)(bs)/2$ is also congruent and the reverse is as easy to show as the forward case :)
+
+Now since $2$ is not congruent any number of the form $2\cdot2^{2w}$ can't be congruent either, so that handles the odd power of two, the same goes with $2^2\cdot2^{2r}$ and that covers the even power of 2 and so any power of 2 is not a congruent number.
+
+We can also show the above using induction by noticing the pattern of $ax^4 + by^4 = z^2$ for $n=2^m$ but this is a waste of time although in either method we need to show that the base case $n=2,4$ holds.
+
+The same can roughly be said about $n=3^{2m+1}$ since we know that $n=3$ is not congruent and if we can prove that $n=3^2$ is not congruent then any power of 3 is not congruent, let's do it and see
+%
+\nbea
+\begin{array}{r c l c r c l}
+x^4 + 4\cdot81 y^4 & = & z^2 &~~~~~~\to~~~~~~& x^4 + 4(3 y)^4 & = & z^2\\
+4x^4 + 81 y^4 & = & z^2 &~~~~~~\to~~~~~~& 4x^4 + (3 y)^4 & = & z^2\\
+4\cdot9x^4 + 9 y^4 & = & z^2  &~~~~~~\to~~~~~~& 4x^4 + y^4 & = & {z'}^2
+\end{array}
+\neea
+%
+and so $9$ is not congruent and all power of 3 isn't either, but this gives another result, that is, 
+
+{\it Conjecture}. If $p$ is a prime then $p^2$ isn't congruent
+
+{\it Proof}. The same as above, we will get something like $A^4 + 4\cdot(p^2)^2{A'}^4 = D^2C^2$ and so the cases we need to check are
+%
+\nbea
+\begin{array}{r c l c r c l}
+x^4 + 4\cdot (p^2)^2 y^4 & = & z^2 &~~~~~~\to~~~~~~& x^4 + 4(p y)^4 & = & z^2\\
+4x^4 + (p^2)^2 y^4 & = & z^2 &~~~~~~\to~~~~~~& 4x^4 + (p y)^4 & = & z^2\\
+4\cdot p^2x^4 + p^2 y^4 & = & z^2  &~~~~~~\to~~~~~~& 4x^4 + y^4 & = & {z'}^2
+\end{array}
+\neea
+%
+and all of them have no solution :)
 
 
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+
+I want to know if I'm one of the lowest type of arithmeticians :) Fermat challenged two people to find integer solutions to the following Pell's equations
+%
+\nbea
+x^2 - 151 y^2 = 1 & ~~~~~~{\rm}~~~~~~& x^2 - 313 y^2 = -1
+\neea
+%
+(note that both 151 and 313 are prime), he cautioned them not to produce rational solutions because even ``the lowest type of arithmetician could devise such answers'', so let's see if I'm one of them :)
+
+Let's go to the second one first, assume $x,y$ are rationals then
+%
+\nbea\frac{a^2}{b^2}-  313 \frac{c^2}{d^2} & = & -1 \\
+\to a^2d^2 - 313 c^2b^2 & = & -b^2 d^2
+\neea
+%
+if we move any of the terms on the LHS to the RHS we will have $b^2|a^2d^2$ and $d^2|313c^2b^2$ but $(a,b)=(c,d)=1$ and so $b^2 = d^2$, this means that what we have is
+%
+\nbea
+a^2 - 313 c^2 & = & -d^2 \\
+\to a^2 + d^2 & =  313c^2
+\neea
+%
+there's something we need to know that Fermat knew and was proven by Euler, for a prime $p$ of the form $1 \pmod{4}$, $p$ is a sum of two squares and it so happens that $313 \equiv 1 \pmod{4}$, and so we can easily set $c=1$ and we still get
+%
+\nbea
+a^2 + d^2 & = & 313 \\
+\to 12^2 + 13^2 & = & 313
+\neea
+%
+and so we have found our rational solution
+%
+\nbea
+\left(\frac{12}{13}\right)^2 - 313 \left(\frac{1}{13}\right)^2 & = & -1 \\
+\left(\frac{13}{12}\right)^2 - 313 \left(\frac{1}{12}\right)^2 & = & -1
+\neea
+%
+
+Now back to the first one, we get the same conclusion $b^2=d^2$ and so
+%
+\nbea
+a^2 - 151c^2 & = & b^2 \\
+151c^2 & = & (a-b)(a+b)
+\neea
+%
+since $(a,b)=1$ we have $g|2$ for $g=\gcd(a-b,a+b)$, now we need to know if $b\pm a$ is even or odd, again we go to mod 4, as $151 \equiv -1 \pmod{4}$, as dictated by mod 4, $b$ has to be odd and therefore $a$ and $b$ can have the same parity, but since we have the freedom to find our solution let's make life simpler by choosing $a,b$ have opposite parities, this means $g=1$ and so, $a+b=151w^2$, $a-b = z^2$, $c = wz$ rearranging somewhat
+%
+\nbea
+2a & = & 151w^2 + z^2 \\
+2b & = & 151w^2 - z^2
+\neea
+%
+so if we choose any {\bf odd} numbers $w$ and $z$ we have any solution we want, for example set $w=3$, $z=5$ $\to$  $c=15$
+%
+\nbea
+a = 692,~~~~~ b = 667,~~~~~ c = 15
+\neea
+%
+and thus
+%
+\nbea
+\left(\frac{692}{667}\right)^2 - 151 \left(\frac{15}{667}\right)^2 & = & 1
+\neea
+%
+and so I am at least the lowest of the arithmeticians :)
 
 
 
