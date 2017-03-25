@@ -3080,7 +3080,13 @@ if we swap the roles of $d \leftrightarrow n/d$ in the first line we get (since 
 
 {\bf Theorem 3.11}, it is just a clever application {\bf not} of Theorem 3.10, is is a clever application of the usual math trick again, multiplying something by 1
 
-{\bf Theorem 3.13}, a straightforward estimate is
+{\bf Theorem 3.13}, note that the Mobius function is more important than it looks, it's directly connected to the Riemann-zeta function as follows
+%
+\nbea
+\sum_{n}^\infty \frac{\mu(n)}{n^s} & = & \frac{1}{\zeta(s)}
+\neea
+%
+thanks to Euler's product decomposition for the zeta function. Coming back to Theorem 3.13, a straightforward estimate is
 %
 \nbea
 \sum_{n\le x} \frac{\mu(n)}{n} & \le & \sum_{n\le x} \frac{1}{n}
@@ -3116,7 +3122,7 @@ This Theorem is actually deeper than it looks, for one thing it's not that strai
 & = & 1
 \neea
 %
-so it's inconclusive, although there are some caveats that we have ignored, \ie $\mu(n)$ can be zero, so $\ldots$ ~ \dunno
+so it's inconclusive, although there are some caveats that we have ignored, \ie $\mu(n)$ can be zero, so $\ldots$ ~ \dunno ~~~ as a side note, it is interesting that although $|c_{n+1}| > |c_n|$ for all $n$ the limit $|c_n|/|c_{n+1}|$ as $n\to\infty$ is still 1, so every time we are dealing with infinities we need to be careful
 
 For integral test, we might try some oscillating function with some envelope, but I don't know what that function will be, the only functions that oscillates together with the prime is Riemann's $\Pi(x)$ which requires the zeros of the zeta function LOL
 
