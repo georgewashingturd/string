@@ -1294,6 +1294,73 @@ d(p^{\alpha+1})^3 + \sum_{t|p^\alpha} d(t)^3 & = & (\alpha + 2)^3 + \left ( \sum
 %
 Going to line 5 we have used the fact that $\sum_{t|p^\alpha} d(t) = \sum_{i=1}^{\alpha+1} i = \frac{(\alpha+1)(\alpha + 2)}{2} $ since $d(p^j) = j+1$. We can of course dispel induction for a bruter force approach by expanding $\sum_{t|p^\alpha+1} d(t)^3 = \sum_{i=1}^{\alpha+1} i^3$ but this requires us to know the formula for a sum of consecutive cubes \dunno
 
+{\bf Problem 2.14}. Let $f(x)$ be defined for all rational $x$ in $0 \le x \le 1$ and let
+%
+\nbea
+F(n) = \sum_{k=1}^n f\left(\frac{k}{n}\right) & ~~~~~~~~~~~~~~~~~~~ & F^*(n) = \sum_{\substack{k=1\\(k,n)=1}}^n f\left(\frac{k}{n}\right)
+\neea
+%
+
+(a) Prove that $F^* = F * \mu$, the Dirichlet product of $F$ and $\mu$
+
+(b) Use (a) or some other means to prove that
+%
+\nbea
+\mu(n) = \sum_{\substack{k=1\\(k,n)=1}} e^{2\pi i k/n}
+\neea
+%
+
+(a) This smells Mobius inversion :) the reverse of this assertion is $F = F^* * u$, here it is not ``mu'', it is $u$, if we can show that this is true then $F^* = F * \mu$ follows naturally, let's see
+%
+\nbea
+F^* * u & = & \sum_{d|n} F^*(d) \\
+& = & \sum_{d|n} \sum_{\substack{k=1\\(k,d)=1}}^{d} f\left(\frac{k}{d}\right)
+\neea
+%
+We need to show that we can get the whole set of
+%
+\nbea
+\left(\frac{k}{n}\right) = \left\{\frac{1}{n}, \frac{2}{n}, \frac{3}{n}, \ldots \frac{n}{n}\right\}
+\neea
+%
+from the above double sums. First order of business is to count the number of terms we get from the double sums, since the inner sum only involves $k$ with $(k,d)=1$, this means that there are $\varphi(d)$ of them and so the number of terms are
+%
+\nbea
+\sum_{d|n}\varphi(d) & = & n
+\neea
+%
+from Theorem 2.2 and so we have the correct number of terms, we now need to show that no two of them are the same. Suppose two of them are the same
+%
+\nbea
+\frac{k_1}{d_1} & = & \frac{k_2}{d_2} \\
+\to k_1 d_2 & = & k_2 d_1
+\neea
+%
+and so $k_1|k_2d_1$ and $k_2|k_1d_2$ but $(k_1,d_1)=(k_2, d_2)=1$ and so $k_1|k_2$ and $k_2 | k_1$ and therefore $k_1 = k_2$ but since $k_1/d_1 = k_2/d_2$ if $k_1=k_2$ then $d_1=d_2$, this means that no two of them are the same and since all $k < d \le n$, all of the fractions $k/d$ are $\le k/n$, and so the double sums do indeed form the whole set of $k/n$ and $F = F^* * u$ and therefore $F^* = F * \mu$
+
+(b) This is now simple if we use (a) but the pattern is actually quite straightforward even without (a), but let's use (a) first, in this case set
+%
+\nbea
+F(n) & = & \sum_{k=1}^n e^{2\pi i k/n}
+\neea
+%
+and so
+%
+\nbea
+F^*(n) & = & \sum_{d|n} \mu\left(\frac{n}{d}\right)\sum_{k=1}^d e^{2\pi i k/d}
+\neea
+%
+we know that $\sum_{k=1}^d e^{2\pi i k/d} = 0$ unless $d|k$ for each $k$ in the sum and so the only sum that survives is $\sum_{k=1}^1 e^{2\pi i 1/1} = 1$ and the double sum becomes
+%
+\nbea
+F^*(n) & = & \sum_{d|n} \mu\left(\frac{n}{d}\right)\sum_{k=1}^d e^{2\pi i k/d} \\
+& = & \sum_{d|n} \mu\left(\frac{n}{d}\right)\delta_{d,1} \\
+\sum_{\substack{k=1\\(k,n)=1}}^n e^{2\pi i k/n} = F^*(n) & = & \mu(n)
+\neea
+%
+
+If you don't want to use (a) you can still see the pattern quite easily :) First if $n=p$ a prime number we know that
+
 \bigskip
 \underline{\textbf{\textit{Chapter 3}}}
 \smallskip
