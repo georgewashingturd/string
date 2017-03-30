@@ -1358,8 +1358,168 @@ F^*(n) & = & \sum_{d|n} \mu\left(\frac{n}{d}\right)\sum_{k=1}^d e^{2\pi i k/d} \
 \sum_{\substack{k=1\\(k,n)=1}}^n e^{2\pi i k/n} = F^*(n) & = & \mu(n)
 \neea
 %
+There are a few amazing things about this, for one, the RHS is complex and yet the LHS is always real. Two, the sum of the roots of unity is zero and yet for a function that is almost always zero it is able to encapsulate $\mu(n)$
 
-If you don't want to use (a) you can still see the pattern quite easily :) First if $n=p$ a prime number we know that
+
+If you don't want to use (a) you can still see the pattern quite easily :) The only ingredient we need is that the sum of the roots of unity is zero, also say you have the roots of unity from $z^{n} = 1$ and you want to extract the even multiple roots from $n=6$, \ie $e^{2\pi i 3/6}$, $e^{2\pi i 4/6}$ and $e^{2\pi i 6/6}$, we can do the following
+%
+\nbea
+\frac{1}{2} \sum_{k=1}^6 \left(e^{2\pi i k/6}\right)^2 = \sum_{k=2,4,6} e^{2\pi i k/6} = \sum_{k=1}^3 e^{2\pi i k/3} = 0
+\neea
+%
+so as long as the multiple you want divides the $n$ you can do the above for any multiple and any $n$, the only exception is that if the multiple you want is $n$ itself, the sum would then be 1 instead of 0, it is actually not really related to the problem but I thought this is quite neat :)
+
+
+First if $n=p$ is a single prime number we know that
+%
+\nbea
+\sum_{\substack{k=1\\(k,p)=1}}^p e^{2\pi i k/p} & = & \sum_{k=1}^{p-1} e^{2\pi i k/p} \\
+& = & \sum_{k=1}^{p} e^{2\pi i k/p} - e^{2\pi i p/p} \\
+& = & 0 - 1 \\
+& = & \mu(p)
+\neea
+%
+so it works for a single prime number. In general the name of the game is compensation, it's the compensation game. Let's try it with some examples of $n$ having 2, 3, 4 prime factors, say $n=2\cot3, 2\cot3\cdot5, 2\cot3\cdot5\cdot7$, let's start with $n = 2\cdot3$.
+
+To get the sum of co-prime multiples we can start with the full sum of unity minus the sum of non co-prime multiples, for $n=2\cdot3=6$ we have
+%
+\nbea
+\sum_{k=1}^6 - \left(\sum_{(k,n) > 1}^6\right) & = & 0 - \left(\sum_{(k,n) > 1}^6\right)
+\neea
+%
+and so we just need to concentrate on the sum of non co-prime multiples, how do we go about it? Let's denote a simplified notation
+%
+\nbea
+(mn) & = & \sum_{k=1}^{n/m} e^{2\pi i km/n}
+\neea
+%
+where $m|n$, \ie this is the sum of the roots where the dummy index $k$ is restricted to only a multiple of $m$, the sum is zero if $m < n$ and it is 1 if $m = n$ but in both cases $m|n$, so for our example of $n=6$
+%
+\nbea
+\left(\sum_{(k,n) > 1}^6\right) & = & (2n) + (3n)
+\neea
+%
+but here we are over counting because we counted the multiple of $2\cdot 3 = 6$ twice, once in $(2n)$ and one more time in $(3n)$ so we need to compensate
+%
+\nbea
+\left(\sum_{(k,n) > 1}^6\right) & = & (2n) + (3n) - (6n)
+\neea
+%
+but since $n=6$, $(6n) = 1$ and so
+%
+\nbea
+\left(\sum_{(k,n) > 1}^6\right) & = & (2n) + (3n) - 1 \\
+& = & 0 + 0 - 1 \\
+\to -\left(\sum_{(k,n) > 1}^6\right) & = & 1
+\neea
+%
+and thus $\left(\sum_{(k,n) = 1}^6\right) = -\left(\sum_{(k,n) > 1}^6\right) = 1$ which is $\mu(6)$, but this is obviously true for any number $n$ with two distinct prime factors. 
+
+A short pause is required here, the over counting that we need to take note of is the over counting for $m=n$, this is the thing we need to keep track all the time, other over countings are not that important :)
+
+Next example, if we have three distinct prime factors, $n=2\cdot3\cdot5 = 30$
+%
+\nbea
+\left(\sum_{(k,n) > 1}^{30}\right) & = & (2n) + (3n) + (5n)
+\neea
+%
+but again here we are over counting and we need to compensate, but we need to compensate it step by step, for $(3n)$ we need to remove $(6n)$
+%
+\nbea
+\left(\sum_{(k,n) > 1}^{30}\right) & = & (2n) + \{(3n) - (6n)\} + (5n)
+\neea
+%
+there's no complication from this, now from $(5n)$ we need to compensate a few things, first of course are $(10n)$, $(15n)$
+%
+\nbea
+\left(\sum_{(k,n) > 1}^{30}\right) & = & (2n) + \{(3n) - (6n)\} + \{(5n) - (10n) - (15n)\}
+\neea
+%
+but now we are over compensating because we are removing $(2\cdot3\cdot5n)=(30n)$ twice, once from $-(10n)$ and another time from $-(15n)$ so we need to add it back in
+%
+\nbea
+\left(\sum_{(k,n) > 1}^{30}\right) & = & (2n) + \{(3n) - (6n)\} + \{(5n) - (10n) - (15n) + (30n)\} \\
+& = & 0 + \{0 - 0\} + \{0 - 0 - 0 + 1\} \\
+\to -\left(\sum_{(k,n) > 1}^{30}\right) & = & -1
+\neea
+%
+which is $\mu(2\cdot3\cdot5)$, but now we have to make sure that we have a total of only one $(30n)$ from all the terms and we do and so we have it for any number $n$ that is a product of three distinct primes. On to the next, $n=2\cdot3\cdot5\cdot7 = 210$, as usual first we have
+%
+\nbea
+\left(\sum_{(k,n) > 1}^{210}\right) & = & (2n) + (3n) + (5n) + (7n)
+\neea
+%
+let's compensate step by step
+%
+\nbea
+\left(\sum_{(k,n) > 1}^{210}\right) & = & (2n) + \{(3n) - (6n)\} + (5n) + (7n)
+\neea
+%
+again, there's no complication here, next
+%
+\nbea
+\left(\sum_{(k,n) > 1}^{210}\right) & = & (2n) + \{(3n) - (6n)\} + \{(5n) - (10n) - (15n)\} + (7n)
+\neea
+%
+but again we are over compensating because we are doubly removing $(30n)$, one from $-(10n)$ and another from $-(15n)$, so we need to add back $(30n)$
+%
+\nbea
+\left(\sum_{(k,n) > 1}^{210}\right) & = & (2n) + \{(3n) - (6n)\} + \{(5n) - (10n) - (15n) + (30n)\} + (7n)
+\neea
+%
+and lastly $(7n)$
+%
+\nbea
+\left(\sum_{(k,n) > 1}^{210}\right) & = & (2n) + \{(3n) - (6n)\} + \{(5n) - (10n) - (15n) + (30n)\} + \\
+&& \{(7n) - (14n) - (21n) - (35n)\}
+\neea
+%
+So we need to compensate it with three terms $(2\cdot3\cdot7n)$, $(2\cdot5\cdot7n)$, $(3\cdot5\cdot7n)$
+%
+\nbea
+\left(\sum_{(k,n) > 1}^{210}\right) & = & (2n) + \{(3n) - (6n)\} + \{(5n) - (10n) - (15n) + (30n)\} + \\
+&&  \{(7n) - (14n) - (21n) - (35n) + (42n) + (70n) + (105n)\}
+\neea
+%
+but the funny thing here is that we are again overcompensating because if we keep track of $(210n)$, we are actually in excess of one, to count simply replace each term with 1 maintaining the $\pm$ in front of each term and add, here we have 
+%
+\nbea
+1 + \{1-1\} + \{1-1-1+1\} + \{1-1-1-1+1+1+1\} & = & 1 + \{0\} + \{0\} + \{1\} \\
+& = & 2
+\neea
+%
+and so we have two $(210n)$ and so we need to remove one using $(210n)$ because every other combination of the prime factors have been used up
+%
+\nbea
+\left(\sum_{(k,n) > 1}^{210}\right) & = & (2n) + \{(3n) - (6n)\} + \{(5n) - (10n) - (15n) + (30n)\} + \\
+&&  \{(7n) - (14n) - (21n) - (35n) + (42n) + (70n) + (105n) - (210n)\} \\
+& = & 0 + \{0-0\} + \{0 -0-0+0\} + \{0-0-0+0+0+0-1\} \\
+\to -\left(\sum_{(k,n) > 1}^{210}\right) & = & 1
+\neea
+%
+which is just $\mu(210)$, the pattern should be obvious by now :) the only controlling term is just the one involving the last prime factor and the the minus sign alternates every time we add one more prime factor.
+
+What if we have duplicate prime factors? for example $n = 2^2\cdot3=12$, well, let's see, just like before
+%
+\nbea
+\left(\sum_{(k,n) > 1}^{12}\right) & = & (2n) + (3n)
+\neea
+%
+one thing to note here we do not need to add $(4n)$ as it is already covered by $(2n)$ but we still need to compensate for $(6n)$ since it was doubly counted, one by $(2n)$ and again by $(3n)$ and so
+%
+\nbea
+\left(\sum_{(k,n) > 1}^{12}\right) & = & (2n) + (3n) - (6n)
+\neea
+%
+how about $(12n)$, we don't need to compensate for it because $(6n)$ already includes $(12n)$ but here's the main difference, since $6\neq 12$, $(6n) = 0$ instead of 1 in contrast to our previous case and so every term is zero and the total is zero. For $n$ with more prime factors the procedure is the same, compensate and compensate :) but if there's a duplicate prime then the whole sum is zero as explained above and so
+%
+\nbea
+\sum_{\substack{k=1\\(k,n)=1}}^{n} e^{2\pi i k/n} = \mu(n)
+\neea
+%
+
+
+
 
 \bigskip
 \underline{\textbf{\textit{Chapter 3}}}
