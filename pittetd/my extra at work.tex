@@ -5945,6 +5945,143 @@ and thus
 %
 and so I am at least the lowest of the arithmeticians :)
 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+D. J. Newman has this little book on analytic number theory full of little gems, but one of the gems might be a little too confusing, it reads
+``The point is that the prime number theorem is easily derived from
+%
+\nbea
+\sum_{p\le n}\frac{\log p}{p} - \log n {\rm~~~~~~~converges~to~a~limit,}
+\neea
+%
+by a simple summation by parts, which we leave to the reader.''
+
+The most annoying bit is of course the word ``easily derived'', it is easy if you know the answer :) First some pretext, his point is that he contrasts $\sum_{p\le n}\frac{\log p}{p} - \log n$ being bounded  to $\sum_{p\le n}\frac{\log p}{p} - \log n$ converging to a limit.
+
+The first annoying this is that the ``simple summation by parts'' he mentioned is actually {\bf not} summation by parts it {\bf is} actually Abel's sum not the summation by parts of Stopple. Second, what we are trying to prove is {\bf not} $\pi(x) \sim x/\log x$ but actually its not so distant cousin $\theta(x) \sim x$ which of course is equivalent.
+
+Let's see my meandering contusions trying to do summation by parts as follows
+%
+\nbea
+\sum_{p\le n}\frac{\log p}{p} & = & \sum_{k\le n}a(k)\frac{\log k}{k}
+\neea
+%
+where $a(k) = 0$ is $k$ is not prime and 1 if $k$ is prime and so $A(n) = \sum_{k\le n} a(k) = \pi(n)$ and so even if we use Abel's sum we get
+%
+\nbea
+\sum_{p\le n}\frac{\log p}{p} & = & \sum_{k\le n}a(k)\frac{\log k}{k} \\
+& = & A(n)\frac{\log n}{n} - \int_1^n A(u) \frac{1 - \log u}{u^2} du \\
+& = & \pi(n)\frac{\log n}{n} - \int_1^n \pi(u) \frac{1 - \log u}{u^2} du
+\neea
+%
+at this point we should not do integration by parts on the integral since that would just undo everything. If we include the $-\log n$ term we get
+%
+\nbea
+\sum_{p\le n}\frac{\log p}{p} - \log n & = & \pi(n)\frac{\log n}{n} - \int_1^n \pi(u) \frac{1 - \log u}{u^2} du - \log n \\
+& = & \pi(n)\frac{\log n}{n} - \int_1^n \pi(u) \frac{1 - \log u}{u^2} + \frac{u}{u^2} du \\
+& = & \pi(n)\frac{\log n}{n} - \int_1^n \frac{\pi(u)(1 - \log u) + u}{u^2}
+\neea
+%
+But let's play around some more. We know that the above converges to a limit and not just bounded and let's suppose that by some ``insight'' the integral blows up then let's do some ``surgery'' on this integral. Some insight during my sleepless night last night is that to see if an integral blows up is to see whether the tail blows up, as a toy model example, let's do the integral of $\int 1/u$
+%
+\nbea
+\int_1^\infty \frac{1}{u} du & = & \int_1^N \frac{1}{u} du + \int_N^\infty \frac{1}{u} du
+\neea
+%
+the first term on the RHS is obviously finite since $N$ is finite so it only leaves the second term
+%
+\nbea
+\int_N^\infty \frac{1}{u} du & = & \log\infty - \log N
+\neea
+%
+which indeed blow up but there's another reason why we want to split up this integral, this goes back to bounded vs convergence. Here's the deal, if a function $g(x)$ is only guaranteed to be bounded then the best we have is
+%
+\nbea
+f(x) \le g(x) \le h(x)
+\neea
+%
+but if a function $g(x)$ converges then we can sort of ``squeeze'' the bounds above $f(x) \leftrightarrow h(x)$ of course for some sufficiently large $x \ge x_0$ so that
+%
+\nbea
+f(x) \le g(x) \le f(x) ~~~\longrightarrow~~~ g(x) \sim f(x)
+\neea
+%
+So let's chop off the tail of our earlier integral and analyze it. First, we know that the integral $\int_1^n \frac{\pi(u)(1 - \log u) + u}{u^2}$ is just
+%
+\nbea
+\int_1^n \frac{\pi(u)(1 - \log u) + u}{u^2} & = & \int_1^n \frac{\pi(u)(1 - \log u)}{u^2} + \log n
+\neea
+%
+and that
+%
+\nbea
+\frac{1 - \log u}{u^2} < 0 {\rm~~~~~for~} u > e
+\neea
+%
+so depending on what $\pi(u)$ is we might be able to cancel the $+\log n$ term, another thing to note is that the first term in the RHS is $\pi(n) /(n/\log n)$ and this term must not blow up either since the whole thing converges (although it can also be argues that the whole sum converges so individual term might blow up but this is not a proof so let's just go with it).
+
+To ensure $\pi(n) /(n/\log n)$ doesn't blow up we can guess that $\pi(n) \sim n/\log n$ for sufficiently large $n \ge N$, so let's try this option for the chopped off tail
+%
+\nbea
+\int_N^\infty \frac{\pi(u)(1 - \log u) + u}{u^2} & = & \int_N^\infty \frac{u/\log u(1 - \log u) + u}{u^2} \\
+& = & \int_N^\infty \frac{1}{u \log u} \\
+& = & \log \log \infty - \log \log N
+\neea
+%
+and it blows up so it doesn't work, however if we modify it a bit and ``judiciously'' choose $\pi(n) \sim n/(\log n-1)$ we have
+%
+\nbea
+\int_N^\infty \frac{\pi(u)(1 - \log u) + u}{u^2} & = & \int_N^\infty \frac{u/(\log u-1)(1 - \log u) + u}{u^2} \\
+& = & \int_N^\infty \frac{u - u}{u^2} \\
+& = & 0
+\neea
+%
+and the tail is gone, completely and the sum
+%
+\nbea
+\lim_{n\to\infty} \pi(n) \frac{\log n}{n} - \int_1^n \frac{\pi(u)(1 - \log u) + u}{u^2} & = & \lim_{n\to\infty}\frac{n/(\log n - 1)}{n/\log n} - \int_1^N \frac{\pi(u)(1 - \log u) + u}{u^2} \\
+&& ~~~~~~~~~~~~~~~~~~~~~~~~- \int_N^n \frac{\pi(u)(1 - \log u) + u}{u^2} \\
+& = & 1 + K - 0
+\neea
+%
+converges to a finite number $1+K$ and we still have the result we want $\pi(x) \sim x/\log x$ but again this is not a proof.
+
+Now let's switch to $\theta(x)$ instead of $\pi(x)$, to do this we do the Abel's sum differently
+%
+\nbea
+\sum_{p\le n} \frac{\log p}{p} - \log n & = & A(n)\frac{1}{n} + \int_1^n \frac{A(u)}{u^2} du - \log n \\
+& = & A(n)\frac{1}{n} + \int_1^n \frac{A(u) - u}{u^2} du
+\neea
+%
+where $A(n) = \sum_{k=1}^n a(k) \log k$ where again $a(k)$ is one only if $k$ is prime, but in this case
+%
+\nbea
+A(n) = \sum_{k=1}^n a(k) \log k = \sum_{p \le n} \log p = \theta(n)
+\neea
+%
+and we have
+%
+\nbea
+\sum_{p\le n} \frac{\log p}{p} - \log n & = & \frac{\theta(n)}{n} + \int_1^n \frac{\theta(u) - u}{u^2} du
+\neea
+%
+the difference here is that we have some Tauberian theorems to help us (see Page 85-Page 89 of Apostol, especially Theorem 4.10), here we have
+%
+\nbea
+c_2x \le \theta(x) \le c_1x
+\neea
+%
+where the lower bound only applies when $x$ is sufficiently large but the upper bound always holds.
+
+So again let's chop off some tail while applying the above inequality
+%
+\nbea
+\int_N^\infty \frac{c_2u - u}{u^2} du \le \int_N^\infty \frac{\theta(u) - u}{u^2} du \le \int_N^\infty \frac{c_1u - u}{u^2} du ~~~~~~~~~~~\\
+(c_2-1)(\log\infty - \log N) \le \int_N^\infty \frac{\theta(u) - u}{u^2} du \le (c_1-1)(\log\infty - \log N)
+\neea
+%
+both the lower and upper bounds blow up. The other term, $\theta(n)/n$ is bounded by $c_1$ since this upper bound always holds and this term is finite, therefore the tail above must be finite, this can be achieved if we can show that $c_2 \to c_1$ but not only this we also have to show that $c_1 = 1$
+
 
 
 
