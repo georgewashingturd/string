@@ -5978,11 +5978,11 @@ at this point we should not do integration by parts on the integral since that w
 %
 \nbea
 \sum_{p\le n}\frac{\log p}{p} - \log n & = & \pi(n)\frac{\log n}{n} - \int_1^n \pi(u) \frac{1 - \log u}{u^2} du - \log n \\
-& = & \pi(n)\frac{\log n}{n} - \int_1^n \pi(u) \frac{1 - \log u}{u^2} + \frac{u}{u^2} du \\
-& = & \pi(n)\frac{\log n}{n} - \int_1^n \frac{\pi(u)(1 - \log u) + u}{u^2}
+& = & \pi(n)\frac{\log n}{n} + \int_1^n \pi(u) \frac{1 - \log u}{u^2} - \frac{u}{u^2} du \\
+& = & \pi(n)\frac{\log n}{n} + \int_1^n \frac{\pi(u)(\log u - 1) - u}{u^2}
 \neea
 %
-But let's play around some more. We know that the above converges to a limit and not just bounded and let's suppose that by some ``insight'' the integral blows up then let's do some ``surgery'' on this integral. Some insight during my sleepless night last night is that to see if an integral blows up is to see whether the tail blows up, as a toy model example, let's do the integral of $\int 1/u$
+Some insight during my sleepless night last night is that to see if an integral blows up is to see whether the tail blows up, of course this only applies if the tail doesn't oscillate from plus to minus, as a toy model example, let's do the integral of $\int 1/u$
 %
 \nbea
 \int_1^\infty \frac{1}{u} du & = & \int_1^N \frac{1}{u} du + \int_N^\infty \frac{1}{u} du
@@ -5994,57 +5994,13 @@ the first term on the RHS is obviously finite since $N$ is finite so it only lea
 \int_N^\infty \frac{1}{u} du & = & \log\infty - \log N
 \neea
 %
-which indeed blow up but there's another reason why we want to split up this integral, this goes back to bounded vs convergence. Here's the deal, if a function $g(x)$ is only guaranteed to be bounded then the best we have is
-%
-\nbea
-f(x) \le g(x) \le h(x)
-\neea
-%
-but if a function $g(x)$ converges then we can sort of ``squeeze'' the bounds above $f(x) \leftrightarrow h(x)$ of course for some sufficiently large $x \ge x_0$ so that
-%
-\nbea
-f(x) \le g(x) \le f(x) ~~~\longrightarrow~~~ g(x) \sim f(x)
-\neea
-%
-So let's chop off the tail of our earlier integral and analyze it. First, we know that the integral $\int_1^n \frac{\pi(u)(1 - \log u) + u}{u^2}$ is just
-%
-\nbea
-\int_1^n \frac{\pi(u)(1 - \log u) + u}{u^2} & = & \int_1^n \frac{\pi(u)(1 - \log u)}{u^2} + \log n
-\neea
-%
-and that
-%
-\nbea
-\frac{1 - \log u}{u^2} < 0 {\rm~~~~~for~} u > e
-\neea
-%
-so depending on what $\pi(u)$ is we might be able to cancel the $+\log n$ term, another thing to note is that the first term in the RHS is $\pi(n) /(n/\log n)$ and this term must not blow up either since the whole thing converges (although it can also be argues that the whole sum converges so individual term might blow up but this is not a proof so let's just go with it).
+which indeed blow up. One thing we know is that $\pi(n)\le n$ in terms of values and also in terms of growth (or Big Oh) $\pi(n) < n$ and so for the first term in the sum $\pi(n)\cdot \frac{\log n}{n}$, since $\pi(n)$ grows slower than $n$ we can safely assume that this term converges. (The thing here is that we are trying to do the usual stuff in integration, we want to express $\pi(u)$ in terms of polynomial, logarithm, and trigonometric functions, based on this choices if $\pi(u)$ grows slower than $u$ then it's either $\log u$ or $u^{1/t}$ and both $\log^2 u$ and $u^{1/t}\log u$ grows slower than $u$ which means that after certain $u\ge u_0$, the difference $\pi(u)(\log u-1) - u$ will not change sign).
 
-To ensure $\pi(n) /(n/\log n)$ doesn't blow up we can guess that $\pi(n) \sim n/\log n$ for sufficiently large $n \ge N$, so let's try this option for the chopped off tail
-%
-\nbea
-\int_N^\infty \frac{\pi(u)(1 - \log u) + u}{u^2} & = & \int_N^\infty \frac{u/\log u(1 - \log u) + u}{u^2} \\
-& = & \int_N^\infty \frac{1}{u \log u} \\
-& = & \log \log \infty - \log \log N
-\neea
-%
-and it blows up so it doesn't work, however if we modify it a bit and ``judiciously'' choose $\pi(n) \sim n/(\log n-1)$ we have
-%
-\nbea
-\int_N^\infty \frac{\pi(u)(1 - \log u) + u}{u^2} & = & \int_N^\infty \frac{u/(\log u-1)(1 - \log u) + u}{u^2} \\
-& = & \int_N^\infty \frac{u - u}{u^2} \\
-& = & 0
-\neea
-%
-and the tail is gone, completely and the sum
-%
-\nbea
-\lim_{n\to\infty} \pi(n) \frac{\log n}{n} - \int_1^n \frac{\pi(u)(1 - \log u) + u}{u^2} & = & \lim_{n\to\infty}\frac{n/(\log n - 1)}{n/\log n} - \int_1^N \frac{\pi(u)(1 - \log u) + u}{u^2} \\
-&& ~~~~~~~~~~~~~~~~~~~~~~~~- \int_N^n \frac{\pi(u)(1 - \log u) + u}{u^2} \\
-& = & 1 + K - 0
-\neea
-%
-converges to a finite number $1+K$ and we still have the result we want $\pi(x) \sim x/\log x$ but again this is not a proof.
+Our goal here is to show that each term converges because we want to utilize the tail of the integral in the second term since if we know that this integral must converge then the tail has to be zero. First hurdle is that we need to show that the integrand doesn't oscillate, good thing for us is that $\pi(u), \log u - 1$ and $u$ are all increasing functions, both $\pi(u)$ and $\log u - 1$ grow slower than $u$ so again we can safely assume that for sufficiently large $u$ the integrand doesn't change sign.
+
+The tail we need is then $\int_N^\infty \frac{\pi(u)(\log u - 1) - u}{u^2}$ and we need to set it to zero for the whole integral to converge, one thing to guarantee this is that for sufficiently large $u \ge N$, $\pi(u) \sim u/(\log u - 1)$ but this also means that $\pi(x) \sim x/\log x$ which is what we want (but of course this might not be the only choice so we can't proclaim this relationship as definitely true).
+
+This is as far as I can go with this, again the above is not ``proof'' but it's close enough for me :) Another comment about the fuss of being bounded versus converges, if we go back to our not so solid proof above, if the only thing we know is that they are bounded then we cannot make the conclusion that the tail must vanish and therefore we cannot make the conclusion that $\pi(x) \sim x/\log x$, the best we can get is that $f(x) \le \pi(x) \le g(x)$.
 
 Now let's switch to $\theta(x)$ instead of $\pi(x)$, to do this we do the Abel's sum differently
 %
@@ -6068,19 +6024,106 @@ and we have
 the difference here is that we have some Tauberian theorems to help us (see Page 85-Page 89 of Apostol, especially Theorem 4.10), here we have
 %
 \nbea
-c_2x \le \theta(x) \le c_1x
+\theta(x) & \le & c_1x {\rm~~~~~~~~~~~~~~for~all~}x \\
+c_2x & \le & \theta(x) {\rm~~~~~~~~~~~~~for~sufficiently~large~}x
 \neea
 %
-where the lower bound only applies when $x$ is sufficiently large but the upper bound always holds.
+where the lower bound only applies when $x$ is sufficiently large but the upper bound always holds. This is something we didn't have previously in the case of $\pi(x)$.
 
-So again let's chop off some tail while applying the above inequality
+This is a good time to delve more into tails :) for a divergent integral even the tail of the tail persists, for example take $\int 1/u$, let's see how it goes, for $c > 1$
 %
 \nbea
-\int_N^\infty \frac{c_2u - u}{u^2} du \le \int_N^\infty \frac{\theta(u) - u}{u^2} du \le \int_N^\infty \frac{c_1u - u}{u^2} du ~~~~~~~~~~~\\
-(c_2-1)(\log\infty - \log N) \le \int_N^\infty \frac{\theta(u) - u}{u^2} du \le (c_1-1)(\log\infty - \log N)
+\int_x^{cx} \frac{1}{u} du & = & \log(cx) - \log x \\
+& = & \log c > 0
 \neea
 %
-both the lower and upper bounds blow up. The other term, $\theta(n)/n$ is bounded by $c_1$ since this upper bound always holds and this term is finite, therefore the tail above must be finite, this can be achieved if we can show that $c_2 \to c_1$ but not only this we also have to show that $c_1 = 1$
+so even if we take $x\to\infty$ the very tail end of this integral doesn't vanish, but if we have a convergent integral
+%
+\nbea
+\int_x^{cx} \frac{1}{u^2} du & = & -\frac{1}{2}\left(\frac{1}{cx} - \frac{1}{x}\right) \\
+& = & \frac{c-1}{2cx} \to 0 {\rm~as~} x\to 0
+\neea
+%
+and the very tail end vanishes when we take the limit $x\to\infty$, of course all this works because the integrand doesn't change sign, had it been oscillating we couldn't have come to this conclusion.
+
+So coming back to our current problem, we know that $\sum_{p\le n}\frac{\log p}{p} - \log n$ converges and so $\frac{\theta(n)}{n} + \int_1^n \frac{\theta(u) - u}{u^2} du$ must converge as the two are equal. This means that each term must converge as long as none of them blows up. So first we check for blowing up.
+
+From the Tauberian theorem above we know that $\theta(x) \le c_1x$ for all $x$, on top of that we also know that $\theta(x)$ is a monotonically {\it increasing} function albeit with jumps and so $\theta(x)/x$ is guaranteed not to blow up, so it must converge. This only means one thing, that the integral $\int_1^n \frac{\theta(u) - u}{u^2} du$ also converges.
+
+We can now apply our knowledge of tail behavior to see that $\theta(x) \sim x$ which is our goal. Suppose that {\bf for sufficiently large} $x \ge x_0$ we have $\theta(x) \ge cx$ where $c > 1$ and such $c$ is guaranteed by the Tauberian theorem and so we are not doing anything circular, then for some $x \ge x_0$
+%
+\nbea
+\int_x^{cx} \frac{\theta(u) - u}{u^2}du & \ge & \int_x^{cx} \frac{cx - u}{u^2}du = \int_1^{c} \frac{c - w}{w^2}dw = c - \log c - 1 > 0
+\neea
+%
+it is greater than 0 since $c>1$, we have also made a variable change $w = u/x$, but this means that the tail end $\int_x^{cx} \frac{\theta(u) - u}{u^2}du > 0$ even when $x\to\infty$ a contradiction to the convergence of $\int_1^{\infty} \frac{\theta(u) - u}{u^2}du$. But we need to check if $c=1$ works, $c - \log c - 1 \to 1 - \log 1 - 1 = 0$ so it checks out.
+
+Next, say $\theta(x) \le cx$ where this time $c<1$ when $x \ge x_0$, then for $x\ge x_0/c$
+%
+\nbea
+\int_{cx}^x \frac{\theta(u)-u}{u^2} & \le & \int_{cx}^x \frac{cx-u}{u^2} = \int_c^{1} \frac{c - w}{w^2}dw = \log c - c + 1 < 0
+\neea
+%
+it's less than zero since $c < 1$, now the integrand above is always negative even for $x\to\infty$ but the convergence of $\int_1^{\infty} \frac{\theta(u) - u}{u^2}du$ prevents this, again if we set $c=1$ we get $\log c - c + 1 \to \log 1 - 1 + 1 = 0$ so again it checks out, this means that for sufficiently large $x$, $x \le \theta(x) \le x$, \ie $\theta(x)\sim x$.
+
+One last thing, we need to show that $\theta(x) \sim x$ is equivalent to $\pi(x) \sim x/\log x$, first
+%
+\nbea
+\theta(x) & = & \sum_{p\le x}\log p \le \sum_{p\le x}\log x = \pi(x)\log x
+\neea
+%
+and for any $\epsilon > 0$
+%
+\nbea
+\theta(x) \ge \sum_{x^{1-\epsilon}\le p\le x} \log p \ge \sum_{x^{1-\epsilon}\le p\le x}\log x^{1-\epsilon}  & = & (1-\epsilon) \log x \sum_{x^{1-\epsilon}\le p\le x} \\
+& = & (1-\epsilon)\pi(x)\log x - (1-\epsilon)\pi(x^{1-\epsilon})\log x \\
+& = & (1-\epsilon)\pi(x)\log x + O(f(x))
+\neea
+%
+so what is this error? well we know that $\pi(x)$ can not be bigger than $x$ and we know that $\log x = O(x^k)$ for any positive $k$ and so we can say with a bit on confidence that $O(f(x)) = O(x^{1-\epsilon})$, combining everything
+%
+\nbea
+O(x^{1-\epsilon}) + (1-\epsilon)\pi(x)\log x \le \theta(x) \le \pi(x)\log x ~ \\
+\to O(x^{-\epsilon}) + (1-\epsilon)\pi(x)\frac{\log x}{x} \le \frac{\theta(x)}{x} \le \pi(x)\frac{\log x}{x}
+\neea
+%
+now we divide the whole thing by $\pi(x)\frac{\log x}{x}$
+%
+\nbea
+O(x^{-\epsilon}) + (1-\epsilon) \le \frac{\theta(x)/x}{\pi(x)/x/\log x} \le 1
+\neea
+%
+if we take $x\to\infty$  we get
+%
+\nbea
+1-\epsilon \le \frac{\theta(x)/x}{\pi(x)/x/\log x} \le 1
+\neea
+%
+this is quite a nice trick I found somewhere :)
+
+\underline{\textit{Some Retrospective Remark}}: we can also do the $\int_x^{cx}$ trick for the case of $\pi(u)$ and also make the assumption $\pi(u) \ge c u/(\log u - 1)$ when $c > 1$ and everything follows the same way, the only thing is that there's no guarantee whatsoever that we can find a constant $c$ such that $\pi(u) \ge c u/(\log u - 1)$, there might not be such $c$ after all, we have no Tauberian theorem to save us here, if we just assume this then it will be at best just a consistency check and at worst a circular argument as we assume the behavior of $\pi(u)$ before proving its behavior.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
