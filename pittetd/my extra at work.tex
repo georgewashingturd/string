@@ -5998,7 +5998,23 @@ which indeed blow up. One thing we know is that $\pi(n)\le n$ in terms of values
 
 Our goal here is to show that each term converges because we want to utilize the tail of the integral in the second term since if we know that this integral must converge then the tail has to be zero. First hurdle is that we need to show that the integrand doesn't oscillate, good thing for us is that $\pi(u), \log u - 1$ and $u$ are all increasing functions, both $\pi(u)$ and $\log u - 1$ grow slower than $u$ so again we can safely assume that for sufficiently large $u$ the integrand doesn't change sign.
 
-The tail we need is then $\int_N^\infty \frac{\pi(u)(\log u - 1) - u}{u^2}$ and we need to set it to zero for the whole integral to converge, one thing to guarantee this is that for sufficiently large $u \ge N$, $\pi(u) \sim u/(\log u - 1)$ but this also means that $\pi(x) \sim x/\log x$ which is what we want (but of course this might not be the only choice so we can't proclaim this relationship as definitely true).
+This is a good time to delve more into tails :) for a divergent integral even the tail of the tail persists, for example take $\int 1/u$, let's see how it goes, for $c > 1$
+%
+\nbea
+\int_x^{cx} \frac{1}{u} du & = & \log(cx) - \log x \\
+& = & \log c > 0
+\neea
+%
+so even if we take $x\to\infty$ the very tail end of this integral doesn't vanish, but if we have a convergent integral
+%
+\nbea
+\int_x^{cx} \frac{1}{u^2} du & = & -\frac{1}{2}\left(\frac{1}{cx} - \frac{1}{x}\right) \\
+& = & \frac{c-1}{2cx} \to 0 {\rm~as~} x\to 0
+\neea
+%
+and the very tail end vanishes when we take the limit $x\to\infty$, of course all this works because the integrand doesn't change sign, had it been oscillating we couldn't have come to this conclusion. We need the above $\int_x^{cx}$ instead of just $\int_N^\infty$ because $\int_N^\infty$ only requires finite value while $\int_x^{cx}$ will set what we want to zero as we shall soon see.
+
+The tail we need is then $\int_x^{cx} \frac{\pi(u)(\log u - 1) - u}{u^2}$ and we need to set it to zero for the whole integral to converge, one thing to guarantee this is that for sufficiently large $u \ge N$, $\pi(u) \sim u/(\log u - 1)$ but this also means that $\pi(x) \sim x/\log x$ which is what we want (but of course this might not be the only choice so we can't proclaim this relationship as definitely true).
 
 This is as far as I can go with this, again the above is not ``proof'' but it's close enough for me :) Another comment about the fuss of being bounded versus converges, if we go back to our not so solid proof above, if the only thing we know is that they are bounded then we cannot make the conclusion that the tail must vanish and therefore we cannot make the conclusion that $\pi(x) \sim x/\log x$, the best we can get is that $f(x) \le \pi(x) \le g(x)$.
 
@@ -6030,23 +6046,7 @@ c_2x & \le & \theta(x) {\rm~~~~~~~~~~~~~for~sufficiently~large~}x
 %
 where the lower bound only applies when $x$ is sufficiently large but the upper bound always holds. This is something we didn't have previously in the case of $\pi(x)$.
 
-This is a good time to delve more into tails :) for a divergent integral even the tail of the tail persists, for example take $\int 1/u$, let's see how it goes, for $c > 1$
-%
-\nbea
-\int_x^{cx} \frac{1}{u} du & = & \log(cx) - \log x \\
-& = & \log c > 0
-\neea
-%
-so even if we take $x\to\infty$ the very tail end of this integral doesn't vanish, but if we have a convergent integral
-%
-\nbea
-\int_x^{cx} \frac{1}{u^2} du & = & -\frac{1}{2}\left(\frac{1}{cx} - \frac{1}{x}\right) \\
-& = & \frac{c-1}{2cx} \to 0 {\rm~as~} x\to 0
-\neea
-%
-and the very tail end vanishes when we take the limit $x\to\infty$, of course all this works because the integrand doesn't change sign, had it been oscillating we couldn't have come to this conclusion.
-
-So coming back to our current problem, we know that $\sum_{p\le n}\frac{\log p}{p} - \log n$ converges and so $\frac{\theta(n)}{n} + \int_1^n \frac{\theta(u) - u}{u^2} du$ must converge as the two are equal. This means that each term must converge as long as none of them blows up. So first we check for blowing up.
+We know that $\sum_{p\le n}\frac{\log p}{p} - \log n$ converges and so $\frac{\theta(n)}{n} + \int_1^n \frac{\theta(u) - u}{u^2} du$ must converge as the two are equal. This means that each term must converge as long as none of them blows up. So first we check for blowing up.
 
 From the Tauberian theorem above we know that $\theta(x) \le c_1x$ for all $x$, on top of that we also know that $\theta(x)$ is a monotonically {\it increasing} function albeit with jumps and so $\theta(x)/x$ is guaranteed not to blow up, so it must converge. This only means one thing, that the integral $\int_1^n \frac{\theta(u) - u}{u^2} du$ also converges.
 
