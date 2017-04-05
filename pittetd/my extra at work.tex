@@ -6103,6 +6103,65 @@ this is quite a nice trick I found somewhere :)
 
 \underline{\textit{Some Retrospective Remark}}: we can also do the $\int_x^{cx}$ trick for the case of $\pi(u)$ and also make the assumption $\pi(u) \ge c u/(\log u - 1)$ when $c > 1$ and everything follows the same way, the only thing is that there's no guarantee whatsoever that we can find a constant $c$ such that $\pi(u) \ge c u/(\log u - 1)$, there might not be such $c$ after all, we have no Tauberian theorem to save us here, if we just assume this then it will be at best just a consistency check and at worst a circular argument as we assume the behavior of $\pi(u)$ before proving its behavior.
 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+$\zeta(s) - \frac{1}{s-1}$ is analytic for $\re(s)>0$
+
+{\it Proof}. For $\re(s) > 1$ we have
+%
+\nbea
+\zeta(s) - \frac{1}{s-1} & = & \sum_{n=1}^\infty \frac{1}{n^s} - \int_1^\infty \frac{1}{x^s} dx \\
+& = & \sum_{n=1}^\infty \int_n^{n+1}\frac{1}{n^s}dx - \sum_{n=1}^\infty \int_n^{n+1} \frac{1}{x^s} dx \\
+& = & \sum_{n=1}^\infty \int_n^{n+1} \left(\frac{1}{n^s} - \frac{1}{x^s} \right )dx \\
+& = & \sum_{n=1}^\infty \int_n^{n+1} \left(s\int_n^x \frac{1}{u^{s+1}}du \right )dx
+\neea
+%
+and now the integral is valid for $\re(s)>0$ instead of just $\re(s)>1$ and if we do a comparison test we can see that the series converges for $\re(s)>0$, here's how, we utilize mean value theorem twice. Note that $x \ge n$ since the integral is $\int_n^{n+1}$. A recap of mean value theorem, for a continuous function $f(x)$ between $[a,b]$ we have
+%
+\nbea
+f'(c)(b-a) & = & f(b) - f(a)
+\neea
+%
+where $a\le c \le b$, if we integrate both sides
+%
+\nbea
+f(c)(b-a) & = & \int_a^b f(x) dx
+\neea
+%
+by the fundamental theorem, so in this case we use the integral form of the mean value theorem, the consequence of this theorem is that if there's a $c$ in between $a$ and $b$ such that $f(c)(b-a) = \int_a^b f(x) dx$ then
+%
+\nbea
+\int_a^b f(x) dx & \le & f(x_{\rm max})(b-a)
+\neea
+%
+where $f(x_{\rm max})$ is the maximum value of $f(x)$ in the interval $[a,b]$
+
+Then for the inner integral we have
+%
+\nbea
+\left|s\int_n^x \frac{1}{u^{s+1}}du\right| & \le & \left|(x-n) \frac{s}{n^{s+1}} \right |
+\neea
+%
+such that
+%
+\nbea
+\left| \int_n^{n+1} \left(s\int_n^x \frac{1}{u^{s+1}}du \right )dx \right| & \le & \left|\int_n^{n+1} (x-n) \frac{s}{n^{s+1}} dx\right| \le \left|(n+1-n)\left((n+1-n) \frac{s}{n^{s+1}}\right)\right| \\
+& \le & \left|\frac{s}{n^{s+1}}\right| \\
+& \le & \frac{|s|}{n^{\re(s)+1}}
+\neea
+%
+where we have done another mean value theorem for the last inequality, but this comparison test shows that the summand is smaller than $|s| \frac{1}{n^{\re(s)+1}}$ which is known to converge for $\re(s) > 0$.
+
+\underline{\textit{Tricks Learned}}, there are a few tricks utilized here
+%
+\bit
+\item $1 = \int_n^{n+1} dx$
+\item $\frac{1}{a^s} - \frac{1}{b^s} = s\int_a^b \frac{1}{u^{s+1}}du$
+\item Mean Value Theorem (or modifications of it)
+\eit
+%
+
+
 
 
 
