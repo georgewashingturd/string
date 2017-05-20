@@ -6162,6 +6162,46 @@ where we have done another mean value theorem for the last inequality, but this 
 %
 
 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+I was initially quite surprised (and also pleased) to find out that there are actually formulae for the prime counting function $\pi(n)$, one of them is actually Willan's formula, the crux of Willan's formula is the following function
+%
+\nbea
+F(n) = \left\lfloor{\cos^2 \pi \left(\frac{(n-1)! + 1}{n}\right)}\right\rfloor
+\neea
+%
+and for $n > 1$, $F(n) = 1$ iff $n$ is prime, although later on I realized this is just a recast of Wilson's primality test, \ie $n$ is prime iff $n|(n-1)! + 1$.
+
+{\it Proof}. So here we are just going to prove Wilson's primality test. First if $n$ is prime then there exists a primitive root $g$ modulo $n$, then
+%
+\nbea
+(n-1)! \equiv g\cdot g^2 \cdot g^3 \dots g^{n-1} \equiv g^{\frac{n(n-1)}{2}} \equiv \left(g^n\right)^{\frac{n-1}{2}} \equiv g^{\frac{n-1}{2}}
+\neea
+%
+since $g$ is a primitive root and $g^{n-1} \equiv 1$ (since $\varphi(n) = n-1$ for $n$ prime) then $g^n = g$. Now from Euler's criterion we know that a number $a$ is a quadratic residue modulo prime $p$ iff $a^{(p-1)/2} \equiv 1$. Now we know that if we have two primitive roots $g$ and $\tilde g$ then they must be related by $g \equiv \tilde g^d$ where $(d,\varphi(n)) = (d, n-1) = 1$ (see my primitive roots discussion on ent.pdf), but since $\varphi(n) = n-1 = 2w$ for $n$ prime, $d$ must be odd.
+
+So if a primitive root $g \equiv a^2$ then $g \equiv \tilde g^{2d}$ but this is not allowed since two primitive roots can only be related if the exponent is relatively prime w.r.t. $\varphi(n)$, therefore any primitive root $g$ must be a quadratic non residue modulo a prime $p$, therefore, thanks to Euler's criterion
+%
+\nbea
+-1 \equiv g^{\frac{n-1}{2}} \equiv (n-1)!
+\neea
+%
+or in other words
+%
+\nbea
+(n-1)! + 1 \equiv 0 \pmod{n} ~~~{\rm if~} n {\rm~is~prime}
+\neea
+%
+
+The converse is much easier, say $n|(n-1)! + 1$, then say we assume that $n$ is composite. This means that there's a prime $p < n$ such that $p|n$ but since $(n-1)!$ contains all numbers less than $n$, $p|(n-1)!$ also, then
+%
+\nbea
+nm & = & (n-1)! + 1 \\
+p(n'm - (n-1)!/p) & = & 1 \\
+p &|& 1
+\neea
+%
+which is a contradiction and therefore if $n|(n-1)! + 1$ then $n$ must be prime and we have Wilson's formula, the creative part here is casting Wilson's formula into 1 and 0 depending on the input and the translator of choice is the cosine function
 
 
 
