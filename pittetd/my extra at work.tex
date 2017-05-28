@@ -6178,9 +6178,11 @@ and for $n > 1$, $F(n) = 1$ iff $n$ is prime, although later on I realized this 
 (n-1)! \equiv g\cdot g^2 \cdot g^3 \dots g^{n-1} \equiv g^{\frac{n(n-1)}{2}} \equiv \left(g^n\right)^{\frac{n-1}{2}} \equiv g^{\frac{n-1}{2}}
 \neea
 %
-since $g$ is a primitive root and $g^{n-1} \equiv 1$ (since $\varphi(n) = n-1$ for $n$ prime) then $g^n = g$. Now from Euler's criterion we know that a number $a$ is a quadratic residue modulo prime $p$ iff $a^{(p-1)/2} \equiv 1$. Now we know that if we have two primitive roots $g$ and $\tilde g$ then they must be related by $g \equiv \tilde g^d$ where $(d,\varphi(n)) = (d, n-1) = 1$ (see my primitive roots discussion on ent.pdf), but since $\varphi(n) = n-1 = 2w$ for $n$ prime, $d$ must be odd.
+since $g$ is a primitive root and $g^{n-1} \equiv 1$ (since $\varphi(n) = n-1$ for $n$ prime) then $g^n = g$. Now from Euler's criterion we know that a number $a$ is a quadratic residue modulo prime $p$ iff $a^{(p-1)/2} \equiv 1$. Now we know that if we have two primitive roots $g$ and $\tilde g$ then they must be related by $g \equiv \tilde g^d$ where $(d,\varphi(n)) = (d, n-1) = 1$ (see my primitive roots discussion on ent.pdf),  but since $\varphi(n) = n-1 = 2w$ for $n$ prime, $d$ must be odd.
 
-So if a primitive root $g \equiv a^2$ then $g \equiv \tilde g^{2d}$ but this is not allowed since two primitive roots can only be related if the exponent is relatively prime w.r.t. $\varphi(n)$, therefore any primitive root $g$ must be a quadratic non residue modulo a prime $p$, therefore, thanks to Euler's criterion
+So if a primitive root $g \equiv a^2$ then $g \equiv \tilde g^{2d}$ but this is not allowed since two primitive roots can only be related if the exponent is relatively prime w.r.t. $\varphi(n)$, therefore any primitive root $g$ must be a quadratic non residue modulo a prime $p$, {\it or} a clearer argument will be that a primitive root has an order of $(p-1)$, if it were a quadratic residue then $g \equiv a^2 \to g^{(p-1)/2} \equiv a^{p-1} \equiv 1$ which is a contradiction, this as above also says that any primitive root is a quadratic non-residue.
+
+Therefore, thanks to Euler's criterion
 %
 \nbea
 -1 \equiv g^{\frac{n-1}{2}} \equiv (n-1)!
@@ -6203,6 +6205,91 @@ p &|& 1
 %
 which is a contradiction and therefore if $n|(n-1)! + 1$ then $n$ must be prime and we have Wilson's formula, the creative part here is casting Wilson's formula into 1 and 0 depending on the input and the translator of choice is the cosine function
 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Since we mentioned Euler's criterion above, we'll prove it here also. Euler's criterion is $a$ is a quadratic residue modulo some prime $p$ iff $a^{(p-1)/2} \equiv 1 \pmod{p}$.
+
+{\it Proof}. Since we are dealing with a prime $p$ we know that there's a primitive root $g$ modulo $p$. Say $a \equiv g^w$ then
+%
+\nbea
+a^{(p-1)/2} \equiv (g^w)^{(p-1)/2} \equiv (g^{(p-1)/2})^w
+\neea
+%
+Now, since $g$ is a primitive root, its order is $(p-1)$, therefore $g^{(p-1)/2} \equiv r \not\equiv 1$ but $g^{p-1} \equiv r^2 \equiv 1$ so if $w = 2k+1$ is odd we get
+%
+\nbea
+(g^{(p-1)/2})^w \equiv r^{2k + 1} \equiv r \not\equiv 1
+\neea
+%
+and if $w = 2l$ is even then
+%
+\nbea
+(g^{(p-1)/2})^w \equiv r^{2l} \equiv 1
+\neea
+%
+so $a^{(p-1)/2} \equiv 1$ iff $a \equiv g^{2l}$ but $g^{2l}$ is obviously a quadratic residue and we have Euler's criterion
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Notes on first proof of quadratic reciprocity in ent.pdf. The theorem is formulated as
+%
+\nbea
+\left(\frac{p}{q}\right) = (-1)^{\frac{p-1}{2}\frac{q-1}{2}} \left( \frac{q}{p} \right)
+\neea
+%
+this is actually not the best way to say it :) I'd rather do it this way
+%
+\nbea
+\left(\frac{p}{q}\right) \left( \frac{q}{p} \right) = (-1)^{\frac{p-1}{2}\frac{q-1}{2}} 
+\neea
+%
+since $\left( \frac{q}{p} \right) = \pm 1$ if we multiply it throughout we get the above.
+
+Now we also know that any prime must be of the form $4k\pm 1 \to \pm 1 \pmod{4}$ and so what the above says is that if both $p$ and $q$ are of the form $4k-1$ then
+%
+\nbea
+(-1)^{\frac{p-1}{2}\frac{q-1}{2}}  = (-1)^{(2k-1)(2l-1)} = -1 
+\neea
+%
+and so $p$ and $q$ must have opposite parities and if one of $p$ or $q$ are of the form $4k+1$ then $(-1)^{\frac{p-1}{2}\frac{q-1}{2}} = +1$ and so both $p$ and $q$ must have the same parity and that's all there is to it, I think it's clearer this way.
+
+The main thing is how to prove this theorem. If we start with my form we can do the last step of ent.pdf which is say $p - q = 4a$ owing to the fact that every prime is of the form $\pm 1 \pmod{4}$ then
+%
+\nbea
+\left(\frac{p}{q}\right) = \left(\frac{q + 4a}{q}\right) = \left(\frac{4a}{q}\right) = \left(\frac{4}{q}\right)\left(\frac{a}{q}\right) = \left(\frac{a}{q}\right)
+\neea
+%
+and
+%
+\nbea
+\left(\frac{q}{p}\right) = \left(\frac{p - 4a}{p}\right) = \left(\frac{-4a}{p}\right) = \left(\frac{-a}{p}\right) = (-1)^{\frac{p-1}{2}} \left(\frac{a}{p}\right)
+\neea
+%
+using Euler's criterion on the $-1$ factor.
+
+Now if we multiply the two together we get
+%
+\nbea
+\left(\frac{q}{p}\right)\left(\frac{p}{q}\right) = (-1)^{\frac{p-1}{2}} \left(\frac{a}{p}\right) \left(\frac{a}{q}\right)
+\neea
+%
+so we are almost there except that we don't know what $\left(\frac{a}{p}\right) \left(\frac{a}{q}\right)$ is, if they are of the same parity then we are done but if not then we are screwed but knowing that this is a theorem then they must have the same parity, so the gist of this proof is showing that $\left(\frac{a}{p}\right)$ and $\left(\frac{a}{q}\right)$ have the same parity.
+
+First take a prime $p$ and then choose a number say $a$, then make another prime $q$ by adding $4a$ to $p$, $q = p + 4a$, now if $a$ is a quadratic residue in $p$ and it is also in $q$, for example take $p=11$ and $a=3$, here $3$ is a quadratic residue modulo 11 and its roots are 5 and 6, if we add $4a$ to $11$ we get $q = 23$, $3$ is also a quadratic residue modulo 23 and its roots are 7 and 16.
+
+Using Euler's criterion, initially we have $3^{\frac{11-1}{2}}$ then we have $3^{\frac{11+4\cdot3 - 1}{2}} = 3^{\frac{11-1}{2}} 3^{\frac{4.3}{2}}$ so say
+%
+\nbea
+3^{\frac{11-1}{2}} & \equiv & 1 \pmod{11} \\
+& = & 1 + 11\cdot m
+\neea
+%
+
+%
+\nbea
+(3^{\frac{11-1}{2}})^{\frac{11+4\cdot3-1}{2}}
+\neea
+%
 
 
 
@@ -6214,6 +6301,119 @@ which is a contradiction and therefore if $n|(n-1)! + 1$ then $n$ must be prime 
 
 
 
+
+
+
+
+
+
+
+
+First we know that $p - q = 4a$, this happens if both $p$ and $q$ are of the form $4k \pm 1$, if one is $4k+1$ and the other is $4l-1$ then we will have $p+q = 4a$ but now we are treating $p-q = 4a$.
+
+Since both $p$ and $q$ are prime both would have primitive roots, say $g$ and $h$ respectively. We also know that $4$ is always a quadratic residue for any odd prime so $4a$ is a quadratic residue iff $a$ is which is straightforward to show.
+
+So say $a \equiv g^r \pmod{p}$ and $a \equiv h^s \pmod{q}$. If $a$ is a quadratic residue modulo $p$ then $r = 2r'$ is even. Now if we now go to modulo $q$ we can express $g \equiv h^y \pmod{q}$ therefore
+%
+\nbea
+a & \equiv & g^{2r'} \pmod{p} \\
+ & = & g^{2r'} + pm \\
+ & = & g^{2r'} + (q + 4a)m \\
+ & = & g^{2r'} + 4am \pmod{q} \\
+ & \equiv & (h^y)^{2r'} + 4am \pmod{q} \\
+ a(1 - 4m) & \equiv & (h^y)^{2r'} \pmod{q}
+\neea
+%
+
+%
+\nbea
+a & = & h^{2s'} + qn \\
+ & = & g^{2r'} + (q + 4a)m \\
+ & = & g^{2r'} + 4am \pmod{q} \\
+ & \equiv & (h^y)^{2r'} + 4am \pmod{q} \\
+ a(1 - 4m) & \equiv & (h^y)^{2r'} \pmod{q}
+\neea
+%
+
+Chinese remainder theorem
+%
+\nbea
+g^{r} + tp & \equiv & h^{s} \pmod{q} \\
+(h^y)^{r} + tp & \equiv & h^{s} \pmod{q} \\ 
+(h^y)^{r} + t(q + 4a) & \equiv & h^{s} \pmod{q} \\ 
+(h^y)^{r} + 4at & \equiv & h^{s} \pmod{q} \\ 
+(h^y)^{r} + 4(g^r  + tp)t & \equiv & h^{s} \pmod{q} \\ 
+(h^y)^{r} + 4(g^r  + t(q + 4a))t & \equiv & h^{s} \pmod{q} \\ 
+(h^y)^{r} + 4tg^r  + 4at^2 & \equiv & h^{s} \pmod{q} \\ 
+\neea
+%
+
+%
+\nbea
+g^{r} + tp & \equiv & h^{s} \pmod{q} \\
+g^r + tp & \equiv & h^{s} \pmod{q} \\ 
+g^{r} + t(q + 4a) & \equiv & h^{s} \pmod{q} \\ 
+g^{r} + 4at & \equiv & h^{s} \pmod{q} \\ 
+g^{r} + 4(g^r  + tp)t & \equiv & h^{s} \pmod{q} \\ 
+g^{r} + 4(g^r  + t(q + 4a))t & \equiv & h^{s} \pmod{q} \\ 
+g^{r} + 4tg^r  + 4^2at^2 & \equiv & h^{s} \pmod{q} \\ 
+\neea
+%
+
+
+
+try using proof by contradiction
+
+%
+\nbea
+\left(\frac{a}{p}\right)  = \left(\frac{(p-q)4^{-1}}{p}\right) 
+\neea
+%
+from the properties of primitive roots we know that if $4 \equiv g^w$ then $4^{-1} \equiv g^{\varphi(p) - w} \equiv g^{(p-1) - w}$, since $4$ is a quadratic residue then $w$ is even since $p-1$ is also even then $(p-1) - w$ is even as well and therefore $4^{-1}$ is also a quadratic residue, therefore
+%
+\nbea
+\left(\frac{(p-q)4^{-1}}{p}\right) = \left(\frac{p-q}{p}\right) = \left(\frac{-q}{p}\right) = (-1)^{\frac{p-1}{2}}\left(\frac{q}{p}\right) 
+\neea
+%
+but this means that
+%
+\nbea
+\left(\frac{a}{q}\right) = \left(\frac{p}{q}\right)
+\neea
+%
+%
+\nbea
+\left(\frac{(p-q)4^{-1}}{q}\right) = \left(\frac{p-q}{q}\right) = \left(\frac{p}{q}\right)
+\neea
+%
+
+
+%
+\nbea
+\left(\frac{q}{p}\right) \left( \frac{4a}{p} \right) & = & \left ( \frac{q}{p} \right ) \left ( \frac{p-q}{p} \right ) \\
+& = & \left ( \frac{qp-q^2}{p} \right ) \\
+& = & \left ( \frac{-q^2}{p} \right ) \\
+& = & (-1)^{\frac{p-1}{2}} \\
+& = & (-1)^{\frac{p-1}{2}\frac{q-1}{2}} 
+\neea
+%
+
+
+%
+\nbea
+\left(\frac{p}{q}\right) \left( \frac{4a}{q} \right) & = & \left ( \frac{p}{q} \right ) \left ( \frac{p-q}{q} \right ) \\
+& = & \left ( \frac{p^2-pq}{q} \right ) \\
+& = & \left ( \frac{p^2}{q} \right ) \\
+& = & 1
+\neea
+%
+
+%
+\nbea
+\left ( \frac{-q^2}{p} \right ) \left ( \frac{p^2}{q} \right ) & = & (-1)^{\frac{p-1}{2}\frac{q-1}{2}} \\
+\left ( \frac{-q}{p} \right ) \left ( \frac{p}{q} \right ) & = & (-1)^{\frac{p-1}{2}\frac{q-1}{2}} \left ( \frac{q}{p} \right ) \left ( \frac{p}{q} \right ) \\
+\neea
+%
 
 
 
