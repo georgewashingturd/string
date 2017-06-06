@@ -6273,154 +6273,76 @@ Now if we multiply the two together we get
 \left(\frac{q}{p}\right)\left(\frac{p}{q}\right) = (-1)^{\frac{p-1}{2}} \left(\frac{a}{p}\right) \left(\frac{a}{q}\right)
 \neea
 %
-so we are almost there except that we don't know what $\left(\frac{a}{p}\right) \left(\frac{a}{q}\right)$ is, if they are of the same parity then we are done but if not then we are screwed but knowing that this is a theorem then they must have the same parity, so the gist of this proof is showing that $\left(\frac{a}{p}\right)$ and $\left(\frac{a}{q}\right)$ have the same parity.
+so we are almost there except that we don't know what $\left(\frac{a}{p}\right) \left(\frac{a}{q}\right)$ is, if they are of the same parity then we are done but if not then we are screwed but knowing that this is a theorem then they must have the same parity, so the gist of this proof is showing that $\left(\frac{a}{p}\right)$ and $\left(\frac{a}{q}\right)$ have the same parity. This is why the book spends so much time proving this fact using the interval counting and what not
 
-First take a prime $p$ and then choose a number say $a$, then make another prime $q$ by adding $4a$ to $p$, $q = p + 4a$, now if $a$ is a quadratic residue in $p$ and it is also in $q$, for example take $p=11$ and $a=3$, here $3$ is a quadratic residue modulo 11 and its roots are 5 and 6, if we add $4a$ to $11$ we get $q = 23$, $3$ is also a quadratic residue modulo 23 and its roots are 7 and 16.
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-Using Euler's criterion, initially we have $3^{\frac{11-1}{2}}$ then we have $3^{\frac{11+4\cdot3 - 1}{2}} = 3^{\frac{11-1}{2}} 3^{\frac{4.3}{2}}$ so say
+Going back to Victor Shoup's book nbt-v2.pdf, we encounter an arithmetic function called $\omega(n) = \sum_{p|n}1$ which means it counts the number of distinct prime factors of $n$. The book then asks to prove the following, $\omega(n) = O(\log n/\log \log n)$
+
+My first few attempts were to simplify the problem, assume that we are dealing only with numbers of the form $\prod_i p_i$ where each prime factor is only of the first power or use induction. But they don't work or at least it's not obvious how they would work, because they all rely on a fact about $\omega(n)$
 %
 \nbea
-3^{\frac{11-1}{2}} & \equiv & 1 \pmod{11} \\
-& = & 1 + 11\cdot m
+\omega(mn) = \omega(m) + \omega(n)
 \neea
 %
-
+where $\gcd(m,n) = 1, m,n > 1$. And so following this path we get something like
 %
 \nbea
-(3^{\frac{11-1}{2}})^{\frac{11+4\cdot3-1}{2}}
+\omega\left(\prod_i p_i^{\alpha_i}\right) & = & \sum_i \omega(p_i^{\alpha_i})
 \neea
 %
+the reason these approaches would not work is that $\log \log n$ is not additive and this is the major problem, the numerator is obviously additive and in fact it is very obvious that $\omega(n) = O(\log n)$ just express $n = \prod_i p_i^{\alpha_i}$ and take the log and the result follows immediately.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-First we know that $p - q = 4a$, this happens if both $p$ and $q$ are of the form $4k \pm 1$, if one is $4k+1$ and the other is $4l-1$ then we will have $p+q = 4a$ but now we are treating $p-q = 4a$.
-
-Since both $p$ and $q$ are prime both would have primitive roots, say $g$ and $h$ respectively. We also know that $4$ is always a quadratic residue for any odd prime so $4a$ is a quadratic residue iff $a$ is which is straightforward to show.
-
-So say $a \equiv g^r \pmod{p}$ and $a \equiv h^s \pmod{q}$. If $a$ is a quadratic residue modulo $p$ then $r = 2r'$ is even. Now if we now go to modulo $q$ we can express $g \equiv h^y \pmod{q}$ therefore
+Another approach would be like the one done for $\theta(x)$, define $A(x)$ as 
 %
 \nbea
-a & \equiv & g^{2r'} \pmod{p} \\
- & = & g^{2r'} + pm \\
- & = & g^{2r'} + (q + 4a)m \\
- & = & g^{2r'} + 4am \pmod{q} \\
- & \equiv & (h^y)^{2r'} + 4am \pmod{q} \\
- a(1 - 4m) & \equiv & (h^y)^{2r'} \pmod{q}
+A(x) & = & \sum_{p|x} \log \log p
 \neea
 %
-
+then
 %
 \nbea
-a & = & h^{2s'} + qn \\
- & = & g^{2r'} + (q + 4a)m \\
- & = & g^{2r'} + 4am \pmod{q} \\
- & \equiv & (h^y)^{2r'} + 4am \pmod{q} \\
- a(1 - 4m) & \equiv & (h^y)^{2r'} \pmod{q}
+\sum_{p|x} \log \log p & \le & \log \log x \sum_{p|x} 1 \\
+A(x) & \le & \log \log x ~ \omega(x)
 \neea
 %
-
-Chinese remainder theorem
+also
 %
 \nbea
-g^{r} + tp & \equiv & h^{s} \pmod{q} \\
-(h^y)^{r} + tp & \equiv & h^{s} \pmod{q} \\ 
-(h^y)^{r} + t(q + 4a) & \equiv & h^{s} \pmod{q} \\ 
-(h^y)^{r} + 4at & \equiv & h^{s} \pmod{q} \\ 
-(h^y)^{r} + 4(g^r  + tp)t & \equiv & h^{s} \pmod{q} \\ 
-(h^y)^{r} + 4(g^r  + t(q + 4a))t & \equiv & h^{s} \pmod{q} \\ 
-(h^y)^{r} + 4tg^r  + 4at^2 & \equiv & h^{s} \pmod{q} \\ 
+A(x) & \ge & \sum_{\substack{p|x\\p > p_{\rm min}}} \log \log p \\
+& \ge & \log \log x \sum_{\substack{p|x\\p > p_{\rm min}}} 1 \\
+& \ge & \log \log x (\omega(x) - \omega(p_{\rm min})) \\
+& \ge & \log \log x ~ \omega(x) (1 - 1/\omega(x)) \\
+\to A(x) & = & \Omega(\log \log x ~ \omega(x))
 \neea
 %
-
+where $p_{\rm min}$ is the smallest prime that divides $x$, going to the last line we know that $\omega(x) \to \infty$ as $x \to \infty$ and so $1/\omega(x) = o(1)$. The above argument won't work if $x$ itself is prime because $p_{\rm min} = x$ but for $x = p_x$ a prime number we have
 %
 \nbea
-g^{r} + tp & \equiv & h^{s} \pmod{q} \\
-g^r + tp & \equiv & h^{s} \pmod{q} \\ 
-g^{r} + t(q + 4a) & \equiv & h^{s} \pmod{q} \\ 
-g^{r} + 4at & \equiv & h^{s} \pmod{q} \\ 
-g^{r} + 4(g^r  + tp)t & \equiv & h^{s} \pmod{q} \\ 
-g^{r} + 4(g^r  + t(q + 4a))t & \equiv & h^{s} \pmod{q} \\ 
-g^{r} + 4tg^r  + 4^2at^2 & \equiv & h^{s} \pmod{q} \\ 
+A(x) & = & A(p_x) = \log \log p_x \cdot 1 = \log \log x ~ \omega(x) \\
+\to A(x) & \ge & \log \log x ~ \omega(x)
 \neea
 %
-
-
-
-try using proof by contradiction
-
+so the above still holds even if $x$ is a prime number, what this means is that $A(x) = \Theta(\log \log x ~ \omega(x))$, \ie
 %
 \nbea
-\left(\frac{a}{p}\right)  = \left(\frac{(p-q)4^{-1}}{p}\right) 
+c\cdot \log \log x ~ \omega(x) \le A(x) \le d \cdot \log \log x ~ \omega(x)
 \neea
 %
-from the properties of primitive roots we know that if $4 \equiv g^w$ then $4^{-1} \equiv g^{\varphi(p) - w} \equiv g^{(p-1) - w}$, since $4$ is a quadratic residue then $w$ is even since $p-1$ is also even then $(p-1) - w$ is even as well and therefore $4^{-1}$ is also a quadratic residue, therefore
+the last thing we need to show is that $A(x) < K \cdot \log(x)$ which is quite straightforward due to the fundamental theorem, expanding $x$ into its primal constituents we have
 %
 \nbea
-\left(\frac{(p-q)4^{-1}}{p}\right) = \left(\frac{p-q}{p}\right) = \left(\frac{-q}{p}\right) = (-1)^{\frac{p-1}{2}}\left(\frac{q}{p}\right) 
+A(x) = A \left ( \prod_i p_i^{\alpha_i} \right ) = \sum_i \log \log p_i < \sum_i \log p_i^{\alpha_i} = \log x
 \neea
 %
-but this means that
+and so combining these two results we have
 %
 \nbea
-\left(\frac{a}{q}\right) = \left(\frac{p}{q}\right)
+c\cdot \log \log x ~ \omega(x) & \le & A(x) < \log x \\
+\to \omega(x) & < & \frac{1}{c} \frac{\log x}{\log \log x}
 \neea
 %
-%
-\nbea
-\left(\frac{(p-q)4^{-1}}{q}\right) = \left(\frac{p-q}{q}\right) = \left(\frac{p}{q}\right)
-\neea
-%
-
-
-%
-\nbea
-\left(\frac{q}{p}\right) \left( \frac{4a}{p} \right) & = & \left ( \frac{q}{p} \right ) \left ( \frac{p-q}{p} \right ) \\
-& = & \left ( \frac{qp-q^2}{p} \right ) \\
-& = & \left ( \frac{-q^2}{p} \right ) \\
-& = & (-1)^{\frac{p-1}{2}} \\
-& = & (-1)^{\frac{p-1}{2}\frac{q-1}{2}} 
-\neea
-%
-
-
-%
-\nbea
-\left(\frac{p}{q}\right) \left( \frac{4a}{q} \right) & = & \left ( \frac{p}{q} \right ) \left ( \frac{p-q}{q} \right ) \\
-& = & \left ( \frac{p^2-pq}{q} \right ) \\
-& = & \left ( \frac{p^2}{q} \right ) \\
-& = & 1
-\neea
-%
-
-%
-\nbea
-\left ( \frac{-q^2}{p} \right ) \left ( \frac{p^2}{q} \right ) & = & (-1)^{\frac{p-1}{2}\frac{q-1}{2}} \\
-\left ( \frac{-q}{p} \right ) \left ( \frac{p}{q} \right ) & = & (-1)^{\frac{p-1}{2}\frac{q-1}{2}} \left ( \frac{q}{p} \right ) \left ( \frac{p}{q} \right ) \\
-\neea
-%
-
-
-
-
-
-
-
+which means that $\omega(x) = O(\log x/\log \log x)$
 
 
 
