@@ -6344,6 +6344,47 @@ c\cdot \log \log x ~ \omega(x) & \le & A(x) < \log x \\
 %
 which means that $\omega(x) = O(\log x/\log \log x)$
 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Show that $\sum_{p \le x} 1 / \log p = \Theta(x/(\log x)^2)$
+
+I would say that I'd start with the same thing
+%
+\nbea
+\sum_{p \le x} \frac{1} {\log p} & \le & \frac{1}{\log x} \sum_{p \le x} 1 \\
+& \le & \frac{1}{\log x} \pi(x)
+\neea
+%
+and also
+%
+\nbea
+\sum_{p \le x} \frac{1} {\log p} & \ge & \sum_{x^{1/2} < p \le x} \frac{1} {\log p} \\
+& \ge & \frac{1}{\log x} \sum_{x^{1/2} < p \le x} 1 \\
+& \ge & \frac{1}{\log x} \pi(x) \left ( 1 - \frac{\pi(x^{1/2})}{\pi(x)} \right )
+\neea
+%
+and since $\pi(x^{1/2})/\pi(x) = o(1)$, $\sum_{p \le x} 1 / \log p = \Theta(\frac{1}{\log x} \pi(x))$,
+%
+\nbea
+c\cdot\frac{1}{\log x} \pi(x) \le \sum_{p \le x} \frac{1} {\log p} \le d\cdot\frac{1}{\log x} \pi(x)
+\neea
+%
+but since $\pi(x) = \Theta(x/\log x)$
+%
+\nbea
+c'\cdot\frac{x}{\log x} \le \pi(x) \le d'\cdot\frac{x}{\log x}
+\neea
+%
+we have
+%
+\nbea
+(cc')\cdot\frac{x}{\log^2 x} \le \sum_{p \le x} \frac{1} {\log p} \le (dd')\cdot\frac{x}{\log^2 x} &~~~\longrightarrow~~~& \sum_{p \le x} \frac{1}{\log p} = \Theta\left(\frac{x}{\log^2 x}\right)
+\neea
+%
+which is what we want
+
+
+
 
 
 
