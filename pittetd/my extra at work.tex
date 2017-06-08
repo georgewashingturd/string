@@ -6396,6 +6396,24 @@ What we can do instead is something like
 \neea
 %
 
+%
+\nbea
+\sum_{x^{1/2} < p \le x} \frac{1} {\log p} & \le & \frac{1} {\log x^{1/2}} \sum_{x^{1/2} < p \le x}1  \\
+& \le & \frac{2} {\log x} (\pi(x) - \pi(x^{1/2}))  \\
+\neea
+%
+this means that $\sum_{x^{1/2} < p \le x} 1 /\log p = O(\pi(x)/\log x)$ but this also means that $\sum_{x^{1/4} < p \le x^{1/2}} 1 /\log p = O(\pi(x^{1/2})/\log x^{1/2})$, we can keep doing this but not indefinitely, only until $x^{1/2k} < 2$ so if we add up everything
+%
+\nbea
+\sum_{p \le x} \frac{1} {\log p} & = & \sum_{x^{1/2} < p \le x} \frac{1} {\log p} + \sum_{x^{1/4} < p \le x^{1/2}} \frac{1} {\log p} + \dots + \sum_{x^{1/2k} < p \le x^{1/2(k-1)}} \frac{1} {\log p} \\
+& = & O\left(\frac{\pi(x)}{\log x}\right) + O\left(\frac{\pi(x^{1/2})}{\log x^{1/2}}\right) + \dots + O\left(\frac{\pi(x^{1/2k})}{\log x^{1/2k}}\right) \\
+& = & O\left(\frac{\pi(x)}{\log x}\right) + O\left(\frac{\pi(x)}{\log x}\right) + \dots + O\left(\frac{\pi(x)}{\log x}\right) \\
+& = & O\left(\frac{\pi(x)}{\log x}\right)
+\neea
+%
+
+maybe we can telescope this
+
 Instead what we can do is 
 
  and $\sum_{p \le x} 1 / \log p = \Theta\left(\frac{1}{\log x} \pi(x)\right)$,
