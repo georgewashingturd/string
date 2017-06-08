@@ -6370,7 +6370,31 @@ and also
 & \le & \frac{k}{\log x} \pi(x)
 \neea
 %
-where $x^{1/k}$ is smaller than the smallest prime $p$. This all looks nice and good except that $k$ is dependent on $x$, $x^{1/k} \le 2 \to  k \ge \log x/\log 2$ and this is not allowed as the definition of $\Theta$ requires a constant multiplier.
+where $x^{1/k}$ is smaller than the smallest prime $p$. This all looks nice and good except that $k$ is dependent on $x$, $x^{1/k} \le 2 \to  k \ge \log x/\log 2$ and this is not allowed as the definition of $\Theta$ requires a constant multiplier. But more than that if we just assume a constant $k > 1$ it contradicts our earlier result that $\sum_{p \le x} 1 / \log p \ge 1/\log x \pi(x)$.
+
+What we can do instead is something like
+%
+\nbea
+\sum_{p \le x} \frac{1} {\log p} & \le & \sum_{1 < y \le x} \frac{1} {\log y} \\
+\neea
+%
+
+%
+\nbea
+\sum_{p \le x} \frac{1} {\log p} & \le & \sum_{p \le x^2} \frac{1} {\log p} \\
+& \le & \sum_{p \le x} \frac{1} {\log p} + \sum_{x < p \le x^2} \frac{1} {\log p} \\
+& \le & \sum_{p \le x} \frac{1} {\log p} + \frac{1} {\log x} \sum_{x < p \le x^2} 1 \\
+\neea
+%
+
+%
+\nbea
+\sum_{p \le x} \frac{1} {\log p} & = & \sum_{p \le 2x} \frac{1} {\log p}  - \sum_{x < p \le 2x} \frac{1} {\log p} \\
+& \le & \sum_{p \le 2x} \frac{1} {\log p} - \frac{1} {\log 2x}\sum_{x < p \le 2x} 1 \\
+& \le & \sum_{p \le 2x} \frac{1} {\log p} - \frac{1} {\log 2x}(\pi(2x) - \pi(x)) \\
+& \le & \sum_{p \le 2x} \frac{1} {\log p} - \frac{1} {\log 2x}\pi(2x) \\
+\neea
+%
 
 Instead what we can do is 
 
