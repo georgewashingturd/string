@@ -6293,6 +6293,14 @@ where $\gcd(m,n) = 1, m,n > 1$. And so following this path we get something like
 %
 the reason these approaches would not work is that $\log \log n$ is not additive and this is the major problem, the numerator is obviously additive and in fact it is very obvious that $\omega(n) = O(\log n)$ just express $n = \prod_i p_i^{\alpha_i}$ and take the log and the result follows immediately.
 
+Another thing I tried was to express 
+%
+\nbea
+\omega(n) = \sum_{p \le n} 1 - \left \lceil \frac{n}{p} - \left \lfloor \frac{n}{p}\right \rfloor \right \rceil 
+\neea
+%
+although I dunno what else to do after this ~~~ \dunno
+
 Another approach would be like the one done for $\theta(x)$, define $A(x)$ as 
 %
 \nbea
@@ -6348,22 +6356,25 @@ which means that $\omega(x) = O(\log x/\log \log x)$
 
 Show that $\sum_{p \le x} 1 / \log p = \Theta(x/(\log x)^2)$
 
-I would say that I'd start with the same thing
+I would say that I'd start with the same thing although since we are dealing with a denominator the inequality is now reversed
 %
 \nbea
-\sum_{p \le x} \frac{1} {\log p} & \le & \frac{1}{\log x} \sum_{p \le x} 1 \\
-& \le & \frac{1}{\log x} \pi(x)
+\sum_{p \le x} \frac{1} {\log p} & \ge & \frac{1}{\log x} \sum_{p \le x} 1 \\
+& \ge & \frac{1}{\log x} \pi(x)
 \neea
 %
 and also
 %
 \nbea
-\sum_{p \le x} \frac{1} {\log p} & \ge & \sum_{x^{1/2} < p \le x} \frac{1} {\log p} \\
-& \ge & \frac{1}{\log x} \sum_{x^{1/2} < p \le x} 1 \\
-& \ge & \frac{1}{\log x} \pi(x) \left ( 1 - \frac{\pi(x^{1/2})}{\pi(x)} \right )
+\sum_{p \le x} \frac{1} {\log p} & \le & \frac{1} {\log x^{1/k}}\sum_{p \le x} 1 \\
+& \le & \frac{k}{\log x} \pi(x)
 \neea
 %
-and since $\pi(x^{1/2})/\pi(x) = o(1)$, $\sum_{p \le x} 1 / \log p = \Theta(\frac{1}{\log x} \pi(x))$,
+where $x^{1/k}$ is smaller than the smallest prime $p$. This all looks nice and good except that $k$ is dependent on $x$, $x^{1/k} \le 2 \to  k \ge \log x/\log 2$ and this is not allowed as the definition of $\Theta$ requires a constant multiplier.
+
+Instead what we can do is 
+
+ and $\sum_{p \le x} 1 / \log p = \Theta\left(\frac{1}{\log x} \pi(x)\right)$,
 %
 \nbea
 c\cdot\frac{1}{\log x} \pi(x) \le \sum_{p \le x} \frac{1} {\log p} \le d\cdot\frac{1}{\log x} \pi(x)
