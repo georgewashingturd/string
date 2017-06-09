@@ -6370,53 +6370,62 @@ and also
 & \le & \frac{k}{\log x} \pi(x)
 \neea
 %
-where $x^{1/k}$ is smaller than the smallest prime $p$. This all looks nice and good except that $k$ is dependent on $x$, $x^{1/k} \le 2 \to  k \ge \log x/\log 2$ and this is not allowed as the definition of $\Theta$ requires a constant multiplier. But more than that if we just assume a constant $k > 1$ it contradicts our earlier result that $\sum_{p \le x} 1 / \log p \ge 1/\log x \pi(x)$.
+where $x^{1/k}$ is smaller than the smallest prime $p$. At first glance it looks like we've got our answer but we we look closely this is just a contradiction of our earlier result as $k > 1$ and previously we have $\sum_{p \le x} 1/\log p \ge \pi(x)/\log x$. Furthermore, $k$ now depends on $x$, $x^{1/k} \le 2 \to  k \ge \log x/\log 2$ and this is not allowed as the definition of $\Theta$ requires a {\it constant} multiplier.
 
-What we can do instead is something like
-%
-\nbea
-\sum_{p \le x} \frac{1} {\log p} & \le & \sum_{1 < y \le x} \frac{1} {\log y} \\
-\neea
-%
-
-%
-\nbea
-\sum_{p \le x} \frac{1} {\log p} & \le & \sum_{p \le x^2} \frac{1} {\log p} \\
-& \le & \sum_{p \le x} \frac{1} {\log p} + \sum_{x < p \le x^2} \frac{1} {\log p} \\
-& \le & \sum_{p \le x} \frac{1} {\log p} + \frac{1} {\log x} \sum_{x < p \le x^2} 1 \\
-\neea
-%
-
-%
-\nbea
-\sum_{p \le x} \frac{1} {\log p} & = & \sum_{p \le 2x} \frac{1} {\log p}  - \sum_{x < p \le 2x} \frac{1} {\log p} \\
-& \le & \sum_{p \le 2x} \frac{1} {\log p} - \frac{1} {\log 2x}\sum_{x < p \le 2x} 1 \\
-& \le & \sum_{p \le 2x} \frac{1} {\log p} - \frac{1} {\log 2x}(\pi(2x) - \pi(x)) \\
-& \le & \sum_{p \le 2x} \frac{1} {\log p} - \frac{1} {\log 2x}\pi(2x) \\
-\neea
-%
-
+So then I played around with it more and what I got that might work is the following, start with this
 %
 \nbea
 \sum_{x^{1/2} < p \le x} \frac{1} {\log p} & \le & \frac{1} {\log x^{1/2}} \sum_{x^{1/2} < p \le x}1  \\
 & \le & \frac{2} {\log x} (\pi(x) - \pi(x^{1/2}))  \\
+& = & O\left(\frac{\pi(x)}{\log x}\right)
 \neea
 %
-this means that $\sum_{x^{1/2} < p \le x} 1 /\log p = O(\pi(x)/\log x)$ but this also means that $\sum_{x^{1/4} < p \le x^{1/2}} 1 /\log p = O(\pi(x^{1/2})/\log x^{1/2})$, we can keep doing this but not indefinitely, only until $x^{1/2k} < 2$ so if we add up everything
+so at least we have a less than inequality. before I go to the actual solution that works let me expose my own erroneous way :)
+
+How can we massage this to get the full range $p \le x$ rather than just $x^{1/2} < p \le x$? Well, we can sort of ``telescope'' it this way
 %
 \nbea
-\sum_{p \le x} \frac{1} {\log p} & = & \sum_{x^{1/2} < p \le x} \frac{1} {\log p} + \sum_{x^{1/4} < p \le x^{1/2}} \frac{1} {\log p} + \dots + \sum_{x^{1/2k} < p \le x^{1/2(k-1)}} \frac{1} {\log p} \\
-& = & O\left(\frac{\pi(x)}{\log x}\right) + O\left(\frac{\pi(x^{1/2})}{\log x^{1/2}}\right) + \dots + O\left(\frac{\pi(x^{1/2k})}{\log x^{1/2k}}\right) \\
+\sum_{p \le x} \frac{1} {\log p} & = & \sum_{x^{1/2} < p \le x} \frac{1} {\log p} + \sum_{x^{1/4} < p \le x^{1/2}} \frac{1} {\log p} + \dots + \sum_{x^{1/2k} < p \le x^{1/2(k-1)}} \frac{1} {\log p}
+\neea
+%
+The thing to note here is that this is not an infinite series no matter what $x$ is because we stop when $x^{1/k} < 2$, \ie when $k \ge \log x/\log 2$ so the series is indeed finite, this means that
+%
+\nbea
+\sum_{p \le x} \frac{1} {\log p} & = & O\left(\frac{\pi(x)}{\log x}\right) + O\left(\frac{\pi(x^{1/2})}{\log x^{1/2}}\right) + \dots + O\left(\frac{\pi(x^{1/2(k-1)})}{\log x^{1/2(k-1)}}\right) \\
+& = & O\left(\frac{\pi(x)}{\log x}\right) + O\left(\frac{2 \pi(x^{1/2})}{\log x}\right) + \dots + O\left(\frac{2(k-1)\pi(x^{1/2(k-1)})}{\log x}\right) \\
+& = & O\left(\frac{\pi(x)}{\log x}\right) + O\left(\frac{2 \pi(x)}{\log x}\right) + \dots + O\left(\frac{2(k-1)\pi(x)}{\log x}\right) \\
 & = & O\left(\frac{\pi(x)}{\log x}\right) + O\left(\frac{\pi(x)}{\log x}\right) + \dots + O\left(\frac{\pi(x)}{\log x}\right) \\
 & = & O\left(\frac{\pi(x)}{\log x}\right)
 \neea
 %
+we can combine all the Big-Oh's because there are only a {\it finite} number of them, this means that we have what we want, well almost, but not really, the thing is that the number of terms above is $k$ and $k$ is still dependent on $x$ so it is implicitly dependent on $x$, although subtle it is still illegal ...
 
-maybe we can telescope this
-
-Instead what we can do is 
-
- and $\sum_{p \le x} 1 / \log p = \Theta\left(\frac{1}{\log x} \pi(x)\right)$,
+To be legal what we need is
+%
+\nbea
+\sum_{p \le x} \frac{1} {\log p} & = & \sum_{p \le x^{1/2}} \frac{1} {\log p} + \sum_{x^{1/2} < p \le x} \frac{1} {\log p} \\
+& \le & \frac{1}{\log 2} \pi(x^{1/2}) + \frac{2} {\log x} (\pi(x) - \pi(x^{1/2})) \\
+& \le & \frac{1}{\log 2} \pi(x^{1/2}) + \frac{2} {\log x} \pi(x) \\
+& \le & \frac{\pi(x)}{\log x} \left ( \frac{\log x ~ \pi(x^{1/2})}{\log 2 ~ \pi(x)}  + 1\right )
+\neea
+%
+since we know that the second term will reduce to $O(\pi(x)/\log x)$, now let's focus on the first term in the bracket while ignoring the $\log 2$ term since it's just a constant multiplier (the RHS below are all supposed to be inside a Big-Oh)
+%
+\nbea
+\frac{\log x ~ \pi(x^{1/2})}{\pi(x)} & \to & \frac{\bcancel{\log x} (x^{1/2}/\frac{1}{2}\bcancel{\log x})}{x/\log x} \\
+& = & \frac{2 \log x}{x^{1/2}} \\
+& = & o(1)
+\neea
+%
+so for $x$ large enough $\frac{\log x ~ \pi(x^{1/2})}{\log 2 ~ \pi(x)} = o(1)$ and therefore
+%
+\nbea
+\sum_{p \le x} \frac{1} {\log p} & \le & \frac{\pi(x)}{\log x} \left ( \frac{\log x ~ \pi(x^{1/2})}{\log 2 ~ \pi(x)}  + 1\right ) \\
+& \le & \frac{\pi(x)}{\log x} \left ( o(1)  + 1\right ) \\
+& = & O\left(\frac{\pi(x)}{\log x}\right)
+\neea
+%
+which is what we really want and this time we obtained it legally :) so finally $\sum_{p \le x} 1/\log p = \Theta(\pi(x)/\log x)$, \ie
 %
 \nbea
 c\cdot\frac{1}{\log x} \pi(x) \le \sum_{p \le x} \frac{1} {\log p} \le d\cdot\frac{1}{\log x} \pi(x)
@@ -6434,7 +6443,7 @@ we have
 (cc')\cdot\frac{x}{\log^2 x} \le \sum_{p \le x} \frac{1} {\log p} \le (dd')\cdot\frac{x}{\log^2 x} &~~~\longrightarrow~~~& \sum_{p \le x} \frac{1}{\log p} = \Theta\left(\frac{x}{\log^2 x}\right)
 \neea
 %
-which is what we want
+which is what we were looking for
 
 
 
