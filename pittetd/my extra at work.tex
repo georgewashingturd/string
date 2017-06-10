@@ -6445,7 +6445,104 @@ we have
 %
 which is what we were looking for
 
+Some comments about this problem, I was initially so fixated on setting up the inequality that I didn't even try the simplest possible solution, the thing is that since we are dealing with a denominator it's difficult to pull out a min valued $1/\log x$, since $x$ is the upper limit of $p$, $1/\log x$ is the smallest value, to get a $\le$ we need to pull out the biggest value which is $1/\log 2$ but this is independent of $x$.
 
+Also, we can split the sum using any other exponent $x^{1/k}$ not just $x^{1/2}$, this is because $\log x/x^{1/k} \to 0$ as $x \to \infty$, so on the surface it looks like our earlier approach dividing the sum into ``telescoping'' sums should work but the difference here is that this time $k$ is a constant, it's the same for every $x$ while in our earlier approach $k$ depends on $x$
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+And for completion's sake let's do the first problem as well, show that $p_n = \Theta(n\log n)$.
+
+We start with the fact that $\pi(x) = \Theta(x/\log x)$ which means that
+%
+\nbea
+c\cdot \frac{x}{\log x} \le \pi(x) \le d\cdot \frac{x}{\log x}
+\neea
+%
+Taking the upper limit and setting $x = p_n$ we have
+%
+\nbea
+\pi(p_n) & \le & d\cdot \frac{p_n}{\log p_n} \\
+n \log p_n & \le & d\cdot p_n \\
+\frac{1}{d}\cdot n \log n & \le & p_n
+\neea
+%
+going to the second line we know that $\pi(p_n) = n$ and going to the third line we know that $p_n > n$ and so $\log p_n > \log n$. So the upper bound of $\pi(n)$ becomes the lower bound of $p_n$, in similar fashion the lower bound of $\pi(n)$ will be come the upper bound of $p_n$ as follows
+%
+\nbea
+c\cdot \frac{p_n}{\log p_n} & \le & \pi(p_n) \\
+c\cdot p_n & \le & n \log p_n
+\neea
+%
+but now we are stuck as $p_n > n$ for all $n$ and so we cannot do what we did for the lower bound above. Good thing is we know that $\log x = O(\log x^{1/k})$ and so $\log p_n = O(p_n^{1/k})$ this means that (supressing the constant in the Big-Oh)
+%
+\nbea
+n \log p_n & \le & n p_n^{1/k}
+\neea
+%
+and then
+%
+\nbea
+p_n & \le & n \log p_n \le n p_n^{1/k} \\
+p_n^{k-1/k} & \le & n \\
+\to \frac{k-1}{k} \log p_n & \le & \log n
+\neea
+%
+putting this back, again ignoring the constants which means that $\le$ is said in a Big-Oh way
+%
+\nbea
+p_n & \le & n \log p_n \le n \log n
+\neea
+%
+so we have our upper bound and $p_n = \Theta(n \log n)$.
+
+One thing to note is that the statement $\frac{k-1}{k} \log p_n \le \log n$ means that $\log p_n = O(\log n)$ which is a bit weird since $p_n > n$ for all $n$ but we are talking about Big-Oh here and it is not just a normal upper bound it's a Big-Oh upper bound.
+
+Another thing is that this means $p^{1/k} = O(n)$ which is again a somewhat interesting fact :) Here $k$ is any real number $> 0$ as can be seen from the derivation above $p_n^{k-1/k} \le n \to p_n^{1/(k/k-1)} \le n$.
+
+The lesson is that when dealing with Big-Oh's we are not dealing with in/equalities like we used to, so care need to be taken
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+The interesting thing is that any proof that I've found on the bounds of $\pi(x)$ always involves the binomial $\binom{2m}{ m}$, this includes Apostol, Stopple and Shoup, looks like there's no other way to do it ...
+
+But looking back this is somewhat needed as our job here is to count the number of primes, by using $\binom{2m}{m}$, we now that the only primes involved are those between $m < p < 2m$, so in this case we roughly know the number of primes involved, and then we can continue by utilizing $\nu_p(n!)$ to count the highest power of each prime, but again, is there a better way?
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+One more interesting fact is that the Big-Oh of Chebyshev's Theta function $\vartheta(x) = O(x)$ also means that 
+%
+\nbea
+\prod_{p \le x} p < 4^x
+\neea
+%
+so the sum of log of primes translates to the upper bound of the product of primes :) somewhat interesting
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Bertrand's Postulate, let's see if we can get this straight from Theorem 5.4
+%
+\nbea
+\pi(n) & \ge & \frac{1}{2}\log 2 \frac{n}{\log n} \\
+\to \pi(2n) - \pi(n) & \ge & \frac{1}{2}\log 2 \left (\frac{2n}{\log 2n} - \frac{n}{\log n} \right ) \\
+& \ge & \frac{1}{2}(\log 2) n \left (\frac{\log n^2 - \log 2n}{\log 2n \log n} \right ) \\
+& \ge & \frac{1}{2}(\log 2) n \left (\frac{\log n/2}{\log 2n \log n} \right ) \\
+& \ge & \frac{1}{2}(\log 2) \left (\frac{\log (n/2)^n}{ \log n^{\log 2n}} \right ) 
+\neea
+%
+which is already quite good as $\frac{\log (n/2)^n}{ \log n^{\log 2n}} > 1$ when $n \ge 4.2$ or so and since $\frac{1}{2}(\log 2) \sim 0.346$, the inequality becomes greater than 1 when $n \ge 13$ and for $n < 13$ we can prove it manually, really manually by hand :)
+
+The interesting question now is if we can change $2m$ to $c\cdot m$ for $c < 2$? following the same logic above we have
+%
+\nbea
+\pi(cn) - \pi(n) & \ge & \frac{1}{2}(\log 2) \left (\frac{\log (n^{c-1}/c)^n}{ \log n^{\log cn}} \right ) 
+\neea
+%
+the thing is that as $n\to \infty$ the ratio always goes to $\infty$, of course with $c > 1$, to see this remember that $x/\log^2 x \to 0$ as $x\to \infty$ so the one $n$ is good enough to take the two logs in the denominator. What this means is that it doesn't matter how close $c$ is to 1 as long as $n$ is big enough $\pi(\ceil{cn}) - \pi(n) = 1$ but this doesn't mean that every other $n$ is a prime, this is {\bf not} a proof of the twin prime conjecture :)
+
+Say at $n_0$ is when the ratio $\frac{\log (n^{c-1}/c)^n}{ \log n^{\log cn}}$ becomes 1, then since $n_0$ is so big even though $c$ is very close to 1, $c\cdot n_0 > n_0 + 1$, let's see this with a concrete example, take $c = 1.1$, for this particular $c$, $n_0 = 189$ and so $(1.1)(189) = 207.9$
+
+But this is a somewhat interesting fact, as $n$ get's bigger the range (in terms of ratio) you need to find a prime gets smaller but not the actual nominal range, so if you're at some number $n_0$ you should be able to finc the next prime at $n_1$ and the ratio $n_1/n_0$ gets smaller and smaller as $n_0$ gets bigger but the actual number of numbers $n_1 - n_0$ need not gets smaller
 
 
 
