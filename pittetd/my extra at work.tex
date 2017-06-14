@@ -6532,20 +6532,33 @@ Bertrand's Postulate, let's see if we can get this straight from Theorem 5.4
 %
 which is already quite good as $\frac{\log (n/2)^n}{ \log n^{\log 2n}} > 1$ when $n \ge 4.2$ or so and since $\frac{1}{2}(\log 2) \sim 0.346$, the inequality becomes greater than 1 when $n \ge 13$ and for $n < 13$ we can prove it manually, really manually by hand :)
 
+But we can actually skip the hand checking :) by going back to the book, Theorem 5.8 to be precise, if you put in the numbers, $m/3\log(2m)$ is less than 1 for $m < 9$, but this is OK as we know that $\pi(x)$ is always an integer, so if say $\pi(2x) - \pi(x) > 0.5$ then we know that if must be at least 1 since it is an integer. So with our derivation above, the only case where it doesn't work is when $n=2$, because $\log (n/2)^n = 0$, but for other $n$ the RHS is always bigger than zero and since the LHS is an integer it must be at least one, so we just need to prove one case by hand, the case of $n=2$.
+
 The interesting question now is if we can change $2m$ to $c\cdot m$ for $c < 2$? following the same logic above we have
 %
 \nbea
 \pi(cn) - \pi(n) & \ge & \frac{1}{2}(\log 2) \left (\frac{\log (n^{c-1}/c)^n}{ \log n^{\log cn}} \right ) 
 \neea
 %
-the thing is that as $n\to \infty$ the ratio always goes to $\infty$, of course with $c > 1$, to see this remember that $x/\log^2 x \to 0$ as $x\to \infty$ so the one $n$ is good enough to take the two logs in the denominator. What this means is that it doesn't matter how close $c$ is to 1 as long as $n$ is big enough $\pi(\ceil{cn}) - \pi(n) = 1$ but this doesn't mean that every other $n$ is a prime, this is {\bf not} a proof of the twin prime conjecture :)
+the thing is that as $n\to \infty$ the ratio always goes to $\infty$, of course we must have $c > 1$, to see this remember that $x/\log^2 x \to \infty$ as $x\to \infty$ so the one $n$ is good enough to take the two logs in the denominator. What this means is that it doesn't matter how close $c$ is to 1 as long as $n$ is big enough $\pi(\ceil{cn}) - \pi(n) = 1$ but this doesn't mean that every other $n$ is a prime, this is {\bf not} a proof of the twin prime conjecture :)
 
-Say at $n_0$ is when the ratio $\frac{\log (n^{c-1}/c)^n}{ \log n^{\log cn}}$ becomes 1, then since $n_0$ is so big even though $c$ is very close to 1, $c\cdot n_0 > n_0 + 1$, let's see this with a concrete example, take $c = 1.1$, for this particular $c$, $n_0 = 189$ and so $(1.1)(189) = 207.9$
+Say at $n_0$ we want to know when the ratio $\frac{\log (n^{c-1}/c)^n}{ \log n^{\log cn}}$ becomes 1, then since $n_0$ is so big even though $c$ is very close to 1, $c\cdot n_0 > n_0 + 1$, let's see this with a concrete example, take $c = 1.1$, for this particular $c$, $n_0 = 189$ and so $(1.1)(189) = 207.9$
 
-But this is a somewhat interesting fact, as $n$ get's bigger the range (in terms of ratio) you need to find a prime gets smaller but not the actual nominal range, so if you're at some number $n_0$ you should be able to finc the next prime at $n_1$ and the ratio $n_1/n_0$ gets smaller and smaller as $n_0$ gets bigger but the actual number of numbers $n_1 - n_0$ need not gets smaller
+But this is a somewhat interesting fact, as $n$ gets bigger the range (in terms of ratio) you need to find a prime gets smaller but not the actual nominal range, so if you're at some number $n_0$ you should be able to find the next prime at $n_1$ and the ratio $n_1/n_0$ gets smaller and smaller as $n_0$ gets bigger but the actual number of numbers $n_1 - n_0$ need not get smaller
 
+One more thing, the above might also mean that
+%
+\nbea
+\lim_{n\to\infty} \frac{p_{n+1}}{p_n} = 1
+\neea
+%
+since we can choose $c$ to be as close to 1 as possible and so if we set it up this way $c\to1$, $\pi(\ceil{c(p_n + 1)}) - \pi(p_n+1) = 1$ which is also somewhat interesting
 
+From Lemma 5.9 we see that the binomial $\binom{2m}{m}$ actually contains a lot more information than it looks :) first it proves $\pi(x) = \Theta(x/\log x)$ and now it also proves Bertrand's postulate.
 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Theorem 5.11, this is somewhat interesting, if you have $\sum_{n \le x} \log n / n$ instead of just summing the primes, I don't think you'll get $\log x + O(1)$ as $\int \log x/x = \log^2 x/2$ and so $\sum_{n \le x} \log n / n = \log^2 x + O(1)$ but when we consider only the prime numbers it reduces to just $\log x$ instead of $\log^2 x$.
 
 
 
