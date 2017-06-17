@@ -6560,6 +6560,63 @@ From Lemma 5.9 we see that the binomial $\binom{2m}{m}$ actually contains a lot 
 
 Theorem 5.11, this is somewhat interesting, if you have $\sum_{n \le x} \log n / n$ instead of just summing the primes, I don't think you'll get $\log x + O(1)$ as $\int \log x/x = \log^2 x/2$ and so $\sum_{n \le x} \log n / n = \log^2 x + O(1)$ but when we consider only the prime numbers it reduces to just $\log x$ instead of $\log^2 x$.
 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Exercise 5.10 of Shoup, if you don't read the question carefully you might have to re-create Chebyshev's mighty prove on the prime counting function. Note that the question does not ask what the limit of $\pi(x)$ as $x$ goes to infinity is, it's a lot easier than that. It says, we know that $\pi(x)$ has a limit and this limit is $c\cdot x/\log x$, find what $c$ is, this is way different than the previous question.
+
+Having settled what the actual question is we can proceed accordingly. My idea is to use a series that will result in $\pi(x)$ being involved somehow. One such series is $\sum_{p\le x} \log p/p$.
+
+But we need to calculate this series two ways (at least) so that we can compare coefficient, one of the oldest trick in the book. One way is already given in the book in Theorem 5.11, another way is to use Abel's sum
+%
+\nbea
+\sum_{p\le x} \frac{\log p}{p} = \sum_{n\le x} \frac{\log n}{n} a(n)
+\neea
+%
+where $a(n)$ is only 1 when $n$ is prime, otherwise it's zero, this way $\sum_{n \le x} a(n) = \pi(x)$, applying Abel's sum we have
+%
+\nbea
+\sum_{n\le x} \frac{\log n}{n} a(n) & = & \frac{\log x}{x} \pi(x) - \int_2^x \pi(t) \left( \frac{1}{t^2} - \frac{\log t}{t^2}\right) dt \\
+& = & \frac{\log x}{x} \pi(x) - \int_2^x \frac{\pi(t)}{t^2}dt + \int_2^x \frac{\pi(t) \log t}{t^2} dt
+\neea
+%
+We now take the derivative with respect to $x$
+%
+\nbea
+&& = \frac{\log x}{x} \pi'(x) + \left( \frac{1}{x^2} - \frac{\log x}{x^2}\right)\pi(x) - \left( \frac{1}{x^2} - \frac{\log x}{x^2}\right)\pi(x) ~~~,~~\pi(2) = 0 \\
+&& = \frac{\log x}{x} \pi'(x)
+\neea
+%
+Now we take the limit $x\to\infty$
+%
+\nbea
+\frac{\log x}{x} \pi'(x) & = & \frac{\log x}{x} c \left(\frac{1}{\log x} - \frac{1}{\log^2 x}\right) \\
+& = & \frac{c}{x}
+\neea
+%
+the second term vanishes because we are taking $x\to\infty$. But from Theorem 5.11 we know that the derivative of $\sum_{p\le x} \log p/p = 1/x$ and so $c=1$.
+
+My previous attempts were to play around with Big Oh like so
+%
+\nbea
+\frac{1}{\log x} \sum_{p\le x} \frac{\log p}{p} & = & \frac{1}{x} \pi(x) - \frac{1}{\log x}\int_2^x \frac{\pi(t)}{t^2}dt + \frac{1}{\log x}\int_2^x \frac{\pi(t) \log t}{t^2} dt
+\neea
+%
+If we take $x\to\infty$, the first term is obviously zero while the first integral can be represented as so
+%
+\nbea
+\lim_{x\to\infty}\frac{1}{\log x}\int_2^x \frac{\pi(t)}{t^2}dt & = & \Theta\left(\frac{1}{\log x}\int_2^x \frac{1}{t\log t}dt\right) = \Theta\left(\frac{\log \log x}{\log x} \right) = 0
+\neea
+%
+as $x$ goes to infinity so what remains is just the second integral
+%
+\nbea
+& = & O\left(\frac{1}{\log x}\int_2^x \frac{c}{t^2} dt\right) \\
+& = & O\left(\frac{c \log x}{\log x}\right) \\ 
+& = & O(c)
+\neea
+%
+Now the thing is I'm not sure if I can equate Big-Oh with limit $x\to\infty$ though they are very similar, the existence of $x_0$ and beyond which a condition is met but still not sure if we can take it at face value. It's a different story if the Big-Oh resulted in zero, in this case I believe it is the same as just taking $x\to\infty$, \eg $O(1/x)$, but if it's not zero I don't know what to make of it
+
 
 
 
