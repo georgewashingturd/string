@@ -1,0 +1,428 @@
+\documentclass[aps,preprint,preprintnumbers,nofootinbib,showpacs,prd]{revtex4-1}
+\usepackage{graphicx,color}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsmath,amssymb}
+\usepackage{multirow}
+\usepackage{amsthm}%        But you can't use \usewithpatch for several packages as in this line. The search 
+
+\usepackage{cancel}
+
+%%% for SLE
+\usepackage{dcolumn}   % needed for some tables
+\usepackage{bm}        % for math
+\usepackage{amssymb}   % for math
+\usepackage{multirow}
+%%% for SLE -End
+
+\usepackage{ulem}
+\usepackage{cancel}
+
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage[top=1in, bottom=1.25in, left=1.1in, right=1.1in]{geometry}
+
+\usepackage{mathtools} % for \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+\newcommand{\msout}[1]{\text{\sout{\ensuremath{#1}}}}
+
+
+%%%%%% My stuffs - Stef
+\newcommand{\lsim}{\mathrel{\mathop{\kern 0pt \rlap
+  {\raise.2ex\hbox{$<$}}}
+  \lower.9ex\hbox{\kern-.190em $\sim$}}}
+\newcommand{\gsim}{\mathrel{\mathop{\kern 0pt \rlap
+  {\raise.2ex\hbox{$>$}}}
+  \lower.9ex\hbox{\kern-.190em $\sim$}}}
+
+%
+% Key
+%
+\newcommand{\key}[1]{\medskip{\sffamily\bfseries\color{blue}#1}\par\medskip}
+%\newcommand{\key}[1]{}
+\newcommand{\q}[1] {\medskip{\sffamily\bfseries\color{red}#1}\par\medskip}
+\newcommand{\comment}[2]{{\color{red}{{\bf #1:}  #2}}}
+
+
+\newcommand{\ie}{{\it i.e.} }
+\newcommand{\eg}{{\it e.g.} }
+
+%
+% Energy scales
+%
+\newcommand{\ev}{{\,{\rm eV}}}
+\newcommand{\kev}{{\,{\rm keV}}}
+\newcommand{\mev}{{\,{\rm MeV}}}
+\newcommand{\gev}{{\,{\rm GeV}}}
+\newcommand{\tev}{{\,{\rm TeV}}}
+\newcommand{\fb}{{\,{\rm fb}}}
+\newcommand{\ifb}{{\,{\rm fb}^{-1}}}
+
+%
+% SUSY notations
+%
+\newcommand{\neu}{\tilde{\chi}^0}
+\newcommand{\neuo}{{\tilde{\chi}^0_1}}
+\newcommand{\neut}{{\tilde{\chi}^0_2}}
+\newcommand{\cha}{{\tilde{\chi}^\pm}}
+\newcommand{\chao}{{\tilde{\chi}^\pm_1}}
+\newcommand{\chaop}{{\tilde{\chi}^+_1}}
+\newcommand{\chaom}{{\tilde{\chi}^-_1}}
+\newcommand{\Wpm}{W^\pm}
+\newcommand{\chat}{{\tilde{\chi}^\pm_2}}
+\newcommand{\smu}{{\tilde{\mu}}}
+\newcommand{\smur}{\tilde{\mu}_R}
+\newcommand{\smul}{\tilde{\mu}_L}
+\newcommand{\sel}{{\tilde{e}}}
+\newcommand{\selr}{\tilde{e}_R}
+\newcommand{\sell}{\tilde{e}_L}
+\newcommand{\smurl}{\tilde{\mu}_{R,L}}
+
+\newcommand{\casea}{\texttt{IA}}
+\newcommand{\caseb}{\texttt{IB}}
+\newcommand{\casec}{\texttt{II}}
+
+\newcommand{\caseasix}{\texttt{IA-6}}
+
+%
+% Greek
+%
+\newcommand{\es}{{\epsilon}}
+\newcommand{\sg}{{\sigma}}
+\newcommand{\dt}{{\delta}}
+\newcommand{\kp}{{\kappa}}
+\newcommand{\lm}{{\lambda}}
+\newcommand{\Lm}{{\Lambda}}
+\newcommand{\gm}{{\gamma}}
+\newcommand{\mn}{{\mu\nu}}
+\newcommand{\Gm}{{\Gamma}}
+\newcommand{\tho}{{\theta_1}}
+\newcommand{\tht}{{\theta_2}}
+\newcommand{\lmo}{{\lambda_1}}
+\newcommand{\lmt}{{\lambda_2}}
+%
+% LaTeX equations
+%
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+
+\newcommand{\nbea}{\begin{eqnarray*}}
+\newcommand{\neea}{\end{eqnarray*}}
+\newcommand{\nbeq}{\begin{equation*}}
+\newcommand{\neeq}{\end{equation*}}
+
+\newcommand{\no}{{\nonumber}}
+\newcommand{\td}[1]{{\widetilde{#1}}}
+\newcommand{\sqt}{{\sqrt{2}}}
+%
+\newcommand{\me}{{\rlap/\!E}}
+\newcommand{\met}{{\rlap/\!E_T}}
+\newcommand{\rdmu}{{\partial^\mu}}
+\newcommand{\gmm}{{\gamma^\mu}}
+\newcommand{\gmb}{{\gamma^\beta}}
+\newcommand{\gma}{{\gamma^\alpha}}
+\newcommand{\gmn}{{\gamma^\nu}}
+\newcommand{\gmf}{{\gamma^5}}
+%
+% Roman expressions
+%
+\newcommand{\br}{{\rm Br}}
+\newcommand{\sign}{{\rm sign}}
+\newcommand{\Lg}{{\mathcal{L}}}
+\newcommand{\M}{{\mathcal{M}}}
+\newcommand{\tr}{{\rm Tr}}
+
+\newcommand{\msq}{{\overline{|\mathcal{M}|^2}}}
+
+%
+% kinematic variables
+%
+%\newcommand{\mc}{m^{\rm cusp}}
+%\newcommand{\mmax}{m^{\rm max}}
+%\newcommand{\mmin}{m^{\rm min}}
+%\newcommand{\mll}{m_{\ell\ell}}
+%\newcommand{\mllc}{m^{\rm cusp}_{\ell\ell}}
+%\newcommand{\mllmax}{m^{\rm max}_{\ell\ell}}
+%\newcommand{\mllmin}{m^{\rm min}_{\ell\ell}}
+%\newcommand{\elmax} {E_\ell^{\rm max}}
+%\newcommand{\elmin} {E_\ell^{\rm min}}
+\newcommand{\mxx}{m_{\chi\chi}}
+\newcommand{\mrec}{m_{\rm rec}}
+\newcommand{\mrecmin}{m_{\rm rec}^{\rm min}}
+\newcommand{\mrecc}{m_{\rm rec}^{\rm cusp}}
+\newcommand{\mrecmax}{m_{\rm rec}^{\rm max}}
+%\newcommand{\mpt}{\rlap/p_T}
+
+%%%song
+\newcommand{\cosmax}{|\cos\Theta|_{\rm max} }
+\newcommand{\maa}{m_{aa}}
+\newcommand{\maac}{m^{\rm cusp}_{aa}}
+\newcommand{\maamax}{m^{\rm max}_{aa}}
+\newcommand{\maamin}{m^{\rm min}_{aa}}
+\newcommand{\eamax} {E_a^{\rm max}}
+\newcommand{\eamin} {E_a^{\rm min}}
+\newcommand{\eaamax} {E_{aa}^{\rm max}}
+\newcommand{\eaacusp} {E_{aa}^{\rm cusp}}
+\newcommand{\eaamin} {E_{aa}^{\rm min}}
+\newcommand{\exxmax} {E_{\neuo \neuo}^{\rm max}}
+\newcommand{\exxcusp} {E_{\neuo \neuo}^{\rm cusp}}
+\newcommand{\exxmin} {E_{\neuo \neuo}^{\rm min}}
+%\newcommand{\mxx}{m_{XX}}
+%\newcommand{\mrec}{m_{\rm rec}}
+\newcommand{\erec}{E_{\rm rec}}
+%\newcommand{\mrecmin}{m_{\rm rec}^{\rm min}}
+%\newcommand{\mrecc}{m_{\rm rec}^{\rm cusp}}
+%\newcommand{\mrecmax}{m_{\rm rec}^{\rm max}}
+%%%song
+
+\newcommand{\mc}{m^{\rm cusp}}
+\newcommand{\mmax}{m^{\rm max}}
+\newcommand{\mmin}{m^{\rm min}}
+\newcommand{\mll}{m_{\mu\mu}}
+\newcommand{\mllc}{m^{\rm cusp}_{\mu\mu}}
+\newcommand{\mllmax}{m^{\rm max}_{\mu\mu}}
+\newcommand{\mllmin}{m^{\rm min}_{\mu\mu}}
+\newcommand{\mllcusp}{m^{\rm cusp}_{\mu\mu}}
+\newcommand{\elmax} {E_\mu^{\rm max}}
+\newcommand{\elmin} {E_\mu^{\rm min}}
+\newcommand{\elmaxw} {E_W^{\rm max}}
+\newcommand{\elminw} {E_W^{\rm min}}
+\newcommand{\R} {{\cal R}}
+
+\newcommand{\ewmax} {E_W^{\rm max}}
+\newcommand{\ewmin} {E_W^{\rm min}}
+\newcommand{\mwrec}{m_{WW}}
+\newcommand{\mwrecmin}{m_{WW}^{\rm min}}
+\newcommand{\mwrecc}{m_{WW}^{\rm cusp}}
+\newcommand{\mwrecmax}{m_{WW}^{\rm max}}
+
+\newcommand{\mpt}{{\rlap/p}_T}
+
+%%%%%% END My stuffs - Stef
+
+\newcommand{\dunno}{$ {}^{\mbox {--}}\backslash(^{\rm o}{}\underline{\hspace{0.2cm}}{\rm o})/^{\mbox {--}}$}
+
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+
+\DeclareMathOperator{\re}{Re}
+
+
+\begin{document}
+
+\title{Jumbled up thoughts}
+\bigskip
+\author{Stefanus Koesno$^1$\\
+$^1$ Somewhere in California\\ San Jose, CA 95134 USA\\
+}
+%
+\date{\today}
+%
+\begin{abstract}
+
+\end{abstract}
+%
+\maketitle
+
+\renewcommand{\theequation}{A.\arabic{equation}}  % redefine the command that creates the equation no.
+\setcounter{equation}{0}  % reset counter 
+
+
+Prime numbers form like a set of bases for the integers, just like sinusoids form the bases for any function $f(x)$, the interesting thing is that this (primes as bases) is true for primes under the operation of additions, if we define some other operations then prime numbers won't be bases anymore.
+
+Not sure if any of the techniques we have for spectral analysis can be derived from properties of primes or maybe the other around ~~~~~ \dunno
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+
+See if we can find $k,m > 1$ such that
+%
+\nbea
+(a\pm1)^k & = & a^m \pm 1
+\neea
+%
+where the min of $a \pm 1$ and $a$ is an integer $\ge 2$. There are four cases total but two of them are equivalent
+%
+\nbea
+(a + 1)^k = a^m + 1 & \longleftrightarrow & (a - 1)^k = a^m - 1 \\
+(a + 1)^k = a^m - 1 & \longleftrightarrow & (a - 1)^k = a^m + 1
+\neea
+%
+Let's denote $b = a + 1$ and tackle the case of $(a+1)^k = a^m + 1$ first which is equivalent to $(a - 1)^k = a^m - 1$.
+
+Let's start with $b$ odd and therefore $a$ even
+%
+\nbea
+b^k - 1 & = & a^m \\
+(b-1)(b^{k-1} + b^{k-2} + b^{k-3} + \dots + b + 1) & = & a^m, ~~~~~ b-1 = a \\
+b^{k-1} + b^{k-2} + b^{k-3} + \dots + b + 1 & = & a^{m-1}
+\neea
+%
+Now if $k$ is odd then on the LHS there will be an even number of terms containing $b$ grouping them two by two
+%
+\nbea
+(b^{k-1} + b^{k-2}) + (b^{k-3} + b^{k-4}) + \dots ( b^2+ b) + 1 & = & a^{m-1}
+\neea
+%
+Each bracket is an even number therefore the total of the LHS is odd due to the $+1$ at the end but the RHS is even since $a$ is even so the above is impossible.
+
+If $k$ is even
+%
+\nbea
+b^{k-2}(b + 1) + b^{k-4}(b+1) + \dots + (b + 1) & = & a^{m-1} \\
+(b+1)(b^{k-2} + b^{k-4} + \dots + 1) & = & a^{m-1}, ~~~~~ b+1 = a + 2 \\
+\to (a + 2) &|& a^{m-1}
+\neea
+%
+we know that $\gcd(a+2, a) \le 2$ so unless $a + 2 = 4 \to a = 2$, there's a divisor of $a+2$ that doesn't divide $a^{m-1}$ and so $(a+2)\nmid a^{m-1}$, the only thing left is to show that when $a = 2$ we have no solution either.
+
+In the case of $a = 2$, $a + 2 = a^2$ and
+%
+\nbea
+(b^{k-2} + b^{k-4} + \dots + 1) & = & a^{m-3}
+\neea
+%
+but the situation repeats if there are only odd number of terms in the LHS then just like above the sum of the LHS is odd while the RHS is even, if there are an even number of terms in the LHS then we have a similar situation again but this time
+%
+\nbea
+(b^2 + 1)(b^{k-4} + b^{k-8} + \dots + 1) & = & a^{m-3}
+\neea
+%
+but this time since $b^2 + 1 = 10$, the LHS contains 5 as a prime factor while the RHS is a product of 2's only so there are no solutions $k,m>1$ if $a$ is even.
+
+The next case is $a$ odd and $b$ even, in this case just like before we have
+%
+\nbea
+b^{k-1} + b^{k-2} + b^{k-3} + \dots + b + 1 & = & a^{m-1}
+\neea
+%
+Again we split it into two cases, if there are an odd number of terms in the LHS, \ie $k$ is odd, then we can do the following
+%
+\nbea
+b^{k-1} + b^{k-2} + b^{k-3} + \dots + b^2 + b & = & a^{m-1} - 1 \\
+b(b^{k-2} + b^{k-3} + \dots + b + 1 )& = & a^{m-1} - 1
+\neea
+%
+Since initially we have an odd number of terms in the LHS after moving the constant 1 to the RHS we now have an even number of terms in the LHS and we can group them two by two like above
+%
+\nbea
+b(b^{k-3}(b + 1) + b^{k-5}(b + 1) + \dots + (b + 1) )& = & a^{m-1} - 1 \\
+b(b+1)(b^{k-3} + b^{k-5} + \dots + 1) & = & (a - 1)(a^{m-2} + a^{m-3} + \dots + 1)
+\neea
+%
+while we also expand the RHS like usual. 
+
+We now need more info to move on. Since $k > 1$ and $b$ is even, if we do modulo 4 the LHS is $0 \equiv \pmod{4}$, so to have a chance of a solution $a \equiv -1 \pmod{4}$ and not only that but $m$ has to be odd as well, this means $m-1$ is even and after extracting $(a-1)$ the second bracket in the RHS has an even number of terms as well.
+
+This means we can group the terms two by two as well
+%
+\nbea
+b(b+1)(b^{k-3} + b^{k-5} + \dots + 1) & = & (a - 1)(a^{m-3}(a + 1) + a^{m-5}(a+1) + \dots  + (a+ 1)) \\
+\bcancel{b}(b+1)(b^{k-3} + b^{k-5} + \dots + 1) & = & (a - 1)\bcancel{(a + 1)}(a^{m-3} + a^{m-5} + \dots + 1),~~~~~a+1=b \\
+\neea
+%
+Now, $(b + 1)$ is odd since $b$ is even, also $(b+1)(b^{k-3} + b^{k-5} + \dots + 1)$ is odd since again $b$ is even so the LHS is odd times odd which is odd while in the RHS $(a - 1)$ is even since $a$ is odd so the RHS is even, but we can't have an odd LHS equal to an even RHS so there's no solution for $k$ odd.
+
+If $k$ is even then
+%
+\nbea
+b^{k-1} + b^{k-2} + b^{k-3} + \dots + b + 1 & = & a^{m-1} \\
+(b + 1)(b^{k-2} + b^{k-3} + \dots + 1 )& = & a^{m-1}, ~~~~~ b + 1 = a + 2 \\
+\to (a + 2) & | & a^{m-1}
+\neea
+%
+But this is the same case as before with $a$ even, $\gcd(a+2,a) \le 2$ but this time since $a$ is odd we don't even have the situation where $a + 2 = 4$ and so there is a divisor of $(a + 2)$ that doesn't divide $a^{m - 1}$ and so $(a+2)\nmid a^{m-1}$.
+
+Now we tackle the case of $(a+1)^k = a^m - 1$ first which is equivalent to $(a - 1)^k = a^m + 1$
+%
+\nbea
+b^k & = & (a-1)(a^{m-1} + a^{m-2} + \dots + a + 1), ~~~~~ a - 1 = b - 2 \\
+\to (b-2) & | & b^k
+\neea
+%
+so again, this case can't work because $\gcd(b-2,b) \le 2$ except for $b-2=2, a = 3$ and $b = 4$, in this case $m$ is even thanks to modulo 4 so then
+%
+\nbea
+4^k & = & (3-1)(3^{m-2}(3 + 1) + 3^{m-4}(3 + 1) + \dots + (3 + 1)) \\
+2 \cdot 4^{k-1} & = & 4 (3^{m-2} + 3^{m-4} + \dots + 1) \\
+2 \cdot 4^{k-2} & = & 3^{m-2} + 3^{m-4} + \dots + 1
+\neea
+%
+Now if there is an odd number of terms in the RHS then we are done because the sum of the RHS is then odd but the LHS is even, but if there are an even number of terms in the RHS we can group them two by two
+%
+\nbea
+2 \cdot 4^{k-2} & = & 3^{m-4}(3^2 + 1) + 3^{m-8}(3^2 + 1) + \dots + (3^2 + 1) \\
+& = & 10(3^{m-4} + 3^{m-8} + \dots + 1)
+\neea
+%
+so the RHS contains 5 as a divisor while the LHS doesn't so it won't work.
+
+In conclusion, there is no such $k,m > 1$ such that $(a \pm 1)^k = a^m \pm 1$, for all integers $a > 1$.
+
+Just a side note, we can make this a little more complicated by noticing that
+%
+\nbea
+2^m  = (1 + 1)^m & = & \sum_{l = 0}^m \binom{m}{l}
+\neea
+%
+Also
+%
+\nbea
+(2 + 1)^k & = & \sum_{j = 0}^k\binom{k}{j} 2^j = \sum_{j = 0}^k\binom{k}{j} \sum_{n=0}^j\binom{j}{n}
+\neea
+%
+And also
+%
+\nbea
+(3 + 1)^k & = & \sum_{j = 0}^k\binom{k}{j} 3^j = \sum_{j = 0}^k\binom{k}{j} (2 + 1)^j \\
+& = & \sum_{j = 0}^k\binom{k}{j} \sum_{n = 0}^j\binom{j}{n} \sum_{i=0}^n\binom{n}{i}
+\neea
+%
+So for the purpose of wasting space any number $n^k$ can be expressed as a nested binomial expansion
+%
+\nbea
+n^k = ((n-1) + 1)^k = \sum_{j_1 = 0}^k\binom{k}{j_1} \sum_{j_2=0}^{j_1}\binom{j_1}{j_2} \dots \sum_{j_{n-1}=0}^{j_{n-2}}\binom{j_{n-2}}{j_{n-1}}
+\neea
+%
+So the question of whether there are $k,m > 1$ such that $(a+1)^k = a^m + 1$ can be restated as a statement about nested binomial expansions
+%
+\nbea
+\sum_{j_1 = 0}^k\binom{k}{j_1} \sum_{j_2=0}^{j_1}\binom{j_1}{j_2} \dots \sum_{j_{n-1}=0}^{j_{n-2}}\binom{j_{n-2}}{j_{n-1}} = \sum_{i_1 = 0}^m\binom{k}{i_1} \sum_{i_2=0}^{i_1}\binom{i_1}{i_2} \dots \sum_{i_{n-2}=0}^{i_{n-3}}\binom{i_{n-3}}{i_{n-2}} \pm 1
+\neea
+%
+
+Anotehr side note, any number is a product of power of primes, in that case any number can be expressed as a product of nested binomial sums and in this case we can use binomial sums as some sort of bases ~~~ \dunno
+
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

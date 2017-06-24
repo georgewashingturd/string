@@ -1,0 +1,379 @@
+\documentclass[aps,preprint,preprintnumbers,nofootinbib,showpacs,prd]{revtex4-1}
+\usepackage{graphicx,color}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsmath,amssymb}
+\usepackage{multirow}
+\usepackage{amsthm}%        But you can't use \usewithpatch for several packages as in this line. The search 
+
+\usepackage{cancel}
+
+%%% for SLE
+\usepackage{dcolumn}   % needed for some tables
+\usepackage{bm}        % for math
+\usepackage{amssymb}   % for math
+\usepackage{multirow}
+%%% for SLE -End
+
+\usepackage{ulem}
+\usepackage{cancel}
+
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage[top=1in, bottom=1.25in, left=1.1in, right=1.1in]{geometry}
+
+\usepackage{mathtools} % for \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+\newcommand{\msout}[1]{\text{\sout{\ensuremath{#1}}}}
+
+
+%%%%%% My stuffs - Stef
+\newcommand{\lsim}{\mathrel{\mathop{\kern 0pt \rlap
+  {\raise.2ex\hbox{$<$}}}
+  \lower.9ex\hbox{\kern-.190em $\sim$}}}
+\newcommand{\gsim}{\mathrel{\mathop{\kern 0pt \rlap
+  {\raise.2ex\hbox{$>$}}}
+  \lower.9ex\hbox{\kern-.190em $\sim$}}}
+
+%
+% Key
+%
+\newcommand{\key}[1]{\medskip{\sffamily\bfseries\color{blue}#1}\par\medskip}
+%\newcommand{\key}[1]{}
+\newcommand{\q}[1] {\medskip{\sffamily\bfseries\color{red}#1}\par\medskip}
+\newcommand{\comment}[2]{{\color{red}{{\bf #1:}  #2}}}
+
+
+\newcommand{\ie}{{\it i.e.} }
+\newcommand{\eg}{{\it e.g.} }
+
+%
+% Energy scales
+%
+\newcommand{\ev}{{\,{\rm eV}}}
+\newcommand{\kev}{{\,{\rm keV}}}
+\newcommand{\mev}{{\,{\rm MeV}}}
+\newcommand{\gev}{{\,{\rm GeV}}}
+\newcommand{\tev}{{\,{\rm TeV}}}
+\newcommand{\fb}{{\,{\rm fb}}}
+\newcommand{\ifb}{{\,{\rm fb}^{-1}}}
+
+%
+% SUSY notations
+%
+\newcommand{\neu}{\tilde{\chi}^0}
+\newcommand{\neuo}{{\tilde{\chi}^0_1}}
+\newcommand{\neut}{{\tilde{\chi}^0_2}}
+\newcommand{\cha}{{\tilde{\chi}^\pm}}
+\newcommand{\chao}{{\tilde{\chi}^\pm_1}}
+\newcommand{\chaop}{{\tilde{\chi}^+_1}}
+\newcommand{\chaom}{{\tilde{\chi}^-_1}}
+\newcommand{\Wpm}{W^\pm}
+\newcommand{\chat}{{\tilde{\chi}^\pm_2}}
+\newcommand{\smu}{{\tilde{\mu}}}
+\newcommand{\smur}{\tilde{\mu}_R}
+\newcommand{\smul}{\tilde{\mu}_L}
+\newcommand{\sel}{{\tilde{e}}}
+\newcommand{\selr}{\tilde{e}_R}
+\newcommand{\sell}{\tilde{e}_L}
+\newcommand{\smurl}{\tilde{\mu}_{R,L}}
+
+\newcommand{\casea}{\texttt{IA}}
+\newcommand{\caseb}{\texttt{IB}}
+\newcommand{\casec}{\texttt{II}}
+
+\newcommand{\caseasix}{\texttt{IA-6}}
+
+%
+% Greek
+%
+\newcommand{\es}{{\epsilon}}
+\newcommand{\sg}{{\sigma}}
+\newcommand{\dt}{{\delta}}
+\newcommand{\kp}{{\kappa}}
+\newcommand{\lm}{{\lambda}}
+\newcommand{\Lm}{{\Lambda}}
+\newcommand{\gm}{{\gamma}}
+\newcommand{\mn}{{\mu\nu}}
+\newcommand{\Gm}{{\Gamma}}
+\newcommand{\tho}{{\theta_1}}
+\newcommand{\tht}{{\theta_2}}
+\newcommand{\lmo}{{\lambda_1}}
+\newcommand{\lmt}{{\lambda_2}}
+%
+% LaTeX equations
+%
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+
+\newcommand{\nbea}{\begin{eqnarray*}}
+\newcommand{\neea}{\end{eqnarray*}}
+\newcommand{\nbeq}{\begin{equation*}}
+\newcommand{\neeq}{\end{equation*}}
+
+\newcommand{\no}{{\nonumber}}
+\newcommand{\td}[1]{{\widetilde{#1}}}
+\newcommand{\sqt}{{\sqrt{2}}}
+%
+\newcommand{\me}{{\rlap/\!E}}
+\newcommand{\met}{{\rlap/\!E_T}}
+\newcommand{\rdmu}{{\partial^\mu}}
+\newcommand{\gmm}{{\gamma^\mu}}
+\newcommand{\gmb}{{\gamma^\beta}}
+\newcommand{\gma}{{\gamma^\alpha}}
+\newcommand{\gmn}{{\gamma^\nu}}
+\newcommand{\gmf}{{\gamma^5}}
+%
+% Roman expressions
+%
+\newcommand{\br}{{\rm Br}}
+\newcommand{\sign}{{\rm sign}}
+\newcommand{\Lg}{{\mathcal{L}}}
+\newcommand{\M}{{\mathcal{M}}}
+\newcommand{\tr}{{\rm Tr}}
+
+\newcommand{\msq}{{\overline{|\mathcal{M}|^2}}}
+
+%
+% kinematic variables
+%
+%\newcommand{\mc}{m^{\rm cusp}}
+%\newcommand{\mmax}{m^{\rm max}}
+%\newcommand{\mmin}{m^{\rm min}}
+%\newcommand{\mll}{m_{\ell\ell}}
+%\newcommand{\mllc}{m^{\rm cusp}_{\ell\ell}}
+%\newcommand{\mllmax}{m^{\rm max}_{\ell\ell}}
+%\newcommand{\mllmin}{m^{\rm min}_{\ell\ell}}
+%\newcommand{\elmax} {E_\ell^{\rm max}}
+%\newcommand{\elmin} {E_\ell^{\rm min}}
+\newcommand{\mxx}{m_{\chi\chi}}
+\newcommand{\mrec}{m_{\rm rec}}
+\newcommand{\mrecmin}{m_{\rm rec}^{\rm min}}
+\newcommand{\mrecc}{m_{\rm rec}^{\rm cusp}}
+\newcommand{\mrecmax}{m_{\rm rec}^{\rm max}}
+%\newcommand{\mpt}{\rlap/p_T}
+
+%%%song
+\newcommand{\cosmax}{|\cos\Theta|_{\rm max} }
+\newcommand{\maa}{m_{aa}}
+\newcommand{\maac}{m^{\rm cusp}_{aa}}
+\newcommand{\maamax}{m^{\rm max}_{aa}}
+\newcommand{\maamin}{m^{\rm min}_{aa}}
+\newcommand{\eamax} {E_a^{\rm max}}
+\newcommand{\eamin} {E_a^{\rm min}}
+\newcommand{\eaamax} {E_{aa}^{\rm max}}
+\newcommand{\eaacusp} {E_{aa}^{\rm cusp}}
+\newcommand{\eaamin} {E_{aa}^{\rm min}}
+\newcommand{\exxmax} {E_{\neuo \neuo}^{\rm max}}
+\newcommand{\exxcusp} {E_{\neuo \neuo}^{\rm cusp}}
+\newcommand{\exxmin} {E_{\neuo \neuo}^{\rm min}}
+%\newcommand{\mxx}{m_{XX}}
+%\newcommand{\mrec}{m_{\rm rec}}
+\newcommand{\erec}{E_{\rm rec}}
+%\newcommand{\mrecmin}{m_{\rm rec}^{\rm min}}
+%\newcommand{\mrecc}{m_{\rm rec}^{\rm cusp}}
+%\newcommand{\mrecmax}{m_{\rm rec}^{\rm max}}
+%%%song
+
+\newcommand{\mc}{m^{\rm cusp}}
+\newcommand{\mmax}{m^{\rm max}}
+\newcommand{\mmin}{m^{\rm min}}
+\newcommand{\mll}{m_{\mu\mu}}
+\newcommand{\mllc}{m^{\rm cusp}_{\mu\mu}}
+\newcommand{\mllmax}{m^{\rm max}_{\mu\mu}}
+\newcommand{\mllmin}{m^{\rm min}_{\mu\mu}}
+\newcommand{\mllcusp}{m^{\rm cusp}_{\mu\mu}}
+\newcommand{\elmax} {E_\mu^{\rm max}}
+\newcommand{\elmin} {E_\mu^{\rm min}}
+\newcommand{\elmaxw} {E_W^{\rm max}}
+\newcommand{\elminw} {E_W^{\rm min}}
+\newcommand{\R} {{\cal R}}
+
+\newcommand{\ewmax} {E_W^{\rm max}}
+\newcommand{\ewmin} {E_W^{\rm min}}
+\newcommand{\mwrec}{m_{WW}}
+\newcommand{\mwrecmin}{m_{WW}^{\rm min}}
+\newcommand{\mwrecc}{m_{WW}^{\rm cusp}}
+\newcommand{\mwrecmax}{m_{WW}^{\rm max}}
+
+\newcommand{\mpt}{{\rlap/p}_T}
+
+%%%%%% END My stuffs - Stef
+
+\newcommand{\dunno}{$ {}^{\mbox {--}}\backslash(^{\rm o}{}\underline{\hspace{0.2cm}}{\rm o})/^{\mbox {--}}$}
+
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+
+\DeclareMathOperator{\re}{Re}
+
+
+\begin{document}
+
+\title{Notes on Pollack's ``Not Always Buried Deep''}
+\bigskip
+\author{Stefanus Koesno$^1$\\
+$^1$ Somewhere in California\\ San Jose, CA 95134 USA\\
+}
+%
+\date{\today}
+%
+\begin{abstract}
+This is one of the best books on analytic number theory I've found to date. The comments here will be based on his notes with the same title instead of the book because the notes is free while the book is not :)
+
+\end{abstract}
+%
+\maketitle
+
+\renewcommand{\theequation}{A.\arabic{equation}}  % redefine the command that creates the equation no.
+\setcounter{equation}{0}  % reset counter 
+
+{\bf Page 3}. On {\it Euclid's second proof}. The trick here is to show that $\varphi(P) > 1$, one thing to note is that $\varphi(n)$ measures the number of numbers that are co-prime to $n$. Since $\varphi(P) > 1$, there is a number that is co-prime to $P$ but in that case that number must contain a new prime. The other details were to make sure there is such a co-prime number.
+
+{\bf Page 4}. This is really clever, first let's do induction to show that $n_i = 2^{2^{i-1}} + 1$. For $i = 1$ this is obvious as $3 = 2^{2^0} + 1$ we just need to show the induction hypothesis is true, say $n_i = 2^{2^{i-1}} + 1$ we need to show the same holds for $n_{i+1}$
+%
+\nbea
+n_{i+1} & = & 2 + \prod_{1 \le j < i+1} n_j \\
+& = & 2 + n_i\prod_{1 \le j < i} n_j \\
+& = & 2 + n_i(n_i - 2) \\
+& = & 2  - 2n_i + n_i^2 \\
+& = & (n_i - 1)^2 + 1 \\
+& = & 2^{2^{i}} + 1
+\neea
+%
+
+Next we tackle the claim that this upper bound on $p_n$ gives us a lower bound on $\pi(x)$. Start with
+%
+\nbea
+p_i & < & n_i \\
+& < & 2^{2^{i-1}} + 1 \\
+& < & 2^{2^{\pi(p_i)-1}} + 1 \\
+\log \log (p_i) & < & \pi(p_i)
+\neea
+%
+where there will be some very small correction terms due to the constant in the exponent and the one outside and of course due to the fact that we are using natural log instead of $\log_2$.
+
+{Page 5}. Top of page, ``the order of $2 \pmod{p}$ is precisely $2^i$'', why is this so? Why can't the order be smaller than $2^i$, this is because
+%
+\nbea
+2^{2^i} & = & \left(\left(\left(2\right)^2\right)^2\right)^2\dots
+\neea
+%
+so we are just squaring over and over again, and since $2^{2^{i-1}} \equiv -1$ this means that there's no lower exponent that produces $+1$ otherwise $2^{2^{i-1}}$ wouldn't have been $-1$.
+
+Next we tackle the comment that ``$a_n = 2^n - 1$ has the desired properties (note that $a_{11} = 23\cdot89$).'' The problem is when $n=13$ which is also a prime $2^{13}-1=8191$ which is a prime, it even fails for $2^5 - 1 = 31$, in hindsight, this is obvious since there are things called the Mersenne primes  of the form $2^n - 1$ :)
+
+I then tried changing it to $a_n = 2^n + 1$ but it fails for $n=3$ as $a_3 = 9$ and it doesn't have two distinct prime divisors but it's more promising, what we need is that $2^{2j+1} + 1$ to have more than 1 prime divisor, we know that $2^{2j+1} + 1$ is always a multiple of 3, it's obvious when you do (mod 3) as $2 \equiv -1 \pmod{3}$.
+
+The question now is if there will be a $k$ such that $3^k = 2^{2j+1} + 1$, well for $j=1$ we have $3^2 = 2^3 + 1$ so how about for $j > 1$?
+
+Suppose we find a $k$ such that $3^k = 2^{2j+1} + 1$, since $j > 1$, $4|2^{2j+1}$ and so by modulo 4 we know that $k$ is even since $3 \equiv -1 \pmod{4}$, so we can denote $k = 2m$
+%
+\nbea
+3^{2m} & = & 2^{2j+1} + 1 \\
+3^{2m} - 1 & = & 2^{2j+1}
+\neea
+%
+Focusing on the LHS
+%
+\nbea
+3^{2m} - 1 & = & (3 - 1)(3^{2m-1} + 3^{2m-2} + 3^{2m-3} + 3^{2m-4} + \dots + 3 + 1) \\
+& = & 2(3^{2m-2} (3 + 1) + 3^{2m-4}(3 + 1) + \dots + (3 + 1)) \\
+& = & 2^3(3^{2m-2} + 3^{2m-4} + \dots + 1)
+\neea
+%
+Now there are $m$ terms inside the brackets in the RHS, if $m$ is odd then
+%
+\nbea
+3^{2m-2} + 3^{2m-4} + 3^{2m-6} + 3^{2m-8} + \dots + 1 & = & (3^{2m-2} + 3^{2m-4}) + (3^{2m-6} + 3^{2m-8}) + \dots + 1 
+\neea
+%
+Each bracket in the RHS is even and so the total is odd and thus
+%
+\nbea
+3^{2m} - 1 & = & 2^3(2M+1)
+\neea
+%
+and it can't be $2^{2j+1}$ since $(2M+1)$ is odd. Now if $m$ is even we get
+%
+\nbea
+3^{2m-2} + 3^{2m-4} + 3^{2m-6} + 3^{2m-8} + \dots + 3^2 + 1 & = & 3^{2m-4}(3^2 + 1) + 3^{2m-8}(3^2 + 1) + \dots + (3^2 + 1) \\
+& = & 2\cdot5(3^{2m-4} + 3^{2m-8} + \dots + 1)
+\neea
+%
+but $5$ is prime and so $3^k - 1$ can't be $2^{2j+1}$. Therefore $2^{2j+1} + 1$ contains at least two prime divisors for $j > 1$ only for $j=1$ does it contain only one prime divisor.
+
+But we cannot use $a_n = 2^n + 1$ for the proof in the book, because then each $a_n$ is a multiple of 3 and they are not co-prime.
+
+The proof in the book still works even is we use $a_n = 2^n - 1$ as long as we include $n=11$ because then $a_2a_3a_5a_7a_{11}$ still have $5+1$ prime factors, note that $a_2,a_3,a_5,a_7$ are all prime numbers.
+
+{\bf Page 9}. Mid page-ish, ``Proceeding as above, we deduce that $\sum_{p\le x}(p-1)^{-1} \ge \log \log x$'', it's very tempting to just do log on both sides of (1.4) since the RHS is already $\log x$ but this will lead to some messy situation, salvageable but messy
+%
+\nbea
+\log \left ( \prod_{p\le x} \frac{1}{1 - \frac{1}{p}} \right ) & \ge & \log \log x \\
+\sum_{p\le x} \log \left (\frac{p}{p-1}\right ) & \ge & \log \log x
+\neea
+%
+
+We can still proceed by showing that
+%
+\nbea
+\frac{1}{p - 1} & > & \log \left (\frac{p}{p-1}\right )
+\neea
+%
+One way to show this is to show $\frac{1}{x - 1} > \log \left (\frac{x}{x-1}\right )$ instead with all real number $x \ge 2$ ( we choose 2 as the starting point for simplicity).
+
+Well we know that at $x = 2$, $\frac{1}{2 - 1} > \log \left (\frac{2}{2-1}\right )$, we now show that the slope for $\frac{1}{x - 1}$ is always smaller to that of $\log \left (\frac{x}{x-1}\right )$ for all $x$ and so $\frac{1}{x - 1} > \log \left (\frac{x}{x-1}\right )$ always holds (we need a smaller slope because the function is a decreasing one).
+
+The slope for $\frac{1}{x - 1}$ is
+%
+\nbea
+\frac{d}{dx}\left( \frac{1}{x - 1} \right ) & = & -\frac{1}{(x-1)(x-1)}
+\neea
+%
+while for $\log \left (\frac{x}{x-1}\right )$
+%
+\nbea
+\frac{d}{dx} \left (\log \left (\frac{x}{x-1}\right ) \right ) & = & -\frac{1}{x(x-1)}
+\neea
+%
+and so the slope for $\frac{1}{x - 1}$ is indeed smaller than that of $\log \left (\frac{x}{x-1}\right )$ and so $\frac{1}{x - 1} > \log \left (\frac{x}{x-1}\right )$, this is one way.
+
+Another way to show that $\sum_{p\le x}(p-1)^{-1} \ge \log \log x$ is to go back to the top of Page 9
+%
+\nbea
+\prod_{p \le x} \frac{1}{1 - \frac{1}{p}} & = & \prod_{p \le x} \left ( 1 + \frac{1}{p - 1} \right ) \\
+& \le & \prod_{p \le x} e^{1/(p-1)} = e^{\sum_{p\le x}(p-1)^{-1}}
+\neea
+%
+Combining all the inequalities (the one involving $\log x$ is from (1.4))
+%
+\nbea
+\log x \le \prod_{p \le x} \frac{1}{1 - \frac{1}{p}} \le e^{\sum_{p\le x}(p-1)^{-1}}
+\neea
+%
+taking the logarithm of both the far LHS and far RHS we have
+%
+\nbea
+\log \log x \le \sum_{p\le x}(p-1)^{-1}
+\neea
+%
+which is what we want to show in the first place
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
