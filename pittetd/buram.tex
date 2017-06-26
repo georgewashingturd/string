@@ -404,8 +404,29 @@ Anotehr side note, any number is a product of power of primes, in that case any 
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+From
+%
+\nbea
+x^k - 1 = (x-1)(x^{k-1} + x^{k-2} + \dots + 1)
+\neea
+%
+Let $d = \gcd(x-1,x^{k-1} + x^{k-2} + \dots + 1)$ then $d|k$
 
-
+Note that the following is a sum of some constant multiplied by some power of $(x-1)$
+%
+\nbea
+\frac{((x-1) + 1)^k - k(x-1)- 1}{x-1} & = & (x-1)^{k-1} + \binom{k}{1}(x-1)^{k-2} + \dots + \binom{k}{k-2}(x-1)
+\neea
+%
+we need $-k(x-1) - 1$ so that each term in the expansion multiplies some power of $(x-1)$ and so the following produces
+%
+\nbea
+x^{k-1} + x^{k-2} + \dots + 1 - \frac{((x-1) + 1)^k - k(x-1)- 1}{x-1} & = & \frac{x^k - 1}{x-1} - \frac{((x-1) + 1)^k - k(x-1)- 1}{x-1} \\
+& = & \frac{x^k - 1 - x^k + k(x-1) + 1}{x-1} \\
+& = & k
+\neea
+%
+and so $d|k$ since $d$ divides the LHS
 
 
 
