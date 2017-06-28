@@ -324,7 +324,7 @@ This means we can group the terms two by two as well
 %
 \nbea
 b(b+1)(b^{k-3} + b^{k-5} + \dots + 1) & = & (a - 1)(a^{m-3}(a + 1) + a^{m-5}(a+1) + \dots  + (a+ 1)) \\
-\bcancel{b}(b+1)(b^{k-3} + b^{k-5} + \dots + 1) & = & (a - 1)\bcancel{(a + 1)}(a^{m-3} + a^{m-5} + \dots + 1),~~~~~a+1=b \\
+\bcancel{b}(b+1)(b^{k-3} + b^{k-5} + \dots + 1) & = & (a - 1)\bcancel{(a + 1)}(a^{m-3} + a^{m-5} + \dots + 1),~~~~~a+1=b
 \neea
 %
 Now, $(b + 1)$ is odd since $b$ is even, also $(b+1)(b^{k-3} + b^{k-5} + \dots + 1)$ is odd since again $b$ is even so the LHS is odd times odd which is odd while in the RHS $(a - 1)$ is even since $a$ is odd so the RHS is even, but we can't have an odd LHS equal to an even RHS so there's no solution for $k$ odd.
@@ -397,22 +397,31 @@ So the question of whether there are $k,m > 1$ such that $(a+1)^k = a^m + 1$ can
 \neea
 %
 
-Anotehr side note, any number is a product of power of primes, in that case any number can be expressed as a product of nested binomial sums and in this case we can use binomial sums as some sort of bases ~~~ \dunno
+Another side note, any number is a product of power of primes, in that case any number can be expressed as a product of nested binomial sums and in this case we can use binomial sums as some sort of bases ~~~ \dunno
 
-
+But one other thing, does this mean that $0^0 = 1$? because according to the binomial expansion
+%
+\nbea
+(2 + 0)^3 & = & \binom{3}{0}2^3 \cdot0^0 + \binom{3}{1}2^2 \cdot 0^1 + \binom{3}{2}2^1 \cdot 0^2 + \binom{3}{3}2^0 \cdot 0^3  \\
+2^3 & = & 2^3 \cdot0^0 \\
+2^3/2^3 & = & 0^0
+\neea
+%
+and so according to binomial expansion $0^0 = 1$ :)
 
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-From
+Given that we can factorize the following
 %
 \nbea
-x^k - 1 = (x-1)(x^{k-1} + x^{k-2} + \dots + 1)
+x^k - 1 & = & (x-1)(x^{k-1} + x^{k-2} + \dots + x + 1) \\
+x^k + 1 & = & (x+1)(x^{k-1} - x^{k-2} + \dots - x + 1), ~~~~~ k = 2m+1
 \neea
 %
-Let $d = \gcd(x-1,x^{k-1} + x^{k-2} + \dots + 1)$ then $d|k$
+Let $d = \gcd(x\mp1,x^{k-1} \pm x^{k-2} + \dots \pm x + 1)$ then $d|k$
 
-Note that the following is a sum of some constant multiplied by some power of $(x-1)$
+{\it Proof}. Let's first tackle the case of $x^k - 1$. Note that the following is a sum of some constant multiplied by some power of $(x-1)$
 %
 \nbea
 \frac{((x-1) + 1)^k - k(x-1)- 1}{x-1} & = & (x-1)^{k-1} + \binom{k}{1}(x-1)^{k-2} + \dots + \binom{k}{k-2}(x-1)
@@ -426,7 +435,49 @@ x^{k-1} + x^{k-2} + \dots + 1 - \frac{((x-1) + 1)^k - k(x-1)- 1}{x-1} & = & \fra
 & = & k
 \neea
 %
-and so $d|k$ since $d$ divides the LHS
+and so $d|k$ since $d$ divides the LHS.
+
+By the same token, for $x^k + 1$, note that $k$ is odd for it to be factorisable 
+%
+\nbea
+\frac{((x+1) - 1)^k - k(x-1) + 1}{x+1} & = & (x+1)^{k-1} - \binom{k}{1}(x+1)^{k-2} + \dots - \binom{k}{k-2}(x+1)
+\neea
+%
+and
+%
+\nbea
+&& x^{k-1} - x^{k-2} + \dots - x + 1 - \frac{((x+1) - 1)^k - k(x-1) + 1}{x+1} \\
+&& ~~~~~ = \frac{(-x)^k - 1}{-x-1} - \frac{((x+1) + 1)^k - k(x-1)+ 1}{x+1}, ~~~~~ k {\rm ~is~odd} \\
+&& ~~~~~ = \frac{x^k + 1 - x^k + k(x+1) - 1}{x+1} \\
+&& ~~~~~ = k
+\neea
+%
+and so in this case $d|k$ like before
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Now back to some physics, last night I was thinking of what it means by combining relativity into quantum theory. We know that one of the main postulates of relativity is that nothing exceeds $c$, the speed of light in vacuum, we'll come back to this in a minute, but what does this mean for quantum mechanics?
+
+The usual explanation is that only observables are physical and therefore their eigenvalues are physical. But does this mean that if we define a velocity operator, then it should not have eigenvalues exceeding $c$? This is usually not the case, as they say amplitudes (or eigenfunctions) are not physical, only the modulo square is.
+
+But somehow it doesn't feel right. If the velocity operator does have eigenvalues exceeding $c$ then if I choose eigenfunctions corresponding to those eigenvalues, I will have non-zero probability of exceeding the speed of light.
+
+But of course, the first question one should ask is, does it make sense to define a velocity operator?
+
+Going back to QFT, we don't have a velocity operator but we do have a momentum operator and as far as I recall there's no limit to maximum eigenvalue this momentum operator can have and I don't see anybody did this in any textbook.
+
+Now, the question is, are wave function amplitudes really of no physical consequence? For Aharanov-Bohm it is, if it is of physical consequence then we must not be so cavalier about saying that as long as the modulo square is zero we are ok. Two, we might need to define a new operator that will cut off at $c$. Or three, we might need to rework the framework of quantum mechanics so that this will be included from the beginning.
+
+Back to the aforementioned ground states, why do we need ground states even in quantum theory, if particles can go through energy barriers why can't they go below ground states? because as long as the modulo square is zero it should be ok right? \ie there's no physical observable of going below the ground state. This might be the reason why quantum gravity is so hard, because a particle can have an amplitude inside singularity, \ie we can have a superposition out of singular and non-singular states.
+
+As I look deeper into this, it reminds me of how different relativity is from Newtonian mechanics. The framework is completely different while the equations are just the consequences of the change in framework. We didn't cut off maximum speed or something like that to get relativity but the concept of space time was completely changed.
+
+In arriving at QFT we didn't do that, the framework of quantum mechanics was not radically altered, we only salted and peppered it to allow Lorentz invariants and transformations, I believe there are things we should modify to get relativistic quantum mechanics, seems like the concept of amplitudes, probabilities, superposition, they all have to change somehow instead of just fiddling around with a new hamiltonian like Dirac did or imposing Lorentz compliant commutator algebra, maybe the algebra itself has got to change
+
+
+
+
+
 
 
 

@@ -364,10 +364,45 @@ taking the logarithm of both the far LHS and far RHS we have
 \log \log x \le \sum_{p\le x}(p-1)^{-1}
 \neea
 %
-which is what we want to show in the first place
+which is what we want to show in the first place.
+
+{\bf Page 11}. There's a simple mistake on {\it J. Perott's proof}, ``by removing those divisible by $1^2 \dots$'', we cannot remove numbers divisible by $1^2$ because then we will remove every number :)
+
+{\bf Page 12}. On J. Perott's proof, top of page, ``It follows that $A(N)/N$ is bounded below $\dots$ so the squarefree numbers have positive lower density'', what it all means is that since $A(N)/N$ has a lower bound, if there are only a finite number of squarefree numbers then after a while (once we've passed the last one) $A(N)/N$ will get smaller and smaller and eventually gets smaller than the lower bound which is not allowed :)
+
+{\bf Page 13}. First paragraph, the conclusion of Erdos's super smart proof, ``But $C\sqrt{N} < N/2$ whenever $N$ is large'', the question is so what? we know that $C\sqrt{N}$ is the number of integers $\le N$ whose prime factors $\le M$. The problem here is that we know that from page 12, the number of integers $\le N$ whose prime factors $> M$ is $< N/2$, so the total number of integers (those with prime factors $\le M$ + those with prime factors $> M$) must be $N$ but here we have $< N/2$ + $< N/2$ which can never reach $N$
 
 
 
+{\it Exercise} 1.2.7. {\bf Page 9}. It's interesting that removing $\sum_p 1/p$ from $\sum_n 1/n$ makes the latter a convergent series. The question now is what is the minimum amount we need to subtract from $\sum_n 1/n$ to make it convergent?
+
+Anyway, what we want to show is that $\sum_n 1/n$ with only {\it squarefull} $n$ converges. We start with
+%
+\nbea
+\prod_p \left( 1 + \frac{1}{p^2} + \frac{1}{p^3} + \dots\right ) = \prod_p \left (\frac{1}{1 - \frac{1}{p}} \right ) - \frac{1}{p}
+\neea
+%
+\ie we remove the $1/p$ term from each series. Note that $1$ is a squarefull number because the statement is that if $p|n$ then $p^2|n$ is a must, but for $1$ no $p$ divides 1 so it is considered squarefull a well. We then follow the same method as shown on Page 9
+%
+\nbea
+\prod_p \left\lbrack\left (\frac{1}{1 - \frac{1}{p}} \right ) - \frac{1}{p}\right\rbrack = \prod_p \left ( 1 + \frac{1}{p-1} - \frac{1}{p} \right ) = \prod_p \left( 1 + \frac{1}{p(p-1)}\right )
+\neea
+%
+Now note that $1/(p-1) < 2/p$ so
+%
+\nbea
+\prod_p \left( 1 + \frac{1}{p(p-1)}\right ) < \prod_p \left( 1 + \frac{2}{p^2}\right ) < \prod_p e^{2/p^2} = e^{\sum_{p} 2/p^2} < e^{2C}
+\neea
+%
+We can safely deduce that $\sum_p 1/p^2 < C$ because it is a convergent series, since the above is convergent by Theorem 1.2.2, $\sum_n 1/n$ with $n$ only squarefull numbers is also convergent.
+
+As for $\alpha$ so that $\sum_n 1/n^\alpha$ is also convergent, my first guess will be $\alpha > 1/2$, this is because with $\alpha = 1/2$ we will have $1/p$ term in the series and it will cause things to blow up. Another clue is in the fact that involving an exponent $\alpha$ means that the upper bound becomes
+%
+\nbea
+e^{\sum_{p} 2/p^{2\alpha}}
+\neea
+%
+and if $\alpha$ goes below $\le 1/2$ we will have an divergent series while $\sum_n 1/n^\beta$ is convergent if $\beta > 1$ by the integral test.
 
 
 

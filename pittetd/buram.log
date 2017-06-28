@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  25 JUN 2017 22:08
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  27 JUN 2017 20:41
 entering extended mode
 **C:/Users/User/Documents/GitHub/string/pittetd/buram.tex
 (C:/Users/User/Documents/GitHub/string/pittetd/buram.tex
@@ -612,30 +612,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 241--242
 =-=-=-
  []
 
-[2] [3] [4]
-Underfull \hbox (badness 10000) in paragraph at lines 405--406
+[2] [3] [4] [5]
+Underfull \hbox (badness 10000) in paragraph at lines 413--414
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 =-=-=-
  []
 
-[5]
-Overfull \hbox (36.16446pt too wide) in alignment at lines 423--427
+
+Overfull \hbox (36.16446pt too wide) in alignment at lines 432--436
  [][][] []
  []
 
-(buram.bbl) [6]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 449.
+[6] [7] (buram.bbl) [8]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 500.
  (buram.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 449.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 449.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 500.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 500.
  ) 
 Here is how much of TeX's memory you used:
  13290 strings out of 428755
  183258 string characters out of 3166785
- 283555 words of memory out of 3000000
+ 284555 words of memory out of 3000000
  16508 multiletter control sequences out of 15000+200000
  13266 words of font info for 50 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
- 36i,16n,38p,399b,380s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,16n,38p,583b,380s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on buram.pdf (6 pages).
+Output written on buram.pdf (8 pages).
