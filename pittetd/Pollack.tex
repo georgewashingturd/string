@@ -404,6 +404,86 @@ e^{\sum_{p} 2/p^{2\alpha}}
 %
 and if $\alpha$ goes below $\le 1/2$ we will have an divergent series while $\sum_n 1/n^\beta$ is convergent if $\beta > 1$ by the integral test.
 
+{\it Exercise } 1.3.1. {\bf Page} 22. We want to show that
+%
+\nbea
+\int_2^x \frac{dt}{\log t} & \sim & \frac{x}{\log x}
+\neea
+%
+using L'Hospital's rule. From what I know L'Hospital's rule only works if the limit is indefinite like $0/0$ or $\infty/\infty$ but looks like I was wrong, you can use is even if it's not indefinite.
+
+So we need to do a derivative w.r.t $x$ on the integral above, how do we do it? for now assume that the integral is indefinite
+%
+\nbea
+\int \frac{dt}{\log t} = F(t) ~~~~~ \longrightarrow ~~~~~ \int_2^x \frac{dt}{\log t} = F(x) - F(2)
+\neea
+%
+Taking the derivative with respect to $x$ means that
+%
+\nbea
+\frac{d}{dx} \int_2^x \frac{dt}{\log t} & = & \frac{d}{dx} F(x)
+\neea
+%
+But in this case
+%
+\nbea
+\frac{d}{dx} F(x) = \left.\frac{d}{dt}F(t) \right|_{t = x} = \left.\frac{d}{dt}\left(\int \frac{dt}{\log t}\right) \right|_{t = x} = \frac{1}{\log x}
+\neea
+%
+While (on the other hand)
+%
+\nbea
+\frac{d}{dx} \left ( \frac{x}{\log x} \right )  = \frac{\log x - 1}{\log^2 x} = \frac{1}{\log x} - \frac{1}{\log^2}
+\neea
+%
+taking the ratio
+%
+\nbea
+\lim_{x\to\infty} \frac{x/\log x}{\int_2^x dt/\log t} & = & \lim_{x\to\infty} \frac{1/\log x - 1/\log^2x}{1/\log x} \\
+& = & \lim_{x\to\infty} 1 - \frac{1}{\log x} \\
+& = & 1
+\neea
+%
+
+{\bf Page 24}. Before Lemma 1.4.2. This is a bit confusing, well more than a bit actually :) ``Another way of viewing this argument is that all but finitely many primes fall into the unique reduced residue class (mod 2); from this perspective, the correct generalization is in plain sight. Namely, take any integer $q$; then every prime $p \nmid q$ has to fall into one of the $\varphi(q)/q$ reduced residue classes (mod $q$), and this forces the proportion of primes to be at most $\varphi(q)/q$.''
+
+First, $\varphi(q)$ is the Euler totient function, \ie the number of numbers $< q$ that are co-prime to $q$. The original logic was that since half of all integers are even, so the proportion of prime numbers can only be at most 1/2. So at first, this looks a lot like the logic of sieve. Since you know that 2 is prime any multiple of 2 cannot be prime and so half of the numbers are gone. But this is not what we are doing, we are not doing sieve.
+
+Instead what happens is this, if we choose $q=4$ instead of 2, now if we group the integers as follows
+%
+\nbea
+\{\textbf{\textit 1},2,\textbf{\textit 3},4\},\{\textbf{\textit 5},6,\textbf{\textit {7}},8\},\{\textbf{\textit 9},10,\textbf{\textit {11}},12\}, \dots
+\neea
+%
+\ie we are grouping them as residue classes of (mod 4), we see that each \textbf{\textit{bold}} number is co-prime to 4, now the number itself might bot be prime, \eg \textbf{\textit{9}}, but \textbf{\textit{they}} are all co-prime to 4. Recall that $\gcd(a, q) = \gcd(a + qm, q)$ so if $a \equiv b \pmod{q}$ then $\gcd(a,q) = \gcd(b,q)$ and so in each residue class the number of numbers that are co-prime to $a$ stays the same.
+
+A number can only be prime if it is co-prime to $q$, which in this case is 4, this is a necessary condition, not a sufficient one, but we are only interested in the upper bound here so the necessary condition is sufficient :)
+
+So if we group the integers into the residue classes of $q$ there will be $\varphi(q)$ numbers that are co-prime to $q$ and so the upper bound of the ratio of the prime numbers to all of the numbers is obviously $\varphi(q)/q$. But of course there's a caveat, this is correct only for the second residue class and beyond, in the first residue class, \{\textbf{\textit 1},\underline{2},\textbf{\textit 3},4\}, 2 is also prime but it doesn't contribute towards $\varphi(q)$ because $2|4$, but this doesn't matter since the upper bound of the total ratio is given by
+%
+\nbea
+\frac{(\Delta + \varphi(q)) + \varphi(q) + \varphi(q) + \dots }{q + q + q + \dots} = \frac{\Delta + \infty\cdot \varphi(q)}{\infty \cdot q} = \frac{\varphi(q)}{q}
+\neea
+%
+Now, the statement ``all but finitely many primes fall into the unique reduced residue class (mod 2);'' means this, say for our $q=4$ example above, each residue class, whether the first, second or third, each of them can only take a finite amount of prime numbers and each prime number must of course fall into only one of them, ergo the word ``unique'', that's what the statement above means.
+
+{\bf Page 24}. Lemma 1.4.2. The first equality, recall that due to its multiplicity $\varphi(q) = \prod_{p_i} p_i^{\alpha_i - 1}( p_i -1) = \prod_{p_i} p_i^{\alpha_i }( 1 -1/p_i)$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  27 JUN 2017 20:40
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  29 JUN 2017 21:59
 entering extended mode
 **C:/Users/User/Documents/GitHub/string/pittetd/Pollack.tex
 (C:/Users/User/Documents/GitHub/string/pittetd/Pollack.tex
@@ -609,19 +609,32 @@ Overfull \hbox (29.61516pt too wide) in alignment at lines 305--308
  [][][] []
  []
 
-[3] [4] [5] (Pollack.bbl) [6]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 414.
+[3] [4] [5] [6]
+Requested font "cmbxti10" at 12.0pt
+Requested font "cmbxti10" at 8.0pt
+Requested font "cmbxti10" at 6.0pt
+ [7]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 462.
+
+ (C:\miktex-portable-2.9\tex\latex\base\omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 462.
+
+(Pollack.bbl) [8]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 494.
  (Pollack.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 414.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 414.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 494.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 494.
  ) 
 Here is how much of TeX's memory you used:
- 13291 strings out of 428755
- 183304 string characters out of 3166785
+ 13313 strings out of 428755
+ 183619 string characters out of 3166785
  284557 words of memory out of 3000000
- 16509 multiletter control sequences out of 15000+200000
- 13266 words of font info for 50 fonts, out of 3000000 for 9000
+ 16527 multiletter control sequences out of 15000+200000
+ 14343 words of font info for 53 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
- 36i,9n,38p,608b,399s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,10n,38p,696b,399s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on Pollack.pdf (6 pages).
+Output written on Pollack.pdf (8 pages).
