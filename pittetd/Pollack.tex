@@ -467,18 +467,157 @@ So if we group the integers into the residue classes of $q$ there will be $\varp
 %
 Now, the statement ``all but finitely many primes fall into the unique reduced residue class (mod 2);'' means this, say for our $q=4$ example above, each residue class, whether the first, second or third, each of them can only take a finite amount of prime numbers and each prime number must of course fall into only one of them, ergo the word ``unique'', that's what the statement above means.
 
-{\bf Page 24}. Lemma 1.4.2. The first equality, recall that due to its multiplicity $\varphi(q) = \prod_{p_i} p_i^{\alpha_i - 1}( p_i -1) = \prod_{p_i} p_i^{\alpha_i }( 1 -1/p_i)$
+{\bf Page 24}. Top of page, ``the partial products $\prod_{2\le n\le x} n/(n-1)$ telescope to $\floor{x}$'', it telescope because
+%
+\nbea
+\prod_{2\le n\le x} \frac{n}{n-1} = \frac{\bcancel{2}}{1}\cdot\frac{\bcancel{3}}{\bcancel{2}}\cdot\frac{\bcancel{4}}{\bcancel{3}} \dots \frac{x}{\bcancel{x-1}} = \frac{x}{1}
+\neea
+%
+
+{\bf Page 24}. Lemma 1.4.2. The first equality, recall that due to its multiplicity $\varphi(q) = \prod_{p_i} p_i^{\alpha_i - 1}( p_i -1) = \prod_{p_i} p_i^{\alpha_i }( 1 -1/p_i)$, so when you divide it by $q$, the $p_i^{\alpha_i }$ terms disappear and you're left with only the $\prod_{p_i} ( 1 -1/p_i)$.
+
+In physics I always use the expansion $\frac{1}{1-x} = 1 + x + x^2 + \dots$, \ie the geometric series, here, we use this a lot too :) to get the inequality $\varphi(q_x)/q_x \le (\log x)^{-1}$, we need to invert it
+%
+\nbea
+\frac{1}{\prod_{p\le x}1/(1-1/p)} = \prod_{p\le x}\left(1 + \frac{1}{p} + \frac{1}{p^2} + \frac{1}{p^3} + \dots \right) = \sum_{n: p|n, p \le x} \frac{1}{n} \ge \sum_{n \le x} \frac{1}{n} \ge \log x
+\neea
+%
+and then we invert it again and y doing so reverses the inequality sign as well.
+
+{\bf Page 24}. Last equation on page, we need to be careful here, first we choose our desired $\epsilon$ then to get $\varphi(q)/q < \epsilon/2$ we need to choose $q$, and finally once we've fixed $q$ we can choose $x$ big enough to get $\varphi(q)/x + \nu(q)/x < \epsilon/2$.
+
+{\bf Page 25}. Last sentence of first paragraph, ``the second product below telescopes so is easy to compute'', 
+%
+\nbea
+\prod_{n=2}^\infty \frac{n^2}{n^2 - 1} & = & \frac{2^2}{2^2-1} \cdot \frac{3^2}{3^2 - 1} \cdot \frac{4^2}{4^2 - 1} \dots \\
+& = & \frac{2~\bcancel{(3-1)}}{(2-1)~\cancel{(2+1)}} \cdot \frac{\cancel{(2+1)}~\bcancel{(4-1)}}{\bcancel{(3 - 1)}~\cancel{(3 + 1)}} \cdot \frac{\cancel{(3+1)}~\bcancel{(5-1)}}{\bcancel{(4 - 1)}~\cancel{(4+1)}} \dots \\
+& = & \frac{2}{1}
+\neea
+%
+only the first term survives.
+
+{\bf Page 25}. Eq (1.21), it's just a different way of writing
+%
+\nbea
+\int_{3/2}^x \frac{1}{t} \pi'(t) dt = \int_{3/2}^x \frac{1}{t} \frac{d\pi(t)}{\bcancel{dt}} \bcancel{dt} = \int_{3/2}^x \frac{1}{t} d\pi(t)
+\neea
+%
+where the cancellation is basically the chain rule
 
 
 
 
 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+{\it Exercise} 1.3.2, {\bf Page} 22, show that $p_n \sim n \log n$. The hint tells us that we need to show that if $a_n \sim b_n$ then $a_n \log a_n \sim b_n \log b_n$, let's do this first.
 
+The key is to use L'Hospital's rule
+%
+\nbea
+\lim_{n\to\infty} \frac{a_n\log a_n}{b_n\log b_n} & = & \lim_{n\to\infty} \frac{a_n}{b_n} \cdot \frac{\log a_n}{\log b_n} \\
+& = & \lim_{n\to\infty} 1 \cdot \frac{1/a_n}{1/b_n}, ~~~~~  \lim_{n\to\infty} \frac{a_n}{b_n} = 1 {\rm~by~hypothesis}\\
+& = & 1
+\neea
+%
+We then set $a_n = p_n\log p_n$ and $b_n = n$, we now need to show that $p_n/\log p_n \sim n$
+%
+\nbea
+\lim_{n\to\infty}\frac{p_n\log p_n}{n} & = & \lim_{n\to\infty}\frac{p_n\log p_n}{\pi(p_n)}, ~~~~~ \pi(p_n) \sim p_n\log p_n {\rm~from~PNT} \\
+& = & \lim_{n\to\infty}\frac{p_n/\log p_n}{p_n/\log p_n} \\
+& = & 1
+\neea
+%
+Finally, as a consequence of the above result, \ie $a_n \sim b_n \to a_n\log _n \sim b_n \log b_n$ we have
+%
+\nbea
+1 = \lim_{n\to\infty}\frac{p_n\log p_n\log(p_n\log p_n)}{n\log n} & = & \lim_{n\to\infty}\frac{p_n}{n\log n} + \frac{\log p_n\log(p_n\log p_n)}{\pi(n)\log \pi(n)} \\
+& = & \lim_{n\to\infty}\frac{p_n}{n\log n} + \frac{\log^2 p_n + \log \log p_n}{p_n/\log p_n \log (p_n/\log p_n)} \\
+& = & \lim_{n\to\infty}\frac{p_n}{n\log n} + \frac{\log^2 p_n + \log \log p_n}{p_n - \log \log p_n/\log p_n} \\
+& = & \lim_{n\to\infty}\frac{p_n}{n\log n} + \frac{p_n}{p_n}\cdot\frac{\log^2 p_n/p_n + \log \log p_n/p_n}{1 - \log \log p_n/p_n\log p_n} \\
+& = & \lim_{n\to\infty}\frac{p_n}{n\log n} + 0 \\
+1 & = & \lim_{n\to\infty}\frac{p_n}{n\log n}
+\neea
+%
 
+{\it Exercise} 1.4.3, {\bf Page} 26, so we have non-negative function $f$ (for $x > x_0$) and $f(x)\to\infty$ as $x\to\infty$, need to find a set of integers $\mathcal{A}$ where
+%
+\nbea
+\sum_{a\in\mathcal{A}} \frac{1}{a} = \infty ~~~~~~~~~~~~ \liminf_{x\to\infty}\frac{A(x)}{f(x)} = 0
+\neea
+%
 
+We can follow the hint or just reuse (1.21), replacing $\pi(x)$ with $A(x)$ (the function that counts the members of $\mathcal{A}$ less than equal to $x$) and the lower integration limit to $N-1$ instead of $3/2$
+%
+\nbea
+\sum_{a\in\mathcal{A}} \frac{1}{a} & = & \int_{N-1}^{x} \frac{dA(t)}{t} \\
+& = & \frac{A(x)}{x} - \frac{A(N-1)}{N-1} + \int_{N-1}^x \frac{A(t)}{t^2}dt \\
+& = & \int_{N-1}^x \frac{A(t)}{t^2}dt + O(1)
+\neea
+%
+Since we are not including every number we know that $A(x)$ is at most $x$ so $A(x)/x$ is at most 1, ergo the $O(1)$.
 
+But I actually don't understand this problem, say $f(x) = \log x$ which meets our criteria above, if $\liminf_{x\to\infty} A(x)/f(x) = 0$, does it mean that $A(x)$ is slower than $\log(x)$? if that's the case the integral above will be finite and the sum $\sum 1/a$ will not be divergent which is a contradiction.
 
+Recall that the definition of $\liminf$ is
+%
+\nbea
+\liminf_{x\to\infty} g(x) = \lim_{n\to\infty}\left(\inf_{x>n} g(x)\right) = L
+\neea
+%
+where $\inf$ means the lowest value in that set which in this case is the lowest value of $g(x)$ for $x > n$. Now the definition of $\lim_{n\to\infty}$ in itself means for every number $\varepsilon > 0$ there is some number $M > 0$ such that
+%
+\nbea
+\left|\left(\inf_{x>n} g(x)\right) - L\right| < \varepsilon ~~~~~ {\rm whenever} ~~~~~ n > M
+\neea
+%
+so here once $\varepsilon$ is given we then choose an $M$ such that $\left|\left(\inf_{x>M} g(x)\right) - L\right| < \varepsilon$ (we have replaced $x>n \to x>M$ since $n > M$). In our case $g(x) = A(x)/f(x)$ and $L = 0$.
+
+Note that $A(x)$ just like $\pi(x)$ is piecewise continuous. So what we need to do is to leave gaps in the set $\mathcal{A}$ so that say for some $x > M$ there is a section $x\in(M<a,b)$ where $A(x)$ stays constant meanwhile $f(x)$ is always growing, but this also means that since $A(x)$ has been stagnant for some time $A(x)/f(x)$ in $(a>m,b)$ can be set to be less than $\varepsilon$ which can be achieved by extending the stagnation interval to inhibit the growth of $A(x)$, we need to do this periodically because $\varepsilon$ can be any real number.
+
+The only thing left is to see if producing gaps like this will still result in divergent $\sum 1/a$. I actually have a ``counter example'', say we start with the harmonic series $1/n$ and we pick only a few numbers every $e^x$, \ie 
+%
+\nbea
+\sum_{n=\ceil{e^1}+1}^{\ceil{e^1}+2} \frac{1}{n} + \sum_{n=\ceil{e^2}+1}^{\ceil{e^2}+2} \frac{1}{n} + \sum_{n=\ceil{e^3}+1}^{\ceil{e^3}+2}\frac{1}{n} + \dots
+\neea
+%
+We can estimate this series by replacing each sum with an integral (of course the value of the integral will be $>$ than the corresponding sum) and the integrals will yield
+%
+\nbea
+\int_{e^1}^{e^1+3} \frac{dx}{x} + \int_{e^2}^{e^2+3} \frac{dx}{x} + \int_{e^3}^{e^3+3} \frac{dx}{x} + \dots & = & \log\left(\frac{e^1 + 3}{e^1}\right) + \log\left(\frac{e^2 + 3}{e^2}\right) + \log\left(\frac{e^3 + 3}{e^3}\right) + \dots \\
+& = & \sum_{k = 1}^{\infty} \log \left(\frac{e^k+3}{e^k}\right)
+\neea
+%
+If we do an integral test on the above we'll get ${{\mathit{li}}_{2}}\left(-3{{e}^{-x}}\right)$, the dilogarithm function and the limit as $x\to\infty$ is zero and so by the integral test it is convergent, so in this case we remove too many things. If instead of $e^k$ we pick $k^m$
+%
+\nbea
+\sum_{k = 1}^{\infty} \log \left(\frac{k^{m}+3}{k^{m}}\right)
+\neea
+%
+the above is only divergent for $m=1$ and is convergent for all $m > 1$.
+
+A cautionary tale in taking a limit, during my adventure deploying the root test
+%
+\nbea
+\lim_{k\to\infty} \left|a_k\right|^{1/k} & = & \lim_{k\to\infty} \left(\log\left(\frac{k+3}{k}\right)\right)^{1/k}
+\neea 
+%
+for $k$ really big $k+3/k \to 1$ and $\log(k+3/k) \to 0^{+}$, the $k^{\rm th}$ root of a number less than 1 is obviously less than 1, the bigger $k$ is the closer to 1 the $k^{\rm th}$ root is, so at a glance it seems like the limit is less than 1 but this is wrong. If we take the log we get
+%
+\nbea
+\lim_{k\to\infty} \log\left(\log\left(\frac{k+3}{k}\right)\right)^{1/k} & = & \lim_{k\to\infty} \frac{\log\left(\log\left(\frac{k+3}{k}\right)\right)}{k} \\
+& = & 0 \\
+\to \lim_{k\to\infty} \left(\log\left(\frac{k+3}{k}\right)\right)^{1/k} & = & 1
+\neea
+%
+
+Note that
+%
+\nbea
+\liminf_{x\to\infty} \frac{A(x)}{f(x)} = 0 ~~~~~~~~ {\rm means~that} ~~~~~~~~ A(x) \ll f(x) ~~~{\rm i.e} ~~~ A(x) = O(f(x))
+\neea
+%
+while what we want is the reverse $f(x) = O(A(x))$
 
 
 
