@@ -504,7 +504,31 @@ only the first term survives.
 %
 where the cancellation is basically the chain rule
 
+{\bf Page 30}, Eq (1.29) and Eq (1.30), these two might be confusing if we just look at what was done before them, to see it clearly let's first denote things as
+%
+\nbea
+\Psi(x,k) & = & \psi(x) - \psi(x/2) + \psi(x/3) - \dots \pm \psi(x/k), ~~~~~ \pm {\rm depending~on~whether~} k ~{\rm is~even~or~odd}
+\neea
+%
+we now want to compare $\Psi(x,k)$ to $T(x) - 2T(x/2)$, this is what Eq (1.29) and (1.30) are about.
 
+Say $k$ is even, then we can group $T(x) - 2T(x/2)$ this way
+%
+\nbea
+T(x) - 2T(x/2) & = & \psi(x) - \psi(x/2) + \psi(x/3) - \dots - \psi(x/k) \\
+&& + \lbrack\psi(x/k+1) - \psi(x/k+2)\rbrack + \lbrack\psi(x/k+3) - \psi(x/k+4)\rbrack + \dots \\
+& = & \Psi(x,k) + \lbrack\psi(x/k+1) - \psi(x/k+2)\rbrack + \lbrack\psi(x/k+3) - \psi(x/k+4)\rbrack + \dots
+\neea
+%
+the thing to note here is that each square bracket is $\ge 0$ therefore $\Psi(x,k) \le T(x) - 2T(x/2)$. If $k$ is odd, we group it a slightly different way
+%
+\nbea
+T(x) - 2T(x/2) & = & \psi(x) - \psi(x/2) + \psi(x/3) - \dots + \psi(x/k) \\
+&& - \lbrack\psi(x/k+1) - \psi(x/k+2)\rbrack - \lbrack\psi(x/k+3) - \psi(x/k+4)\rbrack - \dots \\
+& = & \Psi(x,k) - \lbrack\psi(x/k+1) - \psi(x/k+2)\rbrack - \lbrack\psi(x/k+3) - \psi(x/k+4)\rbrack + \dots
+\neea
+%
+again, each square bracket is $\ge 0$ but there is now a minus sign in front of each of them so therefore for $k$ odd we have $\Psi(x,k \ge T(x) - 2T(x/2))$ and finally, the reason we have less/greater than or {\it equal} to sign is because some of those $\psi(x/m)$ can be zero since they are guaranteed zero if the argument is less than 2.
 
 
 
@@ -571,7 +595,7 @@ where $\inf$ means the lowest value in that set which in this case is the lowest
 \left|\left(\inf_{x>n} g(x)\right) - L\right| < \varepsilon ~~~~~ {\rm whenever} ~~~~~ n > M
 \neea
 %
-so here once $\varepsilon$ is given we then choose an $M$ such that $\left|\left(\inf_{x>M} g(x)\right) - L\right| < \varepsilon$ (we have replaced $x>n \to x>M$ since $n > M$). In our case $g(x) = A(x)/f(x)$ and $L = 0$.
+so here once $\varepsilon$ is given we then choose an $M$ such that $\left|\left(\inf_{x>M} g(x)\right) - L\right| < \varepsilon$ (we have replaced $x>n \to x>M$ since $n > M$) and this must be true for every $x > n > M$. In our case $g(x) = A(x)/f(x)$ and $L = 0$.
 
 Note that $A(x)$ just like $\pi(x)$ is piecewise continuous. So what we need to do is to leave gaps in the set $\mathcal{A}$ so that say for some $x > M$ there is a section $x\in(M<a,b)$ where $A(x)$ stays constant meanwhile $f(x)$ is always growing, but this also means that since $A(x)$ has been stagnant for some time $A(x)/f(x)$ in $(a>m,b)$ can be set to be less than $\varepsilon$ which can be achieved by extending the stagnation interval to inhibit the growth of $A(x)$, we need to do this periodically because $\varepsilon$ can be any real number.
 
@@ -596,6 +620,14 @@ If we do an integral test on the above we'll get ${{\mathit{li}}_{2}}\left(-3{{e
 %
 the above is only divergent for $m=1$ and is convergent for all $m > 1$.
 
+Actually we don't need to go that far, say from the harmonic series we only pick up the following
+%
+\nbea
+\frac{1}{1} + \frac{1}{10} + \frac{1}{100} + \dots = \frac{1}{1 - \frac{1}{10}} = \frac{10}{9}
+\neea
+%
+then we have a convergence series. So we need to be careful as to not produce too large a gap, the problem is that as $x\to\infty$ the gaps need to be bigger and bigger.
+
 A cautionary tale in taking a limit, during my adventure deploying the root test
 %
 \nbea
@@ -610,6 +642,8 @@ for $k$ really big $k+3/k \to 1$ and $\log(k+3/k) \to 0^{+}$, the $k^{\rm th}$ r
 \to \lim_{k\to\infty} \left(\log\left(\frac{k+3}{k}\right)\right)^{1/k} & = & 1
 \neea
 %
+This is the same situation as $\lim_{x\to\infty} 1/x$, $1/x$ is never zero no matter what $x$ is but the limit $1/x$ is still 0.
+
 
 Note that
 %
@@ -618,6 +652,8 @@ Note that
 \neea
 %
 while what we want is the reverse $f(x) = O(A(x))$
+
+Another thing is that $A(x)$ is monotonically increasing as it is just counting the number of integers in $\mathcal{A}$ so say $f(x) = \log\log\log x$ then $A(x)$ has to be slower than $\log\log\log$ for the $\liminf$ to be zero, but if $A(x)$ is this slow it will not diverge ~~~ \dunno
 
 
 
