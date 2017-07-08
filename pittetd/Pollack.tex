@@ -259,7 +259,7 @@ p_i & < & n_i \\
 %
 where there will be some very small correction terms due to the constant in the exponent and the one outside and of course due to the fact that we are using natural log instead of $\log_2$.
 
-{Page 5}. Top of page, ``the order of $2 \pmod{p}$ is precisely $2^i$'', why is this so? Why can't the order be smaller than $2^i$, this is because
+{\bf Page 5}. Top of page, ``the order of $2 \pmod{p}$ is precisely $2^i$'', why is this so? Why can't the order be smaller than $2^i$, this is because
 %
 \nbea
 2^{2^i} & = & \left(\left(\left(2\right)^2\right)^2\right)^2\dots
@@ -312,6 +312,152 @@ but $5$ is prime and so $3^k - 1$ can't be $2^{2j+1}$. Therefore $2^{2j+1} + 1$ 
 But we cannot use $a_n = 2^n + 1$ for the proof in the book, because then each $a_n$ is a multiple of 3 and they are not co-prime.
 
 The proof in the book still works even is we use $a_n = 2^n - 1$ as long as we include $n=11$ because then $a_2a_3a_5a_7a_{11}$ still have $5+1$ prime factors, note that $a_2,a_3,a_5,a_7$ are all prime numbers.
+
+{\it Exercise} 1.2.3. {\bf Page 5}. We are given
+%
+\nbea
+n_i = 1 + \prod_{j<i} n_j
+\neea
+%
+a) Prove that $n_i$ are pairwise relatively prime. Suppose we have any two $n_{a,b}$ with $a < b$ and $d = \gcd(n_a,n_b)$ then
+%
+\nbea
+n_b & = & 1 + \prod_{j < b} n_j \\
+& = & 1 + n_a \prod_{j < b, j\ne a} n_j \\
+n_b - n_a \prod_{j < b, j\ne a} n_j & = & 1 \\
+d\left(n'_b - n'_a \prod_{j < b, j\ne a} n_j\right) & = & 1 \\
+d &|& 1
+\neea
+%
+
+b) Show that $n_i = f(n_{i-1})$ where $f(T) = T^2 - T + 1$
+%
+\nbea
+n_i & = & 1 + \prod_{j < i} n_j \\
+& = & 1 + n_{i-1}\prod_{j < i-1} n_j \\
+& = & 1 + n_{i-1}(n_{i-1} - 1) \\
+& = & n^2_{i-1} - n_{i-1} + 1
+\neea
+%
+
+c) If $p | f(n)$ for some integer $n$, then $-3$ is a square (mod $p$). Taking a prime divisor of each $n_i$, conclude that there are inﬁnitely many primes $p \equiv 1 \pmod{3}$.
+
+For the first part $p$ need not be prime.
+%
+\nbea
+T^2 - T + 1 & = & f(n) = p f'\\
+& \equiv & 0 \pmod{p} \\
+\to T & \equiv & \frac{1 \pm \sqrt{-3}}{2} 
+\neea
+%
+so for $T$ to have a solution $-3$ must be a quadratic residue modulo $p$ but we know that there's a solution which obviously is $T=n$ since $p=f(n)$.
+
+For the second part we need $p$ to be prime and we will utilize the quadratic reciprocity formula
+%
+\nbea
+\left(\frac{3}{p}\right) \left(\frac{p}{3}\right) & = & (-1)^{\frac{3-1}{2}\frac{p-1}{2}} \\
+& = & (-1)^{\frac{p-1}{2}} \\
+\to \left(\frac{-1}{p}\right) \left(\frac{3}{p}\right) \left(\frac{p}{3}\right) & = &  (-1)^{\frac{p-1}{2}} (-1)^{\frac{p-1}{2}} \\
+\left(\frac{-3}{p}\right) \left(\frac{p}{3}\right) & = & (-1)^{p-1}, ~~~~~ p {\rm~is~prime}, ~p-1~{\rm is~even} \\
+(+1)\left(\frac{p}{3}\right) & = &  +1
+\neea
+%
+So we know that $p$ is a quadratic residue modulo 3, by Euler's theorem
+%
+\nbea
+p^{\frac{3-1}{2}} & \equiv & 1 \pmod{3} \\
+p & \equiv & 1 \pmod{3}
+\neea
+% 
+which is what we want
+
+{\it Exercise} 1.2.4. {\bf Page 5}. Let $m$ be a positive integer. Let $A_1$ be any integer with $\gcd(A_1 , m) = 1$, and for $n \ge 1$ deﬁne
+%
+\nbea
+A_{n+1} = A^2_n - mA_n + m.
+\neea
+%
+
+a) Show that $\gcd(A_i , A_j ) = 1$ for $i \neq j$. Suggestion: Show that if $p | A_i$ for some $i$, then for all $j > i$ we have $p \nmid A_j$.
+
+There are a few things we can gather from the recurrence formula, first $\gcd(A_i, m) = 1$ for all $i$
+%
+\nbea
+A_2 & = & A^2_1 - mA_1 + m \\
+A_2 + m(A_1 - 1) & = & A^2_1 \\
+d(A'_2 + m'(A_1-1)) & = & A^2_1 \\
+\to d &|& A_1
+\neea
+%
+but this means that $\gcd(A_1, m) = d$ but since these two are co-prime $d=1$, we can repeat the process with $A_2$ and $A_3$ and so on, so by induction all $A_i$ are co-prime to $m$.
+
+Next, using the above result we can show that $\gcd(A_i, A_{i+1}) = 1$, by the same token
+%
+\nbea
+A_{i+1} & = & A^2_{i} - mA_i + m \\
+A_{i+1} - A_{i}(A_{i} - m) & = & m \\
+d(A'_{i+1} - A'_{i}(A_{i} - m)) & = & m \\
+\to d &|& m
+\neea
+%
+but we know that the $A$'s are co-prime to $m$ so $d=1$. Inspired by this we can go further
+%
+\nbea
+A_{i+2} & = & A_{i+1}^2 - mA_{i+1} + m \\
+& = & (A_i^2 - mA_i + m)^2 - m(A_i^2 - mA_i + m) + m \\
+& = & A_i K + m^2 - m^2 + m \\
+& = & A_i K + m
+\neea
+%
+where $K$ contains all cross terms betwen $A_i$ and $m$, we can of course repeat this process
+%
+\nbea
+A_{i+3} & = & A_{i+2}^2 - mA_{i+2} + m \\
+& = & (A_iK + m)^2 - m(A_iK + m) + m \\
+& = & A_iK' + m^2 - m^2 + m \\
+& = & A_iK' + m
+\neea
+%
+and so on, now say we choose two $A_{i,j}$ with $i<j$ then by the process above we will get
+%
+\nbea
+A_j & = & A_iK''' + m \\
+\to A_j - A_i K''' & = & m \\
+d(A'_j - A'_iK''') & = & m \\
+d &|& m
+\neea
+%
+but from our previous result every $A$ is co-prime to $m$ and so $d=1$ which means that the $A$ are pairwise co-prime.
+
+b) Show that if $A_1 > m$, one has $A_n > m \ge 1$ for every $n$. Use this to give another demonstration that there are an inﬁnite number of primes.
+
+Since $A_1 > m$, $A_1^2 - mA_1 = A_1(A_i - m) > A_1$ and so $A_2 = A_1(A_1-m) + m > A_1 + m > A_2$ and of course $A_2 > m$ also. Continuing this trend we have $A_{n+1} > A_n$.
+
+
+
+c) Taking $A_1 = 3$ and $m = 2$, show that $A_n = 2^{2^{n-1}} + 1$; thus we have recovered Goldbach’s proof. Note that the choice $A_1 = 2$, $m = 1$ corresponds to Exercise 1.2.3.
+
+The choice of $A_1=3$ and $m=2$ means that
+%
+\nbea
+A_{2} & = & A_1^2 - 2A_1 + 2 \\
+& = & (A_1 - 1)^2 + 1 \\
+& = & 2^2 + 1 \\
+& = & 2^{2^{2-1}} + 1
+\neea
+%
+so we have the base case, inductively
+%
+\nbea
+A_{n+1} & = & A_n(A_n - 2) + 2 \\
+& = & (2^{2^{n-1}} + 1)(2^{2^{n-1}} - 1) + 2 \\
+& = & 2^{2^n} - 1 + 2 \\
+& = & 2^{2^n} + 1
+\neea
+%
+while for $A_1=2$ and $m=1$ we have $A_{n+1} = A^2_n - A_n + 1 = f(A_n)$ where $f(T) = T^2 - T + 1$ as given in the previous problem.
+
+The proofs of part (a) and (b) also work for $A_{n+1} = A^k_{n} - m^{k-j}A_n^j + m$
 
 {\bf Page 9}. Mid page-ish, ``Proceeding as above, we deduce that $\sum_{p\le x}(p-1)^{-1} \ge \log \log x$'', it's very tempting to just do log on both sides of (1.4) since the RHS is already $\log x$ but this will lead to some messy situation, salvageable but messy
 %
