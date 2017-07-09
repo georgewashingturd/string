@@ -459,6 +459,77 @@ while for $A_1=2$ and $m=1$ we have $A_{n+1} = A^2_n - A_n + 1 = f(A_n)$ where $
 
 The proofs of part (a) and (b) also work for $A_{n+1} = A^k_{n} - m^{k-j}A_n^j + m$
 
+{\it Exercise} 1.2.5. {\bf Page 6}. (Harris [Har56]). Let $b_0 , b_1 , b_2$ be positive integers with $b_0$ co-prime to $b_2$. Define $A_k$ for $k = 0, 1$ and $2$ as the numerator when the finite continued fraction
+%
+\nbea
+b_0 + \frac{1}{b_1 + \frac{1}{\ddots + \frac{1}{b_k}}}
+\neea
+%
+is put in lowest terms. For $k = 3, 4, \dots$ , inductively define $b_k$ and $A_k$ by $b_k = A_0 A_1 \dots A_{k - 3}$ and $A_k$ by the rule given above. Prove that the $A_i$ form an increasing sequence of pairwise coprime positive integers.
+
+This one is a bit confusing, if I understand it correctly, the rules say that
+%
+\nbea
+A_0 & = & b_0 
+\neea
+%
+and
+%
+\nbea
+b_0 + \frac{1}{b_1} & = & \frac{b_0b_1 + 1}{b_1} \\
+\to A_1 & = & b_0b_1 + 1
+\neea
+%
+and finally
+%
+\nbea
+b_0 + \frac{1}{b_1 + \frac{1}{b_2}} & = & b_0 + \frac{b_2}{b_1b_2 + 1} \\
+& = & \frac{b_0b_1b_2 + b_2 + b_0}{b_1b_2 + 1} \\
+\to A_2 & = & b_0b_1b_2 + b_2 + b_0
+\neea
+%
+
+One attempt is to use partial convergents by way of ent.pdf, a finite continued fraction denoted as $[b_0, b_1, \dots, b_k]$ can be expressed as $p_k/q_k$ where
+%
+\nbea
+\begin{array}{r c l c r c l c r c l c r c l c}
+p_{-2} & = & 0, & ~~~~~~ & p_{-1} & = & 1, & ~~~~~ & p_0 & = & b_0, & ~~~~~ & p_n & = & b_np_{n-1} + p_{n-2} & ~~~~~ \dots \\
+q_{-2} & = & 1, & ~~~~~~ & q_{-1} & = & 0, & ~~~~~ & q_0 & = & 1, & ~~~~~ & q_n & = & b_nq_{n-1} + q_{n-2} & ~~~~~ \dots
+\end{array}
+\neea
+%
+And so $A_k = p_k = b_k A_{k-1} + A_{k-2}$, we will ignore the fact that we need to put the fraction $p_k/q_k$ into its lowest terms for now, the first few $A_k$ are
+%
+\nbea
+A_2 & = & b_2 A_1 + A_0 \\
+A_3 & = & b_3 A_2 + A_1 = A_0A_2 + A_1 \\
+A_4 & = & b_4 A_3 + A_2 = A_0A_1A_3 + A_2 \\
+A_5 & = & b_5 A_4 + A_3 = A_0A_1A_2A_4 + A_3
+\neea
+%
+Let's start with $A_1$ and $A_0$, since $A_0 = b_0$ and $A_1 = b_0b_1 + 1$ they are obviously co-prime. Next, if $A_2$ is not co-prime to $A_1$ then
+%
+\nbea
+d(A'_2 - b_2A'_1) & = & A_0 \\
+d &|& A_0
+\neea
+%
+not allowed since $(A_1,A_0) = 1$, by the same token if $(A_2, A_0) > 1$ then
+%
+\nbea
+d(A'_2 - A'_0) & = & b_2A_1 \\
+d &|& b_2A_1
+\neea
+%
+from above $(A_0, A_1) = 1$ so $d|b_2$, but $A_0 = b_0$ and $(b_0,b_2)=1$ and since $d$ divides both $b_0$ and $b_2$, $d$ has to be 1. So we know that $(A_0,A_1) = (A_0,A_2) = (A_1,A_2) = 1$, following the same pattern we show that $(A_3, A_i) = 1$, $i < 3$, if $(A_3, A_{0,2}) > 1$, then $d|A_1$ but $A_{0,1,2}$ are all co-prime this shows that $A_{0,2,3}$ are co-prime, and the reverse is also true, if $(A_3,A_1)>1$ then $d|A_{0,2}$ but we know that $A_{0,1,2}$ are all co-prime, so $A_{0,1,2,3}$ are all co-prime, and the same argument applies for all other $A_k$. In short all of the $A_k$ are pairwise co-prime.
+
+Now about the fraction being expressed in its lowest terms, one reason we need this is because we can always multiply numerator and denominator with any number we want so for example if we multiply $A_0$ by $A_1/A_1$ then $A_0$ will obviously not be co-prime to $A_1$. The only thing I'm not sure about is if the $A_k$ will form an increasing sequence, this is because once put in the lowest term we divide out some factors. So we actually need not the lowest form requirement, we just need $A_k = p_k$, \ie to be equal to the partial convergent.
+
+{\it Exercise} 1.2.6. {\bf Page 6}. Again, I'm not quite sure what it wants, does it mean the number of primes in the interval goes to infinity as $r$ goes to infinity? but isn't it a circular argument? recall that $r$ is the index of the $r^{\rm th}$ prime, by taking $r\to\infty$ we already assume that there are infinitely many primes ~~~ \dunno ~ in any case $\dots$
+
+
+
+
 {\bf Page 9}. Mid page-ish, ``Proceeding as above, we deduce that $\sum_{p\le x}(p-1)^{-1} \ge \log \log x$'', it's very tempting to just do log on both sides of (1.4) since the RHS is already $\log x$ but this will lead to some messy situation, salvageable but messy
 %
 \nbea
