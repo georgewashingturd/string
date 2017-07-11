@@ -528,7 +528,25 @@ Now about the fraction being expressed in its lowest terms, one reason we need t
 {\it Exercise} 1.2.6. {\bf Page 6}. Again, I'm not quite sure what it wants, does it mean the number of primes in the interval goes to infinity as $r$ goes to infinity? but isn't it a circular argument? recall that $r$ is the index of the $r^{\rm th}$ prime, by taking $r\to\infty$ we already assume that there are infinitely many primes ~~~ \dunno ~ in any case $\dots$
 
 
+But back to the problem, we are just trying to show that there are infinitely many primes in the interval $(p_r, \prod_{i=2}^r p_i + 1]$.
 
+The suggestion tells us to fix some $k$ and produce the following sequence $P-2, P-2^2, P-2^3, \dots, P-2^k$.  Note that $(P-2^a, P-2^{a-1})=1$ because the difference is 2 but to show that every pair is co-prime is another matter. Here we have to choose $k$ judiciously because suppose $(P-2^a, P-2^b) = d > 1$ with $a < b$ then
+%
+\nbea
+d &|& P - 2^a - P + 2^b \\
+&|& 2^a(2^\Delta - 1), ~~~~~ \Delta = b-a \\
+d &|& 2^\Delta - 1
+\neea
+%
+this is because since $P$ is a product of primes excluding 2, $P$ is odd and $P-2^j$ is also odd, so $d$ must be odd too. Now the thing is that it is quite difficult to show that $2^\Delta - 1$ is co-prime to $P-2^j$.
+
+We know that $P-2^j$ will for sure contain new primes not listed in $p_2,p_3,\dots,p_r$ (using the same argument as Euclid's proof), the thing is that $2^\Delta - 1$ might also contain new primes as well but it's hard to show if the those new primes are different.
+
+The easiest way out of this is to first pick a $k$ such that $2^\Delta - 1$, $1 < \Delta < k$, has prime factors only in $p_2, p_3, \dots, p_r$, this way we can guarantee that all prime factors of $2^\Delta - 1$ are contained in $P$, but since $(P,P-2^j)=1$ this means that $d=1$. We can also set $k$ such that $2^{k-1} - 1 \le p_r$ such that all of its prime factors are contained in $P$ but this might be too restrictive.
+
+This way we show that the interval $(p_r,\prod_{i=2}^r p_i + 1]$ contains infinitely many primes where roughly the number of primes in that interval is $\sim\log p_r$.
+
+I initially thought that we can choose any $k$ but then I found a counter example, choose $P = 3\cdot5\cdot7\cdot11 = 1155$ then $P - 2^3 = 1155 - 8 = 31\cdot37$ and $P - 2^8 = 1155 - 256 = 29\cdot31$ and so $(P-2^3, P-2^8) = 31$. So $k$ can't be any number.
 
 {\bf Page 9}. Mid page-ish, ``Proceeding as above, we deduce that $\sum_{p\le x}(p-1)^{-1} \ge \log \log x$'', it's very tempting to just do log on both sides of (1.4) since the RHS is already $\log x$ but this will lead to some messy situation, salvageable but messy
 %
@@ -746,6 +764,22 @@ T(x) - 2T(x/2) & = & \psi(x) - \psi(x/2) + \psi(x/3) - \dots + \psi(x/k) \\
 \neea
 %
 again, each square bracket is $\ge 0$ but there is now a minus sign in front of each of them so therefore for $k$ odd we have $\Psi(x,k \ge T(x) - 2T(x/2))$ and finally, the reason we have less/greater than or {\it equal} to sign is because some of those $\psi(x/m)$ can be zero since they are guaranteed zero if the argument is less than 2.
+
+
+
+
+
+
+
+
+
+$\psi \vartheta and \pi$
+
+
+
+
+
+
 
 
 
