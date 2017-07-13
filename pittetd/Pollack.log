@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  11 JUL 2017 22:17
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  12 JUL 2017 22:04
 entering extended mode
 **C:/Users/User/Documents/GitHub/string/pittetd/Pollack.tex
 (C:/Users/User/Documents/GitHub/string/pittetd/Pollack.tex
@@ -616,55 +616,55 @@ Missing character: There is no ﬁ in font cmr12!
  [5] [6]
 Missing character: There is no ﬁ in font cmr12!
 Missing character: There is no ’ in font cmr12!
- [7] [8] [9] [10] [11] [12] [13]
+ [7] [8] [9] [10] [11] [12] [13] [14] [15]
 Missing character: There is no − in font cmr12!
- [14] [15]
+ [16] [17]
 Requested font "cmbxti10" at 12.0pt
 Requested font "cmbxti10" at 8.0pt
 Requested font "cmbxti10" at 6.0pt
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 763.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 833.
 
 
 (C:\miktex-portable-2.9\tex\latex\base\omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 763.
- [16] [17] [18]
-Overfull \hbox (26.24045pt too wide) in alignment at lines 851--854
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 833.
+ [18] [19] [20]
+Overfull \hbox (26.24045pt too wide) in alignment at lines 921--924
  [][][] []
  []
 
 Requested font "cmti8" at 8.0pt
 Requested font "cmti7" at 6.0pt
-[19]
-Overfull \hbox (41.26747pt too wide) in alignment at lines 901--903
+[21]
+Overfull \hbox (41.26747pt too wide) in alignment at lines 971--973
  [][][] []
  []
 
 
-Overfull \hbox (4.27797pt too wide) in alignment at lines 909--913
+Overfull \hbox (4.27797pt too wide) in alignment at lines 979--983
  [][][] []
  []
 
-
-Overfull \hbox (4.6671pt too wide) in alignment at lines 917--921
+[22]
+Overfull \hbox (4.6671pt too wide) in alignment at lines 987--991
  [][][] []
  []
 
-[20] (Pollack.bbl) [21]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 980.
+(Pollack.bbl) [23]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1048.
  (Pollack.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 980.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 980.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1048.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1048.
  ) 
 Here is how much of TeX's memory you used:
- 13321 strings out of 428755
- 183694 string characters out of 3166785
+ 13320 strings out of 428755
+ 183685 string characters out of 3166785
  289557 words of memory out of 3000000
- 16533 multiletter control sequences out of 15000+200000
+ 16532 multiletter control sequences out of 15000+200000
  15044 words of font info for 55 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
  36i,17n,38p,800b,399s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on Pollack.pdf (21 pages).
+Output written on Pollack.pdf (23 pages).
