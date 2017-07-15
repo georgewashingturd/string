@@ -1023,23 +1023,86 @@ So here we see that the genius of Abel's sum (or Euler's sum) is that how we can
 
 
 
-{\bf Page 31}. Right before {\it Exercise} 1.5.2, ``Note that if the ratio $2 \log 2/ \log 2$ were any smaller, this would yield a proof of Bertrand’s postulate!''
+{\bf Page 31}. Right before {\it Exercise} 1.5.2, ``Note that if the ratio $2 \log 2/ \log 2$ were any smaller, this would yield a proof of Bertrand’s postulate!'' 
 
+I suppose what we want to show is that $\pi(2x)/\pi(x) > 1$ to get Bertrand's postulate, from Theorem 1.5.2 we know that
 %
 \nbea
-\frac{\pi(2x)/(2x/\log 2x)}{\pi(x)/(x/\log x)} \frac{2\log 2 + o(1)}{2 \log 2 + o(1)} \\
-\frac{\pi(2x)\log 2x}{2 \pi(x)\log x} \frac{2\log 2 + o(1)}{2 \log 2 + o(1)} \\
+\pi(x) & \le & c_2 \frac{x}{\log x} \\
+\to \frac{1}{\pi(x)} & \ge & \frac{1}{c_2} \frac{\log x}{x}
+\neea
+%
+and so
+%
+\nbea
+\pi(2x) \cdot \frac{1}{\pi(x)} & \ge & c_1 \frac{2x}{\log 2x} \cdot \frac{1}{c_2} \frac{\log x}{x} \\
+\frac{\pi(2x)}{\pi(x)}& \ge & \frac{c_1}{c_2} \frac{2x \log x}{x \log 2x} \\
+& \ge & \frac{c_1}{c_2} \frac{2}{1 + \frac{\log 2}{\log x}}
+\neea
+%
+Now also we know that
+%
+\nbea
+\frac{2}{1 + \frac{\log 2}{\log x}} & > & 1 \\
+\to \log x & > & \log 2 \\
+x & > & 2
+\neea
+%
+$\frac{2}{1 + \frac{\log 2}{\log x}}$ is bigger than 1 once $x > 2$ so we only need $c_1 / c_2 > 1$, but in this case $c_1 / c_2 = \log 2 / 2 \log 2 = 1/2$ (note that $\frac{2}{1 + \frac{\log 2}{\log x}}$ is always smaller than 2 so the product $\frac{c_1}{c_2}\frac{2}{1 + \frac{\log 2}{\log x}}$ in this case is always less than 1). So if we gather everything
+%
+\nbea
+\lim_{x\to\infty} \frac{2}{1 + \frac{\log 2}{\log x}} = 2 \\
+\to \lim_{x\to\infty} \frac{1}{2} \left (\frac{2}{1 + \frac{\log 2}{\log x}} \right ) = 1
+\neea
+%
+thus if the constant multiplier, $c_1/c_2$, is {\it any} bigger than $1/2$ (or in other words $c_2/c_1 = 2 \log 2/\log 2$ were any smaller) then we'll get Bertrand's postulate.
+
+Trying to understand the above statement taught me a lot in dealing with inequalities, just like above when taking a one over or a minus sign we need to be careful, another way to understand the above statement is to take the difference
+%
+\nbea
+\pi(2x) - \pi(x) & \ge & c_1 \frac{2x}{\log 2x} - c_2 \frac{x}{\log x}
+\neea
+%
+here $c_2$ is involved because there's a minus sign in front of $\pi(x)$ so we need to take the upper bound. Otherwise what we get is
+%
+\nbea
+\pi(2x) - \pi(x) & \ge & c_1 \left( \frac{2x}{\log 2x} - \frac{x}{\log x}\right )
+\neea
+%
+and $\frac{2x}{\log 2x} - \frac{x}{\log x}$ is a monotonically increasing function and we would've gotten Bertrand's postulate but this is of course wrong. Getting back to the right approach
+%
+\nbea
+\pi(2x) - \pi(x) & \ge & c_1 \frac{2x}{\log 2x} - c_2 \frac{x}{\log x} \\
+& \ge &  c_1 c_2 2x \left ( \frac{1}{c_2 \log 2x} - \frac{1}{2 c_1 \log x} \right )
+\neea
+%
+For Bertrand's postulate to hold we need whatever in the big bracket to be $> 0$
+%
+\nbea
+\frac{1}{c_2\log (2x)} - \frac{1}{c_1\log x} & > & 0 \\
+x^{2} & > & (2x)^{c_2/c_1}
+\neea
+%
+here $c_2/c_1 = 2\log2/\log2 = 2$ so the inequality above can never be satisfied, but if $c_2/c_1$ were any smaller than 2 the above inequality will be satisfied for sufficiently large $x$.
+
+{\it Exercise} 1.5.2. {\bf Page 31}. Show that there are positive constants $c_1$, $c_2$ such that for every $x \ge 2$, we have
+%
+\nbea
+c_1 \frac{x}{\log x} \le  \pi(x) \le c_2 \frac{x}{\log x}.
 \neea
 %
 
-%
-\nbea
-\frac{2x}{\log 2x} - \frac{x}{\log x} & = & \frac{2x\log x - x \log 2x}{\log 2x \log x} \\
-& = & \frac{2x\log x - x\log x - x\log 2}{\log 2x \log x} \\
-& = & \frac{x\log x - x\log 2}{\log 2x \log x} \\
-& = & \frac{x - x\log 2/\log x}{\log 2x} \\
-\neea
-%
+This is actually very simple. By now we already established Theorem 1.5.2, so we know that for $x > x_0$, $c'_1 \frac{x}{\log x} \le  \pi(x) \le c'_2 \frac{x}{\log x}$, since $x_0$ is finite, we can check plot $\pi(x)$ and compare it to $c'_{1,2} x/\log x$, every time there's a violation on the inequalities we just adjust $c'_{1,2}$ and we only have to do this a finite number of times, why finite? because $x_0$ is finite.
+
+
+
+
+
+
+
+A note about Big Oh, say $f(x) = O(g(x))$ then $-f(x) = O(g(x))$ because the definition of Big Oh is $|f(x)| \le M|g(x)|$ for $x > x_0$ and $x_0, M > 0$ so in a sense Big Oh only talks about the {\bf magnitude} of the error.
+
+
 
 
 

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  13 JUL 2017 22:02
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  15 JUL 2017 16:51
 entering extended mode
 **C:/Users/User/Documents/GitHub/string/pittetd/Pollack.tex
 (C:/Users/User/Documents/GitHub/string/pittetd/Pollack.tex
@@ -653,19 +653,19 @@ Overfull \hbox (4.6671pt too wide) in alignment at lines 987--991
  []
 
 Missing character: There is no ’ in font cmr12!
-[23] (Pollack.bbl) [24]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1062.
+[23] [24] (Pollack.bbl) [25]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1125.
  (Pollack.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1062.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1062.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1125.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1125.
  ) 
 Here is how much of TeX's memory you used:
- 13320 strings out of 428755
- 183685 string characters out of 3166785
+ 13321 strings out of 428755
+ 183694 string characters out of 3166785
  289557 words of memory out of 3000000
- 16532 multiletter control sequences out of 15000+200000
+ 16533 multiletter control sequences out of 15000+200000
  15044 words of font info for 55 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
  36i,17n,38p,800b,399s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on Pollack.pdf (24 pages).
+Output written on Pollack.pdf (25 pages).
