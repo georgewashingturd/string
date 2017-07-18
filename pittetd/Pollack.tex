@@ -1097,7 +1097,83 @@ This is actually very simple. By now we already established Theorem 1.5.2, so we
 
 
 
+{\it Exercise} 1.5.3. {\bf Page 32}  ({\it M. Nair [Nai82]}).
 
+a) Show that
+%
+\nbea
+e^{\psi(x)} := {\rm lcm}[1, 2, \dots , \floor{x} ].
+\neea
+%
+First let's re-write $\psi(x)$ as
+%
+\nbea
+\psi(x) & = & \sum_{n \le x} \Lambda(n) = \sum_{p^k \le x} \log p \\
+& = & \sum_{p \le x} \floor{\log_p x} \log p = \sum_{p \le x} \log p^{\floor{\log_p x}}
+\neea
+%
+this is because for every contribution of $p^k \le x$ we get $\log p$ so the total number of $\log p$ in the sum is $\floor{\log_p x}$. Now ${\rm lcm}[1,2,\dots,\floor{x}]$ is just a product of primes $\le x$ but each prime is exponentiated $\floor{\log_p x}$ times and so it's now obvious that 
+%
+\nbea
+e^{\psi(x)} & = & e^{\sum_{p \le x} \log p^{\floor{\log_p x}}} \\
+& = & \prod_{p \le x} e^{\log p^{\floor{\log_p x}}} =  \prod_{p \le x} {p^{\floor{\log_p x}}} \\
+& = & {\rm lcm}[1,2,\dots,\floor{x}]
+\neea
+%
+
+b) As a corollary, prove that if $f(T) \in \mathbb{Z}[T]$ is a polynomial of degree $d$, then
+%
+\nbea
+e^{\psi(d+1)}\int_0^1 f(x) dx \in \mathbb{Z}.
+\neea
+%
+
+%
+\nbea
+f(x) & = & a_d x^d + a_{d-1} x^{d-1} + \dots + a_0
+\neea
+%
+
+c) Take $f(T) = T^n (1 - T)^n$. Prove that
+%
+\nbea
+0 < \int^1_0 f(x) dx \le 4^{-n}.
+\neea
+%
+
+Here we can use integration by parts multiple times
+%
+\nbea
+\int^1_0 f(x) dx & = & \int^1_0 x^n(1-x)^n dx \\ 
+& = & \frac{1}{n+1} \left. x^{n+1}(1-x)^n \right |_0^1 + \int_0^1 \frac{n}{n+1} x^{n+1} (1-x)^{n-1} dx
+\neea
+%
+we see that the boundary terms are zero, repeating the process
+%
+\nbea
+\int^1_0 f(x) dx & = & \int_0^1 \frac{n}{n+1} \frac{n-1}{n+2} \dots \frac{1}{n + n} x^{n+n} dx \\
+& = & \frac{n}{n+1} \frac{n-1}{n+2} \dots \frac{1}{n + n} ~ \frac{1}{n + n + 1} \\
+& = & \frac{(n!)^2}{(2n + 1)!}
+\neea
+%
+This is how Theorem 1.5.2 is usually proven in other textbooks like Apostol or Shoup, but here we just need to show that $ \frac{(n!)^2}{(2n + 1)!} \le 4^{-n}$ so maybe we can just use induction, the base case $n=1$ is obvious the induction step
+%
+\nbea
+ \frac{((n+1)!)^2}{(2(n+1) + 1)!} & = &  \frac{(n!)^2}{(2n + 1)!}\frac{(n+1)}{(2n+2)}\frac{(n+1)}{(2n+3)}
+\neea
+%
+
+d) Deduce from b), c) and the minimality of 1 among the positive integers that $\psi(2n + 1) \ge 2n \log 2$. Conclude from this that as $x \to \infty$ , we have $\psi(x) ≥ x(\log 2 + o(1))$, so that $\pi(x) ≥ (\log 2 + o(1))x/ \log x$.
+
+%
+\nbea
+\int^1_0 f(x) dx & \le & 4^{-n} \\
+4^{n} \int^1_0 f(x) dx & \le & 1 \\
+e^{2n \log 2} \int^1_0 f(x) dx & \le & 1
+\neea
+%
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 
 A note about Big Oh, say $f(x) = O(g(x))$ then $-f(x) = O(g(x))$ because the definition of Big Oh is $|f(x)| \le M|g(x)|$ for $x > x_0$ and $x_0, M > 0$ so in a sense Big Oh only talks about the {\bf magnitude} of the error.
@@ -1105,7 +1181,7 @@ A note about Big Oh, say $f(x) = O(g(x))$ then $-f(x) = O(g(x))$ because the def
 
 
 
-
+~~~~~~ -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 
 Another note regarding $\pi(x)$, if you remember Cantor's infinity concept, you'll immediately point out that there are as many integers as there are primes because we can map the integers to the primes (and this is a bijection)
@@ -1118,11 +1194,6 @@ and so they are the same infinity, this is just like there are the same number o
 
 But, $\pi(x)$, is about a different thing, it is the number of primes $\le x$, so of course it will less than $x$, we are not interested in the total number of primes, we are interested more in the distribution, so that's why the prime counting function gives us the distribution of primes because its growth and properties tell us how primes are distributed among the integers, remember it's the number of primes $\le x$ not the total number of primes. The same can be said if we define a function, $E(x)$ to count the number of even numbers $\le x$, even though we have a bijection between even numbers and integers $E(x)$ is still $1/2 x$.
 
-
-
-
-
--=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 
 
