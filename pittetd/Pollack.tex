@@ -1108,6 +1108,19 @@ A note about Big Oh, say $f(x) = O(g(x))$ then $-f(x) = O(g(x))$ because the def
 
 
 
+Another note regarding $\pi(x)$, if you remember Cantor's infinity concept, you'll immediately point out that there are as many integers as there are primes because we can map the integers to the primes (and this is a bijection)
+%
+\nbea
+n \to p_n
+\neea
+%
+and so they are the same infinity, this is just like there are the same number of even numbers as there are integers because you can make a one to one map like above.
+
+But, $\pi(x)$, is about a different thing, it is the number of primes $\le x$, so of course it will less than $x$, we are not interested in the total number of primes, we are interested more in the distribution, so that's why the prime counting function gives us the distribution of primes because its growth and properties tell us how primes are distributed among the integers, remember it's the number of primes $\le x$ not the total number of primes. The same can be said if we define a function, $E(x)$ to count the number of even numbers $\le x$, even though we have a bijection between even numbers and integers $E(x)$ is still $1/2 x$.
+
+
+
+
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
