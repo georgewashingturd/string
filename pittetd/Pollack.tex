@@ -1128,11 +1128,21 @@ e^{\psi(d+1)}\int_0^1 f(x) dx \in \mathbb{Z}.
 \neea
 %
 
+A polynomial of degree $d$ must be of the form
 %
 \nbea
-f(x) & = & a_d x^d + a_{d-1} x^{d-1} + \dots + a_0
+f(x) & = & a_d x^d + a_{d-1} x^{d-1} + \dots + a_0 \\
+& = & \sum_{j = 0}^d a_j x^j
 \neea
 %
+and so
+%
+\nbea
+e^{\psi(d+1)}\int_0^1 f(x) dx & = & e^{\psi(d+1)} \sum_{j=0}^d \frac{a_j}{j+1} x^{j+1} \\
+& = & \sum_{j=0}^d a_j \left(\frac{e^{\psi(d+1)}}{j+1}\right) x^{j+1}
+\neea
+%
+and since $e^{\psi(d+1)} = {\rm lcm}[1,2,\dots,d+1]$, whatever is in the bracket is an integer.
 
 c) Take $f(T) = T^n (1 - T)^n$. Prove that
 %
@@ -1162,9 +1172,21 @@ This is how Theorem 1.5.2 is usually proven in other textbooks like Apostol or S
  \frac{((n+1)!)^2}{(2(n+1) + 1)!} & = &  \frac{(n!)^2}{(2n + 1)!}\frac{(n+1)}{(2n+2)}\frac{(n+1)}{(2n+3)}
 \neea
 %
+and it's obvious that
+%
+\nbea
+\frac{(n+1)}{(2n+2)} = \frac{1}{2} ~~~~~ ~~~~~ \frac{(n+1)}{(2n+3)} < \frac{1}{2}
+\neea
+%
+and so
+%
+\nbea
+\frac{(n+1)}{(2n+2)}\frac{(n+1)}{(2n+3)} & < & \frac{1}{4}
+\neea
+%
+and the induction step is confirmed.
 
-d) Deduce from b), c) and the minimality of 1 among the positive integers that $\psi(2n + 1) \ge 2n \log 2$. Conclude from this that as $x \to \infty$ , we have $\psi(x) ≥ x(\log 2 + o(1))$, so that $\pi(x) ≥ (\log 2 + o(1))x/ \log x$.
-
+d) Deduce from b), c) and the minimality of 1 among the positive integers that $\psi(2n + 1) \ge 2n \log 2$. Conclude from this that as $x \to \infty$ , we have $\psi(x) \ge x(\log 2 + o(1))$, so that $\pi(x) \ge (\log 2 + o(1))x/ \log x$.
 %
 \nbea
 \int^1_0 f(x) dx & \le & 4^{-n} \\
@@ -1172,6 +1194,43 @@ d) Deduce from b), c) and the minimality of 1 among the positive integers that $
 e^{2n \log 2} \int^1_0 f(x) dx & \le & 1
 \neea
 %
+Now since $f(x) = x^n(1-x)^n$ is a polynomial of order $2n$ and $e^{\psi(2n+1)}\int_0^1 f(x) dx$ is an integer it must be $\ge 1$ and therefore
+%
+\nbea
+e^{\psi(2n+1)}\int_0^1 f(x) dx & \ge & e^{2n \log 2} \int^1_0 f(x) dx \\
+\psi(2n+1) & \ge & 2n \log 2
+\neea
+%
+We also know that since $\psi(x) = \sum_{n\le x} \Lambda(n)$, $\psi(x)$ differs at most by $\log (x + 1)$ from $\psi(x+1)$ and this is only when $x + 1$ is some power of some prime, furthermore this happens only when $x$ is even, if $x$ is odd, $x+1$ can at most be $2^k$ and the difference is just $\log 2$ and so
+%
+\nbea
+\psi(x+1) & = & \psi(x) + O(\log x)
+\neea
+%
+and so
+%
+\nbea
+\psi(x+1) = \psi(x) + O(\log x) & \ge & x \log 2 \\
+\frac{\psi(x)}{x} + O \left ( \frac{\log x}{x} \right ) & \ge & \log 2 \\
+\frac{\psi(x)}{x} + o(1) & \ge & \log 2
+\neea
+%
+which is what we want. Now our result was for $\psi(2n+1)$, what about $\psi(2n)$ itself? if we repeat the integral with $f(x) = x^n(1-x)^{n-1}$ we get
+%
+\nbea
+\int^1_0 f(x) dx = \int_0^1 x^n(1-x)^{n-1} dx & = & \int_0^1 \frac{n-1}{n+1} \frac{n-2}{n+2} \dots \frac{1}{n + n - 1} x^{n+n - 1} dx \\
+& = & \frac{n-1}{n+1} \frac{n-2}{n+2} \dots \frac{1}{n + n - 1} ~ \frac{1}{n + n} \\
+& = & \frac{(n-1)!n!}{(2n)!} \le 4^{-n} ~~~~~ {\rm for~} n \ge 2
+\neea
+%
+the inductive step is similar
+%
+\nbea
+\frac{((n+1)-1)!(n+1)!}{(2(n+1))!} & = & \frac{(n-1)!n!}{(2n)!} \frac{n}{2n+1} \frac{(n+1)}{2n+2}
+\neea
+%
+the only caveat here is that $n \ge 2$ but it's ok since we want $x \to \infty$
+
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
