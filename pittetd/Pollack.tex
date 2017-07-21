@@ -1238,21 +1238,7 @@ C & := & - \frac{\log m}{3} = .7803552047 \dots , \\
 m & := & \frac{1}{3} \left( \frac{1}{2} - \frac{1}{6}\sqrt{3} - \left( \frac{1}{2} - \frac{1}{6}\sqrt{3} \right )^2 \right ) \sqrt{3}.
 \neea
 %
-
-
-
-%
-\nbea
-\int_0^1 (x - x^2)^{2n} (1-2x)^{2n} & = & -2\frac{(2n!)^2}{(4n+1)!} 
-\neea
-%
-
-$u = 1-2x$
-
-$x = \frac{u-1}{2}$
-
-$\frac{1}{-2(2n+1)} (1-2x)^{2n+1}$
-
+Again we need integration by parts
 %
 \nbea
 \int_0^1 (x - x^2)^{2n} (1-2x)^{2n} & = & \left. (x-x^2)^{2n}\frac{1}{-2(2n+1)} (1-2x)^{2n+1}\right |_0^1 \\
@@ -1260,7 +1246,7 @@ $\frac{1}{-2(2n+1)} (1-2x)^{2n+1}$
 & = & \int_0^1 \frac{2n}{2(2n+1)} (x - x^2)^{2n-1} (1 - 2x)^{2n+2}
 \neea
 %
-
+the boundary terms is again zero (only if you assign $u=(x-x^2)^{2n}$ like above if you swapped $u$ and $v$ it'll get a messy)
 %
 \nbea
 \int_0^1 (x - x^2)^{2n} (1-2x)^{2n} & = & \int_0^1 \frac{2n}{2(2n+1)} \frac{2n-1}{2(2n+3)} \dots \frac{1}{2(2n + 2n + 2n - 1)} (1 - 2x)^{2n + 2\cdot2n} \\
@@ -1268,38 +1254,127 @@ $\frac{1}{-2(2n+1)} (1-2x)^{2n+1}$
 & = & \frac{(2n)!(2n-1)!!}{2^{2n} (2n + 4n + 1)!!}
 \neea
 %
-
+Following the steps of the previous problem what we have here is
+%
+\nbea
+\int_0^1 f(x) dx & \le & A^{bn} \\
+A^{-bn}\int_0^1 f(x) dx & \le & 1 \\
+e^{-bn\log A}\int_0^1 f(x) dx & \le & 1 \\
+\to e^{\psi(d+1)} & \ge & e^{-bn\log A} \\
+\psi(d + 1) & \ge & -bn\log A
+\neea
+%
+so what we want here is that $d = -bn$, in our case with $f(T) = (T - T^2)^{2n}(1 - 2T)^{2n}$ the degree of the polynomial is $d = 6n$ and so $b = -6$ and 
+%
+\nbea
+\log A & = & C \\
+& = & -\frac{\log m}{3} = \log m^{-1/3} \\
+\to A & = & m^{-1/3}
+\neea
+%
+and so
+%
+\nbea
+A^{bn} & = & \left( m^{-1/3}\right )^{-6n} \\
+& = & m^{2n}
+\neea
+%
+what this means is that
+%
+\nbea
+\int_0^1 f(x) dx & \le & m^{2n}
+\neea
+%
 This means that we need to show 
 %
 \nbea
-\frac{(2n)!(2n-1)!!}{2^{2n} (2n + 4n + 1)!!} & \le & m^{2n/3}
+\frac{(2n)!(2n-1)!!}{2^{2n} (2n + 4n + 1)!!} & \le & m^{2n}
+\neea
+%
+Using induction
+%
+\nbea
+\frac{(2(n+1))!(2n + 1)!!}{2^{2n+2} (6n + 1 + 6)!!} & = & \frac{(2n)!(2n-1)!!}{2^{2n}(6n + 1)} ~ \frac{(2n+1)(2n+2)(2n+1)}{2\cdot2 (6n + 7) (6n + 5) (6n + 3)} \\
+& = & \frac{(2n)!(2n-1)!!}{2^{2n}(6n + 1)} ~ \frac{1}{6}\frac{(2n+1)}{(6n + 7)} \frac{(n+1)}{(6n + 5)} \\
+& = & \frac{(2n)!(2n-1)!!}{2^{2n}(6n + 1)} ~ \frac{1}{6}~\frac{(n+1)}{(6n + 7)} ~ \frac{(2n+1)}{(6n + 5)}
+\neea
+%
+The rearrangement was a judicious one, as $\frac{(n+1)}{(6n + 5)} \to 1/6$ as $n\to\infty$ but it reaches the limit from {\it above} so we cannot say that $\frac{(n+1)}{(6n + 5)} < 1/6$, however, $\frac{(2n+1)}{(6n + 5)}$ approaches the limit from {\it below} so we can say that $\frac{(2n+1)}{(6n + 5)} < 1/3$, the other guy $\frac{(n+1)}{(6n + 7)}$ is fine either way, it always approaches the limit $1/6 ~({\rm or~} 1/3)$ from below, therefore
+%
+\nbea
+\frac{(n+1)}{(6n + 7)} < \frac{1}{6} ~~~~~ ~~~~~ \frac{(2n+1)}{(6n + 5)} < \frac{1}{3}
+\neea
+%
+and thus
+%
+\nbea
+\frac{1}{6}\frac{(2n+1)}{(6n + 7)} \frac{(n+1)}{(6n + 5)} < \frac{1}{6}\cdot\frac{1}{3}\cdot\frac{1}{6}
+\neea
+%
+the RHS of $\int_0^1 f(x) dx \le m^{2n}$, when we go from $n\to n+1$ we get $m^{2n}\to m^{2n}m^2$ to show that the induction hypothesis is correct maybe we can simplify
+%
+\nbea
+\frac{1}{3} \left( \frac{1}{2} - \frac{1}{6}\sqrt{3} - \left( \frac{1}{2} - \frac{1}{6}\sqrt{3} \right )^2 \right ) \sqrt{3} & = & \frac{1}{\sqrt{3}} \left( \frac{1}{2} - \frac{1}{6}\sqrt{3} - \left( \frac{1}{4} - \frac{1}{6}\sqrt{3}  + \frac{1}{12} \right ) \right ) \\ 
+& = & \frac{1}{\sqrt{3}} \left( \frac{1}{4} - \frac{1}{12} \right ) \\ 
+m & = & \frac{1}{6\sqrt{3}} \\
+m^2 & = & \frac{1}{6}\cdot\frac{1}{3}\cdot\frac{1}{6}
+\neea
+%
+which is what we need as
+%
+\nbea
+\frac{1}{6}\frac{(2n+1)}{(6n + 7)} \frac{(n+1)}{(6n + 5)} < \frac{1}{6}\cdot\frac{1}{3}\cdot\frac{1}{6} = m^2 \\
+\to \frac{1}{6}\frac{(2n+1)}{(6n + 7)} \frac{(n+1)}{(6n + 5)} < m^2
+\neea
+%
+
+
+
+
+%
+\nbea
+\int_0^1 (x^{20} - x^{21})^{n} & = & \int_0^1 x^{20n} (1-x)^{n} \\
+& = & \int_0^1 \frac{n}{20n + 1} x^{20n+1} (1-x)^{n-1} \\
+& = & \frac{n!(20n)!}{(20n + n + 1)!}
 \neea
 %
 
 %
 \nbea
-\frac{(2(n+1))!(2n + 1)!!}{2^{2n+2} (6n + 1 + 6)!!} & = & \frac{(2n)!(2n-1)!!}{2^{2n}(6n + 1)} \frac{(2n+1)(2n+2)(2n+1)}{2\cdot2 (6n + 7) (6n + 5) (6n + 3)} \\
-& = & \frac{(2n)!(2n-1)!!}{2^{2n}(6n + 1)} \frac{1}{6}\frac{(2n+1)}{(6n + 7)} \frac{(n+1)}{(6n + 5)}
+\frac{(n+1)!(20(n+1))!}{(21(n + 1) + 1)!} & = & \frac{n!(20n)!}{(20n + n + 1)!} \frac{(n+1)(20n+20)\dots(20n+1)}{(21n + 22)\dots(21n + 2)}
+\neea
+%
+
+
+%
+\nbea
+\frac{(n+1)(20n+20)\dots(20n+1)}{(21n + 22)\dots(21n + 2)} & < & \frac{22}{1762}
 \neea
 %
 
 %
 \nbea
-\frac{(2n+1)}{(6n + 7)} < \frac{1}{3} ~~~~~ ~~~~~ \frac{(n+1)}{(6n + 5)} < \frac{1}{5}
+e^{\psi(21n+1)} & \ge & e^{n\log 1762/22} \\
+\psi(21n+1) & \ge & 21n \log (1762/22)^{1/21}
 \neea
 %
 
-%
-\nbea
-\frac{1}{6}\frac{(2n+1)}{(6n + 7)} \frac{(n+1)}{(6n + 5)} < \frac{1}{90}
-\neea
-%
 
-%
-\nbea
-m^{2/3} > \frac{1}{5}
-\neea
-%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
