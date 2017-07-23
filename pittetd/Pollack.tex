@@ -1291,7 +1291,7 @@ This means that we need to show
 \frac{(2n)!(2n-1)!!}{2^{2n} (2n + 4n + 1)!!} & \le & m^{2n}
 \neea
 %
-Using induction
+for a while this looks weird because this means that the LHS is smaller than something that grows indefinitely, but we need to remember that $m < 1$ and so the RHS is getting smaller and smaller as $n\to\infty$. Using induction
 %
 \nbea
 \frac{(2(n+1))!(2n + 1)!!}{2^{2n+2} (6n + 1 + 6)!!} & = & \frac{(2n)!(2n-1)!!}{2^{2n}(6n + 1)} ~ \frac{(2n+1)(2n+2)(2n+1)}{2\cdot2 (6n + 7) (6n + 5) (6n + 3)} \\
@@ -1327,10 +1327,9 @@ which is what we need as
 \to \frac{1}{6}\frac{(2n+1)}{(6n + 7)} \frac{(n+1)}{(6n + 5)} < m^2
 \neea
 %
+although I'm still confused as why we state $m$ in that complicated form. However, going from $\log 2$ to $C$, we only improve the lower bound of $\psi(x)$ from $0.69$ to $0.78$ which is not much but already we have to work very hard.
 
-
-
-
+So the lesson here is to try to get the integral to be as small as possible, one possible way is by increasing the power of $x$ like so
 %
 \nbea
 \int_0^1 (x^{20} - x^{21})^{n} & = & \int_0^1 x^{20n} (1-x)^{n} \\
@@ -1338,26 +1337,60 @@ which is what we need as
 & = & \frac{n!(20n)!}{(20n + n + 1)!}
 \neea
 %
-
+doing multiple integration by parts gives us
 %
 \nbea
 \frac{(n+1)!(20(n+1))!}{(21(n + 1) + 1)!} & = & \frac{n!(20n)!}{(20n + n + 1)!} \frac{(n+1)(20n+20)\dots(20n+1)}{(21n + 22)\dots(21n + 2)}
 \neea
 %
-
-
+and doing the induction step shows that
 %
 \nbea
 \frac{(n+1)(20n+20)\dots(20n+1)}{(21n + 22)\dots(21n + 2)} & < & \frac{22}{1762}
 \neea
 %
-
+but if we plug this back in to our main inequality we get
 %
 \nbea
 e^{\psi(21n+1)} & \ge & e^{n\log 1762/22} \\
 \psi(21n+1) & \ge & 21n \log (1762/22)^{1/21}
 \neea
 %
+and $\log (1762/22)^{1/21} < \log 2$ which is a worse result, so blindly increasing the power of $x$ is not a good thing, this is because we also increase the overall degree $d$ causing a bigger root power like above.
+
+{\it Exercise} 1.5.4. {\it Cont'd}. Combining this lower bound for $\pi(x)$ with the upper bound of (1.32), show that $\pi(2x) > \pi(x)$ whenever x is suﬃciently large. We thus have another proof of Bertrand’s postulate for large $x$.
+
+Upper bound of (1.32) is $\pi(x)/(x/\log x) \le 2 \log 2 + o(1)$, from Exercise 1.5.4. we have
+%
+\nbea
+\pi(2x)  - \pi(x) & \ge & \frac{2x}{\log 2x} C - \frac{x}{\log x} 2 \log 2 \\
+& \ge & \frac{2x}{\log x} \left ( \frac{C}{1 + \frac{\log 2}{\log x}} -\log 2\right )
+\neea
+%
+since $C > \log 2$ and $1 + \frac{\log 2}{\log x} \to 1$ as $x\to\infty$, the RHS is guaranteed to be bigger than 0 for sufficiently large $x$.
+
+{\it Exercise} 1.5.5. {\bf Page 33}. Let $P(n)$ denote the largest prime power divisor of $n$ so that, \eg, $P(4) = 4$ and $P(100) = 25$.
+
+a) Prove that $P(n) \to \infty$ as $n \to \infty$ without using Chebyshev’s theorems.
+
+b) From the inequality
+%
+\nbea
+\log n \le \sum_{p^k \le P(n)} \log p = \psi(P (n)),
+\neea
+%
+deduce that $P(n) \gg \log n$ as $n \to \infty$.
+
+c) Let $N_k := \prod_{i=1}^k p_i$ be the product of the ﬁrst $k$ primes. Show that $P(N_k) \ll \log N_k$ for $k = 1, 2, \dots$.
+
+
+
+
+
+
+
+
+
 
 
 
