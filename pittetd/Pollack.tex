@@ -1373,6 +1373,30 @@ since $C > \log 2$ and $1 + \frac{\log 2}{\log x} \to 1$ as $x\to\infty$, the RH
 
 a) Prove that $P(n) \to \infty$ as $n \to \infty$ without using Chebyshev’s theorems.
 
+Note that if the definition of $P(n)$ is the highest prime factor of $n$ then the limit above would be false. To see why we need to go back to the definition of limit $\lim_{x\to\infty} f(x) = \infty$, this means that for every $M > 0$, there is an $N$ such that $f(x) > M$ for all $x > N$.
+
+Now if, the definition of $P(n)$ is the largest prime factor of $n$ then we can always create a counter example, for example once we choose $N$ there is always a number $2^k > N$, and the highest prime factor here is just $2$, but here $P(n)$ must be bigger than all $M > 0$, so the limit $P(n) \to \infty$ here is false which is rather counter intuitive but this is solely because of the definition of a limit, it must be applicable for all $x > N$.
+
+For our case, one thing we need to clarify is that $P(n)$ is the highest prme power factor, for example if $n = 2^5\cdot 7$ then $P(n) = 2^5$ and not $7$.
+
+This is how we choose $N$, for every $M$ we list all primes $\le M$, we then form $N$ using all of those primes
+%
+\nbea
+N = (p_K^{\alpha_K})(p_{K-1}^{\alpha_{K-1}}) \dots (p_1^{\alpha_1})
+\neea
+%
+where $\alpha_i = \ceil{\log_{p_i} M}$ such that every $p_i^{\alpha_i} \ge M$, also $p_K^{\alpha_K}$ is the largest prime power amongst the $p_i^{\alpha_i}$, \ie the terms in bracket are arranged in a descending order.
+
+With this arrangement we know that any number $> N$ will always have its highest prime power $> M$ because if we assume otherwise, say $P(l) < M$, for some $l > N$ then if we write $l$ in terms of its prime powers in descending order we have
+%
+\nbea
+l & = & (p_L^{\alpha_L})(p_{L-1}^{\alpha_{L-1}}) \dots (p_1^{\alpha_1})
+\neea
+%
+where $p_L^{\alpha_L}$ is the highest prime power in $l$, \ie $p_L^{\alpha_L} \ge p_i^{\alpha_i}$ for $i \neq L$ and since $p_L^{\alpha_L} < M$ all other $p_i^{\alpha_i} < M$ too and thus $l < N$ because each prime power is less than that of $N$. Well unless $l$ contains a new prime other than those in $N$, however, $N$ contains {\bf all} primes $\le M$ so if $l$ contains a new prime it must be $> M$ but this is contradictory because $P(l) < M$.
+
+
+
 b) From the inequality
 %
 \nbea
@@ -1381,9 +1405,113 @@ b) From the inequality
 %
 deduce that $P(n) \gg \log n$ as $n \to \infty$.
 
-c) Let $N_k := \prod_{i=1}^k p_i$ be the product of the ﬁrst $k$ primes. Show that $P(N_k) \ll \log N_k$ for $k = 1, 2, \dots$.
+First, let's see why $\log n \le \sum_{p^k \le P(n)} \log p$, if we write $n$ in a descending prime power like above we get
+%
+\nbea
+n =  (p_K^{\alpha_K})(p_{K-1}^{\alpha_{K-1}}) \dots (p_1^{\alpha_1})
+\neea
+%
+with $p_K^{\alpha_K}$ the largest prime power, if we write $\psi(P (n))$ we get
+%
+\nbea
+\psi(P (n)) & = & \sum_{q^k \le P(n) = p_K^{\alpha_K}} \log q \\
+& = & \sum_{i}\beta_i \log q_i, ~~~~~ q_i^k \le p_K^{\alpha_K}
+\neea
+%
+where $\beta_i = \floor{\log_{q_i} p_K^{\alpha_K}}$, now since any $p_j^{\alpha_j}$ in $n$ is smaller than $p_K^{\alpha_K}$, each $p_i$ is covered by $q_i$ and its corresponding $\beta_i \ge \alpha_i$ and because of this $\log n \le \sum_{p^k \le P(n)} \log p$, the equality is achieved only when $n = e^{\psi(P(n))}$. What immediately follows is that $\log n = O(\psi(P(n)))$.
+
+c) Let $N_k := \prod_{i=1}^k p_i$ be the product of the first $k$ primes. Show that $P(N_k) \ll \log N_k$ for $k = 1, 2, \dots$.
+
+Hint: For c), the bound $\vartheta(x) \gg x$ for $x \ge 2$ (which follows from (1.31) and (1.24)) may prove useful.
+
+For convenience those two equations are
+
+(1.24) $\psi(x) - \vartheta(x) \ll x^{1/2} \log x + (x^{1/3} \log x) \log x \ll x^{1/2} \log x$
+
+(1.31) $x \log 2 + O(\log x) \le \psi(x) \le 2x \log 2 + O(\log^2 x)$
+
+We need to rewrite (1.31) by substituting (1.24) into it
+%
+\nbea
+\log 2 + o(1) \le \frac{\vartheta(x)}{x} + O\left( \frac{x^{1/2} \log x}{x} \right ) \le 2\log 2 + o(1) \\
+\log 2 + o(1) \le ~~~~~~~~ \frac{\vartheta(x)}{x} + o(1) ~~~~~~~ \le 2\log 2 + o(1) 
+\neea
+%
+now we cannot just cancel the $o(1)$ fron all sides because we don't know how fast they vanish as $x\to\infty$, \eg one $o(1)$ can be $1/\log x$ and another $o(1)$ can be $1/x^{1/2}$. But we can combine them into one $o(1)$
+%
+\nbea
+\log 2 + o(1) \le \frac{\vartheta(x)}{x} \le 2\log 2 + o(1) 
+\neea
+%
+so if we choose only the left inequality we get
+%
+\nbea
+x\log 2 + o(x) & \le & \vartheta(x)
+\neea
+%
+$o(x)$ means it doesn't grow faster than $x$ this means $o(x) = O(1)$, from the definition of Big-Oh
+%
+\nbea
+f(x) - C & = & O(g(x)) \\
+f(x) & \le & M g(x) + C, ~~~~~ x > x_0
+\neea
+%
+in the range $[x_0, \infty)$ we pick $x'$ such that $M' = g(x')$ is the min of $g(x)$ in $[x_0, \infty)$ and so
+%
+\nbea
+(M + C/M')g(x) & \ge & M g(x) + C \\
+\to f(x) & \le & (M + C/M') g(x) \\
+f(x) & = & O(g(x))
+\neea
+%
+this means that if we have $f(x) = O(g(x) + h(x))$ and if $h(x) = o(f(x))$ then $f(x) = O(g(x))$ and so
+%
+\nbea
+x\log 2 + o(x) \le \vartheta(x) ~~~~~ \to ~~~~~ x = O(\vartheta(x))
+\neea
+%
+if we now set $x = p_k$
+%
+\nbea
+\vartheta(p_k) & = & \sum_{p \le p_k} \log p \\
+& = & \log N_k
+\neea
+%
+and since $P(N_k) = p_k$ and $x = O(\vartheta(x)) \to p_k = O(\vartheta(p_k))$ we have $P(N_k) = O(\log N_k)$.
+
+Some notes on Big-Oh and stuff, from Theorem 1.5.2 (or more precisely its proof) we know that $x = O(\psi(x))$, if we substitute (1.24) into it we get
+%
+\nbea
+x & = & O(\vartheta(x) + O(x^{1/2} \log x)) \\
+& = & O(\vartheta(x) + M|x^{1/2} \log x|) \\
+x & \le & K \vartheta(x) + M'(x^{1/2} \log x)
+\neea
+%
+but we also know that $x$ cannot be $O(x^{1/2}\log x)$ because $\lim_{x\to\infty}(C x^{1/2}\log x)/x = 0$ whatever the constant $C$ is
 
 
+%
+\nbea
+f(x) & = & O(g(x)) \\
+f(x) & \le & M g(x), ~~~~~ x > x_0 \\
+\frac{f(x)}{Mg(x)} & \le & 1, ~~~~~ x > x_0
+\neea
+%
+this means
+%
+\nbea
+f(x) = O(g(x)) \to \lim_{M,x\to\infty} \frac{f(x)}{Mg(x)} & = & 0
+\neea
+%
+
+What this means is $p_k = O\left(\sum_{i=1}^k \log p_i \right)$
+
+what we know
+%
+\nbea
+p_k & < & k \log p_k < k p_k^{1/m}
+\neea
+%
 
 
 

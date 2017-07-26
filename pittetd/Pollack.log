@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  22 JUL 2017 14:17
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  25 JUL 2017 22:58
 entering extended mode
 **C:/Users/User/Documents/GitHub/string/pittetd/Pollack.tex
 (C:/Users/User/Documents/GitHub/string/pittetd/Pollack.tex
@@ -663,12 +663,11 @@ Missing character: There is no ﬃ in font cmr12!
 Missing character: There is no ’ in font cmr12!
  [31]
 Missing character: There is no ’ in font cmr12!
-Missing character: There is no ﬁ in font cmr12!
- [32] (Pollack.bbl) [33]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1457.
+ [32] [33] [34] (Pollack.bbl) [35] [36]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1585.
  (Pollack.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1457.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1457.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1585.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1585.
  ) 
 Here is how much of TeX's memory you used:
  13321 strings out of 428755
@@ -679,4 +678,4 @@ Here is how much of TeX's memory you used:
  1096 hyphenation exceptions out of 8191
  36i,17n,38p,800b,399s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on Pollack.pdf (33 pages).
+Output written on Pollack.pdf (36 pages).
