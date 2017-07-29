@@ -601,6 +601,36 @@ taking the logarithm of both the far LHS and far RHS we have
 %
 which is what we want to show in the first place.
 
+{\it Exercise} 1.2.7. {\bf Page 9}. It's interesting that removing $\sum_p 1/p$ from $\sum_n 1/n$ makes the latter a convergent series. The question now is what is the minimum amount we need to subtract from $\sum_n 1/n$ to make it convergent?
+
+Anyway, what we want to show is that $\sum_n 1/n$ with only {\it squarefull} $n$ converges. We start with
+%
+\nbea
+\prod_p \left( 1 + \frac{1}{p^2} + \frac{1}{p^3} + \dots\right ) = \prod_p \left (\frac{1}{1 - \frac{1}{p}} \right ) - \frac{1}{p}
+\neea
+%
+\ie we remove the $1/p$ term from each series. Note that $1$ is a squarefull number because the statement is that if $p|n$ then $p^2|n$ is a must, but for $1$ no $p$ divides 1 so it is considered squarefull a well. We then follow the same method as shown on Page 9
+%
+\nbea
+\prod_p \left\lbrack\left (\frac{1}{1 - \frac{1}{p}} \right ) - \frac{1}{p}\right\rbrack = \prod_p \left ( 1 + \frac{1}{p-1} - \frac{1}{p} \right ) = \prod_p \left( 1 + \frac{1}{p(p-1)}\right )
+\neea
+%
+Now note that $1/(p-1) < 2/p$ so
+%
+\nbea
+\prod_p \left( 1 + \frac{1}{p(p-1)}\right ) < \prod_p \left( 1 + \frac{2}{p^2}\right ) < \prod_p e^{2/p^2} = e^{\sum_{p} 2/p^2} < e^{2C}
+\neea
+%
+We can safely deduce that $\sum_p 1/p^2 < C$ because it is a convergent series, since the above is convergent by Theorem 1.2.2, $\sum_n 1/n$ with $n$ only squarefull numbers is also convergent.
+
+As for $\alpha$ so that $\sum_n 1/n^\alpha$ is also convergent, my first guess will be $\alpha > 1/2$, this is because with $\alpha = 1/2$ we will have $1/p$ term in the series and it will cause things to blow up. Another clue is in the fact that involving an exponent $\alpha$ means that the upper bound becomes
+%
+\nbea
+e^{\sum_{p} 2/p^{2\alpha}}
+\neea
+%
+and if $\alpha$ goes below $\le 1/2$ we will have an divergent series while $\sum_n 1/n^\beta$ is convergent if $\beta > 1$ by the integral test.
+
 {\it Exercise} 1.2.9. {\bf Page 10}
 
 a) Proof that it is completely multiplicative, if $2|a$ or $2|b$ then $2|ab$ and $\chi(ab) = 0$ which is the same as $\chi(a)\chi(b) = 0$ because one of them is guaranteed to be zero. The only thing is when both $a$ and $b$ are odd, in this case let $a = 2a' + 1$ and $b = 2b' + 1$
@@ -646,38 +676,6 @@ we still get all odd numbers from the sum $\sum_{n=1}^\infty \frac{\chi(n)}{n^s}
 
 {\bf Page 13}. First paragraph, the conclusion of Erdos's super smart proof, ``But $C\sqrt{N} < N/2$ whenever $N$ is large'', the question is so what? we know that $C\sqrt{N}$ is the number of integers $\le N$ whose prime factors $\le M$. The problem here is that we know that from page 12, the number of integers $\le N$ whose prime factors $> M$ is $< N/2$, so the total number of integers (those with prime factors $\le M$ + those with prime factors $> M$) must be $N$ but here we have $< N/2$ + $< N/2$ which can never reach $N$
 
-
-
-{\it Exercise} 1.2.7. {\bf Page 9}. It's interesting that removing $\sum_p 1/p$ from $\sum_n 1/n$ makes the latter a convergent series. The question now is what is the minimum amount we need to subtract from $\sum_n 1/n$ to make it convergent?
-
-Anyway, what we want to show is that $\sum_n 1/n$ with only {\it squarefull} $n$ converges. We start with
-%
-\nbea
-\prod_p \left( 1 + \frac{1}{p^2} + \frac{1}{p^3} + \dots\right ) = \prod_p \left (\frac{1}{1 - \frac{1}{p}} \right ) - \frac{1}{p}
-\neea
-%
-\ie we remove the $1/p$ term from each series. Note that $1$ is a squarefull number because the statement is that if $p|n$ then $p^2|n$ is a must, but for $1$ no $p$ divides 1 so it is considered squarefull a well. We then follow the same method as shown on Page 9
-%
-\nbea
-\prod_p \left\lbrack\left (\frac{1}{1 - \frac{1}{p}} \right ) - \frac{1}{p}\right\rbrack = \prod_p \left ( 1 + \frac{1}{p-1} - \frac{1}{p} \right ) = \prod_p \left( 1 + \frac{1}{p(p-1)}\right )
-\neea
-%
-Now note that $1/(p-1) < 2/p$ so
-%
-\nbea
-\prod_p \left( 1 + \frac{1}{p(p-1)}\right ) < \prod_p \left( 1 + \frac{2}{p^2}\right ) < \prod_p e^{2/p^2} = e^{\sum_{p} 2/p^2} < e^{2C}
-\neea
-%
-We can safely deduce that $\sum_p 1/p^2 < C$ because it is a convergent series, since the above is convergent by Theorem 1.2.2, $\sum_n 1/n$ with $n$ only squarefull numbers is also convergent.
-
-As for $\alpha$ so that $\sum_n 1/n^\alpha$ is also convergent, my first guess will be $\alpha > 1/2$, this is because with $\alpha = 1/2$ we will have $1/p$ term in the series and it will cause things to blow up. Another clue is in the fact that involving an exponent $\alpha$ means that the upper bound becomes
-%
-\nbea
-e^{\sum_{p} 2/p^{2\alpha}}
-\neea
-%
-and if $\alpha$ goes below $\le 1/2$ we will have an divergent series while $\sum_n 1/n^\beta$ is convergent if $\beta > 1$ by the integral test.
-
 {\it Exercise } 1.3.1. {\bf Page} 22. We want to show that
 %
 \nbea
@@ -718,6 +716,63 @@ taking the ratio
 & = & 1
 \neea
 %
+
+{\it Exercise} 1.2.12. {\bf Page 15}. (M. Hirschhorn [Hir02]). Let $p_1 , p_2 , \dots$ denote the sequence of odd primes.
+
+a) Reasoning as before, prove that the number of odd positive integers not exceeding $N$ which can be written in the form $p^{e_1}_1 \dots p^{e_k}_k$ does not exceed 
+%
+\nbea
+\prod^k_{i=1} \left( \frac{\log N}{\log p_i} + 1 \right ) = \prod^k_{i=1} \frac{\log Np_i}{\log p_i} < (\log p_k N)^k < \sqrt{(2k)!} \sqrt{p_k N}.
+\neea
+%
+
+One thing to note here is that there is a typo (or at least some confusion) because in the book it is written as $2k!$ rather than $(2k)!$, the latter should be the correct one, using the former we can produce many counter examples so initially I thought the inequality only applies for sufficiently large $x$.
+
+For this part everything is straightforward except for the last inequality $ (\log p_k N)^k < \sqrt{(2k)!} \sqrt{p_k N}$. Well we can square both sides to get $ (\log p_k N)^2k < (2k)! p_k N$, for simplicity let's denote $x \equiv p_kN$ and $y = 2k$, $(\log x)^y < (y!) x$. We now want to compare LHS and RHS.
+
+We know that $(\log x)^y/x \to 0$ as $x\to\infty$ this means that no matter how big $y$ is there's always an $x_0$ such that for $x > x_0$,  $(\log x)^y < x$, this happens when $y = \log x_0/\log\log x_0$.
+
+Now for $[1,x_0)$, there will be a maximum point because when $x=1 \to (\log x)^y/x = 0$, also that $(\log x)^y/x$ is always positive for $x \ge 1$ and of course $(\log x)^y/x$ will approach zero as $x\to\infty$. This maximum point happens when
+%
+\nbea
+0 = \frac{d}{dx} \left ( \frac{(\log x)^y}{x} \right ) & = & \frac{y(\log x)^{y-1} - (\log x)^y}{x^2} \\
+& = & \frac{(\log x)^{y-1}(y - \log x)}{x^2} \\
+\to 0 & = & y - \log x \\
+x_{\rm max} & = & e^y 
+\neea
+%
+We know that for $x > x_0$, $(\log x)^y/x < 1$ and so $(\log x)^y/(y!)x < 1$ as well, but in the range $[1,x_0)$, will we see an $x$ where $(\log x)^y/(y!)x < 1$?
+
+We just need to check at $x_{\rm max}$, because if $(\log x)^y/(y!)x < 1$ at $x_{\rm max}$ then it will be true for all $x$. Note that although we calculated $x_{\rm max}$ for $\frac{(\log x)^y}{x}$, it's still the maximum point for $(\log x)^y/(y!)x$ since what we did is just dividing it by some constant.
+
+What we need here is a bound on factorial
+%
+\nbea
+\sqrt{2\pi} ~ y^{y + \frac{1}{2}} e^{-y} \le y! \le e ~ y^{y + \frac{1}{2}} e^{-y} 
+\neea
+%
+so substituting the lower bound for $y!$ in the denominator and setting $x = x_{\rm max}$ we have
+%
+\nbea
+\frac{(\log x)^y}{(y!) x} & < & \frac{y^y}{\sqrt{2\pi} ~ y^{y + \frac{1}{2}} e^{-y} e^y} \\
+& < & \frac{1}{\sqrt{2\pi} ~ y^{\frac{1}{2}}} \\
+& < & 1
+\neea
+%
+This means that $(\log x)^y < (y!) x$ for $x, y \ge 1$.
+
+b) Supposing $p_1 , \dots , p_k$ exist, prove that $p_{k+1}$ exists and satisfies $p_{k+1} \le 4(2k!)p_k + 1$. (Of course this is far weaker than Bertrand’s postulate, which asserts $p_{k+1} < 2p_k$.)
+
+Now this part b) is interesting, the argument starts with assuming there are only finitely many primes $p_1 , \dots , p_k$, in this case {\it any} number can be expanded in terms of those primes. But the key is to extend the inequality in part a) even further, if $N = 4(2k!)p_k$
+%
+\nbea
+\sqrt{(2k)!} \sqrt{p_k N} & = & 2(2k)!p_k \\
+& = & \frac{N}{2} \\
+\to \sqrt{(2k)!} \sqrt{p_k N} & \le & \frac{N}{2} ~~~~~ {\rm ~if} ~ \frac{N}{2} \ge 4(2k!)p_k \\
+\to (\log p_k N)^k & <  & \frac{N}{2}
+\neea
+%
+\ie the number of odd numbers $\le N$ must be less than $N/2$ when $\frac{N}{2} \ge 4(2k!)p_k$. Now, if we count all odd numbers up to $4(2k!)p_k + 1$, there are a total of $2(2k)!p_k + 1$ odd numbers, however, if we set $N = 4(2k!)p_k + 1$ then according to the counting above the number of odd numbers is $ < 2(2k)!p_k + \frac{1}{2}$ which is a contradiction. This means that there must be more primes other than those $k$ primes. And this new prime must be less than $N$ and thus $p_{k+1} \le 4(2k!)p_k + 1$.
 
 {\it Exercise} 1.3.2, {\bf Page 22}, show that $p_n \sim n \log n$. The hint tells us that we need to show that if $a_n \sim b_n$ then $a_n \log a_n \sim b_n \log b_n$, let's do this first.
 
@@ -1395,8 +1450,6 @@ l & = & (p_L^{\alpha_L})(p_{L-1}^{\alpha_{L-1}}) \dots (p_1^{\alpha_1})
 %
 where $p_L^{\alpha_L}$ is the highest prime power in $l$, \ie $p_L^{\alpha_L} \ge p_i^{\alpha_i}$ for $i \neq L$ and since $p_L^{\alpha_L} < M$ all other $p_i^{\alpha_i} < M$ too and thus $l < N$ because each prime power is less than that of $N$. Well unless $l$ contains a new prime other than those in $N$, however, $N$ contains {\bf all} primes $\le M$ so if $l$ contains a new prime it must be $> M$ but this is contradictory because $P(l) < M$.
 
-
-
 b) From the inequality
 %
 \nbea
@@ -1478,6 +1531,38 @@ if we now set $x = p_k$
 \neea
 %
 and since $P(N_k) = p_k$ and $x = O(\vartheta(x)) \to p_k = O(\vartheta(p_k))$ we have $P(N_k) = O(\log N_k)$.
+
+Here we see the difference between $\pi(x)$ and $\vartheta(x)$, it's true that $\pi(x)/x/\log x \sim \vartheta(x)/x$ but $\vartheta(x)$ actually carries more information, from Theorem 1.5.2, $\pi(x) \ge c_1 x/\log x$ we know that (setting $x = p_n$)
+%
+\nbea
+p_n & \le & c_1 n \log p_n
+\neea
+%
+this means that if for every prime $\le p_n$ we assign a weight of $\log p_n$ the above inequality holds but from Exercise 1.5.5 we see that from $\vartheta(x)$ we can reduce the weight, it doesn't have to be $\log p_n$ we just need to assign $\log p_i$ for each prime $p_i \le p_n$ and in this way $\vartheta(x)$ gives a more refined information regarding prime numbers than its counterpart $\pi(x)$. Although in hind sight this is expected as
+%
+\nbea
+\vartheta(x) = \sum_{p\le x} \log p ~~~~~ {\rm vs} ~~~~~ \pi(x) = \sum_{p \le x} 1
+\neea
+%
+so $\vartheta(x)$ is a weighted sum version of $\pi(x)$ where the weight for each prime is just $\log p$ itself. The question now is what other function we can concoct 
+%
+\nbea
+\gamma(x) & = & \sum_{p \le x} f(p) \\
+& = & \sum_{n \le x} f(n) a(n), ~~~~~ {\rm where~} a(n) = 1, ~{\rm if~} n ~{\rm is~prime~and~} 0 ~{\rm otherwise}
+\neea
+%
+in other words $A(x) = \sum_{n\le x} a(n) = \pi(x)$ and using Abel's summation formula
+%
+\nbea
+\sum_{n \le x} f(n) a(n) & = & f(x) \pi(x) - \int_1^x \pi(x) f'(u) du
+\neea
+%
+
+
+
+----------- NOTE SURE ABOUT THIS SECTION YET ------------
+
+
 
 Some notes on Big-Oh and stuff, from Theorem 1.5.2 (or more precisely its proof) we know that $x = O(\psi(x))$, if we substitute (1.24) into it we get
 %
