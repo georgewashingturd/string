@@ -728,7 +728,7 @@ a) Reasoning as before, prove that the number of odd positive integers not excee
 
 One thing to note here is that there is a typo (or at least some confusion) because in the book it is written as $2k!$ rather than $(2k)!$, the latter should be the correct one, using the former we can produce many counter examples so initially I thought the inequality only applies for sufficiently large $x$.
 
-For this part everything is straightforward except for the last inequality $ (\log p_k N)^k < \sqrt{(2k)!} \sqrt{p_k N}$. Well we can square both sides to get $ (\log p_k N)^2k < (2k)! p_k N$, for simplicity let's denote $x \equiv p_kN$ and $y = 2k$, $(\log x)^y < (y!) x$. We now want to compare LHS and RHS.
+For this part everything is straightforward except for the last inequality $ (\log p_k N)^k < \sqrt{(2k)!} \sqrt{p_k N}$. Well we can square both sides to get $ (\log p_k N)^{2k} < (2k)! p_k N$, for simplicity let's denote $x \equiv p_kN$ and $y = 2k$, $(\log x)^y < (y!) x$. We now want to compare LHS and RHS.
 
 We know that $(\log x)^y/x \to 0$ as $x\to\infty$ this means that no matter how big $y$ is there's always an $x_0$ such that for $x > x_0$,  $(\log x)^y < x$, this happens when $y = \log x_0/\log\log x_0$.
 
@@ -774,6 +774,16 @@ Now this part b) is interesting, the argument starts with assuming there are onl
 %
 \ie the number of odd numbers $\le N$ must be less than $N/2$ when $\frac{N}{2} \ge 4(2k!)p_k$. Now, if we count all odd numbers up to $4(2k!)p_k + 1$, there are a total of $2(2k)!p_k + 1$ odd numbers, however, if we set $N = 4(2k!)p_k + 1$ then according to the counting above the number of odd numbers is $ < 2(2k)!p_k + \frac{1}{2}$ which is a contradiction. This means that there must be more primes other than those $k$ primes. And this new prime must be less than $N$ and thus $p_{k+1} \le 4(2k!)p_k + 1$.
 
+Another way to show that there must be $p_{k+1}$ is as follows. Let's denote the number of odd numbers $\le N$ as $\mathbb{O_N}$ then $\mathbb{O_N} = \ceil{N/2}$, however from the inequality above
+%
+\nbea
+\prod_{i=1}^k \left(\frac{\log N}{\log p_i} + 1\right) & < & \left(\frac{\log N}{\log 3} + 1\right)^k \\
+& < & \left(2\frac{\log N}{\log 3}\right)^k, ~~~~~ {\rm~for~} N \ge 3 \\
+& < & (2/\log 3)^k (\log N)^k
+\neea
+%
+However, $(\log N)^k/(N/2) \to 0$ as $N\to\infty$, so it's a contradiction (note that here $k$ is just a constant since there are only finitely many primes), this method doesn't produce the desired ``Bertrand's'' result by the way :)
+
 {\it Exercise} 1.3.2, {\bf Page 22}, show that $p_n \sim n \log n$. The hint tells us that we need to show that if $a_n \sim b_n$ then $a_n \log a_n \sim b_n \log b_n$, let's do this first.
 
 The key is to use L'Hospital's rule
@@ -784,22 +794,22 @@ The key is to use L'Hospital's rule
 & = & 1
 \neea
 %
-We then set $a_n = p_n\log p_n$ and $b_n = n$, we now need to show that $p_n/\log p_n \sim n$
+We then set $a_n = p_n/\log p_n$ and $b_n = n$, we now need to show that $p_n/\log p_n \sim n$
 %
 \nbea
-\lim_{n\to\infty}\frac{p_n\log p_n}{n} & = & \lim_{n\to\infty}\frac{p_n\log p_n}{\pi(p_n)}, ~~~~~ \pi(p_n) \sim p_n\log p_n {\rm~from~PNT} \\
+\lim_{n\to\infty}\frac{p_n/\log p_n}{n} & = & \lim_{n\to\infty}\frac{p_n/\log p_n}{\pi(p_n)}, ~~~~~ \pi(p_n) \sim p_n/\log p_n {\rm~from~PNT} \\
 & = & \lim_{n\to\infty}\frac{p_n/\log p_n}{p_n/\log p_n} \\
 & = & 1
 \neea
 %
-Finally, as a consequence of the above result, \ie $a_n \sim b_n \to a_n\log _n \sim b_n \log b_n$ we have
+Finally, as a consequence of the above result, \ie $a_n \sim b_n \to a_n\log a_n \sim b_n \log b_n$ we have
 %
 \nbea
-1 = \lim_{n\to\infty}\frac{p_n\log p_n\log(p_n\log p_n)}{n\log n} & = & \lim_{n\to\infty}\frac{p_n}{n\log n} + \frac{\log p_n\log(p_n\log p_n)}{\pi(n)\log \pi(n)} \\
-& = & \lim_{n\to\infty}\frac{p_n}{n\log n} + \frac{\log^2 p_n + \log \log p_n}{p_n/\log p_n \log (p_n/\log p_n)} \\
-& = & \lim_{n\to\infty}\frac{p_n}{n\log n} + \frac{\log^2 p_n + \log \log p_n}{p_n - \log \log p_n/\log p_n} \\
-& = & \lim_{n\to\infty}\frac{p_n}{n\log n} + \frac{p_n}{p_n}\cdot\frac{\log^2 p_n/p_n + \log \log p_n/p_n}{1 - \log \log p_n/p_n\log p_n} \\
-& = & \lim_{n\to\infty}\frac{p_n}{n\log n} + 0 \\
+1 = \lim_{n\to\infty}\frac{p_n/\log p_n\log(p_n/\log p_n)}{n\log n} & = & \lim_{n\to\infty}\frac{p_n}{n\log n} - \frac{p_n\log\log p_n/\log p_n}{\pi(p_n)\log \pi(p_n)} \\
+& = & \lim_{n\to\infty}\frac{p_n}{n\log n} - \frac{p_n \log \log p_n}{p_n \log (p_n/\log p_n)} \\
+& = & \lim_{n\to\infty}\frac{p_n}{n\log n} - \frac{\log \log p_n}{\log p_n - \log \log p_n} \\
+& = & \lim_{n\to\infty}\frac{p_n}{n\log n} - \frac{\log \log p_n/\log p_n}{1 - \log \log p_n/\log p_n} \\
+& = & \lim_{n\to\infty}\frac{p_n}{n\log n} - 0 \\
 1 & = & \lim_{n\to\infty}\frac{p_n}{n\log n}
 \neea
 %
