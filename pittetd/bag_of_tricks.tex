@@ -240,7 +240,7 @@ Just for fun :)
 \renewcommand{\theequation}{A.\arabic{equation}}  % redefine the command that creates the equation no.
 \setcounter{equation}{0}  % reset counter 
 
-\bit
+\begin{enumerate}
 \item {\bf Page 158-159}, a delta function for Polynomial, \ie $D_{z_m}(z) = 0$ if $z\neq z_m$ and $=1$ only if $z=z_m$
 %
 \nbea
@@ -310,12 +310,41 @@ we can also do ``division''
 %
 say $m = 6, k = 10$, $\prod_{p|6\cdot10} f(p) = f(2) f(3) f(5)$, so we involve only distinct primes
 
+\item Pigeon hole principle
 
+\item $\int_1^x = \int_1^{\sqrt{x}} + \int_{\sqrt{x}}^x$, we might be able to get away with other powers, $x^{1/k}$, too
 
-
+\item Consequences of being a finite group
+\bit
+\item if $a \in G$ then there is an $n \le |G|$ such that $a^n = e$
+\item for every subgroup $G'$ of $G$, there is an indicator $n$ of $a \in G$, such that $a^n \in G'$ this means that for $k < n$, $a^k \not\in G'$
+\item we can create a series of subgroups of $G$ that has a nested structure, $G_1 \subset G_2 \subset \dots G_{t+1} = G$ (Theorem 6.6 and 6.8), $G'' = \{xa^k: x \in G' ~{\rm and} ~ k = 0,1,2,\dots,h-1\}$ where $h$ is the indicator of $a$ in $G'$
+\item the character $f(a)$ with $a \in G$, is just a root of unity because for some $n$, $a^n = e$
+\item if $G$ is abelian of order $n$ there are exactly $n$ characters
 
 
 \eit
+
+\item We can think of characters $f_j$ of a finite abelian group as representations of the group since it's a one to one mapping, we can think of each character as a different representation although the main difference here is that we can take products of the characters, we can't take a product of different spins (different representations of $su(2)$)
+
+
+\item Dirichlet's theorem is about distribution of primes, \ie is it possible for an arithmetic progression $ak + b$ to contain no primes after certain point? The key is in using Dirichlet character $\sum \chi(n) f(n)$ because $\chi(n)$ is zero if $n$ is not co-prime to some number
+
+This is actually in support of the randomness of primes, the probability of primes not hitting a single $ak + b$ will be really low if primes are random, because then it will have equal probability to hit any number
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{enumerate}
 
 
 
