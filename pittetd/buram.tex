@@ -474,7 +474,65 @@ As I look deeper into this, it reminds me of how different relativity is from Ne
 
 In arriving at QFT we didn't do that, the framework of quantum mechanics was not radically altered, we only salted and peppered it to allow Lorentz invariants and transformations, I believe there are things we should modify to get relativistic quantum mechanics, seems like the concept of amplitudes, probabilities, superposition, they all have to change somehow instead of just fiddling around with a new hamiltonian like Dirac did or imposing Lorentz compliant commutator algebra, maybe the algebra itself has got to change
 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+
+Chinese remainder
+1+ p1 2 + p2
+
+
+First fact, if $a \equiv b \pmod{c}$ then $(b,c)=(a,c)$, this follows directly from the property of gcd
+%
+\nbea
+(b,c) = (b + cn)
+\neea
+%
+What we have is $d|k$, $(n,d)=1$, what we want is $m \equiv n \pmod{d}$ and $(m,k) = 1$. For simplicity assume that $n \le k$.
+
+The goal here is to find an $x$ such that $m = n + dx$ is co-prime to $k$, since $d|k$, we have $k/d$ distinct values for $x$, \ie $0 \le x < k/d$, before  we get $m = n + k$. If $(n,k)=1$ then $(m = n+k,k)=1$ as well and of course $m \equiv n \pmod{d}$ so we have found our $m$. If $(n,k) > 1$ we have to do more work.
+
+By adding $d$ to $n$ we are actually cycling through different members of the residue class of $k$ and not only that but we are actually cycling through different members, so we are cycling through $k/d$ different members because say two of them are equivalent modulo $k$ then
+%
+\nbea
+n + dx_1 & \equiv & n + dx_2 \pmod{k} \\
+\to k &|& d (x_1 - x_2)
+\neea
+%
+but since $0 \le x_{1,2} < k/d$, $d(x_1 - x_2) < k$ so the above is a contradiction.
+
+Let's recap, what we have is a choice of $k/d$ numbers $n_x$ in the form $n_x = n + dx$ with $0 \le x < k/d$, all of which are unique modulo $k$. We want to see if one of them is co-prime to $k$, note also that $(n,k) > 1$.
+
+Now assume that none of the $n + dx$ is co-prime to $k$ so it means that each must have a common divisor with $k$. Let's write $k$ in its primal constituents
+%
+\nbea
+k = p_1^{e_1}p_2^{e_2} \dots p_z^{e_z}
+\neea
+%
+denote the set of distinct prime divisors of $k$ and $d$ as $\mathbb{K} = \{p_1, p_2, \dots, p_z\}$ and $\mathbb{D} = \{p_{d_1}, p_{d_2}, \dots, p_{d_s}\}$ respectively with $\mathbb{D} \subset \mathbb{K}$ then the set of distinct prime divisors of the numbers $n_x$ must be in the set $\mathbb{N}_x = \mathbb{K} - \mathbb{D}$ since $(n,d) = (n_x = n + dx, d) = 1$.
+
+Say $\#\mathbb{N}_x = t$ this means that $k/d \ge p_{j_1}^{e_{j_1}} p_{j_2}^{e_{j_2}} \dots p_{j_t}^{e_{j_t}} > 2^t > t$, \ie some of the $n_x$ will have the same common divisor.
+
+Our task now is to distribute these $t$ primes in $\mathbb{N}_x$ into $k/d$ numbers $n_x = n + dx$. Each $n_x$ can have more than one prime as a divisor of course.
+
+Some important observation, if some $n + dx_i$ is divisible by some $p_{j_u} \in \mathbb{N}_x$ then any $n + dx_i + dp_{j_u}y$ is also divisible by $p_{j_u}$.
+
+So we can think of the numbers $n_x$ as a bitmap with $k/d$ number of bits where the each $n_x$ is represented by one bit. Once we choose a bit, say bit $u$ to contain a prime $p_{j_u}$ all other bits with a distance of multiples of $p_{j_u}$ from this bit will also contain $p_{j_u}$.
+
+In this way the bits containing $p_{j_u}$ is $(u + sp_{j_u})$, \ie bit position $u \pmod{p_{j_u}}$ will all contain $p_{j_u}$. Once we assign each bit a prime from $\mathbb{N}_x$ we have the following assignments
+%
+\nbea
+\begin{array}{r c c c c c}
+{\rm ~bit:~} & 0 & + & s_0 p_{j_0} & \to & p_{j_0} \\
+{\rm ~bit:~} & 1 & + & s_1 p_{j_1} & \to & p_{j_1} \\
+& & \vdots & & \\
+{\rm ~bit:~} & t-1 & + & s_{t-1} p_{j_{t-1}} & \to & p_{j_{t-1}}
+\end{array}
+\neea
+%
+note that bit 0 is just $n$ and since $(n,k) > 1$, $n$ must contain one of the primes. The remaining question is whether there is a bit that wasn't represented by the above assignment and there is, thanks to Chinese Remainder Theorem
+
+
+Total number of bit is $\ge p_{j_i} p_{j_2} \dots p_{j_t}$
 
 
 

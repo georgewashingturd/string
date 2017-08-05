@@ -328,9 +328,83 @@ say $m = 6, k = 10$, $\prod_{p|6\cdot10} f(p) = f(2) f(3) f(5)$, so we involve o
 \item We can think of characters $f_j$ of a finite abelian group as representations of the group since it's a one to one mapping, we can think of each character as a different representation although the main difference here is that we can take products of the characters, we can't take a product of different spins (different representations of $su(2)$)
 
 
-\item Dirichlet's theorem is about distribution of primes, \ie is it possible for an arithmetic progression $ak + b$ to contain no primes after certain point? The key is in using Dirichlet character $\sum \chi(n) f(n)$ because $\chi(n)$ is zero if $n$ is not co-prime to some number
+\item Dirichlet's theorem is about distribution of primes, \ie is it possible for an arithmetic progression $ak + b$ to contain no primes after certain point? The key is in using Dirichlet character $\sum \chi(n) f(n)$ because $\chi(n)$ is zero if $n$ is not co-prime to $k$.
 
 This is actually in support of the randomness of primes, the probability of primes not hitting a single $ak + b$ will be really low if primes are random, because then it will have equal probability to hit any number
+
+\item Dirichlet characters $\chi(n)$ modulo $k$ can be perfectly played by the Legendre's symbols $\left( \frac{n}{k} \right)$ since
+%
+\nbea
+\left(\frac{n}{k}\right) = \left \{
+\begin{array}{l}
++1 ~{\rm if} ~ n ~{\rm is~a~quadratic~residue~modulo~} k \\
+-1 ~{\rm if} ~ n ~{\rm is~a~non quadratic~residue~modulo~} k \\
+~0 ~~{\rm if} ~ (n,k) > 1
+\end{array}
+\right.
+\neea
+%
+so the Legendre's symbols are roots of unity and they are zero if $(n,k) > 1$, also it satisfies the multiplicative and non-zero properties of characters
+%
+\nbea
+\left ( \frac{ab}{k} \right) & = & \left ( \frac{a}{k} \right) \left ( \frac{b}{k} \right) \\
+\left ( \frac{n}{k} \right) & \neq & 0 ~~~~~~~~{\rm for}~ (n,k) = 1
+\neea
+%
+and so we can replace the Dirichlet characters in the gauss sum with Legendre's symbols
+%
+\nbea
+G(n, \chi) = \sum_{m = 1}^k \chi(m) e^{2\pi i mn/k} ~~~ \longrightarrow ~~~ G(n, \chi) = \sum_{m = 1}^k \left(\frac{m}{k}\right) e^{2\pi i mn/k}
+\neea
+%
+
+\item When summing over mod $\sum_{n \mod k}$ we can extend the dummy variables
+%
+\nbea
+\sum_{m=1}^k f(m) & = & \sum_{m=1}^k f(am) ~~~~~ {\rm as~long~as}~ (a,k) = 1
+\neea
+%
+
+\item Discrete delta function (non-normalized)
+%
+\nbea
+\sum_{m=1}^k e^{2\pi i m(n-d)/k} & = & k\delta_{n,d} ~~~~~{\rm whenever~} 0 \le n,d < k
+\neea
+%
+
+Using the above two items we can prove the following, for separable gauss sums $\left|G(1,\chi)\right |^2 = k$, first
+%
+\nbea
+\left | G(n,\chi) \right |^2 & = & \left |\overline{\chi}(n) G(1,\chi)\right |^2 \\
+& = & \left |\overline{\chi}(n)\right|^2 \left|G(1,\chi)\right |^2 \\
+& = & 1 \cdot \left|G(1,\chi)\right |^2
+\neea
+%
+then
+%
+\nbea
+\left|G(1,\chi)\right |^2 = \left | G(n,\chi) \right |^2 & = & \sum_{w = 1}^k \overline{\chi}(w) e^{-2\pi i w n/k} \sum_{m = 1}^k {\chi}(m) e^{2\pi i m n/k} \\
+& = & \sum_{w = 1}^k  \sum_{m = 1}^k {\chi}(w^{-1}){\chi}(m) e^{2\pi i (m - w) n/k} \\
+& = & \sum_{w = 1}^k  \sum_{m = 1}^k {\chi}(w^{-1}m) e^{2\pi i (m - w) n/k} \\
+& = & \sum_{w = 1}^k  \sum_{m = 1}^k {\chi}(w^{-1}(wm)) e^{2\pi i (wm - w) n/k} ~~~~~ {\rm using~item~} 13\\
+& = & \sum_{w = 1}^k  \sum_{m = 1}^k {\chi}(m) e^{2\pi i w(m - 1) n/k} \\
+& = & \sum_{m = 1}^k {\chi}(m) \sum_{w = 1}^k  e^{2\pi i w(m - 1) n/k} \\
+& = & \sum_{m = 1}^k {\chi}(m) ~k~ \delta_{m,1} ~~~~~ {\rm using~item~} 14 \\
+\left|G(1,\chi)\right |^2 & = & k~\chi(1) = k
+\neea
+%
+when using item 13 we multiply $m$ by $w$ but $w$ runs from 1 to $k$ and it's not always co-prime to $k$ but this is all right since $\chi(wm) = 0$ if $(w,k) > 1$ and so the Dirichlet character took care of it
+
+\item properties of gcd
+%
+\nbea
+(mk,ab) = (a,m)(k,b) ~~~~~ {\rm if~} (a,k)=(b,m)=1
+\neea
+%
+
+
+
+
 
 
 
