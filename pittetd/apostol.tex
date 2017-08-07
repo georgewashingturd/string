@@ -801,6 +801,99 @@ therefore
 %
 so depending on how stupidly you make your choices, you might have to suffer a bit more :)
 
+{\bf Problem 1.30} Prove that for $n > 1$, the sum
+%
+\nbea
+\sum_{k=1}^n \frac{1}{k}
+\neea
+%
+is not an integer.
+
+My first approach was to rewrite the sum (by making a common denominator)
+%
+\nbea
+\sum_{k=1}^n \frac{n!/k}{n!}
+\neea
+%
+for the whole sum to be an integer the whole numerator must be a multiple of $n!$
+%
+\nbea
+\sum_{k=1}^n n!/k & = & n! \cdot m
+\neea
+%
+Now if $n = p$ a prime number we have
+%
+\nbea
+n!/n + \sum_{k=1}^{n-1} n!/k & = & n!\cdot m \\
+(n-1)! + \sum_{k=1}^{n-1} (n-1)!p/k & = & (n-1)!p\cdot m \\
+(n-1)! & = & p \left ( (n-1)!\cdot m - \sum_{k=1}^{n-1} (n-1)!/k \right ) \\
+\to p &|& (n-1)!
+\neea
+%
+but it can't be because $p$ is a prime and $p = n > n-1$ now what happens if $n$ is not a prime, the above strategy can still be applied but we need Bertrand's postulate that between any $x$ and $2x$ there's always a prime number. This means that between $\ceil{n/2}$ and $n$ there is a prime number. Another fact we need is that the residue class of a prime $p$ is co-prime to $p$, \ie the number $p+1, p+2, \dots, 2p-1$ are all co-prime to $p$.
+
+With the above two facts in mind we choose a prime $p$ between $\ceil{n/2}$ and $n$, this means that every number between $p$ and $n$ are all co-prime to $p$ since $n < 2p$ and
+%
+\nbea
+\sum_{k=1}^{p-1} n!/k + ~~n!/p~~ + \sum_{k=p+1}^{n} n!/k & = & n!\cdot m \\
+p\sum_{k=1}^{p-1} n!/(pk) + ~~n!/p~~ + p\sum_{k=p+1}^{n} n!/(pk) & = & n!\cdot m \\
+n!/p & = & p(n!/p\cdot m - \sum_{k=1}^{p-1} n!/(pk) - \sum_{k=p+1}^{n} n!/(pk))\\
+\to p &|& n!/p
+\neea
+%
+which is again a contradiction since $n!/p$ doesn't contain $p$ this is because $p$ is prime and also $p$ is between $n/2$ and $n$ so there's no number bigger than $p$ that contains $p$, this is the reason why we must have $n/2 < p \le n$, otherwise some number $> n/2$ can be a multiple of $p$ and the argument doesn't work. So we have the proof complete.
+
+The above proof can be extended to the following sum
+%
+\nbea
+\sum_{k=1}^n \frac{a_k}{k} ~~~~~ {\rm where~} a_k~{\rm can~be~randomly~} \pm 1
+\neea
+%
+because the proof above doesn't rely on the sign of any of the terms. My goal in doing this problem was to get a proof that the $L$ function $L(1,\chi)$ canot be zero, the $L$ function is defined as
+%
+\nbea
+L(1,\chi) & = & \sum_{n=1}^{\infty} \frac{\chi(n)}{n}
+\neea
+%
+where $\chi(n)$ is a Dirichlet's character modulo some number $k$, First we split the sum into a period of $p$
+%
+\nbea
+\sum_{n=1}^{\infty} \frac{\chi(n)}{n} & = & \sum_{m=0}^{\infty} \sum_{n=1}^{k-1} \frac{\chi(km + n)}{km + n}
+\neea
+%
+let's concentrate on the first period
+%
+\nbea
+\sum_{n=1}^{p-1} \frac{\chi(n)}{n}
+\neea
+%
+the tricky thing about this is that $\chi(n)$ is zero if $n$ is not co-prime to $k$ so the $p$ we choose can be out of play but from the result above we can choose a prime $k/2 < p \le k$ and this $p$ is co-prime to all numbers $ > p$ and so $\chi(p) \neq 0$, so this sum cannot be an integer and therefore cannot be zero.
+
+What happens to subsequent periods say
+%
+\nbea
+\sum_{n=mk+1}^{2mk-1} \frac{\chi(n)}{n}
+\neea
+%
+the strategy still works for the second period because we can choose $k < p \le 2k$ but for the third period we cannot guarantee $2k < p \le 3k - 1$, because if we choose the boundaries to be $(3k/2, 3k)$, $p$ can be less than $2k$ and if we choose the period to start from $2k$, $p$ can be beyond $3k$, so this strategy no longer works on top of that even if we can show that each period is non-zero if the sum of the first period is negative, since each number scales differently going from one period to the next, say $k=8$, $2\to10,~7\to15$ but $10/2 > 15/7$, so the sum of the subsequent period can flip sign and if it can flip sin the total sum can be zero.
+
+But if we don't split the sum into periods of $k$ we can put an upper limit
+%
+\nbea
+\sum_{n=1}^{x} \frac{\chi(n)}{n}
+\neea
+%
+using the same strategy as the proof of Problem 1.30, this sum can never be zero no matter how big $x$ is although if we take the limit $x\to\infty$ the limit still can be zero, just like $1/x$, it can never be zero but the limit can still be zero so all in all this approach is not a good one to show that $L(1,\chi)$ is not zero.
+
+Problem 1.30 can actually be solved without Bertrand's postulate, it's not that deep, the key is to notice the following pattern (of the reduced form of the sum) as we increase $n$
+%
+\nbea
+\frac{3}{2}, ~\frac{11}{6}, ~\frac{25}{12}, ~\frac{137}{60}, ~\frac{49}{20}, ~\frac{363}{140}, ~\frac{761}{280}, ~\frac{7129}{2520}, ~\frac{7381}{2520}, \dots
+\neea
+%
+which says that the numerator is always odd and the denominator is always even
+
+
 \bigskip
 \underline{\textbf{\textit{Chapter 2}}}
 \bigskip
@@ -2816,6 +2909,8 @@ the thing here is that $\log x < x$ so we can lump $\log x$ into $O(x)$ me hope 
 {\bf Page 131}, bottom page, last line, ``{\it cyclic subgroup}'', recall that a cyclic group is a group that can be generated by just one element.
 
 {\bf Page 132}, top page, ``The integer $n$ is also called the {\it order of the element} $a$'', note that the terminology {\it order} was already used for the size of the finite group
+
+{\bf Page 142}, Theorem 6.20, the proof of this Theorem is really sick for my attempts at my own proof see the solution I provided for Problem 1.30
 
 {\bf Problem 6.2}. Let $G$ be a finite group of order $n$ with identity element $e$. If $a_1,\ldots,a_n$ are $n$ elements of $G$, not necessarily distinct, prove that there are integers $p$ and $q$ with $1\le p \le q \le n$ such that $a_p a_{p+1} \ldots a_q = e$.
 
