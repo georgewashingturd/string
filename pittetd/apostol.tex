@@ -888,11 +888,46 @@ using the same strategy as the proof of Problem 1.30, this sum can never be zero
 Problem 1.30 can actually be solved without Bertrand's postulate, it's not that deep, the key is to notice the following pattern (of the reduced form of the sum) as we increase $n$
 %
 \nbea
-\frac{3}{2}, ~\frac{11}{6}, ~\frac{25}{12}, ~\frac{137}{60}, ~\frac{49}{20}, ~\frac{363}{140}, ~\frac{761}{280}, ~\frac{7129}{2520}, ~\frac{7381}{2520}, \dots
+\frac{3}{2}, ~\frac{11}{6}, ~\frac{25}{12}, ~\frac{137}{60}, ~\frac{49}{20}, ~\frac{363}{140}, ~\frac{761}{280}, ~\frac{7129}{2520}, ~\frac{7381}{2520}, ~\frac{83711}{27720}, ~ \frac{86021}{27720}~\dots
 \neea
 %
-which says that the numerator is always odd and the denominator is always even
+which says that the numerator is always odd and the denominator is always even, another thing to note is that when $n=4$ the denominator is a multiple of 4 and when $n=8$ the denominator is a multiple of 8.
 
+We can now get into the proof using induction, the base case is already shown above, we can start with $n=2,3,4$, the induction step going from $(2m_n + 1)/2w_n$ and adding $1/n+1$ is
+%
+\nbea
+\frac{(2m_n + 1)}{2w_n} + \frac{1}{n+1}
+\neea
+%
+if $n+1 = 2t+1$ is odd we are done because
+%
+\nbea
+\frac{(2m_n + 1)}{2w_n} + \frac{1}{2t+1} & = & \frac{2(2m_n t  + m_n + t + w_n) + 1}{2w_n (2t+1)}
+\neea
+%
+since the numerator is odd and denominator is even the gcd between the numerator and denominator must be odd so the reduced form is again $(2m_{n+1} + 1)/2w_{n+1}$ so if the denominator was a multiple of $2^y$ after adding $1/(n+1)$ the new reduced denominator is still a multiple $2^y$.
+
+If $n+1=2s$ is even things get interesting, from our base case $n=4$ we know that the denominator is a multiple of 4 and as shown above adding an odd reciprocal, in this case $1/5$, maintains the denominator to be a multiple of 4 as well, the key observation here is that any even number $< 8$ is of the form $2(2j+1)$ because if it's $2\cdot 2i$ then $i \ge 2$ so that it's bigger than $4$ but if it's so then it's $\ge 8$, so any even number between $4$ and $8$ are all of the form $2(2j+1)$.
+
+This is also true for even numbers between $2^u$ and $2^{u+1}$, by the same argument they are all of the form $2^{u-1}(2j+1)$. Another thing to mention is that the denominator is always of the form $2^u w_n$ where $w_n$ is odd (first, because our base case says so and later we will show that the denominator only gets an extra factor of 2 if $n+1 = 1/2^{u+1}$). We can now move forward 
+%
+\nbea
+\frac{(2m_n + 1)}{2^u w_n} + \frac{1}{2^{u-1}(2j+1)} & = & \frac{1}{2^{u-1}} \left ( \frac{2(2m_n t + m_n + j + w_n) + 1}{2w_n (2j+1)} \right ) \\
+& = & \frac{2m_{n+1} + 1}{2^uw_{n+1}}
+\neea
+%
+since by the same argument above the gcd between the numerator and denominator in the big brackets must be odd since once is odd and the other is even and the denominator does not get an extra factor of 2.
+
+The last thing we need to show is that the denominator only acquires an extra factor of 2 when $n = 2^{u+1}$ (note that $w_n$ is always odd)
+%
+\nbea
+\frac{(2m_n + 1)}{2^u w_n} + \frac{1}{2^{u+1}} & = & \frac{2^{u+1}(2m_n + 1) + 2^u w_n}{2^{u + u + 1} w_n} ~~~~~ w_n = 2l + 1 \\
+& = & \frac{2(2m_n + 1 + l) + 1}{2^{u+1}w_n}
+\neea
+%
+and again since the numerator is odd and the denominator is even we can only simplify the ratio by dividing both numerator and denominator by an odd number thus the factor of $2^{u+1}$ in the denominator stays.
+
+In conclusion, we have shown that the denominator is always of the form $2^uw_n$ where $w_n$ is odd and it only acquires an extra factor of 2 when $n+1 = 1/2^{u+1}$, on top of that we also showed that the fraction is always of the form $odd/even$ so we have proven that for $n > 1$ the sum $\sum_{k=1}^n 1/k$ is never an integer.
 
 \bigskip
 \underline{\textbf{\textit{Chapter 2}}}
