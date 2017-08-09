@@ -3129,6 +3129,15 @@ but since $a,b \le (p-1)/2$, $a+b < p$, the only possibility is if $a = b = (p-1
 
 This means that the $(p-1)/2$ numbers $m \equiv k^2$ with $k \le (p-1)/2$ are all the quadratic residues there are and they are all unique.
 
+{\bf Page 180}, Theorem 9.2, Euler's theorem on quadratic residues, this is actually quite simple, below is my own proof utilizing a primitive root, $g$.
+
+Any quadratic residue is some square of a primitive root $g^{2n}$ and so $(g^{2n})^{p-1/2} \equiv (g^n)^{p-1} \equiv 1$, if it's quadratic non residue then it's $g^{2n+1}$ and so 
+%
+\nbea
+(g^{2n+1})^{p-1/2} & \equiv & (g^n)^{p-1} g^{p-1/2}
+\neea
+%
+and we know from the property of primitive roots that $g^{p-1/2} \equiv -1$ (this is because $g^{p-1} \equiv 1$ and its roots are $\pm1$ but $g^{p-1} \equiv 1$ and so $g^{p-1/2} \equiv -1$ because there are only $p-1$ different exponents of $g$ for all members of $\mathbb{Z}/p\mathbb{Z}$)
 
 
 
