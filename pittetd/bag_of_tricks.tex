@@ -332,26 +332,26 @@ say $m = 6, k = 10$, $\prod_{p|6\cdot10} f(p) = f(2) f(3) f(5)$, so we involve o
 
 This is actually in support of the randomness of primes, the probability of primes not hitting a single $ak + b$ will be really low if primes are random, because then it will have equal probability to hit any number
 
-\item Dirichlet characters $\chi(n)$ modulo $k$ can be perfectly played by the Legendre's symbols $\left( \frac{n}{k} \right)$ since
+\item Dirichlet characters $\chi(n)$ modulo $k$ can be perfectly played by the Legendre's symbols $\left( \frac{n}{k} \right)$ as long as $k$ is prime since
 %
 \nbea
 \left(\frac{n}{k}\right) = \left \{
 \begin{array}{l}
 +1 ~{\rm if} ~ n ~{\rm is~a~quadratic~residue~modulo~} k \\
 -1 ~{\rm if} ~ n ~{\rm is~a~non quadratic~residue~modulo~} k \\
-~0 ~~{\rm if} ~ (n,k) > 1
+~0 ~~{\rm if} ~ k|n
 \end{array}
 \right.
 \neea
 %
-so the Legendre's symbols are roots of unity and they are zero if $(n,k) > 1$, also it satisfies the multiplicative and non-zero properties of characters
+so the Legendre's symbols are roots of unity and they are zero if $k|n$, also it satisfies the multiplicative and non-zero properties of characters
 %
 \nbea
 \left ( \frac{ab}{k} \right) & = & \left ( \frac{a}{k} \right) \left ( \frac{b}{k} \right) \\
 \left ( \frac{n}{k} \right) & \neq & 0 ~~~~~~~~{\rm for}~ (n,k) = 1
 \neea
 %
-and so we can replace the Dirichlet characters in the gauss sum with Legendre's symbols
+and so we can replace the Dirichlet characters in the gauss sum with Legendre's symbols (again as long as $k$ is prime)
 %
 \nbea
 G(n, \chi) = \sum_{m = 1}^k \chi(m) e^{2\pi i mn/k} ~~~ \longrightarrow ~~~ G(n, \chi) = \sum_{m = 1}^k \left(\frac{m}{k}\right) e^{2\pi i mn/k}

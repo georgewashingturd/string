@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  9 AUG 2017 00:02
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  9 AUG 2017 20:15
 entering extended mode
 **C:/Users/User/Documents/GitHub/string/pittetd/apostol.tex
 (C:/Users/User/Documents/GitHub/string/pittetd/apostol.tex
@@ -692,12 +692,12 @@ Overfull \hbox (9.30484pt too wide) in alignment at lines 2702--2706
  [][][] []
  []
 
-[71] [72] [73] [74] [75] [76] [77] [78] [79] [80] [81] [82]
+[71] [72] [73] [74] [75] [76] [77] [78] [79] [80] [81] [82] [83]
 Overfull \hbox (31.85487pt too wide) in alignment at lines 3177--3182
  [][][] []
  []
 
-[83] [84]
+[84]
 Overfull \hbox (12.86371pt too wide) in paragraph at lines 3242--3246
 \OT1/cmr/m/n/12 which is a con-tra-dic-tion since the LHS is zero while the RHS
  is ob-vi-ously not  $[][]\OMS/cmsy/m/n/12 n\OT1/cmr/m/n/12 ([][][]o)\OML/cmm/m
@@ -709,35 +709,35 @@ Overfull \hbox (63.8664pt too wide) in alignment at lines 3351--3355
  [][][] []
  []
 
-[88] [89] [90] [91] [92] [93] [94] [95] [96]
+[88] [89] [90] [91] [92] [93] [94] [95] [96] [97]
 File: Thm_3_13.png Graphic file (type QTm)
  <use  "Thm_3_13.png" >
 Overfull \hbox (45.53279pt too wide) in paragraph at lines 3730--3731
  [][] 
  []
 
-[97] [98]
+[98] [99]
 Requested font "cmtt12" at 12.0pt
- [99] [100]
+ [100]
 File: lowerbound.png Graphic file (type QTm)
  <use  "lowerbound.png" > [101]
 Overfull \hbox (7.93016pt too wide) in alignment at lines 3893--3897
  [][][] []
  []
 
-[102] (apostol.bbl) [103]
+[102] (apostol.bbl) [103] [104]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 3974.
  (apostol.aux)
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 3974.
 Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 3974.
  ) 
 Here is how much of TeX's memory you used:
- 13348 strings out of 428755
- 183915 string characters out of 3166785
+ 13347 strings out of 428755
+ 183905 string characters out of 3166785
  295408 words of memory out of 3000000
- 16559 multiletter control sequences out of 15000+200000
+ 16558 multiletter control sequences out of 15000+200000
  17030 words of font info for 63 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
  36i,18n,38p,1045b,459s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on apostol.pdf (103 pages).
+Output written on apostol.pdf (104 pages).

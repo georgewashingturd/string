@@ -476,11 +476,6 @@ In arriving at QFT we didn't do that, the framework of quantum mechanics was not
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-
-Chinese remainder
-1+ p1 2 + p2
-
-
 First fact, if $a \equiv b \pmod{c}$ then $(b,c)=(a,c)$, this follows directly from the property of gcd
 %
 \nbea
@@ -514,29 +509,46 @@ Say $\#\mathbb{N}_x = t$ this means that $k/d \ge p_{j_1}^{e_{j_1}} p_{j_2}^{e_{
 
 Our task now is to distribute these $t$ primes in $\mathbb{N}_x$ into $k/d$ numbers $n_x = n + dx$. Each $n_x$ can have more than one prime as a divisor of course.
 
-Some important observation, if some $n + dx_i$ is divisible by some $p_{j_u} \in \mathbb{N}_x$ then any $n + dx_i + dp_{j_u}y$ is also divisible by $p_{j_u}$.
+Some important observation, if some $n + dx_i$ is divisible by some $p_{j_u} \in \mathbb{N}_x$ then any $n + dx_i + dp_{j_u}y$ is also divisible by $p_{j_u}$, the converse is also true, if two $n_x$'s are divisible by $p_{j_u}$ then their difference has to be $dp_{j_u}y$.
 
 So we can think of the numbers $n_x$ as a bitmap with $k/d$ number of bits where the each $n_x$ is represented by one bit. Once we choose a bit, say bit $u$ to contain a prime $p_{j_u}$ all other bits with a distance of multiples of $p_{j_u}$ from this bit will also contain $p_{j_u}$.
 
-In this way the bits containing $p_{j_u}$ is $(u + sp_{j_u})$, \ie bit position $u \pmod{p_{j_u}}$ will all contain $p_{j_u}$. Once we assign each bit a prime from $\mathbb{N}_x$ we have the following assignments
+In this way the bits containing $p_{j_u}$ is $(u + sp_{j_u})$, \ie bit position $u \pmod{p_{j_u}}$ will all contain $p_{j_u}$. Once we assign each bit a prime from $\mathbb{N}_x$ we have the following assignments (we number our bits starting from bit 1 instead of 0)
 %
 \nbea
-\begin{array}{r c c c c c}
-{\rm ~bit:~} & 0 & + & s_0 p_{j_0} & \to & p_{j_0} \\
-{\rm ~bit:~} & 1 & + & s_1 p_{j_1} & \to & p_{j_1} \\
-& & \vdots & & \\
-{\rm ~bit:~} & t-1 & + & s_{t-1} p_{j_{t-1}} & \to & p_{j_{t-1}}
+\begin{array}{c c c}
+bit~position & & prime~assignment\\
+b_1 \pm s_1 p_{j_1} \equiv c_1 \pmod{p_{j_1}} & \to & p_{j_1} \\
+b_2 \pm s_2 p_{j_2} \equiv c_2 \pmod{p_{j_2}} & \to & p_{j_2} \\
+& \vdots & \\
+b_t \pm s_{t} p_{j_{t}} \equiv c_t \pmod{p_{j_t}} & \to & p_{j_{t}}
 \end{array}
 \neea
 %
-note that bit 0 is just $n$ and since $(n,k) > 1$, $n$ must contain one of the primes. The remaining question is whether there is a bit that wasn't represented by the above assignment and there is, thanks to Chinese Remainder Theorem
+note that bit 1 is just $n$ and since $(n,k) > 1$, $n$ must contain one of the primes and $s_i$ is any integer (of course the total, $b_i \pm s_i p_{j_i}$, can't be less than zero of bigger than the total number of bits, $k/d$). The remaining question is whether there is a bit that wasn't represented by the above assignment and there is, thanks to Chinese Remainder Theorem there must be at least one. We can construct one quite easily, setup the Chinese remainders as follows
+%
+\nbea
+c & \equiv & (c_1 + 1) \pmod{p_{j_1}} \\
+c & \equiv & (c_2 + 1) \pmod{p_{j_2}} \\
+& \vdots & \\
+c & \equiv & (c_t + 1) \pmod{p_{j_t}}
+\neea
+%
+Chinese remainder theorem guarantees that we have such $c$ and that such a $c$ is congruent modulo $p_{j_1} p_{j_2} \dots p_{j_t}$ so this means that $c \le p_{j_1} p_{j_2} \dots p_{j_t}$ which is less than the total number of bits $k/d \ge p_{j_1}^{e_{j_1}} p_{j_2}^{e_{j_2}} \dots p_{j_t}^{e_{j_t}}$. We can also construct other bits by changing the $ + 1$ into some other constant. Note that if the number of bits is less than $t$, the number of distinct primes the argument falls.
 
+Thus we have shown that one of the $n_x$'s must be co-prime to $k$ and we can choose this one to be $m$.
 
-Total number of bit is $\ge p_{j_i} p_{j_2} \dots p_{j_t}$
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+Doing problem solving is in a essence doing a depth first search, starting from the root node (which is the problem node), we map out different approaches we can take to tackle the problem, we usually employ greedy algorithm to choose the most promising branch. We then traverse deeper into this particular branch to see if we can get to a solution.
 
+The problem is sometimes we get too comfortable with a certain approach and gravitate towards that branch no matter what (note that greedy algorithm doesn't always pay off). Also, sometimes we need to go too deep into a branch to see if an approach works.
 
+So if we can put some values into the edges of this tree maybe we can deploy Dijkstra or even dynamic programming approaches to choose the best approach in problem solving.
 
+Of course the challenge is that most times we don't even know what branches (approaches) are available, we need to create new ones and that is where the real challenge lies.
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 
 
