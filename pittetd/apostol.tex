@@ -3139,9 +3139,67 @@ Any quadratic residue is some square of a primitive root $g^{2n}$ and so $(g^{2n
 %
 and we know from the property of primitive roots that $g^{p-1/2} \equiv -1$ (this is because $g^{p-1} \equiv 1$ and its roots are $\pm1$ but $g^{p-1} \equiv 1$ and so $g^{p-1/2} \equiv -1$ because there are only $p-1$ different exponents of $g$ for all members of $\mathbb{Z}/p\mathbb{Z}$)
 
+{\bf Page 180}, Theorem 9.3, this is a theorem that states that Legendre's symbol $(n|p)$ is completely multiplicative. The case for $(mn|p)$ with $p|m$ or $p|n$ is straightforward, the case for $p\nmid m$ and $p\nmid n$.
 
+My srategy is to show that the LHS $(mn|p)$ is the same as the RHS $(m|p)(n|p)$ by checking each case. First case $m$ and $n$ are both quadratic residues, in this case $m \equiv a^2, n \equiv b^2$, thus $mn \equiv a^2 b^2 \equiv (ab)^2$ and  so $mn$ is also a quadratic residue.
 
+Second case is that one of them is a qudratic non residue. First fact we need is 
 
+{\bf Proposition 9.3.1}, $m$ is a quadratic non residue modulo some odd prime $p$ if and ony if it can be expressed as 
+%
+\nbea
+m \equiv a^2 c \pmod{p}
+\neea
+%
+where $a$ is any number with $p\nmid a$ and $c$ is a quadratic non residue modulo $p$.
+
+{\it Proof}. Pick any number $a \in \mathbb{Z}/p\mathbb{Z}$ with $p\nmid a$, let $d \equiv a^2$, since $p\nmid d$, $d$ has an inverse, therefore
+%
+\nbea
+a^2 d^{-1} m & \equiv & m \pmod{p} \\
+a^2 c & \equiv & m \pmod{p} ~~~~~ {\rm where~} c \equiv d^{-1} m
+\neea
+%
+and since $m$ is a quadratic non residue $c$ can't be a quadratic residue. The converse is very easy, for any $a^2 c$, if $c$ is quadratic non residue then the whole thing is a quadratic non residue as well because otherwise
+%
+\nbea
+k^2 & \equiv & a^2 c \pmod{p} \\
+(a^{-1} k)^2 & \equiv & c \pmod{p}
+\neea
+%
+which is a contradiction since $c$ is supposed to be a quadratic non residue.
+
+Continuing with Theorem 9.3, if one of $m,n$ is quadratic and the other is not then by Proposition 9.3.1 above the product is quadratic non residue either and therefore $(mn|p) = (m|p)(n|p)$.
+
+The last case is the trickiest one, if neither $m$ nor $n$ is quadratic residue, then
+%
+\nbea
+(m|p)(n|p) & = & (-1)(-1) \\
+& = & +1
+\neea
+%
+and so the product of two quadratic non residue is a quadratic residue. If we use primitive roots we can prove this very easily since a quadratic non residue is $g^{2n+1}$ and a quadratic residue is $g^{2m}$, thus a product of two quadratic non residue is a quadratic residue. But we are not going to use primitive roots here.
+
+But Proposition 9.3.1 can help us here. If $m$ is a quadratic non residue, then we can pick any $c$ such that $m \equiv a^2 c$. This is because from Proposition 9.3.1 we can pick any $a$, so let's go through all $1 \le a \le (p-1)/2$, for each $a$ we will get a different $c$ because if two different $a$'s have the same $c$ we get
+%
+\nbea
+a^2_1 c & \equiv & a^2_2 c \pmod{p} \\
+\to a^2_2 & \equiv & a^2_2 \pmod{p} \\
+\to a_1 & \equiv & a_2 \pmod{p} ~~~~~{\rm if}~ a_{1,2} \le (p-1)/2
+\neea
+%
+since $c$ must be a quadratic non-residue and according to Theorem 9.1 there are only $(p-1)/2$ quadratic non residues, as we cycle through all the different $1 \le a \le (p-1)/2$ we also cycle through all the different $(p-1)/2$ quadratic non residues.
+
+So going back to Theorem 9.3, we express $m \equiv a^2 c$ and as shown above we use the same $c$ for $n \equiv b^2 c$, therefore
+%
+\nbea
+mn & \equiv & a^2 c~ b^2 c \pmod{p} \\
+& \equiv & (abc)^2 \pmod{p}
+\neea
+%
+thus $(mn|p) = (m|p)(n|p)$
+
+{\bf Page 181}, Theorem 9.5, this is a very smart proof :)
 
 
 
