@@ -3199,7 +3199,83 @@ mn & \equiv & a^2 c~ b^2 c \pmod{p} \\
 %
 thus $(mn|p) = (m|p)(n|p)$
 
-{\bf Page 181}, Theorem 9.5, this is a very smart proof :)
+{\bf Page 181}, Theorem 9.5, this is a very smart proof :) what we've done basically is to characterize the simple primes whose quadratic reciprocity can be deduced rather easily, $2$'s quadraticity can be garnered quite easily (if you're as smart as the one who did this proof) but starting from 3 and above we have to use Gauss's quadratic reciprocity law to get some kind of formula.
+
+2 is special because every other number is a multiple of 2, take for example $p=7$ and let's multiply all of the even numbers
+%
+\nbea
+2\cdot 4 \cdot 6 & \equiv & 2 \cdot -3 \cdot -1 \\
+& \equiv & -5 \cdot -3 \cdot -1
+\neea
+%
+
+%
+\nbea
+c^2 & \equiv & (-1)^{p-1/2} (p-1)! \pmod{p}
+\neea
+%
+
+%
+\nbea
+c & \equiv & 2^{(p-1)/2} ((p-1)/2)! \\
+\to c^2 & \equiv & 2^{p-1} ((p-1)/2)!^2 \\
+& \equiv & ((p-1)/2)!^2
+\neea
+%
+
+%
+\nbea
+(p-1)! & \equiv & g \cdot g^2 \cdots g^{p-1} \pmod{p} \\
+& \equiv & g^{(p-1)p/2} \equiv (g^{(p-1)/2})^p \pmod{p} \\
+& \equiv & (-1)^p \pmod{p} \\
+& \equiv & -1 \pmod{p}
+\neea
+%
+
+%
+\nbea
+c^2 & \equiv & ((p-1)/2)!^2 \equiv  (-1)^{p-1/2}(p-1)! \\
+& \equiv & (-1)^{p-1/2} (-1) \\
+\to  ((p-1)/2)!^2 & \equiv & \pm 1 \\
+((p-1)/2)! & \equiv & \left \{ 
+\begin{array}{r l}
+(+1)^{1/2} & ~~~~~{\rm if ~}(-1)^{(p-1)/2} \equiv -1 \to p = 4m - 1 \\
+(-1)^{1/2} & ~~~~~{\rm if ~}(-1)^{(p-1)/2} \equiv +1 \to p = 4m + 1
+\end{array}
+\right.
+\neea
+%
+
+%
+\nbea
+(p-1)! & \equiv & g \cdot g^2 \cdot g^{p-1} \pmod{p} \\
+& \equiv & g^{(p-1)p/2} \equiv (g^{(p-1)/2})^p \pmod{p} \\
+& \equiv & (-1)^p \pmod{p} \\
+& \equiv & -1 \pmod{p}
+\neea
+%
+
+%
+\nbea
+1\cdot 3 \cdot 5 & \equiv & -6 \cdot -4 \cdot -2
+\neea
+%
+
+
+%
+\nbea
+2\cdot 4 \cdot 6 \cdot 8 \cdot 10 \cdot 12 & \equiv & -11 \cdot -9 \cdot -7 \cdot -5 \cdot -3 \cdot -1
+\neea
+%
+
+%
+\nbea
+1\cdot 3 \cdot 5 & \equiv & -6 \cdot -4 \cdot -2
+\neea
+%
+
+
+
 
 
 
