@@ -3065,6 +3065,62 @@ the key thing here is that $L'(1,\chi_r)$ is finite as stated on Page 149 first 
 
 {\bf Page 155}, Theorem 7.10, on the surface it seems like Theorem 7.10 is just Eq (19), \ie the asymptotic formula for $\pi_a(x)$ but this is not so, in Theorem 7.10, we only get the asymptotic formula for $\pi_a(x)$ {\bf if} we assume that $\pi_a \sim \pi_b$ for all $a,b$ co-prime to $k$ while in Eq (19) we make no such assumption.
 
+{\bf Problem 7.1} Note that we are not allowed to use Dirichlet's Theorem for Problem 7.1 - 7.4, otherwise we can solve them quite easily. For Problem 7.1 we need to show that for $n \ge 1$, we can find infinitely many numbers in $A(h,k)$ that are co-prime to $n$.
+
+My strategy here is to use Chinese Remainder Theorem. Suppose $d = \gcd(n,k)$, then we set up the following
+%
+\nbea
+z & \equiv & h \pmod{k} \\
+z & \equiv & 1 \pmod{n/d}
+\neea
+%
+and use Chinese Remainder Theorem on these two congruences since we know that $\gcd(k,n/d) = 1$, the first congruence is a must because $z$ has to be in the form $h + kx$ and the second is to make sure that $z$ is co-prime w.r.t $n/d$.
+
+Since $(h,k) = 1$ this means that $(z,k) = (h,k) = 1$ as well, now if $z$ is co-prime to $k$ and to $n/d$ as well, then $z$ must be co-prime to $n$ as well because $d | k$. So we have found one number in $A(h,k)$ that is co-prime to $n$, but by Chinese Remainder Theorem any $z$ modulo $k\cdot n/d$ is also a solution thus all $w = z + (k\cdot n/d)~y \equiv h \pmod{k}$ are all solutions and we have infinitely many of them.
+
+Note that if we invoked Dirichlet's theorem we can say that $A(h,k)$ contains infinitely many primes and those primes are co-prime to $n$ and we are done.
+
+{\bf Problem 7.2} Now we need to show that there is an infinite subset of $A(h,k)$, $\{a_0, a_1, \dots, \}$ such that $(a_i,a_j) = 1$ if $i \neq j$.
+
+Again we use Chinese Remainder Theorem to construct this subset, we pick the first member to be $a_0 = h$ itself, the next member of this subset is chosen by setting up the following congruences
+%
+\nbea
+a_1 & \equiv & h \pmod{k} \\
+a_1 & \equiv & 1 \pmod{h}
+\neea
+%
+since $(h,k)=1$ the solution $a_1$ is guaranteed. Now, from the above construction, the first congruence says that $a_1 = h + kx_1$ and so $(a_1, k) = 1$ and from the second congruence we get $(a_1, h = a_0) = 1$, so we have two members who are co-prime to one another.
+
+To set up the third member
+%
+\nbea
+a_2 & \equiv & h \pmod{k} \\
+a_2 & \equiv & 1 \pmod{h} \\
+a_2 & \equiv & 1 \pmod{a_1}
+\neea
+%
+since $a_1, h, k$ are all co-prime we are guaranteed a solution and by the same token this new solution $a_2$ is also co-prime to $a_1, h, k$ as well, we can keep going to generate $a_3$ and so on by adding the following congruence $a_{n+1} \equiv 1 \pmod{a_n}$ and so forth.
+
+And due to the first congruence, each $a_n$ is $h \pmod{k}$ and as such lies in $A(h,k)$. Note that this also serves as another proof of the infinitude of primes.
+
+{\bf Problem 7.3} We need to prove that $A(h,k)$ contains an infinite geometric series, we no longer use Chinese Remainder Theorem but we still use congruence.
+
+What we want is a relationship between two members of $A(h,k)$ such that
+%
+\nbea
+(h + kx_1) r & = & h + kx_2 \\
+\to hr & \equiv & h \pmod{k}
+\neea
+%
+and so $r \equiv 1 \pmod{k}$, if we pick $r = 1 + k$ we get
+%
+\nbea
+(h + kx_1) (1 + k) & = & h + k(h + x_1 + kx_1) \\
+& = & h + kx'
+\neea
+%
+and so multiplication by $r$ keeps a number in $A(h,k)$, thus we can easily form a geometric series in $A(h,k)$.
+
 \bigskip
 \underline{\textbf{\textit{Chapter 8}}}
 \bigskip
@@ -3201,20 +3257,25 @@ thus $(mn|p) = (m|p)(n|p)$
 
 {\bf Page 181}, Theorem 9.5, this is a very smart proof :) what we've done basically is to characterize the simple primes whose quadratic reciprocity can be deduced rather easily, $2$'s quadraticity can be garnered quite easily (if you're as smart as the one who did this proof) but starting from 3 and above we have to use Gauss's quadratic reciprocity law to get some kind of formula.
 
-2 is special because every other number is a multiple of 2, take for example $p=7$ and let's multiply all of the even numbers
+Playing around with this proof, I get the following, say the prime we are talking is $p=7$ and let's multiply all of the even numbers
 %
 \nbea
-2\cdot 4 \cdot 6 & \equiv & 2 \cdot -3 \cdot -1 \\
-& \equiv & -5 \cdot -3 \cdot -1
+2 \cdot 4 \cdot 6 & \equiv & -5 \cdot -3 \cdot -1
 \neea
 %
-
+let's denote $c \equiv 2 \cdot 4 \cdot 6 \equiv -5 \cdot -3 \cdot -1$, if we multiply the RHS into the LHS we get
+%
+\nbea
+c^2 \equiv -1 \cdot 2 \cdot -3 \cdot 4 \cdot -5 \cdot 6 & \equiv & (-1)^3 \cdot 6!
+\neea
+%
+or in other words
 %
 \nbea
 c^2 & \equiv & (-1)^{p-1/2} (p-1)! \pmod{p}
 \neea
 %
-
+while $c$ itself is given by (after factoring each factor of 2 out of each number)
 %
 \nbea
 c & \equiv & 2^{(p-1)/2} ((p-1)/2)! \\
@@ -3222,7 +3283,7 @@ c & \equiv & 2^{(p-1)/2} ((p-1)/2)! \\
 & \equiv & ((p-1)/2)!^2
 \neea
 %
-
+now the question is if we can find any info about $ ((p-1)/2)!$, resorting to primitive roots, we know that the product of all elements is
 %
 \nbea
 (p-1)! & \equiv & g \cdot g^2 \cdots g^{p-1} \pmod{p} \\
@@ -3231,7 +3292,7 @@ c & \equiv & 2^{(p-1)/2} ((p-1)/2)! \\
 & \equiv & -1 \pmod{p}
 \neea
 %
-
+putting this back into our earlier result
 %
 \nbea
 c^2 & \equiv & ((p-1)/2)!^2 \equiv  (-1)^{p-1/2}(p-1)! \\
@@ -3245,36 +3306,20 @@ c^2 & \equiv & ((p-1)/2)!^2 \equiv  (-1)^{p-1/2}(p-1)! \\
 \right.
 \neea
 %
+note that the square root of $+1$ can be negative so with the above technique we get two possibilities, if $-1$ is not a quadratic residue then $((p-1)/2)!$ is one of the roots of $+1$ and if $-1$ is a quadratic residue then $((p-1)/2)!$ is one of the roots of $-1$. But this is all I can get from this.
 
+I also tried multiplying half of the primitive roots
 %
 \nbea
-(p-1)! & \equiv & g \cdot g^2 \cdot g^{p-1} \pmod{p} \\
-& \equiv & g^{(p-1)p/2} \equiv (g^{(p-1)/2})^p \pmod{p} \\
-& \equiv & (-1)^p \pmod{p} \\
-& \equiv & -1 \pmod{p}
+g \cdot g^2 \cdots g^{p-1/2} & \equiv & g^{p^2-1/8} \\
+& \equiv & \left\{
+\begin{array}{l l}
+g^{2m} & ~~~~~ {\rm if ~} p \equiv \pm 1 \pmod{8} \\
+g^{2m+1} & ~~~~~ {\rm if ~} p \equiv \pm 3 \pmod{8}
+\end{array}\right.
 \neea
 %
-
-%
-\nbea
-1\cdot 3 \cdot 5 & \equiv & -6 \cdot -4 \cdot -2
-\neea
-%
-
-
-%
-\nbea
-2\cdot 4 \cdot 6 \cdot 8 \cdot 10 \cdot 12 & \equiv & -11 \cdot -9 \cdot -7 \cdot -5 \cdot -3 \cdot -1
-\neea
-%
-
-%
-\nbea
-1\cdot 3 \cdot 5 & \equiv & -6 \cdot -4 \cdot -2
-\neea
-%
-
-
+and we know that every odd powered $g$ is non quadratic while the even ones are but we don't know which numbers are included in this product so we can't say that this is equal to $((p-1)/2)!$.
 
 
 
