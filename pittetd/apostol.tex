@@ -3121,6 +3121,37 @@ and so $r \equiv 1 \pmod{k}$, if we pick $r = 1 + k$ we get
 %
 and so multiplication by $r$ keeps a number in $A(h,k)$, thus we can easily form a geometric series in $A(h,k)$.
 
+{\bf Problem 7.4} Let $S$ be any infinite subset of $A(h,k)$, for every positive integer $n$ there is an element of $A(h,k)$ that is a product of more than $n$ elements of $S$, the keyword here is ``more than'', say $n=1$, more than 1 can be anything more than 1, we should not assume that more than 1 is 2 because otherwise it implies
+%
+\nbea
+h^2 & \equiv & h \pmod{k} \\
+\to h & \equiv & 1 \pmod{k}
+\neea
+%
+since $(h,k) = 1$ and therefore we can cancel $h$ from both sides.
+
+What we need is just Fermat's little theorem, we know that $h^{\varphi(k)} \equiv 1 \pmod{k}$ and therefore $h^{m\varphi(k)} \equiv 1 \pmod{k}$ for any $m$, this means that $h^{m\varphi(k) + 1} \equiv h \pmod{k}$. So that's the intuition behind why Problem 7.4 must be true but now we have to fix the minor details.
+
+For every $n$ we choose something bigger, $m\varphi(k) + 1 > n$ and there's always an $m$ such that this is satisfied. Multiplying it out
+%
+\nbea
+\prod_{i = 1}^{m\varphi(k) + 1} (h + kx_i) & = & h^{m\varphi(k) + 1} + kM
+\neea
+%
+where $M$ is a term that contains all power of $h$ less than $m\varphi(k) + 1$. From the fact that $h^{m\varphi(k) + 1} \equiv h \pmod{k}$ we can substitute
+%
+\nbea
+h^{m\varphi(k) + 1} \equiv h \pmod{k} ~~~ \to ~~~ h^{m\varphi(k) + 1} = h + ky
+\neea
+%
+into the above and so
+%
+\nbea
+h^{m\varphi(k) + 1} + kM & = & h + k(M+y) \in A(h,k)
+\neea
+%
+and this works for any choice of $x_i$'s as long as we have enough of them that's why it works for any infinite subset $S$ of $A(h,k)$.
+
 \bigskip
 \underline{\textbf{\textit{Chapter 8}}}
 \bigskip
