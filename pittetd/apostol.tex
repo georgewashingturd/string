@@ -3152,6 +3152,101 @@ h^{m\varphi(k) + 1} + kM & = & h + k(M+y) \in A(h,k)
 %
 and this works for any choice of $x_i$'s as long as we have enough of them that's why it works for any infinite subset $S$ of $A(h,k)$.
 
+{\bf Proposition 7.4.1} A sequence $A(h,k)$ contains infinitely many infinite subsequences $A(h_i,k)$, \ie
+%
+\nbea
+A(h,k) \supset A(h_1, k) \supset A(h_2, k) \dots
+\neea
+%
+
+We can easily construct a subsequence as follows
+%
+\nbea
+h_1 & = & h + kx_1
+\neea
+%
+with any integer $x_2$ because $h_1 \equiv h \pmod{k}$ therefore $(h_1,k) = (h,k) = 1$ and so we maintain the co-primality between $h_1$ and $k$. What remains is to show that $A(h_1,k) \subset A(h,k)$
+%
+\nbea
+A(h_1,k) = h_1 + ky & = & (h + kx_1) + ky \\
+& = & h + k(x_1 + y) \in A(h,k)
+\neea
+%
+and so $A(h_1,k) \subset A(h,k)$. We can easily repeat the process for $A(h_2, k)$ with
+%
+\nbea
+h_2 & = & h_1 + kx_2
+\neea
+%
+and by the same token $A(h_2,k) \subset A(h_1,k)$ and so on.
+
+{\bf Proposition 7.4.2} A sequence $A(h,k)$ contains infinitely many infinite subsequences $A(h,k_i)$ where $k_i = kd_i$ with $(d_i,h) = 1$
+
+Just like Proposition 7.4.1 we set up
+%
+\nbea
+k_1 & = & kd_1
+\neea
+%
+for any $d_1$ with $(h, d_1) = 1$, with co-primality established we just need to show that $A(h,k_1) \subset A(h,k)$
+%
+\nbea
+A(h,k_1) = h + k_1 y & = & h + k(d_1y) \in A(h,k)
+\neea
+%
+by the same token we set up $A(h,k_2)$ with $k_2 = k_1 d_2$ and similarly $A(h,k_2) \subset A(h,k_1)$.
+
+{\bf Proposition 7.4.3} Combining Proposition 7.4.1 and Proposition 7.4.2 we get
+%
+\nbea
+h'_i & = & h'_{i-1} + k'_{i-1}x'_{i}\\
+k'_i & = & k'_{i-1}d'_i ~~~~~~~~~~~~{\rm with~} (d'_i,h'_{i}) = 1
+\neea
+%
+this ensures $(h'_{i}, k'_i) = 1$ and we set $h'_0 = h, k'_0 = k$ from $A(h,k)$. To see if it is a subset
+%
+\nbea
+A(h'_i, k'_i) & = & (h'_{i-1} + k'_{i-1}x'_{i}) + k'_{i-1}d'_i y' \\
+& = & h'_{i-1} + k'_{i-1}(x'_i + d'_i y') \in A(h'_{i-1}, k'_{i-1})
+\neea
+%
+
+{\bf Problem 7.5} We are supposed to prove that the following statement implies Dirichlet's theorem, the statement is if $h,k > 0$ and $(h,k) = 1$ then there must be at least one prime number in the form $h + kn$.
+
+Let's see how this works, what we know is that we have $h,k > 0$ and $(h,k) = 1$, \ie we have $A(h,k)$, and by the statement above we know that there is a prime
+%
+\nbea
+p_1 & = & h + kn_1
+\neea
+%
+for some $n$. We now need to show that there are other primes in $A(h,k)$. We do this using Proposition 7.4.1 above, we set up a new sequence with
+%
+\nbea
+h_1 = p_1
+\neea
+%
+$(p_1,k) = 1$ is guaranteed as $p_1 \equiv h \pmod{k}$ and therefore $(h_1, k) = 1$, from our new sequence $A(h_1, k)$, the statement above guarantees that we should have at least one new prime
+%
+\nbea
+p_2 & = & h_1 + kn_2 \\
+\to h_2 & = & p_2
+\neea
+%
+and so we have our next sequence $A(h_2, k)$ and by Proposition 7.4.1 we can keep generating these subsequences infinitely and each subsequent is a subset $A(h,k) \supset A(h_1,k) \supset A(h_2,k) \supset \dots$ so there are infinitely many primes in $A(h,k)$.
+
+Note that this problem doesn't require you to prove the statement itself, \ie we are not supposed to prove that $A(h,k)$ contains at least one prime, we are just to assume that the statement is true and to use it to prove Dirichlet's theorem and here we use it recursively.
+
+Note that just because we find a prime in an arithmetic progression $h + kn$ doesn't mean that we can find infinitely many of them in that progression, we have to first prove that the above statement actually is true because we need to use it for the subsequence.
+
+To prove the statement would be quite tricky because say a sequence $h + kn$ doesn't contain any prime this says that the distribution of primes is quite regular because if we group the numbers as follows
+%
+\nbea
+\{1,2,3,\dots,h,\dots,k\},\{k+1,k+2,k+3,\dots,k+h,\dots,k+k\}, \{\dots
+\neea
+%
+and $h \pmod{k}$ is never a prime then there is some regularity in its distribution.
+
+
 \bigskip
 \underline{\textbf{\textit{Chapter 8}}}
 \bigskip
