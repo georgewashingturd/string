@@ -3447,6 +3447,262 @@ g^{2m+1} & ~~~~~ {\rm if ~} p \equiv \pm 3 \pmod{8}
 %
 and we know that every odd powered $g$ is non quadratic while the even ones are but we don't know which numbers are included in this product so we can't say that this is equal to $((p-1)/2)!$.
 
+{\bf Page 182}, Theorem 9.6, this is one of those ``disjoint sets'' techniques, see Theorem 2.2 as well
+
+{\bf Page 186}. This lattice method is based on Eisenstein's work, the gist is to choose a rectangle of size $\frac{p-1}{2}$ by $\frac{q-1}{2}$ so that the area of the rectangle (or the total number of lattice points) is $\frac{p-1}{2}\frac{q-1}{2}$, we then calculate the actual number of lattice points by splitting the rectangle into the upper and lower triangles, this is where we get the two sums, since the two must be equal we equate the two sums and the product $\frac{p-1}{2}\frac{q-1}{2}$.
+
+{\bf Page 188}, Theorem 9.10, some comments on the proof, what we need here is $(-1)^{(P-1)/2}$, thus what we really need is the parity of $(P-1)/2$ which means we can do everything mod 2, just like how we calculated the $m$ in Gauss' Lemma.
+
+{\bf Page 195}, Proof of Reciprocity  Law, ``every cyclic permutation of $r_1, \dots, r_q$ $\dots$'', here cyclic means $123 \to 231$ or $123 \to 312$, we can jump the order like $123 \to 321$, this is not cyclic, so basically only rotate right/left is considered cyclic.
+
+{\bf Page 195}, deriving Eq (29) from Eq (28) by noting that $G(n;p) = G(n, \chi)$ where $\chi = (n|p)$. First we need to note that since $p$ is prime we can write Eq (28) as
+%
+\nbea
+G(n;p) = \sum_{r=1}^{p} e^{2\pi i n r^2/p} & = & 1 + 2\sum_{\substack{r=1\\(r|p) = 1}}^{p-1} e^{2\pi i n r/p}
+\neea
+%
+This is because from Theorem 9.1 we know that there are $(p-1)/2$ quadratic residues and so the sum is just counting the quadratic residues twice. Another identity we need is
+%
+\nbea
+0 = \sum_{r=1}^p e^{2\pi i n r/p} & = & 1 + \sum_{\substack{r=1\\(r|p)=1}}^{p-1} e^{2\pi i n r/p} + \sum_{\substack{r=1\\(r|p)=-1}}^{p-1} e^{2\pi i n r/p} \\
+\to -\sum_{\substack{r=1\\(r|p)=-1}}^{p-1} e^{2\pi i n r/p} & = & 1 + \sum_{\substack{r=1\\(r|p)=1}}^{p-1} e^{2\pi i n r/p}
+\neea
+%
+With this in mind 
+%
+\nbea
+G(n,\chi) = \sum_{r=1}^p \chi(r) e^{2\pi i n r/p} & = & \chi(p)1 + \sum_{\substack{r=1\\(r|p)=1}}^{p-1} e^{2\pi i n r/p} - \sum_{\substack{r=1\\(r|p)=-1}}^{p-1} e^{2\pi i n r/p} \\
+& = & 0 + \sum_{\substack{r=1\\(r|p)=1}}^{p-1} e^{2\pi i n r/p} + (1 + \sum_{\substack{r=1\\(r|p)=1}}^{p-1} e^{2\pi i n r/p}) \\
+& = & 1 + 2\sum_{\substack{r=1\\(r|p)=1}}^{p-1} e^{2\pi i n r/p} \\
+& = & \sum_{r=1}^{p} e^{2\pi i n r^2/p} \\
+& = & G(n;p)
+\neea
+%
+
+{\bf Page 196}, the {\it Note} under Theorem 9.16, $\overline{S(m,2)} = 1 + e^{-\pi i m/2}$. Note that here we swap $a \leftrightarrow m$, otherwise you'll crack your head for an hour for nothing :)
+
+{\bf Page 196}, after Eq (32), ``analytic everywhere'' because $g(z)$ is only a function of $z$ and not $\bar{z}$
+
+{\bf Page 196}, after Eq (32), in calculating $g(z+1)$ we do the usual index shifting
+%
+\nbea
+g(z + 1) & = & \sum_{r=0}^{m-1} e^{\pi i a((z + 1) +r)^2/m} = \sum_{r=0}^{m-1} e^{\pi i a(z + (1 +r))^2/m} \\
+& = & \sum_{r=1}^{m} e^{\pi i a(z + r)^2/m} \\
+& = & \sum_{r=0}^{m-1} e^{\pi i a(z + r)^2/m} + e^{\pi i a(z + m)^2/m} -  e^{\pi i a(z + 0)^2/m}\\
+& = & g(z) + e^{\pi i a(z + m)^2/m} -  e^{\pi i a(z + 0)^2/m}
+\neea
+%
+and the rest is just straight algebra.
+
+{\bf Page 196}, after Eq (32), in calculating $f(z+1)$, we just substitute $g(z+1)$ into $g(z)$.
+
+{\bf Page 198}, top page, ``we use the triangle inequality in the form'', at first this looks like a weird form
+%
+\nbea
+|a-b| & \ge & ||a| - b|
+\neea
+%
+usually what we get is (considering $a,b$ as vectors for which complex numbers certainly are)
+%
+\nbea
+(a-b)^2 & = & a^2 - 2a\cdot b + b^2 \\
+& \ge & a^2 - 2|a| |b| + b^2 \\
+& \ge & (|a| - |b|)^2 \\
+\to |a - b| & \ge & ||a| - |b||
+\neea
+%
+but note that in this case $b=1$ is a real number and so $|b| = b$.
+
+{\bf Page 198}, mid page-ish, ``A similar argument shows that the integrand tends to 0 on the segment joining $A$ to $A+1$ as $R\to+\infty$.'', in this case we flip $R\to-R$ and get
+%
+\nbea
+|f(z)| \le \frac{m e^{-\pi\sqrt{2}R/(2m)}e^{-\pi a R^2/m}}{1 - e^{\sqrt{2}\pi R}}
+\neea
+%
+so it actually vanishes  faster as $R\to+\infty$.
+
+{\bf Page 199}, the definition of $I(a,m,n,R)$, this is nothing but completing the square trick.
+
+{\bf Page 199}, after Eq (43), this is actually a cool way to calculate $I$, we don't even need to do the integral although $I$ is defined as
+%
+\nbea
+I = \lim_{T\to+\infty}\int_{-Te^{\pi i/4}}^{T\pi i/4} e^{\pi i w^2} dw
+\neea
+%
+
+{\bf Page 200}, Proof of Theorem 9.17, ``We sum over the odd numbers in the interval $h \le r < 3h$, writing $r = 2s + h$'', what this means is simply this, initially when we sum over $\sum_{r=0}^{2h-1}$ we sum all the odd numbers from $0 \le r < 2h$ but because they are congruent modulo $2h$ we can shift it by $h$ so that it is in the range $h \le r < 3h$.
+
+{\bf Page 200}, first equation in Section 9.11, if we use Eq (30) for $k$ odd we get
+%
+\nbea
+\frac{1}{2} \sqrt{k}~(1+i)(1 + e^{-\pi i k/2})
+\neea
+%
+since $k$ is odd $k = 2y + 1$ we have $e^{-\pi i k/2} = e^{-\pi i y}$, therefore
+%
+\nbea
+(1+i)(1 + e^{-\pi i y}) = (1 + i)(1 + (-1)^{y+1} i) = \left \{
+\begin{array}{l l}
+2i & ~~~{\rm if} ~y ~{\rm is~odd} \\
+2 & ~~~{\rm if} ~y ~{\rm is~even}
+\end{array}
+\right.
+\neea
+%
+the next fact we need is that $i^4 = 1$ 
+%
+\nbea
+i^{(k-1)^2/4} = \left\{
+\begin{array}{l c l}
+i^{y^2} = i^{4y'^2} & = & 1 ~~~{\rm if}~ y ~{\rm is~ even} \\
+i^{y^2} = i^{4(y'^2 + y') + 1} & = & i ~~~ {\rm if}~ y {\rm ~is~odd}
+\end{array}
+\right.
+\neea
+%
+you can also set $k \equiv \pm 1 \pmod{4}$, if it's $+1 \pmod{4}$ we get $i^{0\pmod{4}} = 1$, if it's $-1 \pmod{4}$ we get $i^{1 \pmod{4}} = i$.
+
+{\bf Page 200}, bottom page-ish, something related to Exercise 8.16(a)
+%
+\nbea
+G(m;n)G(n;m) = G(1;mn) ~~~~~ {\rm if}~ (m,n) = 1
+\neea
+%
+To show this, first
+%
+\nbea
+G(m;n)G(n;m) & = & \sum_{r_1=1}^{n}\sum_{r_2=1}^{m} \exp(2\pi i m r_1^2/n + 2\pi i n r_2^2/m) \\
+& = & \sum_{r_1=1}^{n}\sum_{r_2=1}^{m} \exp\left \{2\pi i \left (\frac{m^2 r_1^2 + n^2 r_2^2}{mn} \right ) \right \}
+\neea
+%
+because of the double sum, there are $m\times n$ terms so we get the correct number of terms for $G(1;mn)$ what we need to show is that every $m^2 r_1^2 + n^2 r_2^2 \equiv r_3^2 \pmod{mn}$ uniquely. Chinese Remainder Theorem to the rescue
+%
+\nbea
+x & \equiv & m^2 r_1^2 + n^2 r_2^2 \pmod{n} \\
+x & \equiv & m^2 r_1^2 + n^2 r_2^2 \pmod{m}
+\neea
+%
+we set up the congruences this way because we want $x$ to be
+%
+\nbea
+x = m^2 r_1^2 + n^2 r_2^2 +tn & \equiv & m^2 r_1^2 + n^2 r_2^2 \pmod{m} \\
+tn & \equiv & 0 \pmod{m} \\
+t & = & mk \\
+\to x & = & m^2 r_1^2 + n^2 r_2^2 +mnk
+\neea
+%
+adding $mnk$ is not a problem because $e^{2\pi i mnk/mnk} = 1$ so we are not changing anything in the supposed $G(1;mn)$.
+
+But the thing is that Chinese Remainder Theorem only guarantees that $x$ exists mod $mn$ (since $(m,n)=1$) and we've shown what $x$ is, what we need now is for $x$ to be a quadratic residue mod $mn$ as well. But actually this can also be arranged
+
+{\bf Proposition 9.11.1}, If we have the following
+%
+\nbea
+x & \equiv & c^2_1 \pmod{w_1} \\
+x & \equiv & c^2_2 \pmod{w_2} \\
+& \vdots & \\
+x & \equiv & c^2_s \pmod{w_s}
+\neea
+%
+with $(w_i, w_j) = 1$ whenever $i \neq j$ then $x$ is a quadratic residue mod $w_1 w_2 \dots w_s$.
+
+What we need to do is set up another remainder system
+%
+\nbea
+y & \equiv & \pm c_1 \pmod{w_1} \\
+y & \equiv & \pm c_2 \pmod{w_2} \\
+& \vdots & \\
+y & \equiv & \pm c_s \pmod{w_s}
+\neea
+%
+we can choose either plus or minus sign for each congruence, Chinese Remainder Theorem guarantees a solution for $y$, if we square $y \to y^2$ we will get our previous remainder system because then we will square each congruence as well
+%
+\nbea
+y^2 & \equiv & c^2_1 \pmod{w_1} \\
+y^2 & \equiv & c^2_2 \pmod{w_2} \\
+& \vdots & \\
+y^2 & \equiv & c^2_s \pmod{w_s}
+\neea
+%
+what we need to check is whether $y^2 \equiv x \pmod{w_1w_2 \dots w_s}$, let's denote $W = w_1w_2 \dots w_s$ and $z \equiv y^2 \pmod{W}$, the question now is whether $z \equiv x \pmod{W}$.
+
+But the set of congruences for both $z$ and $x$ are the same, \ie $c^2_1, c^2_2, \dots$, and Chinese Remainder Theorem guarantees that the solution is unique modulo $W$ and thus $z \equiv x$ and therefore $y^2 \equiv x$.
+
+What this means is just that $x$ has $2^s$ roots modulo $W$, one for each choice of signs for each $c$.
+
+Going back to our original problem Exercise 8.16(a), what we have is
+%
+\nbea
+x & \equiv & m^2 r_1^2 + n^2 r_2^2 \pmod{n} \\
+& \equiv & m^2 r_1^2 \pmod{n} \\
+x & \equiv & m^2 r_1^2 + n^2 r_2^2 \pmod{m} \\
+& \equiv &n^2 r_2^2 \pmod{m}
+\neea
+%
+this means that by Proposition 9.11.1 $x$ must a quadratic residue modulo $mn$ since each congruence is a quadratic residue, \ie $m^2 r_1^2 + n^2 r_2^2$ is a quadratic residue for both mod $n$ as well as mod $m$ thus $x$ is a quadratic residue mod $mn$.
+
+One last detail, in the sum $G(1;mn)$
+%
+\nbea
+G(1;mn) & = & \sum_{r_3=1}^{mn} \exp(2\pi i r_3^2/mn)
+\neea
+%
+not all summands are unique because for one $r_3^2 \equiv (mn-r_3^2) \pmod{mn}$, note that there might be other redundancies because $mn$ is not prime so the number of quadratic residues can be a lot less than $mn/2$, \eg for $mn=12$ only 0, 1, 4 and 9 are quadratic residues. 
+
+But we are not worried about that, we are just interested about $r_3 \leftrightarrow -r_3$ (a so called reflection) symmetry, some exception to this symmetry is if $r_3 \equiv -r_3$ this happens for $mn \equiv -mn$ and if $mn$ is even then $mn/2 \equiv -mn/2$, so let's split the different valus of $r_3$ into disjoint sets
+%
+\nbea
+\begin{array}{r c l c r c l c r c l}
+A^+_{r_3} & = & \{r_3 : 1 \le r_3 < {\frac{mn}{2}}\} & ~ & A^0_{r_3} & = & \{r_3 : mn, (\frac{mn}{2})\} & ~ & A^-_{r_3} & = & \{r_3 : {\frac{mn}{2}} < r_3 < mn\}
+\end{array}
+\neea
+%
+where $(A^+)^2 \equiv (A^-)^2 \pmod{mn}$  and $A^0 \equiv -A^0 \pmod{mn}$, so the number of unique $r_3^2$ under this reflection symmetry $r_3 \leftrightarrow -r_3$ is just
+%
+\nbea
+\#A^+_{r_3} + \#A^0_{r_3} ~~~~~ {\rm or} ~~~~~ \#A^-_{r_3} + \#A^0_{r_3}
+\neea
+%
+This reflection symmetry also applies to $r_1$ and $r_2$ individually. Since $(m,n) = 1$, if one of them is even then the other one must be odd, let's choose $m$ to be the even one in this situation. So let's split the possible values of $r_{1,2}$ into disjoint sets like before
+%
+\nbea
+\begin{array}{r c l c r c l c r c l}
+A^+_{r_1} & = & \{r_1 : 1 \le r_1 < {\frac{n}{2}}\} & ~~~ & A^0_{r_1} & = & \{r_1 : n\} & ~~~ & A^-_{r_1} & = & \{r_1 : {\frac{n}{2}} < r_1 < n\} \\
+A^+_{r_2} & = & \{r_2 : 1 \le r_2 < {\frac{m}{2}}\} & ~~~ & A^0_{r_2} & = & \{r_2 : m, (\frac{m}{2})\} & ~~~ & A^-_{r_2} & = & \{r_2 : {\frac{m}{2}} < r_2 < m\}
+\end{array}
+\neea
+%
+Now, the rule is that reflection for $r_3 \leftrightarrow -r_3$ translates to reflection of {\bf both} $(r_1,r_2)\to(-r_1, -r_2)$, but why both? This goes back to the proof of Proposition 9.11.1.
+
+Recall that there are $2^{s=2} = 4$ roots of $r_3^2$ for each {\bf fixed} $m^2r^2_1 + n^2r^2_2$, they are 
+%
+\nbea
+(r_1, r_2),(-r_1, r_2),(r_1, -r_2),(-r_1, -r_2)
+\neea
+%
+however, it is obvious that when translated to $r_3$ , $r'_3 = (r_1, r_2)$ and $-r'_3 = (-r_1, -r_2)$ reflection of each other and the other two, $r''_3 = (-r_1, r_2) \leftrightarrow -r''_3 = (r_1, -r_2)$, are reflection of each other under $r_3$ as well, but $r'_3$ is not a reflection of $r''_3$. So $r'_3$ and $r''_3$ (or $-r''_3$) are both in $A^+_{r_3}$ and we need to count both of them.
+
+We have established that $r_3 \leftrightarrow -r_3$ means $(r_1,r_2) \leftrightarrow (-r_1, -r_2)$, so the number of unique elements under reflection is
+%
+\nbea
+\#A^+_{r_2} \cdot (\#A^+_{r_1} + \#A^0_{r_1} + \#A^-_{r_1}) + \#A^0_{r_2}\cdot (\#A^+_{r_1} + \#A^0_{r_1} + \#A^-_{r_1})
+\neea
+%
+or
+%
+\nbea
+\#A^+_{r_1} \cdot (\#A^+_{r_2} + \#A^0_{r_2} + \#A^-_{r_2}) + \#A^0_{r_1}\cdot (\#A^+_{r_2} + \#A^0_{r_2} + \#A^-_{r_2})
+\neea
+%
+
+If we flip both $(r_1,r_2)\to(-r_1, -r_2)$
+
+if $m$ is even $m/2 \equiv -m/2$
+
+
+For modulo $n$ we have $r_1^2 \equiv (n-r_1)^2 \pmod{n}$, ditto with $r_2^2$, so $m^2 r_1^2 + n^2 r_2^2$ is invariant under $(r_1,r_2) \to (-r_1,-r_2)$, except for certain numbers like $m$, $n$ and if one of them is even then $m/2 \equiv -m/2$ but this behavior will also be reflected in $mn$ and so only (roughly) half of the $mn$ numbers are unique which is expected out of $r_3^2 \equiv (mn - r_3)^2$ as well and the solution is complete.
+
+
 
 
 
