@@ -1479,7 +1479,7 @@ from Theorem 2.2 and so we have the correct number of terms, we now need to show
 %
 and so $k_1|k_2d_1$ and $k_2|k_1d_2$ but $(k_1,d_1)=(k_2, d_2)=1$ and so $k_1|k_2$ and $k_2 | k_1$ and therefore $k_1 = k_2$ but since $k_1/d_1 = k_2/d_2$ if $k_1=k_2$ then $d_1=d_2$, this means that no two of them are the same and since all $k < d \le n$, all of the fractions $k/d$ are $\le k/n$, and so the double sums do indeed form the whole set of $k/n$ and $F = F^* * u$ and therefore $F^* = F * \mu$
 
-(b) This is now simple if we use (a) but the pattern is actually quite straightforward even without (a), but let's use (a) first, in this case set
+(b) (If you read up to Chapter 8 this will be called Ramanujan sum). This is now simple if we use (a) but the pattern is actually quite straightforward even without (a), but let's use (a) first, in this case set
 %
 \nbea
 F(n) & = & \sum_{k=1}^n e^{2\pi i k/n}
@@ -3595,7 +3595,7 @@ adding $mnk$ is not a problem because $e^{2\pi i mnk/mnk} = 1$ so we are not cha
 
 But the thing is that Chinese Remainder Theorem only guarantees that $x$ exists mod $mn$ (since $(m,n)=1$) and we've shown what $x$ is, what we need now is for $x$ to be a quadratic residue mod $mn$ as well. But actually this can also be arranged
 
-{\bf Proposition 9.11.1}, If we have the following
+{\bf Proposition 9.11.1}, $x$ is a quadratic residue modulo  $w_1 w_2 \dots w_s$ if and only if we have the following
 %
 \nbea
 x & \equiv & c^2_1 \pmod{w_1} \\
@@ -3604,9 +3604,9 @@ x & \equiv & c^2_2 \pmod{w_2} \\
 x & \equiv & c^2_s \pmod{w_s}
 \neea
 %
-with $(w_i, w_j) = 1$ whenever $i \neq j$ then $x$ is a quadratic residue mod $w_1 w_2 \dots w_s$.
+with $(w_i, w_j) = 1$ whenever $i \neq j$.
 
-What we need to do is set up another remainder system
+First we show the converse, so if we have the above set of congruences we will have $x$ to be quadratic residue modulo  $w_1 w_2 \dots w_s$. What we need to do is set up another remainder system
 %
 \nbea
 y & \equiv & \pm c_1 \pmod{w_1} \\
@@ -3628,7 +3628,15 @@ what we need to check is whether $y^2 \equiv x \pmod{w_1w_2 \dots w_s}$, let's d
 
 But the set of congruences for both $z$ and $x$ are the same, \ie $c^2_1, c^2_2, \dots$, and Chinese Remainder Theorem guarantees that the solution is unique modulo $W$ and thus $z \equiv x$ and therefore $y^2 \equiv x$.
 
-What this means is just that $x$ has $2^s$ roots modulo $W$, one for each choice of signs for each $c$.
+What this means is just that $x$ has $2^s$ roots modulo $W$, one for each choice of signs for each $c$. This also means that for non prime numbers, the polynomial $x^2 - a \equiv 0 \pmod{n}$ can have more than 2 solutions, in fact it has at least $2^s$ or $2^{s-1}$ solutions where $s$ is the number of distinct prime factors of $n$, it is $2^{s-1}$ when $n = 2w, (2,w)=1$ because $+1 \equiv -1 \pmod{2}$.
+
+We now prove the forward statement, if $x$ is a quadratic residue modulo $w_1 w_2 \dots w_s$ then $x \equiv v^2 \pmod{w_1 w_2 \dots w_s}$ then it is obvious that it must be a quadratic residue for each modulo $w_i$ because
+%
+\nbea
+v^2 \pmod{w_1 w_2 \dots w_s} & \equiv & v^2 \pmod{w_i}
+\neea
+%
+where $1 \le i \le s$.
 
 Going back to our original problem Exercise 8.16(a), what we have is
 %
@@ -3641,67 +3649,299 @@ x & \equiv & m^2 r_1^2 + n^2 r_2^2 \pmod{m} \\
 %
 this means that by Proposition 9.11.1 $x$ must a quadratic residue modulo $mn$ since each congruence is a quadratic residue, \ie $m^2 r_1^2 + n^2 r_2^2$ is a quadratic residue for both mod $n$ as well as mod $m$ thus $x$ is a quadratic residue mod $mn$.
 
-One last detail, in the sum $G(1;mn)$
+One last detail, we know that there are $mn$ numbers $m^2r_1^2 + n^2r_2^2$ because $1\le r_1\le n$ and $1 \le r_2\le m$, but now we have to make sure that each of them map to a ``unique'' $r_3^2$. It's ``unique'' because in the sum $G(1;mn)$
 %
 \nbea
 G(1;mn) & = & \sum_{r_3=1}^{mn} \exp(2\pi i r_3^2/mn)
 \neea
 %
-not all summands are unique because for one $r_3^2 \equiv (mn-r_3^2) \pmod{mn}$, note that there might be other redundancies because $mn$ is not prime so the number of quadratic residues can be a lot less than $mn/2$, \eg for $mn=12$ only 0, 1, 4 and 9 are quadratic residues. 
+some summands are repeated due to the fact that $r_3^2 \equiv (mn-r_3^2) \pmod{mn}$, note that there might be other redundancies because $mn$ is not prime so the number of quadratic residues can be a lot less than $mn/2$ as mentioned above towards the end of the proof of Proposition 9.11.1, \eg for $mn=12$ only 0, 1, 4 and 9 are quadratic residues. 
 
-But we are not worried about that, we are just interested about $r_3 \leftrightarrow -r_3$ (a so called reflection) symmetry, some exception to this symmetry is if $r_3 \equiv -r_3$ this happens for $mn \equiv -mn$ and if $mn$ is even then $mn/2 \equiv -mn/2$, so let's split the different valus of $r_3$ into disjoint sets
-%
-\nbea
-\begin{array}{r c l c r c l c r c l}
-A^+_{r_3} & = & \{r_3 : 1 \le r_3 < {\frac{mn}{2}}\} & ~ & A^0_{r_3} & = & \{r_3 : mn, (\frac{mn}{2})\} & ~ & A^-_{r_3} & = & \{r_3 : {\frac{mn}{2}} < r_3 < mn\}
-\end{array}
-\neea
-%
-where $(A^+)^2 \equiv (A^-)^2 \pmod{mn}$  and $A^0 \equiv -A^0 \pmod{mn}$, so the number of unique $r_3^2$ under this reflection symmetry $r_3 \leftrightarrow -r_3$ is just
-%
-\nbea
-\#A^+_{r_3} + \#A^0_{r_3} ~~~~~ {\rm or} ~~~~~ \#A^-_{r_3} + \#A^0_{r_3}
-\neea
-%
-This reflection symmetry also applies to $r_1$ and $r_2$ individually. Since $(m,n) = 1$, if one of them is even then the other one must be odd, let's choose $m$ to be the even one in this situation. So let's split the possible values of $r_{1,2}$ into disjoint sets like before
-%
-\nbea
-\begin{array}{r c l c r c l c r c l}
-A^+_{r_1} & = & \{r_1 : 1 \le r_1 < {\frac{n}{2}}\} & ~~~ & A^0_{r_1} & = & \{r_1 : n\} & ~~~ & A^-_{r_1} & = & \{r_1 : {\frac{n}{2}} < r_1 < n\} \\
-A^+_{r_2} & = & \{r_2 : 1 \le r_2 < {\frac{m}{2}}\} & ~~~ & A^0_{r_2} & = & \{r_2 : m, (\frac{m}{2})\} & ~~~ & A^-_{r_2} & = & \{r_2 : {\frac{m}{2}} < r_2 < m\}
-\end{array}
-\neea
-%
-Now, the rule is that reflection for $r_3 \leftrightarrow -r_3$ translates to reflection of {\bf both} $(r_1,r_2)\to(-r_1, -r_2)$, but why both? This goes back to the proof of Proposition 9.11.1.
-
-Recall that there are $2^{s=2} = 4$ roots of $r_3^2$ for each {\bf fixed} $m^2r^2_1 + n^2r^2_2$, they are 
+But we are not worried about that, what we are worried about is the following, the four combinations of $r_1$ and $r_2$ below
 %
 \nbea
 (r_1, r_2),(-r_1, r_2),(r_1, -r_2),(-r_1, -r_2)
 \neea
 %
-however, it is obvious that when translated to $r_3$ , $r'_3 = (r_1, r_2)$ and $-r'_3 = (-r_1, -r_2)$ reflection of each other and the other two, $r''_3 = (-r_1, r_2) \leftrightarrow -r''_3 = (r_1, -r_2)$, are reflection of each other under $r_3$ as well, but $r'_3$ is not a reflection of $r''_3$. So $r'_3$ and $r''_3$ (or $-r''_3$) are both in $A^+_{r_3}$ and we need to count both of them.
-
-We have established that $r_3 \leftrightarrow -r_3$ means $(r_1,r_2) \leftrightarrow (-r_1, -r_2)$, so the number of unique elements under reflection is
+result in the same congruences 
 %
 \nbea
-\#A^+_{r_2} \cdot (\#A^+_{r_1} + \#A^0_{r_1} + \#A^-_{r_1}) + \#A^0_{r_2}\cdot (\#A^+_{r_1} + \#A^0_{r_1} + \#A^-_{r_1})
+x & \equiv & m^2r_1^2 + n^2r_2^2 \pmod{n} \\
+x & \equiv & m^2r_1^2 + n^2r_2^2 \pmod{m}
 \neea
 %
-or
+and so they result in the same $r_3^2$, on the surface it seems like we are missing some values of $r_3^2$.
+
+But this is not the case, if we build the four systems of congruences based on $(\pm r_1,\pm r_2), (\mp r_1,\pm r_2)$ we will get four different values of $r_3$ modulo $mn$, say for
 %
 \nbea
-\#A^+_{r_1} \cdot (\#A^+_{r_2} + \#A^0_{r_2} + \#A^-_{r_2}) + \#A^0_{r_1}\cdot (\#A^+_{r_2} + \#A^0_{r_2} + \#A^-_{r_2})
+\begin{array}{r c l c r c l}
+y_1 & \equiv & mr_1 \pmod{n} & ~~~~~~~ & y_2 & \equiv & -mr_1 \pmod{n} \\
+y_1 & \equiv & nr_2 \pmod{m} & ~~~~~~~ & y_2 & \equiv & -nr_2 \pmod{m}
+\end{array}
+\neea
+%
+we have $y_1 \not\equiv y_2 \pmod{mn}$ and ditto with the other $\pm$ combinations, this is because as mentioned above $r_3^2$ has $2^{s=2} = 4$ roots modulo $mn$. Thus every combination $(r_1, r_2)$ covers exactly one value of $r_3$ and since there are $mn$ of them we cover every possible value of $r_3$ and we are done with the solution :)
+
+{\bf Page 201}, last equation before Exercises, let's work with the exponent of $i$ without the $1/4$
+%
+\nbea
+(pq-1)^2 - (q-1)^2 - (p-1)^2 & = & p^2q^2 - 2pq + 1-q^2 + 2q - 1 - p^2 + 2p - 1 \\
+& = & - 2(pq - p - q+1) + p^2q^2 -q^2 - p^2 + 1
+\neea
+%
+now $i^{\pm2} = -1$ and so
+%
+\nbea
+i^{- 2(pq - p - q+1)/4} & = & (i^{-2})^{(pq - p - q+1)/4} \\
+& = & (-1)^{(pq - p - q+1)/4} \\
+& = & (-1)^{(p - 1)(q-1)/4}
+\neea
+%
+for the rest $p^2q^2 -q^2 - p^2 + 1$ we do it mod 4, every square number is 0 or 1 mod 4 but since $p,q$ are primes it must be 1 mod 4 so
+%
+\nbea
+p^2q^2 -q^2 - p^2 + 1 & \equiv & 1 - 1 - 1 + 1 \pmod{4} \\
+& \equiv & 0 \pmod{4}
+\neea
+%
+and $i^{4m/4} = (i^{4m})^{1/4} = 1^{1/4} = 1$ and so we get the final result.
+
+\underline{{\bf But this is all wrong}}, because $1^{1/4}$ is not necessarily 1, there are four roots in the complex plane. What we need to show is that 
+%
+\nbea
+(4m \pm 1)^2 & = & 16m^2 + \pm 8m +1 \\
+& = & 8w + 1
+\neea
+%
+thus
+%
+\nbea
+p^2q^2 -q^2 - p^2 + 1 & = & (8w_p + 1)(8w_q + 1) - 8w_q - 1 - 8w_p - 1 + 1 \\
+& = & 64w_pw_q \\
+\to (p^2q^2 -q^2 - p^2 + 1)/4 & = & 16 w_pw_q
+\neea
+%
+and so $i^{(p^2q^2 -q^2 - p^2 + 1)/4} = i^{16 w_pw_q} = 1$. How about $(-1)^{(p - 1)(q-1)/4}$? there are multiple roots of $-1$ in the complex plane as well, the same goes with this one, since $(p-1)$ and $(q-1)$ are even, their product divided by 4 is still an integer, and so we will not get some funny root in the complex plane.
+
+Just some remark, it is interesting that we can map quadratic reciprocity to quadratic Gauss sums even though the only link between them is Eq (29) of Page 195.
+
+\bigskip
+\underline{\textit{\textbf{Chapter 10}}}
+\bigskip
+
+{\bf Page 206}, Theorem 10.3, this is an interesting one as we are trying to prove that there is no primitive roots modulo $2^n$ with $n \ge 3$. This was a problem in Stein's ent.pdf, Problem 2.27 and I spent a long time solving it, there we show that $(\mathbb{Z}/2^n\mathbb{Z})^*$ is generated by $-1$ and 5, here the proof is very short because we ustilize the fact of Theorem 10.3, which is $x^{\varphi(2^\alpha)/2} \equiv 1 \pmod{2^\alpha}$, so either you realize that $-1$ and 5 generate the group or you realize Theorem 10.3
+
+{\bf Page 207}, Theorem 10.4, here we want to prove that if $d|p-1$ then there are $\varphi(d)$ elements whose order is $d$. Below I give a proof for a similar situation, the difference is we already know that there is a primitive root modulo $n$ where $n$ need not be prime.
+
+First we want to show that if there is a primitive root modulo $n$ where $n$ can be any number, then there are $\varphi(\varphi(n))$ primitive roots.
+
+Here's how. Assume there is one primitive root $g$ modulo $n$, then all elements of $(\mathbb{Z}/n\mathbb{Z})^*$ can be expressed as
+%
+\nbea
+g^1, g^2 ,\dots, g^{\varphi(n)}
+\neea
+%
+Now all $g$ with exponents $s$ relatively prime to $\varphi(n)$ will be primitive roots as well because the only exponent where
+%
+\nbea
+1 \equiv (g^s)^t & = & g^{st} = g^{w\varphi(n)} ~~~~~ (s,\varphi(n)) = 1 \\
+\to st &|& w\varphi(n)
+\neea
+%
+but $(s,\varphi(n)) = 1$ so $t$ must be a multiple of $\varphi(n)$ so the order of $g^s$ is $\varphi(n)$ as well and that means it is another primitive roots and since there are $\varphi(\varphi(n))$ of these exponents (including $s=1$ itself) there are $\varphi(\varphi(n))$ primitive roots.
+
+Now, let $d|\varphi(n)$, how many of the $g^r$ have order $d$? for a $g^r$, its order is $\varphi(n)/\gcd(r,\varphi(n))$ so if we want the order to be $d$
+%
+\nbea
+\frac{\varphi(n)}{\gcd(r,\varphi(n))} & = & d \\
+\to \gcd(r,\varphi(n)) & = & \frac{\varphi(n)}{d}
+\neea
+%
+let $\frac{\varphi(n)}{d} = k$ such that $\varphi(n) = d\cdot k$ so
+%
+\nbea
+\gcd(r,d\cdot k) & = & k
+\neea
+%
+this will work for $r = lk$ where $\gcd(l,d) = 1$ and since $r \le \varphi(n)$ this means that $l < d$, this also means that there are $\varphi(d)$ such $r$. Of course here we have assumed that there is a primitive root to begin with. But we will take care of that below.
+
+\textbf{\textit{*}}\underline{\textit{\textbf {Parental Advisory, Explicit Content}}}\textbf{\textit{*}}
+
+In the following discussion we will derive the number of primitive roots modulo $n$ (not necessarily prime) \underline{\textbf{\textit{Explicitly}}}\textbf{\textit{!}}
+
+We will do this using a few facts, first, for a polynomial of degree $f$ on a field, the number of roots is at most $f$, see ent.pdf Proposition 2.5.3, next the fact that $\mathbb{Z}/p\mathbb{Z}$ is a field as shown in Exercise 2.12 of ent.pdf and lastly using an application of Proposition 2.5.5 of ent.pdf which states that for each divisor $d|(p-1)$, the polynomial of degree $d$ has exactly $d$ roots in $\mathbb{Z}/p\mathbb{Z}$.
+
+Proposition can be automatically extended to $d|\varphi(n)$ when $n$ is not prime as long as $\mathbb{Z}/n\mathbb{Z}$ forms a field. The problem is that for $n$ not prime $\mathbb{Z}/n\mathbb{Z}$ is guaranteed not to be a field.
+
+Hensel's lemma
+
+
+
+With all these in mind we proceed to calculate the number of primitive roots in the unit group $(\mathbb{Z}/n\mathbb{Z})^*$. As in above we know the polynomial $x^{\varphi(n)} - 1 \equiv 0$ has exactly $\varphi(n)$ roots. The primitive roots are then the roots that are \underline{{\bf not}} roots of $x^d - 1 \equiv 0$ where $d|\varphi(n)$.
+
+Now suppose that $\varphi(n)$ is just a product of two primes
+%
+\nbea
+\varphi(n) & = & q_1q_2
+\neea
+%
+Now from the $q_1q_2$ roots of $x^{\varphi(n)} \equiv 1$, how many of them are roots of $x^{q_1} \equiv 1$ and how many are roots of $x^{q_2} \equiv 1$? The roots that are not covered by $x^{q_{1}} \equiv 1$ and $x^{q_{2}} \equiv 1$ will be the primitive roots of $n$. So are there any?
+
+From the $q_1q_2$ roots of $x^{\varphi(n)} \equiv 1$ we need to subtract $q_1$ roots that belong to $x^{q_1} \equiv 1$ and $q_2$ roots that belong to $x^{q_2} \equiv 1$, this is because we know that there are exactly $q_1$ and $q_2$ roots for those two polynomials as given by Proposition 2.5.5 of ent.pdf.
+
+But in doing the subtractions we were double counting because 1 is always a root of $x^d - 1 \equiv 0$, so when subtracting the roots of $x^{q_1} \equiv 1$ we already remove 1, so we need to add 1 back, thus the number of primitive roots are
+%
+\nbea
+q_1q_2 - q_1 - q_2 + 1 & = & (q_1 - 1)(q_2 - 1) \\
+& = & \varphi(q_1q_2) \\
+& = & \varphi(\varphi(n))
+\neea
+%
+Now what happens if $\varphi(n)$ has three distinct prime factors? we do the same, we start with $q_1q_2q_3$ as the total number of roots, we then remove the ones already covered by $q_1q_2$, followed by $q_1q_3$ and finally $q_2q_3$. But in doing so we are again over counting because while removing the roots of $x^{q_1q_2} \equiv 1$ we already removed the roots of $x^{q_1} \equiv 1$ (and of $x^{q_2} \equiv 1$) but when we removed the roots of $x^{q_1q_3} \equiv 1$ we again remove the roots of $x^{q_1} \equiv 1$, so we need to add them back in.
+%
+\nbea
+q_1q_2q_3 - q_1q_2 - q_1q_3 - q_2q_3 + q_1 + q_2 + q_3
+\neea
+%
+But as we are removing roots of $d$ we also remove 1, since 1 is always a root, so we removed it three times and then we added it back in three times, but 1 still should be removed so the final tally is
+%
+\nbea
+q_1q_2q_3 - q_1q_2 - q_1q_3 - q_2q_3 + q_1 + q_2 + q_3 - 1 & = & (q_1 - 1)(q_2 - 1)(q_3 - 1) \\
+& = & \varphi(\varphi(n))
+\neea
+%
+so the pattern continues. But what if we have a more generic
+%
+\nbea
+\varphi(n) & = & q_1^{a_1}q_2^{a_2} \dots q_n^{a_n}
+\neea
+%
+The pattern is still the same, let's limit $n=3$ to see a concrete example, again we start with $q_1^{a_1}q_2^{a_2}q_3^{a_3}$ we then remove the roots belonging to $q_1^{a_1}q_2^{a_2}q_3^{a_3-1}$ followed by the ones in $q_1^{a_1}q_2^{a_2-1}q_3^{a_3}$ and finally $q_1^{a_1-1}q_2^{a_2}q_3^{a_3}$.
+
+Note that by removing the roots of $q_1^{a_1}q_2^{a_2}q_3^{a_3-1}$ we are already removing the roots of all its divisors. But just like before, we are over counting because we removed the roots of $q_1^{a_1}q_2^{a_2-1}q_3^{a_3-1}$ twice, once from $q_1^{a_1}q_2^{a_2}q_3^{a_3-1}$ and another time from $q_1^{a_1}q_2^{a_2-1}q_3^{a_3}$, so we need to add them back in
+%
+\nbea
+q_1^{a_1}q_2^{a_2}q_3^{a_3} &&  - q_1^{a_1}q_2^{a_2}q_3^{a_3-1} - q_1^{a_1}q_2^{a_2-1}q_3^{a_3}- q_1^{a_1-1}q_2^{a_2}q_3^{a_3} \\
+&& + q_1^{a_1}q_2^{a_2-1}q_3^{a_3-1} + q_1^{a_1-1}q_2^{a_2}q_3^{a_3-1} + q_1^{a_1-1}q_2^{a_2-1}q_3^{a_3}
+\neea
+%
+but just like before here we've removed the roots of $q_1^{a_1-1}q_2^{a_2-1}q_3^{a_3-1}$ three times and then added them back in three times, but we know that they should be removed, so the final tally is again
+%
+\nbea
+q_1^{a_1}q_2^{a_2}q_3^{a_3} &&  - q_1^{a_1}q_2^{a_2}q_3^{a_3-1} - q_1^{a_1}q_2^{a_2-1}q_3^{a_3}- q_1^{a_1-1}q_2^{a_2}q_3^{a_3} \\
+&& + q_1^{a_1}q_2^{a_2-1}q_3^{a_3-1} + q_1^{a_1-1}q_2^{a_2}q_3^{a_3-1} + q_1^{a_1-1}q_2^{a_2-1}q_3^{a_3} \\
+&& -q_1^{a_1-1}q_2^{a_2-1}q_3^{a_3-1}
+\neea
+%
+which is just $(q_1^{a_1} - q_1^{a_1-1})(q_2^{a_2}-q_2^{a_2-1})(q_3^{a_3} - q_3^{a_3-1}) =\varphi(q_1^{a_1}q_2^{a_2}q_3^{a_3}) = \varphi(\varphi(n))$. Note that we don't need to mess with other divisors of $\varphi(n)$ because for example the roots of $x^3 - 1$ are already covered by the roots of $x^{3^2} - 1$ and so on.
+
+So the generic strategy is to start with $\varphi(n)$ roots, express $\varphi(n)$ in terms of its primal constituents and then start removing the roots of the next highest divisor of $\varphi(n)$ and then take care of all the double counting until there's no more double counting and stop and we will then proceed through induction.
+
+Since $\varphi(\varphi(n))$ can never be zero and as long as $\mathbb{Z}/n\mathbb{Z}$ is a field, there's always exactly $\varphi(\varphi(n))$ primitive roots and if $n$ is prime $\mathbb{Z}/n\mathbb{Z}$ is guaranteed to be a field, so we have also proven that there are always primitive roots modulo a prime $p$.
+
+{\bf Page 207}, proof of Theorem 10.4, I am having a hard time seeing how we used the fact that $p$ is prime, turned out I had a misconception about fields and the unit group $(\mathbb{Z}/n\mathbb{Z})^*$. Before I go into the misconception let me go into the part of the proof that utilizes the fact that $p$ is prime.
+
+This fact is used only at the end of the proof on Page 208, where the number of solutions of $x^d - 1 \equiv 0 \pmod{p}$ is said to be at most $d$. This is not true for $p=8$ for example. The roots of $1$ modulo 8 is 1, 3, 5, 7.
+
+We distribute the reduced residues of 8 into disjoint sets, here we only have 3 sets since $\varphi(8) = 4$ and the factors of $4$ are $1, 2, 4$
+%
+\nbea
+\begin{array}{r c l c r c l c r c l}
+A(1) & = & \{1\} & ~~~~~ & A(2) & = & \{3,5,7\} & ~~~~~ & A(4) & = & \{\varnothing\} \\
+f(1) & = & 1 & ~~~~~ & f(2) & = & 3 & ~~~~~ & f(4) & = & 0 \\
+\varphi(1) & = & 1 & ~~~~~ & \varphi(2) & = & 1 & ~~~~~ & \varphi(4) & = & 2
+\end{array}
+\neea
+%
+the sums still check out, now create the sets of powers of $a$, take $a \in A(2)$, here the $d=2$ roots of $x^2 \equiv 1$ are
+%
+\nbea
+a, a^2 \to 3, 9 ~~{\rm or} ~~ 5,25 ~~{\rm or} ~~ 7,49
+\neea
+%
+but you see now we have a problem, even though $a \in A(2)$, $a^2$ is not in $A(2)$ so $a, a^2, \dots, a^d$ do not constitute all solutions to $x^d \equiv 1$ and we cannot use Lemma 1 to get the order of $a^k$ so the argument fails here.
+
+The misconception I mentioned above is that I thought $(\mathbb{Z}/n\mathbb{Z})^*$ is a field because each element has an inverse but this is not the case. The unit group $(\mathbb{Z}/n\mathbb{Z})^*$ doesn't contain zero so it cannot be a field since a field is a ring with a multiplicative inverse (for its non-zero elements) and a ring is an abelian group under addition. $(\mathbb{Z}/8\mathbb{Z})^*$ has inverses for multiplication but it's not a group under addition, because $1+3=4$ but 4 is not in it as it's not co-prime to 8. The thing is that for a field a polynomial of order $f$ will have at most $f$ solutions but it's only guaranteed for a field.
+
+{\bf Page 212}, on the proof of Theorem 10.8, upper page-ish, ``Multiplying together the congruences (11) and (12) we obtain'', I'm not quite sure what multiplying congruences means but one thing I know is that if we have a system of congruences
+%
+\nbea
+x & \equiv & c \pmod{n_1} \\
+x & \equiv & c \pmod{n_2}
+\neea
+%
+with $(n_1,n_2)=1$, using the same technique as solving Chinese Remainder Theorem we get
+%
+\nbea
+x = c + t_0n_1 & \equiv & c \pmod{n_2} \\
+t_0m & \equiv & 0 \pmod{n_2} \\
+\to t_0 & = & n_2k
+\neea
+%
+so $x =c + n_1n_2k \equiv c \pmod{n_1n_2}$, the same goes if we have more congruences, like $x \equiv c \pmod{n_3}$, because for each new congruence we will get
+%
+\nbea
+c + t_1n_1n_2 & \equiv & c \pmod{n_3} \\
+t_1n_1n_2 & \equiv & 0 \pmod{n_3} \\
+\to t_1 & = & n_3 l
+\neea
+%
+so $x = c + n_1n_2n_3lk \equiv 0 \pmod{n_1n_2n_3}$, of course if $x \equiv c \pmod{n_1n_2\dots}$ then $x \equiv c \pmod{n_1}$ and $x \equiv c \pmod{n_2}$ and so on but what we have here is the converse so we need to go the Chinese Remainder route.
+
+{\bf Page 213}, Table 10.1, the table of the smallest primitive root of the prime $p$. There are some questions one might ask when presented with this table
+%
+\begin{enumerate}
+\item When is 2 the smallest primitive root modulo a prime $p$? or What is the distribution of 2 among the smallest primitive root modulo $p$? It seems like 2 shows up a lot.
+
+\item Say we express these roots in terms of their negative counterpart, \eg $2 \equiv -3 \pmod{5}$, what kind of graphs would we see?
+
+\item When will the smallest primitive root be a composite number? when will it be a prime number?
+
+\item What number cannot be a smallest primitive root? I don't see 4 or 8, the question is why?
+\end{enumerate}
+%
+
+{\bf Page 214}, Theorem 10.10, these are just properties of the index which of course is the same as log since it is nothing but log :) I'll just prove the last two (d) and (e)
+
+For (d) we want the ind$(-1)$, note that $g^{\varphi(m)} = 1$ and $g^a \equiv g^b$ if $a \equiv b \pmod{\varphi(m)}$, let's list the numbers we have
+%
+\nbea
+g^1, g^2, \dots, g^{\varphi(m)/2}, \dots, g^{\varphi(m)}
+\neea
+%
+we now square everyone
+%
+\nbea
+g^2, g^4, \dots, (g^{\varphi(m)/2})^2, \dots, g^{\varphi(m) + 2}, g^{\varphi(m) + 4},\dots,  g^{2\varphi(m)}
+\neea
+%
+which is equivalent to
+%
+\nbea
+g^2, g^4, \dots, g^{\varphi(m)}, \dots, g^2, g^4,\dots, g^{\varphi(m)}
+\neea
+%
+so only two of them is a root of 1, note that we can't just say that $x^2 - 1 \equiv 0$ has at most two roots because $m$ might not be prime. The two roots ot 1 shown above are $g^{\varphi(m)}$ and $g^{\varphi(m)/2}$ but we also know that those two are $\pm 1$, since $g^{\varphi(m)} \equiv 1$ that means $g^{\varphi(m)/2} \equiv -1$.
+
+For (e) If $g'$ is also a primitive root mod $m$ then 
+%
+\nbea
+{\rm ind}_g ~a \equiv {\rm ind}_{g'}~ a \cdot {\rm ind}_g~ g' \pmod{\varphi(m)}
 \neea
 %
 
-If we flip both $(r_1,r_2)\to(-r_1, -r_2)$
+Just like in log assume $g' \equiv g^t$ and $a \equiv g'^s$
+%
+\nbea
+a & \equiv & g'^s \equiv (g^{t})^s \pmod{m} \\
+\to {\rm ind}_g~ a & = & t\cdot s \\
+& = & {\rm ind}_g~ g' \cdot {\rm ind}_{g'}~ a
+\neea
+%
+and of course $\pmod{\varphi(m)}$ because the order (or here in this book it's called exponent) of $g$ is $\varphi(m)$, so the max exponent is $\varphi(m)$.
 
-if $m$ is even $m/2 \equiv -m/2$
-
-
-For modulo $n$ we have $r_1^2 \equiv (n-r_1)^2 \pmod{n}$, ditto with $r_2^2$, so $m^2 r_1^2 + n^2 r_2^2$ is invariant under $(r_1,r_2) \to (-r_1,-r_2)$, except for certain numbers like $m$, $n$ and if one of them is even then $m/2 \equiv -m/2$ but this behavior will also be reflected in $mn$ and so only (roughly) half of the $mn$ numbers are unique which is expected out of $r_3^2 \equiv (mn - r_3)^2$ as well and the solution is complete.
-
+{\bf Page 214}, application of index calculus to Linear congruences, I feel that this is cumbersome because there's no easy way to calculate the index of a number, you need a table for this, the alternative is of course to find the inverse of $a$, which requires you to calculate $\varphi(m)$ multiplication but building the table of indices is a lot more work ~~~\dunno
 
 
 
@@ -4097,7 +4337,7 @@ For integral test, we might try some oscillating function with some envelope, bu
 
 Another idea is to define a new arithmetic function say $\nu(n)$ =  number of distinct prime factors of $n$ and then compare $\mu(n)/n$ to this one $\nu(n)/n$ to check whether the series  for $\mu(n)/n$ converges or whether it is bounded.
 
-\underline{\textit{\textbf{*New Tool Alert*}}}. But in this proof we learn a new tool, which is
+\textbf{\textit{*}}\underline{\textit{\textbf{New Tool Alert}}}\textbf{\textit{*}}. But in this proof we learn a new tool, which is
 %
 \nbea
 \{y\} = y - [y]

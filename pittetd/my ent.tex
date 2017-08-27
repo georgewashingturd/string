@@ -1239,7 +1239,7 @@ where $p_i$ is a prime factor of $p-1$. Therefore there is an inverse primitive 
 
 {\it Proof}. $p-1 = 2^n$ means that $\varphi(p) = 2^n$. Therefore the order of any $a \in \mathbb{Z}/p\mathbb{Z}$ is a factor of $2^n$, see Proposition 2.27.(b).1, \ie every number has an even order.  Therefore $a^{d/2} \equiv -1 \pmod{p}$. Why? Note that $x^2 - 1 \equiv 0 \pmod{p}$ only has two solutions $+1$ and $-1$, $+1$ isn't legit because then that means $a^{d/2} \equiv 1 \pmod{p}$ but the order of $a$ is $d$, then $-1$ it is :) As a side note, this also means that the only element of $\mathbb{Z}/p\mathbb{Z}$ that has an order of 2 is $-1 \pmod{p}$. This completes the proof.
 
-{\bf Proposition 2.5.3}. Note that this only applies to fields. See the last paragraph in the proof, especially this sentence ``since $\beta-\alpha \neq 0$ and $k$ is a field, we have $g(\beta)=0$.''. This is because every element in a field (other than zero) has an inverse such that
+{\bf Proposition 2.5.3}. Note that this only applies to fields, for two reasons. See the last paragraph in the proof, especially this sentence ``since $\beta-\alpha \neq 0$ and $k$ is a field, we have $g(\beta)=0$.''. This is because every element in a field (other than zero) has an inverse such that
 %
 \nbea
 (\beta - \alpha)g(\beta) & = & 0 \\
@@ -1247,6 +1247,7 @@ where $p_i$ is a prime factor of $p-1$. Therefore there is an inverse primitive 
 g(\beta) & = & 0
 \neea
 %
+But this is not the only reason we want it to be a field, recall that a field is a ring with multiplicative inverse which means that it's a group under addition and multiplication, if it's not a group under addition then $\beta-\alpha$ might not even be in the group in the first place.
 
 {\bf Lemma 2.5.7}. It is very curious that the whole thing depends {\it only} on the {\it orders} of $a$ and $b$ and not on $a$ and $b$ themselves. Think about it, what happens if $ab \equiv 1 \pmod{n}$?, \ie $b$ and $a$ are inverses of one another. In this case the order of $(ab)$ is obviously 1 since $ab \equiv 1 \pmod{n}$. However, it turns out that
 
