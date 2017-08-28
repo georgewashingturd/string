@@ -3772,11 +3772,7 @@ In the following discussion we will derive the number of primitive roots modulo 
 
 We will do this using a few facts, first, for a polynomial of degree $f$ on a field, the number of roots is at most $f$, see ent.pdf Proposition 2.5.3, next the fact that $\mathbb{Z}/p\mathbb{Z}$ is a field as shown in Exercise 2.12 of ent.pdf and lastly using an application of Proposition 2.5.5 of ent.pdf which states that for each divisor $d|(p-1)$, the polynomial of degree $d$ has exactly $d$ roots in $\mathbb{Z}/p\mathbb{Z}$.
 
-Proposition can be automatically extended to $d|\varphi(n)$ when $n$ is not prime as long as $\mathbb{Z}/n\mathbb{Z}$ forms a field. The problem is that for $n$ not prime $\mathbb{Z}/n\mathbb{Z}$ is guaranteed not to be a field.
-
-Hensel's lemma
-
-
+Proposition can be automatically extended to $d|\varphi(n)$ when $n$ is not prime as long as $\mathbb{Z}/n\mathbb{Z}$ forms a field. The problem is that for $n$ not prime $\mathbb{Z}/n\mathbb{Z}$ is guaranteed not to be a field. So for now we just concentrate on $n$ being prime.
 
 With all these in mind we proceed to calculate the number of primitive roots in the unit group $(\mathbb{Z}/n\mathbb{Z})^*$. As in above we know the polynomial $x^{\varphi(n)} - 1 \equiv 0$ has exactly $\varphi(n)$ roots. The primitive roots are then the roots that are \underline{{\bf not}} roots of $x^d - 1 \equiv 0$ where $d|\varphi(n)$.
 
@@ -3839,6 +3835,70 @@ which is just $(q_1^{a_1} - q_1^{a_1-1})(q_2^{a_2}-q_2^{a_2-1})(q_3^{a_3} - q_3^
 So the generic strategy is to start with $\varphi(n)$ roots, express $\varphi(n)$ in terms of its primal constituents and then start removing the roots of the next highest divisor of $\varphi(n)$ and then take care of all the double counting until there's no more double counting and stop and we will then proceed through induction.
 
 Since $\varphi(\varphi(n))$ can never be zero and as long as $\mathbb{Z}/n\mathbb{Z}$ is a field, there's always exactly $\varphi(\varphi(n))$ primitive roots and if $n$ is prime $\mathbb{Z}/n\mathbb{Z}$ is guaranteed to be a field, so we have also proven that there are always primitive roots modulo a prime $p$.
+
+So we have proved that every off prime $p$ has $\varphi(\varphi(p))$ primitive roots, what about composite numbers? First we tackle $n = p^\alpha$.
+
+Here $\varphi(n) = p^{\alpha-1}(p-1)$, so we tackle the problem of $x^d - 1\equiv 0 \pmod{p^\alpha}$ with $d|\varphi(n)$ in three steps, first, when $d|p^{\alpha-1}$, second $d|(p-1)$ and lastly the combination of both.
+
+The goal here is to show that $x^d - 1 \equiv 0 \pmod{p^\alpha}$ has exactly $d$ roots if $d|\varphi(p^\alpha)$. First case is $d = p^\beta$, $\beta < \alpha$.
+
+For one we know that 
+%
+\nbea
+(1 + x\cdot p^{\alpha-\beta})^{p^\beta} & = & 1 + \sum_{j=1}^{p^\beta}\binom{p^\beta}{j} (x\cdot p^{\alpha-\beta})^j
+\neea
+%
+
+
+%
+\nbea
+\binom{p^\beta}{p^\sigma} (p^{\alpha-\beta})^{p^\sigma} & = & \frac{p^\beta !}{p^\sigma ! (p^\beta - p^\sigma)!} p^{(\alpha-\beta){p^\sigma}} \\
+& = & k\cdot p^{\beta - \sigma}p^{(\alpha-\beta){p^\sigma}}
+\neea
+%
+
+the smallest is when $\beta - \sigma = 1 \to \sigma = \beta - 1$ and $\alpha - \beta = 1 \to \beta = \alpha - 1$
+%
+\nbea
+{\beta - \sigma}+{(\alpha-\beta){p^\sigma}} & \to & -1 + (\alpha-\beta){p^\sigma} \log p = 0 \\
+p^\sigma & = & 1/((\alpha-\beta) \log p) \\
+\sigma & = & -\log((\alpha-\beta) \log p) \\
+\to \beta + \log((\alpha-\beta) \log p) + 1/\log p
+\neea
+%
+
+%
+\nbea
+{\beta - 1}+{(\alpha-\beta){p^1}} & = & p\alpha - p\beta + \beta - 1 \\
+& = & p\alpha - \beta(p - 1) - 1 \\
+& \to & \alpha(p - 1) - \beta(p-1) - 1 \\
+& = & (p-1)(\alpha - \beta) - 1
+\neea
+%
+
+%
+\nbea
+{\beta - 2}+{(\alpha-\beta){p^2}} & = & p^2\alpha - p^2\beta + \beta - 2 \\
+& = & p^2\alpha - \beta(p^2 - 1) - 1 \\
+& \to & \alpha(p^2 - 1) - \beta(p^2 - 1) - 2 \\
+& = & (p^2-1)(\alpha - \beta) - 2
+\neea
+%
+
+%
+\nbea
+{\beta - \sigma}+{(\alpha-\beta){p^\sigma}} - \alpha& = & p^\sigma\alpha - \alpha - p^\sigma\beta + \beta - \sigma \\
+& = & \alpha(p^\sigma - 1) - \beta(p^\sigma - 1) - \sigma \\
+& \to & \alpha(p^\sigma - 1) - \beta(p^\sigma-1) - \sigma \\
+& = & (p^\sigma-1)(\alpha - \beta) - \sigma
+\neea
+%
+
+
+
+
+
+
 
 {\bf Page 207}, proof of Theorem 10.4, I am having a hard time seeing how we used the fact that $p$ is prime, turned out I had a misconception about fields and the unit group $(\mathbb{Z}/n\mathbb{Z})^*$. Before I go into the misconception let me go into the part of the proof that utilizes the fact that $p$ is prime.
 
