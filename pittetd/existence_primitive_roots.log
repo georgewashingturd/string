@@ -1,7 +1,7 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  29 AUG 2017 19:46
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  29 AUG 2017 22:39
 entering extended mode
-**C:/Users/User/Documents/GitHub/string/pittetd/apostol.tex
-(C:/Users/User/Documents/GitHub/string/pittetd/apostol.tex
+**C:/Users/User/Documents/GitHub/string/pittetd/existence_primitive_roots.tex
+(C:/Users/User/Documents/GitHub/string/pittetd/existence_primitive_roots.tex
 LaTeX2e <2015/01/01> patch level 2
 Babel <3.9m> and hyphenation patterns for 69 languages loaded.
 (C:\miktex-portable-2.9\tex\latex\revtex\revtex4-1.cls
@@ -485,7 +485,7 @@ Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 223
 Class revtex4-1 Info: cite was not loaded (OK!) on input line 223.
 Class revtex4-1 Info: mcite was not loaded (OK!) on input line 223.
 Class revtex4-1 Info: multicol was not loaded (OK!) on input line 223.
- (apostol.aux)
+ (existence_primitive_roots.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 223.
 LaTeX Font Info:    ... okay on input line 223.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 223.
@@ -508,7 +508,8 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box51
 Package hyperref Info: Link coloring OFF on input line 223.
- (C:\miktex-portable-2.9\tex\latex\hyperref\nameref.sty
+
+(C:\miktex-portable-2.9\tex\latex\hyperref\nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (C:\miktex-portable-2.9\tex\generic\oberdiek\gettitlestring.sty
@@ -519,7 +520,8 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 223.
 LaTeX Info: Redefining \pageref on input line 223.
 LaTeX Info: Redefining \nameref on input line 223.
- (apostol.out) (apostol.out)
+
+(existence_primitive_roots.out) (existence_primitive_roots.out)
 \@outlinefile=\write4
 
 *geometry* detected driver: pdftex
@@ -562,195 +564,89 @@ Requested font "cmr10" at 10.95pt
 File: se-ascii-print.def 2011/12/02 v1.10 stringenc: Printable ASCII characters
 
 )
-
-Class revtex4-1 Warning: Assuming \noaffiliation for authors.
-
-Requested font "cmbx12" at 14.4pt
 Requested font "cmr8" at 8.0pt
 Requested font "cmr6" at 6.0pt
-Requested font "cmmi12" at 12.0pt
+Requested font "cmmi10" at 10.95pt
 Requested font "cmmi8" at 8.0pt
 Requested font "cmmi6" at 6.0pt
-Requested font "cmsy10" at 12.0pt
+Requested font "cmsy10" at 10.95pt
 Requested font "cmsy8" at 8.0pt
 Requested font "cmsy6" at 6.0pt
-Requested font "cmex10" at 12.0pt
+Requested font "cmex10" at 10.95pt
 Requested font "cmex8" at 8.0pt
 Requested font "cmex7" at 6.0pt
-LaTeX Font Info:    Try loading font information for U+msa on input line 238.
+LaTeX Font Info:    Try loading font information for U+msa on input line 234.
+
 (C:\miktex-portable-2.9\tex\latex\amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-Requested font "msam10" at 12.0pt
+Requested font "msam10" at 10.95pt
 Requested font "msam10" at 8.0pt
 Requested font "msam7" at 6.0pt
-LaTeX Font Info:    Try loading font information for U+msb on input line 238.
+LaTeX Font Info:    Try loading font information for U+msb on input line 234.
 
 (C:\miktex-portable-2.9\tex\latex\amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Requested font "msbm10" at 12.0pt
+Requested font "msbm10" at 10.95pt
 Requested font "msbm10" at 8.0pt
 Requested font "msbm7" at 6.0pt
-Requested font "cmbx12" at 12.0pt
+Requested font "cmbx10" at 10.95pt
 Requested font "cmbx8" at 8.0pt
 Requested font "cmbx6" at 6.0pt
-Requested font "cmmib10" at 12.0pt
+Requested font "cmmib10" at 10.95pt
 Requested font "cmmib8" at 8.0pt
 Requested font "cmmib6" at 6.0pt
-Requested font "cmbsy10" at 12.0pt
+Requested font "cmbsy10" at 10.95pt
 Requested font "cmbsy8" at 8.0pt
 Requested font "cmbsy6" at 6.0pt
+
+
+Class revtex4-1 Warning: Assuming \noaffiliation for authors.
+
+Requested font "cmbx12" at 14.4pt
+Requested font "cmmi12" at 12.0pt
+Requested font "cmsy10" at 12.0pt
+Requested font "cmex10" at 12.0pt
+Requested font "msam10" at 12.0pt
+Requested font "msbm10" at 12.0pt
+Requested font "cmbx12" at 12.0pt
+Requested font "cmmib10" at 12.0pt
+Requested font "cmbsy10" at 12.0pt
 Requested font "cmti12" at 12.0pt
- [1]
+[1]
 Requested font "cmbxti10" at 12.0pt
- [2] [3] [4] [5]
-[6] [7]
-Overfull \hbox (54.49007pt too wide) in alignment at lines 499--503
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 254.
+
+ (C:\miktex-portable-2.9\tex\latex\base\omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 254.
+ [2] [3] [4]
+Overfull \hbox (30.4508pt too wide) in alignment at lines 385--388
  [][][] []
  []
 
-[8] [9] [10] [11]
-
-Package amsmath Warning: Foreign command \atopwithdelims;
-(amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 644.
-
-
-Overfull \hbox (31.2659pt too wide) in alignment at lines 643--645
+[5]
+Overfull \hbox (13.85234pt too wide) in alignment at lines 431--437
  [][][] []
  []
 
-[12]
-Overfull \hbox (37.53297pt too wide) in alignment at lines 684--687
- [][][] []
- []
+[6] [7] [8] [9] [10] (existence_primitive_roots.bbl) [11]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 646.
 
-[13] [14] [15]
-Overfull \hbox (36.42339pt too wide) in paragraph at lines 769--773
-\OT1/cmr/m/n/12 where now $\OML/cmm/m/it/12 f[] \OT1/cmr/m/n/12 = []$, by Propo
--si-tion 1.28.3 $[](\OML/cmm/m/it/12 f[]; f[]\OT1/cmr/m/n/12 ) =
- []
-
-
-Overfull \hbox (1.87479pt too wide) in paragraph at lines 779--783
-\OT1/cmr/m/n/12 from line 2 to 3 we have used the fact that since $(\OML/cmm/m/
-it/12 f[]; f[]\OT1/cmr/m/n/12 ) = 1$ there-fore $(\OML/cmm/m/it/12 f[]=t; f[]=s
-\OT1/cmr/m/n/12 ) =
- []
-
-[16] [17] [18] [19] [20] [21] [22] [23] [24] [25] [26] [27] [28]
-Overfull \hbox (5.15947pt too wide) in alignment at lines 1263--1273
- [][][] []
- []
-
-[29] [30] [31]
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1348.
-
-Requested font "cmmi10" at 10.95pt
-Requested font "cmsy10" at 10.95pt
-Requested font "cmex10" at 10.95pt
-Requested font "msam10" at 10.95pt
-Requested font "msbm10" at 10.95pt
-Requested font "cmbx10" at 10.95pt
-Requested font "cmmib10" at 10.95pt
-Requested font "cmbsy10" at 10.95pt
-Requested font "cmex7" at 5.0pt
-Requested font "msam5" at 5.0pt
-Requested font "msbm5" at 5.0pt
-Requested font "cmbx5" at 5.0pt
-Requested font "cmmib5" at 5.0pt
-Requested font "cmbsy5" at 5.0pt
-[32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42]
-Overfull \hbox (16.7518pt too wide) in alignment at lines 1746--1750
- [][][] []
- []
-
-[43] [44] [45]
-Overfull \hbox (49.72408pt too wide) in alignment at lines 1848--1851
- [][][] []
- []
-
-[46] [47] [48] [49] [50] [51]
-Overfull \hbox (10.86467pt too wide) in paragraph at lines 2070--2073
-\OT1/cmr/m/n/12 which is what we are af-ter and more, for one thing we get equa
-l-i-ties with $[[]]\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 [[]]$
- []
-
-[52] [53] [54] [55] [56] [57] [58] [59] [60] [61] [62] [63] [64] [65] [66]
-[67] [68]
-Overfull \hbox (10.87949pt too wide) in paragraph at lines 2660--2661
-[]\OT1/cmr/bx/n/12 Page 85\OT1/cmr/m/n/12 , be-fore Sec-tion 4.6, ``$[][] 1\OML
-/cmm/m/it/12 =p[]$ \OT1/cmr/m/n/12 di-verges, by com-par-i-son with $[][] 1\OML
-/cmm/m/it/12 =\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 n []  []n\OT1/cmr/m/n/12 )$'' 
- []
-
-[69] [70]
-Overfull \hbox (9.30484pt too wide) in alignment at lines 2702--2706
- [][][] []
- []
-
-[71] [72] [73] [74] [75] [76] [77] [78] [79] [80] [81] [82] [83] [84] [85]
-[86] [87] [88] [89] [90] [91] [92] [93] [94] [95] [96] [97] [98]
-Overfull \hbox (2.90027pt too wide) in paragraph at lines 3754--3756
-[]\OT1/cmr/m/n/12 Now, let $\OML/cmm/m/it/12 d\OMS/cmsy/m/n/12 j\OML/cmm/m/it/1
-2 '\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 n\OT1/cmr/m/n/12 )$, how many of the $\OML
-/cmm/m/it/12 g[]$ \OT1/cmr/m/n/12 have or-der $\OML/cmm/m/it/12 d$\OT1/cmr/m/n/
-12 ? for a $\OML/cmm/m/it/12 g[]$\OT1/cmr/m/n/12 , its or-der is $\OML/cmm/m/it
-/12 '\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 n\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 = []\
-OT1/cmr/m/n/12 (\OML/cmm/m/it/12 r; '\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 n\OT1/cm
-r/m/n/12 ))$
- []
-
-[99] [100] [101] [102] [103] [104] [105] [106] [107] [108] [109]
-Overfull \hbox (31.85487pt too wide) in alignment at lines 4135--4140
- [][][] []
- []
-
-[110] [111]
-Overfull \hbox (12.86371pt too wide) in paragraph at lines 4200--4204
-\OT1/cmr/m/n/12 which is a con-tra-dic-tion since the LHS is zero while the RHS
- is ob-vi-ously not  $[][]\OMS/cmsy/m/n/12 n\OT1/cmr/m/n/12 ([][][]o)\OML/cmm/m
-/it/12 =[]$  \OT1/cmr/m/n/12 apart
- []
-
-[112] [113]
-Overfull \hbox (63.8664pt too wide) in alignment at lines 4309--4313
- [][][] []
- []
-
-[114] [115] [116] [117] [118] [119] [120] [121] [122] [123]
-File: Thm_3_13.png Graphic file (type QTm)
-
-<use  "Thm_3_13.png" >
-Overfull \hbox (45.53279pt too wide) in paragraph at lines 4688--4689
- [][] 
- []
-
-[124] [125]
-Requested font "cmtt12" at 12.0pt
- [126]
-File: lowerbound.png Graphic file (type QTm)
- <use  "lowerbound.png" > [127]
-Overfull \hbox (7.93016pt too wide) in alignment at lines 4851--4855
- [][][] []
- []
-
-[128] (apostol.bbl) [129] [130]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 4932.
- (apostol.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 4932.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 4932.
+(existence_primitive_roots.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 646.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 646.
  ) 
 Here is how much of TeX's memory you used:
- 13348 strings out of 428755
- 183915 string characters out of 3166785
- 295659 words of memory out of 3000000
- 16559 multiletter control sequences out of 15000+200000
- 17030 words of font info for 63 fonts, out of 3000000 for 9000
+ 13331 strings out of 428755
+ 184100 string characters out of 3166785
+ 287426 words of memory out of 3000000
+ 16549 multiletter control sequences out of 15000+200000
+ 15300 words of font info for 56 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
- 36i,18n,38p,1045b,459s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,17n,38p,668b,399s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on apostol.pdf (130 pages).
+Output written on existence_primitive_roots.pdf (11 pages).

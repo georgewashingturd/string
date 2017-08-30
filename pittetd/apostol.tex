@@ -3848,51 +3848,148 @@ For one we know that
 (1 + x\cdot p^{\alpha-\beta})^{p^\beta} & = & 1 + \sum_{j=1}^{p^\beta}\binom{p^\beta}{j} (x\cdot p^{\alpha-\beta})^j
 \neea
 %
+We want to show that the sum is $\equiv 0 \pmod{p^\alpha}$. 
+
+{\bf Proposition E.1}. First, if $j|p^\beta$, $j = y p^\sigma$ with $y \nmid p$ then we have something like
+%
+\nbea
+\binom{p^\beta}{y p^\sigma} (p^{\alpha-\beta})^{p^\sigma} & = & \frac{p^\beta !}{(yp^\sigma) ! (p^\beta - p^\sigma)!} p^{(\alpha-\beta){yp^\sigma}} \\
+& = & k\cdot p^{\beta - \sigma}p^{(\alpha-\beta){yp^\sigma}}
+\neea
+%
+we want to know whether the exponent ${\beta - \sigma}+{(\alpha-\beta){p^\sigma}}$ is bigger than $\alpha$ because if it is so then the whole thing is a multiple of $p^\alpha$. So let's subtract $\alpha$ from the exponent
+%
+\nbea
+{\beta - \sigma}+{(\alpha-\beta){yp^\sigma}} - \alpha& = & yp^\sigma\alpha - \alpha - yp^\sigma\beta + \beta - \sigma \\
+& = & \alpha(yp^\sigma - 1) - \beta(yp^\sigma - 1) - \sigma \\
+& = & (yp^\sigma-1)(\alpha - \beta) - \sigma
+\neea
+%
+but we know that $\alpha-\beta \ge 1$ and $p^\sigma - 1 > \sigma$ so the above is always greater than 0. So 
+%
+\nbea
+(1 + x\cdot p^{\alpha-\beta})^{p^\beta} & \equiv & 0 \pmod{p^\alpha}
+\neea
+%
+and this is true for any prime $p$ including 2.
+
+The question now is how many of these numbers ($1 + x\cdot p^{\alpha-\beta}$ incongruent modulo $p^\alpha$) there are, this is equivalent to the number of unique values for $x$. The obvious answer is $0 \le x < p^\beta$, meaning we have $p^\beta$ solutions for $x^{p^\beta} - 1 \equiv 0$.
+
+Are there more than that? What if we found a number $a^{p^\beta} - 1 \equiv 0$ besides the above? say there's the case then
+%
+\nbea
+a^{p^\beta} & \equiv & 1 \pmod{p^\alpha} \\
+\to a^{p^\beta} & \equiv & 1 \pmod{p}
+\neea
+%
+but by Fermat's Littler Theorem this is forbidden because this means that either $p^\beta|(p-1)$ or $(p-1)|p^\beta$. So we have shown that $x^{p^\beta} - 1 \equiv 0$ has exactly $p^\beta$ solutions.
+
+Next case is when $d|(p-1)$, this one is a bit trickier and we need induction. By Proposition 2.5.5 of ent.pdf we know that $x^d - 1\equiv 0 \pmod{p}$ has exactly $d$ solutions, the problem we have now is that $\mathbb{Z}/p^\alpha\mathbb{Z}$ is no longer a field. But we can build the proof case by case.
+
+Base case is $x^d - 1\equiv 0 \pmod{p}$, based on this how can we find the solutions to $x^d - 1\equiv 0 \pmod{p^2}$? Well, we know that if there is a solution, say $a$, then $a$ has to satisfy
+%
+\nbea
+a^d & \equiv & 1 \pmod{p^2} \\
+\to a^d & \equiv & 1 \pmod{p}
+\neea
+%
+so $a$ is also a root $\pmod{p}$ this means that it is of the form $a + np$, our task is to see whether we can find such $n$, ($a$ is guaranteed by Proposition 2.5.5). Let's see how this works
+%
+\nbea
+(a + np)^d & = & a^d + da^{d-1}np + p^2 t, ~~~~~~~~ a^d = 1 + mp \\
+& \equiv & 1 + mp + da^{d-1}np \pmod{p^2}
+\neea
+%
+$a^d = 1 + mp$ since $a^d \equiv 1 \pmod{p}$. We want this whole thing to be $1 \pmod{p^2}$ so
+%
+\nbea
+1 + mp + da^{d-1}np & \equiv & 1 \pmod{p^2} \\
+\to m\bcancel{p} + da^{d-1}n\bcancel{p} & \equiv & 0 \pmod{p^{\bcancel{2}}} \\
+da^{d-1}n\bcancel{p} & \equiv & -m \pmod{p} \\
+n & \equiv & -m(da^{d-1})^{-1} \pmod{p}
+\neea
+%
+the inverse is guaranteed since $da^{d-1}$ is co-prime to $p$ (this is a crux of the proof as we shall see soon) and $\mathbb{Z}/p\mathbb{Z}$ is a field since $p$ is prime, so $n$ is guaranteed to exist.
+
+So we have the following solutions 
+%
+\nbea
+a + (n + sp)p, ~~~~~ s \ge 0
+\neea
+%
+however, for $s \ge 1$, $a + np + sp^2$ is bigger than $p^2$, so we only have one such $a < p^2$ (note that $n < p$). So for every root $a^d \equiv 1 \pmod{p}$ we have a unique root $a^d \equiv 1 \pmod{p^2}$. Using this info we can prove a unique root $\pmod{p^3}$, but this time we substitute $a = 1 +mp^2$ instead of $a = 1 + mp$, and in this way the induction is complete.
+
+The uniqueness part is crucial because we want to show that there are exactly $d$ roots, so since we prove that there is a unique $a$ we are done.
+
+The proofs above give us an idea on how to prove that $2^\alpha$ with $\alpha \ge 3$ doesn't have primitive roots. Say we elevate the roots of $x^2 - 1 \pmod{4}$ to modulo 8 just like before, we will get 4 roots, 1, 3, 5, 7, but $x^4 - 1 \pmod{8}$ only has 4 roots, but they are already covered by $x^2 - 1$, so that means that there are no primitive roots. Again, taking 1, 3, 5, 7, and elevating them to 9, 11, 13, 15, these eight are the roots of $x^4 - 1 \pmod{16}$ and they are also all the roots of $x^8 - 1\pmod{16}$ so 16 has no primitive roots and so on. Let's see this in detail. 
+
+{\bf Proposition E.2}. Hypothesis, $1 + 2c$ with $0 \le c < 2^{\alpha-1}$ are all roots of $x^{\varphi(2^\alpha)/2} - 1 \equiv 0 \pmod{p^\alpha}$, so there are $2^{\alpha-1}$ roots and these roots are also roots of $x^{\varphi(2^\alpha)} - 1 \equiv 0 \pmod{2^\alpha}$, this is true for $\alpha > 2$.
+
+{\it Proof}. We will use induction, base case is 8, with $a = 1, 3, 5, 7$ and from the assumption we know that $a^2 \equiv 1 \pmod{8} = 1 + 8m$ and so going from mod $8\to16$,
+%
+\nbea
+a^2 & = & 1+8m \\
+a^4 & = & (1 + 8m)^2 \\
+& = & 1 + 16m + 64m^2 \\
+& \equiv & 1 \pmod{16}
+\neea
+%
+we know extend the solutions mod 8 from $1, 3, 5, 7$ to $9, 11, 13, 15$, so basically $a \to a + 8$, going to mod 16 we get
+%
+\nbea
+(a + 8)^2 & = & a^2 + 16a + 64 ~~~~~~~ a^2 = 1+ 8m \\
+\to & \equiv & 1 + 8m \pmod{16}
+\neea
+%
+and so $(a + 8)^2 \equiv 1 \pmod{16}$ as well. And now we can repeat the inductive process to complete the proof which is a straightforward process by replacing 8 with $2^n$ and 16 with $2^{n+1}$ and therefore omitted here :)
+
+So we are basically saying that all odd numbers $< 2^\alpha$ are roots of $x^{2^{\beta-1}} - 1 \pmod{2^\alpha}$ but again we also know that the roots of $x^{2^\beta} - 1 \pmod{2^\alpha}$ must also be a root of $x^{2^\beta} - 1 \pmod{2}$, which is all the odd numbers less than $2^\alpha$, so we have covered all possible roots of $x^{\varphi(2^\alpha)} - 1 \pmod{2^\alpha}$. And we see why it doesn't work for $\alpha = 2$, this is because $\varphi(2)/2 = 1$ and $x^1 - 1$ can only have one root and not two.
+
+{\bf Proposition E.3}. As a consequence of Proposition E.2, $2^\alpha$ with $\alpha > 2$ has no primitive roots :)
+
+The last case we have is a combination of the above two, $d|p^{\alpha-1}(p-1)$, the proof is therefore also a combination of the above two :) Let's denote $d = xy$ with $x|p^{\alpha-1} \to x = p^\beta$ with $\beta < \alpha$ and $y|(p-1)$ and by virtue of $(p,p-1) = 1$ we have $(x,y) = 1$ as well.
+
+To tackle this first we find the solutions for $a^y - 1 \equiv 0 \pmod{p^{\alpha-\beta}}$ where $y|(p-1)$. But this is exactly the same as our previous case, the roots are the same as $a^y-1 \equiv 0 \pmod{p}$ elevated to $\pmod{p^{\alpha-\beta}}$ by the induction method above.
+
+After finding all roots of $a^y - 1 \equiv 0 \pmod{p^{\alpha-\beta}}$, we then use these roots and extend them
+%
+\nbea
+(a + w\cdot p^{\alpha-\beta})^{xy} & = & (a + w\cdot p^{\alpha-\beta})^{p^\beta y} \\
+& = & (a^y)^{p^\beta} + \sum_{j=1}^{p^\beta} \binom{p^\beta}{j} (w\cdot p^{\alpha-\beta})^j \\
+& = & (1 + s\cdot p^{\alpha-\beta})^{p^\beta} + \sum_{j=1}^{p^\beta} \binom{p^\beta}{j} (w\cdot p^{\alpha-\beta})^j \\
+& = & 1 + \sum_{i=1}^{p^\beta} \binom{p^\beta}{i} (s\cdot p^{\alpha-\beta})^i + \sum_{j=1}^{p^\beta} \binom{p^\beta}{j} (w\cdot p^{\alpha-\beta})^j
+\neea
+%
+just like before, using Proposition E.1, the sums are $0 \pmod{p^\alpha}$, the challenge now is to show that there are no other roots other than the ones shown above. Suppose there is another root, $b$, then
+%
+\nbea
+b^{xy} & = & (b^{y})^{p^\beta} \equiv 1 \pmod{p^\alpha} \\
+\to (b^{y})^{p^\beta} & \equiv & 1 \pmod{p^\delta} ~~~~~~~ 0 \le \delta < \alpha
+\neea
+%
+but by Fermat's Little Theorem the only solution for the above is $b^y \equiv 1 \pmod{p}$ but this is what we have by extending these roots for every mod $p^{\alpha-\beta}$ so there are no other roots.
+
+For $2p^\alpha$ we can repeat the whole process again or we can just utilize the following fact that if the order of $x$ modulo $a$ is $o_a$ and the order of $x$ mod $b$ is $o_b$ and $\gcd(a,b) = 1$ then the order of $x$ mod $ab$ is lcm$(o_a,o_b)$.
+
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 
 %
 \nbea
-\binom{p^\beta}{p^\sigma} (p^{\alpha-\beta})^{p^\sigma} & = & \frac{p^\beta !}{p^\sigma ! (p^\beta - p^\sigma)!} p^{(\alpha-\beta){p^\sigma}} \\
-& = & k\cdot p^{\beta - \sigma}p^{(\alpha-\beta){p^\sigma}}
+(a + n\cdot2)^2 & = & a^2 + 4an + 4n^2 \\
+& = & 1 + 2m + 4an + 4n^2 \\
+\to 1 + 2m +4an & \equiv & 1 \pmod{4} \\
+m + 4an & = & 2k
 \neea
 %
 
-the smallest is when $\beta - \sigma = 1 \to \sigma = \beta - 1$ and $\alpha - \beta = 1 \to \beta = \alpha - 1$
-%
-\nbea
-{\beta - \sigma}+{(\alpha-\beta){p^\sigma}} & \to & -1 + (\alpha-\beta){p^\sigma} \log p = 0 \\
-p^\sigma & = & 1/((\alpha-\beta) \log p) \\
-\sigma & = & -\log((\alpha-\beta) \log p) \\
-\to \beta + \log((\alpha-\beta) \log p) + 1/\log p
-\neea
-%
 
-%
-\nbea
-{\beta - 1}+{(\alpha-\beta){p^1}} & = & p\alpha - p\beta + \beta - 1 \\
-& = & p\alpha - \beta(p - 1) - 1 \\
-& \to & \alpha(p - 1) - \beta(p-1) - 1 \\
-& = & (p-1)(\alpha - \beta) - 1
-\neea
-%
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-%
-\nbea
-{\beta - 2}+{(\alpha-\beta){p^2}} & = & p^2\alpha - p^2\beta + \beta - 2 \\
-& = & p^2\alpha - \beta(p^2 - 1) - 1 \\
-& \to & \alpha(p^2 - 1) - \beta(p^2 - 1) - 2 \\
-& = & (p^2-1)(\alpha - \beta) - 2
-\neea
-%
 
-%
-\nbea
-{\beta - \sigma}+{(\alpha-\beta){p^\sigma}} - \alpha& = & p^\sigma\alpha - \alpha - p^\sigma\beta + \beta - \sigma \\
-& = & \alpha(p^\sigma - 1) - \beta(p^\sigma - 1) - \sigma \\
-& \to & \alpha(p^\sigma - 1) - \beta(p^\sigma-1) - \sigma \\
-& = & (p^\sigma-1)(\alpha - \beta) - \sigma
-\neea
-%
 
 
 
