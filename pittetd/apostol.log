@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  29 AUG 2017 19:46
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  30 AUG 2017 20:04
 entering extended mode
 **C:/Users/User/Documents/GitHub/string/pittetd/apostol.tex
 (C:/Users/User/Documents/GitHub/string/pittetd/apostol.tex
@@ -704,53 +704,53 @@ OT1/cmr/m/n/12 (\OML/cmm/m/it/12 r; '\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 n\OT1/cm
 r/m/n/12 ))$
  []
 
-[99] [100] [101] [102] [103] [104] [105] [106] [107] [108] [109]
-Overfull \hbox (31.85487pt too wide) in alignment at lines 4135--4140
+[99] [100] [101] [102]
+Overfull \hbox (31.85487pt too wide) in alignment at lines 3908--3913
  [][][] []
  []
 
-[110] [111]
-Overfull \hbox (12.86371pt too wide) in paragraph at lines 4200--4204
+[103] [104]
+Overfull \hbox (12.86371pt too wide) in paragraph at lines 3973--3977
 \OT1/cmr/m/n/12 which is a con-tra-dic-tion since the LHS is zero while the RHS
  is ob-vi-ously not  $[][]\OMS/cmsy/m/n/12 n\OT1/cmr/m/n/12 ([][][]o)\OML/cmm/m
 /it/12 =[]$  \OT1/cmr/m/n/12 apart
  []
 
-[112] [113]
-Overfull \hbox (63.8664pt too wide) in alignment at lines 4309--4313
+[105] [106]
+Overfull \hbox (63.8664pt too wide) in alignment at lines 4082--4086
  [][][] []
  []
 
-[114] [115] [116] [117] [118] [119] [120] [121] [122] [123]
+[107] [108] [109] [110] [111] [112] [113] [114] [115] [116]
 File: Thm_3_13.png Graphic file (type QTm)
 
 <use  "Thm_3_13.png" >
-Overfull \hbox (45.53279pt too wide) in paragraph at lines 4688--4689
+Overfull \hbox (45.53279pt too wide) in paragraph at lines 4461--4462
  [][] 
  []
 
-[124] [125]
+[117] [118]
 Requested font "cmtt12" at 12.0pt
- [126]
+ [119]
 File: lowerbound.png Graphic file (type QTm)
- <use  "lowerbound.png" > [127]
-Overfull \hbox (7.93016pt too wide) in alignment at lines 4851--4855
+ <use  "lowerbound.png" > [120]
+Overfull \hbox (7.93016pt too wide) in alignment at lines 4624--4628
  [][][] []
  []
 
-[128] (apostol.bbl) [129] [130]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 4932.
+[121] (apostol.bbl) [122] [123]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 4705.
  (apostol.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 4932.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 4932.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 4705.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 4705.
  ) 
 Here is how much of TeX's memory you used:
  13348 strings out of 428755
  183915 string characters out of 3166785
- 295659 words of memory out of 3000000
+ 295463 words of memory out of 3000000
  16559 multiletter control sequences out of 15000+200000
  17030 words of font info for 63 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
  36i,18n,38p,1045b,459s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on apostol.pdf (130 pages).
+Output written on apostol.pdf (123 pages).
