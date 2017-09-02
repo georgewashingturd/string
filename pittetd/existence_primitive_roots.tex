@@ -256,6 +256,8 @@ To achieve our goal of counting primitive roots we need the following well known
 %
 \item Next, the fact that $\mathbb{Z}/p\mathbb{Z}$ is a field as shown in Exercise 2.12 of ent.pdf.
 %
+\item Chinese Remainder Theorem and its useful cousin Chinese Remainder Map.
+%
 \item Lastly using an application of Proposition 2.5.5 of ent.pdf which states that for each divisor $d|(p-1)$, the polynomial of degree $d$ has exactly $d$ roots in $\mathbb{Z}/p\mathbb{Z}$.
 %
 \item And of course all other good stuffs from elementary number theory, like the Euler Totient function $\varphi(n)$, Fermat's Little Theorem, order of an element of $\mathbb{Z}/n\mathbb{Z}$, etc.
@@ -328,7 +330,7 @@ q_1^{a_1}q_2^{a_2}q_3^{a_3} &&  - q_1^{a_1}q_2^{a_2}q_3^{a_3-1} - q_1^{a_1}q_2^{
 %
 which is just $(q_1^{a_1} - q_1^{a_1-1})(q_2^{a_2}-q_2^{a_2-1})(q_3^{a_3} - q_3^{a_3-1}) =\varphi(q_1^{a_1}q_2^{a_2}q_3^{a_3}) = \varphi(\varphi(n))$. Note that we don't need to mess with other divisors of $\varphi(n)$ because for example the roots of $x^s - 1$ are already covered by the roots of $x^t - 1$ as long as $s|t$.
 
-So the generic strategy is to start with $\varphi(n)$ roots, express $\varphi(n)$ in terms of its primal constituents and then start removing the roots of the next highest divisor of $\varphi(n)$ and then take care of all the double counting until there's no more over counting and stop. We will then proceed through induction to prove it for any prime $n$.
+So the generic strategy is to start with $\varphi(n)$ roots, express $\varphi(n)$ in terms of its primal constituents and then start removing the roots of the next highest divisor of $\varphi(n)$ and then take care of all the double counting until there's no more over counting and stop. This pattern persists for a generic prime $n$.
 
 Since $\varphi(\varphi(n))$ can never be zero and as long as $n$ is prime, we have also not only proven that there are always primitive roots modulo a prime $p$ but also how many there are.
 
@@ -618,7 +620,7 @@ but when extending the roots $a^y \equiv 1 \pmod{p}$ to mod $p^{\alpha-\beta}$ t
 \underline{\textbf{\textit{The Case of $2p^\alpha$}}}
 \bigskip
 
-For $2p^\alpha$ we can repeat the whole process again or we can just utilize the following fact 
+For $2p^\alpha$ we can repeat the whole process again (although we have to first show that there are unique roots modulo $2p$ and then extend it to mod $2p^\alpha$, this will be discussed later) or we can just utilize the following fact 
 
 {\bf Proposition E.4}. If the order of $x$ modulo $a$ is $o_a$ and the order of $x$ mod $b$ is $o_b$ and $\gcd(a,b) = 1$ then the order of $x$ mod $ab$ is lcm$(o_a,o_b)$.
 
@@ -710,13 +712,164 @@ Thus except for $2, 4, p^\alpha$ and $2p^\alpha$, there is no primitive roots si
 
 We have shown a method to prove the existence of primitive roots by counting their exact number through simple root counting of $x^\varphi(p) \equiv 1$ defined on $\mathbb{Z}/p\mathbb{Z}$, primitive roots are therefore the roots of aforementioned polynomial that are not roots of $x^d \equiv 1 \pmod{p}$ where $d|\varphi(p)$, special cases must be handled for odd primes $p^\alpha$ and $2^\alpha$, other cases can be derived from these. The conclusion is that only numbers of the form $2, 4, p, p^\alpha, 2p^\alpha$ have primitive roots.
 
+\bigskip
+\underline{\textbf{\textit{Some Afterthoughts}}}
+\bigskip
+
+The key ingredient here is of course the fact that a polynomial of degree $f$ over a field has only at most $f$ roots. Why doesn't it work for other cases? For one thing, if $\mathbb{Z}/n\mathbb{Z}$ is not a field, it implies that $n$ is composite. Take for example $x^2 \equiv 1 \pmod{15}$, there are actually four roots because the roots correspond to the Chinese Remainder map (see Shoup's book), they are
+%
+\nbea
+x & \equiv & \pm 1 \pmod{3} \\
+x & \equiv & \pm 1 \pmod{5} 
+\neea
+%
+What happens if we restrict our polynomial to the unit group, $(\mathbb{Z}/n\mathbb{Z})^*$, instead? Well, for one thing the unit group doesn't have 0, so we can't set our polynomial to 0, fine, let's append 0 to the unit group, will that work? Using the same example above, it will still not work because $1$ is obviously co-prime to 3 and 5 and 15, thus the four $x$'s will still be co-prime to 15 and they are all roots.
+
+So any odd composite number won't work, how about special cases like $p^\alpha$? Using our extension mechanism above we can show that a polynomial over $\mathbb{Z}/p^\alpha\mathbb{Z}$. Say we have a root $a$ on a polynomial of degree $f$ modulo $p$
+%
+\nbea
+\sum_{i = 0}^f c_i x^i, ~~~~~ c_f \not\equiv 0
+\neea
+%
+Let's do it one term at a time ($j > 0$)
+%
+\nbea
+(a + np)^j & = & a^j + \sum_{k=1}^{j} \binom{j}{k} a^{j-k}(np)^k \\
+& \equiv & a^j + ja^{j-1}np \pmod{p^2}
+\neea
+%
+so
+%
+\nbea
+\sum_{i = 0}^f c_i a^i & = & \sum_{i = 0}^f c_i (a^i + ia^{i-1}np) \pmod{p^2} \\
+& = & \sum_{i = 0}^f c_i a^i + \sum_{i = 1}^f c_i~ i~ a^{i-1}np \pmod{p^2} \\
+& = & wp + \sum_{i = 1}^f c_i~ i~ a^{i-1}np \pmod{p^2}
+\neea
+%
+we want the whole thing to be $\equiv 0 \pmod{p^2}$
+%
+\nbea
+w\bcancel{p} + \sum_{i = 1}^f c_i~ i~ a^{i-1}n\bcancel{p} & \equiv & 0 \pmod{p^{\bcancel{2}}} \\
+\sum_{i = 1}^f c_i~ i~ a^{i-1}n & \equiv & -w \pmod{p} \\
+n \cdot s & \equiv & -w \pmod{p} ~~~~~~~ s = \sum_{i = 1}^f c_i~ i~ a^{i-1}
+\neea
+%
+Note that this is also true going from mod $p^n$ to $p^{n+1}$, as we will cancel $p^n$ from both sides instead of $p$ i the last step above. There are a few things to consider
+%
+\bit
+%
+\item If $p|w$ but $p\nmid s$ then $n|p$, in this case the root modulo $p^2$, $a'$, is the same as the one modulo $p$, $a$ because then $a' = a + p^2t$ and we want $a' < p^2$.
+%
+\item If $p\nmid w$ but $p\nmid s$ then there is a unique $n$ and therefore there is only one root modulo $p^2$ corresponding to a root modulo $p$
+%
+\item If $p\nmid w$ but $p|s$ then there is no solution for $n$ but this only means that there are less roots modulo $p^2$ compared to those of modulo $p$.
+%
+\item If $p|w$ but $p|s$ then $n$ can be anything but that also means that any $a' = a + np$ will be a root modulo $p^2$, this means that there are $p$ new roots $a'$ associated with the root $a$ mod $p$.
+%
+\eit
+%
+So as long as $p\nmid w$ or $p\nmid s$ we are good but looking closely, $s$ is just the derivative of the polynomial, so 
+
+{\bf Proposition E.5}. For a polynomial of degree $f$ over a ring $\mathbb{Z}/p^\alpha\mathbb{Z}$, there are at most $f$ roots as long as the derivative of that polynomial has no roots other than zero mod $p$ or the roots modulo $p$ are not roots modulo $p^2$.
+
+And for our case $x^d - 1 \equiv 0$, the derivative is just $d x^{d-1} \equiv 0$ and so the derivative is only zero if $x \equiv 0$ and thankfully that cannot be the case so using this method we could've proven the case of $p^\alpha$ rather quickly.
 
 
+\bigskip
+\underline{\textit{\textbf{Extending Roots from $p$ to $2p$}}}
+\bigskip
 
+So how do we extend the roots of $x^d \equiv 1 \pmod{p}$ to modulo $2p$? Well, for one thing if we have roots $x^d \equiv 1 \pmod{2p}$ then it is also true that each root satisfies
+%
+\nbea
+x^d & \equiv & 1 \pmod{2} \\
+x^d & \equiv & 1 \pmod{p}
+\neea
+%
+from the first congruence it is guaranteed to be odd and from the second congruence the root mod $2p$ must also be a root modulo $p$. Say $a$ is a root modulo $p$ so by default $a < p$. If $a$ is even the root modulo $2p$ must then be of the form $a + p$ because, one it has to be odd and two it must be less than $2p$. If $a$ is already odd then $a$ is also a root modulo $2p$. 
 
+The important question now is whether $a$ is also a root of $x^d \equiv 1 \pmod{2p}$, just because $a^d$ satisfy the above two congruences does it mean that $a^d \equiv 1 \pmod{2p}$? The answer is yes as it is guaranteed by the Chinese Remainder Map.
 
+Here's how it works. Say we have a system of congruences (for simplicity assume there are only 2)
+%
+\nbea
+y & \equiv & c_1 \pmod{p_1} \\
+y & \equiv & c_2 \pmod{p_2}
+\neea
+%
+Chinese Remainder Theorem guarantees that there is such a unique $y \equiv c \pmod{p_1p_2}$. Let's exponentiate $y \to y^u \equiv c^u \pmod{p_1p_2}$, then the congruences we have above become
+%
+\nbea
+y^u & \equiv & c_1^u \pmod{p_1} \\
+y^u & \equiv & c^u_2 \pmod{p_2}
+\neea
+%
+but again, Chinese Remainder Theorem guarantees that solving $c_1^u \pmod{p_1}$ and $c^u_2 \pmod{p_2}$ generates a unique solution modulo $p_1p_2$. Therefore this solution must be the same as $c^u$ since expressing $c^u$ in terms of $\pmod{p_1}$ and $\pmod{p_2}$ generate the same exact congruences. This is called the Chinese Remainder Map, see Shoup's book for more details. But we are not done, for our case of $x^d \equiv 1 \pmod{2p}$ we have to show $c^u \equiv 1 \pmod{2p}$, lucky for us, $c_1^u \equiv 1 \pmod{2}$ and $c_2^u \equiv 1 \pmod{p}$ and we know that if we have a system of congruences
+%
+\nbea
+x & \equiv & k \pmod{h_1} \\
+x & \equiv & k \pmod{h_2} \\
+& \vdots & \\
+x & \equiv & k \pmod{h_m}
+\neea
+%
+then $x$ is given by $x \equiv k \pmod{h_1h_2\cdots h_m}$. Therefore $c^u \equiv 1 \pmod{2p}$ and Chinese Remainder Map guarantees that the solution mod $p$ is also a solution mod $2p$.
 
+Therefore the roots of $x^d \equiv 1 \pmod{2p}$ are given by
+%
+\nbea
+x & = & \left \{
+\begin{array}{l l}
+a & ~~~~~~~ {\rm if~} a ~{\rm is~ odd} \\
+a + p & ~~~~~~~ {\rm if~} a~ {\rm is~ even}
+\end{array}
+\right.
+\neea
+%
+where $a$ is a root of $x^d \equiv 1 \pmod{p}$ and $a < p$. What this means is that every root modulo $p$ is mapped uniquely to a root modulo $2p$. Can there be any other roots? No because any root modulo $2p$ must be a root modulo $p$ and we have shown above that the extension to mod $2p$ is unique.
 
+The awesome thing about the Chinese Remainder Map is that it works not only for multiplication (exponentiation is just a repeated multiplications) but also for addition (well, multiplication is just repeated additions). Therefore, if we have a polynomial of order $f$, $P_f(x)$ modulo $p$ and $a$ is a root mod $p$ then by the construction above we can extend it to mod $2p$, but instead of $1 \pmod{2}$ we get $c_0 \pmod{2}$ for the condition where $c_0$ is the coefficient of $x^0$ in $P_f(x)$
+%
+\nbea
+x & = & \left \{
+\begin{array}{l l}
+a & ~~~~~~~ {\rm if~} a ~{\rm has~ the~same~parity~as~} -c_0 \\
+a + p & ~~~~~~~ {\rm if~} a~ {\rm has~the~opposite~parity~of~} -c_0
+\end{array}
+\right.
+\neea
+%
+Because we extend the roots mod $p$ to mod $2p$ uniquely, just like Proposition E.5, we have
+
+{\bf Proposition E.5.1} as long as the derivative doesn't have a root other than 0 modulo $p$ or the roots mod $p$ are not root modulo $p^2$, a polynomial of degree $f$ modulo $2p^\alpha$ has at most $f$ roots.
+
+Why doesn't it work for $2^\beta p^\alpha$? For mod $2^\beta p^\alpha$, we can have more roots than the degree of the polynomial, this is because we can extend the roots from $2p \to 4p \to \dots$. Once we have the roots mod $2p$, we just need to add $2p$ to this root to get another root, and it is also a root, again, guaranteed by the Chinese Remainder Map, say we have a root, $a + p$, mod $2p$ we set up the following system of congruences
+%
+\nbea
+x & \equiv & a + p + 2p \pmod{4} \\
+x & \equiv & a + p + 2p \pmod{p}
+\neea
+%
+which gives us $x = a + p + 2p$ as a solution modulo $4p$ since it is less than $4p$, putting this into the polynomial we get
+%
+\nbea
+P_f(x) - c_0 & \equiv & -c_0 \pmod{4} \\
+P_f(x) - c_0 & \equiv & -c_0 \pmod{p}
+\neea
+%
+and by the Chinese Remainder Map as explained above it must be a solution modulo $4p$.
+
+Let's see it with a concrete example, $x^2 \equiv 1 \pmod{3}$. Extending it from $3 \to 2\cdot 3$, we see that the roots mod 3 are $1$ and $2$. Here, $c_0$ is odd, so $1 \to 1$ and $2 \to 2+3 = 5$ and the roots mod $2\cdot 3$ are 1 and 5. If we now go from $2\cdot 3 \to 4\cdot 3$, we just need to add $2\cdot 3$ to 1 and 5, so the roots mod $4\cdot 3$ are $1, 5, 7, 11$, they are all roots because they satisfy the congruences mod $p$ and mod $4$ and by the help of our Chinese friend they are also roots mod $4p$.
+
+{\bf Proposition E.6}. We can use this as a generic strategy to find roots of polynomial over a generic ring $\mathbb{Z}/n\mathbb{Z}$, write $n$ in terms of its primal constituents 
+%
+\nbea
+n & = & 2^\beta \prod_m q_m^{\alpha_m}
+\neea
+%
+and the we find the roots over each {\it odd} prime ring, $\mathbb{Z}/q_m\mathbb{Z}$, we extend the roots from $q \to q^{\alpha}$ for each $q$, once we have all this we just use Chinese Remainder Theorem to get the combined solution modulo $\prod_m q_m^{\alpha_m}$. If we have a factor of $2^\beta$ we then extend the roots to modulo $2\prod_m q_m^{\alpha_m}$ by sufficiently adding $\prod_m q_m^{\alpha_m}$ depending on the parity of $-c_0$, once we've done this we add more roots by adding $2\prod_m q_m^{\alpha_m}$ followed by adding $2^2\prod_m q_m^{\alpha_m}$ and so on until we add $2^{\beta-1}\prod_m q_m^{\alpha_m}$.
+
+So if there are $k$ roots modulo $\prod_m q_m^{\alpha_m}$ there will be $2^{\beta-1} k$ roots modulo $2\prod_m q_m^{\alpha_m}$.
 
 
 
