@@ -774,6 +774,21 @@ So as long as $p\nmid w$ or $p\nmid s$ we are good but looking closely, $s$ is j
 
 And for our case $x^d - 1 \equiv 0$, the derivative is just $d x^{d-1} \equiv 0$ and so the derivative is only zero if $x \equiv 0$ and thankfully that cannot be the case so using this method we could've proven the case of $p^\alpha$ rather quickly.
 
+For other cases where $p\nmid s$ we get the following roots when going from $p^m \to p^{m+1}$
+%
+\nbea
+w\bcancel{p^m} + \sum_{i = 1}^f c_i~ i~ a^{i-1}n\bcancel{p^m} & \equiv & 0 \pmod{p^{\bcancel{m}+1}} \\
+\to n \cdot s & \equiv & -w \pmod{p} ~~~~~~~ s = \sum_{i = 1}^f c_i~ i~ a^{i-1}
+\neea
+%
+so say the root modulo $p$ is $a_1$, the corresponding root modulo $p^2$, $a_2 = a_1 + np$, subsequently the root modulo $p^3$ is $a_3 = a_2 + np^2$, and so on, note that the $n$ is the same for all powers of $p$. Thus the root modulo $p^\alpha$ is given by
+%
+\nbea
+a_\alpha & = & a_1 + np + np^2 + np^3 + \cdots + np^{\alpha-1} \\
+& = & a_1 + n(p + p^2 + \cdots + p^{\alpha-1}) \\
+& = & a_1 + np ~ \frac{p^{\alpha-1} - 1}{p-1}
+\neea
+%
 
 \bigskip
 \underline{\textit{\textbf{Extending Roots from $p$ to $2p$}}}
@@ -867,7 +882,13 @@ Let's see it with a concrete example, $x^2 \equiv 1 \pmod{3}$. Extending it from
 n & = & 2^\beta \prod_m q_m^{\alpha_m}
 \neea
 %
-and the we find the roots over each {\it odd} prime ring, $\mathbb{Z}/q_m\mathbb{Z}$, we extend the roots from $q \to q^{\alpha}$ for each $q$, once we have all this we just use Chinese Remainder Theorem to get the combined solution modulo $\prod_m q_m^{\alpha_m}$. If we have a factor of $2^\beta$ we then extend the roots to modulo $2\prod_m q_m^{\alpha_m}$ by sufficiently adding $\prod_m q_m^{\alpha_m}$ depending on the parity of $-c_0$, once we've done this we add more roots by adding $2\prod_m q_m^{\alpha_m}$ followed by adding $2^2\prod_m q_m^{\alpha_m}$ and so on until we add $2^{\beta-1}\prod_m q_m^{\alpha_m}$.
+and the we find the roots over each {\it odd} prime ring, $\mathbb{Z}/q_m\mathbb{Z}$, we extend the roots from $q \to q^{\alpha}$ for each $q$, using the formula stated above,
+%
+\nbea
+a_\alpha & = & a_1 + nq ~ \frac{q^{\alpha-1} - 1}{q-1}
+\neea
+%
+once we have all this we just use Chinese Remainder Theorem to get the combined solution modulo $\prod_m q_m^{\alpha_m}$. If we have a factor of $2^\beta$ we then extend the roots to modulo $2\prod_m q_m^{\alpha_m}$ by sufficiently adding $\prod_m q_m^{\alpha_m}$ depending on the parity of $-c_0$, once we've done this we add more roots by adding $2\prod_m q_m^{\alpha_m}$ followed by adding $2^2\prod_m q_m^{\alpha_m}$ and so on until we add $2^{\beta-1}\prod_m q_m^{\alpha_m}$.
 
 So if there are $k$ roots modulo $\prod_m q_m^{\alpha_m}$ there will be $2^{\beta-1} k$ roots modulo $2\prod_m q_m^{\alpha_m}$.
 
