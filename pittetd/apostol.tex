@@ -1909,7 +1909,17 @@ so here we see why the different decomposition, the thing is that we want to max
 
 It is also symmetric under reflection w.r.t $x$ or $y$ or $x$ followed by $y$ or vice versa but not under rotation, maybe under boost? \dunno although I'm not sure if these symmetries will bring about any new information about the Euler totient function or any other arithmetical functions ...
 
-{\bf Page 65}, Theorem 3.10, let's recap some definitions, the asterisk product is defnied as
+{\bf Page 63}, Proof of Theorem 3.9, last second equation,
+%
+\nbea
+N'(r) & = & 8 + 8\sum_{2 \le n \le r}\sum_{\substack{1 \le m < n \\ (m,n) = 1}} 1 \\
+& = & 8 + 8\sum_{2 \le n \le r}\left (\varphi(n) \right ) \\
+& = & 8 \left ( 1 + \sum_{2 \le n \le r}\varphi(n) \right ) = \sum_{1 \le n \le r}\varphi(n)
+\neea
+%
+Note that $\sum_{\substack{1 \le m < n \\ (m,n) = 1}} 1 = \varphi(n)$ and $1 = \varphi(1)$ and this is why we need to split the nearest 8 points, for one thing these 8 points are shared by the different regions.
+
+{\bf Page 65}, Theorem 3.10, let's recap some definitions, the asterisk product is defined as
 %
 \nbea
 (f * g)(n) & = & \sum_{d|n} f(d) g\left(\frac{n}{d}\right)
@@ -3278,6 +3288,83 @@ b_1 & = & -\frac{x_2y_1-x_1y_2}{x_1-x_2} & ~~~~~~~ & b_2 & = & -\frac{x_2y_1-x_1
 %
 so we have two same exact lines, moral of the story is since each line has two constants and there are two points these two constant unknowns ($(a_1,b_1)$ for line 1 and $(a_2,b_2)$ for line 2) are uniquely determined by the two points, so the two lines have the same coefficients and therefore the same. The situation is the same for higher order polynomials we will just have more unknowns with the corresponding more equations.
 
+{\bf Problem 8.1}, Show that 
+%
+\nbea
+\sum_{k=1}^{n-1}kx^k & = & \frac{n}{x-1}
+\neea
+%
+where $x = e^{2\pi i / n}$.
+
+My first gut feeling is to use derivative :) start with the geometric series
+%
+\nbea
+\sum_{k=1}^{n-1} x^k & = & \frac{x^n-x}{x-1} \\
+\to x \times \frac{d}{dx} \left ( \sum_{k=1}^{n-1} x^k\right ) = \sum_{k=1}^{n-1}kx^k & = & x \times \frac{(nx^{n-1}-1)(x-1) - (x^n-x)}{(x-1)^2} \\
+& = & x \times \left ( \frac{(nx^{n-1}-1)}{(x-1)} - \frac{(x^n-x)}{(x-1)^2} \right )
+\neea
+%
+at this point we need to resist the temptation to algebraically manipulate the numerator, instead we notice the following. Since $\sum_{k=1}^{n} x^k = 0$
+%
+\nbea
+\sum_{k=1}^{n-1} x^k & = & -e^{2\pi i n/n} = -1
+\neea
+%
+thus 
+%
+\nbea
+\frac{(x^n-x)}{(x-1)^2} & = & \frac{\sum_{k=1}^{n-1} x^k }{x-1} = -\frac{1}{x-1}
+\neea
+%
+and
+%
+\nbea
+\frac{(nx^{n-1}-1)}{(x-1)} & = & \frac{(nx^{n-1}-n + n - 1)}{(x-1)} \\
+& = & \frac{(nx^{n}-nx)/x + (n-1)}{(x-1)} \\
+& = & \frac{n(x^{n}-x)}{x(x-1)} + \frac{n-1}{(x-1)} \\
+& = & -\frac{n}{x} + \frac{n-1}{x-1}
+\neea
+%
+combining the two we get
+%
+\nbea
+\frac{(nx^{n-1}-1)}{(x-1)} - \frac{(x^n-x)}{(x-1)^2} & = & -\frac{n}{x} + \frac{n-1}{x-1} + \frac{1}{x-1} \\
+& = & -\frac{n}{x} + \frac{n}{x-1} \\
+\to x \times \left (\frac{(nx^{n-1}-1)}{(x-1)} - \frac{(x^n-x)}{(x-1)^2} \right ) & = & -n + \frac{nx}{x-1} \\
+& = & \frac{n}{x-1}
+\neea
+%
+
+{\bf Problem 8.2}, define $(x)^* = x - [x] - \frac{1}{2}$ if $x$ is not an integer and $(x)^* = 0$ otherwise, show that
+%
+\nbea
+\left ( \frac{k}{n} \right )^* & = & -\frac{1}{2n} \sum_{m=1}^{n-1} \cot\frac{\pi m}{n} \sin \frac{2\pi k m}{n}
+\neea
+%
+
+%
+\nbea
+\cot\frac{\pi m}{n} \sin \frac{2\pi k m}{n} & = & \cos\frac{\pi m}{n} ~ \frac{\sin 2\pi k m/n}{\sin\pi m/n} \\
+& = & \frac{1}{2}(e^{\pi i m/n} + e^{-\pi i m/n}) ~ \frac{e^{2\pi i km/n} - e^{-2\pi i km/n}}{e^{\pi i m/n} - e^{-\pi i m/n}}
+\neea
+%
+
+Let $y = e^{2\pi i km/n}$ and $z = e^{\pi i m/n}$, so $y = z^{2k}$, so we have
+%
+\nbea
+\frac{1}{2}\cancel{z^{-1}}(z^2 + 1) \frac{z^{-2k}(z^{4k} - 1)}{\cancel{z^{-1}}(z^2 - 1)} & = & \frac{1}{2}(z^2 + 1) \frac{z^{-2k}(z^{4k} - 1)}{(z^2 - 1)}
+\neea
+%
+Let $w = z^2 = e^{2\pi i m/n}$
+%
+\nbea
+\frac{1}{2}(w + 1) w^{-k} \frac{w^{2k} - 1}{w-1} & = & \frac{1}{2}(w+1) w^{-k} \sum_{t=0}^{2k - 1} w^t
+\neea
+%
+
+
+
+
 \bigskip
 \underline{\textbf{\textit{Chapter 9}}}
 \bigskip
@@ -3766,7 +3853,7 @@ let $\frac{\varphi(n)}{d} = k$ such that $\varphi(n) = d\cdot k$ so
 %
 this will work for $r = lk$ where $\gcd(l,d) = 1$ and since $r \le \varphi(n)$ this means that $l < d$, this also means that there are $\varphi(d)$ such $r$. Of course here we have assumed that there is a primitive root to begin with. But we will take care of that below.
 
-\textbf{\textit{*}}\underline{\textit{\textbf {Parental Advisory, Explicit Content}}}\textbf{\textit{*}}
+*\hspace{0.5mm}\underline{\textit{\textbf {Parental Advisory, Explicit Content}}}\hspace{0.7mm}*
 
 I initially included the derivation of existence and multitude of primitive roots through root counting here but it got too involved so I separated it into another document.
 
@@ -3874,6 +3961,71 @@ and of course $\pmod{\varphi(m)}$ because the order (or here in this book it's c
 {\bf Page 214}, application of index calculus to Linear congruences, I feel that this is cumbersome because there's no easy way to calculate the index of a number, you need a table for this, the alternative is of course to find the inverse of $a$, which requires you to calculate $\varphi(m)$ multiplication but building the table of indices is a lot more work ~~~\dunno
 
 
+{\bf Page 222}, right before the exercises, ``Moreover, by Exercise 8.12, $\chi$ is primitive mod $k$ if, and only if, each $\chi_i$ is primitive mod $p_1^{\alpha_i}$.'' To solve Exercise 8.12, as the hint suggests we use Theorem 8.19. The key ingredient is that
+%
+\nbea
+G(n,\chi^{p_1})G(n,\chi^{p_2}) & = & \sum_{m_1~{\rm mod}~p_1}\chi^{p_1}(m_1) e^{2\pi i nm_1/p_1}\sum_{m_2~{\rm mod}~p_2} \chi^{p_2}(m_2)e^{2\pi i n m_2/p_2} \\
+& = & \sum_{m_1}\sum_{m_2} \chi^{p_1}(m_1)\chi^{p_2}(m_2) e^{2 \pi i n(p_2m_1 + p_1 m_2)/p_1p_2} \\
+& = & \sum_{m_1}\sum_{m_2} \chi^{p_1}(m_1)\chi^{p_2}(m_2) e^{2 \pi i n(p_2m_1 + p_1 m_2 + tp_1p_2)/p_1p_2}
+\neea
+%
+There are $p_1 \times p_2$ in the double sum, and from Chinese Remainder Theorem we know that if we set up the following congruences
+%
+\nbea
+x & \equiv & p_2m_1 + p_1 m_2 \pmod{p_1} \\
+x & \equiv & p_2m_1 + p_1 m_2 \pmod{p_2}
+\neea
+%
+we will get the following solution
+%
+\nbea
+x & = & p_2m_1 + p_1 m_2 + tp_1p_2
+\neea
+%
+and it is unique modulo $p_1p_2$. Any other choice of $m_1, m_2$ will generate a different solution for $x$ modulo $p_1p_2$, why? Say we have another solution $y = p_2m_3 + p_1 m_4 + t'p_1p_2$ that are congruent to the above then
+%
+\nbea
+y & \equiv & p_2m_3 + p_1 m_4 \equiv p_2 m_3 \pmod{p_1} \\
+y & \equiv & p_2m_3 + p_1 m_4 \equiv p_1 m_4 \pmod{p_2}
+\neea
+%
+while for $x$ we have
+%
+\nbea
+x & \equiv & p_2m_1 + p_1 m_2 \equiv p_2 m_1 \pmod{p_1} \\
+x & \equiv & p_2m_1 + p_1 m_2 \equiv p_1 m_2 \pmod{p_2}
+\neea
+%
+but if $x \equiv y$ then $m_1 \equiv m_3 \pmod{p_1}$ and $m_2 \equiv m_4 \pmod{p_2}$ (we can cancel $p_1$ and $p_2$ respectively from both sides of the congruences because $(p_1,p_2) = 1$) so we cover all unique values modulo $p_1 p_2$, therefore
+%
+\nbea
+G(n,\chi^{p_1})G(n,\chi^{p_2}) & = & \sum_{m_1}\sum_{m_2} \chi^{p_1}(m_1)\chi^{p_2}(m_2) e^{2 \pi i n(p_2m_1 + p_1 m_2 + tp_1p_2)/p_1p_2} \\
+& = & \sum_{m ~{\rm mod}~ p_1p_2} \chi^{p_1}(m)\chi^{p_2}(m) e^{2 \pi i nm/p_1p_2} \\
+& = & \sum_{m ~{\rm mod}~ p_1p_2} \chi^{p_1p_2}(m) e^{2 \pi i nm/p_1p_2} \\
+& = & G(n, \chi^{p_1p_2})
+\neea
+%
+we can combine the Dirichlet characters thanks again to our Chinese brethren :) since each character is periodic under $p_i$
+%
+\nbea
+\chi^{p_i}(m) & = & \chi^{p_i}(m {\rm~mod~} p_i) \\
+& = & \chi^{p_i}(m_i)
+\neea
+%
+
+$\chi^{p_i}(m) = \chi(m_i)$
+
+$m_i \equiv m \pmod{p_i}$ $m_i \equiv 1 \pmod{p_j}$
+
+We can repeat the process if we have another co-prime factor say $p_3$ and so on. What this means is that
+%
+\nbea
+G(n, \chi^{p_1p_2 \dots p_z}) & = & G(n, \chi^{p_1})G(n, \chi^{p_2}) \dots G(n, \chi^{p_z})
+\neea
+%
+where all the $p_i$'s are co-prime to one another (not necessarily prime numbers). It's also clear that if we only have the sum without the Dirichlet characters, a product of two of those is equal to just one sum of modulo $p_1p_2$.
+
+Now, Theorem 8.19 says that $\chi$ is primitive if and only if $G(n,\chi)$ is separable for every $n$. From the construction above it's immediately clear that if $G(n, \chi^{p_1p_2 \dots p_z})$ is separable then every single $G(n, \chi^{p_i})$ is as well and vice versa.
 
 
 -=-=-=-=-=-=-=-=-=-=-= Review of Proofs  =-=-=-=-=-=-=-=-=-=-=-
