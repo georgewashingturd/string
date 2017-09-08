@@ -3341,21 +3341,118 @@ combining the two we get
 \left ( \frac{k}{n} \right )^* & = & -\frac{1}{2n} \sum_{m=1}^{n-1} \cot\frac{\pi m}{n} \sin \frac{2\pi k m}{n}
 \neea
 %
+I changed the notation slightly from $(())$ to $()^*$ to avoid clutter. I tried different approaches to this problem and the one that worked was the following (I'll discuss my failed attempts later).
 
+If you look at the problem long enough you'll see that it gives you a hint in the overall factor of $-\frac{1}{2n}$. The role of the floor $[x]$ is to make sure the thing repeats mod $n$, so if we have a fraction $k/n$ we just need to concern ourselves with cases of $k < n$.
+
+With this in mind what we have now is
 %
 \nbea
-\left ( \frac{k}{n} \right )^* & = & -\frac{1}{2n} \sum_{m=1}^{3-1} \cot\frac{\pi m}{3} \sin \frac{2\pi m}{3} \\
-& = & -\frac{1}{6} \left ( \cot\frac{\pi}{3} \sin \frac{2\pi}{3} + \cot\frac{2\pi}{3} \sin \frac{2\pi 2}{3} \right ) \\
+\left(\frac{k}{n}\right)^* & = & -\frac{n - 2k}{2n}
 \neea
 %
+this means that the sum should be
+%
+\nbea
+\sum_{m=1}^{n-1} \cot\frac{\pi m}{n} \sin \frac{2\pi k m}{n} & = & n-2k
+\neea
+%
+and this is what we need to prove. And we'll use induction :) again, I tried other methods but they didn't work.
 
+We start with the induction step and later prove the base cases. And what we need is some trig identities, assuming up to $k$ the above relationship is true, for $k+1$ and for simplicity denote $x = \pi m/n$
+%
+\nbea
+\sum_{m=1}^{n-1} \cot x \sin 2(k+1)x & = & \sum_{m=1}^{n-1} \cot x (\sin 2kx \cos 2x + \sin 2x \cos 2kx) \\
+& = & \sum_{m=1}^{n-1} \cot x \left\{\frac{1}{2}(\sin 2(k+1)x + \sin 2(k-1)x) + (2\sin x\cos x) \cos 2kx\right\} \\
+\frac{1}{2} \sum_{m=1}^{n-1} \cot x \sin 2(k+1)x & = & \frac{1}{2}\sum_{m=1}^{n-1} \cot x \sin 2(k-1)x + \sum_{m=1}^{n-1} (2\cos^2 x) \cos 2kx \\
+\sum_{m=1}^{n-1} \cot x \sin 2(k+1)x & = & \sum_{m=1}^{n-1} \cot x \sin 2(k-1)x + 2\sum_{m=1}^{n-1} (\cos2 x + 1) \cos 2kx
+\neea
+%
+from line 2 to line 3 we have moved a term from RHS to LHS, we now use the inductive hypothesis for the first term in the RHS and more of the same trig identities
+%
+\nbea
+\sum_{m=1}^{n-1} \cot x \sin 2(k+1)x & = & n - 2(k-1) + 2\sum_{m=1}^{n-1} (\cos2 x\cos 2kx + \cos 2kx) \\
+& = & n - 2(k-1) + \sum_{m=1}^{n-1} \left\{(\cos2(k+1)x + \cos 2(k-1)x) + 2\cos 2kx\right\}
+\neea
+%
+at this point we need to take a pause and transform the $\cos$ into $\Re{(e^{ix})}$, but before that, we know that $k < n$ but if $k = n-1$ then $k+1 = n$ then 
+%
+\nbea
+\cos2(k+1)x & = & \cos 2nx \\
+& = & \cos 2\pi m \\
+& = & 1
+\neea
+%
+the same happens when $k = 1$, $\cos2(k-1)x = 1$ but we need not care about this, if $k+1 = n$ the whole sum is zero due to $\sin 2\pi nm/n = 0$ and $k=1,2$ will be our base case that will be proven later, so for now assume that $k \neq 1$ and $k + 1 \neq n$ and also $k \neq 2$ because the first term on the RHS $n - 2(k-1)$ so we need two base cases at least, so
+%
+\nbea
+\sum_{m=1}^{n-1} \cos2(k+1)x \to \sum_{m=1}^{n-1} e^{2\pi i (k+1)m/n} & = & -1
+\neea
+%
+since $n\nmid (k+1)$ and the total sum $\sum_{m=1}^n$ is zero (and it's already a real number) the same goes with the other two cosines and so
+%
+\nbea
+\sum_{m=1}^{n-1} \cot x \sin 2(k+1)x & = & n - 2(k-1) - 4 \\
+& = & n - 2(k+1) 
+\neea
+%
+which is what we want, but we are not done, we still need to prove the base cases $k = 1,2$, start with $k=2$ first, we can actually reuse what we did above by setting $k = 1$ so that $k+1 = 2$
+%
+\nbea
+\sum_{m=1}^{n-1} \cot x \sin 2\cdot2x & = & \sum_{m=1}^{n-1} \cot x ~\bcancel{\sin 2(1-1)x} + 2\sum_{m=1}^{n-1} (\cos2 x + 1) \cos 2x \\
+& = & 2\sum_{m=1}^{n-1} (\cos^2 2 x + \cos 2x) \\
+& = & 2\sum_{m=1}^{n-1} \cos^2 2 x + 2\sum_{m=1}^{n-1} \cos 2x = \left(2\sum_{m=1}^{n-1} \cos^2 2 x\right)  - 2
+\neea
+%
+again we use the same trig identities
+%
+\nbea
+2\sum_{m=1}^{n-1} \cos^2 2 x & = & \sum_{m=1}^{n-1} (1 + \cos4x) \\
+& = & n - 1 + \sum_{m=1}^{n-1} \cos4x
+\neea
+%
+we need to find out what this sum is, let's write it as $\cos 4x = \Re\{(e^{2\pi i m/n})^2\}$, let $z = (e^{2\pi i /n})^2$, if we sum all the way to $n$ instead of $n-1$ we have
+%
+\nbea
+\sum_{m=1}^{n} z^m & = & \frac{z^n - 1}{z-1} = 0
+\neea
+%
+we know that $z^n = e^{4\pi i n/n} = 1$ and therefore the sum above is 0, this means that the sum to $n-1$ is just $-1$, therefore
+%
+\nbea
+2\sum_{m=1}^{n-1} \cos^2 2 x & = & n - 1 -1
+\neea
+%
+combining everything
+%
+\nbea
+\sum_{m=1}^{n-1} \cot x \sin 2\cdot2x & = & \sum_{m=1}^{n-1} \cot x ~\bcancel{\sin 2(1-1)x} + 2\sum_{m=1}^{n-1} (\cos2 x + 1) \cos 2x \\
+& = & \left(2\sum_{m=1}^{n-1} \cos^2 2 x\right)  - 2 \\
+& = & \left\{\sum_{m=1}^{n-1} (1 + \cos4x) \right\} -2 \\
+& = & n-2-2 \\
+& = & n-4
+\neea
+%
+so the case of $k=2$ works, the case of $k=1$ is super easy
+%
+\nbea
+\sum_{m=1}^{n-1} \cot x \sin 2x & = & \sum_{m=1}^{n-1} \cot x (2 \sin x \cos x) = \sum_{m=1}^{n-1} 2\cos^2 x   \\
+& = & \sum_{m=1}^{n-1} (\cos 2x + 1) \\
+& = & n - 2
+\neea
+%
+and that's all folks :)
+
+\smallskip
+\underline{\textit{\textbf{failed attempts}}}
+
+My first attempt was as follows
 %
 \nbea
 \cot\frac{\pi m}{n} \sin \frac{2\pi k m}{n} & = & \cos\frac{\pi m}{n} ~ \frac{\sin 2\pi k m/n}{\sin\pi m/n} \\
 & = & \frac{1}{2}(e^{\pi i m/n} + e^{-\pi i m/n}) ~ \frac{e^{2\pi i km/n} - e^{-2\pi i km/n}}{e^{\pi i m/n} - e^{-\pi i m/n}}
 \neea
 %
-
 Let $y = e^{2\pi i km/n}$ and $z = e^{\pi i m/n}$, so $y = z^{2k}$, so we have
 %
 \nbea
@@ -3368,7 +3465,38 @@ Let $w = z^2 = e^{2\pi i m/n}$
 \frac{1}{2}(w + 1) w^{-k} \frac{w^{2k} - 1}{w-1} & = & \frac{1}{2}(w+1) w^{-k} \sum_{t=1}^{2k} w^t
 \neea
 %
+but then I don't know what to do with this ~ \dunno
 
+My second attempt was to utilize the finite Fourier transform but since the LHS $(k/n)^*$ is not an integer, it is not an arithmetical function and finite Fourier function doesn't work, then I thought of just the numerator, the numerator $2k - n$ is periodic modulo $n$ and it is an integer so we can Fourier transform it, calculate all the $a$'s and then massage $\sum a_k e^{2\pi i k/n}$ into $\cot x \sin 2kx$ but again I was too lazy to do it and didn't really see a clear way to do it.
+
+My last attempt was to show the relationship explicitly as follows
+%
+\nbea
+\cot x \sin 2kx & = & \cot x (2 \sin kx \cos kx)
+\neea
+%
+we then repeat the process by splitting the $\sin$ term
+%
+\nbea
+\cot x (2 \sin kx \cos kx) & = & 2 \cot x \cos x (\sin (1 + (k-1))x) \\
+& = & 2 \cot x \cos x (\sin x \cos (k-1)x + \cos x \sin(k-1)x) \\
+& = & 2 \cos^2 x \cos(k-1)x + 2\cot x \cos^2 x\sin(k-1)x 
+\neea
+%
+we can then split the $\sin$ term again $\sin(k-1)x \to \sin(1 + (k-2))x$, the goal is to change $\cot x \to \cos x$, \ie remove the $\sin x$ in the denominator, doing it all the way to $\sin(k-k)x$ we get
+%
+\nbea
+\cot x \sin 2kx & = & \sum_{w=1}^k 2 \cos^w x \cos kx \cos (k-w)x \\
+\to \sum_{m=1}^{n-1}\cot x \sin 2kx & = & \sum_{m=1}^{n-1}\sum_{w=1}^k 2 \cos^w x \cos kx \cos (k-w)x
+\neea
+%
+but it gets complicated with the double sums but wait, there's more, we can explicitly expand $\cos^w$, just substitute $1/2(e^{ix} + e^{-ix})$ and use binomial expansion, we also use the same trig identity to combine the other two cosines to get
+%
+\nbea
+\sum_{m=1}^{n-1} \sum_{w=1}^k \frac{1}{2^w} \sum_{j=0}^{\ceil{w/2}} \binom{w}{j} \left\{ \cos2(w-j)x + \cos 2jx + \cos2(k-j)x + \cos2(k-w-j)x \right \}
+\neea
+%
+so we manage to transform everything to cosines but now it gets too complicated with binomial coefficients and triple sums LOL so at this point I gave up and realized that we could do the induction proof above by noticing that the sum must be of the form $n - 2k$ because the denominator has already been factored out.
 
 
 

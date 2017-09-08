@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  6 SEP 2017 22:31
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  7 SEP 2017 21:39
 entering extended mode
 **C:/Users/User/Documents/GitHub/string/pittetd/apostol.tex
 (C:/Users/User/Documents/GitHub/string/pittetd/apostol.tex
@@ -693,8 +693,14 @@ Overfull \hbox (9.30484pt too wide) in alignment at lines 2712--2716
  []
 
 [71] [72] [73] [74] [75] [76] [77] [78] [79] [80] [81] [82] [83] [84] [85]
-[86] [87] [88] [89] [90] [91] [92] [93] [94] [95] [96] [97] [98] [99] [100]
-Overfull \hbox (2.90027pt too wide) in paragraph at lines 3848--3850
+[86] [87]
+Overfull \hbox (31.0358pt too wide) in alignment at lines 3364--3369
+ [][][] []
+ []
+
+[88] [89] [90] [91] [92] [93] [94] [95] [96] [97] [98] [99] [100] [101]
+[102] [103] [104]
+Overfull \hbox (2.90027pt too wide) in paragraph at lines 3976--3978
 []\OT1/cmr/m/n/12 Now, let $\OML/cmm/m/it/12 d\OMS/cmsy/m/n/12 j\OML/cmm/m/it/1
 2 '\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 n\OT1/cmr/m/n/12 )$, how many of the $\OML
 /cmm/m/it/12 g[]$ \OT1/cmr/m/n/12 have or-der $\OML/cmm/m/it/12 d$\OT1/cmr/m/n/
@@ -704,53 +710,53 @@ OT1/cmr/m/n/12 (\OML/cmm/m/it/12 r; '\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 n\OT1/cm
 r/m/n/12 ))$
  []
 
-[101] [102] [103] [104] [105] [106]
-Overfull \hbox (31.85487pt too wide) in alignment at lines 4067--4072
+[105] [106] [107] [108] [109] [110]
+Overfull \hbox (31.85487pt too wide) in alignment at lines 4195--4200
  [][][] []
  []
 
-[107] [108]
-Overfull \hbox (12.86371pt too wide) in paragraph at lines 4132--4136
+[111] [112]
+Overfull \hbox (12.86371pt too wide) in paragraph at lines 4260--4264
 \OT1/cmr/m/n/12 which is a con-tra-dic-tion since the LHS is zero while the RHS
  is ob-vi-ously not  $[][]\OMS/cmsy/m/n/12 n\OT1/cmr/m/n/12 ([][][]o)\OML/cmm/m
 /it/12 =[]$  \OT1/cmr/m/n/12 apart
  []
 
-[109] [110]
-Overfull \hbox (63.8664pt too wide) in alignment at lines 4241--4245
+[113] [114]
+Overfull \hbox (63.8664pt too wide) in alignment at lines 4369--4373
  [][][] []
  []
 
-[111] [112] [113] [114] [115] [116] [117] [118] [119] [120]
+[115] [116] [117] [118] [119] [120] [121] [122] [123] [124]
 File: Thm_3_13.png Graphic file (type QTm)
 
 <use  "Thm_3_13.png" >
-Overfull \hbox (45.53279pt too wide) in paragraph at lines 4620--4621
+Overfull \hbox (45.53279pt too wide) in paragraph at lines 4748--4749
  [][] 
  []
 
-[121] [122]
+[125] [126]
 Requested font "cmtt12" at 12.0pt
- [123]
+ [127]
 File: lowerbound.png Graphic file (type QTm)
- <use  "lowerbound.png" > [124]
-Overfull \hbox (7.93016pt too wide) in alignment at lines 4783--4787
+ <use  "lowerbound.png" > [128]
+Overfull \hbox (7.93016pt too wide) in alignment at lines 4911--4915
  [][][] []
  []
 
-[125] (apostol.bbl) [126] [127]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 4864.
+[129] (apostol.bbl) [130] [131]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 4992.
  (apostol.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 4864.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 4864.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 4992.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 4992.
  ) 
 Here is how much of TeX's memory you used:
  13349 strings out of 428755
  183925 string characters out of 3166785
- 295575 words of memory out of 3000000
+ 295687 words of memory out of 3000000
  16560 multiletter control sequences out of 15000+200000
  17030 words of font info for 63 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
  36i,18n,38p,1045b,459s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on apostol.pdf (127 pages).
+Output written on apostol.pdf (131 pages).
