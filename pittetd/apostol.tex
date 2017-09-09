@@ -26,6 +26,7 @@
 
 \usepackage{simplewick}
 
+
 \newcommand{\msout}[1]{\text{\sout{\ensuremath{#1}}}}
 
 
@@ -3335,6 +3336,22 @@ combining the two we get
 \neea
 %
 
+\smallskip
+\underline{\textit{\textbf{key ingredients}}}
+\smallskip
+
+Here the key information I had to have to solve the problem was
+\vspace{-\topsep}
+%
+\bit
+\setlength\itemsep{-1.0em}
+\item The derivative trick I learned in those physics classes, this is usually used for $e^x$.
+\item Algebraic manipulation.
+\eit
+%
+\vspace{-\topsep}
+The somewhat tricky thing (once you figure out you need to use derivative) is not to mess with polynomial but to resubstitute the sum. Again, no need to read this book to solve this problem.
+
 {\bf Problem 8.2}, define $(x)^* = x - [x] - \frac{1}{2}$ if $x$ is not an integer and $(x)^* = 0$ otherwise, show that
 %
 \nbea
@@ -3498,6 +3515,24 @@ but it gets complicated with the double sums but wait, there's more, we can expl
 %
 so we manage to transform everything to cosines but now it gets too complicated with binomial coefficients and triple sums LOL so at this point I gave up and realized that we could do the induction proof above by noticing that the sum must be of the form $n - 2k$ because the denominator has already been factored out.
 
+\smallskip
+\underline{\textit{\textbf{key ingredients}}}
+\smallskip
+
+I just had an idea to catalog the information needed to solve a problem, this will be a good way to see how we solve problems, here the ingredients are
+\vspace{-\topsep}
+%
+\bit
+\setlength\itemsep{-0.5em}
+%
+\item Induction
+%
+\item Trig identities
+%
+\eit
+%
+\vspace{-\topsep}
+The tricky thing is what to induce :) but this also means that one need not read this book at all to solve this LOL A more interesting question would be what is the minimum amount of information needed to solve this problem and that I don't know but I think starting from now I'll tabulate the info needed to solve each problem.
 
 
 \bigskip
@@ -4148,6 +4183,8 @@ we can combine the Dirichlet characters thanks again to our Chinese brethren :) 
 \neea
 %
 
+-=-=-=-=-=-=-= NOT DONE YET=-=-=-=-=-=-=-
+
 $\chi^{p_i}(m) = \chi(m_i)$
 
 $m_i \equiv m \pmod{p_i}$ $m_i \equiv 1 \pmod{p_j}$
@@ -4161,6 +4198,41 @@ G(n, \chi^{p_1p_2 \dots p_z}) & = & G(n, \chi^{p_1})G(n, \chi^{p_2}) \dots G(n, 
 where all the $p_i$'s are co-prime to one another (not necessarily prime numbers). It's also clear that if we only have the sum without the Dirichlet characters, a product of two of those is equal to just one sum of modulo $p_1p_2$.
 
 Now, Theorem 8.19 says that $\chi$ is primitive if and only if $G(n,\chi)$ is separable for every $n$. From the construction above it's immediately clear that if $G(n, \chi^{p_1p_2 \dots p_z})$ is separable then every single $G(n, \chi^{p_i})$ is as well and vice versa.
+
+\bigskip
+\underline{\textbf{\textit{Chapter 11}}}
+\bigskip
+
+{\bf Page 225}, top of page, an interesting fact which is any real number exponentiated to the $i^{\rm th}$ power will have a magnitude 1
+%
+\nbea
+n^i & = & e^{i \log n} \\
+\to |e^{i \log n}| & = & 1
+\neea
+%
+
+{\bf Page 226}, Lemma 1, the purpose of this lemma is to transform $F(s)$ to $F(c)$, \ie make the exponent $s$ of $1/n$ into a constant $c$ so that the sum is independent of $s$ and therefore independent of $\sigma$ and $t$.
+
+{\bf Page 227}, proof of Theorem 11.3, the last limit, ``Letting $k\to\infty$ we find $(N/(N+1))^{\sigma_k} \to 0$'' so $h(N) = 0,$ note that we are not taking the limit of $N \to \infty$, here $N$ stays constant, we are taking the exponent to infinity, it's clearer if we rewrite it as
+%
+\nbea
+\left ( \frac{N}{N+1} \right )^{\sigma_k} & = & \left ( \frac{1}{1+1/N} \right )^{\sigma_k}
+\neea
+%
+since the numerator stays 1 while the denominator gets bigger and bigger the ratio will tend to zero.
+
+{\bf Page 227}, Theorem 11.3, note that the sequence $\{s_k\}$ can be {\it any} sequence as long as $\sigma_k\to\infty$ as $k\to\infty$, which means that the real part of $s_k$ gets to infinity, this means we can build any sequence we want, something which will be used in the proof of Theorem 11.4.
+
+{\bf Page 227}, proof of Theorem 11.4, here we use the trick from Theorem 11.3 to build a custom sequence, $s_1$ which has $\sigma_1 > 1$, $s_2$ has $\sigma_2>2$ and so on, the purpose is to make sure $\sigma_k\to\infty$ as $k\to\infty$. We can do this because our assumption is that for every half plane there is, there's always an $s$ such that $F(s) = 0$, so no matter where you shift the boundary of the half plane $\sigma_a$, there's always $\sigma > \sigma_a$ such that $F(s) = 0$. Once we have this we can invoke Theorem 11.3.
+
+For the infinite sequence $\{s_k\}$ constructed above, we have another series that gives the same value $F(s_k) = 0$ for every $s_k$, this series $G(s)$ is of course the one with $g(n) = 0$ but since our sequence meets the standard of Theorem 11.3, $f(n) = g(n)$ for every $n$ and so $f(n) = 0$.
+
+{\bf Page 229}, Example 2, recall that the identity function $I = \floor{1/n}$, so if $n > 1$ it's zero.
+
+{\bf Page 229}, Example 3, this one we need Theorem 2.17, a function $f$ is completely multiplicative if, and only if, $f^{-1}(n) = \mu(n)f(n)$. Next, we use Example 2 where $G(s) = 1/F(s)$
+
+
+
 
 
 -=-=-=-=-=-=-=-=-=-=-= Review of Proofs  =-=-=-=-=-=-=-=-=-=-=-
