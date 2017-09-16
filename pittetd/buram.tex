@@ -247,7 +247,7 @@ See if we can find $k,m > 1$ such that
 (a\pm1)^k & = & a^m \pm 1
 \neea
 %
-where the min of $a \pm 1$ and $a$ is an integer $\ge 2$. There are four cases total but two of them are equivalent
+where the min of $a \pm 1$ and $a$ is an integer $\ge 2$ (the answer is no and we'll see why). There are four cases total but two of them are equivalent
 %
 \nbea
 (a + 1)^k = a^m + 1 & \longleftrightarrow & (a - 1)^k = a^m - 1 \\
@@ -419,7 +419,7 @@ x^k - 1 & = & (x-1)(x^{k-1} + x^{k-2} + \dots + x + 1) \\
 x^k + 1 & = & (x+1)(x^{k-1} - x^{k-2} + \dots - x + 1), ~~~~~ k = 2m+1
 \neea
 %
-Let $d = \gcd(x\mp1,x^{k-1} \pm x^{k-2} + \dots \pm x + 1)$ then $d|k$
+Let $d = \gcd(x\mp1,x^{k-1} \pm x^{k-2} \pm \dots \pm x + 1)$ then $d|k$
 
 {\it Proof}. Let's first tackle the case of $x^k - 1$. Note that the following is a sum of some constant multiplied by some power of $(x-1)$
 %
@@ -550,10 +550,105 @@ Of course the challenge is that most times we don't even know what branches (app
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+How to proof that given two real numbers $a < b$, there is a rational number between them, in fact there are infinitely many rational numbers between them. My strategy is as follows, but first, let's see it with an example, take two numbers $0.1$ and $0.2$, we want to find a rational number, $m/n$, between them where $m$ and $n$ are integers,.
 
+What do we do? what we do is ``stretch'' the interval by multiplying both numbers by some big number so that we can generate integers between them, for example, multiply both by 10 and we get $ [0.1, 0.2] \to [1, 2]$ we haven't inserted an integer between them yet, so we need a bigger number, let's try 20 and we get $ [0.1, 0.2] \to [2, 4]$, and we have an integer between them, \ie 3, and if we divide it by 20 we get our rational number in between 0.1 and 0.2, and if we check, $\frac{3}{20} = 0.15$ is indeed between $0.1$ and $0.2$.
 
+We can generate more integers between them by multiplying them by an even bigger number, say 2000, then the interval becomes $[0.1,0.2] \to [200, 400]$ and this time we have 199 integers in between, if we divide each of those by 2000, we have 199 rational numbers between $[0.1,0.2]$.
 
+So here goes the proof. Take the difference between $a$ and $b$
+%
+\nbea
+\Delta = b - a
+\neea
+%
+the goal is to make this interval to contain integer, so if we pick $n = \ceil{1/\Delta}$
+%
+\nbea
+n(b-a) \ge 1
+\neea
+%
+but here we are still not guaranteed to have an integer in between them, but the solution is obvious, if we want $N$ integers between them we just need to multiply $n$ by $N+1$
+%
+\nbea
+(N+1)n(b-a) \ge N+1
+\neea
+%
+so any integer in between $((N+1)na,(N+1)nb)$ divided by $(N+1)n$ will be the rational number between $(a,b)$ and there are at least $N$ of them and since we can set any $N$ we want there are infinitely many rational numbers between any two real numbers $a$ and $b$.
 
+We can also use the above to show that there are infinitely many irrational numbers between two real numbers $a$ and $b$. The trick is to add an irrational number to both $a$ and $b$, \ie first we pick a rational number between two real numbers $a + \pi$ and $b + \pi$
+%
+\nbea
+a + \pi < \frac{m}{n} < b+\pi
+\neea
+%
+this means that
+%
+\nbea
+a < \frac{m}{n} - \pi< b
+\neea
+%
+since $m/n$ is rational adding $-\pi$ makes it irrational, so that means that there are infinitely many irrational numbers between any two real numbers. However, we can choose any irrational number we want besides $\pi$, something like $\sqrt{2}, \sqrt{3}, \dots$.
+
+The usual proof for the existence of a rational between two real numbers is as follows, select a rational number such that
+%
+\nbea
+\frac{1}{n} & < & b - a
+\neea
+%
+choose $m$ such that
+%
+\nbea
+m-1 \le na < m
+\neea
+%
+so
+%
+\nbea
+\frac{m}{n} - \frac{1}{n} \le a < \frac{m}{n}
+\neea
+%
+therefore
+%
+\nbea
+b = (b-a) + a & > & \frac{1}{n} + \left(\frac{m}{n} - \frac{1}{n}\right) \\
+b & > &\frac{m}{n} > a
+\neea
+%
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Proof that $p^{1/n}$ is irrational where $n > 1$ and $p$ is prime, assume it's rational $a/b$ with $(a,b)=1$ then
+%
+\nbea
+\frac{a^n}{b^n} & = & p \\
+\to p & | & a^n
+\neea
+%
+which means that $p|a$ which also means $p^{n-1}|b^n$ which also means $p|b$, a contradiction since $(a,b)=1$, the interesting question now is how to design a new irrational number, maybe using continued fraction?
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Completeness of the real numbers $\mathbb{R}$ means that $\mathbb{R}$ has no gaps, it is not so with the rationals, for example the set $\{r \in \mathbb{Q}, r^2 < 2\}$ does not have a least upper bound in $\mathbb{Q}$.
+
+Say there is a least upper bound $a/b$ such that $a^2/b^2 > 2$ then
+%
+\nbea
+\frac{a^2}{b^2} - 2& > & 0
+\neea
+%
+we can show that there's another rational number such that it is smaller than $a/b$ but its square is still bigger than 2 rendering it smaller than the least upper bound, a contradiction.
+
+Pick another number $\frac{a}{b+\Delta}$ where $\Delta$ is a rational number, we want this number to still be greater than $\sqrt{2}$
+%
+\nbea
+\frac{a^2}{(b+\Delta)^2} & > & 2 \\
+a^2 - 2b^2 - \Delta(4b + 2\Delta) & > & 0
+\neea
+%
+since we can set $\Delta$ to be as small as possible we can always set the above inequality to be true, for example first choose $\Delta = 0.1$ which is a rational number, if this is too big we move the decimal point $\Delta = 0.01$ and so on.
+
+Or we can just invoke the fact that there are infinitely many rational between any two real numbers and we are done.
 
 
 
