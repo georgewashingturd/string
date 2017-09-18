@@ -4231,6 +4231,79 @@ For the infinite sequence $\{s_k\}$ constructed above, we have another series th
 
 {\bf Page 229}, Example 3, this one we need Theorem 2.17, a function $f$ is completely multiplicative if, and only if, $f^{-1}(n) = \mu(n)f(n)$. Next, we use Example 2 where $G(s) = 1/F(s)$
 
+{\bf Page 232}, proof of Lemma 2, 
+%
+\nbea
+\int_a^b t^{\sigma_0-\sigma - 1} dt & = & \frac{1}{\sigma_0 - \sigma} (b^{\sigma_0-\sigma} -  a^{\sigma_0-\sigma})
+\neea
+%
+for the first two terms on the RHS we have $b > a$ but since $\sigma_0 - \sigma < 0$, $b^{\sigma_0 - \sigma} < a^{\sigma_0 - \sigma}$ and so
+%
+\nbea
+Ma^{\sigma_0 - \sigma} + Mb^{\sigma_0 - \sigma} & \le & Ma^{\sigma_0 - \sigma} + Ma^{\sigma_0 - \sigma}
+\neea
+%
+to get to the last inequality we note that since $b^{\sigma_0 - \sigma} < a^{\sigma_0 - \sigma}$ we have
+%
+\nbea
+b^{\sigma_0 - \sigma} - a^{\sigma_0 - \sigma} & < & a^{\sigma_0 - \sigma} + a^{\sigma_0 - \sigma}
+\neea
+%
+which is a bit odd but that's how we got the final result.
+
+{\bf Page 233}, Theorem 11.8, note that Lemma 2 says that the series has to have bounded partial sums, while in Theorem 11.8 what we have is that the series converges, but these two concepts are equivalent, if a series is convergent then its partial sums must be bounded so we can use the inequality in Lemma 2
+%
+\nbea
+\left|\sum_{a < n \le b} f(n)n^{-s}\right| \le Ka^{\sigma_0-\sigma}
+\neea
+%
+
+{\bf Page 234}, Theorem 11.10, this is a common trick used in this chapter, splitting a function into a constant that doesn't depend on the parameter, like in the proof of Lemma 2 where the constant $K$ doesn't depend on $a$ and here $A$ doesn't depend on $s$.
+
+{\bf Page 235}, proof of Lemma 3, top of page, ``Because of uniform convergence we can pass to the limit under the integral sign $\dots$'', uniform convergence means that the convergence applies to all points in $S$, because it applies to all points we can pull in the limit inside the integral.
+
+{\bf Page 236}, Theorem 11.12, {\it Notes}, that the derivative has the same abscissa of convergence and absolute convergence. How is this so? since $\log n > 1$ for $n > 3$, so if we look at the series term by term each term is getting bigger.
+
+The answer is in Lemma 3, it says that the derivative also uiformly converges to $f'$, since it converges uniformly it cannot diverge, this is the difference between point wise convergence and uniform convergence, for point wise convergence the sequence might converge to another function that also diverges for that particular point.
+
+For uniform convergence, since it has to satisfy Cauchy condition, the function cannot diverge. Since the derivative uniformly converges it also converges wherever $F(s)$ converges.
+
+The next question is whether the derivative $F'(s)$ can converge where $F(s)$ diverges, \ie at $\sigma < \sigma_c$. If $F'(s)$ converges, since each term is bigger than that of $F(s)$ (due to the $\log n$ multiplier) by comparison test $F(s)$ must converge as well. The abscissa of absolute converge must be the same as well since it is just $1 + \sigma_c$ as dictated by Theorem 11.12.
+
+{\bf Page 237}, Theorem 11.13, ``Consequently, $\dots$'', the question is why it is a consequence of the previous statement and why $F(s)$ has a singularity on the real line $s = \sigma_c$. This is because if $F(s)$ is analytic in some disc around $\sigma_c$ then by the previous statement the series is convergence at $\sigma > \sigma_c - \epsilon$, which is a contradiction, therefore $F(s)$ must not be analytic at $\sigma_c$.
+
+{\bf Page 237}, Proof of Theorem 11.13, mid-bottom page-ish, ``has nonnegative terms for $n \ge n_0$''. Why can we swap the sums even though the terms $n < n_0$ are negative? This is because what we are concerned about here is whether the series is absolutely convergent, if it is absolutely convergent we can swap the order of summations.
+
+The thing about convergence is that we only care about the tail, if the tail is convergent we are good. Since $n_0$ is finite it doesn't make any difference whether the terms with $n < n_0$ are negative or not, their sum doesn't affect the convergence of the series.
+
+{\bf Page 238}, Proof of Theorem 11.14, mid page-ish, ``we find $\lim_{\sigma\to\infty} G(\sigma + it) = C$'', this only works if the series is convergent, that's a necessary condition but not sufficient, because adding zeros infinitely many times does not guarantee zero total sum.
+
+But from the previous equation $F'(s) = F(s) G(s)$, Lemma 3 guarantees that $F'(s)$ is convergent, and since $F(s)$ is convergent therefore $G(s)$ is as well, and so the sum in the RHS of $G(s)$ must converge, since it does we can invoke Lemma 2
+%
+\nbea
+\left | \sum_{a < n \le b} f(n) n^{-s} \right | & \le & 2Ma^{\sigma_0 - \sigma} \left ( 1 + \frac{|s - s_0|}{\sigma - \sigma_0} \right )
+\neea
+%
+say $s = \sigma + it$ we can always choose $s_0 = \sigma_0 + it$, \ie it has the same imaginary part, what it does is just changing $M$ since it depends on $s_0$, but $M$ is still a finite number since the sum is convergent, if we take $\sigma\to\infty$, it's obvious that the RHS $\to 0$, so all partial sums $\to 0$ and the sum in the RHS of $G(s)$ also tends to zero.
+
+
+{\bf Page 238}, Proof of Theorem 11.14, last sentence, ``the proof also shows tha thte series $G(s)$ converges absolutely if $\sigma > \sigma_0$'', why is this?
+
+From the mid page-ish equation
+%
+\nbea
+F'(s) & = & F(s) G(s)
+\neea
+%
+and this is defined only for $\sigma > \sigma_0 \ge \sigma_a$. From Theorem 11.12 we know that $F'(s)$ has the same $\sigma_a$ as $F(s)$, therefore $G(s)$ must be absolutely convergent at $\sigma > \sigma_a$ as well, but since $G(s)$ is onl defined for $\sigma > \sigma_0$ it must be absolutely convergent for $\sigma > \sigma_0$.
+
+
+
+
+
+
+
+
 
 
 
