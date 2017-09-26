@@ -2960,6 +2960,73 @@ combining everything
 the thing here is that $\log x < x$ so we can lump $\log x$ into $O(x)$ me hope :)
 
 \bigskip
+\underline{\textbf{\textit{Chapter 5}}}
+\bigskip
+
+{\bf Page 116}, top of page, Proof of Theorem 5.22, since $c_k$ is the largest index of coefficient not divisible by $p$, all other coefficients $c_l$ with $l > k$ are divisible by $p$ therefore they are just $0 \pmod{p}$ and the polynomial reduces to the one shown in the book with the highest degree being $x^k$.
+
+But these two polynomials are the same, so that means the one with $x^k$ as highest term also has more than $n$ which is already $\ge k$ solutions, therefore the if part of Lagrange's theorem is false. Well which part exactly? the polynomial part is correct and the integer coefficient part is also correct, therefore the only wrong one is the assumption that $c_k \not\equiv 0 \pmod{p}$, so it means that $c_k$ must be divisible by $p$ as well.
+
+{\bf Page 119}, this is by far the coolest application of Chinese Remainder Theorem that I know of :) to reduce it to a simpler problem, say given a $k$, find $a$ and $b$ such that $\gcd(a,b+s) > 1$ for $0 < s \le k$. So basically we want a string of $k$ consecutive integers that are not co-prime to $a$.
+
+With Chinese Remainder Theorem this is quite simple, set up the following
+%
+\nbea
+y & \equiv & -1 \pmod{p_1} \\
+y & \equiv & -2 \pmod{p_2} \\
+& \vdots & \\
+y & \equiv & -k \pmod{p_k}
+\neea
+%
+and $a = p_1 p_2 \cdots p_k$ we will have $a$ and $y + s$ to have a common factor, the more interesting question is given $a$, what is the most number of consecutive integers not co-prime to $a$?
+
+For one thing we know the lower limit, if we write $a$ in its primal constituents
+%
+\nbea
+a & = & p_1^{a_1}p_2^{a_2} \cdots p_n^{a_n}
+\neea
+%
+then the lower limit is $n$ just by setting up a system of congruences just like above. How about the upper limit? Take for example $a = 2\cdot3^2\cdot5\cdot 7$, if $b = 2$ then the string of numbers $3,4,5,6,7,8,9$ are all not co-prime to $a$ and we have 7 numbers which is almost double the number of distinct prime divisors of $a$.
+
+
+-=-=-=-=-=-=- NOT DONE YET
+
+Let's tackle a simpler problem, what if $a = p^2$ can we have 2 consecutive numbers that have common factor with $a$? the answer is no because $(x,x+1) = 1$ no matter what $x$ is. But, what is the smaller distance between two numbers that have common factors to $a$? Well, simple, the answer is $p$ of course, so $mp$ and $(m+1)p$ will both have common factors with $a$.
+
+
+
+Let's write $a$ in its primal constituents
+%
+\nbea
+a & = & p_1^{a_1}p_2^{a_2} \cdots p_n^{a_n}
+\neea
+%
+
+-=-=-=-=-=-=-
+
+{\bf Page 121}, last paragraph, ``We note that each polynomial $f^{(k)}(x)/k!$ has integer co-efficients''. Here, $f(x)$ is a polynomial (with integer coefficients) and $f^{(k)}$ is the $k^{\rm th}$ derivative of $f(x)$.
+
+One thing for sure, for the $x^{w}$ terms in $f(x)$ with $w < k$, their $k^{\rm th}$ derivative is zero, so we need not care about them. For those with $w > k$ what we get is
+%
+\nbea
+\frac{w(w-1)(w-2) \cdots (w-(k-1))}{k!} x^{w-k}
+\neea
+%
+notice that the coefficient is just the binomial coefficient
+%
+\nbea
+\frac{w(w-1)(w-2) \cdots (w-(k-1))}{k!} & = & \frac{w(w-1)(w-2) \cdots (w-(k-1)) \cdot (w-k)!}{k!(w-k)!} \\
+& = & \frac{w!}{k!(w-k)!}
+\neea
+%
+and since binomial coefficients are integers we are done. To see why binomial coefficients are integers we can start with Pascal Triangle and proceed to the proof using induction and the following relationship (obtained from pascal Triangle)
+%
+\nbea
+\binom{n+1}{k} = \binom{n-1}{k-1} + \binom{n-1}{k}
+\neea
+%
+
+\bigskip
 \underline{\textbf{\textit{Chapter 6}}}
 \bigskip
 

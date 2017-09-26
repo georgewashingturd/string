@@ -332,6 +332,25 @@ which is just $(q_1^{a_1} - q_1^{a_1-1})(q_2^{a_2}-q_2^{a_2-1})(q_3^{a_3} - q_3^
 
 So the generic strategy is to start with $\varphi(n)$ roots, express $\varphi(n)$ in terms of its primal constituents and then start removing the roots of the next highest divisor of $\varphi(n)$ and then take care of all the double counting until there's no more over counting and stop. This pattern persists for a generic prime $n$.
 
+To formalize this proof we can invoke the principle of cross-classification, see Theorem 5.31 of Apostol (at the time I did not know about this theorem, so I'm adding this now). Here $S$ is the set of all solutions of the polynomial
+%
+\nbea
+x^{\varphi(n)} - 1 \equiv x^{q_1^{a_1}q_2^{a_2} \cdots q_k^{a_k}} - 1 \equiv 0 \pmod{n}
+\neea
+%
+while each $S_i$ is the set of solutions of $x^{\xi_i} - 1 \equiv 0 \pmod{n}$ where 
+%
+\nbea
+\xi_i & = & q_i^{a_i - 1} \prod_{j\neq i}^k q_j^{a_j}
+\neea
+%
+so basically you reduce the power of $q_i$ by one, the solutions of $x^{\varphi(n)} - 1$ that are not part of the solutions of lower powered polynomials, \ie the primitive roots, are then given by
+%
+\nbea
+S - \bigcup_{i=1}^k S_i
+\neea
+%
+and from Theorem 5.31 the number of elements of the above is exactly $\varphi(\varphi(n))$.
 Since $\varphi(\varphi(n))$ can never be zero and as long as $n$ is prime, we have also not only proven that there are always primitive roots modulo a prime $p$ but also how many there are.
 
 The key here is of course that the polynomial $x^d - 1 \equiv 0$ has {\it exactly} $d$ roots, and this rests on the ring $\mathbb{Z}/n\mathbb{Z}$ being a field, what happens if it's not a field?
