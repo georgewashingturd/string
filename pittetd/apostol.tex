@@ -3015,7 +3015,7 @@ y & \equiv & -n \pmod{p_n}
 %
 and this time there are exactly $n$ consecutive numbers not co-prime to $a$. Also for odd $a$, one thing for sure is, if, $p_1$, the smallest prime divisor of $a$ is bigger than, $n$ the number of prime divisors of $a$ then there are exactly $n$ consecutive numbers that are not co-prime to $a$. This is because the minimum distance between two multiples of $p_1$ is $p_1$.
 
-Also for odd $a$, if there are $k$ prime factors less than $n$ then there are at least $n+k$ consecutive numbers.
+Also for odd $a$, if there are prime factors less than $n$ then there are at least $n$ consecutive numbers.
 
 -=-=-=-=-=-=- NOT DONE YET
 
@@ -4384,8 +4384,118 @@ and this is defined only for $\sigma > \sigma_0 \ge \sigma_a$. From Theorem 11.1
 
 
 
+\bigskip
+\underline{\textbf{\textit{Chapter 12}}}
+\bigskip
 
+-=-=-=-=-=-=-=-=-CONCEPTUAL PROGRESSION OF RIEMANN ZETA FUNCTION-=-=-=-=-=-=-=-=-
 
+The central equation in this whole adventure seems to be this one
+%
+\nbea
+\pm\frac{z e^{xz}}{e^z - 1}
+\neea
+%
+%
+\bit
+\item Start with the Hurwitz zeta function $\zeta(s,a)$ (this also covers the $L$ functions)
+%
+\nbea
+\zeta(s,a) & = & \sum_{n=0}^\infty \frac{1}{(n+a)^s}
+\neea
+%
+\item Extend the Hurwitz into an integral representation, here it's just a normal real line integral and it only applies to $\sigma > 1$
+%
+\nbea
+\Gamma(s)\zeta(s,a) & = & \int_0^\infty \frac{x^{s-1}e^{-ax}}{1 - e^{-x}} dx
+\neea
+%
+\item We then extend the integral into a contour integral (the integrand is still more or less the same), this time it is valid for all $\sigma$, although there's a pole at $s=1$ with residue $1$
+%
+\nbea
+\zeta(s,a) & = & \Gamma(1-s)I(s,a)
+\neea
+%
+with
+%
+\nbea
+I(s,a) & = & \frac{1}{2\pi i} \int_{C} \frac{z^{s-1}e^{az}}{1 - e^z}dz
+\neea
+%
+Note that the contour of the integration, $\int_C$, doesn't close, it's more like a cut, see Figure 12.1
+%
+\item Next, we cast the contour integral form above in terms of a series by explicitly calculating the integral $I(s,a)$, \ie using a closed contour we get all of the residues of $I(s,a)$, the sum of the residues equals the series $F(a,s)$,
+%
+\nbea
+I(1-s,a) & = & \frac{e^{-\pi i s/2}}{(2\pi)^s} F(a,s) + \frac{e^{\pi i s/2}}{(2\pi)^2} F(-a,s)
+\neea
+%
+note that the integral was obtained through a slightly different contour, see Figure 12.3, by analytic continuation this form is also valid for all $s$.
+%
+\item We then use the above result to arrive at the ``symmetric'' functional form
+%
+\nbea
+\Phi(s) & = & \Phi(1-s)
+\neea
+%
+where $\Phi = \pi^{-s/2}\Gamma(s/2)\zeta(s)$, this form has two simple poles, one pole at $s=0$ coming from $\Gamma(s/2)$ and another at $s=1$ coming from $\zeta(s)$.
+%
+\item Riemann's functional form takes the above functional form but remove the poles by multiplying it with $s(s-1)$, so you get $\xi(s) = \frac{1}{2}s(s-1)\Phi(s)$ and this form too is ``symmetric''
+%
+\nbea
+\xi(s) & = & \xi(1-s)
+\neea
+%
+\eit
+%
+I think the name functional form is because we are defining $\zeta(s)$ in terms of product of functions instead of a series or an integral.
+
+{\bf Page 257}, before the {\it Note} on top of Theorem 12.6, ``because for each fixed nonintegral $x$ the coefficients have bounded partial sums.'' This is not a trivial thing, this actually has a name, the Jensen-Cahen theorem :)
+
+{\bf Page 266}, how to show that $z/(e^z - 1) +z/2$ is even? what I did was 
+%
+\nbea
+\left(\frac{z}{e^z - 1} + \frac{1}{2}z\right) - \left(\frac{-z}{e^{-z} - 1} - \frac{1}{2}z\right) & = & \frac{z}{e^z - 1} + \frac{z}{e^{-z} - 1} + \frac{1}{2}z + \frac{1}{2}z \\
+& = & \frac{ze^{-z} - z + ze^{z} - z}{(e^{z} - 1)(e^{-z} - 1)} + \frac{z(e^{z} - 1)(e^{-z} - 1)}{(e^{z} - 1)(e^{-z} - 1)} \\
+& = & 0
+\neea
+%
+so it must be even, another way is
+%
+\nbea
+\frac{z}{e^z - 1} + \frac{1}{2}z & = & \frac{z e^{-z/2}}{e^{z/2} - e^{-z/2}} + \frac{1}{2}z \\
+& = & \frac{ze^{-z/2}}{2\sinh(z/2)} + \frac{z \sinh(z/2)}{2\sinh(z/2)} \\
+& = & \frac{z\cosh(z/2)}{2\sinh(z/2)}
+\neea
+%
+the numerator is odd but the denominator is also odd so the whole thing is even.
+
+{\bf Page 266}, mid page-ish, $B_{2n+1} = 0$, this is a very good example on how we need to utilize bridges to get to our solution. The first solution is gotten through the functional form of the zeta function and so $\zeta(-2n) = 0$ due to the cosine term, this plus Eq (20) imply that $B_{2n+1} = 0$. Another way is to use the even function above.
+
+{\bf Page 267}, Proof of Theorem 12.19, we start with Hurwitz's formula Eq (10) and substitute $s \to s+1$ and $a = x$ to get
+%
+\nbea
+\zeta(-s,x) & = & \frac{\Gamma(s+1)}{(2\pi)^{s+1}} \{ e^{-\pi i(s+1)/2}F(x,s+1) + e^{\pi i(s+1)/2} F(-x,s+1)\} \\
+& = & \frac{\Gamma(s+1)}{(2\pi)^{s+1}} \left\{ e^{-\pi i(s+1)/2}\sum_{k=1}^\infty \frac{e^{2\pi i kx}}{k^{s+1}} + e^{\pi i(s+1)/2} \sum_{k=1}^\infty \frac{e^{-2\pi i kx}}{k^{s+1}}\right\}
+\neea
+%
+we are going in reverse in Proof of Theorem 12.6, \ie $ e^{-\pi i(s+1)/2} = i^{-(s+1)}$ and so
+%
+\nbea
+& = & \frac{\Gamma(s+1)}{(2\pi)^{s+1}} \left\{ \frac{1}{i^{s+1}}\sum_{k=1}^\infty \frac{e^{2\pi i kx}}{k^{s+1}} + \frac{1}{i^{s+1}} \sum_{k=1}^\infty \frac{e^{-2\pi i kx}}{(-k)^{s+1}}\right\} \\
+& = & \frac{\Gamma(s+1)}{(2\pi i)^{s+1}} \left\{ \sum_{k=1}^\infty \frac{e^{2\pi i kx}}{k^{s+1}} + \sum_{k=1}^\infty \frac{e^{2\pi i (-k)x}}{(-k)^{s+1}}\right\} \\
+& = & \frac{\Gamma(s+1)}{(2\pi i)^{s+1}} \left\{ \sum_{k=1}^\infty \frac{e^{2\pi i kx}}{k^{s+1}} + \sum_{k=-1}^{-\infty} \frac{e^{2\pi i kx}}{k^{s+1}}\right\} \\
+& = & \frac{\Gamma(s+1)}{(2\pi i)^{s+1}} \left\{ \sum_{\substack{k=-\infty\\k\neq0}}^\infty \frac{e^{2\pi i kx}}{k^{s+1}}\right\}
+\neea
+%
+now substitute $s = n$, an integer, and use Theorem 12.13 and also $\Gamma(n+1) = n!$
+%
+\nbea
+\zeta(-n,x) = -\frac{B_{n+1}(x)}{n+1} & = & \frac{n!}{(2\pi i)^{n+1}} \sum_{\substack{k=-\infty\\k\neq0}}^\infty \frac{e^{2\pi i kx}}{k^{n+1}} \\
+\to B_{n+1}(x) & = & -\frac{(n+1)!}{(2\pi i)^{n+1}} \sum_{\substack{k=-\infty\\k\neq0}}^\infty \frac{e^{2\pi i kx}}{k^{n+1}}
+\neea
+%
+last thing to do is to substitute yet again $n+1 \to n$.
 
 
 
