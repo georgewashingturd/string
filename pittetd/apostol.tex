@@ -4450,7 +4450,28 @@ where $\Phi = \pi^{-s/2}\Gamma(s/2)\zeta(s)$, this form has two simple poles, on
 %
 I think the name functional form is because we are defining $\zeta(s)$ in terms of product of functions instead of a series or an integral.
 
+{\bf Page 257}, top page-ish, this inequality
+%
+\nbea
+\frac{e^{ax}}{|1 - e^z|} \le \frac{e^{ax}}{|1 - e^x|}
+\neea
+%
+the denominator changes from $e^z \to e^x$, I believe this is due to triangle inequality
+%
+\nbea
+|1 - e^z| & \ge & \left||1| - |e^z|\right|
+\neea
+%
+but $|e^z| = |e^x|$ and
+%
+\nbea
+\left||1| - |e^x|\right| = |1 - e^x|
+\neea
+%
+
 {\bf Page 257}, before the {\it Note} on top of Theorem 12.6, ``because for each fixed nonintegral $x$ the coefficients have bounded partial sums.'' This is not a trivial thing, this actually has a name, the Jensen-Cahen theorem :)
+
+{\bf Page 259}, Eq (12) and Eq (13), if you notice carefully, we have zeta functions on the LHS and RHS, however, if we trace back the derivation, the one on the right is the native zeta function $\sum \frac{1}{n^s}$ (because it's from $F(a,s)$) while the one on the left is from the complicated contour integral.
 
 {\bf Page 266}, how to show that $z/(e^z - 1) +z/2$ is even? what I did was 
 %
@@ -4496,6 +4517,38 @@ now substitute $s = n$, an integer, and use Theorem 12.13 and also $\Gamma(n+1) 
 \neea
 %
 last thing to do is to substitute yet again $n+1 \to n$.
+
+{\bf Page 269}, mid page-ish, ``If $\sigma \ge \delta > 0$ the integral is dominated by $\int_N^\infty (t + a)^{-\delta-1}dt$ so it converges uniformly for $\sigma \ge \delta$''. What he's talking about is the last integral
+%
+\nbea
+-s\int_N^\infty \frac{t - [t]}{(t + a)^{s+1}} dt
+\neea
+%
+and what he meant by dominated is, because $t - [t] \le 1$ we have
+%
+\nbea
+\int_N^\infty \frac{t - [t]}{(t + a)^{s+1}} dt \le \int_N^\infty \frac{1}{(t + a)^{s+1}} dt
+\neea
+%
+
+%
+\begin{figure}
+\centering
+  \includegraphics[width=0.9\linewidth]{sum_to_integral.png}
+  \caption{Left shaded area under the bars on the left is the sum $\sum_1^5 \frac{1}{n}$ while the shaded are under the curve on the right is $\int_1^5 \frac{1}{x} dx$.}
+\label{fig:Page271}
+\end{figure}
+%
+
+{\bf Page 271}, Proof of Theorem 12.23, note that $0 < a \le 1$, next, to get from the sum to the integral
+%
+\nbea
+\sum_{n=1}^N \frac{1}{(n+a)^\sigma} \longrightarrow 1 + \int_1^N\frac{dx}{(x+a)^\sigma}
+\neea
+%
+please see Fig.~\ref{fig:Page271}. Suppose what we have is $\sum_{1}^5 \frac{1}{n}$, then the sum is given by the graph on the left, changing it into an integral $\int_1^5$ we actually miss the first bar $\frac{1}{1}$, so the extra factor of 1. For the rest of the approximation we either set $a \to 0$ if it's in the denominator or $a\to 1$ if it's in the numerator.
+
+
 
 
 

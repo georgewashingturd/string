@@ -24,6 +24,9 @@
 
 \usepackage{mathtools} % for \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 
+%\usepackage{xeCJK}
+%\setCJKmainfont{SimSun}
+
 \newcommand{\msout}[1]{\text{\sout{\ensuremath{#1}}}}
 
 
@@ -537,6 +540,51 @@ c & \equiv & (c_t + 1) \pmod{p_{j_t}}
 Chinese remainder theorem guarantees that we have such $c$ and that such a $c$ is congruent modulo $p_{j_1} p_{j_2} \dots p_{j_t}$ so this means that $c \le p_{j_1} p_{j_2} \dots p_{j_t}$ which is less than the total number of bits $k/d \ge p_{j_1}^{e_{j_1}} p_{j_2}^{e_{j_2}} \dots p_{j_t}^{e_{j_t}}$. We can also construct other bits by changing the $ + 1$ into some other constant. Note that if the number of bits is less than $t$, the number of distinct primes the argument falls.
 
 Thus we have shown that one of the $n_x$'s must be co-prime to $k$ and we can choose this one to be $m$.
+
+-=-=-=-=- CHINESE REMAINDER POWER -=-=-=-=-
+
+\underline{\textit{\textbf{First Case}}}
+
+Believe it or not, the above proof about bit position and whatnot also serves as a proof that there are infinitely many primes. Suppose we only have finitely many primes $p_1,p_2, \dots, p_n$. I can show that among the first $p_1p_2 \cdots p_n$ natural numbers there are numbers that are not divisible by those primes as such there must be another prime besides those $n$ primes. On top of that I can tell you how many of those numbers there are.
+
+How to see this? Easy, the Chinese to the rescue, set up the following system of congruences
+%
+\nbea
+x & \equiv & a_1 \pmod{p_1} \\
+x & \equiv & a_2 \pmod{p_2} \\
+& \vdots & \\
+x & \equiv & a_n \pmod{p_n}
+\neea
+%
+as long as each $a_i \not\equiv 0 \pmod{p_i}$, $x$ is guaranteed to be not divisible by any of those $n$ primes, the solution of the above is guaranteed by our Chinese friend to exist, but not only that, it is also guaranteed to be less than $p_1p_2 \cdots p_n$.
+
+Now, how many of those numbers are there? Each $a_i$ runs from $1,\dots,p_i-1$, so there are
+%
+\nbea
+(p_1 - 1)(p_2 - 1) \cdots (p_n - 1) = \varphi(p_1p_2\cdots p_n)
+\neea
+%
+which is consistent with what we already know about $\varphi$. The slight difference between this and Euclid's proof is that, this shows that even numbers less than $p_1p_2 \cdots p_n$ already contain new primes, Euclid showed that numbers bigger than $p_1p_2 \cdots p_n$ start requiring new primes but here we show that way before that we already need new primes.
+
+\underline{\textit{\textbf{Second Case}}}
+
+Talking about $\varphi$, our Chinese friend can also help us prove that if $(m,n)=1$ then $\varphi(mn) = \varphi(m)\varphi(n)$. Simply by setting up the following system of congruences
+%
+\nbea
+x & \equiv & a_m \pmod{m} \\
+x & \equiv & a_n \pmod{n}
+\neea
+%
+as long as $a_{m,n}$ are co-prime to $m$ and $n$ then it will be co-prime to $mn$ as well. The question now is if there is another number that is co-prime to $mn$ but is not co-prime to $m$ or $n$, well the answer is obviously no because if a number $y$ is co-prime to $mn$ when we break it down to the system of congruences $y \equiv c_m \pmod{m}$ and $y \equiv c_n \pmod{n}$, $c_{m,n}$ will be co-prime to $m$ and $n$ respectively.
+
+Since there are $\varphi(m)$ and $\varphi(n)$ numbers co-prime to $m$ and $n$, our Chinese friend guarantees there are only $\varphi(m)\varphi(n)$ unique solutions modulo $mn$.
+
+
+
+
+
+
+
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
