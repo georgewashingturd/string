@@ -4450,6 +4450,14 @@ where $\Phi = \pi^{-s/2}\Gamma(s/2)\zeta(s)$, this form has two simple poles, on
 %
 I think the name functional form is because we are defining $\zeta(s)$ in terms of product of functions instead of a series or an integral.
 
+{\bf Page 255}, the evaluation of the integral along $C_2$, this is a bit odd, usually when we have branch cut, we set the contour as a small circle plus the two cut lines, but along the cut lines $z = r e^{-i(\pi-\epsilon)}$ and $z = r e^{i(\pi-\epsilon)}$ and along the small circle it's $z = \epsilon e^{i\theta}$ with $-(\pi-\epsilon) \le \theta \le \pi - \epsilon$, in the evaluation along $C_2$ in the Proof of Theorem 12.4 we should have had
+%
+\nbea
+\lim_{\epsilon\to0} \frac{1}{2\pi} \int_{-(\pi-\epsilon)}^{\pi-\epsilon} \frac{(\epsilon e^{i\theta})^{n-1}e^{a\epsilon e^{i\theta}}}{1 - e^{\epsilon e^{i\theta}}} d\theta
+\neea
+%
+since the contour is not closed we can't actually use the residue to calculate it, so unless we take the limit before the integral we can't use the residue, so I'm not convinced that this is a legit move ~~~\dunno
+
 {\bf Page 257}, top page-ish, this inequality
 %
 \nbea
@@ -4548,6 +4556,43 @@ and what he meant by dominated is, because $t - [t] \le 1$ we have
 %
 please see Fig.~\ref{fig:Page271}. Suppose what we have is $\sum_{1}^5 \frac{1}{n}$, then the sum is given by the graph on the left, changing it into an integral $\int_1^5$ we actually miss the first bar $\frac{1}{1}$, so the extra factor of 1. For the rest of the approximation we either set $a \to 0$ if it's in the denominator or $a\to 1$ if it's in the numerator.
 
+
+
+\bigskip
+\underline{\textit{\textbf{Chapter 13}}}
+\bigskip
+
+{\bf Page 279}, mid page-ish, ``Riemann-Lebesgue lemma'', how do we see this, well an intuitive way to see it is to do integration by parts with $u = f(t)$ and $dv = e^{itx} dt$
+%
+\nbea
+\int_{-\infty}^\infty f(t) e^{itx} dt & = & \left. \frac{1}{ix}f(t) e^{itx} \right|_{-\infty}^\infty - \int_{-\infty}^\infty \frac{1}{ix} f'(t) e^{itx} dt
+\neea
+%
+since the integral $\int_{-\infty}^\infty|f(t)|$ converges we can safely assume that $f(t) \to 0$ as $t\to\pm\infty$, so taking the absolute value of the above
+%
+\nbea
+\left |\int_{-\infty}^\infty f(t) e^{itx} dt \right | & = & \left | \int_{-\infty}^\infty \frac{1}{ix} f'(t) e^{itx} dt \right | \\
+& = & \frac{1}{|x|} \int_{-\infty}^\infty \left | f'(t) \right | dt
+\neea
+%
+and we can think
+%
+\nbea
+\int_{-\infty}^\infty \left | f'(t) \right | dt & = & \left. \left | f(t) \right | \right|^\infty_{-\infty} = |f(\infty)| - |f(-\infty)|
+\neea
+%
+but we have assumed above that $f(t)$ is well behaved at infinity for its integral to converge so as $x\to\infty$ the above goes to zero.
+
+
+
+{\bf Page 280}, Lemma 1, we can directly apply Abel's identity with $f(n) = (x - n)$ and so
+%
+\nbea
+\sum_{n\le x}a(n) f(n) & = & A(x) f(x) - \int_1^x A(t)f'(t) dt \\
+& = & A(x)(x - x) - \int_1^xA(t) (-1) dt \\
+& = & \int_1^x A(t) dt
+\neea
+%
 
 
 
