@@ -4456,7 +4456,13 @@ I think the name functional form is because we are defining $\zeta(s)$ in terms 
 \lim_{\epsilon\to0} \frac{1}{2\pi} \int_{-(\pi-\epsilon)}^{\pi-\epsilon} \frac{(\epsilon e^{i\theta})^{n-1}e^{a\epsilon e^{i\theta}}}{1 - e^{\epsilon e^{i\theta}}} d\theta
 \neea
 %
-since the contour is not closed we can't actually use the residue to calculate it, so unless we take the limit before the integral we can't use the residue, so I'm not convinced that this is a legit move ~~~\dunno
+since the contour is not closed we can't actually use the residue to calculate it, BUT here it's different. The contour $C_2$ has a fixed radius $c < 2\pi$ which is not $\epsilon\to0$, so along $C_2$, $z = ce^{i\pi}$ and the integral is
+%
+\nbea
+\lim_{\epsilon\to0} \frac{1}{2\pi} \int_{-(\pi-\epsilon)}^{\pi-\epsilon} \frac{(c e^{i\theta})^{n-1}e^{ac e^{i\theta}}}{1 - e^{c e^{i\theta}}} d\theta
+\neea
+%
+so my guess is that since the integrand is analytic for all value of $\theta$ we can take the limit before doing the integration and what we end up with is just the residue of the integrand. And the reason $c<2\pi$ is because tehre's a pole at $z = 2\pi i$.
 
 {\bf Page 257}, top page-ish, this inequality
 %
@@ -4561,6 +4567,41 @@ please see Fig.~\ref{fig:Page271}. Suppose what we have is $\sum_{1}^5 \frac{1}{
 \bigskip
 \underline{\textit{\textbf{Chapter 13}}}
 \bigskip
+
+{\bf Page 278}, after the definition of $\psi_1$, ``$\psi_1$ is a continuous piecewise linear function'', if you have a function with many steps like $\Lambda(n)$, for example
+%
+\nbea
+f(x) = \left \{
+\begin{array}{l}
+3 ~{\rm for}~ 1 \le x < 10\\
+5 ~{\rm for}~ 10 \le x < 20\\
+7 ~{\rm for}~ 20 \le x < 30
+\end{array}
+\right .
+\neea
+%
+integrating it we get
+%
+\nbea
+\int f(x) = \left \{
+\begin{array}{l l}
+3(x-1) & ~{\rm for}~ 1 \le x < 10\\
+27 + 5(x-10) & ~{\rm for}~ 10 \le x < 20\\
+77 + 7(x-20) & ~{\rm for}~ 20 \le x < 30
+\end{array}
+\right .
+\neea
+%
+so we get a straight line with a slope of 3 from $[1,10]$ and starting from $x=10$ we get another straight line with a different slope connected to the previous line, see Fig.~\ref{fig:Page278}.
+
+%
+\begin{figure}
+\centering
+  \includegraphics[width=0.9\linewidth]{integral_piecewise.png}
+  \caption{Left is a function made of many step functions, Right we integrate that function to get linear piecewise continuous function.}
+\label{fig:Page278}
+\end{figure}
+%
 
 {\bf Page 279}, mid page-ish, ``Riemann-Lebesgue lemma'', how do we see this, well an intuitive way to see it is to do integration by parts with $u = f(t)$ and $dv = e^{itx} dt$
 %
