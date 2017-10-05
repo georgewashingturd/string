@@ -4634,8 +4634,120 @@ but we have assumed above that $f(t)$ is well behaved at infinity for its integr
 & = & \int_1^x A(t) dt
 \neea
 %
+The cool thing about this is that we can convert an integral to a sum (we might still have the lower limit if it's not zero), but the problem is that we need to find an arithmetical function $a(n)$ whose sum is $A(x)$.
 
+{\bf Page 280}, bottom page, last inequality, the ``lim sup'' means the least upper bound, this is so because we take the limit $x\to\infty$ but since the whole thins is a $\le$ and not $=$ the limit means we are getting the least upper bound.
 
+{\bf Page 281}, upper page-ish, the ``lim inf'' is the same logic as ``lim sup'' above. And this is also a good way to calculate a limit, we can start with lim sup and lim inf, if they are the same then we get the actual limit.
+
+{\bf Page 282}, when calculating the residue of $\frac{\Gamma(z)}{\Gamma(z + k + 1)}$ we only consider the residue of $\Gamma(z)$, this is because $1/\Gamma(w)$ has no poles, it only has zeros where $\Gamma(w)$ has poles.
+
+{\bf Page 285}, Theorem 3.14, the restriction $\sigma \le 1/2$ is because the function $\zeta(s)$ is symmetric around the line $1/2$.
+
+{\bf Page 288}, Eq (23), note that initially this inequality only works for $1 < \sigma$ but since the LHS is $\ge 0$ (due to the absolute value operator), we can extend $1 \le \sigma$ since the RHS would then be zero when $\sigma = 1$.
+
+{\bf Page 288}, mid page-ish, ``by (23) it also holds for $\alpha \le \sigma \le 2$'', this is because the RHS in Eq (23) is actually bigger than the RHS above this statement.
+
+{\bf Page 288}, bottom page, after making $\alpha$ to depend on $t$ and $t$ to be restricted to $t \ge t_0$ we get the final inequality
+%
+\nbea
+|\zeta(\sigma + it)| & \ge & (\alpha - 1)M\log^2 t
+\neea
+%
+this inequality was obtained by restricting $t \ge t_0$, how is it that it now works for $e \le t \le t_0$ too? the lower bound $t_0$ is to make sure that $\alpha < 2$, if it's smaller than that then we get $\alpha \ge 2$, but this also means that $\sigma = \alpha \ge 2$, this is OK as for $\sigma \ge 2$ the inequality is trivially satisfied already as explained in the beginning of the Proof.
+
+{\bf Page 291}, last step of the proof of prime number theorem, we want to show that $\int_e^\infty |h(1+it)|dt$ converges, we can do integral comparison test for improper integrals, the one to compare to is this
+%
+\nbea
+\int_e^\infty \frac{M\log^9t}{t^2}
+\neea
+%
+this integral can explicitly be evaluated, resulting in
+%
+\nbea
+\int_e^\infty \frac{M\log^9t}{t^2} & = & \sum_{n=0}^9 c_n \frac{\log^n t}{t}
+\neea
+%
+where $c_n$ is just some constant, and so the integral converges.
+
+{\bf Page 293}, top page-ish, ``if $\sigma > 0$ the series on the right converges'', this is due to the alternating series test that says that as long as $\lim_{n\to\infty}|a_n| = 0$ and $\{|a_n|\}$ is a decreasing sequence, the series converges, and here we satisfy both.
+
+{\bf Page 300}, Proof of Theorem 13.15, top page-ish, the manipulation of $\sum_{m\le x}\chi(m)$, here we used the usual suspects, first is Theorem 2.1
+%
+\nbea
+\sum_{d|n} \mu(d) & = & \left\lbrack \frac{1}{n}\right\rbrack
+\neea
+%
+the next is the sum switch $m\to m = qd$ where $q \le x/d$.
+
+{\bf Problem 13.1}, this will be the way a (sloppy) physicist does it. Here we are not doing part (a) (b) (c) separately we are going straight to show that $\psi(x) \sim x$. From Theorem 4.9 we know that $\psi(x) \le c_1 x$ for {\bf all} $x$. Also, we know that both $\psi(x)$ and $1/x^{s+1}$ are increasing non-negative functions. So we can re-phrase the integral
+%
+\nbea
+\frac{\zeta'(s)}{\zeta(s)} & = & -s \int_1^\infty \frac{\psi(x)}{x^{s+1}} dx \\
+& \ge & -s \int_1^\infty \frac{c_1x}{x^{s+1}} dx \\
+& \ge & \frac{c_1s}{1-s}
+\neea
+%
+we switch from $\le$ to $\ge$ because of the minus sign in front of the integral and we get the last line after doing the integration. Here we assume $\sigma > 0$. This is the same idea as what one does in deriving the photon gauge in QFT, start with massive photons and then set the mass to 0 at the end, if nothing blows up we are good :)
+
+Now we multiply the whole thing by $(1-s)$ and take the limit $s\to1$
+%
+\nbea
+\lim_{s\to1}(1-s)\frac{\zeta'(s)}{\zeta(s)} & \ge & \lim_{s\to 1} c_1 s \\
+& \ge & c_1
+\neea
+%
+But from Theorem 13.8 we know that $-\zeta'(s)/\zeta(s)$ has a simple pole with residue 1 and so
+%
+\nbea
+\lim_{s\to1} (s-1)\left(-\frac{\zeta'(s)}{\zeta(s)}\right) & = & 1
+\neea
+%
+This only means that $c_1$ is at most 1. What we need is $c_1 = 1$. To do this we need the other half of Theorem 4.9 that says $c_2x \le \psi(x)$ for some $x \ge x_0$, so again we tinker with the integral
+%
+\nbea
+\frac{\zeta'(s)}{\zeta(s)} & = & -s \int_1^\infty \frac{\psi(t)}{t^{s+1}} dt \\
+& \le & -s \int_1^{x_0} \frac{\psi(t)}{t^{s+1}} dt-s \int_{x_0}^\infty \frac{c_2t}{t^{s+1}} dt
+\neea
+%
+The first integral on the RHS can be approximated by (we need to take the lower limit as we will multiply by $-s$ later)
+%
+\nbea
+\int_1^{x_0} \frac{\psi(t)}{t^{s+1}} dt & \ge & \int_1^{x_0} \frac{1}{t^{s+1}} dt \\
+& \ge & \frac{1}{s} \left(1 -  \frac{1}{x_0}\right)\\
+\to -s \int_1^{x_0} \frac{\psi(t)}{t^{s+1}} dt & \le & \frac{x_0 - 1}{x_0}
+\neea
+%
+combining
+%
+\nbea
+\frac{\zeta'(s)}{\zeta(s)} & \le & \frac{x_0 - 1}{x_0}+\frac{c_2s}{(1-s)x_0^{s-1}}
+\neea
+%
+taking the limit
+%
+\nbea
+\lim_{s\to1}(1-s)\frac{\zeta'(s)}{\zeta(s)} & \le & \lim_{s\to 1} (1-s)\frac{x_0 - 1}{x_0} + (1-s)\frac{c_2 s}{(1-s)x_0^{s-1}} \\
+1 & \le & c_2
+\neea
+%
+so $c_2$ is at least 1 and since
+%
+\nbea
+c_2 x \le \psi(x) \le c_1 x, ~~~~~~~{\rm for~} x \ge x_0
+\neea
+%
+we have $\psi(x) \sim x$. Well, of course this is an invalid argument as $c_1$ is actually bigger than 1 and $c_2$ is less than 1 but it's fun :)
+
+But where did it go wrong? For one thing we did get the right pole and residue with $c_1 s/(1-s)$ but doing the integral before taking the limit $s\to1$ might be an issue, because $\log x$ is way different from $1/x^{s-1}$ :)
+
+The observant reader will notice something more serious, when multiplying by $(1-s)$ before taking the limit $s\to1$ we need to remember that the integral was initially valid for $\sigma > 1$, this means that we need to take the limit from the right $s\to1^+$ but this also means that $(1-s) < 0$ and in that case we need to flip the inequality sign so what we actually gotten is
+%
+\nbea
+1 \le c_1 ~~~~~~~~~~ 1 \ge c_2
+\neea
+%
+By taking the limit $s\to 1^+$ we can also legalize our integration before limit approach, so the above result is legit :)
 
 
 

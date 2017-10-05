@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  28 SEP 2017 19:35
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  4 OCT 2017 19:18
 entering extended mode
 **C:/Users/User/Documents/GitHub/string/pittetd/buram.tex
 (C:/Users/User/Documents/GitHub/string/pittetd/buram.tex
@@ -649,19 +649,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 757--758
 =-=-=-
  []
 
-(buram.bbl) [16]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 802.
- (buram.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 802.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 802.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 789.
+
+(C:\miktex-portable-2.9\tex\latex\base\omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 789.
+ [16] (buram.bbl) [17]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 825.
+
+(buram.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 825.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 825.
  ) 
 Here is how much of TeX's memory you used:
- 13295 strings out of 428755
- 183309 string characters out of 3166785
+ 13313 strings out of 428755
+ 183559 string characters out of 3166785
  284555 words of memory out of 3000000
- 16512 multiletter control sequences out of 15000+200000
+ 16527 multiletter control sequences out of 15000+200000
  13625 words of font info for 51 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
- 36i,16n,38p,612b,380s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,16n,38p,612b,401s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on buram.pdf (16 pages).
+Output written on buram.pdf (17 pages).
