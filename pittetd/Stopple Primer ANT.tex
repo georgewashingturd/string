@@ -1154,6 +1154,23 @@ so the gist here is that
 %
 so the generating function for $\Phi(s)$ is a derivative of $1/(e^{-y} + 1)$. This is similar to the derivative trick for integration, introduce a parameter, do derivative on that parameter and then set that parameter to some value after the derivative to make it go away.
 
+The thing I don't get is why we can't just start with the zeta function directly like so
+%
+\nbea
+\left.\frac{d^{m-1}}{dy^{m-1}} \left(\frac{1}{1 - e^{y}}\right)\right|_{y=0} & = & \left.\frac{d^{m-1}}{dy^{m-1}} \left(\sum_{n=0}^\infty e^{ny}\right)\right|_{y=0} \\
+& = & \sum_{n=0}^\infty n^{m-1} \\
+& = & \zeta(-(m-1))
+\neea
+%
+Now we use the definition of $B_m$
+%
+\nbea
+\left.\frac{d^{m-1}}{dy^{m-1}} \left(\frac{1}{1 - e^{y}}\right)\right|_{y=0} & = & \left.\frac{d^{m-1}}{dy^{m-1}}\left(- \sum_{m=0}^\infty B_m \frac{y^{m-1}}{m!}\right)\right|_{y=0} \\
+& = & -\frac{B_m}{m}
+\neea
+%
+true that this is definitely not convergent but we can just use Abel's sum and we get the result right away.
+
 {\bf Exercise 8.3.2}, Page 209, Assuming $s>0$ is real, change variables by $x=t^s$ in the integral (8.4), this means $dx=st^{s-1}dt$
 %
 \nbea
@@ -1252,6 +1269,21 @@ and so
 %
 
 {\bf Page 213}, lower half of the page, the formula for $\zeta(2n)$ is given in Chapter 6, Page 154 from the expansion of $z\cot(z)$
+
+{\bf Exercise 8.4.2}, Page 214, we want to show that this integral
+%
+\nbea
+G(s) & = & \int_1^\infty \frac{1}{e^x-1} x^{s-1} dx
+\neea
+%
+is finite. The hint given is that $1 + \frac{x^n}{n!} < e^x$ for any $n$, I believe the assumption is that $x > 0$, the inequality is immediately obvious once we express $e^x$ in its taylor series since each term in the series is positive. The fact that the inequality holds for any $n$ is crucial because
+%
+\nbea
+\int_1^\infty \frac{1}{e^x-1} x^{s-1} dx & \le & \int_1^\infty \frac{1}{1 + \frac{x^n}{n!} - 1} x^{s-1} dx, ~~~~~~~ n > s - 1 + 1 \\
+& \le & n!\int_1^\infty \frac{1}{x^{n-s + 1}} dx
+\neea
+%
+and the integral is finite since $n - s + 1 > 1$, again the importance of being able to choose any $n$. Therefore the LHS is also finite.
 
 \bigskip
 \underline{\textit{\textbf{Chapter 10}}}
