@@ -1022,6 +1022,10 @@ The next question is whether the $\delta$'s are all the same, here we have three
 \underline{\textit{\textbf{Chapter 8}}}
 \bigskip
 
+{\bf Page 199}, Lemma op top of page, we have to be careful here, this is a conditionally convergent series and because of that I can form any number I want. Say I want 57 out of the series, first I add all positive number until it just exceed 57, I then start adding the negative one until it's just below 57 and then repeat the process by adding the positive ones again and so on. Using this technique I can also get 0 out of the sum.
+
+Argument from Apostol on Page 293 on Theorem 13.11 is the better and correct one.
+
 {\bf Exercise 8.2.1}, Page 199, first we expand
 %
 \nbea
@@ -1058,7 +1062,9 @@ Now, as the book says that $\Phi(s) = \log(2) + O(s-1)$, since if we Taylor expa
 %
 again recall here we are interested in $s\to1$ and so $O(1)$ is the biggest error, all other Big Oh are in $O((s-1)^m),~m \ge 1$
 
-{\bf Exercise8.2.2}, Page 202, let's apply Euler operators using Maxima, so
+{\bf Page 202}, this operator should not be a surprise, we do this because we want to get an extra factor of $n$ for each term while maintaining the power of $x$ so we differentiate and multiply by $x$.
+
+{\bf Exercise 8.2.2}, Page 202, let's apply Euler operators using Maxima, so
 %
 \nbea
 x\frac{d}{dx}\frac{-x}{(1+x)^2} & = & x\frac{d}{dx}\sum_{n=1}^\infty (-1)^n n x^n \\
@@ -1091,6 +1097,62 @@ and the $\Phi(s)$'s are $-1$ times the above and so and connecting it to the nex
 %
 
 {\bf Exercise 8.2.3}, Page 203, the conjecture here is that according to the list above, $\zeta(-2n)=0$ and $\zeta(-(2n+1)) = -\frac{1}{2(n+1)}\times B_{2(n+1)}$, $n\ge0$
+
+{\bf Exercise 8.2.4}, Page 203, do the simplest thing first
+%
+\nbea
+\frac{1}{e^x - 1} - \frac{2}{e^{2x}-1} & = & \frac{e^{2x} - 1 - 2e^x + 2}{(e^{x} - 1)(e^{2x} - 1)} \\
+& = & \frac{(e^x - 1)^{\cancel{2}}}{\cancel{(e^{x} - 1)}(e^{2x} - 1)} \\
+& = & \frac{(e^x - 1)}{(e^{x} - 1)(e^{x} + 1)} \\
+& = & \frac{1}{(e^{x} + 1)}
+\neea
+%
+now to the expansion
+%
+\nbea
+\frac{1}{e^x - 1} - \frac{2}{e^{2x}-1} & = & \sum_{m=0}^\infty B_m\frac{x^{m-1}}{m!} - 2\sum_{m=0}^\infty B_m\frac{(2x)^{m-1}}{m!} \\
+\frac{1}{e^x + 1} & = & \sum_{m=0}^\infty B_m\frac{(1-2^m)x^{m-1}}{m!} \\
+\to \frac{1}{e^{-y} + 1} & = & \sum_{m=0}^\infty (-1)^{m-1}B_m\frac{(1-2^m)y^{m-1}}{m!}
+\neea
+%
+taking the derivative with respect to $y$ for $m-1$ times and then setting $y=0$ will pick up only the $y^{m-1}$ term, while also removing the $(m-1)!$ from $m!$ in the denominator.
+
+Next expand $1/(e^{-y} + 1)$ as geometric series in terms of $e^{-y}$
+%
+\nbea
+\frac{1}{e^{-y} + 1} & = & 1 - e^{-y} + e^{-2y} - e^{-3y} + e^{-4y} - e^{-5y} + \cdots \\
+& = & \sum_{n=0}^\infty (-1)^n e^{-ny}
+\neea
+%
+taking the $m-1^{\rm st}$ derivative
+%
+\nbea
+\frac{d^{m-1}}{dy^{m-1}} \left(\frac{1}{e^{-y} + 1}\right) & = & \sum_{n=0}^\infty (-1)^n (-n)^{m-1} e^{-ny} \\
+& = & (-1)^m \sum_{n=0}^\infty (-1)^{n-1} n^{m-1} e^{-ny}
+\neea
+%
+setting $y=0$
+%
+\nbea
+\left.\frac{d^{m-1}}{dy^{m-1}} \left(\frac{1}{e^{-y} + 1}\right) \right|_{y=0} & = & (-1)^m \sum_{n=0}^\infty (-1)^{n-1} n^{m-1}
+\neea
+%
+comparing the two series
+%
+\nbea
+(-1)^{m-1} \frac{B_m(1-2^m)}{m} & = & (-1)^m \sum_{n=0}^\infty (-1)^{n-1} n^{m-1} \\
+\to \frac{B_m(1-2^m)}{-m} & = & (-1)^{2m} \Phi(-(m-1)) \\
+& = & (1-2^m)^{-1}\Phi(-(m-1)) \\
+-\frac{B_m}{m} & = & \zeta(-(m-1))
+\neea
+%
+so the gist here is that
+%
+\nbea
+\left.\frac{d^{m-1}}{dy^{m-1}} \left(\frac{1}{e^{-y} + 1}\right) \right|_{y=0} & = & (-1)^m \Phi(-(m-1))
+\neea
+%
+so the generating function for $\Phi(s)$ is a derivative of $1/(e^{-y} + 1)$. This is similar to the derivative trick for integration, introduce a parameter, do derivative on that parameter and then set that parameter to some value after the derivative to make it go away.
 
 {\bf Exercise 8.3.2}, Page 209, Assuming $s>0$ is real, change variables by $x=t^s$ in the integral (8.4), this means $dx=st^{s-1}dt$
 %
