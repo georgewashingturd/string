@@ -870,11 +870,212 @@ and
 if $y_2$ is even we are done because the LHS is odd and the RHS is even, so $x_2 = 0$, if $y_2$ is odd then $(y_2\pm1)/2 = a_{\pm}$ and $a_+ - a_- = 1$
 %
 \nbea
-a_+a_- & = & x^3 \\
-a_+(a_+ - 1) & = & x^3
+a_+a_- & = & x_2^3 \\
+a_+(a_+ - 1) & = & x_2^3
 \neea
 %
-and $\gcd(a_+,a_+ - 1) = 1$ so each of them must be a cube but there are no two cubes separated by 1.
+and $\gcd(a_+,a_+ - 1) = 1$ so each of them must be a cube but there are no two cubes separated by 1. Except for $\pm1$ and $0$ but that also means that $x_2 = 0$.
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+On the definition of factorial, Euler introduced the integral notation
+%
+\nbea
+n! & = & \int_0^\infty e^{-x} x^n dx
+\neea
+%
+the $e^{-x}$ is there to make sure everything is well behaved at $\infty$, the $x^n$ is there to be IBP'd (differentiated) multiple times so that we get the factor $n!$, they also make sure that the boundary terms are zero.
+
+But Euler had other ideas too, instead of assigning $x^n \to u$ and differentiating it every IBP, we can instead integrate it, \ie assign $x^n dx \to dv$ like so (boundary terms are always zero and also changing $n\to s$)
+%
+\nbea
+\int_0^\infty e^{-x} x^s dx & = & \frac{1}{s+1} \int_0^\infty e^{-x} x^{(s+1)} dx
+\neea
+%
+repeating it $N$ times we get
+%
+\nbea
+\int_0^\infty e^{-x} x^s dx & = & \frac{1}{(s+1)(s+2) \dots (s+N)} \int_0^\infty e^{-x} x^{(s+N)} dx
+\neea
+%
+and this way we can immediately see the poles at $s = -1, -2, \dots$. We now expand the integral in the RHS above in an interesting way, please do no do IBP by differentiating $x^{(s+n)}$ that will undo everything we've just done. There is, however, a curious way to expand it which only works when $N\to\infty$, we write
+%
+\nbea
+(s + N)! & = & N! \cdot (1 + N)(2 + N) \cdots (s+N)
+\neea
+%
+since $s$ is just a (fixed) parameter, it's finite, and so as we take $N\to\infty$
+%
+\nbea
+\lim_{N\to\infty} (1 + N)(2 + N) \cdots (s+N) & \sim & (1 + N)(1 + N) \cdots (1+N) = (1+N)^s
+\neea
+%
+and thus
+%
+\nbea
+\lim_{N\to\infty}\int_0^\infty e^{-x} x^{(s+N)} dx & = & N! (1+N)^s
+\neea
+%
+So, Euler's definition of a factorial was
+%
+\nbea
+s! & = & \lim_{N\to\infty} \frac{1\cdot2\cdots N}{(s+1)(s+2) \dots (s+N)} (1+N)^s
+\neea
+%
+although whether he got it from the integral above or not I don't know.
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Why the minus sign? the integrand is $\frac{(-x)^s}{e^x - 1}$, there's a minus sign in front of $x$. This is due to the choice of contour. Note that we are going from $+\infty$ to left all the way to 0 and then to the right all the way to $+\infty$.
+
+If there's no minus sign and this is the cut we choose, then
+%
+\nbea
+x^s & = & e^{s\log x + 0\cdot\pi i} , ~~~~~~~~~~ {\rm going~from~} +\infty {\rm ~to~} 0 \\
+x^s & = & e^{s\log x + 2\cdot\pi i} , ~~~~~~~~~~ {\rm going~from~} 0 {\rm ~to~} +\infty
+\neea
+% 
+and when we add the two integrals we get zero
+%
+\nbea
+e^{s\log x + 0\cdot\pi i} - e^{s\log x + 2\cdot\pi i} & = & 0
+\neea
+%
+so if we don't want the minus sign we need to choose the other cut, coming from $-\infty$ to zero and back to $-\infty$ so that the phases will be $\pi i$ and $-\pi i$.
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Compact here means closed and bounded.
+
+The whole integral is zero thanks to a corollary of Goursat theorem which says that
+%
+\nbea
+\oint_C f(z) dz & = & \sum_{k=1}^n \oint_{C_k} f(z) dz
+\neea
+%
+where the contours $C_k$'s are all inside of $C$.
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+For the integral
+%
+\nbea
+\int_{|y|=\epsilon} (-2\pi i n - y)^{s-1} \frac{y}{e^y - 1} \cdot \frac{dy}{y}
+\neea
+%
+we rewrite as
+%
+\nbea
+\int_{|y|=\epsilon} \frac{f(y)}{y - 0} ~ dy, ~~~~~~~~~~ f(y) = (-2\pi i n - y)^{s-1} \frac{y}{e^y - 1}
+\neea
+%
+we need to remember that $f(y)$ has no pole when $y\to 0$, so the value of the integral is just $2\pi i f(0) = 2\pi i(-2\pi i n)^{s-1}$. Note that
+%
+\nbea
+\lim_{y\to0} \frac{y}{e^y - 1} & = & \lim_{y\to0} \frac{1}{e^y} = 1
+\neea
+%
+after L'Hospital.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Here the integral around the small circle is zero, but expanded into Bernoulli's number it is not zero
+
+due to the L'Hospital around zero actually.
+
+%
+\nbea
+\lim_{x\to0} \frac{(-x)^s}{e^x - 1} & = & \lim_{x\to0} \frac{-s(-x)^{s-1}}{e^x} \\
+& = & 
+\left\{
+\begin{array}{l c l}
+0 & ~~~~~ &{\rm if~} s-1 \neq 0 \\
+-s & ~~~~~ &{\rm if~} s-1 = 0
+\end{array}
+\right.
+\neea
+%
+Note that we take the limit $|x|\to 0$ outside the integral, so we need to first integrate and then take the limit, so if $s-1=0$ it means $(-x)^{s-1} = 1$.
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+The Gamma function shown here $\Pi(s)$ is valid for all $s > -1$, how is this so as
+%
+\nbea
+\int_0^\infty e^{-x} x^{s} dx
+\neea
+%
+blows up for $s < 0$ when $x\to0$. The justification is as follows
+%
+\nbea
+e^{-x} x^{s} \le x^s
+\neea
+%
+for all $x > 0$ no matter what $s$ is so the integral is also capped by ($s > -1$)
+%
+\nbea
+\int_0^1 e^{-x}x^s dx \le \int_0^1 x^s dx & = & \left.\frac{1}{s+1} x^{s+1} \right|_0^1 \\
+& = & \frac{1}{s+1}
+\neea
+%
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+%
+\nbea
+\int_0^\infty e^{-nx} x^{s-1} dx & = & \frac{(s-1)!}{n^s} \\
+\to \sum_{n=1}^\infty \int_0^\infty e^{-nx} x^{s-1} dx & = & \sum_{n=1}^\infty \frac{(s-1)!}{n^s} \\
+& = & (s-1)!\sum_{n=1}^\infty \frac{1}{n^s}
+\neea
+%
+
+Swapping integral and sum
+%
+\nbea
+\int_0^\infty \sum_{n=1}^\infty e^{-nx} x^{s-1} dx & = & \int_0^\infty \left(\sum_{n=1}^\infty e^{-nx}\right) x^{s-1} dx \\
+& = & \int_0^\infty \left (\frac{1}{1-e^{-x}} - 1 \right ) x^{s-1} dx \\
+& = & \int_0^\infty \left (\frac{e^{-x}}{1-e^{-x}}\right ) x^{s-1} dx \\
+& = & \int_0^\infty \frac{x^{s-1}}{e^{x} - 1} dx
+\neea
+%
+we need to show that the sum must be convergent before summing it, but $e^{-x}$ might not be $< 1$, 
+%
+\nbea
+e^{-x} & < & 1 \\
+\to x & > & 0
+\neea
+%
+so the problem child is when $x=0$, this is similar to the situation for
+%
+\nbea
+\int_0^1 \frac{1}{\sqrt{x}} dx & = & 2
+\neea
+%
+even though it blows up at $x = 0$, we do this by
+%
+\nbea
+\int_0^1 \frac{1}{\sqrt{x}} dx & = & \lim_{a\to0}\int_a^1 \frac{1}{\sqrt{x}} dx
+\neea
+%
+
+
+%
+\nbea
+\int_0^\infty e^{-x}x^n dx & = & e^{-x}\frac{1}{n+1}x^{n+1} + \int_0^\infty e^{-x}\frac{1}{n+1}x^{n+1} dx
+\neea
+%
+
+
+%
+\nbea
+\int_0^\infty e^{-x}x^n dx & = & -e^{-x}x^{n} + n\int_0^\infty e^{-x}x^{n-1} dx
+\neea
+%
+
+
 
 
 
