@@ -1021,6 +1021,13 @@ for all $x > 0$ no matter what $s$ is so the integral is also capped by ($s > -1
 & = & \frac{1}{s+1}
 \neea
 %
+Another way of looking at it is
+%
+\nbea
+\int_0^\infty e^{-x}x^n dx & = & e^{-x}\frac{1}{n+1}x^{n+1} + \int_0^\infty e^{-x}\frac{1}{n+1}x^{n+1} dx
+\neea
+%
+so as long as $n>-1$ we are fine.
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
@@ -1030,6 +1037,23 @@ for all $x > 0$ no matter what $s$ is so the integral is also capped by ($s > -1
 \to \sum_{n=1}^\infty \int_0^\infty e^{-nx} x^{s-1} dx & = & \sum_{n=1}^\infty \frac{(s-1)!}{n^s} \\
 & = & (s-1)!\sum_{n=1}^\infty \frac{1}{n^s}
 \neea
+%
+so as long as $s > 1$ the sum of the integral converges, now we want to see the other way, summing inside the integral. A few points
+%
+\bit
+\item Swapping sum and integral is always OK, as long as the sum is finite, for infinite sums what we are interchanging are actually limit and integral because $\sum^\infty = \lim_{N\to\infty}\sum^N$
+%
+\item Geometric series formula is only valid if the sum converges, why? because we start with
+%
+\nbea
+A & = & 1 + r + r^2 + \dots \\
+rA & = & r + r^2 + r^3 + \dots
+\neea
+%
+we then substract $A - rA = 1\to A = 1/(1-r)$ and so on, the problem is if $A$ is divergent we are then doing $\infty - \infty$ which might not be equal to one, so if we try to do $A = 1 + 2 + 2^2 + \dots$ using the formula we get $-1$ which is not just wrong but also not divergent (although if you read Stopple's book you can actually do this and it's called Abel sum).
+
+So the point is that we can't just apply the formula and then take the limit $r\to a$, we can only do this if $a = 1$.
+\eit
 %
 
 Swapping integral and sum
@@ -1041,14 +1065,7 @@ Swapping integral and sum
 & = & \int_0^\infty \frac{x^{s-1}}{e^{x} - 1} dx
 \neea
 %
-we need to show that the sum must be convergent before summing it, but $e^{-x}$ might not be $< 1$, 
-%
-\nbea
-e^{-x} & < & 1 \\
-\to x & > & 0
-\neea
-%
-so the problem child is when $x=0$, this is similar to the situation for
+the only problem we have here is when $e^{-x} \ge 1$ and this only happens when $x = 0$, so we only have one point of contention, literally, by the way, this is similar to the situation for
 %
 \nbea
 \int_0^1 \frac{1}{\sqrt{x}} dx & = & 2
@@ -1060,11 +1077,29 @@ even though it blows up at $x = 0$, we do this by
 \int_0^1 \frac{1}{\sqrt{x}} dx & = & \lim_{a\to0}\int_a^1 \frac{1}{\sqrt{x}} dx
 \neea
 %
-
-
+in our case the integral is also OK because $e^x - 1 \ge x$ for $x \ge 0$ and so
 %
 \nbea
-\int_0^\infty e^{-x}x^n dx & = & e^{-x}\frac{1}{n+1}x^{n+1} + \int_0^\infty e^{-x}\frac{1}{n+1}x^{n+1} dx
+\int_0^1 \frac{x^{s-1}}{e^{x} - 1} dx & \le & \int_0^1 x^{s-2} dx \\
+& \le & \left. \frac{1}{s-1} x^{s-1} \right |_0^1 \\
+& \le & \frac{1}{s-1}
+\neea
+%
+since $s > 1$. Note that we can't just take the limit ($s > 1$)
+%
+\nbea
+\lim_{x\to0} \frac{x^{s-1}}{e^x-1} & = & \lim_{x\to0} \frac{(s-1)x^{s-2}}{e^x} \\
+& = & \infty, ~~~~~~~~~~{\rm  since~} s > 1.
+\neea
+%
+so at zero the integrand still blows up but the integral is OK.
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+On the integral around zero
+%
+\nbea
+\int_{|x| = \delta} \frac{(-x)^s}{e^x-1} \frac{dx}{x}
 \neea
 %
 
