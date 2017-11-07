@@ -878,6 +878,157 @@ and $\gcd(a_+,a_+ - 1) = 1$ so each of them must be a cube but there are no two 
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+My proof of $p = a^2 + b^2$ for $p \equiv 1 \pmod{4}$, the key here is what I found to be Thue's theorem. My proof of it will be somewhat a visual/inductive type.
+
+First, since $p \equiv 1 \pmod{4}$,
+%
+\nbea
+(-1)^{\frac{p-1}{2}} & = & (-1)^{\frac{(4m+1)-1}{2}} \\
+& = & (-1)^{2m} \\
+& = & +1
+\neea
+%
+and therefore $-1$ is a quadratic residue say $\equiv a^2 \pmod{p}$, therefore
+%
+\nbea
+a^2 x^2 & \equiv & -x^2 \pmod{p}
+\neea
+%
+this is true for {\bf any} $x \in (\mathbb{Z}/p\mathbb{Z})^*$. But what we want is $|x|$ that is $\le \floor{\sqrt{p}}$, this will make the proof work as follows. If both $|x|$ and $|ax|$ is $\le \floor{\sqrt{p}}$ then since
+%
+\nbea
+a^2x^2 + x^2 & \equiv & 0 \pmod{p} \\
+& = & pw
+\neea
+%
+$w$ cannot be 0 since $0 < |x|, |ax| \le \floor{\sqrt{p}}$, and $w$ cannot be $\ge 2$ since $2\floor{\sqrt{w}}^2 < 2p$, and it is a strict inequality since $p$ is prime and so $\floor{\sqrt{p}} < \sqrt{p}$. Thus $w$ must be 1 and we are done.
+
+The challenge now is to show that we can find such $x$ such that the above is true. In other words, given any $a \in (\mathbb{Z}/p\mathbb{Z})^*$, there must be $x, y$ with $|x|,|y| \in \{1,2,\dots,\floor{\sqrt{p}}\}$ such that $ax \equiv y \pmod{p}$.
+
+The way I did this is by creating a multiplication table, Table.~\ref{Tab:1}, as follows, take for example $p = 61, \floor{\sqrt{61}} = 7$. The left most column contains the various possible values of $a$ which is $1,2,\dots,p-1$. While the top row is the various values of $x$, $\{1,2,\dots,\floor{\sqrt{p}}\}$.
+
+If $1 \le a \le \floor{\sqrt{p}}$ then it is obvious that there is an $x$ such that $ax \in \{1,2,\dots,\floor{\sqrt{p}}\}$. What we want to show is that every single row has at least one element that is $\equiv x$, \ie $\in \{1,2,\dots,\floor{\sqrt{p}}\} \pmod{p}$.
+
+To do this we group $a$ by $\floor{\sqrt{p}}$. The pattern repeats every cycle of $\floor{\sqrt{p}}$ like so. Let's see what happens at the first cycle. As stated above when $a = \floor{\sqrt{p}}$, $a\cdot 1 = \floor{\sqrt{p}} \in \{1,2,\dots,\floor{\sqrt{p}}\}$ but we are also interested in $a\cdot \floor{\sqrt{p}}$
+%
+\nbea
+a\cdot \floor{\sqrt{p}} = \floor{\sqrt{p}}^2 & = & (\sqrt{p} - \delta)^2 \\
+& = & p - 2\sqrt{p}\delta + \delta^2 \\
+& = & p - 2\delta\left(\sqrt{p} - \frac{\delta}{2}\right) \\
+& > & p - 2\delta(\floor{\sqrt{p}}) \\
+\neea
+%
+since $0 < \delta < 1$ we have
+%
+\nbea
+\floor{\sqrt{p}}^2 & > & p - 2\floor{\sqrt{p}}
+\neea
+%
+and this is a strict inequality because $\delta$ is strictly bigger than 0. This means that if 
+%
+\nbea
+p - 2\floor{\sqrt{p}} < a\cdot \floor{\sqrt{p}} < p - \floor{\sqrt{p}}
+\neea
+%
+then $(a+1)\cdot\floor{\sqrt{p}}$, \ie the last column of row $(a+1)$, will be in either $\{-\floor{\sqrt{p}}, \dots, -2, -1\}$ or in $\{1,2,\dots,\floor{\sqrt{p}}\}$ since for each column as you go down one row you increase by that column heading, \eg for column heading 5, as you go down one row you just increase by 5. However, if 
+%
+\nbea
+p - \floor{\sqrt{p}} \le a\cdot \floor{\sqrt{p}} < p
+\neea
+%
+then $(a+1)\cdot\floor{\sqrt{p}}$ will definitely be in $\{1,2,\dots,\floor{\sqrt{p}}\}$.
+
+In any case, either $(a+1)\floor{\sqrt{p}}$ or $(a+2)\floor{\sqrt{p}}$ is bigger than $p$, thus the last column would have gone through one rotation modulo $p$.
+
+Note that if we pick a row, going from column to the next, the value increases by that row (modulo $p$). For a row to not have an element in $\{-\floor{\sqrt{p}},\dots-2,-1,1,2,\dots,\floor{\sqrt{p}}\}$ the row value must be bigger than $2\floor{\sqrt{p}}$ so going from one column to the next we entirely jump this range.
+
+But in the first cycle all rows are between $\floor{\sqrt{p}} + 1$ and $\floor{\sqrt{p}} + \floor{\sqrt{p}}$ so this can't happen and since the last column has gone through one rotation modulo $p$, within the rows $\lbrack\floor{\sqrt{p}} + 1,\floor{\sqrt{p}} + \floor{\sqrt{p}}\rbrack$ there is a column when we jump through the minus plus boundary and since the jump is $\le 2\floor{\sqrt{p}}\}$ we can't skip over $\{-\floor{\sqrt{p}},\dots-2,-1,1,2,\dots,\floor{\sqrt{p}}\}$.
+
+If we search this particular row (either $a+1$ or $a+2$) for the largest element $ < p$, say $b$, it cannot be that
+%
+\nbea
+g
+\neea
+%
+
+This means that when we go to the next row
+
+
+
+%
+\nbea
+\left(\floor{\sqrt{p}} +n\right)\left\lceil\frac{p}{\sqrt{p} + n}\right\rceil
+\neea
+%
+
+
+%
+\nbea
+\frac{p}{\sqrt{p} + n} & = & \frac{p}{\sqrt{p}\left(1 + \frac{n}{\sqrt{p}}\right)} \\
+& > & \frac{p}{2\sqrt{p}}
+\neea
+%
+
+%
+\nbea
+(\floor{\sqrt{p}} +n)(\ceil{\frac{1}{2}\sqrt{p}}) & = & (\sqrt{p} - \delta +n)(\frac{1}{2}\sqrt{p} + \epsilon) \\
+& = & \frac{1}{2}p +\sqrt{p}\epsilon - \frac{1}{2}\sqrt{p}\delta - \delta\epsilon + \frac{1}{2}n\sqrt{p} + n\epsilon \\
+& = & \frac{1}{2}p - \sqrt{p}(\frac{1}{2}\delta-\epsilon) + \frac{1}{2}n\sqrt{p} - \delta\epsilon \\
+& > & \frac{1}{2}p + \frac{1}{2}n\sqrt{p} - \sqrt{p} - 1
+\neea
+%
+
+%
+\nbea
+\frac{p}{2\sqrt{p} + n} & = & \frac{p}{2\sqrt{p}\left(1 + \frac{n}{2\sqrt{p}}\right)} \\
+& \approx & \frac{p}{2\sqrt{p}}\left(1 - \frac{n}{2\sqrt{p}}\right) \\
+& \approx & \frac{1}{2}\sqrt{p}\left(1 - \frac{n}{2\sqrt{p}}\right) \\
+& > & \frac{1}{2}\sqrt{p}\left(1 - \frac{n}{\sqrt{p}}\right) \\
+& > & \frac{1}{2} \left(\sqrt{p} - n\right)
+\neea
+%
+
+%
+\nbea
+(2\floor{\sqrt{p}} +n)(\ceil{\frac{1}{2}(\sqrt{p} - n)}) & = & (2\sqrt{p} - \delta +n)\frac{1}{2}(\sqrt{p} - n + 2\epsilon) \\
+& = & p - n\sqrt{p} +2\sqrt{p}\epsilon - \frac{1}{2}\sqrt{p}\delta + \frac{1}{2}\delta n - \delta\epsilon + \frac{1}{2}n\sqrt{p} - \frac{1}{2}n^2 + n\epsilon \\
+& = & p  - \sqrt{p}(n - \frac{1}{2}n) - \sqrt{p}(\frac{1}{2}\delta-2\epsilon) +n(\delta+\epsilon) - \frac{1}{2} n^2 - \delta\epsilon \\
+& > & p - 2\sqrt{p} - \sqrt{p}n - n^2 - 1
+\neea
+%
+
+
+
+
+
+
+%
+\begin{table}[]
+\centering
+\caption{Various values of $x$ and $y$ that satisfy $y^2 = x^3 + x + 1$ in $K = \mathbb{Z}/5\mathbb{Z}$}
+\label{Tab:1}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+~~~~~~ & ~~1~~ & ~~2~~ & ~~3~~ & ~~4~~ & ~~5~~ & ~~6~~ & $\floor{\sqrt{p}}$ \\ \hline
+1 & 1 & 2 & 3 & 4 & 5 & 6 & 7\\ \hline
+2 & 2 & 4 & 6 & 8 & 10 & 12 & 14\\ \hline
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\ \hline
+$\floor{\sqrt{p}}$ & 7 & 14 & 21 & 28 & 35 & 42 & 49 \\ \hline
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\ \hline
+$p-1$ & 60 & 120 & 180 & 240 & 300 & 360 & 420 \\ \hline 
+\end{tabular}
+\end{table}
+%
+
+
+cannot just do $p \mod \floor{\sqrt{p}}$ because the quotient might be bigger than $\floor{\sqrt{p}}$
+
+
+any odd power of $p \equiv -1 \pmod{4}$ cannot be written as $a^2 + b^2$, for even power it can only be written as $0^2 + p^{2k}$
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
 On the definition of factorial, Euler introduced the integral notation
 %
 \nbea
@@ -1110,12 +1261,66 @@ On the integral around zero
 \neea
 %
 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+order of limit taking around the small semi circle, Bernoulli's number
 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+analytic continuation of gamma function, integral is only for $s > 1$ but once we get the final form it applies for all $s$.
 
+same thing with zeta function, we take the small semi circle $\delta \to 0$ only for $s > 1$, once we get the final form we say it applies for all $s$ but of course for $s \le 1$ we cannot take $c\to0$, otherwise the integral around that semi circle blows up and we don't have an entire function anymore.
 
+$0 < \delta < 2\pi$, because at $2\pi i$ we get an infinity from $1/(e^x-1)$
 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+%
+\nbea
+\int_2^L \frac{1}{\log t}dt \sim \frac{L}{\log L}
+\neea
+%
+start with splitting the integral $\int_2^{\sqrt{L}} + \int_{\sqrt{L}}^{L}$
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+%
+\nbea
+\frac{1 + 2\psi(x)}{1 + 2\psi(1/x)} = \frac{1}{\sqrt{x}}
+\neea
+%
+for small $x$
+%
+\nbea
+\psi(1/x) & = & \sum e^{-n^2 \pi 1/x} \\
+\lim_{x\to 0} \psi(1/x) & = & \sum e^{-n^2 \pi \infty} \\
+& = & 0
+\neea
+%
+so for small $x$ we have
+%
+\nbea
+\lim_{x\to 0} \frac{1 + 2\psi(x)}{1 + 2\psi(1/x)} = 1 + 2\psi(x) & = & \frac{1}{\sqrt{x}} \\
+\to \psi(x) & = & \frac{1}{2} \left( \frac{1}{\sqrt{x}} - 1\right)
+\neea
+%
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Fourier transform, I thought I was an expert LOL well, not compared to Riemann
+%
+\nbea
+\int_0^\infty J(x) x^{-s-1} dx & = & \int_0^\infty J(x) x^{-s} \frac{dx}{x}
+\neea
+%
+every time you see $\frac{dx}{x}$ you should immediately scream $\log x$ because $d(\log x) = \frac{dx}{x}$, let $w = \log x$
+%
+\nbea
+\int_0^\infty J(x) x^{-s} \frac{dx}{x} & = & \int_0^\infty J(e^w)e^{-ws} dw \\
+& = & \int_0^\infty J(e^w)e^{-w(\sigma + it)} dw \\
+& = & \int_0^\infty \left\lbrack J(e^w)e^{-w\sigma} \right\rbrack e^{-itw} dw
+\neea
+%
 
 
 
