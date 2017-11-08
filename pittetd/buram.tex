@@ -938,18 +938,18 @@ Back to the induction attempt, this shows that
 & = & pw
 \neea
 %
-If we inductively assume that all primes ($\equiv 4l + 1$) up to $p = 4m+1$ has the form $a^2 + b^2$ we can also deduce that $p$ is also of that form, the problem is that $w$ will certainly contain other prime factors much bigger than $p$ since $(2m)!$ is a very large number, so induction fails at this stage.
+If we inductively assume that all primes ($\equiv 1 \pmod{4}$) up to $p = 4m+1$ has the form $a^2 + b^2$ we can also deduce that $p$ is also of that form, the problem is that $w$ will certainly contain other prime factors much bigger than $p$ since $(2m)!$ is a very large number, so induction fails at this stage.
 
 But worry not, we still have some tricks up our sleeves :) The good thing is that we work with equivalences, so we can use the smaller equivalence of $(2m)!$ to minimize the factorial, say $r \equiv (2m)! \pmod{p}$ with $r < p$, this is guaranteed, I even (unnecessarily) minimized it further by noting that we have two roots of $-1$ and we can choose the smaller one. But again, it's not necessary. So what we have now is
 %
 \nbea
-\left \lbrack\left ( 2m \right ) ! \right \rbrack^2 + 1^2 & \equiv & r^2 + 1^2 \equiv 0 \pmod{p} \\
+\left \lbrack\left ( 2m \right ) ! \right \rbrack^2 + 1^2 \equiv r^2 + 1^2 & \equiv & 0 \pmod{p} \\
 \to r^2 + 1^2 & = & pw
 \neea
 %
 Another worry I had (again unnecessary) was that $w$ can contain primes bigger than $p$, and that would render the induction useless because instead of possible infinite descend we will get an infinite ascend :)
 
-A break through came after I played around with the actual numbers using maxima, the code below
+A break through came after I played around with the actual numbers using maxima, the code is shown below
 %
 \begin{verbatim}
 t:0;
@@ -1040,14 +1040,14 @@ Why do we need all this? From our induction we know that
 r^2 + 1^2 & = & pw
 \neea
 %
-while $w$ might only contain 2 or primes less than $p$ of the form $4u+1$ and by our hypothesis they are all sums of squares and from above we know that product of sums of squares is again a sum of squares (note that $2 = 1^2 + 1^2$) and so we peel of this equation one layer (one prime factor) at a time
+$w$ might only contain 2 or primes less than $p$ of the form $4u+1$ and by our hypothesis they are all sums of squares and from above we know that product of sums of squares is again a sum of squares (note that $2 = 1^2 + 1^2$) and so we peel of this equation one layer (one prime factor) at a time
 %
 \nbea
 r^2 + 1^2 & = & pw \\
 r^2 + 1^2 & = & pw_1w_2\cdots w_n
 \neea
 %
-say $w_1 = a^2 + b^2 \to (r^2 + 1^2) = P w_1$, if we write this in matrix form
+say $w_1 = a^2 + b^2 \to (r^2 + 1^2) = P(a^2 + b^2) = P w_1 $, if we write this in matrix form
 %
 \nbea
 \left (
@@ -1085,7 +1085,7 @@ If we take the determinant of the LHS
 \left(\frac{ar + b}{a^2 + b^2}\right)^2 + \left(\frac{a - br}{a^2 + b^2}\right)^2 & = & \frac{(r^2 + 1^2)}{(a^2+b^2)}
 \neea
 %
-The RHS is just $|P| = p$ and it is an integer, we need to show that each term in the LHS is an integer. From
+The RHS is just $P$ and it is an integer, we need to show that each term in the LHS is an integer to show that we can decompose $P$ in terms of sum of two squares. From
 %
 \nbea
 (ar + b)(ar-b) & = & a^2r^2 - b^2 \\
@@ -1101,7 +1101,7 @@ since $a^2 + b^2$ divides $r^2 + 1^2$ it divides the LHS and since it is prime i
 %
 since the LHS and the first term in the RHS are divisible by $a^2 + b^2$ it must divide the last term on the RHS as well.
 
-Now suppose $a^2 + b^2$ divides $(ar-b)$ we need to rewrite the above as
+Now suppose $a^2 + b^2$ divides $(ar-b)$ we need to rewrite the above as (from the fact that $(a^2 + b^2)(c^2 + d^2) = (a^2 + b^2)(d^2 + c^2)$, \ie the product of sum of squares formula is invariant under $a\leftrightarrow b, c\leftrightarrow d$)
 %
 \nbea
 \left(\frac{ar + b}{a^2 + b^2}\right)^2 + \left(\frac{a - br}{a^2 + b^2}\right)^2 & = & \left(\frac{a + br}{a^2 + b^2}\right)^2 + \left(\frac{ar - b}{a^2 + b^2}\right)^2
@@ -1123,19 +1123,56 @@ P & = & \left \{
 \end{array} \right.
 \neea
 %
-so what we need is just repeat the process with $w_2, w_2, \dots$ until we only have $p$ on the RHS of $r^1 + 1^1 = pw_1w_2\cdots w_n$ and therefore $p$ is also a sum of two squares, doing this continually inductively we show that every prime $p = 4m+1$ can be expressed as a sum of two squares.
+so what we need is just repeat the process with $w_2, w_2, \dots$ until we only have $p$ on the RHS of $r^2 + 1^2 = pw_1w_2\cdots w_n$ and therefore $p$ is also a sum of two squares, doing this continually inductively we show that every prime $p = 4m+1$ can be expressed as a sum of two squares.
 
-Another thing I observed during this misadventure was that any number (not just primes) of the form $n = 4m-1$ cannot be expressed as a sum of two squares, this is because $n$ must have a prime $p$ of the form $4u-1$, if $n$ can be expressed as a sum of two squares
+Another feature is that this sum is unique (up to ordering of course since $a^2 + b^2 = b^2 + a^2$), so let's choose a convention that if $p = a^2 + b^2$ then $a<b$ (since $p$ is prime $a \neq b$), so say we have two sums representing the same prime
+%
+\nbea
+p & = & a^2 + b^2 \\
+& = & c^2 + d^2 \\
+\to p^2 & = & (ac + bd)^2 + (ad-bc)^2 \\
+& = & (ad + bc)^2 + (ab-dc)^2
+\neea
+%
+again using the product of sums of squares formula, since $p$ is prime, the three terms are all co-prime and so it falls under the pythagorean formula
+%
+\nbea
+p^2 & = & (m^2 + n^2)^2 = (2mn)^2  + (m^2 - n^2)^2
+\neea
+%
+since this formula covers every possible solutions of the pythagorean triples, it means that for the same hypotenuse $p$ there is only one solution, this also means either
+%
+\nbea
+ac + bd & = & ad + bc \\
+d(b-a) & = & c (b-a) \\
+\to d & = & c
+\neea
+%
+or
+%
+\nbea
+ac + bd & = & ab - dc \\
+a(c-b) & = & d(c-b) \\
+\to a & = & d
+\neea
+%
+both ways are not allowed (if $d=a$ then $c=b$ but our convention says that $c<d$ while $b > a$), the only other case is that we create a new sum of squares representation for $p = m^2 + n^2$ from the pythagorean formula but in this case we can repeat the process and get an infinite descend which is not possible since for any $p$ there are only a finite number of possible sum of squares.
+
+\smallskip
+\underline{\textit{\textbf{Bonus Featurette}}}
+\smallskip
+
+Another thing I observed during this misadventure was that any number (not just primes) of the form $n = 4m-1$ cannot be expressed as a sum of two squares, this is because $n$ must have a prime factor $p$ of the form $4u-1$, if $n$ can be expressed as a sum of two squares
 %
 \nbea
 a^2 & \equiv & - b^2 \pmod{n} \\
 a^2 & \equiv & - b^2 \pmod{p} \\
-(a/b)^2 & \equiv & - 1 \pmod{p}
+\left(\frac{a}{b}\right)^2 & \equiv & - 1 \pmod{p}
 \neea
 %
 but $-1$ cannot be a quadratic residue mod $p = 4u-1$.
 
-Another thing is that a prime power of $p^k, p = 4u-1$ can be expressed a sum of two squares if $k$ is even and one of the number in the sum is zero, this is due to the same reasoning above
+Another thing is that a prime power of $p^k, p = 4u-1$ can be expressed a sum of two squares if $k$ is even and one of the number in the sum is zero, \ie $p^k = 0^2 + (p^{k/2})^2$ is the only sum of square representation for $p =4u-1$, this is due to the same reasoning above
 %
 \nbea
 a^2 & \equiv & - b^2 \pmod{p^k} \\
@@ -1144,9 +1181,9 @@ a^2 & \equiv & - b^2 \pmod{p^k} \\
 %
 which is not allowed unless both $a \equiv b \equiv 0 \pmod{p}$ but in that case $k$ has to be even.
 
-\bigskip
+\smallskip
 \underline{\textit{\textbf{Other failed attempts}}}
-\bigskip
+\smallskip
 
 Throughout my meandering, the most painful attempt was trying to find an explicit pattern in the mutiplication table mod $p$, this is after I found out about Thue's Lemma which states that there must be $x,y$ with $0<|x|,|y|\le \floor{\sqrt{n}}$ such that $ax \equiv \pm y \pmod{n}$, why is this relevant? If both $|x|$ and $|ax|$ is $\le \floor{\sqrt{p}}$ then since
 %
@@ -1161,7 +1198,7 @@ $w$ cannot be 0 since $0 < |x|, |ax| \le \floor{\sqrt{p}}$, and $w$ cannot be $\
 
 The challenge now is to show that we can find such $x$ such that the above is true. In other words, given any $a \in (\mathbb{Z}/p\mathbb{Z})^*$, there must be $x, y$ with $|x|,|y| \in \{1,2,\dots,\floor{\sqrt{p}}\}$ such that $ax \equiv y \pmod{p}$.
 
-I tried proving Thue's Lemma without pigeon hole principle and I failed, couldn't find a good way, thought about cross classification but nothing worked so far.
+I tried proving Thue's Lemma without the pigeon hole principle and I failed, couldn't find a good way, thought about cross classification but nothing worked so far.
 
 Since I also knew about the product of sums of squares thingy, I was also trying to find a condition where we can divide a sum of squares by another, but this turned out quite complicated as it is the subject of what is called Gaussian integers in algebraic number theory LOL
 
