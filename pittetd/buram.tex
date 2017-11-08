@@ -878,9 +878,9 @@ and $\gcd(a_+,a_+ - 1) = 1$ so each of them must be a cube but there are no two 
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-My proof of $p = a^2 + b^2$ for $p \equiv 1 \pmod{4}$, the key here is what I found to be Thue's theorem. My proof of it will be somewhat a visual/inductive type.
+Here's my struggle in coming up with a proof of $p = a^2 + b^2$ for $p \equiv 1 \pmod{4}$, so, many twists and turns later here it is :)
 
-First, since $p \equiv 1 \pmod{4}$,
+The first thing I notice was that since $p \equiv 1 \pmod{4}$,
 %
 \nbea
 (-1)^{\frac{p-1}{2}} & = & (-1)^{\frac{(4m+1)-1}{2}} \\
@@ -894,9 +894,265 @@ and therefore $-1$ is a quadratic residue say $\equiv a^2 \pmod{p}$, therefore
 a^2 x^2 & \equiv & -x^2 \pmod{p}
 \neea
 %
-this is true for {\bf any} $x \in (\mathbb{Z}/p\mathbb{Z})^*$. But what we want is $|x|$ that is $\le \floor{\sqrt{p}}$, this will make the proof work as follows. If both $|x|$ and $|ax|$ is $\le \floor{\sqrt{p}}$ then since
+this is true for {\bf any} $x \in (\mathbb{Z}/p\mathbb{Z})^*$. The trick now is to show that if we transform the above to equality rather than equivalence we get 
 %
 \nbea
+y^2 + x^2 & = & p
+\neea
+%
+But it was not too obvious yet how to get there, the only thing I can see is induction, like so
+%
+\nbea
+a^2x^2 + x^2 & \equiv & 0 \pmod{p} \\
+& = & pw
+\neea
+%
+My strategy was to show that if all primes (1 mod 4) up to $p$ are of the form $a^2 + b^2$ we can show that $p$ must be a sum of two squares too. But still didn't know where to go yet.
+
+Another thing I stumbled upon in this misadventure is Wilson's Theorem, for a prime $p$
+%
+\nbea
+(p-1)! & \equiv & -1 \pmod{p} \\
+1\cdot2\cdots \frac{p-1}{2} \cdot \left(-\frac{p-1}{2}\right) \cdots (-2)\cdot (-1) & \equiv & -1 \pmod{p} \\
+\left \lbrack\left ( \frac{p-1}{2} \right ) ! \right \rbrack^2 (-1)^{\frac{p-1}{2}} & \equiv & -1 \pmod{p}
+\neea
+%
+for $p = 4m+1$ we have
+%
+\nbea
+\left \lbrack\left ( 2m \right ) ! \right \rbrack^2 & \equiv & -1 \pmod{p}
+\neea
+%
+so the roots of $-1$ are
+%
+\nbea
+\left ( 2m \right ) ! ~~~~~~~{\rm and} ~~~~~~~ -\left ( 2m \right ) !
+\neea
+%
+I was hoping that an ``explicit'' form of the root of $-1$ would get me somewhere but it went nowhere quite fast :)
+
+Back to the induction attempt, this shows that
+%
+\nbea
+\left \lbrack\left ( 2m \right ) ! \right \rbrack^2 + 1^2 & \equiv & 0 \pmod{p} \\
+& = & pw
+\neea
+%
+If we inductively assume that all primes ($\equiv 4l + 1$) up to $p = 4m+1$ has the form $a^2 + b^2$ we can also deduce that $p$ is also of that form, the problem is that $w$ will certainly contain other prime factors much bigger than $p$ since $(2m)!$ is a very large number, so induction fails at this stage.
+
+But worry not, we still have some tricks up our sleeves :) The good thing is that we work with equivalences, so we can use the smaller equivalence of $(2m)!$ to minimize the factorial, say $r \equiv (2m)! \pmod{p}$ with $r < p$, this is guaranteed, I even (unnecessarily) minimized it further by noting that we have two roots of $-1$ and we can choose the smaller one. But again, it's not necessary. So what we have now is
+%
+\nbea
+\left \lbrack\left ( 2m \right ) ! \right \rbrack^2 + 1^2 & \equiv & r^2 + 1^2 \equiv 0 \pmod{p} \\
+\to r^2 + 1^2 & = & pw
+\neea
+%
+Another worry I had (again unnecessary) was that $w$ can contain primes bigger than $p$, and that would render the induction useless because instead of possible infinite descend we will get an infinite ascend :)
+
+A break through came after I played around with the actual numbers using maxima, the code below
+%
+\begin{verbatim}
+t:0;
+a:1277;
+for j:1 thru 100 do
+block(
+    a:next_prime(a),
+    if (mod(a,4) = 1) then 
+    block(
+        t:mod(factorial((a-1)/2),a),
+        t:ifactors(t^2+1),
+        display(t),
+        display(a),
+        for i:1 thru length(t) do
+        block(
+            if (mod(t[i][1],4)>2) then
+            block(
+                display(t[i][1])
+            ) 
+        )
+    )  
+);
+display(t);
+\end{verbatim}
+%
+I saw that $w$ only contains have primes less than $p$ and another thing, which I already observed previously, is that all prime factors of $w$ is either 2 or of the form $4u+1$.
+
+Then I realized, of course!, $w$ can only contain prime factors less than (or equal to) $p$ because since $r < p$, we must have $r^2 + 1 \le p^2$ and so $w$ cannot have factors bigger than $p$ (if $r^2 + 1 = p$ then we are done so we need not care of this case). So our induction is on track.
+
+The next thing we need to show is that $w$ can only contain prime factors of the form $4u+1$ or 2, it cannot contain a prime factor of the form $4u-1$ because assume the opposite, then
+%
+\nbea
+r^2 + 1 & = & p s w', ~~~~~~~~ s{\rm~of~the~form~} 4u-1, ~~w = sw' \\
+& \equiv & 0 \pmod{s} \\
+r^2 & \equiv & - 1 \pmod{s}
+\neea
+%
+but for a prime of the form $4u-1$, $(-1)$ cannot be a quadratic residue so the above is false and we show that $w$ cannot contain a prime factor of the form $4u-1$.
+
+The next and final ingredient we need what I saw some time ago regarding the multiplication of two sums of squares
+%
+\nbea
+(a^2 + b^2)(c^2 + d^2) & = & (ac + bd)^2 + (ad - bc)^2
+\neea
+%
+\ie f we have two sums of squares we can multiply them together to get another sum of squares. It can be easily seen if we express them in complex numbers
+%
+\nbea
+A\cdot C & = & (a+ib)(c+id) \\
+\to |A||C| & = & |(a+ib)(c+id)| \\
+(a^2 + b^2)(c^2 + d^2) & = & (ac + bd)^2 + (ad - bc)^2
+\neea
+%
+another way of looking at it, which is my favorite is to write them down as matrices, write the complex numbers as follows
+%
+\nbea
+A = \left (
+\begin{array}{c c}
+a & b \\
+-b & a
+\end{array} \right )
+~~~
+C = \left (
+\begin{array}{c c}
+c & d \\
+-d & c
+\end{array} \right ) \longrightarrow AC = \left (
+\begin{array}{c c}
+(ac + bd) & (ad - bc) \\
+-(ad - bc) & (ac + bd)
+\end{array} \right )
+\neea
+%
+If we now take the determinant, noting that determinant of a product is the product of the determinants
+%
+\nbea
+ |AC| = |A||C| & = & \left |
+\begin{array}{c c}
+(ac + bd) & (ad - bc) \\
+-(ad - bc) & (ac + bd)
+\end{array} \right | \\
+\to (a^2 + b^2)(c^2 + d^2) & = & (ac + bd)^2 + (ad - bc)^2
+\neea
+%
+Why do we need all this? From our induction we know that
+%
+\nbea
+r^2 + 1^2 & = & pw
+\neea
+%
+while $w$ might only contain 2 or primes less than $p$ of the form $4u+1$ and by our hypothesis they are all sums of squares and from above we know that product of sums of squares is again a sum of squares (note that $2 = 1^2 + 1^2$) and so we peel of this equation one layer (one prime factor) at a time
+%
+\nbea
+r^2 + 1^2 & = & pw \\
+r^2 + 1^2 & = & pw_1w_2\cdots w_n
+\neea
+%
+say $w_1 = a^2 + b^2 \to (r^2 + 1^2) = P w_1$, if we write this in matrix form
+%
+\nbea
+\left (
+\begin{array}{c c}
+r & 1 \\
+-1 & r
+\end{array} \right ) & = & P \cdot 
+\left (
+\begin{array}{c c}
+a & b \\
+-b & a
+\end{array} \right ) \\
+\to \frac{1}{(a^2 + b^2)}\left (
+\begin{array}{c c}
+a & -b \\
+b & a
+\end{array} \right )
+\left (
+\begin{array}{c c}
+r & 1 \\
+-1 & r
+\end{array} \right ) & = & P \\
+\frac{1}{(a^2 + b^2)}
+\left (
+\begin{array}{c c}
+ar + b & a - br \\
+-(a - br) & a + br
+\end{array} \right ) & = & P
+\neea
+%
+If we take the determinant of the LHS
+%
+\nbea
+\frac{1}{(a^2 + b^2)^2} \lbrack(ar+b)^2 + (a-br)^2\rbrack & = & \frac{1}{(a^2 + b^2)^2} \lbrack(a^2+b^2)(r^2 + 1^2)\rbrack \\
+\left(\frac{ar + b}{a^2 + b^2}\right)^2 + \left(\frac{a - br}{a^2 + b^2}\right)^2 & = & \frac{(r^2 + 1^2)}{(a^2+b^2)}
+\neea
+%
+The RHS is just $|P| = p$ and it is an integer, we need to show that each term in the LHS is an integer. From
+%
+\nbea
+(ar + b)(ar-b) & = & a^2r^2 - b^2 \\
+& = & a^2r^2 + (b^2r^2 - b^2r^2) - b^2 \\
+& = & r^2(a^2 + b^2) - b^2(r^2 + 1^2)
+\neea
+%
+since $a^2 + b^2$ divides $r^2 + 1^2$ it divides the LHS and since it is prime it either divides $(ar + b)$ or $(ar-b)$, say it divides $(ar+b)$ we need to show that it divides $(a-br)$ but it follows immediately since
+%
+\nbea
+(a^2 + b^2)(r^2 + 1) & = & (ar+b)^2 + (a-br)^2
+\neea
+%
+since the LHS and the first term in the RHS are divisible by $a^2 + b^2$ it must divide the last term on the RHS as well.
+
+Now suppose $a^2 + b^2$ divides $(ar-b)$ we need to rewrite the above as
+%
+\nbea
+\left(\frac{ar + b}{a^2 + b^2}\right)^2 + \left(\frac{a - br}{a^2 + b^2}\right)^2 & = & \left(\frac{a + br}{a^2 + b^2}\right)^2 + \left(\frac{ar - b}{a^2 + b^2}\right)^2
+\neea
+%
+and from
+%
+\nbea
+(a^2 + b^2)(r^2 + 1)  = (a^2 + b^2)(1 + r^2) & = & (a+br)^2 + (ar-b)^2
+\neea
+%
+using the same argument, since $a^2 + b^2$ divides the LHS and the last term on the RHS it must also divide the first term in the RHS. And so what we have is
+%
+\nbea
+P & = & \left \{
+\begin{array}{l }
+\left(\frac{ar + b}{a^2 + b^2}\right)^2 + \left(\frac{a - br}{a^2 + b^2}\right)^2 ~~~~~{\rm if~} a^2 + b^2 ~{\rm divides~} (ar+b) \\ 
+\left(\frac{a + br}{a^2 + b^2}\right)^2 + \left(\frac{ar - b}{a^2 + b^2}\right)^2 ~~~~~{\rm if~} a^2 + b^2 ~{\rm divides~} (a-br)
+\end{array} \right.
+\neea
+%
+so what we need is just repeat the process with $w_2, w_2, \dots$ until we only have $p$ on the RHS of $r^1 + 1^1 = pw_1w_2\cdots w_n$ and therefore $p$ is also a sum of two squares, doing this continually inductively we show that every prime $p = 4m+1$ can be expressed as a sum of two squares.
+
+Another thing I observed during this misadventure was that any number (not just primes) of the form $n = 4m-1$ cannot be expressed as a sum of two squares, this is because $n$ must have a prime $p$ of the form $4u-1$, if $n$ can be expressed as a sum of two squares
+%
+\nbea
+a^2 & \equiv & - b^2 \pmod{n} \\
+a^2 & \equiv & - b^2 \pmod{p} \\
+(a/b)^2 & \equiv & - 1 \pmod{p}
+\neea
+%
+but $-1$ cannot be a quadratic residue mod $p = 4u-1$.
+
+Another thing is that a prime power of $p^k, p = 4u-1$ can be expressed a sum of two squares if $k$ is even and one of the number in the sum is zero, this is due to the same reasoning above
+%
+\nbea
+a^2 & \equiv & - b^2 \pmod{p^k} \\
+(a/b)^2 & \equiv & - 1 \pmod{p}
+\neea
+%
+which is not allowed unless both $a \equiv b \equiv 0 \pmod{p}$ but in that case $k$ has to be even.
+
+\bigskip
+\underline{\textit{\textbf{Other failed attempts}}}
+\bigskip
+
+Throughout my meandering, the most painful attempt was trying to find an explicit pattern in the mutiplication table mod $p$, this is after I found out about Thue's Lemma which states that there must be $x,y$ with $0<|x|,|y|\le \floor{\sqrt{n}}$ such that $ax \equiv \pm y \pmod{n}$, why is this relevant? If both $|x|$ and $|ax|$ is $\le \floor{\sqrt{p}}$ then since
+%
+\nbea
+a^2 & \equiv & -1 \pmod{p} \\
+\to a^2x^2 & \equiv & -x^2 \pmod{p} \\
 a^2x^2 + x^2 & \equiv & 0 \pmod{p} \\
 & = & pw
 \neea
@@ -905,127 +1161,9 @@ $w$ cannot be 0 since $0 < |x|, |ax| \le \floor{\sqrt{p}}$, and $w$ cannot be $\
 
 The challenge now is to show that we can find such $x$ such that the above is true. In other words, given any $a \in (\mathbb{Z}/p\mathbb{Z})^*$, there must be $x, y$ with $|x|,|y| \in \{1,2,\dots,\floor{\sqrt{p}}\}$ such that $ax \equiv y \pmod{p}$.
 
-The way I did this is by creating a multiplication table, Table.~\ref{Tab:1}, as follows, take for example $p = 61, \floor{\sqrt{61}} = 7$. The left most column contains the various possible values of $a$ which is $1,2,\dots,p-1$. While the top row is the various values of $x$, $\{1,2,\dots,\floor{\sqrt{p}}\}$.
+I tried proving Thue's Lemma without pigeon hole principle and I failed, couldn't find a good way, thought about cross classification but nothing worked so far.
 
-If $1 \le a \le \floor{\sqrt{p}}$ then it is obvious that there is an $x$ such that $ax \in \{1,2,\dots,\floor{\sqrt{p}}\}$. What we want to show is that every single row has at least one element that is $\equiv x$, \ie $\in \{1,2,\dots,\floor{\sqrt{p}}\} \pmod{p}$.
-
-To do this we group $a$ by $\floor{\sqrt{p}}$. The pattern repeats every cycle of $\floor{\sqrt{p}}$ like so. Let's see what happens at the first cycle. As stated above when $a = \floor{\sqrt{p}}$, $a\cdot 1 = \floor{\sqrt{p}} \in \{1,2,\dots,\floor{\sqrt{p}}\}$ but we are also interested in $a\cdot \floor{\sqrt{p}}$
-%
-\nbea
-a\cdot \floor{\sqrt{p}} = \floor{\sqrt{p}}^2 & = & (\sqrt{p} - \delta)^2 \\
-& = & p - 2\sqrt{p}\delta + \delta^2 \\
-& = & p - 2\delta\left(\sqrt{p} - \frac{\delta}{2}\right) \\
-& > & p - 2\delta(\floor{\sqrt{p}}) \\
-\neea
-%
-since $0 < \delta < 1$ we have
-%
-\nbea
-\floor{\sqrt{p}}^2 & > & p - 2\floor{\sqrt{p}}
-\neea
-%
-and this is a strict inequality because $\delta$ is strictly bigger than 0. This means that if 
-%
-\nbea
-p - 2\floor{\sqrt{p}} < a\cdot \floor{\sqrt{p}} < p - \floor{\sqrt{p}}
-\neea
-%
-then $(a+1)\cdot\floor{\sqrt{p}}$, \ie the last column of row $(a+1)$, will be in either $\{-\floor{\sqrt{p}}, \dots, -2, -1\}$ or in $\{1,2,\dots,\floor{\sqrt{p}}\}$ since for each column as you go down one row you increase by that column heading, \eg for column heading 5, as you go down one row you just increase by 5. However, if 
-%
-\nbea
-p - \floor{\sqrt{p}} \le a\cdot \floor{\sqrt{p}} < p
-\neea
-%
-then $(a+1)\cdot\floor{\sqrt{p}}$ will definitely be in $\{1,2,\dots,\floor{\sqrt{p}}\}$.
-
-In any case, either $(a+1)\floor{\sqrt{p}}$ or $(a+2)\floor{\sqrt{p}}$ is bigger than $p$, thus the last column would have gone through one rotation modulo $p$.
-
-Note that if we pick a row, going from column to the next, the value increases by that row (modulo $p$). For a row to not have an element in $\{-\floor{\sqrt{p}},\dots-2,-1,1,2,\dots,\floor{\sqrt{p}}\}$ the row value must be bigger than $2\floor{\sqrt{p}}$ so going from one column to the next we entirely jump this range.
-
-But in the first cycle all rows are between $\floor{\sqrt{p}} + 1$ and $\floor{\sqrt{p}} + \floor{\sqrt{p}}$ so this can't happen and since the last column has gone through one rotation modulo $p$, within the rows $\lbrack\floor{\sqrt{p}} + 1,\floor{\sqrt{p}} + \floor{\sqrt{p}}\rbrack$ there is a column when we jump through the minus plus boundary and since the jump is $\le 2\floor{\sqrt{p}}\}$ we can't skip over $\{-\floor{\sqrt{p}},\dots-2,-1,1,2,\dots,\floor{\sqrt{p}}\}$.
-
-If we search this particular row (either $a+1$ or $a+2$) for the largest element $ < p$, say $b$, it cannot be that
-%
-\nbea
-g
-\neea
-%
-
-This means that when we go to the next row
-
-
-
-%
-\nbea
-\left(\floor{\sqrt{p}} +n\right)\left\lceil\frac{p}{\sqrt{p} + n}\right\rceil
-\neea
-%
-
-
-%
-\nbea
-\frac{p}{\sqrt{p} + n} & = & \frac{p}{\sqrt{p}\left(1 + \frac{n}{\sqrt{p}}\right)} \\
-& > & \frac{p}{2\sqrt{p}}
-\neea
-%
-
-%
-\nbea
-(\floor{\sqrt{p}} +n)(\ceil{\frac{1}{2}\sqrt{p}}) & = & (\sqrt{p} - \delta +n)(\frac{1}{2}\sqrt{p} + \epsilon) \\
-& = & \frac{1}{2}p +\sqrt{p}\epsilon - \frac{1}{2}\sqrt{p}\delta - \delta\epsilon + \frac{1}{2}n\sqrt{p} + n\epsilon \\
-& = & \frac{1}{2}p - \sqrt{p}(\frac{1}{2}\delta-\epsilon) + \frac{1}{2}n\sqrt{p} - \delta\epsilon \\
-& > & \frac{1}{2}p + \frac{1}{2}n\sqrt{p} - \sqrt{p} - 1
-\neea
-%
-
-%
-\nbea
-\frac{p}{2\sqrt{p} + n} & = & \frac{p}{2\sqrt{p}\left(1 + \frac{n}{2\sqrt{p}}\right)} \\
-& \approx & \frac{p}{2\sqrt{p}}\left(1 - \frac{n}{2\sqrt{p}}\right) \\
-& \approx & \frac{1}{2}\sqrt{p}\left(1 - \frac{n}{2\sqrt{p}}\right) \\
-& > & \frac{1}{2}\sqrt{p}\left(1 - \frac{n}{\sqrt{p}}\right) \\
-& > & \frac{1}{2} \left(\sqrt{p} - n\right)
-\neea
-%
-
-%
-\nbea
-(2\floor{\sqrt{p}} +n)(\ceil{\frac{1}{2}(\sqrt{p} - n)}) & = & (2\sqrt{p} - \delta +n)\frac{1}{2}(\sqrt{p} - n + 2\epsilon) \\
-& = & p - n\sqrt{p} +2\sqrt{p}\epsilon - \frac{1}{2}\sqrt{p}\delta + \frac{1}{2}\delta n - \delta\epsilon + \frac{1}{2}n\sqrt{p} - \frac{1}{2}n^2 + n\epsilon \\
-& = & p  - \sqrt{p}(n - \frac{1}{2}n) - \sqrt{p}(\frac{1}{2}\delta-2\epsilon) +n(\delta+\epsilon) - \frac{1}{2} n^2 - \delta\epsilon \\
-& > & p - 2\sqrt{p} - \sqrt{p}n - n^2 - 1
-\neea
-%
-
-
-
-
-
-
-%
-\begin{table}[]
-\centering
-\caption{Various values of $x$ and $y$ that satisfy $y^2 = x^3 + x + 1$ in $K = \mathbb{Z}/5\mathbb{Z}$}
-\label{Tab:1}
-\begin{tabular}{|c|c|c|c|c|c|c|c|}
-\hline
-~~~~~~ & ~~1~~ & ~~2~~ & ~~3~~ & ~~4~~ & ~~5~~ & ~~6~~ & $\floor{\sqrt{p}}$ \\ \hline
-1 & 1 & 2 & 3 & 4 & 5 & 6 & 7\\ \hline
-2 & 2 & 4 & 6 & 8 & 10 & 12 & 14\\ \hline
-\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\ \hline
-$\floor{\sqrt{p}}$ & 7 & 14 & 21 & 28 & 35 & 42 & 49 \\ \hline
-\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\ \hline
-$p-1$ & 60 & 120 & 180 & 240 & 300 & 360 & 420 \\ \hline 
-\end{tabular}
-\end{table}
-%
-
-
-cannot just do $p \mod \floor{\sqrt{p}}$ because the quotient might be bigger than $\floor{\sqrt{p}}$
-
-
-any odd power of $p \equiv -1 \pmod{4}$ cannot be written as $a^2 + b^2$, for even power it can only be written as $0^2 + p^{2k}$
-
+Since I also knew about the product of sums of squares thingy, I was also trying to find a condition where we can divide a sum of squares by another, but this turned out quite complicated as it is the subject of what is called Gaussian integers in algebraic number theory LOL
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
