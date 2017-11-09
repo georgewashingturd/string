@@ -1134,13 +1134,22 @@ p & = & a^2 + b^2 \\
 & = & (ad + bc)^2 + (ab-dc)^2
 \neea
 %
-again using the product of sums of squares formula, since $p$ is prime, the three terms are all co-prime and so it falls under the pythagorean formula
+again using the product of sums of squares formula, since $p$ is prime, the three terms are all co-prime and and we get a primitive pythagorean triple
 %
 \nbea
-p^2 & = & (m^2 + n^2)^2 = (2mn)^2  + (m^2 - n^2)^2
+p^2 & = & (m^2 + n^2)^2 = (2mn)^2  + (m^2 - n^2)^2 = (ac + bd)^2 + (ad-bc)^2 \\
+& = & (k^2 + l^2)^2 ~~= (2kl)^2  + (k^2 - l^2)^2 ~~~~= (ad + bc)^2 + (ab-dc)^2 
 \neea
 %
-since this formula covers every possible solutions of the pythagorean triples, it means that for the same hypotenuse $p$ there is only one solution, this also means either
+there are a couple of cases to consider here
+%
+\bit
+\item The two pythagorean tripples do not generate two new sum of squares representations. This means that $(n,m)$ and $(l,k)$ are just $(a,b)$ and $(c,d)$ 
+%
+\item The two pythagorean tripples generate two new sum of squares representations.
+\eit
+%
+also, the two representations of $p^2$ above must yield two more sums of squares because otherwise either
 %
 \nbea
 ac + bd & = & ad + bc \\
@@ -1156,7 +1165,27 @@ a(c-b) & = & d(c-b) \\
 \to a & = & d
 \neea
 %
-both ways are not allowed (if $d=a$ then $c=b$ but our convention says that $c<d$ while $b > a$), the only other case is that we create a new sum of squares representation for $p = m^2 + n^2$ from the pythagorean formula but in this case we can repeat the process and get an infinite descend which is not possible since for any $p$ there are only a finite number of possible sum of squares.
+both ways are not allowed (if $d=a$ then $c=b$ but our convention says that $c<d$ while $b > a$), thus we have 2 more representations of $p$ as sum of squares due to
+%
+\nbea
+p^2 & = & (ac + bd)^2 + (ad-bc)^2 \\
+& = & (ad + bc)^2 + (ab-dc)^2
+\neea
+%
+since they are actually different. We can repeat the process and get an infinite descend which is not possible since for any $p$ there are only a finite number of possible sum of squares. This must mean that at some point the generated sum of squarews must be the same asthe older ones.
+
+from
+%
+\nbea
+p^2 = (a^2 + b^2)^2 & = & (2ab)^2 + (b^2 - a^2)^2 \\
+p^2 = (c^2 + d^2)^2 & = & (2cd)^2 + (d^2 - c^2)^2 \\
+\neea
+%
+
+
+
+
+the only other case is that we create a new sum of squares representation for $p = m^2 + n^2$ from the pythagorean formula but in this case we can repeat the process and get an infinite descend which is not possible since for any $p$ there are only a finite number of possible sum of squares.
 
 \smallskip
 \underline{\textit{\textbf{Bonus Featurette}}}
