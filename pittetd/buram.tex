@@ -1131,61 +1131,65 @@ Another feature is that this sum is unique (up to ordering of course since $a^2 
 p & = & a^2 + b^2 \\
 & = & c^2 + d^2 \\
 \to p^2 & = & (ac + bd)^2 + (ad-bc)^2 \\
-& = & (ad + bc)^2 + (ab-dc)^2
+& = & (ad + bc)^2 + (ac-bd)^2
 \neea
 %
 again using the product of sums of squares formula, since $p$ is prime, the three terms are all co-prime and and we get a primitive pythagorean triple
 %
 \nbea
 p^2 & = & (m^2 + n^2)^2 = (2mn)^2  + (m^2 - n^2)^2 = (ac + bd)^2 + (ad-bc)^2 \\
-& = & (k^2 + l^2)^2 ~~= (2kl)^2  + (k^2 - l^2)^2 ~~~~= (ad + bc)^2 + (ab-dc)^2 
+& = & (k^2 + l^2)^2 ~~= (2kl)^2  + (k^2 - l^2)^2 ~~~~= (ad + bc)^2 + (ac-bd)^2 
 \neea
 %
-there are a couple of cases to consider here
-%
-\bit
-\item The two pythagorean tripples do not generate two new sum of squares representations. This means that $(n,m)$ and $(l,k)$ are just $(a,b)$ and $(c,d)$ 
-%
-\item The two pythagorean tripples generate two new sum of squares representations.
-\eit
-%
-also, the two representations of $p^2$ above must yield two more sums of squares because otherwise either
+at this point I got somewhat stuck, because even if we generate two more sums it's still OK as long as they don't generate infinitely many more, my initial strategy was to show there's an infinite descend but it might not exist. So, this endeavor turned out to be quite tricky, I thought this would be a quick proof by contradiction but then again :)
+
+We can also try solutions to Diophantine equations of the form $m^2 + n^2 = k^2 + l^2$ but this is just over the top.
+
+Another strategy was to show that all pythagorean triples are unique, \ie no two triples have the same hypotenuse, but this is evidently wrong as 65 serves as a counter example, $(16,63,65)$ and $(33,56,65)$, but this counter example also gave me an idea.
+
+So $65 = 1^2 + 8^2 = 4^2 + 7^2$, since we have two sums of squares I tried combining them, but in doing so I found the new solutions are $(25,60,65)$ and $(39, 52, 65)$, it's no longer primitive, so this means that the new solutions above are actually divisible by $p$. So here it goes
 %
 \nbea
-ac + bd & = & ad + bc \\
-d(b-a) & = & c (b-a) \\
-\to d & = & c
+(ac + bd)(ac - bd) & = & a^2c^2 - b^2d^2 \\
+& = & a^2c^2 + (b^2c^2 - b^2c^2)- b^2d^2 \\
+& = & (a^2 + b^2)c^2 - b^2(c^2 + d^2) \\
+& = & p(c^2 - b^2)
 \neea
 %
-or
+since $p$ is prime, it must either divides $(ac + bd)$ or $(ac - bd)$ ($c^2 - b^2$ cannot be zero by assumption). If it divides $(ac + bd)$ then since
 %
 \nbea
-ac + bd & = & ab - dc \\
-a(c-b) & = & d(c-b) \\
-\to a & = & d
+p^2 & = & (ac + bd)^2 + (ad-bc)^2 \longrightarrow (ac + bd)^2 \le p^2
 \neea
 %
-both ways are not allowed (if $d=a$ then $c=b$ but our convention says that $c<d$ while $b > a$), thus we have 2 more representations of $p$ as sum of squares due to
+we must have $(ac + bd)^2 = p^2$ but this means
 %
 \nbea
-p^2 & = & (ac + bd)^2 + (ad-bc)^2 \\
-& = & (ad + bc)^2 + (ab-dc)^2
+0 & = & (ad-bc)^2 \\
+\to \frac{a}{b} & = & \frac{c}{d}
 \neea
 %
-since they are actually different. We can repeat the process and get an infinite descend which is not possible since for any $p$ there are only a finite number of possible sum of squares. This must mean that at some point the generated sum of squarews must be the same asthe older ones.
-
-from
+the only possible solution for this is that $a=c, b=d$. If $p$ divides $(ac - bd)$, from the other representation
 %
 \nbea
-p^2 = (a^2 + b^2)^2 & = & (2ab)^2 + (b^2 - a^2)^2 \\
-p^2 = (c^2 + d^2)^2 & = & (2cd)^2 + (d^2 - c^2)^2 \\
+p^2 & = & (ad + bc)^2 + (ac-bd)^2 \longrightarrow (ac-bd)^2 \le p^2
 \neea
 %
+we have 
+%
+\nbea
+0 & = & (ad + bc)^2
+\neea
+%
+which is just not possible, therefore there is only one possible sum of squares representation for $p$.
 
-
-
-
-the only other case is that we create a new sum of squares representation for $p = m^2 + n^2$ from the pythagorean formula but in this case we can repeat the process and get an infinite descend which is not possible since for any $p$ there are only a finite number of possible sum of squares.
+This uniqueness part can be proven mighty easily using the Gaussian Integer field, since this field is Euclidean (for any two numbers in this field $a, b$ we can express them as $a = bq + r$), every number can be factorized uniquely, therefore
+%
+\nbea
+p & = & (a + ib)(a - ib)
+\neea
+%
+since $a \pm ib$ are not related by units (the only units are $\pm1$ and $\pm i$) the above factorization of $p$ is unique and we are done.
 
 \smallskip
 \underline{\textit{\textbf{Bonus Featurette}}}
@@ -1210,6 +1214,48 @@ a^2 & \equiv & - b^2 \pmod{p^k} \\
 %
 which is not allowed unless both $a \equiv b \equiv 0 \pmod{p}$ but in that case $k$ has to be even.
 
+From the uniqueness claim, we can also say that if you draw a circle in the complex plane whose radius is a prime number, this circle will hit a lattice point exactly twelve or four times. Because if $p = 4m+1 = a^2 + b^2$, the points are $2ab\pm i(b^2-a^2),-2ab\pm i(b^2-a^2)$ and the same points with real and imaginary parts exchanged and of course the obvious ones $\pm p, \pm ip$, if on the other hand $p = 4m-1$ then the only points are just $\pm p, \pm ip$. Or if you like roots, then if $p = 4m+1$ , a circle with radius $\sqrt{p}$ has eight lattice points while a circle with radius $\sqrt{p}$ where $p=4m-1$ has none.
+
+The reason I even got into this circular business is that because I wanted to prove the uniqueness part geometrically but it was quite troublesome to do so :)
+
+\underline{\textit{\textbf{On Thue's Lemma}}}, this is one cool application of the pigeons :) let $0 \le x,y \le \floor{\sqrt{n}}$, $n$ need not be prime and given a number $a$, construct the following
+%
+\nbea
+ax - y \pmod{n}
+\neea
+%
+since there are possible $(\floor{\sqrt{n}} + 1)^2 > n^2$ values for $x$ and $y$ and there are only $n$ values $\pmod{n}$, there must be duplicates, this is where the pigeons come along :)
+
+Assume we have two different sets of $(x,y)$ such that their construction above is the same then
+%
+\nbea
+ax_1 - y_1 \equiv ax_2 - y_2 \pmod{n} \\
+\to a(x_1 - x_2) \equiv (y_1 - y_2) \pmod{n}
+\neea
+%
+let $w = x_1 - x_2$ and $z = y_1 - y_2$ then we claim that both $w$ and $z$ are non-zero because is $w$ is zero then $z$ is also zero but our assumption is that $(x_1,y_1)$ and $(x_2,y_2)$ are two distinct sets the second and more important (because this is what we want) thing is that $|w|$ and $|z|$ must be $\le \floor{\sqrt{n}}$ but this is guaranteed as $0 \le x,y \le \floor{\sqrt{n}}$. However, we must be careful that $x_1,x_2,y_1,y_2 \neq 0$ but again this is guaranteed as when $x_1 \equiv 0$ then $y_1 \equiv 0$ again this is fine because $(x_2,y_2)$ are a distinct set from $(x_1,y_1)$ so $w$ and $y$ won't be zero.
+
+From this proof we can see that the solution to $p = a^2 + b^2$ comes from the difference $x_1-x_2$ rather than from $x_{1,2}$ themselves which explains my pathetic attempt in proving Thue's lemma without them pigeons :) because there I constructed a multiplication table for $ax \equiv y$ and tried to find a pattern I can use but the pattern is in the difference not the direct result of the multiplications.
+
+\underline{\textit{\textbf{On 65}}}, now the fun part, if we combine the representations of sum of squares of $65$ repeatedly, will we get an infinite descend? The answer sadly is no because now since $65$ is not prime
+%
+\nbea
+(ac + bd)(ac - bd) & = & (a^2 + b^2)c^2 - b^2(c^2 + d^2)
+\neea
+%
+we can't claim that $(a^2 + b^2) = (c^2 + d^2) = 65$ divides $(ac + bd)$ or $(ac - bd)$, what we can say is that each prime factor of 65 divides either $(ac + bd)$ or $(ac - bd)$. Say one of its prime factor is $q$ and it divides $(ac + bd)$, this means
+%
+\nbea
+65^2 & = & (ac + bd)^2 + (ad - bc)^2 \\
+65^2 & = & (qq')^2 + (ad - bc)^2
+\neea
+%
+but $q|65$ as well, this means what we get is no longer a primitive triple (the triples are no longer co-prime to one another), therefore this new representation is no longer $65 = u^2 + v^2$ instead it's $s\cdot(u^2 + v^2)$, thus we can't combine it we the previous two to get new ones. Thus
+
+\underline{\textit{\textbf{65 Stupid Lemma}}}, if the same hypotenuse occurs in two primitive pythagorean triples, then combining these two using the product of sums of squares will not produce other primitive pythagorean triples. This doesn't mean that the same hypotenuse can only have two primitive triples but if you combine it this way it won't produce more primitive triples.
+
+A hypotenuse can have more primitive triples because say it has three prime factors, $p_{1,2,3}$, all of the form $4m + 1$, then combining $p_1$ and $p_2$ alone (using the product of sums of squares) we already get two possible outputs, combining it with $p_3$ we get a total of four.
+
 \smallskip
 \underline{\textit{\textbf{Other failed attempts}}}
 \smallskip
@@ -1230,6 +1276,8 @@ The challenge now is to show that we can find such $x$ such that the above is tr
 I tried proving Thue's Lemma without the pigeon hole principle and I failed, couldn't find a good way, thought about cross classification but nothing worked so far.
 
 Since I also knew about the product of sums of squares thingy, I was also trying to find a condition where we can divide a sum of squares by another, but this turned out quite complicated as it is the subject of what is called Gaussian integers in algebraic number theory LOL
+
+For the uniqueness part, I tried pigeon holing it to submission :) say from two representations of sum of squares we generate two more, then we have four, from this four we can generate up to 12 (4 choose 2 and each generates two), so some of them must be duplicates but then it was ok to have duplicates. Another thing I wanted to try was partitioning but was too lazy to work out all the details :)
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
