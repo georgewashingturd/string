@@ -1218,6 +1218,60 @@ From the uniqueness claim, we can also say that if you draw a circle in the comp
 
 The reason I even got into this circular business is that because I wanted to prove the uniqueness part geometrically but it was quite troublesome to do so :)
 
+\underline{\textit{\textbf{Pythagoras and friends}}}, let's start with the product of sums of squares, say we have three of them, are they associative? The answer is yes since we can represent them in terms of matrices and matrices are associative under multiplication.
+
+Next question, what are the symmetries of this product of sums of squares? from $a\leftrightarrow b$, $c\leftrightarrow d$ and simultenuous $a\leftrightarrow b$ and $c\leftrightarrow d$ we get
+%
+\nbea
+(ac + bd)^2 + (ad - bc)^2 \\
+(bc + ad)^2 + (bd - ac)^2 \\
+(ad + bc)^2 + (ac - bd)^2 \\
+(bd + ac)^2 + (bc - ad)^2
+\neea
+%
+we see that there are only two possibilities for the first term while there are four for the second although they come in plus minus pairs.
+
+This plus minus thing is important when we multiply more than two sums of squares, so we need to see what happens when we apply a minus sign to $a,b,c,d$ but from the pattern above doesn't matter where we apply the minus sign or to how many of the elements we will just get the same things with just plus and minus cycled through different elements. Thus, if we ignore the plus minus sign, from two sums of squares we will get only two sets of sums of squares.
+
+Next, how many sum of squares representation does $p^k$ have? $p = 4m+1$ of course. Let's start from $k=2$, in this case
+%
+\nbea
+p^2 & = & (a^2 + b^2)^2 + 0^2 \\
+p^2 & = & (2ab)^2 + (a^2 - b^2)^2
+\neea
+%
+Let's call a sum of squares where both squares are non-zero and co-prime as a proper sum. Thus, $p^3$ 
+%
+\nbea
+(a(2ab) + b(a^2 - b^2))^2 + (a(a^2 - b^2) - b(2ab))^2 \\
+(a(a^2 - b^2) + b(2ab))^2 + (a(2ab) - b(a^2 - b^2))^2
+\neea
+%
+has 2 proper reps, the pattern I saw was for $p^k$ with $k$ even has the same number of proper reps as $p^{k-1}$ and $p^{k-1}$ has twice the number of proper reps of $p^{k-2}$. This can be shown quite easily, the key is that multiplication is associative thus
+%
+\nbea
+p^{k} & = & \left\{
+\begin{array}{l l}
+(p^2)(p^2)\cdots(p^2)p, & ~~~~~~~k~{\rm odd} \\
+(p^2)(p^2)\cdots(p^2), & ~~~~~~~k~{\rm even}
+\end{array}
+\right.
+\neea
+%
+each $p^2$ only generates one proper rep, the same with $p$, thus for $k$ odd we get in total $2^{\frac{k-1}{2}}$ proper reps, for $k$ even we get $2^{\frac{k}{2}-1}$ proper reps or in a fancier expression
+%
+\nbea
+2^{\left\lfloor\frac{k-1}{2}\right\rfloor}
+\neea
+%
+
+The reason of defining these proper reps is to see that for given a hypotenuse how many primitive triples we can build on it. First of a primitive hypotenuse cannot have prime factors of the form $4m-1$, that is quite obvious from our previous discussion. Second, from our preceding discussion, the number of primitive triples of a hypotenuse, $h$, will be of the form $2^{N}$ where
+%
+\nbea
+2^N = 2^{M-1}\prod_{i=1}^M 2^{\left\lfloor\frac{k_i-1}{2}\right\rfloor} ~~~~~~~{\rm with} ~~~~~~~ h = \prod_{i=1}^M p^{k_i}
+\neea
+%
+
 \underline{\textit{\textbf{On Thue's Lemma}}}, this is one cool application of the pigeons :) let $0 \le x,y \le \floor{\sqrt{n}}$, $n$ need not be prime and given a number $a$, construct the following
 %
 \nbea
@@ -1254,7 +1308,7 @@ but $q|65$ as well, this means what we get is no longer a primitive triple (the 
 
 \underline{\textit{\textbf{65 Stupid Lemma}}}, if the same hypotenuse occurs in two primitive pythagorean triples, then combining these two using the product of sums of squares will not produce other primitive pythagorean triples. This doesn't mean that the same hypotenuse can only have two primitive triples but if you combine it this way it won't produce more primitive triples.
 
-A hypotenuse can have more primitive triples because say it has three prime factors, $p_{1,2,3}$, all of the form $4m + 1$, then combining $p_1$ and $p_2$ alone (using the product of sums of squares) we already get two possible outputs, combining it with $p_3$ we get a total of four.
+A hypotenuse can have more primitive triples because say it has three prime factors, $p_{1,2,3}$, all of the form $4m + 1$, then combining $p_1$ and $p_2$ alone (using the product of sums of squares) we already get two possible outputs, combining it with $p_3$ we get a total of four, for more details see previous subsection.
 
 \smallskip
 \underline{\textit{\textbf{Other failed attempts}}}
