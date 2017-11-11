@@ -1205,14 +1205,33 @@ a^2 & \equiv & - b^2 \pmod{p} \\
 %
 but $-1$ cannot be a quadratic residue mod $p = 4u-1$.
 
-Another thing is that a prime power of $p^k, p = 4u-1$ can be expressed a sum of two squares if $k$ is even and one of the number in the sum is zero, \ie $p^k = 0^2 + (p^{k/2})^2$ is the only sum of square representation for $p =4u-1$, this is due to the same reasoning above
+\underline{\textit{\textbf{The other lemma}}}, another thing is that a prime power of $p^k, p = 4u-1$ can be expressed a sum of two squares if $k$ is even and one of the number in the sum is zero, \ie $p^k = 0^2 + (p^{k/2})^2$ is the only sum of square representation for $p =4u-1$, this is due to the same reasoning above, say we assume the opposite
 %
 \nbea
-a^2 & \equiv & - b^2 \pmod{p^k} \\
-(a/b)^2 & \equiv & - 1 \pmod{p}
+a_0^2 & \equiv & - b_0^2 \pmod{p^k} \\
+\left(\frac{a_0}{b_0}\right)^2 & \equiv & - 1 \pmod{p}
 \neea
 %
-which is not allowed unless both $a \equiv b \equiv 0 \pmod{p}$ but in that case $k$ has to be even.
+which is not allowed (since $-1$ is not a quadratic residue) unless both $a_0 \equiv b_0 \equiv 0 \pmod{p}$ but in this case, $p$ divides both $a_0$ and $b_0$ thus
+%
+\nbea
+p^2 a_1^2 & = & -p^2 b_1^2 + p^{k} \\
+a_1^2 & = & -b_1^2 + p^{k-2}
+\neea
+%
+and we have the same situation again, repeating the process, if $k$ is even then we will get 
+%
+\nbea
+a_n^2 & = & -b_n^2 + 1
+\neea
+%
+which means that either $a_n$ or $b_n$ is zero, they can't both be zero because $a_0^2 + b_0^2 = p^k$, if $k$ is odd then
+%
+\nbea
+a_n^2 & = & -b_n^2 + p
+\neea
+%
+but this time we've got no solution, not even if $a_n$ or $b_n$ is zero, thus if $k$ is odd there's no solution while if $k$ is even then $p^k = (p^{k/2})^2 + 0^2$.
 
 From the uniqueness claim, we can also say that if you draw a circle in the complex plane whose radius is a prime number, this circle will hit a lattice point exactly twelve or four times. Because if $p = 4m+1 = a^2 + b^2$, the points are $2ab\pm i(b^2-a^2),-2ab\pm i(b^2-a^2)$ and the same points with real and imaginary parts exchanged and of course the obvious ones $\pm p, \pm ip$, if on the other hand $p = 4m-1$ then the only points are just $\pm p, \pm ip$. Or if you like roots, then if $p = 4m+1$ , a circle with radius $\sqrt{p}$ has eight lattice points while a circle with radius $\sqrt{p}$ where $p=4m-1$ has none.
 
@@ -1220,7 +1239,7 @@ The reason I even got into this circular business is that because I wanted to pr
 
 \underline{\textit{\textbf{Pythagoras and friends}}}, let's start with the product of sums of squares, say we have three of them, are they associative? The answer is yes since we can represent them in terms of matrices and matrices are associative under multiplication.
 
-Next question, what are the symmetries of this product of sums of squares? from $a\leftrightarrow b$, $c\leftrightarrow d$ and simultenuous $a\leftrightarrow b$ and $c\leftrightarrow d$ we get
+Next question, what are the symmetries of this product of sums of squares? from $a\leftrightarrow b$, $c\leftrightarrow d$ and simultaneous $a\leftrightarrow b$ and $c\leftrightarrow d$ we get
 %
 \nbea
 (ac + bd)^2 + (ad - bc)^2 \\
@@ -1264,13 +1283,13 @@ each $p^2$ only generates one proper rep, the same with $p$, thus for $k$ odd we
 2^{\left\lfloor\frac{k-1}{2}\right\rfloor}
 \neea
 %
-
 The reason of defining these proper reps is to see that for given a hypotenuse how many primitive triples we can build on it. First of a primitive hypotenuse cannot have prime factors of the form $4m-1$, that is quite obvious from our previous discussion. Second, from our preceding discussion, the number of primitive triples of a hypotenuse, $h$, will be of the form $2^{N}$ where
 %
 \nbea
 2^N = 2^{M-1}\prod_{i=1}^M 2^{\left\lfloor\frac{k_i-1}{2}\right\rfloor} ~~~~~~~{\rm with} ~~~~~~~ h = \prod_{i=1}^M p^{k_i}
 \neea
 %
+\underline{\textit{What this means}} is that given a hypotenuse $h$, there's only one primitive right triangle we can construct if $h$ is prime or a prime squared otherwise we get multiple primitive triangles out of it :)
 
 \underline{\textit{\textbf{On Thue's Lemma}}}, this is one cool application of the pigeons :) let $0 \le x,y \le \floor{\sqrt{n}}$, $n$ need not be prime and given a number $a$, construct the following
 %
@@ -1569,7 +1588,13 @@ On the integral around zero
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-order of limit taking around the small semi circle, Bernoulli's number
+Page 12, order of limit taking around the small semi circle, Bernoulli's number, the integral ($x = \delta e^{i\theta}$)
+%
+\nbea
+\int_0^{2\pi} x^{m-n-1} d\theta & = & \frac{\delta^{m-n-1}}{m-n-1} (e^{(m-n-1) \cdot 2\pi \cdot i} - e^{(m-n-1) \cdot 0 \cdot i})
+\neea
+%
+if $m-n-1 < 0$ then the delta term will blow up, but the $e$ difference is zero no matter what, so this means we need to calculate the $e$ difference first before taking the limit.
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
@@ -1622,17 +1647,65 @@ Fourier transform, I thought I was an expert LOL well, not compared to Riemann
 every time you see $\frac{dx}{x}$ you should immediately scream $\log x$ because $d(\log x) = \frac{dx}{x}$, let $w = \log x$
 %
 \nbea
-\int_0^\infty J(x) x^{-s} \frac{dx}{x} & = & \int_0^\infty J(e^w)e^{-ws} dw \\
-& = & \int_0^\infty J(e^w)e^{-w(\sigma + it)} dw \\
-& = & \int_0^\infty \left\lbrack J(e^w)e^{-w\sigma} \right\rbrack e^{-itw} dw
+\int_0^\infty J(x) x^{-s} \frac{dx}{x} & = & \int_{-\infty}^\infty J(e^w)e^{-ws} dw \\
+& = & \int_{-\infty}^\infty J(e^w)e^{-w(\sigma + it)} dw \\
+& = & \int_{-\infty}^\infty \left\lbrack J(e^w)e^{-w\sigma} \right\rbrack e^{-itw} dw
 \neea
 %
 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Page 26, about the ambiguity of $\log(1 - s/\rho)$, especially for $\rho$ which are not large, this is because the convention we use is given in Page 27, \ie $\log(z)$ is defined for all $z$ other than real $z \le 0$ and that for real $z$, $\log(z)$ is real.
+
+So if $\rho$ is smaller than $s$ we can have a situation where $(1 - s/\rho)$ is real and negative, but $\log(s-\rho)$ cannot be real and negative when we set $a > 1$ since we know that the zeros are all in the critical strip (see Section 1.9)  and for $\log(-\rho)$, since $\rho$ is never real we are OK since the argument to the log function is never real and negative.
 
 
 
 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+
+
+Just a problem I saw ``somewhere'' :) Find all solutions to
+%
+\nbea
+x^3 + y^3 + z^3 = (x + y + z)^3
+\neea
+%
+well, I initally assumed they were all integers but it is not so, this is an ``implicit'' equation unlike Fermat's last theorem, we can't just randomly set two of them and the last will follow.
+
+Expanding the RHS and canceling similar terms from LHS
+%
+\nbea
+0 & = & 3yz^2 + 3xz^2 + 3y^2z + 6xyz + 3x^2z + 3xy^2 + 3x^2y \\
+& = & 3 (yz^2 + xz^2 + y^2z + 2xyz + x^2z + xy^2 + x^2y) \\
+& = & 3 ((y+x)z^2 + 2xyz + x^2(z+y) + (x+z)y^2 )
+\neea
+%
+at this point we want to factorize the RHS, my initial idea was to do a quadratic formula for $y$, thus I massaged it into $ay^2 + by + c$, as to why I chose $y$ I'm not sure :)
+%
+\nbea
+yz^2 + xz^2 + y^2z + 2xyz + x^2z + xy^2 + x^2y & = & y^2(z + x) + y(z^2 + 2xz + x^2)  + (xz^2 + x^2z) \\
+& = & y^2(z + x) + y(z + x)^2  + xz(z + x) \\
+& = & (z + x)(y^2 + y(z + x)  + xz) \\
+& = & (z + x)(y + z)(y + x)
+\neea
+%
+but as you can see I didn't even need to use the quadratic formula LOL
+
+Thus the solutions to
+%
+\nbea
+x^3 + y^3 + z^3 = (x + y + z)^3
+\neea
+%
+is given by
+%
+\nbea
+0 & = & (z + x)(y + z)(y + x)
+\neea
+%
+any of them brackets equal zero and we're good which means that at least one of them has to be negative.
 
 
 
