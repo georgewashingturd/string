@@ -1352,6 +1352,148 @@ Since I also knew about the product of sums of squares thingy, I was also trying
 
 For the uniqueness part, I tried pigeon holing it to submission :) say from two representations of sum of squares we generate two more, then we have four, from this four we can generate up to 12 (4 choose 2 and each generates two), so some of them must be duplicates but then it was ok to have duplicates. Another thing I wanted to try was partitioning but was too lazy to work out all the details :)
 
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Just a problem I saw ``somewhere'' :) Find all solutions to
+%
+\nbea
+x^3 + y^3 + z^3 = (x + y + z)^3
+\neea
+%
+well, I initally assumed they were all integers but it is not so, this is an ``implicit'' equation unlike Fermat's last theorem, we can't just randomly set two of them and the last will follow.
+
+Expanding the RHS and canceling similar terms from LHS
+%
+\nbea
+0 & = & 3yz^2 + 3xz^2 + 3y^2z + 6xyz + 3x^2z + 3xy^2 + 3x^2y \\
+& = & 3 (yz^2 + xz^2 + y^2z + 2xyz + x^2z + xy^2 + x^2y) \\
+& = & 3 ((y+x)z^2 + 2xyz + x^2(z+y) + (x+z)y^2 )
+\neea
+%
+at this point we want to factorize the RHS, my initial idea was to do a quadratic formula for $y$, thus I massaged it into $ay^2 + by + c$, as to why I chose $y$ I'm not sure :)
+%
+\nbea
+yz^2 + xz^2 + y^2z + 2xyz + x^2z + xy^2 + x^2y & = & y^2(z + x) + y(z^2 + 2xz + x^2)  + (xz^2 + x^2z) \\
+& = & y^2(z + x) + y(z + x)^2  + xz(z + x) \\
+& = & (z + x)(y^2 + y(z + x)  + xz) \\
+& = & (z + x)(y + z)(y + x)
+\neea
+%
+but as you can see I didn't even need to use the quadratic formula LOL
+
+Thus the solutions to
+%
+\nbea
+x^3 + y^3 + z^3 = (x + y + z)^3
+\neea
+%
+is given by
+%
+\nbea
+0 & = & (z + x)(y + z)(y + x)
+\neea
+%
+any of them brackets equal zero and we're good which means that at least one of them has to be negative.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+My reflection on the quadratic reciprocity formula (by Gauss of course who else). My first question is that how does one relate a number in mod $p$ to another congruence mod $q$ because it seems like this is what the reciprocity formula is all about.
+
+But I was wrong, looking at different proofs what I found is this
+%
+\begin{enumerate}
+%
+\item We know that for a modulo prime $p$ the following numbers (and only the following numbers) are quadratic residues modulo $p$
+%
+\nbea
+1^2,2^2,3^2,\dots,\left(\frac{p-1}{2}\right)^2
+\neea
+%
+\item From Euler's formula we know that for a prime $p$
+%
+\nbea
+\left(\frac{a}{p}\right) & = & a^{\frac{p-1}{2}} \pmod{p}
+\neea
+%
+which can be shown fairly easily by expressing $a$ in terms of a primitive root of $p$.
+%
+\item So either for Euler's formula or by listing all the quadratic residues modulo $p$, we need to do $\frac{p-1}{2}$ operations to determine whether a number is a quadratic residue or not, no other way around it.
+%
+\item This minimum of $\frac{p-1}{2}$ operations also applies even if we use Gauss's lemma that starts with multiplying $a$ into a sequence of $\frac{p-1}{2}$ numbers
+%
+\nbea
+x\in \{a,2a,3a,\dots, \frac{p-1}{2} a\}
+\neea
+%
+such that the Legendre symbol is given by
+%
+\nbea
+\left(\frac{a}{p}\right) & = & (-1)^n \pmod{p}
+\neea
+%
+where $n$ is the number of numbers $ax$ that is congruent to $-x$ modulo $p$. We still need to do $\frac{p-1}{2}$ operations but this is a move in the right direction because calculating $(-1)^n$ is easy, we do not need to do $\frac{p-1}{2}$ operations we just need to know the parity of $n$.
+
+Even calculating the parity of $n$ actually takes $\frac{p-1}{2}$ operations
+%
+\nbea
+n \mod 2 & = & \sum_{x=1}^{\frac{p-1}{2}} \left \lfloor \frac{ax}{p} \right \rfloor
+\neea
+%
+(note that this formula only works if $a$ is odd).
+%
+\item Finally when we come to the quadratic reciprocity formula itself
+%
+\nbea
+\left(\frac{p}{q}\right)\left(\frac{q}{p}\right) & = & (-1)^{\frac{p-1}{2}\frac{q-1}{2}}
+\neea
+%
+it seems that we need to only do half the work, once we know $\left(\frac{p}{q}\right)$ we know the other Legrende symbol as well (to get $\left(\frac{p}{q}\right)$ we still need to do $\frac{p-1}{2}$ operations), but this is not true, calculating $(-1)^{\frac{p-1}{2}\frac{q-1}{2}}$ still takes ${\frac{p-1}{2} + \frac{q-1}{2}}$ operations but the good thing is that since we are dealing with $-1$ we only need to know the parity of the exponent thus it saves us some time.
+%
+\end{enumerate}
+%
+So the moral of the story for me is that quadratic reciprocity formula is the tale of how to transform the same information into a more useful more efficient form,\ie just like the conservation of energy in physics, here the amount of work cannot be reduced, but efficiency can certainly be increased.
+
+
+P.S. of course my favorite proof of the quadratic reciprocity formula is the one utilizing Chinese Remainder Theorem, but even in that case, the $\frac{p-1}{2}$ operations cannot be avoided.
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+On the formula for $\left(\frac{2}{p}\right)$, we start with Wilson's formula
+%
+\nbea
+(p-1)! & \equiv & -1 \pmod{p}
+\neea
+%
+we then notice that, for example $p=5$
+%
+\nbea
+1\cdot2\cdot3\cdot4 & \equiv & 2 (1\cdot 2) \cdot (1 \cdot 3) \\
+& \equiv & 2 \left ( \frac{5-1}{2}\right)! \cdot (1\cdot-2) \\
+& \equiv & 2^{\frac{5-1}{2}} \left ( \frac{5-1}{2}\right)! (-1)\cdot \left ( \frac{5-1}{2}\right)!
+\neea
+%
+and for $p=11$
+%
+\nbea
+1\cdot2\cdot3\cdot4 \cdot 5\cdot 6\cdot 7\cdot 8\cdot 9\cdot 10 & \equiv & 2 (1\cdot 2\cdot 3\cdot4 \cdot 5) \cdot (1 \cdot 3 \cdot 5\cdot 7\cdot 9) \\
+& \equiv & 2^{\frac{11-1}{2}} \left ( \frac{11-1}{2}\right)! \cdot (1\cdot-2\cdot 3 \cdot-4 \cdot 5) \\
+& \equiv & 2^{\frac{11-1}{2}} \left ( \frac{11-1}{2}\right)! (-1)^2\cdot \left ( \frac{11-1}{2}\right)! \\
+& \equiv & 2^{\frac{11-1}{2}} (-1)^{\floor{(11-1)/4}} \left (\left ( \frac{11-1}{2}\right)!\right)^2
+\neea
+%
+Therefore
+%
+\nbea
+(p-1)! & \equiv & 2^{\frac{p-1}{2}} (-1)^{\floor{(p-1)/4}} \left (\left ( \frac{p-1}{2}\right)!\right)^2 \\
+(-1)^{(p-1)/2} \left (\left ( \frac{p-1}{2}\right)!\right)^2 & \equiv & 2^{\frac{p-1}{2}} (-1)^{\floor{(p-1)/4}} \left (\left ( \frac{p-1}{2}\right)!\right)^2 \\
+(-1)^{(p-1)/2 + \floor{(p-1)/4}} & \equiv & 2^{\frac{p-1}{2}}
+\neea
+%
+so we didn't need Wilson's formula after all but as you see we need something to generate $2^{\frac{p-1}{2}}$, and this is the recurring theme throughout quadratic reciprocity, be it Gauss's lemma or in calculating the parity of the exponent in Gauss's lemma. I intially thought of Wilson's formula not for the factorial but for the $-1$ since Legendre's symbols are either $\pm1$ ot 0.
+
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 On the definition of factorial, Euler introduced the integral notation
@@ -1660,52 +1802,6 @@ Page 26, about the ambiguity of $\log(1 - s/\rho)$, especially for $\rho$ which 
 So if $\rho$ is smaller than $s$ we can have a situation where $(1 - s/\rho)$ is real and negative, but $\log(s-\rho)$ cannot be real and negative when we set $a > 1$ since we know that the zeros are all in the critical strip (see Section 1.9)  and for $\log(-\rho)$, since $\rho$ is never real we are OK since the argument to the log function is never real and negative.
 
 
-
-
--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
-
-
-Just a problem I saw ``somewhere'' :) Find all solutions to
-%
-\nbea
-x^3 + y^3 + z^3 = (x + y + z)^3
-\neea
-%
-well, I initally assumed they were all integers but it is not so, this is an ``implicit'' equation unlike Fermat's last theorem, we can't just randomly set two of them and the last will follow.
-
-Expanding the RHS and canceling similar terms from LHS
-%
-\nbea
-0 & = & 3yz^2 + 3xz^2 + 3y^2z + 6xyz + 3x^2z + 3xy^2 + 3x^2y \\
-& = & 3 (yz^2 + xz^2 + y^2z + 2xyz + x^2z + xy^2 + x^2y) \\
-& = & 3 ((y+x)z^2 + 2xyz + x^2(z+y) + (x+z)y^2 )
-\neea
-%
-at this point we want to factorize the RHS, my initial idea was to do a quadratic formula for $y$, thus I massaged it into $ay^2 + by + c$, as to why I chose $y$ I'm not sure :)
-%
-\nbea
-yz^2 + xz^2 + y^2z + 2xyz + x^2z + xy^2 + x^2y & = & y^2(z + x) + y(z^2 + 2xz + x^2)  + (xz^2 + x^2z) \\
-& = & y^2(z + x) + y(z + x)^2  + xz(z + x) \\
-& = & (z + x)(y^2 + y(z + x)  + xz) \\
-& = & (z + x)(y + z)(y + x)
-\neea
-%
-but as you can see I didn't even need to use the quadratic formula LOL
-
-Thus the solutions to
-%
-\nbea
-x^3 + y^3 + z^3 = (x + y + z)^3
-\neea
-%
-is given by
-%
-\nbea
-0 & = & (z + x)(y + z)(y + x)
-\neea
-%
-any of them brackets equal zero and we're good which means that at least one of them has to be negative.
 
 
 
