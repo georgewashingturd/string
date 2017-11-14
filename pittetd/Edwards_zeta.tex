@@ -1,0 +1,639 @@
+\documentclass[aps,preprint,preprintnumbers,nofootinbib,showpacs,prd]{revtex4-1}
+\usepackage{graphicx,color}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsmath,amssymb}
+\usepackage{multirow}
+\usepackage{amsthm}%        But you can't use \usewithpatch for several packages as in this line. The search 
+
+\usepackage{cancel}
+
+%%% for SLE
+\usepackage{dcolumn}   % needed for some tables
+\usepackage{bm}        % for math
+\usepackage{amssymb}   % for math
+\usepackage{multirow}
+%%% for SLE -End
+
+\usepackage{ulem}
+\usepackage{cancel}
+
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage[top=1in, bottom=1.25in, left=1.1in, right=1.1in]{geometry}
+
+\usepackage{mathtools} % for \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+%\usepackage{xeCJK}
+%\setCJKmainfont{SimSun}
+
+\newcommand{\msout}[1]{\text{\sout{\ensuremath{#1}}}}
+
+
+%%%%%% My stuffs - Stef
+\newcommand{\lsim}{\mathrel{\mathop{\kern 0pt \rlap
+  {\raise.2ex\hbox{$<$}}}
+  \lower.9ex\hbox{\kern-.190em $\sim$}}}
+\newcommand{\gsim}{\mathrel{\mathop{\kern 0pt \rlap
+  {\raise.2ex\hbox{$>$}}}
+  \lower.9ex\hbox{\kern-.190em $\sim$}}}
+
+%
+% Key
+%
+\newcommand{\key}[1]{\medskip{\sffamily\bfseries\color{blue}#1}\par\medskip}
+%\newcommand{\key}[1]{}
+\newcommand{\q}[1] {\medskip{\sffamily\bfseries\color{red}#1}\par\medskip}
+\newcommand{\comment}[2]{{\color{red}{{\bf #1:}  #2}}}
+
+
+\newcommand{\ie}{{\it i.e.} }
+\newcommand{\eg}{{\it e.g.} }
+
+%
+% Energy scales
+%
+\newcommand{\ev}{{\,{\rm eV}}}
+\newcommand{\kev}{{\,{\rm keV}}}
+\newcommand{\mev}{{\,{\rm MeV}}}
+\newcommand{\gev}{{\,{\rm GeV}}}
+\newcommand{\tev}{{\,{\rm TeV}}}
+\newcommand{\fb}{{\,{\rm fb}}}
+\newcommand{\ifb}{{\,{\rm fb}^{-1}}}
+
+%
+% SUSY notations
+%
+\newcommand{\neu}{\tilde{\chi}^0}
+\newcommand{\neuo}{{\tilde{\chi}^0_1}}
+\newcommand{\neut}{{\tilde{\chi}^0_2}}
+\newcommand{\cha}{{\tilde{\chi}^\pm}}
+\newcommand{\chao}{{\tilde{\chi}^\pm_1}}
+\newcommand{\chaop}{{\tilde{\chi}^+_1}}
+\newcommand{\chaom}{{\tilde{\chi}^-_1}}
+\newcommand{\Wpm}{W^\pm}
+\newcommand{\chat}{{\tilde{\chi}^\pm_2}}
+\newcommand{\smu}{{\tilde{\mu}}}
+\newcommand{\smur}{\tilde{\mu}_R}
+\newcommand{\smul}{\tilde{\mu}_L}
+\newcommand{\sel}{{\tilde{e}}}
+\newcommand{\selr}{\tilde{e}_R}
+\newcommand{\sell}{\tilde{e}_L}
+\newcommand{\smurl}{\tilde{\mu}_{R,L}}
+
+\newcommand{\casea}{\texttt{IA}}
+\newcommand{\caseb}{\texttt{IB}}
+\newcommand{\casec}{\texttt{II}}
+
+\newcommand{\caseasix}{\texttt{IA-6}}
+
+%
+% Greek
+%
+\newcommand{\es}{{\epsilon}}
+\newcommand{\sg}{{\sigma}}
+\newcommand{\dt}{{\delta}}
+\newcommand{\kp}{{\kappa}}
+\newcommand{\lm}{{\lambda}}
+\newcommand{\Lm}{{\Lambda}}
+\newcommand{\gm}{{\gamma}}
+\newcommand{\mn}{{\mu\nu}}
+\newcommand{\Gm}{{\Gamma}}
+\newcommand{\tho}{{\theta_1}}
+\newcommand{\tht}{{\theta_2}}
+\newcommand{\lmo}{{\lambda_1}}
+\newcommand{\lmt}{{\lambda_2}}
+%
+% LaTeX equations
+%
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+
+\newcommand{\nbea}{\begin{eqnarray*}}
+\newcommand{\neea}{\end{eqnarray*}}
+\newcommand{\nbeq}{\begin{equation*}}
+\newcommand{\neeq}{\end{equation*}}
+
+\newcommand{\no}{{\nonumber}}
+\newcommand{\td}[1]{{\widetilde{#1}}}
+\newcommand{\sqt}{{\sqrt{2}}}
+%
+\newcommand{\me}{{\rlap/\!E}}
+\newcommand{\met}{{\rlap/\!E_T}}
+\newcommand{\rdmu}{{\partial^\mu}}
+\newcommand{\gmm}{{\gamma^\mu}}
+\newcommand{\gmb}{{\gamma^\beta}}
+\newcommand{\gma}{{\gamma^\alpha}}
+\newcommand{\gmn}{{\gamma^\nu}}
+\newcommand{\gmf}{{\gamma^5}}
+%
+% Roman expressions
+%
+\newcommand{\br}{{\rm Br}}
+\newcommand{\sign}{{\rm sign}}
+\newcommand{\Lg}{{\mathcal{L}}}
+\newcommand{\M}{{\mathcal{M}}}
+\newcommand{\tr}{{\rm Tr}}
+
+\newcommand{\msq}{{\overline{|\mathcal{M}|^2}}}
+
+%
+% kinematic variables
+%
+%\newcommand{\mc}{m^{\rm cusp}}
+%\newcommand{\mmax}{m^{\rm max}}
+%\newcommand{\mmin}{m^{\rm min}}
+%\newcommand{\mll}{m_{\ell\ell}}
+%\newcommand{\mllc}{m^{\rm cusp}_{\ell\ell}}
+%\newcommand{\mllmax}{m^{\rm max}_{\ell\ell}}
+%\newcommand{\mllmin}{m^{\rm min}_{\ell\ell}}
+%\newcommand{\elmax} {E_\ell^{\rm max}}
+%\newcommand{\elmin} {E_\ell^{\rm min}}
+\newcommand{\mxx}{m_{\chi\chi}}
+\newcommand{\mrec}{m_{\rm rec}}
+\newcommand{\mrecmin}{m_{\rm rec}^{\rm min}}
+\newcommand{\mrecc}{m_{\rm rec}^{\rm cusp}}
+\newcommand{\mrecmax}{m_{\rm rec}^{\rm max}}
+%\newcommand{\mpt}{\rlap/p_T}
+
+%%%song
+\newcommand{\cosmax}{|\cos\Theta|_{\rm max} }
+\newcommand{\maa}{m_{aa}}
+\newcommand{\maac}{m^{\rm cusp}_{aa}}
+\newcommand{\maamax}{m^{\rm max}_{aa}}
+\newcommand{\maamin}{m^{\rm min}_{aa}}
+\newcommand{\eamax} {E_a^{\rm max}}
+\newcommand{\eamin} {E_a^{\rm min}}
+\newcommand{\eaamax} {E_{aa}^{\rm max}}
+\newcommand{\eaacusp} {E_{aa}^{\rm cusp}}
+\newcommand{\eaamin} {E_{aa}^{\rm min}}
+\newcommand{\exxmax} {E_{\neuo \neuo}^{\rm max}}
+\newcommand{\exxcusp} {E_{\neuo \neuo}^{\rm cusp}}
+\newcommand{\exxmin} {E_{\neuo \neuo}^{\rm min}}
+%\newcommand{\mxx}{m_{XX}}
+%\newcommand{\mrec}{m_{\rm rec}}
+\newcommand{\erec}{E_{\rm rec}}
+%\newcommand{\mrecmin}{m_{\rm rec}^{\rm min}}
+%\newcommand{\mrecc}{m_{\rm rec}^{\rm cusp}}
+%\newcommand{\mrecmax}{m_{\rm rec}^{\rm max}}
+%%%song
+
+\newcommand{\mc}{m^{\rm cusp}}
+\newcommand{\mmax}{m^{\rm max}}
+\newcommand{\mmin}{m^{\rm min}}
+\newcommand{\mll}{m_{\mu\mu}}
+\newcommand{\mllc}{m^{\rm cusp}_{\mu\mu}}
+\newcommand{\mllmax}{m^{\rm max}_{\mu\mu}}
+\newcommand{\mllmin}{m^{\rm min}_{\mu\mu}}
+\newcommand{\mllcusp}{m^{\rm cusp}_{\mu\mu}}
+\newcommand{\elmax} {E_\mu^{\rm max}}
+\newcommand{\elmin} {E_\mu^{\rm min}}
+\newcommand{\elmaxw} {E_W^{\rm max}}
+\newcommand{\elminw} {E_W^{\rm min}}
+\newcommand{\R} {{\cal R}}
+
+\newcommand{\ewmax} {E_W^{\rm max}}
+\newcommand{\ewmin} {E_W^{\rm min}}
+\newcommand{\mwrec}{m_{WW}}
+\newcommand{\mwrecmin}{m_{WW}^{\rm min}}
+\newcommand{\mwrecc}{m_{WW}^{\rm cusp}}
+\newcommand{\mwrecmax}{m_{WW}^{\rm max}}
+
+\newcommand{\mpt}{{\rlap/p}_T}
+
+%%%%%% END My stuffs - Stef
+
+\newcommand{\dunno}{$ {}^{\mbox {--}}\backslash(^{\rm o}{}\underline{\hspace{0.2cm}}{\rm o})/^{\mbox {--}}$}
+
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+
+\DeclareMathOperator{\re}{Re}
+
+
+\begin{document}
+
+\title{Harold Edwards Riemann's zeta function}
+\bigskip
+\author{Stefanus Koesno$^1$\\
+$^1$ Somewhere in California\\ San Jose, CA 95134 USA\\
+}
+%
+\date{\today}
+%
+\begin{abstract}
+
+\end{abstract}
+%
+\maketitle
+
+\renewcommand{\theequation}{A.\arabic{equation}}  % redefine the command that creates the equation no.
+\setcounter{equation}{0}  % reset counter 
+
+{\bf Page 4}. Footnote, 
+%
+\nbea
+\int_2^L \frac{1}{\log t}dt \sim \frac{L}{\log L}
+\neea
+%
+We might be able to do this using repeated IBPs, with $u = 1/\log t$ and $dv = dt$
+%
+\nbea
+\int_2^L \frac{1}{\log t}dt & = & \left. \frac{t}{\log t}\right|_{2}^{L} + \int_2^L \frac{1}{\log^2 t}dt \\
+& = & \frac{L}{\log L} + C_1 + \int_2^L \frac{1}{\log^2 t}dt
+\neea
+%
+we can either repeat the process or do the following
+%
+\nbea
+\int_2^L \frac{1}{\log^2 t}dt & < & \int_2^{L^{1/2}} \frac{1}{\log^2 2}dt + \int_{L^{1/2}}^L \frac{1}{\log^2 L^{1/2}}dt \\
+& < & \frac{L^{1/2} - 2}{\log^2 2}  + \frac{L-L^{1/2}}{\log^2 L^{1/2}} \\
+& < & \frac{L^{1/2}}{\log^2 2}  + \frac{L}{\log^2 L^{1/2}}
+\neea
+%
+such that
+%
+\nbea
+\int_2^L \frac{1}{\log t}dt & < & \frac{L}{\log L} + C_1 + C_2 L^{1/2} + \frac{L}{\frac{1}{4}\log^2 L}
+\neea
+%
+if we divide both sides by $L/\log L$ and take the limit $L\to\infty$
+%
+\nbea
+\lim_{L\to\infty} \frac{\int_2^L \frac{1}{\log t}dt}{L/\log L} & < & 1 + 0 + \frac{\log L}{L^{1/2}} + \frac{1}{\frac{1}{4}\log L} \\
+& < & 1
+\neea
+%
+recall that $\log x$ is smaller than any $x^{1/k}$. But, on the other hand,
+%
+\nbea
+\int_2^L \frac{1}{\log t}dt & > & \int_2^L \frac{1}{\log L}dt \\
+& > & \frac{L-2}{\log L} \\
+\lim_{L\to\infty} \frac{\int_2^L \frac{1}{\log t}dt}{L/\log L} & > & 1 
+\neea
+%
+thus
+%
+\nbea
+\int_2^L \frac{1}{\log t}dt & \sim & \frac{L}{\log L}
+\neea
+%
+
+{\bf Page 8}. The Gamma function shown here $\Pi(s)$ is valid for all $s > -1$, how is this so as
+%
+\nbea
+\int_0^\infty e^{-x} x^{s} dx
+\neea
+%
+blows up for $s < 0$ when $x\to0$. The justification is as follows
+%
+\nbea
+e^{-x} x^{s} \le x^s
+\neea
+%
+for all $x > 0$ no matter what $s$ is so the integral is also capped by ($s > -1$)
+%
+\nbea
+\int_0^1 e^{-x}x^s dx \le \int_0^1 x^s dx & = & \left.\frac{1}{s+1} x^{s+1} \right|_0^1 \\
+& = & \frac{1}{s+1}
+\neea
+%
+Another way of looking at it is
+%
+\nbea
+\int_0^\infty e^{-x}x^n dx & = & e^{-x}\frac{1}{n+1}x^{n+1} + \int_0^\infty e^{-x}\frac{1}{n+1}x^{n+1} dx
+\neea
+%
+so as long as $n>-1$ we are fine.
+
+
+{\bf Page 8}. On the definition of factorial, Euler introduced the integral notation
+%
+\nbea
+n! & = & \int_0^\infty e^{-x} x^n dx
+\neea
+%
+the $e^{-x}$ is there to make sure everything is well behaved at $\infty$, the $x^n$ is there to be IBP'd (differentiated) multiple times so that we get the factor $n!$, they also make sure that the boundary terms are zero.
+
+But Euler had other ideas too, instead of assigning $x^n \to u$ and differentiating it every IBP, we can instead integrate it, \ie assign $x^n dx \to dv$ like so (boundary terms are always zero and also changing $n\to s$)
+%
+\nbea
+\int_0^\infty e^{-x} x^s dx & = & \frac{1}{s+1} \int_0^\infty e^{-x} x^{(s+1)} dx
+\neea
+%
+repeating it $N$ times we get
+%
+\nbea
+\int_0^\infty e^{-x} x^s dx & = & \frac{1}{(s+1)(s+2) \dots (s+N)} \int_0^\infty e^{-x} x^{(s+N)} dx
+\neea
+%
+and this way we can immediately see the poles at $s = -1, -2, \dots$. We now expand the integral in the RHS above in an interesting way, please do no do IBP by differentiating $x^{(s+n)}$ that will undo everything we've just done. There is, however, a curious way to expand it which only works when $N\to\infty$, we write
+%
+\nbea
+(s + N)! & = & N! \cdot (1 + N)(2 + N) \cdots (s+N)
+\neea
+%
+since $s$ is just a (fixed) parameter, it's finite, and so as we take $N\to\infty$
+%
+\nbea
+\lim_{N\to\infty} (1 + N)(2 + N) \cdots (s+N) & \sim & (1 + N)(1 + N) \cdots (1+N) = (1+N)^s
+\neea
+%
+and thus
+%
+\nbea
+\lim_{N\to\infty}\int_0^\infty e^{-x} x^{(s+N)} dx & = & N! (1+N)^s
+\neea
+%
+So, Euler's definition of a factorial was
+%
+\nbea
+s! & = & \lim_{N\to\infty} \frac{1\cdot2\cdots N}{(s+1)(s+2) \dots (s+N)} (1+N)^s
+\neea
+%
+although whether he got it from the integral above or not I don't know.
+
+{\bf Page 9}.
+%
+\nbea
+\int_0^\infty e^{-nx} x^{s-1} dx & = & \frac{(s-1)!}{n^s} \\
+\to \sum_{n=1}^\infty \int_0^\infty e^{-nx} x^{s-1} dx & = & \sum_{n=1}^\infty \frac{(s-1)!}{n^s} \\
+& = & (s-1)!\sum_{n=1}^\infty \frac{1}{n^s}
+\neea
+%
+so as long as $s > 1$ the sum of the integral converges, now we want to see the other way, summing inside the integral. A few points
+%
+\bit
+\item Swapping sum and integral is always OK, as long as the sum is finite, for infinite sums what we are interchanging are actually limit and integral because $\sum^\infty = \lim_{N\to\infty}\sum^N$
+%
+\item Geometric series formula is only valid if the sum converges, why? because we start with
+%
+\nbea
+A & = & 1 + r + r^2 + \dots \\
+rA & = & r + r^2 + r^3 + \dots
+\neea
+%
+we then substract $A - rA = 1\to A = 1/(1-r)$ and so on, the problem is if $A$ is divergent we are then doing $\infty - \infty$ which might not be equal to one, so if we try to do $A = 1 + 2 + 2^2 + \dots$ using the formula we get $-1$ which is not just wrong but also not divergent (although if you read Stopple's book you can actually do this and it's called Abel sum).
+
+So the point is that we can't just apply the formula and then take the limit $r\to a$, we can only do this if $a = 1$.
+\eit
+%
+
+Swapping integral and sum
+%
+\nbea
+\int_0^\infty \sum_{n=1}^\infty e^{-nx} x^{s-1} dx & = & \int_0^\infty \left(\sum_{n=1}^\infty e^{-nx}\right) x^{s-1} dx \\
+& = & \int_0^\infty \left (\frac{1}{1-e^{-x}} - 1 \right ) x^{s-1} dx \\
+& = & \int_0^\infty \left (\frac{e^{-x}}{1-e^{-x}}\right ) x^{s-1} dx \\
+& = & \int_0^\infty \frac{x^{s-1}}{e^{x} - 1} dx
+\neea
+%
+the only problem we have here is when $e^{-x} \ge 1$ and this only happens when $x = 0$, so we only have one point of contention, literally, by the way, this is similar to the situation for
+%
+\nbea
+\int_0^1 \frac{1}{\sqrt{x}} dx & = & 2
+\neea
+%
+even though it blows up at $x = 0$, we do this by
+%
+\nbea
+\int_0^1 \frac{1}{\sqrt{x}} dx & = & \lim_{a\to0}\int_a^1 \frac{1}{\sqrt{x}} dx
+\neea
+%
+in our case the integral is also OK because $e^x - 1 \ge x$ for $x \ge 0$ and so
+%
+\nbea
+\int_0^1 \frac{x^{s-1}}{e^{x} - 1} dx & \le & \int_0^1 x^{s-2} dx \\
+& \le & \left. \frac{1}{s-1} x^{s-1} \right |_0^1 \\
+& \le & \frac{1}{s-1}
+\neea
+%
+since $s > 1$. Note that we can't just take the limit ($s > 1$)
+%
+\nbea
+\lim_{x\to0} \frac{x^{s-1}}{e^x-1} & = & \lim_{x\to0} \frac{(s-1)x^{s-2}}{e^x} \\
+& = & \infty, ~~~~~~~~~~{\rm  since~} s > 1.
+\neea
+%
+so at zero the integrand still blows up but the integral is OK.
+
+{\bf Page 10}. Why the minus sign? the integrand is $\frac{(-x)^s}{e^x - 1}$, there's a minus sign in front of $x$. This is due to the choice of contour. Note that we are going from $+\infty$ to left all the way to 0 and then to the right all the way to $+\infty$.
+
+If there's no minus sign and this is the cut we choose, then
+%
+\nbea
+x^s & = & e^{s\log x + 0\cdot\pi i} , ~~~~~~~~~~ {\rm going~from~} +\infty {\rm ~to~} 0 \\
+x^s & = & e^{s\log x + 2\cdot\pi i} , ~~~~~~~~~~ {\rm going~from~} 0 {\rm ~to~} +\infty
+\neea
+% 
+and when we add the two integrals we get zero
+%
+\nbea
+e^{s\log x + 0\cdot\pi i} - e^{s\log x + 2\cdot\pi i} & = & 0
+\neea
+%
+so if we don't want the minus sign we need to choose the other cut, coming from $-\infty$ to zero and back to $-\infty$ so that the phases will be $\pi i$ and $-\pi i$.
+
+{\bf Page 12}. Order of limit taking around the small semi circle, Bernoulli's number, the integral ($x = \delta e^{i\theta}$)
+%
+\nbea
+\int_0^{2\pi} x^{m-n-1} d\theta & = & \frac{\delta^{m-n-1}}{m-n-1} (e^{(m-n-1) \cdot 2\pi \cdot i} - e^{(m-n-1) \cdot 0 \cdot i})
+\neea
+%
+if $m-n-1 < 0$ then the delta term will blow up, but the $e$ difference is zero no matter what, so this means we need to calculate the $e$ difference first before taking the limit.
+
+{\bf Page 13}. Compact here means closed and bounded.
+
+The whole integral is zero thanks to a corollary of Goursat theorem which says that
+%
+\nbea
+\oint_C f(z) dz & = & \sum_{k=1}^n \oint_{C_k} f(z) dz
+\neea
+%
+where the contours $C_k$'s are all inside of $C$.
+
+{\bf Page 13}. For the integral
+%
+\nbea
+\int_{|y|=\epsilon} (-2\pi i n - y)^{s-1} \frac{y}{e^y - 1} \cdot \frac{dy}{y}
+\neea
+%
+we rewrite as
+%
+\nbea
+\int_{|y|=\epsilon} \frac{f(y)}{y - 0} ~ dy, ~~~~~~~~~~ f(y) = (-2\pi i n - y)^{s-1} \frac{y}{e^y - 1}
+\neea
+%
+we need to remember that $f(y)$ has no pole when $y\to 0$, so the value of the integral is just $2\pi i f(0) = 2\pi i(-2\pi i n)^{s-1}$. Note that
+%
+\nbea
+\lim_{y\to0} \frac{y}{e^y - 1} & = & \lim_{y\to0} \frac{1}{e^y} = 1
+\neea
+%
+after L'Hospital.
+
+{\bf Multiple Pages}. A note on analytic continuation. For gamma function, integral is valid only for $s > 1$ but once we get the final form it applies for all $s$. It is even in the derivation of the analytic continuation
+%
+\nbea
+\int_0^\infty e^{-x} x^{s} dx & = & \int_0^1 e^{-x} x^{s} dx + \int_1^\infty e^{-x} x^{s} dx
+\neea
+%
+for the first integral we expand $e$
+%
+\nbea
+\int_0^1 e^{-x} x^{s} dx & = & \int_0^1 \sum_{n=0}^\infty \frac{(-x)^n}{n!} x^{s} dx \\
+& = & \sum_{n=0}^\infty (-1)^{n} \int_0^1  \frac{x^{n+s}}{n!} dx
+\neea
+%
+now this integral is not valid for $s \le -1$, however, a this stage we still assume $s > -1$, once we have the full result
+%
+\nbea
+\int_0^\infty e^{-x} x^{s} dx & = & \sum_{n=1}^\infty (-1)^{n-1} \frac{1}{n!(s+n)} + \int_1^\infty e^{-x} x^{s} dx
+\neea
+%
+we say that this result is valid for all $s$, the derivation is not valid for all $s$ but the final result is, that's waht analytic continuation is.
+
+The same goes with the zeta function, in the derivation on Page 10, we take the small semi circle $\delta \to 0$ only for $s > 1$, once we get the final form we say it applies for all $s$ but of course for $s \le 1$ we cannot take $c\to0$ when evaluating the integral, otherwise the integral around that semi circle blows up and we don't have an entire function anymore.
+
+Another remark is that the radius of that small circle must be $0 < \delta < 2\pi$, because at $2\pi i$ we get an infinity from $1/(e^x-1)$.
+
+{\bf Page 15}.
+%
+\nbea
+\frac{1 + 2\psi(x)}{1 + 2\psi(1/x)} = \frac{1}{\sqrt{x}}
+\neea
+%
+for small $x$
+%
+\nbea
+\psi(1/x) & = & \sum e^{-n^2 \pi 1/x} \\
+\lim_{x\to 0} \psi(1/x) & = & \sum e^{-n^2 \pi \infty} \\
+& = & 0
+\neea
+%
+so for small $x$ we have
+%
+\nbea
+\lim_{x\to 0} \frac{1 + 2\psi(x)}{1 + 2\psi(1/x)} = 1 + 2\psi(x) & = & \frac{1}{\sqrt{x}} \\
+\to \psi(x) & = & \frac{1}{2} \left( \frac{1}{\sqrt{x}} - 1\right)
+\neea
+%
+
+{\bf Page 24}. Fourier transform, I thought I was an expert LOL well, not compared to Riemann
+%
+\nbea
+\int_0^\infty J(x) x^{-s-1} dx & = & \int_0^\infty J(x) x^{-s} \frac{dx}{x}
+\neea
+%
+every time you see $\frac{dx}{x}$ you should immediately scream $\log x$ because $d(\log x) = \frac{dx}{x}$, let $w = \log x$
+%
+\nbea
+\int_0^\infty J(x) x^{-s} \frac{dx}{x} & = & \int_{-\infty}^\infty J(e^w)e^{-ws} dw \\
+& = & \int_{-\infty}^\infty J(e^w)e^{-w(\sigma + it)} dw \\
+& = & \int_{-\infty}^\infty \left\lbrack J(e^w)e^{-w\sigma} \right\rbrack e^{-itw} dw
+\neea
+%
+
+{\bf Page 21}. Something I'm not quite sure, ``to prove the absolute convergence of $\prod(1 + a_i)$ it suffices to prove the absolute convergence of the sum $\sum {a_i}$''. To see this, take the log of the product
+%
+\nbea
+\log \prod(1 + a_i) & = & \sum \log(1 + a_i)
+\neea
+%
+But we know that $\log(1 + x) < x$, so if $\sum a_i$ converges then by comparison test the log of the product as well, but if it converges then it converges to a constant and the infinite product is just the exponentiation of a finite constant and thus converges as well.
+
+{\bf Page 25}. Another useful application of IBP, if the integral doesn't converge (in this case due to oscillations), do IBP :)
+
+{\bf Page 26}. about the ambiguity of $\log(1 - s/\rho)$, especially for $\rho$ which are not large, this is because the convention we use is given in Page 27, \ie $\log(z)$ is defined for all $z$ other than real $z \le 0$ and that for real $z$, $\log(z)$ is real.
+
+So if $\rho$ is smaller than $s$ we can have a situation where $(1 - s/\rho)$ is real and negative, but $\log(s-\rho)$ cannot be real and negative when we set $a > 1$ since we know that the zeros are all in the critical strip (see Section 1.9)  and for $\log(-\rho)$, since $\rho$ is never real we are OK since the argument to the log function is never real and negative.
+
+{\bf Page 27}. On the Fourier inversion of $\frac{1}{s-\beta}$, note that the limit of the integration has to go from $-\infty$ to $\infty$, here the function is defined only from $1$ to $\infty$, what this means is that from $-\infty$ to 1 the value of the function is zero.
+
+{\bf Page 28}. Changing variable of integration from the 0 to 1 plus upper semicircle plus 1 to $x$ into $u = \log t$, we see something quite strange. If we change $[0,1]$ using $u = \log t$ we should get $[-\infty,0]$ but instead we get $[-\infty + i\delta, 0 + i\delta]$, in the book the integration is split into $[i\delta-\infty,i\delta+\log x]$.
+
+This is actually more in line to shifting the whole original contour to be slightly above the positive $x$ axis, rather than doing an upper semicircle. If we push it up the argument of the log has to be positive thus the addition of $i\delta$.
+
+{\bf Page 29}. Here we show that $H(\beta)\to0$ as $\tau\to\infty$, but since $H(\beta)$ is extremely similar to $F(\beta)$, the difference is only in the 
+%
+\nbea
+\log\lbrack 1 - (s/\beta)\rbrack \longleftrightarrow \log\lbrack (s/\beta) - 1 \rbrack 
+\neea
+%
+so the key difference here is that for $H(\beta)$, when we take $\tau\to\infty$, we get $\log\lbrack 1 - (s/\beta)\rbrack \to \log(1)$ while for $F(\beta)$ we get $\log(-1)$. And here we see some application of Lebesgue integral that allows us to interchange limit and integration.
+
+Looking back, this might be the exact reason why we introduce $H(\beta)$ in the first place, we know we need to take $\tau\to\infty$ (recall that $\beta = \sigma + i\tau$), but doing this in $F(\beta)$ causes something like $\log(-1)$, if we reverse the sign inside the log, we might be able to get something, but first we need to see if this log reversed function is the same as our original function, the good news is that in this case they are only separated by a constant $i\pi$.
+
+{\bf Page 30}. Pairing $\rho$ and $1-\rho$, in case you forget, this was discussed back on Page 21.
+
+{\bf Page 42}. The curious thing about the application of Jensen's theorem here is that instead of $\xi(0)$ we get $\xi(1/2)$, the thing to note is that the radius used in Jensen's Theorem is $|z| \le R$, here it is $|s-\frac{1}{2}| \le R$, so the prerequisite is not met :)
+
+We just need to do a simple change of variable $w = s - \frac{1}{2}$ and thus $|w| \le R$
+%
+\nbea
+\xi(s) & = & \xi(w + \frac{1}{2}) \\
+\to f(w) & = & \xi(w + \frac{1}{2})
+\neea
+%
+and we do Jensen's Theorem on $f(w)$ instead, in this case
+%
+\nbea
+f(w = 0) & = & \xi\left(\frac{1}{2}\right)
+\neea
+%
+and the zeros of $f(w)$ are now located at $\rho-\frac{1}{2}$ where $\xi(\rho) = 0$, all done :)
+
+{\bf Page 42}. This statement, ``Since all but a finite number of roots $\rho$ satisfy the inequality''
+%
+\nbea
+\frac{1}{|\rho(1-\rho)|} = \frac{1}{|(\rho-\frac{1}{2})^2 - \frac{1}{4}|} < \frac{1}{|\rho-\frac{1}{2}|^2}
+\neea
+%
+let $\rho - \frac{1}{2} = a + ib$ then
+%
+\nbea
+|(\rho-\frac{1}{2})^2 - \frac{1}{4}|^2 & = & (a^2 + b^2 - \frac{1}{4}) + 4a^2b^2 \\
+|(\rho-\frac{1}{2})^2|^2 & = & (a^2 + b^2)^2
+\neea
+%
+taking the difference
+%
+\nbea
+|(\rho-\frac{1}{2})^2 - \frac{1}{4}|^2 - |(\rho-\frac{1}{2})^2|^2 & = & \frac{(8a^2 - 1)(8b^2 - 1)}{16}
+\neea
+%
+so for $a^2 > \frac{1}{8}$ and $b^2 > \frac{1}{8}$ we get the inequality in the book, thus only for those roots whose $\Re(\rho-\frac{1}{2})^2 < \frac{1}{8}$ or $\Im(\rho-\frac{1}{2})^2 < \frac{1}{8}$ we don't get the inequality in the book.
+
+{\bf Page 43}. Note that this Theorem and the preceding one all rely on the fact that $R$ is sufficiently large, the inequality
+%
+\nbea
+n(R) \le 3R\log R
+\neea
+%
+doesn't work for all $R$, only for $R$ sufficiently large.
+
+Also this is about seeing how dense the roots of $\xi(s)$ are, note that for example $\sum 1/p$, although is not as dense as $\sum 1/n$, still diverges.
+
+{\bf Page 44}. Dealing with $u_R(s)$, we invoke properties of harmonic functions, first a harmonic function is just a holomorphic function because it is a function that satisfies Cauchy-Riemann conditions, or in other words it satisfies Laplace's equation
+%
+\nbea
+\partial_x^2 f + \partial_y^2 f & = & 0
+\neea
+%
+and because of this very reason a harmonic function cannot have a max or min within a compact domain, because if $x$ is a max/min then it's second derivative in $x$ must be non-zero but due to Laplace's equation above the second derivative in the $y$ has the opposite sign and therefore it is a saddle point.
+
+In this case the domain is not really compact because we exclude the zeros of $\xi$, this is why the book explains that near this point the value is near $-\infty$, so there's no chance to have a max point near these points and the max points should be at the boundary.
+
+
+
+
+
+
+
+\end{document}
