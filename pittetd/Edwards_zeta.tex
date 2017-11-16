@@ -764,6 +764,31 @@ y^\beta &~~~~~ y > 1 \\
 
 
 
+{\bf Page 52}. Bottom page, about the middle equation, say $\beta = A + iB$, here we don't take the limit $h\to\infty yet$
+%
+\nbea
+\int_{a - \beta - ih}^{a - \beta + ih} & = & \int_{a - A - iB - ih}^{a - A - iB + ih} \\
+& = & \int_{a - A - iB - ih}^{a - A - ih} + \int_{a - A - ih}^{a - A + ih} + \int_{a - A + ih}^{a - A -iB + ih} \\
+& = & \int_{a - A - iB - ih}^{a - A - ih} + \int_{\Re{(a - \beta)} - ih}^{\Re{(a - \beta)} + ih} + \int_{a - A + ih}^{a - A -iB + ih} 
+\neea
+%
+so now we have to make sure that these side band integrals are negligible, let $t = a - A + i\tau$
+%
+\nbea
+\int_{a - A + ih}^{a - A -iB + ih}  \frac{x^t}{t} dt & = & i\int_{h}^{(h - B)} \frac{e^{(a-A+i\tau)\log x}}{a -  A + i\tau} d\tau \\
+& \le & \int_{h}^{(h - B)} \frac{|e^{(a-A+i\tau)\log x}|}{|a -  A + i\tau|} d\tau \\
+& \le & e^{a - A} \int_{h}^{(h - B)} \frac{1}{|i\tau|} d\tau \\
+& \le & e^{a - A} \log (1 - \frac{B}{h})
+\neea
+%
+if we take the limit $h\to\infty$ we get $\to\log 1$ which approaches zero :) we can do the same with the lower side band and get the same result. The lesson here is that we don't need exact things, \ie we don't need it to be exactly zero, approaching zero is good enough and this I see over and over in analytic number theory.
+
+
+
+
+
+
+
 
 
 
