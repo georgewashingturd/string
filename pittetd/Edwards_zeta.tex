@@ -848,6 +848,29 @@ I find it interesting that to prove that the limit of the sum is the sum of the 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Evaluating integrals
 %
 \nbea
@@ -885,6 +908,70 @@ We can also shift the pole by the usual trick
 \neea
 %
 taking the limit $\epsilon\to0$ is a bit tricky because the log is a bit ambiguous, is $\log (-1) = i \pi$ or $-i\pi$?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+The sum
+%
+\nbea
+B = \frac{1}{2} \sum\frac{1}{p^2} + \frac{1}{3} \sum\frac{1}{p^3} + \frac{1}{4} \sum\frac{1}{p^4} + \dots
+\neea
+%
+converges, this is how, for $k \ge 2$
+%
+\nbea
+\sum \frac{1}{p^k} & < & \sum_{n=2} \frac{1}{n^k} < 1
+\neea
+%
+the last inequality can be easily shown using the integral test which shows that
+%
+\nbea
+\sum_{n=2} \frac{1}{n^k} < \int_1^\infty x^{-k} dx & = & \frac{1}{k - 1}
+\neea
+%
+%
+\nbea
+B = \frac{1}{2} \sum\frac{1}{p^2} + \frac{1}{3} \sum\frac{1}{p^3} + \frac{1}{4} \sum\frac{1}{p^4} + \dots & < & \frac{1}{2} \sum\frac{1}{n^2} + \frac{1}{3} \sum\frac{1}{n^3} + \frac{1}{4} \sum\frac{1}{n^4} + \dots \\
+& < & \frac{1}{2} \cdot1 + \frac{1}{3} \cdot\frac{1}{2} + \frac{1}{4} \cdot \frac{1}{3} + \dots \\
+& = & \sum_{n=2}\frac{1}{n(n-1)}
+\neea
+%
+and using the integral test this one is also convergent :)
+
+Here's a way that doesn't work, initially I wanted to show that we can massage $B$ into $\sum \frac{1}{p^s}$ with $s > 1$, this is because each $\sum \frac{1}{p^k}$ is less than one, so there must be an $s > 1$ such that 
+%
+\nbea
+\frac{1}{n}\sum\frac{1}{p^n} & = & \frac{1}{p^s}
+\neea
+%
+however, this $s$ is getting smaller and smaller as $p$ gets bigger and it approaches 1, so if we use the same $s$ for all $p$ we get $\sum \frac{1}{p}$ and it doesn't work.
+
 
 
 
