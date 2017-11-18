@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  15 NOV 2017 21:02
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  17 NOV 2017 19:25
 entering extended mode
 **C:/Users/User/Documents/GitHub/string/pittetd/Edwards_zeta.tex
 (C:/Users/User/Documents/GitHub/string/pittetd/Edwards_zeta.tex
@@ -616,19 +616,19 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 386.
  [4] [5] [6] [7] [8] [9]
-[10] [11] [12] [13] (Edwards_zeta.bbl) [14]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 796.
+[10] [11] [12] [13] [14] [15] (Edwards_zeta.bbl) [16]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 898.
  (Edwards_zeta.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 796.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 796.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 898.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 898.
  ) 
 Here is how much of TeX's memory you used:
  13308 strings out of 428755
  183627 string characters out of 3166785
- 285562 words of memory out of 3000000
+ 287562 words of memory out of 3000000
  16523 multiletter control sequences out of 15000+200000
  13266 words of font info for 50 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
  36i,12n,38p,558b,399s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on Edwards_zeta.pdf (14 pages).
+Output written on Edwards_zeta.pdf (16 pages).

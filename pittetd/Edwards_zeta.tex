@@ -785,6 +785,108 @@ if we take the limit $h\to\infty$ we get $\to\log 1$ which approaches zero :) we
 
 
 
+This is the normal trig trick :)
+%
+\nbea
+\int \frac{1}{1+u^2} du & = & \int \frac{1}{1 + \tan^2 w} \frac{dw}{\sec^2 w}, ~~~~~ \frac{1}{1 + \tan^2 w} = \sec^2 w \\
+& = & \int dw \\
+& = & w = \arctan u
+\neea
+%
+
+
+And again, just for fun
+%
+\nbea
+\cos \frac{\pi}{4} = \cos 2 \frac{\pi}{8} & = & 2 \cos^2 \frac{\pi}{8} - 1 \\
+\frac{1}{\sqrt{2}} & = & 2 \cos^2 \frac{\pi}{8} - 1 \\
+\to \cos \frac{\pi}{8} & = & \left(\frac{1 + \frac{1}{\sqrt{2}}}{2}\right)^{1/2}
+\neea
+%
+by the same token
+%
+\nbea
+\cos \frac{\pi}{4} = \cos 2 \frac{\pi}{8} & = & 1 - 2 \sin^2 \frac{\pi}{8} \\
+\to \sin \frac{\pi}{8} & = & \left(\frac{1 - \frac{1}{\sqrt{2}}}{2}\right)^{1/2}
+\neea
+%
+and so
+%
+\nbea
+\tan \frac{\pi}{8} & = & \left (\frac{\frac{1 - \frac{1}{\sqrt{2}}}{2}}{\frac{1 + \frac{1}{\sqrt{2}}}{2}} \right )^{1/2} = \left (\frac{1 - \frac{1}{\sqrt{2}}}{1 + \frac{1}{\sqrt{2}}} \right )^{1/2} = \left (\frac{1 - \frac{1}{\sqrt{2}}}{1 + \frac{1}{\sqrt{2}}} \times \frac{1 + \frac{1}{\sqrt{2}}}{1 + \frac{1}{\sqrt{2}}}\right )^{1/2} \\
+& = & \left(\frac{1 - \frac{1}{2}}{\left(1 + \frac{1}{\sqrt{2}}\right)^2} \right) ^{1/2} = \frac{1}{1 + \frac{1}{\sqrt{2}}}\cdot \frac{1}{\sqrt{2}} = \frac{1}{1 + \sqrt{2}} < \frac{1}{2}
+\neea
+%
+
+
+
+
+
+the integrand in the second integral is an odd function
+%
+\nbea
+i\int_{-h}^{h} \frac{t}{a^2 + t^2} dt
+\neea
+%
+and it's integrated in a symmetric domain so the integral is zero :)
+
+
+I find it interesting that to prove that the limit of the sum is the sum of the limit we just need to show that the latter converges but we did not need to show that they converge to the same value.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Evaluating integrals
+%
+\nbea
+\int_0^K \frac{1}{r-1} dr
+\neea
+%
+there's a pole here at $r = 1$, this is almost the same as integrating $dz/z$, so let's make the change of variable $z = r-1, dz = dr$
+%
+\nbea
+\int_0^K \frac{1}{r-1} dr = \int_{-1}^{K-1} \frac{1}{z} dz & = & \int_{-1}^{0-\delta} \frac{1}{z} dz  + \int_C \frac{1}{z} dz + \int_{0+\delta}^{K-1} \frac{1}{z} dz
+\neea
+%
+where the contour $C$ for the middle integral is an upper semicircle above $z = 0$, 
+%
+\nbea
+\int_C \frac{1}{z} dz & = & \int_{\pi}^{0} \frac{1}{\delta e^{i\theta}} d(\delta e^{i\theta}) \\
+& = & i\int_{\pi}^{0} \frac{\delta e^{i\theta}}{\delta e^{i\theta}} d\theta \\
+& = & -i\pi
+\neea
+%
+Now for the other integrals we do the following
+%
+\nbea
+\int_{-1}^{0-\delta} \frac{1}{z} dz  + \int_{0+\delta}^{K-1} \frac{1}{z} dz & = & \int_{1}^{0+\delta} \frac{1}{-z} d(-z)  + \int_{0+\delta}^{1} \frac{1}{z} dz + \int_{1}^{K-1} \frac{1}{z} dz \\
+& = & -\int_{0+\delta}^{1} \frac{1}{z} dz  + \int_{0+\delta}^{1} \frac{1}{z} dz + \int_{1}^{K-1} \frac{1}{z} dz \\
+& = & \int_{1}^{K-1} \frac{1}{z} dz
+\neea
+%
+so we first do $z\to-z$ on the first integral and then swap the integration limits, for the second integral we split the integral, this way we can cancel the blowing up parts and are left with $\log(K-1)$.
+
+We can also shift the pole by the usual trick
+%
+\nbea
+\int_{-1}^{K-1} \frac{1}{z} dz \to \int_{-1}^{K-1} \frac{1}{z + i\epsilon} dz & = & \log (K - 1 + i\epsilon) - \log(-1 + i\epsilon)
+\neea
+%
+taking the limit $\epsilon\to0$ is a bit tricky because the log is a bit ambiguous, is $\log (-1) = i \pi$ or $-i\pi$?
+
+
 
 
 
