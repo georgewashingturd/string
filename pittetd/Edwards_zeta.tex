@@ -875,6 +875,98 @@ We can also shift the pole by the usual trick
 %
 taking the limit $\epsilon\to0$ is a bit tricky because the log is a bit ambiguous, is $\log (-1) = i \pi$ or $-i\pi$?
 
+{\bf Page 69}. These equations are quite easily derived using von Mangoldt's method :) For me the starting point is Section 3.7, Eq. (1) - (3) which culminates in the following equation 
+%
+\nbea
+\int_0^x t^{-r} d\psi(t) & = & \frac{x^{1-r}}{1-r} - \sum_\rho \frac{x^{\rho-r}}{\rho-r} + \sum_n \frac{x^{-2n-r}}{2n+r} - \frac{\zeta'(r)}{\zeta(r)}
+\neea
+%
+If we set $r=0$ we get
+%
+\nbea
+\int_0^x t^{-0} d\psi(t) = \int_0^x t^{-0} d\psi(t) = \int_0^x d\psi(t) = \psi(x) & = & x - \sum_\rho \frac{x^{\rho}}{\rho} + \sum_n \frac{x^{-2n}}{2n} - \frac{\zeta'(0)}{\zeta(0)}
+\neea
+%
+To get de la Vallee Poussin's Eq (3) we need the following IBP 
+%
+\nbea
+\int_0^x \log(t) d\psi(t) & = & \left. \log(t) \psi(t) \right|_0^x - \int_0^x t^{-1} \psi(t) dt \\
+& = & \psi(x) \log x - \psi(0)\log0 - \int_0^x t^{-1} \psi(t) dt
+\neea
+%
+Note that $\psi(0) = 0$, there's no limit taken here so
+%
+\nbea
+\psi(0)\log0 & = & \lim_{r\to0} 0 \cdot \log(r)
+\neea
+%
+and therefore it is zero and from the main equation of Section 3.7 as stated above we do the following (differentiating inside the integral)
+%
+\nbea
+\frac{d}{dr}\left.\left(\int_0^x t^{-r} d\psi(t)\right)\right|_{r = 1} & = & \int_0^x (-\log t) d\psi(t)\\
+-\psi(x)\log x + \int_0^{x} t^{-1} \psi(t) dt & = & x - x\log x - \sum_\rho \left( \frac{x^\rho}{\rho^2} - \frac{x^\rho \log x}{\rho}\right) - \sum_n \left(\frac{x^{-2n}\log x}{2n} + \frac{x^{-2n}}{(2n)^2}\right) \\
+&& - \frac{\zeta''(0)\zeta(0) - \zeta'^2(0)}{\zeta^2(0)} \\
+& = & \left ( -x\log x + \sum_\rho \frac{x^{\rho} \log x}{\rho} - \sum_n \frac{x^{-2n} \log x}{2n} \right) + \\
+&& x -\sum_\rho \frac{x^\rho}{\rho} - \sum_n \frac{x^{-2n}}{(2n)^2} + {\rm const.} \\
+\bcancel{-\psi(x)\log x} + \int_0^{x} t^{-1} \psi(t) dt & = & \left ( \bcancel{-\psi(x) \log x} - \log x\frac{\zeta'(0)}{\zeta(0)} \right ) + x -\sum_\rho \frac{x^\rho}{\rho} - \sum_n \frac{x^{-2n}}{(2n)^2} + {\rm const.} \\
+\to \int_0^{x} t^{-1} \psi(t) dt & = & x -\sum_\rho \frac{x^\rho}{\rho} - \sum_n \frac{x^{-2n}}{(2n)^2} - \log x\frac{\zeta'(0)}{\zeta(0)} + {\rm const.}
+\neea
+%
+where we have substituted the following from $\psi(x) = \int_0^x t^{0} d\psi(t)$
+%
+\nbea
+-\psi(x)\log x & = & -x \log x + \sum_\rho \frac{x^{\rho} \log x}{\rho} - \sum_n \frac{x^{-2n} \log x}{2n} + \log x \frac{\zeta'(0)}{\zeta(0)}
+\neea
+%
+
+For Hadamard's Eq (2) what we need is the following IBP
+%
+\nbea
+\int_0^x t^{-1} d\psi(t) & = & \left. t^{-1} \psi(t) \right|_0^x + \int_0^x t^{-2} \psi(t) dt \\
+& = & \frac{\psi(x)}{x} - \frac{\psi(0)}{0} + \int_0^x t^{-2} \psi(t) dt
+\neea
+%
+again $\frac{\psi(0)}{0}$ is zero because $\psi(0) = 0$ without any limit taken, however, in the case $r=1$ we have the following limit to be taken care of
+%
+\nbea
+\lim_{r\to 1}\frac{x^{1-r}}{1-r} - \frac{\zeta'(r)}{\zeta(r)} = \lim_{r\to 1}\frac{x^{1-r}}{1-r} - \frac{1}{1 - r} & = & \lim_{r\to1} \frac{x^{1-r} - 1}{1 - r} \\
+& = & \lim_{r\to1} \frac{-\log x \cdot x^{1-r}}{-1} \\
+& = & \log x
+\neea
+%
+and therefore
+%
+\nbea
+\int_0^x t^{-1} d\psi(t) & = & \left \lbrack \lim_{r\to 1}\frac{x^{1-r}}{1-r} - \frac{\zeta'(r)}{\zeta(r)}\right \rbrack - \sum_\rho \frac{x^{\rho-1}}{\rho-1} + \sum_n \frac{x^{-2n-1}}{2n+1}  \\
+& = & \log x - \sum_\rho \frac{x^{\rho-1}}{\rho-1} + \sum_n \frac{x^{-2n-1}}{2n+1}
+\neea
+%
+substituting this into the IBP
+%
+\nbea
+\frac{\psi(x)}{x} - \frac{\psi(0)}{0} + \int_0^x t^{-2} \psi(t) dt  & = & \int_0^x t^{-1} d\psi(t) \\
+& = & \log x - \sum_\rho \frac{x^{\rho-1}}{\rho-1} + \sum_n \frac{x^{-2n-1}}{2n+1}
+\neea
+%
+and using the main equation from Section 3.7 above to get $\frac{\psi(x)}{x}$
+%
+\nbea
+\to \int_0^x t^{-2} \psi(t) dt & = & - \sum_\rho \frac{x^{\rho-1}}{\rho-1} + \sum_n \frac{x^{-2n-1}}{2n+1} - \left(\frac{\psi(x)}{x}\right) \\
+& = & \log x - \sum_\rho \frac{x^{\rho-1}}{\rho-1} + \sum_n \frac{x^{-2n-1}}{2n+1}-\left (1 - \sum_\rho \frac{x^{\rho-1}}{\rho} + \sum_n \frac{x^{-2n-1}}{2n} - \frac{1}{x}\frac{\zeta'(0)}{\zeta(0)}\right ) \\
+& = & \log x -\sum_\rho \left (\frac{x^{\rho-1}}{\rho-1} - \frac{x^{\rho-1}}{\rho}\right ) + \sum_n \left (\frac{x^{-2n-1}}{2n+1} - \frac{x^{-2n-1}}{2n} \right ) + \frac{1}{x}\frac{\zeta'(0)}{\zeta(0)} + {\rm const.} \\
+& = & \log x -\sum_\rho \frac{x^{\rho-1}}{\rho(\rho-1)} - \sum_n \frac{x^{-2n-1}}{2n(2n+1)} + \frac{1}{x}\frac{\zeta'(0)}{\zeta(0)} + {\rm const.}
+\neea
+%
+
+
+
+
+
+
+
+
+
+
 {\bf Page 70}. The sum
 %
 \nbea
@@ -909,48 +1001,6 @@ Here's a way that doesn't work, initially I wanted to show that we can massage $
 \neea
 %
 however, this $s$ is getting smaller and smaller as $p$ gets bigger and it approaches 1, so if we use the same $s$ for all $p$ we get $\sum \frac{1}{p}$ and it doesn't work.
-
-
-
-
-%
-\nbea
-\int_0^x t^{-r} d\psi(t) & = & \frac{x^{1-r}}{1-r} - \sum_\rho \frac{x^{\rho-r}}{\rho-r} + \sum_n \frac{x^{-2n-r}}{2n+r} - \frac{\zeta'(r)}{\zeta(r)}
-\neea
-%
-
-%
-\nbea
-\frac{d}{dr}\left.\left(\int_0^x t^{-r} d\psi(t)\right)\right|_{r = 1} & = & \int_0^x (-\log t) d\psi(t)\\
-& = & x - x\log x - \sum_\rho \left( \frac{x^\rho}{\rho^2} - \frac{x^\rho \log x}{\rho}\right) + \sum_n \frac{2n\log x - 1}{(2n)^2 x^{2n}} - \frac{\zeta''(0)\zeta(0) - \zeta'^2(0)}{\zeta^2(0)}
-\neea
-%
-
-
-
-
-
-
-%
-\nbea
-\int_0^x t^{-1} d\psi(t) & = & \left. t^{-1} \psi(t) \right|_0^x + \int_0^x t^{-2} \psi(t) dt \\
-& = & \frac{\psi(x)}{x} - \frac{\psi(0)}{0} + \int_0^x t^{-2} \psi(t) dt
-\neea
-%
-
-
-%
-\nbea
-\int_0^x \log(t) d\psi(t) & = & \left. \log(t) \psi(t) \right|_0^x + \int_0^x t^{-2} \psi(t) dt \\
-& = & \psi(x) \log x - \psi(0)\log0 + \int_0^x t^{-1} \psi(t) dt
-\neea
-%
-
-
-
-
-
-
 
 
 
