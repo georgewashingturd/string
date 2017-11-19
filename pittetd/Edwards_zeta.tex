@@ -764,7 +764,7 @@ y^\beta &~~~~~ y > 1 \\
 
 
 
-{\bf Page 52}. Bottom page, about the middle equation, say $\beta = A + iB$, here we don't take the limit $h\to\infty yet$
+{\bf Page 52}. Bottom page, about the middle equation, say $\beta = A + iB$, here we don't take the limit $h\to\infty$ yet
 %
 \nbea
 \int_{a - \beta - ih}^{a - \beta + ih} & = & \int_{a - A - iB - ih}^{a - A - iB + ih} \\
@@ -783,9 +783,17 @@ so now we have to make sure that these side band integrals are negligible, let $
 %
 if we take the limit $h\to\infty$ we get $\to\log 1$ which approaches zero :) we can do the same with the lower side band and get the same result. The lesson here is that we don't need exact things, \ie we don't need it to be exactly zero, approaching zero is good enough and this I see over and over in analytic number theory.
 
+{\bf Multiple Pages}. I find it interesting that to prove that the limit of the sum is the sum of the limit we just need to show that the latter converges but we did not need to show that they converge to the same value.
 
+{\bf Page 55}. The integrand in the second integral is an odd function
+%
+\nbea
+i\int_{-h}^{h} \frac{t}{a^2 + t^2} dt
+\neea
+%
+and it's integrated in a symmetric domain so the integral is zero :)
 
-This is the normal trig trick :)
+{\bf Page 55}. This is the normal trig trick :)
 %
 \nbea
 \int \frac{1}{1+u^2} du & = & \int \frac{1}{1 + \tan^2 w} \frac{dw}{\sec^2 w}, ~~~~~ \frac{1}{1 + \tan^2 w} = \sec^2 w \\
@@ -794,8 +802,19 @@ This is the normal trig trick :)
 \neea
 %
 
+{\bf Page 56}. Inequality on first line
+%
+\nbea
+(a - c)^2 = a^2 - 2ac + c^2 & > & 0 \\
+a^2 + c^2 & > & 2ac \\
+2(a^2 + c^2) & > & a^2 + 2ac + c^2 \\
+a^2 + c^2 & > & \frac{(a+c)^2}{2} \\
+\sqrt{a^2 + c^2} & > & \frac{(a+c)}{\sqrt{2}} \\
+\to |a + ic| & > & \frac{(a+c)}{\sqrt{2}}
+\neea
+%
 
-And again, just for fun
+{\bf Page 58}. And again, just for fun
 %
 \nbea
 \cos \frac{\pi}{4} = \cos 2 \frac{\pi}{8} & = & 2 \cos^2 \frac{\pi}{8} - 1 \\
@@ -818,60 +837,7 @@ and so
 \neea
 %
 
-
-
-
-
-the integrand in the second integral is an odd function
-%
-\nbea
-i\int_{-h}^{h} \frac{t}{a^2 + t^2} dt
-\neea
-%
-and it's integrated in a symmetric domain so the integral is zero :)
-
-
-I find it interesting that to prove that the limit of the sum is the sum of the limit we just need to show that the latter converges but we did not need to show that they converge to the same value.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Evaluating integrals
+{\bf Page 65}. Evaluating integrals
 %
 \nbea
 \int_0^K \frac{1}{r-1} dr
@@ -909,35 +875,7 @@ We can also shift the pole by the usual trick
 %
 taking the limit $\epsilon\to0$ is a bit tricky because the log is a bit ambiguous, is $\log (-1) = i \pi$ or $-i\pi$?
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-The sum
+{\bf Page 70}. The sum
 %
 \nbea
 B = \frac{1}{2} \sum\frac{1}{p^2} + \frac{1}{3} \sum\frac{1}{p^3} + \frac{1}{4} \sum\frac{1}{p^4} + \dots
@@ -977,18 +915,16 @@ however, this $s$ is getting smaller and smaller as $p$ gets bigger and it appro
 
 %
 \nbea
-(a - c)^2 = a^2 - 2ac + c^2 & > & 0 \\
-a^2 + c^2 & > & 2ac \\
-2(a^2 + c^2) & > & a^2 + 2ac + c^2 \\
-a^2 + c^2 & > & \frac{(a+c)^2}{2} \\
-\sqrt{a^2 + c^2} & > & \frac{(a+c)}{\sqrt{2}} \\
-\to |a + ic| & > & \frac{(a+c)}{\sqrt{2}}
+\int_0^x t^{-r} d\psi(t) & = & \frac{x^{1-r}}{1-r} - \sum_\rho \frac{x^{\rho-r}}{\rho-r} + \sum_n \frac{x^{-2n-r}}{2n+r} - \frac{\zeta'(r)}{\zeta(r)}
 \neea
 %
 
-
-
-
+%
+\nbea
+\frac{d}{dr}\left.\left(\int_0^x t^{-r} d\psi(t)\right)\right|_{r = 1} & = & \int_0^x (-\log t) d\psi(t)\\
+& = & x - x\log x - \sum_\rho \left( \frac{x^\rho}{\rho^2} - \frac{x^\rho \log x}{\rho}\right) + \sum_n \frac{2n\log x - 1}{(2n)^2 x^{2n}} - \frac{\zeta''(0)\zeta(0) - \zeta'^2(0)}{\zeta^2(0)}
+\neea
+%
 
 
 
