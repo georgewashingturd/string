@@ -881,90 +881,84 @@ taking the limit $\epsilon\to0$ is a bit tricky because the log is a bit ambiguo
 \int_0^x t^{-r} d\psi(t) & = & \frac{x^{1-r}}{1-r} - \sum_\rho \frac{x^{\rho-r}}{\rho-r} + \sum_n \frac{x^{-2n-r}}{2n+r} - \frac{\zeta'(r)}{\zeta(r)}
 \neea
 %
+and for what we need
+%
+\nbea
+\int_0^x \left(\frac{x}{t}\right)^{r} d\psi(t) & = & \frac{x}{1-r} - \sum_\rho \frac{x^{\rho}}{\rho-r} + \sum_n \frac{x^{-2n}}{2n+r} - x^r\frac{\zeta'(r)}{\zeta(r)}
+\neea
+%
+
+
 If we set $r=0$ we get
 %
 \nbea
 \int_0^x t^{-0} d\psi(t) = \int_0^x t^{-0} d\psi(t) = \int_0^x d\psi(t) = \psi(x) & = & x - \sum_\rho \frac{x^{\rho}}{\rho} + \sum_n \frac{x^{-2n}}{2n} - \frac{\zeta'(0)}{\zeta(0)}
 \neea
 %
+although this still needs all those arguments about swapping sums, integrals and limits :)
+
 To get de la Vallee Poussin's Eq (3) we need the following IBP 
 %
 \nbea
-\int_0^x \log(t) d\psi(t) & = & \left. \log(t) \psi(t) \right|_0^x - \int_0^x t^{-1} \psi(t) dt \\
-& = & \psi(x) \log x - \psi(0)\log0 - \int_0^x t^{-1} \psi(t) dt
+\int_0^x \log \frac{x}{t} d\psi(t) & = & \left. \log \frac{x}{t} \psi(t) \right|_0^x + \int_0^x t^{-1} \psi(t) dt \\
+& = & \psi(x) \log \frac{x}{x} - \psi(0)\log \frac{x}{0} + \int_0^x t^{-1} \psi(t) dt
 \neea
 %
 Note that $\psi(0) = 0$, there's no limit taken here so
 %
 \nbea
-\psi(0)\log0 & = & \lim_{r\to0} 0 \cdot \log(r)
+\psi(0)\log \frac{x}{0} & = & \lim_{r\to0} 0 \cdot \log \frac{x}{r}
 \neea
 %
 and therefore it is zero and from the main equation of Section 3.7 as stated above we do the following (differentiating inside the integral)
 %
 \nbea
-\frac{d}{dr}\left.\left(\int_0^x t^{-r} d\psi(t)\right)\right|_{r = 1} & = & \int_0^x (-\log t) d\psi(t)\\
--\psi(x)\log x + \int_0^{x} t^{-1} \psi(t) dt & = & x - x\log x - \sum_\rho \left( \frac{x^\rho}{\rho^2} - \frac{x^\rho \log x}{\rho}\right) - \sum_n \left(\frac{x^{-2n}\log x}{2n} + \frac{x^{-2n}}{(2n)^2}\right) \\
-&& - \frac{\zeta''(0)\zeta(0) - \zeta'^2(0)}{\zeta^2(0)} \\
-& = & \left ( -x\log x + \sum_\rho \frac{x^{\rho} \log x}{\rho} - \sum_n \frac{x^{-2n} \log x}{2n} \right) + \\
-&& x -\sum_\rho \frac{x^\rho}{\rho} - \sum_n \frac{x^{-2n}}{(2n)^2} + {\rm const.} \\
-\bcancel{-\psi(x)\log x} + \int_0^{x} t^{-1} \psi(t) dt & = & \left ( \bcancel{-\psi(x) \log x} - \log x\frac{\zeta'(0)}{\zeta(0)} \right ) + x -\sum_\rho \frac{x^\rho}{\rho} - \sum_n \frac{x^{-2n}}{(2n)^2} + {\rm const.} \\
+\frac{d}{dr}\left.\left(\int_0^x \left(\frac{x}{t}\right)^{r} d\psi(t)\right)\right|_{r = 0} & = & \int_0^x (\log \frac{x}{t}) d\psi(t)\\
+\int_0^{x} t^{-1} \psi(t) dt & = & x - \sum_\rho \frac{x^\rho}{\rho^2} - \sum_n \frac{x^{-2n}}{(2n)^2} - \log x \frac{\zeta'(0)}{\zeta(0)}  - \frac{\zeta''(0)\zeta(0) - \zeta'^2(0)}{\zeta^2(0)} \\
 \to \int_0^{x} t^{-1} \psi(t) dt & = & x -\sum_\rho \frac{x^\rho}{\rho} - \sum_n \frac{x^{-2n}}{(2n)^2} - \log x\frac{\zeta'(0)}{\zeta(0)} + {\rm const.}
 \neea
 %
-where we have substituted the following from $\psi(x) = \int_0^x t^{0} d\psi(t)$
+This way we don't need the explicit formula for $\psi(x)$.
+
+For Hadamard's Eq (2) what we need is the footnote on Page 74. First we reuse the (modified) main formula from Page 69, shown above, \ie the formula for $\int_0^x \left(\frac{x}{t}\right)^{r} d\psi(t)$, once we have this, we do the following
 %
 \nbea
--\psi(x)\log x & = & -x \log x + \sum_\rho \frac{x^{\rho} \log x}{\rho} - \sum_n \frac{x^{-2n} \log x}{2n} + \log x \frac{\zeta'(0)}{\zeta(0)}
+\int_0^x \left(\frac{x}{t}\right)^{r} d\psi(t) - \int_0^x \left(\frac{x}{t}\right)^{w} d\psi(t) & = & \left(\frac{x}{1-r} - \frac{x}{1-w} \right ) - \sum_\rho \left(\frac{x^{\rho}}{\rho-r} - \frac{x^{\rho}}{\rho-w} \right) + \\
+&& \sum_n \left(\frac{x^{-2n}}{2n+r} - \frac{x^{-2n}}{2n+w}\right) - \left(x^r\frac{\zeta'(r)}{\zeta(r)} - x^w\frac{\zeta'(w)}{\zeta(w)} \right ) \\
+& = & x \frac{(r-w)}{(r-1)(w-1)} - \sum_\rho \frac{x^{\rho} (r-w)}{(\rho-r)(\rho-w)} \\
+&& - \sum_n \frac{x^{-2n}(r-w)}{(2n+r)(2n+w)} - \left(x^r\frac{\zeta'(r)}{\zeta(r)} - x^w\frac{\zeta'(w)}{\zeta(w)} \right )
 \neea
 %
-
-For Hadamard's Eq (2) what we need is the following IBP
+which is the formula given in the footnote, and heeding the footnote :) to get (2) we set $r = 1, w = 0$ and do IBP on the Left Hand Side
 %
 \nbea
-\int_0^x t^{-1} d\psi(t) & = & \left. t^{-1} \psi(t) \right|_0^x + \int_0^x t^{-2} \psi(t) dt \\
-& = & \frac{\psi(x)}{x} - \frac{\psi(0)}{0} + \int_0^x t^{-2} \psi(t) dt
+\int_0^x \frac{x}{t} d\psi(t) - \int_0^x d\psi(t) & = &  \left.\frac{x}{t} \psi(t) \right |_0^x + \int_0^x \frac{x}{t^2} \psi(t) dt - \psi(x) \\
+& = & \left ( \bcancel{\psi(x)} - \frac{x\psi(x)}{0}\right ) + x \int_0^x t^{-2} \psi(t) dt - \bcancel{\psi(x)} \\
+& = & x \int_0^x t^{-2} \psi(t) dt
 \neea
 %
-again $\frac{\psi(0)}{0}$ is zero because $\psi(0) = 0$ without any limit taken, however, in the case $r=1$ we have the following limit to be taken care of
+again $\frac{\psi(0)}{0}$ is zero because $\psi(0) = 0$. The RHS is straightforward, except for the first term, therefore we have to combine this with the last term because these infinities cancel out
 %
 \nbea
-\lim_{r\to 1}\frac{x^{1-r}}{1-r} - \frac{\zeta'(r)}{\zeta(r)} = \lim_{r\to 1}\frac{x^{1-r}}{1-r} - \frac{1}{1 - r} & = & \lim_{r\to1} \frac{x^{1-r} - 1}{1 - r} \\
-& = & \lim_{r\to1} \frac{-\log x \cdot x^{1-r}}{-1} \\
-& = & \log x
+& = & \left (\lim_{r\to1} x \frac{1}{1-r} - x^r\frac{\zeta'(r)}{\zeta(r)} \right) - \sum_\rho \frac{x^{\rho} (1-0)}{(\rho-1)(\rho-0)} - \sum_n \frac{x^{-2n}(1-0)}{(2n+1)(2n+0)} + x^0\frac{\zeta'(0)}{\zeta(0)} \\
+& = & \left (\lim_{r\to1} x \frac{1}{1-r} - x^r\frac{\zeta'(r)}{\zeta(r)} \right) - \sum_\rho \frac{x^{\rho}}{(\rho-1)\rho} - \sum_n \frac{x^{-2n}}{(2n+1)2n} + \frac{\zeta'(0)}{\zeta(0)}
 \neea
 %
-and therefore
+the limit is calculated by Laurent expanding $\frac{\zeta'(r)}{\zeta(r)}$ and isolate the pole term, however, we incur an extra minus sign (and it has to for it to work, see Lemma 4 Page 289 of Apostol)
 %
 \nbea
-\int_0^x t^{-1} d\psi(t) & = & \left \lbrack \lim_{r\to 1}\frac{x^{1-r}}{1-r} - \frac{\zeta'(r)}{\zeta(r)}\right \rbrack - \sum_\rho \frac{x^{\rho-1}}{\rho-1} + \sum_n \frac{x^{-2n-1}}{2n+1}  \\
-& = & \log x - \sum_\rho \frac{x^{\rho-1}}{\rho-1} + \sum_n \frac{x^{-2n-1}}{2n+1}
+\lim_{r\to 1}\frac{x}{1-r} - x^r\frac{\zeta'(r)}{\zeta(r)} = \lim_{r\to 1}\frac{x}{1-r} - \frac{x^r}{1-r}  + x^r \cdot f(r) & = & \lim_{r\to1} \frac{x-x^{r}}{1-r} + x^r \cdot f(r) \\
+& = & \lim_{r\to1} \frac{-x^r \log x}{-1} + x^r \cdot {\rm const.} \\
+& = & x \log x + x \cdot {\rm const.}
 \neea
 %
-substituting this into the IBP
+Combining everything
 %
 \nbea
-\frac{\psi(x)}{x} - \frac{\psi(0)}{0} + \int_0^x t^{-2} \psi(t) dt  & = & \int_0^x t^{-1} d\psi(t) \\
-& = & \log x - \sum_\rho \frac{x^{\rho-1}}{\rho-1} + \sum_n \frac{x^{-2n-1}}{2n+1}
+x \int_0^x t^{-2} \psi(t) dt & = & x \log x - \sum_\rho \frac{x^{\rho}}{(\rho-1)\rho} - \sum_n \frac{x^{-2n}}{(2n+1)2n} + \frac{\zeta'(0)}{\zeta(0)} + x \cdot {\rm const.} \\
+\to \int_0^x t^{-2} \psi(t) dt & = & \log x - \sum_\rho \frac{x^{\rho-1}}{(\rho-1)\rho} - \sum_n \frac{x^{-2n-1}}{(2n+1)2n} + \frac{1}{x}\frac{\zeta'(0)}{\zeta(0)} + {\rm const.}
 \neea
 %
-and using the main equation from Section 3.7 above to get $\frac{\psi(x)}{x}$
-%
-\nbea
-\to \int_0^x t^{-2} \psi(t) dt & = & - \sum_\rho \frac{x^{\rho-1}}{\rho-1} + \sum_n \frac{x^{-2n-1}}{2n+1} - \left(\frac{\psi(x)}{x}\right) \\
-& = & \log x - \sum_\rho \frac{x^{\rho-1}}{\rho-1} + \sum_n \frac{x^{-2n-1}}{2n+1}-\left (1 - \sum_\rho \frac{x^{\rho-1}}{\rho} + \sum_n \frac{x^{-2n-1}}{2n} - \frac{1}{x}\frac{\zeta'(0)}{\zeta(0)}\right ) \\
-& = & \log x -\sum_\rho \left (\frac{x^{\rho-1}}{\rho-1} - \frac{x^{\rho-1}}{\rho}\right ) + \sum_n \left (\frac{x^{-2n-1}}{2n+1} - \frac{x^{-2n-1}}{2n} \right ) + \frac{1}{x}\frac{\zeta'(0)}{\zeta(0)} + {\rm const.} \\
-& = & \log x -\sum_\rho \frac{x^{\rho-1}}{\rho(\rho-1)} - \sum_n \frac{x^{-2n-1}}{2n(2n+1)} + \frac{1}{x}\frac{\zeta'(0)}{\zeta(0)} + {\rm const.}
-\neea
-%
-
-
-
-
-
-
-
-
 
 
 {\bf Page 70}. The sum
@@ -1001,6 +995,191 @@ Here's a way that doesn't work, initially I wanted to show that we can massage $
 \neea
 %
 however, this $s$ is getting smaller and smaller as $p$ gets bigger and it approaches 1, so if we use the same $s$ for all $p$ we get $\sum \frac{1}{p}$ and it doesn't work.
+
+
+
+
+
+{\bf Page 73}. One trick to calculate $\int_0^x t^{k-1} \psi(t) dt$ is, one, the partial fraction formula
+%
+\nbea
+\frac{1}{s(s+k)} = \frac{1/k}{s} - \frac{1/k}{s + k}
+\neea
+%
+and from this we can see that to get other powers of $x$ we do the following
+%
+\nbea
+\frac{1}{2\pi i} \int_{a - i\infty}^{a + i\infty} \frac{x^{s+1}}{n^s s (s+1)} ds \to \frac{1}{2\pi i} \int_{a - i\infty}^{a + i\infty} \frac{x^{s+k}}{n^s s (s+k)} ds
+\neea
+%
+splitting through partial fraction
+%
+\nbea
+\frac{x^k}{k 2\pi i} \int_{a - i\infty}^{a + i\infty} \left(\frac{x}{n}\right)^{s} \frac {ds}{s}-\frac{n^k}{k 2\pi i} \int_{a - i\infty}^{a + i\infty} \left(\frac{x}{n}\right)^{s+k} \frac {ds}{s+k}
+\neea
+%
+which becomes
+%
+\nbea
+ = \left\{
+ \begin{array}{ ll }
+ \frac{1}{k} \left ( x^k - n^k\right ) ~~~~~ & {\rm if~} n \le x \\
+ 0 ~~~~~ & {\rm if~} n \ge x
+ \end{array}
+ \right.
+\neea
+%
+so what we have is 
+%
+\nbea
+\frac{1}{k} \sum_{n \le x} \Lambda(n) (x^k - n^k) = \frac{1}{k} \int_0^x (x^k - t^k) d\psi(t) = \int_0^x t^{k-1} \psi(t) dt
+\neea
+%
+the last step uses IBP which nicely cancels the minus sign and the factor $\frac{1}{k}$. But of course this method doesn't work for $k = 0.$
+
+
+{\bf Page 74}. Another trick to calculate $\int_0^x t^{-k} d\psi(t)$ is that the same thing that was done in Chapter 3. The main thing is
+%
+\nbea
+\frac{1}{2\pi i} \int_{a-i\infty}^{a+i\infty} \left\lbrack -\frac{\zeta'(s)}{\zeta(s)} \right \rbrack x^s \frac{ds}{s} & = & \sum_n \Lambda(n) \left \{\frac{1}{2\pi i} \int_{a-i\infty}^{a+i\infty} \left (\frac{x}{n}\right)^s \frac{ds}{s} \right \}
+\neea
+%
+and whatever is inside the curly braces is 1 or 0, which translates to the integral $\int_0^x d\psi(t)$. Now what we want is $\int_0^x \left(\frac{x}{t} \right)^{u} d\psi(t)$ which is equivalent to $\sum_{n \le x} \Lambda(n) \left(\frac{x}{n}\right)^u$ . So instead of 1 or 0, you want the whole curly braces to be $\left(\frac{x}{n}\right)^u$ or 0.
+
+This is definitely easier than the one depicted on Page 73 with partial fraction, we only need to multiply the curly braces with $\left(\frac{x}{n}\right)^u$ 
+%
+\nbea
+\sum_n \Lambda(n) \left \{ \left(\frac{x}{n}\right)^u \frac{1}{2\pi i} \int_{a-i\infty}^{a+i\infty} \left (\frac{x}{n}\right)^s \frac{ds}{s} \right \} & = & \frac{1}{2\pi i} \int_{a-i\infty}^{a+i\infty} \left\lbrack \sum_n \Lambda(n) n^{-s-u}\right \rbrack x^{s+u} \frac{ds}{s} \\
+& = & \frac{x^u}{2\pi i} \int_{a-i\infty}^{a+i\infty} \left\lbrack -\frac{\zeta'(s+u)}{\zeta(s + u)} \right \rbrack x^{s} \frac{ds}{s}
+\neea
+%
+but this is exactly what was done in Section 3.7. Note that we can't pull the factor $\left(\frac{x}{n}\right)^u$ out of the sum because it involves $n$ which is summed. So the derivation of this footnote will just utilize the method of Section 3.7, for the full derivation see comments on Page 69.
+
+{\bf Page 82}. How do we compare $x^{-\epsilon}$ and $\exp[-c(\log x)^{1/2}]$, the book claims that $x^{-\epsilon}$ decays much faster, to see this set $y = \log x$ thus
+%
+\nbea
+x^{-\epsilon} \to e^{-\epsilon y} ~~~~~~~{\rm and} ~~~~~~~ \exp[-c(\log x)^{1/2}] \to e^{-c\sqrt{y}}
+\neea
+%
+so for a sufficiently large $y$, $e^{-\epsilon y}$ decays faster. Now how about the absorption into a constant $c$? Since
+%
+\nbea
+e^{-\epsilon y} & = & O(e^{-c\sqrt{y}})
+\neea
+%
+This means that there is a constant $K$ such that for $y > y_0$
+%
+\nbea
+|e^{-\epsilon y}| & < & K|e^{-c\sqrt{y}}|
+\neea
+%
+and the usual trick
+%
+\nbea
+K e^{-c\sqrt{y}} & = & e^{\log K} e^{-c\sqrt{y}} \\
+& = & e^{-c\sqrt{y} + \log K} = e^{-c\sqrt{y}(1 - \log K/c\sqrt{y})}
+\neea
+%
+Now
+%
+\nbea
+e^{-c\sqrt{y}(1 - \log K/c\sqrt{y})} > e^{-c\sqrt{y} }
+\neea
+%
+but $\log K/c\sqrt{y}$ gets smaller and smaller as $y$ goes up, so we can get the max of this value, say $K'$ and the whole thing becomes
+%
+\nbea
+e^{-c\sqrt{y}(1 - K')} > e^{-c\sqrt{y}(1 - \log K/c\sqrt{y})} > e^{-c\sqrt{y} + \log K} > e^{-c\sqrt{y}}
+\neea
+%
+thus we can choose a new $c' = c(1-K')$ such that
+%
+\nbea
+e^{-c'\sqrt{y}} > e^{-c\sqrt{y}}
+\neea
+%
+
+{\bf Page 83}.
+%
+\nbea
+\frac{\psi(x) - x}{x} & \le & K_1 e^{-c_1 (\log x)^{1/2}} \le e^{-c'_1 (\log x)^{1/2}}
+\neea
+%
+and
+%
+\nbea
+\frac{\psi(y) - y}{y} & \ge & -K_2 e^{-c_2 (\log y)^{1/2}} \ge - e^{-c'_2 (\log y)^{1/2}}
+\neea
+%
+combining
+%
+\nbea
+-e^{-c'_2 (\log x)^{1/2}} \le \frac{\psi(x) - x}{x} & \le & e^{-c'_1 (\log x)^{1/2}}
+\neea
+%
+now we can choose  $c'' = \min\{c'_1,c'_2\}$ such that we get a bigger magnitude for the error
+%
+\nbea
+|e^{-c'' (\log x)^{1/2}}| \ge \max \left \{ |e^{-c'_2 (\log x)^{1/2}}|, |e^{-c'_1 (\log x)^{1/2}}|\right \}
+\neea
+%
+Thus the magnitude of the relative error is 
+%
+\nbea
+\left | \frac{\psi(x) - x}{x} \right | & \le & e^{-c'' (\log x)^{1/2}}
+\neea
+%
+
+{\bf Page 83}. The term relative error here means $\frac{\theta(x) - x}{x}$, so it is divided by $x$, thus it should be that 
+%
+\nbea
+\theta(x) - x \sim x \cdot e^{-c (\log x)^{1/2}}
+\neea
+%
+to show this, we know from its definition
+%
+\nbea
+\psi(x) & = & \theta(x) + \theta(x^{1/2}) + \theta(x^{1/3}) + \dots
+\neea
+%
+so the difference between
+%
+\nbea
+\psi(x) - \theta(x)  & \le & \theta(x^{1/2}) \frac{\log x}{\log 2}
+\neea
+%
+but the difference between
+%
+\nbea
+\psi(x) - x & \le & x e^{-c(\log x)^{1/2}}
+\neea
+%
+but, as stated, $\theta(x^{1/2}) \log x \sim x^{1/2} \log x$ and this is much smaller than $x e^{-c(\log x)^{1/2}}$ (because $\frac{x^{1/2} \log x}{x}$ already goes to zero as $x\to\infty$, thus $\theta(x^{1/2}) \log x = O(x e^{-c(\log x)^{1/2}})$), so the difference between $\theta(x)$ and $x$ is potentially
+%
+\nbea
+\left | \frac{\theta(x) - x}{x}\right | & \le & \frac{\theta(x^{1/2})\log x}{x\log 2} + e^{-c(\log x)^{1/2}} \sim \frac{\log x}{x^{1/2}\log 2} + e^{-c(\log x)^{1/2}} \\
+& \le & O(e^{-c(\log x)^{1/2}}) + e^{-c(\log x)^{1/2}} \\
+& \le & e^{-c'(\log x)^{1/2}}
+\neea
+%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
