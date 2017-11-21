@@ -1086,7 +1086,7 @@ Now
 e^{-c\sqrt{y}(1 - \log K/c\sqrt{y})} > e^{-c\sqrt{y} }
 \neea
 %
-but $\log K/c\sqrt{y}$ gets smaller and smaller as $y$ goes up, so we can get the max of this value, say $K'$ and the whole thing becomes
+but $\log K/c\sqrt{y}$ gets smaller and smaller as $y$ goes up, so we can get the max of this value, say $K'$ (we can set $K' < 1$ for sufficiently large $y$) and the whole thing becomes
 %
 \nbea
 e^{-c\sqrt{y}(1 - K')} > e^{-c\sqrt{y}(1 - \log K/c\sqrt{y})} > e^{-c\sqrt{y} + \log K} > e^{-c\sqrt{y}}
@@ -1162,7 +1162,48 @@ but, as stated, $\theta(x^{1/2}) \log x \sim x^{1/2} \log x$ and this is much sm
 & \le & e^{-c'(\log x)^{1/2}}
 \neea
 %
+However, the book wants to use the same constant $c$ for both $\theta(x)$ and $\psi(x)$ (note that this $c$ would be the $c_0$ in the book). We can do this if we ignore $\frac{\theta(x^{1/2})\log x}{x\log 2}$ which means that my estimate is too conservative. I shouldn't have set $\frac{\theta(x^{1/2})\log x}{x\log 2} = O(e^{-c(\log x)^{1/2}})$ since $\frac{\frac{\theta(x^{1/2})\log x}{x\log 2}}{e^{-c(\log x)^{1/2}}} \to 0$, this is equvalent to the usual error estimate, $e^{-c(\log x)^{1/2}}$ is $\epsilon$ while $\frac{\theta(x^{1/2})\log x}{x\log 2}$ is $\epsilon^2$ and here we are only interested in first order error estimate only.
 
+{\bf Page 83 - Page 84}. Ignoring the $\pi(x)$
+%
+\nbea
+& = & \frac{y[1 + \varepsilon(y)]}{\log y} -\frac{x[1-\varepsilon(x)]}{\log x} + \int_x^y \frac{t[1+\varepsilon(t)]}{(\log t)^2 t} dt \\
+& = & \frac{y\varepsilon(y)}{\log y} + \frac{x\varepsilon(x)}{\log x}  + \left(\frac{y}{\log y} -\frac{x}{\log x} + \int_x^y \frac{1}{(\log t)^2} dt \right) + \int_x^y \frac{\varepsilon(t)}{(\log t)^2} dt \\
+& = & \frac{y\varepsilon(y)}{\log y} + \frac{x\varepsilon(x)}{\log x} + \int_x^y \frac{dt}{\log t} + \int_x^y \frac{\varepsilon(t)}{(\log t)^2} dt 
+\neea
+%
+In the first line we do IBP on the last integral, and going to the last line we do inverse IBP on the three terms in the brackets.
+
+Going to Page 84 we take $x$ as constant, thus anything containing $x$ will be taken as ${\rm const.}$
+%
+\nbea
+& = & \frac{y\varepsilon(y)}{\log y} + {\rm const.} + \int_0^y \frac{dt}{\log t} - \int_0^x \frac{dt}{\log t} + \int_x^y \frac{\varepsilon(t)}{(\log t)^2} dt \\
+& = & \frac{y\varepsilon(y)}{\log y} + {\rm const.} + {\rm Li}(y) - {\rm Li}(x) + \int_x^y \frac{\varepsilon(t)}{(\log t)^2} dt \\
+& = & \frac{y\varepsilon(y)}{\log y} + {\rm const.} + {\rm Li}(y) + {\rm const.} + \int_x^y \frac{\varepsilon(t)}{(\log t)^2} dt
+\neea
+%
+Note that for $a > b$ we have $\varepsilon(a) < \varepsilon(b)$ so it is now straightforward to get the upper bound.
+
+The lower bound is a slightly trickier story :) usually if we have an integral say
+%
+\nbea
+\int_x^{y^{1/2}} \frac{\varepsilon(t)}{(\log t)^2} dt
+\neea
+%
+to get the lower bound we minimize the integrand
+%
+\nbea
+\int_x^{y^{1/2}} \frac{\varepsilon(y^{1/2})}{(\log y^{1/2})^2} dt
+\neea
+%
+but we can also do the following, {\it maximize} the integrand and then multiply by $-1$ and that is what we do here, we also multiply the $\frac{y\varepsilon(y)}{\log y}$ term with $-1$
+%
+\nbea
+& = & \frac{y\varepsilon(y)}{\log y} + {\rm const.} + {\rm Li}(y) + \int_x^{y^{1/2}} \frac{\varepsilon(t)}{(\log t)^2} dt + \int_{y^{1/2}}^y \frac{\varepsilon(t)}{(\log t)^2} dt \\
+& \ge & -\frac{y\varepsilon(y)}{\log y} + {\rm const.} + {\rm Li}(y) - \int_x^{y^{1/2}} \frac{\varepsilon(x)}{(\log x)^2} dt - \int_{y^{1/2}}^y \frac{\varepsilon(y^{1/2})}{(\log y^{1/2})^2} dt
+\neea
+%
+and we get something very similar to the upper bound except for a minus sign for the square bracket.
 
 
 
