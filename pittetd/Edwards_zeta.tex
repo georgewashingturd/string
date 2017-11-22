@@ -1205,6 +1205,33 @@ but we can also do the following, {\it maximize} the integrand and then multiply
 %
 and we get something very similar to the upper bound except for a minus sign for the square bracket.
 
+{\bf Extra Note}: as have been done over and over again in the book, getting upper bounds are about getting rid of negative terms and getting lower bounds is about getting rid of positive terms, and from above we also see that we can get the upper bound and stick a negative sign to get a lower bound and I believe vice versa as well.
+
+
+
+{\bf Page }. Making this note just to clear my head :) Relative error between Li$(x)$ and $\frac{x}{\log x - A}$ usually means that
+%
+\nbea
+\frac{x/(\log x - A) - {\rm Li}(x)}{{\rm Li}(x)}
+\neea
+%
+but in this case we just want the difference, not the ratio, \ie $x/(\log x - A) - {\rm Li}(x)$, while
+%
+\nbea
+{\rm Li}(x) \sim \frac{x}{\log x} + \frac{x}{(\log x)^2} ~~~~~~~{\rm and}~~~~~~~~\frac{x}{\log x - A} \sim \frac{x}{\log x} + \frac{Ax}{(\log x)^2}
+\neea
+%
+and so
+%
+\nbea
+x/(\log x - A) - {\rm Li}(x) & = & \frac{x}{\log x} + \frac{Ax}{(\log x)^2} - \left (\frac{x}{\log x} + \frac{x}{(\log x)^2} \right ) \\
+& = & (A-1)\frac{x}{(\log x)^2}
+\neea
+%
+So if we divide this relative error by $x/(\log x)^2$, we get $A-1$.
+
+{\bf Page }. Another head clearing effort :) 
+
 
 
 
