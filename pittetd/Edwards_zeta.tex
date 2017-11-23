@@ -1215,7 +1215,7 @@ and we get something very similar to the upper bound except for a minus sign for
 \frac{x/(\log x - A) - {\rm Li}(x)}{{\rm Li}(x)}
 \neea
 %
-but in this case we just want the difference, not the ratio, \ie $x/(\log x - A) - {\rm Li}(x)$, while
+but in this case we just want the difference, \ie the absolute error, not the ratio, \ie $x/(\log x - A) - {\rm Li}(x)$, while
 %
 \nbea
 {\rm Li}(x) \sim \frac{x}{\log x} + \frac{x}{(\log x)^2} ~~~~~~~{\rm and}~~~~~~~~\frac{x}{\log x - A} \sim \frac{x}{\log x} + \frac{Ax}{(\log x)^2}
@@ -1230,7 +1230,105 @@ x/(\log x - A) - {\rm Li}(x) & = & \frac{x}{\log x} + \frac{Ax}{(\log x)^2} - \l
 %
 So if we divide this relative error by $x/(\log x)^2$, we get $A-1$.
 
-{\bf Page }. Another head clearing effort :) 
+
+
+
+
+
+{\bf Page }. const times $x^{-1/2 + \epsilon}$ is the same as just $x^{-1/2 + \epsilon}$ for sufficiently larger $x$ :) because
+%
+\nbea
+K x^{-1/2 + \epsilon} & = & x^{-1/2 + \epsilon + \delta}
+\neea
+%
+where $x^\delta = K$ or $\delta = \log_x K$, now say that the initial upper bound $\le K x^{-1/2 + \epsilon}$ is valid starting from $x \ge x_0$, we now need to push this starting point further up because we can make $\delta$ as small as possible by increasing $x$. Although since $\delta > 0$, $\epsilon + \delta > \epsilon$ 
+
+
+
+
+
+
+
+
+
+
+
+Mistake on Li
+
+Mistake on sum over $\gamma$, missing factor of 2 for the first one
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{\bf Page }. Another head clearing effort :)  Note that $\mu(1) = 1$ and not zero, this was the mistake I made. This relationship can be shown directly without the integral trick, although that trick is quite sick :)
+
+First, massage the sums into
+%
+\nbea
+\sum_{n < x} \frac{\mu(n)}{n} P\left(\frac{x}{n}\right) & = & \sum_{n<x}\frac{\mu(n)}{n} \sum_{b<x/n}\frac{\Lambda(b)}{b} \\
+& = & \sum_{n<x}\sum_{b<x/n} \frac{\mu(n)}{n} \frac{\Lambda(b)}{b} \\
+& = & \sum_{n<x}\sum_{ab=n} \frac{\mu(a)}{a} \frac{\Lambda(b)}{b} \\
+& = & \sum_{n<x}\frac{1}{n}\sum_{ab=n} \mu(a) \Lambda(b)
+\neea
+%
+this is quite tricky, it's easier to see the other way round, going from $\sum_{n<x}\sum_{ab=n}$ to $\sum_{n<x}\sum_{b<x/n}$, because for $\sum_{n<x}\sum_{ab=n}$, for each fixed value of $a$ we have $b$ going from $1$ to $x/a$. For example, set $x=13$ and fix $a = 2$ then for each of $n = 2, 4, 6, 8, 10, 12$ we a get a term from {\it different} $\sum_{ab = n}$ sums with $b = 1, 2, 3, 4, 5, 6$ while $a = 2$.
+
+The reason the above is quite tricky is because we can't do algebraic manipulations on indices of the sums to get it since as mentioned above it involves rearrangement of the summands, we take summands from {\it different} sums and combine them.
+
+We just need to show that the inner sum $\sum_{ab=n} \mu(a) \Lambda(b)$ is just $-\mu(n)\log n$ and this is quite straightforward, $\Lambda(b)$ is zero unless $b$ is a prime power while $\mu(a)$ is zero unless $a$ is square free, this means that the only non zero $\mu(a)\Lambda(b)$ are the ones with $ab = p_1 p_2 \cdots p_j p_k^m$, \ie only one prime factor can have powers, the others must be of power 1 the other non-zero case is $ab = p_1 p_2 \cdots p_j p_k$, no prime powers at all.
+
+For the first case
+%
+\nbea
+\sum_{ab=n} \mu(a) \Lambda(b) & = & \mu(n/p_k) \Lambda(p_k^{m-1}) + \mu(n/p_k^m) \Lambda(p_k^m) \\
+& = & (-1)^{k-1} \Lambda(p_k) + (-1)^{k} \Lambda(p_k) \\
+& = & 0
+\neea
+%
+there are only two terms surviving from the sum because for any other case either $\mu$ is zero or $\Lambda$ is zero.
+
+For the second case
+%
+\nbea
+\sum_{ab=n} \mu(a) \Lambda(b) & = & \sum_{i=1}^k \mu(n/p_i)\Lambda(p_i) \\
+& = & \sum_{i=1}^k (-1)^{k-1} \log p_i \\
+& = & (-1)^{k-1} \sum_{i=1}^k \log p_i \\
+& = & (-1) \mu(n) \log n
+\neea
+%
+since $\mu(n) = (-1)^{k}$ and we are done.
+
+
+
+
 
 
 
