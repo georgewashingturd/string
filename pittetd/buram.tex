@@ -1503,54 +1503,6 @@ so we didn't need Wilson's formula after all but as you see we need something to
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-On the definition of factorial, Euler introduced the integral notation
-%
-\nbea
-n! & = & \int_0^\infty e^{-x} x^n dx
-\neea
-%
-the $e^{-x}$ is there to make sure everything is well behaved at $\infty$, the $x^n$ is there to be IBP'd (differentiated) multiple times so that we get the factor $n!$, they also make sure that the boundary terms are zero.
-
-But Euler had other ideas too, instead of assigning $x^n \to u$ and differentiating it every IBP, we can instead integrate it, \ie assign $x^n dx \to dv$ like so (boundary terms are always zero and also changing $n\to s$)
-%
-\nbea
-\int_0^\infty e^{-x} x^s dx & = & \frac{1}{s+1} \int_0^\infty e^{-x} x^{(s+1)} dx
-\neea
-%
-repeating it $N$ times we get
-%
-\nbea
-\int_0^\infty e^{-x} x^s dx & = & \frac{1}{(s+1)(s+2) \dots (s+N)} \int_0^\infty e^{-x} x^{(s+N)} dx
-\neea
-%
-and this way we can immediately see the poles at $s = -1, -2, \dots$. We now expand the integral in the RHS above in an interesting way, please do no do IBP by differentiating $x^{(s+n)}$ that will undo everything we've just done. There is, however, a curious way to expand it which only works when $N\to\infty$, we write
-%
-\nbea
-(s + N)! & = & N! \cdot (1 + N)(2 + N) \cdots (s+N)
-\neea
-%
-since $s$ is just a (fixed) parameter, it's finite, and so as we take $N\to\infty$
-%
-\nbea
-\lim_{N\to\infty} (1 + N)(2 + N) \cdots (s+N) & \sim & (1 + N)(1 + N) \cdots (1+N) = (1+N)^s
-\neea
-%
-and thus
-%
-\nbea
-\lim_{N\to\infty}\int_0^\infty e^{-x} x^{(s+N)} dx & = & N! (1+N)^s
-\neea
-%
-So, Euler's definition of a factorial was
-%
-\nbea
-s! & = & \lim_{N\to\infty} \frac{1\cdot2\cdots N}{(s+1)(s+2) \dots (s+N)} (1+N)^s
-\neea
-%
-although whether he got it from the integral above or not I don't know.
-
--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
 Why the minus sign? the integrand is $\frac{(-x)^s}{e^x - 1}$, there's a minus sign in front of $x$. This is due to the choice of contour. Note that we are going from $+\infty$ to left all the way to 0 and then to the right all the way to $+\infty$.
 
 If there's no minus sign and this is the cut we choose, then
@@ -1583,79 +1535,6 @@ where the contours $C_k$'s are all inside of $C$.
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-For the integral
-%
-\nbea
-\int_{|y|=\epsilon} (-2\pi i n - y)^{s-1} \frac{y}{e^y - 1} \cdot \frac{dy}{y}
-\neea
-%
-we rewrite as
-%
-\nbea
-\int_{|y|=\epsilon} \frac{f(y)}{y - 0} ~ dy, ~~~~~~~~~~ f(y) = (-2\pi i n - y)^{s-1} \frac{y}{e^y - 1}
-\neea
-%
-we need to remember that $f(y)$ has no pole when $y\to 0$, so the value of the integral is just $2\pi i f(0) = 2\pi i(-2\pi i n)^{s-1}$. Note that
-%
-\nbea
-\lim_{y\to0} \frac{y}{e^y - 1} & = & \lim_{y\to0} \frac{1}{e^y} = 1
-\neea
-%
-after L'Hospital.
-
-
-
--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
-Here the integral around the small circle is zero, but expanded into Bernoulli's number it is not zero
-
-due to the L'Hospital around zero actually.
-
-%
-\nbea
-\lim_{x\to0} \frac{(-x)^s}{e^x - 1} & = & \lim_{x\to0} \frac{-s(-x)^{s-1}}{e^x} \\
-& = & 
-\left\{
-\begin{array}{l c l}
-0 & ~~~~~ &{\rm if~} s-1 \neq 0 \\
--s & ~~~~~ &{\rm if~} s-1 = 0
-\end{array}
-\right.
-\neea
-%
-Note that we take the limit $|x|\to 0$ outside the integral, so we need to first integrate and then take the limit, so if $s-1=0$ it means $(-x)^{s-1} = 1$.
-
--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
-The Gamma function shown here $\Pi(s)$ is valid for all $s > -1$, how is this so as
-%
-\nbea
-\int_0^\infty e^{-x} x^{s} dx
-\neea
-%
-blows up for $s < 0$ when $x\to0$. The justification is as follows
-%
-\nbea
-e^{-x} x^{s} \le x^s
-\neea
-%
-for all $x > 0$ no matter what $s$ is so the integral is also capped by ($s > -1$)
-%
-\nbea
-\int_0^1 e^{-x}x^s dx \le \int_0^1 x^s dx & = & \left.\frac{1}{s+1} x^{s+1} \right|_0^1 \\
-& = & \frac{1}{s+1}
-\neea
-%
-Another way of looking at it is
-%
-\nbea
-\int_0^\infty e^{-x}x^n dx & = & e^{-x}\frac{1}{n+1}x^{n+1} + \int_0^\infty e^{-x}\frac{1}{n+1}x^{n+1} dx
-\neea
-%
-so as long as $n>-1$ we are fine.
-
--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
 $\gcd(d,z) = c$
 
 %
@@ -1665,45 +1544,101 @@ c^2 D^2 k & = & c^2 Z^2 \\
 D^2 k & = & Z^2
 \neea
 %
-we know that $\gcd(D,Z) = 1$ and so $\gcd(D^2,Z^2) = 1$, since $k|Z^2$, if $\gcd(D^2,k) > 1$ then $\gcd(D^2,Z^2) > 1$ as well, therefore $\gcd(D^2,k) = 1$, this means that $k = K^2$ but since $\gcd(D^2, Z^2) = 1$ this means that 
+we know that $\gcd(D,Z) = 1$ and so $\gcd(D^2,Z^2) = 1$, since $k|Z^2$, if $\gcd(D^2,k) > 1$ then $\gcd(D^2,Z^2) > 1$ as well, therefore $\gcd(D^2,k) = 1$, this means that $k = K^2$ by our assumption that if $vw = u^2$ and $v$ and $w$ are co-prime then both $v$ and $w$ are squares.
 
-
-Bezout
+Substituting $k=K^2$ back into our first equation
 %
 \nbea
-D^2 a + Z^2 b & = & g\\
+d^2K^2 & = & z^2 \\
+\to dK & = & z
 \neea
 %
+thus $d|z$ although I'm not sure about this particular line of reasoning, since $\gcd(D^2,Z^2) = 1$ and $D^2|Z^2$ then $D^2 = 1$ and we immediately get $k=Z^2$ and we don't need our assumption about $vw=u^2$ at all. But I'm not sure how else to show that $\gcd(D^2,k) = 1$ except by showing that $\gcd(D^2,Z^2) = 1$.
 
+Now, the one step I stil need to prove, is that $\gcd(D,Z) = 1$ means $\gcd(D^2,Z^2) = 1$, again, without using the fundamental theorem. What I need is Bezout, assume that $\gcd(D^2,Z^2) = g > 1$ then Bezout tells us that
+%
+\nbea
+D^2 a + Z^2 b & = & g
+\neea
+%
+but from $\gcd(D,Z)=1$ we also get
+%
+\nbea
+D A + Z B & = & 1 \\
+\to DgA + ZgB & = & g
+\neea
+%
+Now there might be some other numbers such that
+%
+\nbea
+D M + Z N & = & g
+\neea
+%
+but this means either that $\gcd(M,N) = g$ or $\gcd(M,N) = y | g$, let's dicuss the latter first
+%
+\nbea
+D y M' + Z y N' & = & yg' \\
+D M' + Z N' & = & g'
+\neea
+%
+with $\gcd(M',N') = 1$ but this means that $\gcd(D,Z) = g'$, the only way this works is that $g' = 1$ and $\gcd(M,N) = g$, but if this is the case then
+%
+\nbea
+D M' + Z N' & = & 1
+\neea
+%
+but Bezout also tells us that all solutions to $D A' + Z B' = 1$ are of the form see ent.pdf Problem 2.5
+%
+\nbea
+A' & = & A + l D \\
+B' & = & B - lD
+\neea
+%
+Equating the two Bezouts $g = D^2 a + Z^2 b = DgA' + ZgB'$
+%
+\nbea
+\to gA' & = & gA + gl D = Da\\
+\to gB' & = & gB - gl Z = Zb 
+\neea
+%
+Now, equating the two Bezouts again
 %
 \nbea
 D^2 a + Z^2 b & = & DgA + ZgB \\
 D(Da - gA) & = & Z(gB - Zb) \\
-\to D &|& gB - Zb = glZ\\
-\to Z &|& Da - gA = glD
+\to D(glD) & = & Z(glZ) \\
+D^2 & = & Z^2
+\neea
+%
+which is a contradiction, therefore if $\gcd(D,Z) = 1$ then $\gcd(D^2,Z^2) = 1$ as well. The above proof is easily generalizable to $\gcd(D^n,Z^m)$
+%
+\nbea
+\to gA' & = & gA + gl D = D^{n-1}a\\
+\to gB' & = & gB - gl Z = Z^{m-1}b 
+\neea
+%
+Now, equating the two Bezouts again
+%
+\nbea
+D^n a + Z^m b & = & DgA + ZgB \\
+D(D^{n-1}a - gA) & = & Z(gB - Z^{m-1}b) \\
+\to D(glD) & = & Z(glZ) \\
+D^2 & = & Z^2
 \neea
 %
 
-%
-\nbea
-D^2 t & = & glDZ \\
-Z^2 y & = & glDZ
-\neea
-%
-but $t = glD$ and $y = glZ$
-%
-\nbea
-D^2 glD & = & glDZ \\
-Z^2 glZ & = & glDZ
-\neea
-%
 
-%
-\nbea
-gA' & = & gA + gl D = Da\\
-gB' & = & gB - gl Z = Zb 
-\neea
-%
+
+
+
+
+
+
+
+
+
+
+
 
 
 
