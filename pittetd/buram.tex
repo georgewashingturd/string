@@ -1656,163 +1656,54 @@ so as long as $n>-1$ we are fine.
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-%
-\nbea
-\int_0^\infty e^{-nx} x^{s-1} dx & = & \frac{(s-1)!}{n^s} \\
-\to \sum_{n=1}^\infty \int_0^\infty e^{-nx} x^{s-1} dx & = & \sum_{n=1}^\infty \frac{(s-1)!}{n^s} \\
-& = & (s-1)!\sum_{n=1}^\infty \frac{1}{n^s}
-\neea
-%
-so as long as $s > 1$ the sum of the integral converges, now we want to see the other way, summing inside the integral. A few points
-%
-\bit
-\item Swapping sum and integral is always OK, as long as the sum is finite, for infinite sums what we are interchanging are actually limit and integral because $\sum^\infty = \lim_{N\to\infty}\sum^N$
-%
-\item Geometric series formula is only valid if the sum converges, why? because we start with
-%
-\nbea
-A & = & 1 + r + r^2 + \dots \\
-rA & = & r + r^2 + r^3 + \dots
-\neea
-%
-we then substract $A - rA = 1\to A = 1/(1-r)$ and so on, the problem is if $A$ is divergent we are then doing $\infty - \infty$ which might not be equal to one, so if we try to do $A = 1 + 2 + 2^2 + \dots$ using the formula we get $-1$ which is not just wrong but also not divergent (although if you read Stopple's book you can actually do this and it's called Abel sum).
-
-So the point is that we can't just apply the formula and then take the limit $r\to a$, we can only do this if $a = 1$.
-\eit
-%
-
-Swapping integral and sum
-%
-\nbea
-\int_0^\infty \sum_{n=1}^\infty e^{-nx} x^{s-1} dx & = & \int_0^\infty \left(\sum_{n=1}^\infty e^{-nx}\right) x^{s-1} dx \\
-& = & \int_0^\infty \left (\frac{1}{1-e^{-x}} - 1 \right ) x^{s-1} dx \\
-& = & \int_0^\infty \left (\frac{e^{-x}}{1-e^{-x}}\right ) x^{s-1} dx \\
-& = & \int_0^\infty \frac{x^{s-1}}{e^{x} - 1} dx
-\neea
-%
-the only problem we have here is when $e^{-x} \ge 1$ and this only happens when $x = 0$, so we only have one point of contention, literally, by the way, this is similar to the situation for
-%
-\nbea
-\int_0^1 \frac{1}{\sqrt{x}} dx & = & 2
-\neea
-%
-even though it blows up at $x = 0$, we do this by
-%
-\nbea
-\int_0^1 \frac{1}{\sqrt{x}} dx & = & \lim_{a\to0}\int_a^1 \frac{1}{\sqrt{x}} dx
-\neea
-%
-in our case the integral is also OK because $e^x - 1 \ge x$ for $x \ge 0$ and so
-%
-\nbea
-\int_0^1 \frac{x^{s-1}}{e^{x} - 1} dx & \le & \int_0^1 x^{s-2} dx \\
-& \le & \left. \frac{1}{s-1} x^{s-1} \right |_0^1 \\
-& \le & \frac{1}{s-1}
-\neea
-%
-since $s > 1$. Note that we can't just take the limit ($s > 1$)
-%
-\nbea
-\lim_{x\to0} \frac{x^{s-1}}{e^x-1} & = & \lim_{x\to0} \frac{(s-1)x^{s-2}}{e^x} \\
-& = & \infty, ~~~~~~~~~~{\rm  since~} s > 1.
-\neea
-%
-so at zero the integrand still blows up but the integral is OK.
-
--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
-On the integral around zero
-%
-\nbea
-\int_{|x| = \delta} \frac{(-x)^s}{e^x-1} \frac{dx}{x}
-\neea
-%
-
+$\gcd(d,z) = c$
 
 %
 \nbea
-\int_0^\infty e^{-x}x^n dx & = & -e^{-x}x^{n} + n\int_0^\infty e^{-x}x^{n-1} dx
+d^2 k & = & z^2 \\
+c^2 D^2 k & = & c^2 Z^2 \\
+D^2 k & = & Z^2
 \neea
 %
+we know that $\gcd(D,Z) = 1$ and so $\gcd(D^2,Z^2) = 1$, since $k|Z^2$, if $\gcd(D^2,k) > 1$ then $\gcd(D^2,Z^2) > 1$ as well, therefore $\gcd(D^2,k) = 1$, this means that $k = K^2$ but since $\gcd(D^2, Z^2) = 1$ this means that 
 
--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-Page 12, order of limit taking around the small semi circle, Bernoulli's number, the integral ($x = \delta e^{i\theta}$)
+Bezout
 %
 \nbea
-\int_0^{2\pi} x^{m-n-1} d\theta & = & \frac{\delta^{m-n-1}}{m-n-1} (e^{(m-n-1) \cdot 2\pi \cdot i} - e^{(m-n-1) \cdot 0 \cdot i})
+D^2 a + Z^2 b & = & g\\
 \neea
 %
-if $m-n-1 < 0$ then the delta term will blow up, but the $e$ difference is zero no matter what, so this means we need to calculate the $e$ difference first before taking the limit.
-
--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
-analytic continuation of gamma function, integral is only for $s > 1$ but once we get the final form it applies for all $s$.
-
-same thing with zeta function, we take the small semi circle $\delta \to 0$ only for $s > 1$, once we get the final form we say it applies for all $s$ but of course for $s \le 1$ we cannot take $c\to0$, otherwise the integral around that semi circle blows up and we don't have an entire function anymore.
-
-$0 < \delta < 2\pi$, because at $2\pi i$ we get an infinity from $1/(e^x-1)$
-
--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 %
 \nbea
-\int_2^L \frac{1}{\log t}dt \sim \frac{L}{\log L}
+D^2 a + Z^2 b & = & DgA + ZgB \\
+D(Da - gA) & = & Z(gB - Zb) \\
+\to D &|& gB - Zb = glZ\\
+\to Z &|& Da - gA = glD
 \neea
 %
-start with splitting the integral $\int_2^{\sqrt{L}} + \int_{\sqrt{L}}^{L}$
-
--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 %
 \nbea
-\frac{1 + 2\psi(x)}{1 + 2\psi(1/x)} = \frac{1}{\sqrt{x}}
+D^2 t & = & glDZ \\
+Z^2 y & = & glDZ
 \neea
 %
-for small $x$
+but $t = glD$ and $y = glZ$
 %
 \nbea
-\psi(1/x) & = & \sum e^{-n^2 \pi 1/x} \\
-\lim_{x\to 0} \psi(1/x) & = & \sum e^{-n^2 \pi \infty} \\
-& = & 0
+D^2 glD & = & glDZ \\
+Z^2 glZ & = & glDZ
 \neea
 %
-so for small $x$ we have
+
 %
 \nbea
-\lim_{x\to 0} \frac{1 + 2\psi(x)}{1 + 2\psi(1/x)} = 1 + 2\psi(x) & = & \frac{1}{\sqrt{x}} \\
-\to \psi(x) & = & \frac{1}{2} \left( \frac{1}{\sqrt{x}} - 1\right)
+gA' & = & gA + gl D = Da\\
+gB' & = & gB - gl Z = Zb 
 \neea
 %
-
--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
-Fourier transform, I thought I was an expert LOL well, not compared to Riemann
-%
-\nbea
-\int_0^\infty J(x) x^{-s-1} dx & = & \int_0^\infty J(x) x^{-s} \frac{dx}{x}
-\neea
-%
-every time you see $\frac{dx}{x}$ you should immediately scream $\log x$ because $d(\log x) = \frac{dx}{x}$, let $w = \log x$
-%
-\nbea
-\int_0^\infty J(x) x^{-s} \frac{dx}{x} & = & \int_{-\infty}^\infty J(e^w)e^{-ws} dw \\
-& = & \int_{-\infty}^\infty J(e^w)e^{-w(\sigma + it)} dw \\
-& = & \int_{-\infty}^\infty \left\lbrack J(e^w)e^{-w\sigma} \right\rbrack e^{-itw} dw
-\neea
-%
-
--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
-Page 26, about the ambiguity of $\log(1 - s/\rho)$, especially for $\rho$ which are not large, this is because the convention we use is given in Page 27, \ie $\log(z)$ is defined for all $z$ other than real $z \le 0$ and that for real $z$, $\log(z)$ is real.
-
-So if $\rho$ is smaller than $s$ we can have a situation where $(1 - s/\rho)$ is real and negative, but $\log(s-\rho)$ cannot be real and negative when we set $a > 1$ since we know that the zeros are all in the critical strip (see Section 1.9)  and for $\log(-\rho)$, since $\rho$ is never real we are OK since the argument to the log function is never real and negative.
-
-
-
-
-
-
 
 
 
