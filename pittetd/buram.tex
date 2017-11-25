@@ -995,15 +995,30 @@ The next and final ingredient we need what I saw some time ago regarding the mul
 (a^2 + b^2)(c^2 + d^2) & = & (ac + bd)^2 + (ad - bc)^2
 \neea
 %
-\ie f we have two sums of squares we can multiply them together to get another sum of squares. It can be easily seen if we express them in complex numbers
+\ie if we have two sums of squares we can multiply them together to get another sum of squares. It can be easily seen if we express them in complex numbers
 %
 \nbea
 A\cdot C & = & (a+ib)(c+id) \\
 \to |A||C| & = & |(a+ib)(c+id)| \\
-(a^2 + b^2)(c^2 + d^2) & = & (ac + bd)^2 + (ad - bc)^2
+(a^2 + b^2)(c^2 + d^2) & = & (ac - bd)^2 + (ad + bc)^2
 \neea
 %
-another way of looking at it, which is my favorite is to write them down as matrices, write the complex numbers as follows
+Note that this relationship enjoys obvious symmetries because
+%
+\nbea
+|a + ib| = |b + ia| = |a - ib| = |b - ia|
+\neea
+%
+the first equality is from $a\leftrightarrow b$, the second is from $b \to -b$ and the last is from $a \to -a$, and they also apply to $c$ and $d$ therefore
+%
+\nbea
+(a^2 + b^2)(c^2 + d^2) & = & (ac - bd)^2 + (ad + bc)^2 \\
+& = & (bc - ad)^2 + (bd + ac)^2, ~~~~~~~~ a\leftrightarrow b \\
+& = & (ac + bd)^2 + (ad - bc)^2, ~~~~~~~~ b \to -b \\
+& = & (ac + bd)^2 + (bc - ad)^2, ~~~~~~~~ a \to -a
+\neea
+%
+Note also that $a\leftrightarrow b$ is the same as $a\to-a$ and $c\leftrightarrow d$ si the same as $b\to -b$ doing both will get us back to where we started. The above two are the only symmetries we have, negating $c$ or $d$ will get us one of those two. Another way of looking at it, which is my favorite is to write them down as matrices, write the complex numbers as follows
 %
 \nbea
 A = \left (
@@ -1018,8 +1033,8 @@ c & d \\
 -d & c
 \end{array} \right ) \longrightarrow AC = \left (
 \begin{array}{c c}
-(ac + bd) & (ad - bc) \\
--(ad - bc) & (ac + bd)
+(ac - bd) & (ad + bc) \\
+-(ad + bc) & (ac - bd)
 \end{array} \right )
 \neea
 %
@@ -1028,10 +1043,10 @@ If we now take the determinant, noting that determinant of a product is the prod
 \nbea
  |AC| = |A||C| & = & \left |
 \begin{array}{c c}
-(ac + bd) & (ad - bc) \\
--(ad - bc) & (ac + bd)
+(ac - bd) & (ad + bc) \\
+-(ad + bc) & (ac - bd)
 \end{array} \right | \\
-\to (a^2 + b^2)(c^2 + d^2) & = & (ac + bd)^2 + (ad - bc)^2
+\to (a^2 + b^2)(c^2 + d^2) & = & (ac - bd)^2 + (ad + bc)^2
 \neea
 %
 Why do we need all this? From our induction we know that
@@ -1627,7 +1642,77 @@ D^2 & = & Z^2
 \neea
 %
 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+%
+\nbea
+(a^2 + b^2)(c^2 + d^2) & = & (ac + bd)^2 + (ad - bc)^2
+\neea
+%
+
+%
+\nbea
+A\cdot C & = & (a+i\sqrt{n}b)(c+i\sqrt{n}d) \\
+\to |A||C| & = & |(a+i\sqrt{n}b)(c+i\sqrt{n}d)| \\
+(a^2 + nb^2)(c^2 + nd^2) & = & (ac - nbd)^2 + n(ad + bc)^2
+\neea
+%
+
+This is $a \leftrightarrow \sqrt{n}b$
+%
+\nbea
+A\cdot C & = & (\sqrt{n}b + ia)(c+i\sqrt{n}d) \\
+\to |A||C| & = & |(\sqrt{n}b + ia)(c+i\sqrt{n}d)| \\
+(a^2 + nb^2)(c^2 + nd^2) & = & (ac + nbd)^2 + n(bc-ad)^2
+\neea
+%
+
+This is $b \to -b$
+%
+\nbea
+A\cdot C & = & (a-i\sqrt{n}b)(c+i\sqrt{n}d) \\
+\to |A||C| & = & |(a-i\sqrt{n}b)(c+i\sqrt{n}d)| \\
+(a^2 + nb^2)(c^2 + nd^2) & = & (ac + nbd)^2 + n(ad - bc)^2
+\neea
+%
+
+This is $a\to -a$
+%
+\nbea
+A\cdot C & = & (-a+i\sqrt{n}b)(c+i\sqrt{n}d) \\
+\to |A||C| & = & |(-a+i\sqrt{n}b)(c+i\sqrt{n}d)| \\
+(a^2 + nb^2)(c^2 + nd^2) & = & (ac + nbd)^2 + n(bc - ad)^2
+\neea
+%
+
+%
+\nbea
+(ac - \sqrt{n}bd)(ac + \sqrt{n}bd) & = & a^2c^2 - nb^2d^2 \\
+& = & c^2(a^2 + nb^2) - nb^2c^2  - nb^2d^2 \\
+& = & c^2(a^2 + nb^2) - nb^2(c^2  + d^2) \\
+\neea
+%
+Suppose a sum of two squares $a^2 + nb^2$ is divisible by a prime, $p$, of the form $c^2  + nd^2$
+%
+\nbea
+(ad - bc)(ad + bc) & = & a^2d^2 - b^2c^2 \\
+& = & a^2d^2  + nb^2d^2 - nb^2d^2 - b^2c^2 \\
+& = & c^2(a^2 + nb^2) - b^2(c^2 + nd^2) 
+\neea
+%
+since $p = c^2 + nd^2$ is a prime it must divide either $(ad - bc)$ or $(ad + bc)$, say for now it divides $(ad + bc)$, now since $p$ divides $(a^2 + nb^2)(c^2 + nd^2)$ and $(ad + bc)$ and we know that
+%
+\nbea
+(a^2 + nb^2)(c^2 + nd^2) & = & (ac - nbd)^2 + n(ad + bc)^2
+\neea
+%
+so $p$ must also divide $(ac - nbd)$. If $p$ divides $(ad - bc)$ instead we can use the other formulation
+%
+\nbea
+(a^2 + nb^2)(c^2 + nd^2) & = & (ac + nbd)^2 + n(bc-ad)^2
+\neea
+%
+here also $p$ divides the LHA and the last term in the RHS and therefore divides $(ac + nbd)$
 
 
 
