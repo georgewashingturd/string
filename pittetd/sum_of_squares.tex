@@ -785,24 +785,42 @@ here also $p$ divides the LHS and the last term in the RHS and therefore divides
 \neea
 %
 
-So if we use the same inductive reasoning as above, what we want to show is that for a prime $p$ where $-n$ is a quadratic residue we have
+So the inductive proof should work with other values for $n$ other than 1. The other key in the proof is that all other primes smaller than $p$ of the form $4m+1$ must be a sum of two squares.
+
+If $n = 2$ for example, we are no longer interested in $p$ of the form $4m+1$, because we now want primes where $-2$ is a quadratic residue which means that either both $-1$ and $2$ are quadratic residues or both are quadratic non residues.
+
+For $2$ to be a quadratic residue, $p$ must be of the form $\pm1 \pmod{8}$, while for $-1$ to be a quadratic residue, $p$ must be $1,5\pmod{8}$, so for both to be quadratic residues $p$ must be $1 \pmod{8}$, and subsequently for both to be quadratic non-residues $p$ must be $3 \pmod{8}$.
+
+Thus in this case a quadratic $-2$ means $p = 1,3 \pmod{8}$, another way of looking at it is that the first few primes where $-2$ is a quadratic residue are
 %
 \nbea
-r^2 + n & = & pw
+3,11,17
 \neea
 %
-with $r < p$, thus
+and they also happen to be of the form $8m+1$ or $8m+3$, if we just start with $3 = 1^2 + 2\cdot1^2$ as our inductive basis, the next prime number where $-2$ is quadratic is $11$ and we can do the same inductive proof as the one for $4m+1 = x^2 + y^2$ starting with $p=11$. In the peeling step $r^2 + 2 = pw$, each prime factor of $w$ must have $-2$ as a quadratic residue and by the above conclusion we know they are of the form $x^2 + 2y^2$.
+
+The same goes for $n=3$, $x^2 + 3y^2$, for $-3$ to be a quadratic residue, both $-1$ and $3$ must quadratic or both must be non quadratic but it will be easier if we just use the reciprocity formula. If we express all primes greater than 3 in mod $6$, it must be of the form $6m \pm 1$. Using Gauss's quadratic reciprocity formula
 %
 \nbea
-p^2 - r^2 & \ge & p^2 - p^2 + 2p - 1 \\
-\to p^2 - r^2 & \ge & 2p - 1
+\left(\frac{-3}{6m+1}\right) & = & (-1)^{\frac{6m+1 - 1}{2}} (-1)^{\frac{3-1}{2}\frac{6m+1 - 1}{2}}\left(\frac{6m+1}{3}\right) \\
+& = & (-1)^{6m}\left(\frac{1}{3}\right) \\
+& = & +1
 \neea
-% 
-so if $n < 2p - 1$ then $w < p$. For $1 \le n \le 5$, it is $ < 2p-1$ for any prime $p \ge 5$, thus the induction proof should still work.
+%
+and if we compute the corresponding Legendre symbol with $6m-1$ we get $-1$. So the condition that $-3$ is a quadratic residue is the same to that of $p = 6m+1$.
 
-For other $n$ it still works it's just that the inductive basis requires more work. The difference here is that $w$ contains primes where $-n$ is a quadratic residue although just because $-n$ is a quadratic residue doesn't mean that it is expressible as $x^2 + ny^2$.
+So here our inductive basis is the first prime where $-3$ is quadratic, \ie $7 = 2^2 + 3\cdot1^2$ and our starting point for the inductive proof is $p = 13$ and the proof follows as usual.
 
-So in our inductive assumption we need to prove that this is so.
+The next case is not $n=4$ because $x^2 + 4y^2 = x^2 + (2y)^2$ which is the same as the case of $n=1$. So the next case is $x^2 + 5y^2$. Here what we need is primes where $-5$ is a quadratic residue.
+
+But we have a problem here because $3$ has $-5$ as a quadratic residue but is not expressible as $x^2 + 5y^2$ (in this case $-5 \equiv 1 \pmod{3}$), likewise for $7$, $-5$ is a quadratic residue, $-5 \equiv 2 \pmod{7}$ and $4^2 \equiv 2 \pmod{7}$ but again $7$ is not expressible as $x^2 + 5y^2$.
+
+By these reasons alone we ca no longer use the inductive proof because once we reach $r^2 + 5 = pw$, $w$ might contain $3$ and $7$ and they are not of the form $x^2 + 5y^2$. So even if we can express the condition for $-5$ to be quadratic residue as primes of the $y \pmod{u}$, the proof still doesn't work because $3$ and $7$ will be of that form but they are not of $x^2 + 5y^2$ so we can't do the peeling step for $r^2 + 5 = pw$ because each prime factor of $w$ must have $-5$ as a quadratic residue but they might not be of the form $x^2 + 5y^2$.
+
+
+
+
+
 
 
 

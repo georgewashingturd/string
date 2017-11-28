@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  25 NOV 2017 14:59
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  27 NOV 2017 19:24
 entering extended mode
 **C:/Users/User/Documents/GitHub/string/pittetd/sum_of_squares.tex
 (C:/Users/User/Documents/GitHub/string/pittetd/sum_of_squares.tex
@@ -611,12 +611,12 @@ Requested font "cmtt12" at 12.0pt
  [3] [4] [5]
 [6] [7] [8]
 Requested font "cmbxti10" at 12.0pt
- [9] [10] [11] [12] [13] [14] [15] (sum_of_squares.bbl) [16]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 816.
-
-(sum_of_squares.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 816.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 816.
+ [9] [10] [11] [12] [13] [14] [15] [16] (sum_of_squares.bbl)
+[17]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 834.
+ (sum_of_squares.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 834.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 834.
  ) 
 Here is how much of TeX's memory you used:
  13297 strings out of 428755
@@ -627,4 +627,4 @@ Here is how much of TeX's memory you used:
  1096 hyphenation exceptions out of 8191
  36i,13n,38p,728b,459s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on sum_of_squares.pdf (16 pages).
+Output written on sum_of_squares.pdf (17 pages).
