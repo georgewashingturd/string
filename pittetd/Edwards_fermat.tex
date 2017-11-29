@@ -1,0 +1,587 @@
+\documentclass[aps,preprint,preprintnumbers,nofootinbib,showpacs,prd]{revtex4-1}
+\usepackage{graphicx,color}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsmath,amssymb}
+\usepackage{multirow}
+\usepackage{amsthm}%        But you can't use \usewithpatch for several packages as in this line. The search 
+
+\usepackage{cancel}
+
+%%% for SLE
+\usepackage{dcolumn}   % needed for some tables
+\usepackage{bm}        % for math
+\usepackage{amssymb}   % for math
+\usepackage{multirow}
+%%% for SLE -End
+
+\usepackage{ulem}
+\usepackage{cancel}
+
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage[top=1in, bottom=1.25in, left=1.1in, right=1.1in]{geometry}
+
+\usepackage{mathtools} % for \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+%\usepackage{xeCJK}
+%\setCJKmainfont{SimSun}
+
+\newcommand{\msout}[1]{\text{\sout{\ensuremath{#1}}}}
+
+
+%%%%%% My stuffs - Stef
+\newcommand{\lsim}{\mathrel{\mathop{\kern 0pt \rlap
+  {\raise.2ex\hbox{$<$}}}
+  \lower.9ex\hbox{\kern-.190em $\sim$}}}
+\newcommand{\gsim}{\mathrel{\mathop{\kern 0pt \rlap
+  {\raise.2ex\hbox{$>$}}}
+  \lower.9ex\hbox{\kern-.190em $\sim$}}}
+
+%
+% Key
+%
+\newcommand{\key}[1]{\medskip{\sffamily\bfseries\color{blue}#1}\par\medskip}
+%\newcommand{\key}[1]{}
+\newcommand{\q}[1] {\medskip{\sffamily\bfseries\color{red}#1}\par\medskip}
+\newcommand{\comment}[2]{{\color{red}{{\bf #1:}  #2}}}
+
+
+\newcommand{\ie}{{\it i.e.} }
+\newcommand{\eg}{{\it e.g.} }
+
+%
+% Energy scales
+%
+\newcommand{\ev}{{\,{\rm eV}}}
+\newcommand{\kev}{{\,{\rm keV}}}
+\newcommand{\mev}{{\,{\rm MeV}}}
+\newcommand{\gev}{{\,{\rm GeV}}}
+\newcommand{\tev}{{\,{\rm TeV}}}
+\newcommand{\fb}{{\,{\rm fb}}}
+\newcommand{\ifb}{{\,{\rm fb}^{-1}}}
+
+%
+% SUSY notations
+%
+\newcommand{\neu}{\tilde{\chi}^0}
+\newcommand{\neuo}{{\tilde{\chi}^0_1}}
+\newcommand{\neut}{{\tilde{\chi}^0_2}}
+\newcommand{\cha}{{\tilde{\chi}^\pm}}
+\newcommand{\chao}{{\tilde{\chi}^\pm_1}}
+\newcommand{\chaop}{{\tilde{\chi}^+_1}}
+\newcommand{\chaom}{{\tilde{\chi}^-_1}}
+\newcommand{\Wpm}{W^\pm}
+\newcommand{\chat}{{\tilde{\chi}^\pm_2}}
+\newcommand{\smu}{{\tilde{\mu}}}
+\newcommand{\smur}{\tilde{\mu}_R}
+\newcommand{\smul}{\tilde{\mu}_L}
+\newcommand{\sel}{{\tilde{e}}}
+\newcommand{\selr}{\tilde{e}_R}
+\newcommand{\sell}{\tilde{e}_L}
+\newcommand{\smurl}{\tilde{\mu}_{R,L}}
+
+\newcommand{\casea}{\texttt{IA}}
+\newcommand{\caseb}{\texttt{IB}}
+\newcommand{\casec}{\texttt{II}}
+
+\newcommand{\caseasix}{\texttt{IA-6}}
+
+%
+% Greek
+%
+\newcommand{\es}{{\epsilon}}
+\newcommand{\sg}{{\sigma}}
+\newcommand{\dt}{{\delta}}
+\newcommand{\kp}{{\kappa}}
+\newcommand{\lm}{{\lambda}}
+\newcommand{\Lm}{{\Lambda}}
+\newcommand{\gm}{{\gamma}}
+\newcommand{\mn}{{\mu\nu}}
+\newcommand{\Gm}{{\Gamma}}
+\newcommand{\tho}{{\theta_1}}
+\newcommand{\tht}{{\theta_2}}
+\newcommand{\lmo}{{\lambda_1}}
+\newcommand{\lmt}{{\lambda_2}}
+%
+% LaTeX equations
+%
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+
+\newcommand{\nbea}{\begin{eqnarray*}}
+\newcommand{\neea}{\end{eqnarray*}}
+\newcommand{\nbeq}{\begin{equation*}}
+\newcommand{\neeq}{\end{equation*}}
+
+\newcommand{\no}{{\nonumber}}
+\newcommand{\td}[1]{{\widetilde{#1}}}
+\newcommand{\sqt}{{\sqrt{2}}}
+%
+\newcommand{\me}{{\rlap/\!E}}
+\newcommand{\met}{{\rlap/\!E_T}}
+\newcommand{\rdmu}{{\partial^\mu}}
+\newcommand{\gmm}{{\gamma^\mu}}
+\newcommand{\gmb}{{\gamma^\beta}}
+\newcommand{\gma}{{\gamma^\alpha}}
+\newcommand{\gmn}{{\gamma^\nu}}
+\newcommand{\gmf}{{\gamma^5}}
+%
+% Roman expressions
+%
+\newcommand{\br}{{\rm Br}}
+\newcommand{\sign}{{\rm sign}}
+\newcommand{\Lg}{{\mathcal{L}}}
+\newcommand{\M}{{\mathcal{M}}}
+\newcommand{\tr}{{\rm Tr}}
+
+\newcommand{\msq}{{\overline{|\mathcal{M}|^2}}}
+
+%
+% kinematic variables
+%
+%\newcommand{\mc}{m^{\rm cusp}}
+%\newcommand{\mmax}{m^{\rm max}}
+%\newcommand{\mmin}{m^{\rm min}}
+%\newcommand{\mll}{m_{\ell\ell}}
+%\newcommand{\mllc}{m^{\rm cusp}_{\ell\ell}}
+%\newcommand{\mllmax}{m^{\rm max}_{\ell\ell}}
+%\newcommand{\mllmin}{m^{\rm min}_{\ell\ell}}
+%\newcommand{\elmax} {E_\ell^{\rm max}}
+%\newcommand{\elmin} {E_\ell^{\rm min}}
+\newcommand{\mxx}{m_{\chi\chi}}
+\newcommand{\mrec}{m_{\rm rec}}
+\newcommand{\mrecmin}{m_{\rm rec}^{\rm min}}
+\newcommand{\mrecc}{m_{\rm rec}^{\rm cusp}}
+\newcommand{\mrecmax}{m_{\rm rec}^{\rm max}}
+%\newcommand{\mpt}{\rlap/p_T}
+
+%%%song
+\newcommand{\cosmax}{|\cos\Theta|_{\rm max} }
+\newcommand{\maa}{m_{aa}}
+\newcommand{\maac}{m^{\rm cusp}_{aa}}
+\newcommand{\maamax}{m^{\rm max}_{aa}}
+\newcommand{\maamin}{m^{\rm min}_{aa}}
+\newcommand{\eamax} {E_a^{\rm max}}
+\newcommand{\eamin} {E_a^{\rm min}}
+\newcommand{\eaamax} {E_{aa}^{\rm max}}
+\newcommand{\eaacusp} {E_{aa}^{\rm cusp}}
+\newcommand{\eaamin} {E_{aa}^{\rm min}}
+\newcommand{\exxmax} {E_{\neuo \neuo}^{\rm max}}
+\newcommand{\exxcusp} {E_{\neuo \neuo}^{\rm cusp}}
+\newcommand{\exxmin} {E_{\neuo \neuo}^{\rm min}}
+%\newcommand{\mxx}{m_{XX}}
+%\newcommand{\mrec}{m_{\rm rec}}
+\newcommand{\erec}{E_{\rm rec}}
+%\newcommand{\mrecmin}{m_{\rm rec}^{\rm min}}
+%\newcommand{\mrecc}{m_{\rm rec}^{\rm cusp}}
+%\newcommand{\mrecmax}{m_{\rm rec}^{\rm max}}
+%%%song
+
+\newcommand{\mc}{m^{\rm cusp}}
+\newcommand{\mmax}{m^{\rm max}}
+\newcommand{\mmin}{m^{\rm min}}
+\newcommand{\mll}{m_{\mu\mu}}
+\newcommand{\mllc}{m^{\rm cusp}_{\mu\mu}}
+\newcommand{\mllmax}{m^{\rm max}_{\mu\mu}}
+\newcommand{\mllmin}{m^{\rm min}_{\mu\mu}}
+\newcommand{\mllcusp}{m^{\rm cusp}_{\mu\mu}}
+\newcommand{\elmax} {E_\mu^{\rm max}}
+\newcommand{\elmin} {E_\mu^{\rm min}}
+\newcommand{\elmaxw} {E_W^{\rm max}}
+\newcommand{\elminw} {E_W^{\rm min}}
+\newcommand{\R} {{\cal R}}
+
+\newcommand{\ewmax} {E_W^{\rm max}}
+\newcommand{\ewmin} {E_W^{\rm min}}
+\newcommand{\mwrec}{m_{WW}}
+\newcommand{\mwrecmin}{m_{WW}^{\rm min}}
+\newcommand{\mwrecc}{m_{WW}^{\rm cusp}}
+\newcommand{\mwrecmax}{m_{WW}^{\rm max}}
+
+\newcommand{\mpt}{{\rlap/p}_T}
+
+%%%%%% END My stuffs - Stef
+
+\newcommand{\dunno}{$ {}^{\mbox {--}}\backslash(^{\rm o}{}\underline{\hspace{0.2cm}}{\rm o})/^{\mbox {--}}$}
+
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+
+\DeclareMathOperator{\re}{Re}
+
+
+\begin{document}
+
+\title{Harold Edwards Fermat's last theorem}
+\bigskip
+\author{Stefanus Koesno$^1$\\
+$^1$ Somewhere in California\\ San Jose, CA 95134 USA\\
+}
+%
+\date{\today}
+%
+\begin{abstract}
+
+\end{abstract}
+%
+\maketitle
+
+\renewcommand{\theequation}{A.\arabic{equation}}  % redefine the command that creates the equation no.
+\setcounter{equation}{0}  % reset counter 
+
+{\bf Page 8, Problem 3}. Show that if $d^2|z^2$ then $d|z$, start with $\gcd(d,z) = c$
+%
+\nbea
+d^2 k & = & z^2 \\
+c^2 D^2 k & = & c^2 Z^2 \\
+D^2 k & = & Z^2
+\neea
+%
+we know that $\gcd(D,Z) = 1$ and so $\gcd(D^2,Z^2) = 1$, since $k|Z^2$, if $\gcd(D^2,k) > 1$ then $\gcd(D^2,Z^2) > 1$ as well, therefore $\gcd(D^2,k) = 1$, this means that $k = K^2$ by our assumption that if $vw = u^2$ and $v$ and $w$ are co-prime then both $v$ and $w$ are squares.
+
+Substituting $k=K^2$ back into our first equation
+%
+\nbea
+d^2K^2 & = & z^2 \\
+\to dK & = & z
+\neea
+%
+thus $d|z$ although I'm not sure about this particular line of reasoning, since $\gcd(D^2,Z^2) = 1$ and $D^2|Z^2$ then $D^2 = 1$ and we immediately get $k=Z^2$ and we don't need our assumption about $vw=u^2$ at all. But I'm not sure how else to show that $\gcd(D^2,k) = 1$ except by showing that $\gcd(D^2,Z^2) = 1$.
+
+Now, the one step I stil need to prove, is that $\gcd(D,Z) = 1$ means $\gcd(D^2,Z^2) = 1$, again, without using the fundamental theorem. What I need is Bezout, assume that $\gcd(D^2,Z^2) = g > 1$ then Bezout tells us that
+%
+\nbea
+D^2 a + Z^2 b & = & g
+\neea
+%
+but from $\gcd(D,Z)=1$ we also get
+%
+\nbea
+D A + Z B & = & 1 \\
+\to DgA + ZgB & = & g
+\neea
+%
+Now there might be some other numbers such that
+%
+\nbea
+D M + Z N & = & g
+\neea
+%
+but this means either that $\gcd(M,N) = g$ or $\gcd(M,N) = y | g$, let's dicuss the latter first
+%
+\nbea
+D y M' + Z y N' & = & yg' \\
+D M' + Z N' & = & g'
+\neea
+%
+with $\gcd(M',N') = 1$ but this means that $\gcd(D,Z) = g'$, the only way this works is that $g' = 1$ and $\gcd(M,N) = g$, but if this is the case then
+%
+\nbea
+D M' + Z N' & = & 1
+\neea
+%
+but Bezout also tells us that all solutions to $D A' + Z B' = 1$ are of the form see ent.pdf Problem 2.5
+%
+\nbea
+A' & = & A + l D \\
+B' & = & B - lD
+\neea
+%
+Equating the two Bezouts $g = D^2 a + Z^2 b = DgA' + ZgB'$
+%
+\nbea
+\to gA' & = & gA + gl D = Da\\
+\to gB' & = & gB - gl Z = Zb 
+\neea
+%
+Now, equating the two Bezouts again
+%
+\nbea
+D^2 a + Z^2 b & = & DgA + ZgB \\
+D(Da - gA) & = & Z(gB - Zb) \\
+\to D(glD) & = & Z(glZ) \\
+D^2 & = & Z^2
+\neea
+%
+which is a contradiction, therefore if $\gcd(D,Z) = 1$ then $\gcd(D^2,Z^2) = 1$ as well. The above proof is easily generalizable to $\gcd(D^n,Z^m)$
+%
+\nbea
+\to gA' & = & gA + gl D = D^{n-1}a\\
+\to gB' & = & gB - gl Z = Z^{m-1}b 
+\neea
+%
+Now, equating the two Bezouts again
+%
+\nbea
+D^n a + Z^m b & = & DgA + ZgB \\
+D(D^{n-1}a - gA) & = & Z(gB - Z^{m-1}b) \\
+\to D(glD) & = & Z(glZ) \\
+D^2 & = & Z^2
+\neea
+%
+
+{\bf Page 14, Problem 1}. Prove that if $Ad^2$ is a square then $A$ is a square, using the result from previous Problem, say $Ad^2 = z^2$ since $d^2|z^2$ this also means that $d|z$ so we can write $z = dk$, therefore
+%
+\nbea
+Ad^2 & = & z^2 = d^2k^2 \\
+A & = & k^2
+\neea
+%
+and we are done.
+
+{\bf Page 14, Problem 2}. Show that $x^4 - y^4 = z^2$ has no non-zero integer solutions. One thing we should not do is to blindly apply the Pythagorean formula ($m^2-n^2, 2mn, m^2+n^2$) over and over again, what we should do is follow what was done in the preceding section.
+
+In that section we have $p,q,$ and $p^2 - q^2$ are all squares due to $t^2 = pq(p^2-q^2)$ so if we designate
+%
+\nbea
+p & = & x^2 \\
+q & = & y^2 \\
+p^2 - q^2 & = & z^2 \\
+\to x^4 - y^4 & = & z^2
+\neea
+%
+and we have our current problem. Following what was done in the book
+%
+\nbea
+z^2 & = & p^2 - q^2 \\
+& = & (p-q)(p+q)
+\neea
+%
+since $p$ and $q$ are co-prime so are $p-q$ and $p+q$. From $x^4 - y^4 = z^2$ we know that $x$ and thus $p$ is odd but here we can have $y$ even or odd, for simplicity let's start with $y$ and thus $q$ even so that we have the case in the book, so
+%
+\nbea
+p + q = r^2  ~~~~~~~~~~~~~~~~ p - q = s^2
+\neea
+%
+with both $r$ and $s$ odd and co-prime and
+%
+\nbea
+u = \frac{r - s}{2}   ~~~~~~~~~~~~~~~~ v = \frac{r + s}{2}
+\neea
+%
+with $u$ and $v$ integers and co-prime and so
+%
+\nbea
+uv & = & \frac{r^2 - s^2}{4} = \frac{(p+q)-(p-q)}{4} = \frac{q}{2} = \frac{y^2}{2}
+\neea
+%
+since $uv$ integer $y^2/2$ must also be an integer, thus $y = 2k$, $y^2/2 = 2k^2$ therefore
+%
+\nbea
+\frac{uv}{2} & = & \frac{y^2}{4} = k^2 \\
+\to uv & = & 2k^2
+\neea
+%
+since $u$ and $v$ are co-prime this means that one of them is even and the other odd, let's take $u$ odd and $v=2v'$ even, then $u(2v') = 2k^2$ and therefore
+%
+\nbea
+u = U^2   ~~~~~~~~~~~~~~~~ v = 2 V^2
+\neea
+%
+since $u$ and $v$ are coprime. Thus
+%
+\nbea
+r & = & u + v = U^2 + 2V^2
+\neea
+%
+and 
+%
+\nbea
+u^2 + v^2 & = & \frac{(r-s)^2 + (r+s)^2}{4} \\
+& = & \frac{2r^2 + 2s^2}{4} = \frac{r^2 + s^2}{2} \\
+& = & \frac{(p+q) + (p-q)}{2} = \frac{2p}{2} \\
+& = & p \\
+u^2 + v^2 & = & x^2
+\neea
+%
+Thus we have a primitive triple $u,v,x$ (because $u,v$ are co-prime), thus we have $P^2-Q^2,2PQ,P^2+Q^2$ (note that above we have designated $u$ as the odd one) and so
+%
+\nbea
+\frac{uv}{2} = k^2 = (P^2 - Q^2)PQ
+\neea
+%
+so we have the same situation as $t^2 = pq(p^2-q^2)$ but $uv/2 = q/4 < t^2$ and our infinite descent begins.
+
+The above was when $q$ even such that $p-q$ and $p+q$ are odd. Now we deal with the case of $q$ odd such that $p-q = 2r^2$ and $p+q = 2s^2$ are both even, this is because now $p-q$ and $p+q$ are no longer co-prime so we cannot follow the same steps above.
+
+What we have is (from the pythagorean triple formula)
+%
+\nbea
+p = x^2 & = & m^2 + n ^2 \\
+q = y^2 & = & m^2 - n^2
+\neea
+%
+thus we can use them directly, $m^2$ plays the role of $p$ and $n^2$ play the role of $q$ as they are already co-prime and of opposite parities and of course $x$ plays the role of $p+q$ and $y$, $p-q$. Thus in this case
+%
+\nbea
+u = \frac{x-y}{2} ~~~~~~~~~~~~~~~~ v = \frac{x+y}{2}
+\neea
+%
+Thus, just like above
+%
+\nbea
+uv = \frac{x^2 - y^2}{4} = \frac{n^2}{2} ~~~~~~~~~~~~~~~~ u = U^2 ~~~~~~ v = 2V^2
+\neea
+%
+and therefore
+%
+\nbea
+u^2 + v^2 = m^2
+\neea
+%
+Thus we have our infinite descent all over again.
+
+
+
+
+
+
+
+
+
+
+
+
+{\bf page 25, Problem 1}. Prove that $2^{37}-1$ is not prime
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{\bf Page 25, Problem 2}. If $p = 4n+3$ divides $x^2 + y^2$ then
+%
+\nbea
+(x^2)^{2n+1} + (y^2)^{2n+1} & = & \left\lbrack (x^2) + (y^2) \right\rbrack \left\lbrack (x^2)^{2n} - (x^2)^{2n-1}(y^2)  +(x^2)^{2n-2}(y^2)^2 \cdots + (y^2)^{2n} \right\rbrack
+\neea
+%
+and hence $p|(x^2)^{2n+1} + (y^2)^{2n+1}$ as well. But
+%
+\nbea
+(x^2)^{2n+1} & = & x^{4n+2} = x^{p-1}
+\neea
+%
+and so if $p\nmid x$ and $p\nmid y$ then because $p|x^{p-1} - 1$ and $p|y^{p-1} - 1$ we have
+%
+\nbea
+(x^2)^{2n+1} + (y^2)^{2n+1} & = & (x^{p-1} - 1) + (y^{p-1} - 1) + 2 \\
+& = & pm_x + pm_y + 2 \\
+& = & pm_{xy} + 2
+\neea
+%
+therefore we have a contradiction as now $p$ no longer divides $(x^2)^{2n+1} + (y^2)^{2n+1}$ as it differs from a multiple of $p$ by 2. But if one of them, either $x$ or $y$ is divisible by $p$ then (for simplicity let's assume it's $x$)
+%
+\nbea
+(x^2)^{2n+1} + (y^2)^{2n+1} & = & pm_x + (y^{p-1} - 1) + 1 \\
+& = & pm_x + pm_y + 1 \\
+& = & pm_{xy} + 1
+\neea
+%
+and this time it differs from a multiple of $p$ by 1.
+
+{\bf Page 33, Problem 2}. This is quite a fun one to do, let's do the one for $A = 13$, we start with
+%
+\nbea
+1^2 - A 0^2 & = & 1
+\neea
+%
+multiplying it with $r^2 - A = s$ we get
+%
+\nbea
+r^2 - A(1+r)^2 & = & 1\cdot s
+\neea
+%
+here $k=1$, so now we need to find an $r$ such that $r^2 < A$ but $r^2 - A$ is a negative number, here since $k=1$ we do not need to care if $k|(1+r)$ or not. The answer is $r=3$ such that $s = r^2 - A = -4$ and our next equation is
+%
+\nbea
+3^2 - A 1^2 = -4
+\neea
+%
+multiplying it by $r^2 - A = s$ we get
+%
+\nbea
+(3r + A)^2 - A(3 + r)^2 & = & -4 \cdot s
+\neea
+%
+but now we need to make sure $k = -4$ divides $(3+r)$, an $r$ that works is $r=1$ this way $r^2 < 13$ and $r^2 - A = -12$ is negative and so we get
+%
+\nbea
+4^2 - A1^2 = 3
+\neea
+%
+next, multiplying it with $r^2 - A = s$ again
+%
+\nbea
+(4r + A)^2 - A(4+r)^2 & = & 3\cdot s
+\neea
+%
+here $k = 3$, to make sure $3|(4+r)$ and since $r^2 < 13$ we get $r=2$ and thus
+%
+\nbea
+7^2 - A 2^2 = -3
+\neea
+%
+and I got tired after this :) so the $s$ we recovered so far are $1,-4,3,-3, \dots$
+
+{\bf Page 33, Problem 3}. The first part is straightforward, since $p^2 - Aq^2 = k$ and $P^2 - AQ^2 = K$ with $P = (pr + qA)/|k|$ and $Q = (p + qr)/|k|$
+%
+\nbea
+pQ & = & \frac{p^2 + pqr}{|k|} \\
+Pq & = & \frac{pqr + q^2A}{|k|} \\
+\to pQ - Pq & = & \frac{p^2 - Aq^2}{|k|} \\
+& = & \pm 1
+\neea
+%
+as $|k| = |p^2-Aq^2|$ by definition. Now for the more fun part, since $pQ - Pq = \pm1$, Bezout tells us that $\gcd(Q, P) = 1$, but from $P^2 - AQ^2 = K$, if $\gcd(Q,K) > 1$ then it will also divide $P$ and vice versa, therefore these three are co-prime.
+
+We need this for the next step, we want a new number $R$ such that $QR + P$ is divisible by $K$ or in other words
+%
+\nbea
+QR + P & \equiv & 0 \pmod{K} \\
+R & \equiv & Q^{-1}(-P) \pmod{K}
+\neea
+%
+we are guaranteed to have such a $Q^{-1}$ because $\gcd(Q,K) = 1$ and the final step is also straightforward, say
+%
+\nbea
+W \equiv QA + PR & \equiv & QA + P(Q^{-1}(-P)) \pmod{K} \\
+W & \equiv & QA - Q^{-1} P^2 \pmod{K} \\
+QW & \equiv & Q^2A - P^2 \equiv 0 \pmod{K}
+\neea
+%
+and by definition $K|Q^2A - P^2$ but since $\gcd(Q,K) = 1$ this means that $W \equiv QA + PR \equiv 0 \pmod{K}$ and we are done.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

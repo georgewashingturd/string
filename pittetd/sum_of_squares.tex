@@ -756,7 +756,7 @@ A\cdot C & = & (\sqrt{n}b + ia)(c+i\sqrt{n}d) \\
 (a^2 + nb^2)(c^2 + nd^2) & = & (ac + nbd)^2 + n(bc-ad)^2
 \neea
 %
-which is the same as, $b \to -b$ which in turn is the same as $a \to -a$.
+which is the same as, $b \to -b$ which in turn is the same as $a \to -a$. Note also that we can set $\sqrt{n} \to \sqrt{-n}$ to get a form of Pell's equation $x^2 - n y^2$. This complex number point view is very helpful.
 
 Suppose a sum of two squares $a^2 + nb^2$ is divisible by a prime, $p$, of the form $c^2  + nd^2$
 %
@@ -816,6 +816,8 @@ The next case is not $n=4$ because $x^2 + 4y^2 = x^2 + (2y)^2$ which is the same
 But we have a problem here because $3$ has $-5$ as a quadratic residue but is not expressible as $x^2 + 5y^2$ (in this case $-5 \equiv 1 \pmod{3}$), likewise for $7$, $-5$ is a quadratic residue, $-5 \equiv 2 \pmod{7}$ and $4^2 \equiv 2 \pmod{7}$ but again $7$ is not expressible as $x^2 + 5y^2$.
 
 By these reasons alone we ca no longer use the inductive proof because once we reach $r^2 + 5 = pw$, $w$ might contain $3$ and $7$ and they are not of the form $x^2 + 5y^2$. So even if we can express the condition for $-5$ to be quadratic residue as primes of the $y \pmod{u}$, the proof still doesn't work because $3$ and $7$ will be of that form but they are not of $x^2 + 5y^2$ so we can't do the peeling step for $r^2 + 5 = pw$ because each prime factor of $w$ must have $-5$ as a quadratic residue but they might not be of the form $x^2 + 5y^2$.
+
+
 
 
 
