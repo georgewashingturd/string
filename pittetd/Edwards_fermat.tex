@@ -497,7 +497,7 @@ and this time it differs from a multiple of $p$ by 1.
 {\bf Page 33, Problem 2}. This is quite a fun one to do, let's do the one for $A = 13$, we start with
 %
 \nbea
-1^2 - A 0^2 & = & 1
+1^2 - A \cdot 0^2 & = & 1
 \neea
 %
 multiplying it with $r^2 - A = s$ we get
@@ -509,7 +509,7 @@ r^2 - A(1+r)^2 & = & 1\cdot s
 here $k=1$, so now we need to find an $r$ such that $r^2 < A$ but $r^2 - A$ is a negative number, here since $k=1$ we do not need to care if $k|(1+r)$ or not. The answer is $r=3$ such that $s = r^2 - A = -4$ and our next equation is
 %
 \nbea
-3^2 - A 1^2 = -4
+3^2 - A \cdot 1^2 = -4
 \neea
 %
 multiplying it by $r^2 - A = s$ we get
@@ -521,7 +521,7 @@ multiplying it by $r^2 - A = s$ we get
 but now we need to make sure $k = -4$ divides $(3+r)$, an $r$ that works is $r=1$ this way $r^2 < 13$ and $r^2 - A = -12$ is negative and so we get
 %
 \nbea
-4^2 - A1^2 = 3
+4^2 - A\cdot1^2 = 3
 \neea
 %
 next, multiplying it with $r^2 - A = s$ again
@@ -533,7 +533,7 @@ next, multiplying it with $r^2 - A = s$ again
 here $k = 3$, to make sure $3|(4+r)$ and since $r^2 < 13$ we get $r=2$ and thus
 %
 \nbea
-7^2 - A 2^2 = -3
+7^2 - A\cdot 2^2 = -3
 \neea
 %
 and I got tired after this :) so the $s$ we recovered so far are $1,-4,3,-3, \dots$
@@ -566,9 +566,257 @@ QW & \equiv & Q^2A - P^2 \equiv 0 \pmod{K}
 %
 and by definition $K|Q^2A - P^2$ but since $\gcd(Q,K) = 1$ this means that $W \equiv QA + PR \equiv 0 \pmod{K}$ and we are done.
 
+{\bf Page , Problem 1}. Show that the only integral solutions to $1 + x + x^2 + x^3$ being a square is $x = -1,0,1,7$. First some factorization
+%
+\nbea
+1 + x + x^2 + x^3 & = & (1 + x + x^2) + x^3 \\
+& = & (1 + x)^2 - x + x^3 = (1 + x)^2 - x(1-x^2) \\
+& = & (1 + x)^2 - x(1+x)(1-x)\\
+& = & (1 + x)\lbrack(1 + x) - x(1-x)\rbrack = (1 + x)\lbrack1 + x - x + x^2\rbrack \\
+& = & (1+x)(1+x^2)
+\neea
+%
+From here we can conclude that $x$ cannot be even unless $x=0$, here's how, we know that $A^2 = (1+x)(1+x^2)$ 
+and suppose that $d$ is the common factor of $(1+x)$ and $(1+x^2)$, therefore $d$ also divides
+%
+\nbea
+(1+x)^2 - (1+x^2) & = & 2x
+\neea
+% 
+thus $d|2$ or $d|x$. But here $x$ is even, thus $1+x$ is odd, do $d$ can't divide 2, so $d|x$ but since $d|(1+x)$ and $x$ and $1+x$ are co-prime, $d=1$. This means that 
+%
+\nbea
+1 + x & = & y^2 \\
+1 + x^2 & = & z^2
+\neea
+%
+the last equation means $z^2 - x^2 = 1$ but the difference between two squares cannot be one unless $x=0$. Thus is $x$ is even then $x = 0$.
+
+Next is $x$ odd. Let's recast $x = 2m+1$, we then have
+%
+\nbea
+A^2 = 1 + x + x^3 + x^3 = (1+x)(1+x^2) & = & (1 + 2m + 1)(1 + (2m + 1)^2) \\
+& = & 2(m+1)(4m^2 + 4m + 2) \\
+& = & 4(m+1)(2m^2 + 2m + 1) \\
+\to A^2 & = & 4(m + 1)(m^2 + (m+1^2))
+\neea
+%
+Let's divide out the factor of $4$ and we have
+%
+\nbea
+A'^2 & = & (m + 1)(m^2 + (m+1)^2)
+\neea
+%
+any factor of $m+1$ and $m^2 + (m+1)^2$ would also divide $m^2$ but $m+1$ and $m^2$ are co-prime thus $(m+1)$ and $m^2 + (m+1)^2$ are co-prime thus each of them is square
+%
+\nbea
+m + 1 & = & w^2 \\
+m^2 + (m+1)^2 & = & y^2
+\neea
+%
+since $m$ and $m+1$ are co-prime, $m^2 + (m+1)^2 = y^2$ forms a primitive Pythagorean triple, therefore we can cast it in the usual form, but here we have two choices, either $m$ is even or $m$ is odd. First, let's tackle the $m$ even
+%
+\nbea
+m & = & 2ab \\
+m + 1 & = & a^2 - b^2 = w^2
+\neea
+%
+since from above we know that $m+1$ is square and 
+%
+\nbea
+(m + 1) - m = 1 & = & a^2 - b^2 - 2ab \\
+1 & = & (a-b)^2 - 2b^2
+\neea
+%
+This is a form of Pell's equation and I was messing around with Pell's equation for roughly two days until I found out that I don't need to mess with Pell's equation at all. We'll talk about Pell's equation later :)
+
+What we need here is to note that since $m + 1 = w^2 = a^2 - b^2$, so it forms another Pythagorean triple, since $a$ and $b$ are co-prime, they are also primitive
+%
+\nbea
+a & = & c^2 + d^2 \\
+b & = & 2cd
+\neea
+%
+therefore the Pell's equation we had earlier becomes
+%
+\nbea
+1 & = & (a-b)^2 - 2b^2 \\
+& = & (c^2 + d^2 - 2cd)^2 - 2(2cd)^2 \\
+& = & (c-d)^4 - 8(cd)^2
+\neea
+%
+we now do the oldest trick in the book, substitutions
+%
+\nbea
+s = c + d ~~~~~~~~~~~~~~ t = c - d
+\neea
+%
+therefore $st = c^2 - d^2$ and
+%
+\nbea
+s + t = 2c ~~~~~~~~~~~~~~~ s - t = 2d
+\neea
+%
+and
+%
+\nbea
+(s + t)(s - t) = s^2 - t^2 & = & 4cd \\
+\to \frac{s^2 - t^2}{4} & = & cd
+\neea
+%
+making the substitution
+%
+\nbea
+1 = (c-d)^4 - 8(cd)^2 & = & t^4 - 8\left(\frac{s^2 - t^2}{4}\right )^2 \\
+1 & = &  t^4 - \frac{1}{2}\left(s^2 - t^2\right )^2 \\
+\to 2 & = & 2t^4 - \left(s^2 - t^2\right )^2
+\neea
+%
+at this point I was quite stuck until I tried the simplest solution, the quadratic formula, solving for $s$ we get
+%
+\nbea
+s & = & \pm \sqrt{t^2 \pm\sqrt{2}\sqrt{t^4 - 1}}
+\neea
+%
+for $s$ to have a chance to be an integer we need $\sqrt{2}\sqrt{t^4 - 1}$ to be an integer, therefore
+%
+\nbea
+t^4 - 1 & = & 2Q^2 \\
+(t^2 - 1)(t^2 + 1) & = & 2Q^2
+\neea
+%
+but $t = c - d$ and $c$ and $d$ are of opposite parities, thus $t$ is odd and $\gcd(t^2 - 1, t^2 + 1) = 2$ thus one of $t^2 - 1$ and $t^2 + 1$ is a square and the other is 2 times a square but either way we cannot have $t^2 \pm 1$ equal a square unless $t = 0$ or $t = \pm1$. But from the original Pell's equation $2 = 2t^4 - (s^2 - t^2)$ if $t = 0$ we have no solution for $s$. If $t=\pm1$ then $s = \pm1$ as well (or $\mp 1$).
+
+But from $s = c + d$ it has to be positive (remember that $c$ and $d$ are part of a Pythagorean triple), thus $s = 1$, so one of $c$ or $d$ must be zero. From $b = 2cd$ we have $b = 0$ and the original Pell's equation gets to
+%
+\nbea
+1 & = & (a - b)^2 - 2b^2 \\
+& = & (a - 0)^2 - 2 \cdot 0^2 \\
+\to 1 & = & a
+\neea
+%
+and from $m + 1 = w^2 = a^2 - b^2$ we have $m + 1 = 1$ and $m = 0$ and from $x = 2m + 1$ we have $x = 1$. Thus we so far had $x = 0$ and $x = 1$ as solutions.
+
+Next, we tackle $x = 2m + 1$ odd with $m$ odd, thus like the previous case
+%
+\nbea
+m & = & a^2 - b^2 \\
+m + 1 & = & 2ab = w^2
+\neea
+%
+and they obey a (negative) Pell's equation just like above
+%
+\nbea
+m + 1 - m = 1 & = & 2ab - (a^2 - b^2) \\
+& = & 2b^2 - (a - b)^2
+\neea
+%
+since $a$ and $b$ are co-prime we have either $a = 2A^2$ and $b = B^2$ or $a = A^2$ and $b = 2B^2$ but if it is the latter then from the Pell's equations
+%
+\nbea
+1 & = & 2b^2 - (a - b)^2 \\
+& = & (2B)^2 - (A^2-2B^2)^2
+\neea
+%
+but again, the difference of two squares cannot be one unless $2B = 1$ and $A^2 - 2B^2 = 0$ but this is impossible since $A$ and $B$ are integers, therefore $b = B^2$ and $a = 2A^2$ and we have
+%
+\nbea
+1 & = & 2B^4 - (A^2 - 2B^2)^2
+\neea
+%
+again I was messing with Pell's equations again but again it was not needed, quadratic formula to the rescue! solving for $B$ we get
+%
+\nbea
+B & = & \pm \sqrt{-2A^2 \pm\sqrt{8A^4 + 1}}
+\neea
+%
+for $B$ to be an integer we must have $8A^4 + 1$ to be a square, on the outset it is nothing more than just a Pell's equation but we can do better, borrowing the trick I used in solving $y^2 = x^3 + 1$, we do the following
+%
+\nbea
+8A^4 + 1 & = & k^2 \\
+8A^4 & = & k^2 - 1 \\
+& = & (k - 1)(k + 1) \\
+\to 8A^4 & = & n(n + 2)
+\neea
+%
+where $n = k - 1$. We know that $\gcd(n, n+2)$ is at most $2$ but since the LHS is $8A^4$ it must be 2 :) So we need to distribute the prime factors of $8A^4$ into $n$ and $n + 2$ and since $\gcd(n,n+2) = 2$ we must have either
+%
+\nbea
+n = 2C^4 ~~~~~~ n + 2 = 2^{4r + 2}D^4 ~~~~~~~~{\rm or} ~~~~~~~~n = 2^{4r + 2}D^4  ~~~~~~ n + 2 = 2C^4
+\neea
+%
+the $2^{4r + 2}$ is to make sure that when we multiply $n$ and $n + 2$ we get an overall factor $8$, also from their difference $n + 2 - n = 2$ we get (including the two cases)
+%
+\nbea
+\pm2 & = & 2C^4 - 2^{4r + 2}D^4 \\
+\to \pm 1 & = & C^4 - 2E^4, ~~~~~ E^4 = 2^{4r}D^4
+\neea
+%
+at this point we will generalize things, since we can think of $1 = 1^4$, I wanted to see if there are solutions to the following equations
+%
+\nbea
+2E^4 = C^4 + F^4 ~~~~~~~~~~{\rm and} ~~~~~~~~~~~2E^4 = C^4 - F^4 
+\neea
+%
+Now, if $C$ and $F$ are both even, then we can cancel an overall factor of $2^4$ throughout (the same with any common factor between them), and if after canceling they still contain $2$ we can do the same until we reach a point where $C$ and $F$ are both odd and co-prime. They must be both odd because the LHS is even.
+
+So we can just consider co-prime solutions with $C$ and $F$ odd. Since they are both odd
+%
+\nbea
+C + F = 2u  ~~~~~~~~~~~~~~~~ C - F = 2v \\
+C = u + v    ~~~~~~~~~~~~~~~~ F = u - v
+\neea
+%
+with $u$, $v$ of opposite parities and co-prime since their sum (and difference) is odd and $C$ and $F$ are co-prime. Now tackling the first case $2E^4 = F^4 + C^4$ we get
+%
+\nbea
+2E^4 & = & (u + v)^4 + (u - v)^4 \\
+\bcancel{2}E^4& = & \bcancel{2}(u^4 + 6u^2v^2 + v^4) \\
+E^4 & = & (u^2 + v^2)^2 + (2uv)^2
+\neea
+%
+but since $u$ and $v$ are co-prime and of opposite parities they form a Pythagorean triple
+%
+\nbea
+(u^2 - v^2)^2 + (2uv)^2 & = & (u^2 + v^2)^2 \\
+(u^2 - v^2)^2 & = & (u^2 + v^2)^2 - (2uv)^2
+\neea
+%
+multiplying both of them
+%
+\nbea
+(E^2)^2 (u^2 - v^2)^2 & = & \left \lbrack (u^2 + v^2)^2 + (2uv)^2 \right \rbrack \left \lbrack (u^2 + v^2)^2 - (2uv)^2 \right \rbrack \\
+\left \lbrack (E^2) (u^2 - v^2) \right \rbrack^2 & = & (u^2 + v^2)^4 - (2uv)^4
+\neea
+%
+but we know that $Z^2 = Y^4 - X^4$ has no non-trivial solutions, the only trivial solutions are all zeroes (which we cannot have here since $Y = u^2 + v^2$), the other trivial solution $Z = 1$ and $Y=1$ with $X = 0$.
+
+This means that $2uv = 0$ so either $u=0$ or $v = 0$ or both (but we can't have both zero because we need $Y = u^2 + v^2$ to be 1). But from $C = u + v$ and $F = u - v$, if one of them is zero we have $C = \pm F = \pm 1$, either way, from $2E^4 = C^4 + F^4$ we have $E = 1$.
+
+And from $n = 2C^4 = 2, n + 2 = 4E^4 = 4$ (or the other way round) we get $8A^4 = n(n+2) = 8$, meaning $A = 1$. And from $B = \pm \sqrt{-2A^2 \pm\sqrt{8A^4 + 1}}$, we get $B = \pm 1$ which in turn means $m = a^2 - b^2 = 4A^4 - B^2 = 3$ and $m + 1 = 2ab = 4A^2B^2 = 4$, this translates to $x = 2m+1 = 7$.
+
+The other case is $2E^4 = C^4 - F^4$, again subtituting $C = u + v$ and $F = u-v$
+%
+\nbea
+2E^4 & = & (u + v)^4 - (u - v)^4 \\
+& = & 8uv(u^2 + v^2) \\
+\to E^4 & = & 4uv(u^2 + v^2)
+\neea
+%
+now $u$ is co-prime to $u^2 + v^2$ and $v$ is also co-prime to $u^2 + v^2$ also $u^2 + v^2$ is odd so it is also co-prime to $4$, therefore $4uv$ is co-prime to $u^2 + v^2$, thus
+%
+\nbea
+4uv & = & H^4 \\
+u^2 + v^2 & = & I^4
+\neea
+%
+but $u$ and $v$ are co-prime and of opposite parities, say $v$ is odd, from $4uv = H^4$ we must have $v = V^4$ and from the second equation we therefore have $u^2 + (V^2)^4 = I^4$ but again $Z^2 = Y^4 - X^4$ has only trivial solutions. Again the all zero solution is out because then $u = v = 0$ but they must be of opposite parities.
+
+The other trivial solution is $Y = I = 1 \to v = 1$ and $Z = v = 0$ and $X = u = 1$, this means $C = u + v = 1$ and $F = u - v = 1$ and $2E^4 = C^4 - F^4 = 1 - 1 = 0 \to E = 0$, which means one of $n$ or $n + 2$ is zero, which also means $8A^4 = n(n + 2) = 0 \to A = 0$ and $B = \pm \sqrt{-2A^2 \pm\sqrt{8A^4 + 1}} = \pm 1$. This means that $m = a^2 - b^2 = 4A^4 - B^2 = -1$ and $m + 1 = 2ab = 4A^2B^2 = 0$ and $x = 2m+1 = -1$ and this is FINALLY our last solution LOL.
 
 
 
+Since $t = c - d$
 
 
 
