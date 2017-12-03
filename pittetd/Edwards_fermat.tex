@@ -933,6 +933,57 @@ so the lesson is if some variable has the same values as a solution to a certain
 
 Another thing I tried was to reapply Pell's equation to $\sqrt{8A^4 + 1} = \sqrt{2(2A^2)^2 + 1}$ above. And it got nowhere fast, the results I got was that this also means that half of the solution to $y$ in $x^2 - 2y^2 = 1$ must also be a square, \ie $\frac{1}{2}y = h^2$. But again it got nowhere even faster. But on the flip side the result above (as long as I don't miss any assumptions in applying it to this case) shows that $\frac{1}{2}y$ with $y$ on the left of Table.~\ref{Tab:1} cannot be square :)
 
+My very first attempt was actually to use geometric series $1 + x + x^2 + x^3 = (x^4 - 1)/(x - 1)$ but then I wasn't sure what to do next.
+
+\bigskip
+\underline{\textbf{\textit{Basic and Extra Ingredients}}}
+
+The knowledge needed to solve this problem (my way) is
+\bit
+\item Factorization, $1 + x + x^2 + x^3 = (1 + x)(1 + x^2)$
+%
+\item Even odd classifications, what happens if $x$ is odd, what happens if $x$ is even
+%
+\item Pythagorean triples, $m^2 - n^2, 2mn, m^2 + n^2$
+%
+\item Quadratic formula, $\frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$
+%
+\item $Z^2 = Y^4 - X^4$ has only trivial solutions
+%
+\item Prime factorization implication, $8A^4 = n(n+2) \to n = 2C^4, n + 2 = 2^{4n+2}D^4$
+%
+\item Generalization, $2E^4 = C^4 - 1 \to 2E^4 = C^4 - F^4$ and find that the latter has no solution
+\eit
+%
+Note that I already knew all these, the trick is what to use and when :) and of course Pell's equation is not even needed
+
+
+\bigskip
+\underline{\textbf{\textit{Sinister problems :)}}}
+
+Sometimes I wonder, without knowing the above solution, what happens if the following problems are presented, would someone be able to solve them?
+\begin{enumerate}
+\item Prove that the following hypotenuses are all the hypotenuses of right triangles whose legs differ by one, 1, 5, 29, 169, 985, 5741, 33461, 195025, 1136689, etc or in other words they obey the following recurrence relation $h_{n+2} = 6h_{n+1} - h_n$
+%
+\item Prove that each number in the following sequence, 0, 1, 6, 35, 204, 1189, 6930, 40391, 235416, etc, is not a square, except for 0 and 1.
+\end{enumerate}
+
+I guess the lesson is that it's harder to prove that a sequence of numbers are not squares than to prove that certain equation $2E^4 = C^4 + F^4$ has no non-trivial integer solutions.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Since $t = c - d$
