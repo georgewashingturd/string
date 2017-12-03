@@ -816,9 +816,109 @@ The other trivial solution is $Y = I = 1 \to v = 1$ and $Z = v = 0$ and $X = u =
 
 
 
-\underline{\textbf{\textit{Pell's Equation Permutation}}}. 
+\underline{\textbf{\textit{Pell's Equation Permutation}}}. Obviously we encountered Pell's equations along the way of the form $x^2 - 2y^2 = \pm 1$ in this problem. So I learned a thing or two about solving Pell's equation, well not really in solving it because for that you'll need the Indian cyclic method or the English method but here is how we generate more solutions once we get the first one, note that
+%
+\nbea
+1 = x^2 - n y^2 & = & (x + \sqrt{n}y)(x - \sqrt{n}y)
+\neea
+%
+so say we get a first solution $x_0, y_0$ we can exponentiate it to get the $k^{\rm th}$ one, $(x_0 + \sqrt{n}y_0)^k = x_k + \sqrt{n}y_k$ (we can also choose to do it with a negative sign $(x_0 - \sqrt{n}y_0)^k = x_k - \sqrt{n}y_k$), this is why, from Pell's equation we know that
+%
+\nbea
+1 & = & (x_0 + \sqrt{n}y_0)(x_0 - \sqrt{n}y_0) \\
+\to 1^k & = & (x_0 + \sqrt{n}y_0)^k(x_0 - \sqrt{n}y_0)^k
+\neea
+%
+the two brackets on the RHS will yield the same $x_k, y_k$ because
+%
+\nbea
+(x_0 \pm \sqrt{n}y_0)^k & = & \sum_{i=0}^k (\pm 1)^i \binom{k}{i} x_0^{k-i} y_0^i n^{\frac{i}{2}} \\
+& = & \sum_{i=0}^{\floor{k/2}} (\pm 1)^{2i} \binom{k}{2i} x_0^{k-2i} y_0^{2i} n^{\frac{2i}{2}} + \sum_{i=0}^{\floor{(k-1)/2}} (\pm 1)^{2i+1} \binom{k}{2i+1} x_0^{k-2i-1} y_0^{2i+1} n^{\frac{2i+1}{2}} \\
+& = & \left\{\sum_{i=0}^{\floor{k/2}} \binom{k}{2i} x_0^{k-2i} y_0^{2i} n^{i}\right\} \pm \sqrt{n} \left\{\sum_{i=0}^{\floor{(k-1)/2}} \binom{k}{2i+1} x_0^{k-2i-1} y_0^{2i+1} n^{i}\right\} \\
+& = & x_k \pm \sqrt{n} y_k 
+\neea
+%
+we are just basically splitting the sum to even and odd indices, and we saw above that $(x_0 + \sqrt{n}y_0)^k$ and $(x_0 - \sqrt{n}y_0)^k$ generate the same $x_k, y_k$ such that when we multiply them
+%
+\nbea
+1^k & = & (x_0 + \sqrt{n}y_0)^k(x_0 - \sqrt{n}y_0)^k \\
+1 & = & (x_k + \sqrt{n}y_k)(x_k - \sqrt{n}y_k) \\
+& = & x_k^2 - n y_k^2
+\neea
+%
+For $n = 2$ we can use the above formula but more than that we can actually derive a recurrence relation $x_{n+2} = 6x_{n+1} - x_n$, the same applies to $y_{n+2} = 6y_{n+1} - y_n$. Although we also had the negative Pell's equation as well $x^2 - 2y^2 = \pm1$, the first 9 solutions can be found on Table.~\ref{Tab:1}. How do we prove this recurrence relation, say with induction?
+%
+\nbea
+x_{n+2}^2 - 2 y_{n+2}^2 & = & (6x_{n+1} - x_n)^2 - 2 (6y_{n+1} - y_n)^2 \\
+& = & (6^2 x_{n+1}^2 + x_n^2 - 2x_{n+1}x_n) - 2 (6^2 y_{n+1}^2 + y_n^2 - 2y_{n+1}y_n)
+\neea
+%
+The somewhat problematic terms here are the crossed ones
+%
+\nbea
+x_{n+1} x_n & = & (6 x_n - x_{n-1})x_n \\
+& = & 6x_n^2 - x_{n-1}x_n \\
+& = & 6 x_n^2 - x_{n-1}(6x_{n-1} - x_{n-2}) \\
+& = & 6 x_n^2 - 6 x_{n-1}^2 + \dots + (-1)^{n} x_1 x_0
+\neea
+%
+The same of course goes with $y_{n+2}$, going back to $x_{n+2}^2 - 2 y_{n+2}^2$ we get
+%
+\nbea
+x_{n+2}^2 - 2 y_{n+2}^2 & = & (6^2 x_{n+1}^2 + x_n^2 - 2\cdot 6 x_{n+1}x_n) - 2 (6^2 y_{n+1}^2 + y_n^2 - 2\cdot 6y_{n+1}y_n) \\
+& = & 6^2 (x_{n+1}^2 - 2 y_{n+1}^2) + (x_n^2 - 2y_n^2) - 12 (-1)^n(x_1 x_0 - 2 y_1 y_0) - 12 \sum_{i = 1}^n (-1)^{i+n} 6(x^2 - 2y^2) \\
+& = & \pm6^2 \pm 1 - 12 (-1)^n(x_1x_0 -2 y_1y_0) - 12 \sum_{i = 1}^n (-1)^{i+n} (\pm6)
+\neea
+%
+the $\pm6^2$, $\pm1$ in the middle and the $\pm6$ in the sum depend on $x^2 -2y^2 = \pm1$, the last sum is either $0$ or $\pm6$ depending on whether $n$ is even or odd respectively. So if $n$ is even we have
+%
+\nbea
+x_{n+2}^2 - 2 y_{n+2}^2 & = & \left \{
+\begin{array}{l l}
+6^2 + 1 - 12(1\cdot3 -2 0\cdot 2) = 1 &~~~~~{\rm for}~ x^2 - 2y^2 = 1 \\
+-6^2 - 1 - 12(1\cdot7 -2 \cdot1\cdot 5) = -1 &~~~~~{\rm for}~ x^2 - 2y^2 = -1
+\end{array}
+\right .
+\neea
+%
+if $n$ is odd we have
+%
+\nbea
+x_{n+2}^2 - 2 y_{n+2}^2 & = & \left \{
+\begin{array}{l l}
+6^2 + 1 + 12(1\cdot3 -2 0\cdot 2) -12\cdot6= 1 &~~~~~{\rm for}~ x^2 - 2y^2 = 1 \\
+-6^2 - 1 + 12(1\cdot7 -2 \cdot1\cdot 5) + 12 \cdot 6 = -1 &~~~~~{\rm for}~ x^2 - 2y^2 = -1
+\end{array}
+\right .
+\neea
+%
+and the induction is complete (note that we get the values for $x_0,x_1,y_0,y_1$ from Table.~\ref{Tab:1} above).
 
-Right triangles with legs differing by one,
+%
+\begin{table}[]
+\centering
+\caption{Solutions to left $x^2 - 2y^2 = 1$ and right $x^2 - 2y^2 = -1$}
+\label{Tab:1}
+\begin{tabular}{|c|c|c|c|}
+\hline
+~~~$x$~~~ & ~~~$y$~~~ & ~~~$x$~~~ & ~~~$y$~~~  \\ \hline 
+1 & 0 & 1 & 1 \\
+3 & 2 & 7 & 5 \\
+17 & 12 & 41 & 29 \\ 
+99 & 70 & 239 & 169 \\
+577 & 408 & 1393 & 985 \\
+3363 & 2378 & 8119 & 5741 \\
+19601 & 13860 & 47321 & 33461 \\
+114243 & 80782 & 275807 & 195025 \\
+665857 & 470832 & 1607521 & 1136689 \\
+\hline
+\end{tabular}
+\end{table}
+%
+
+I initially wanted to show that the solutions to $x^2 - 2y^2 = \pm1$ are actually not biquadratic, \ie I wanted to show that $x$ (or maybe $y$ can't remember which one) cannot be a square. I tried using any odd methods, like listing all the values and then modding them mod 10, 4, 6, 16, etc because for a number to be square it must be $0,1,4,9$ mode 16, $1,3$ mod 6, etc, but there's always a number that satisfy all of them mods LOL. I also tried showing that $x^2 - 2(y^2)^2 = -1$ has no solution but I was wrong since from Table.~\ref{Tab:1} we see that we have $y^2 = 169$, the thing is that we had more constraints, \ie $x = 2A^2 - B^2$ and this is the one not satisfied by this particular solution.
+
+Another thing I noticed was that the rightmost $y$ in Table.~\ref{Tab:1} is also the hypotenuse of a right triangle whose legs differ by one. Note that we initially had $m^2 + (m+1)^2 = Y^2$ and $m=2ab$, $m+1 = a^2 - b^2$ or the other way round, and it generates the Pell's equations $(a-b)^2 - 2b^2 = \pm1$. But the funny thing is that the hypotenuse itself, as a result of these Pell's equation, has the values of the solutions of the Pell's equations themselves, it looked mysterious but it is actually not, because the hypotenuse itself also obeys the same Pell's equation, because
 %
 \nbea
 x^2 + (x+1)^2 & = & y^2 \\
@@ -826,14 +926,12 @@ x^2 + (x+1)^2 & = & y^2 \\
 (2x + 1)^2 - 2x^2 - 2x & = & y^2 \\
 (2x + 1)^2 - 2x^2 - 2x -1 + 1 & = & y^2 \\
 (2x + 1)^2 - y^2 + 1 & = & y^2 \\
-\to 1 & = & 2y^2 - (2x + 1)^2
+\to (2x + 1)^2 - 2y^2 & = & -1
 \neea
 %
+so the lesson is if some variable has the same values as a solution to a certain equation, then it {\it must} also be a solution :)
 
-
-$x_{n+2} = 6 x_{n+1} - x_n$
-
-$b^2 - 2d^2 = 1$, if $d = 2h^2$ then there's no non-trivial solution.
+Another thing I tried was to reapply Pell's equation to $\sqrt{8A^4 + 1} = \sqrt{2(2A^2)^2 + 1}$ above. And it got nowhere fast, the results I got was that this also means that half of the solution to $y$ in $x^2 - 2y^2 = 1$ must also be a square, \ie $\frac{1}{2}y = h^2$. But again it got nowhere even faster. But on the flip side the result above (as long as I don't miss any assumptions in applying it to this case) shows that $\frac{1}{2}y$ with $y$ on the left of Table.~\ref{Tab:1} cannot be square :)
 
 
 
