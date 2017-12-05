@@ -774,11 +774,44 @@ putting this into the definition of $\mathcal{Q}$
 \mathcal{Q} & = & \frac{P + QR}{|K|} \\
 & = & \frac{P - Qr + Q(R + r)}{|K|} \\
 & = & \frac{-{\rm sgn}(k) qK + Qn|K|}{|K|} \\
-& = & Qn - {\rm sgn}(k){\rm sgn}(K) qK
+& = & Qn - {\rm sgn}(k){\rm sgn}(K) q
 \neea
 %
 
 {\bf Page 34, Problem 7}. We need to show that if two consecutive $k$'s have the same absolute values we have $pP + AqQ$ and $pQ + qP$ both divisible by $k$.
+
+%
+\nbea
+p^2 - Aq^2 = k
+\neea
+%
+
+%
+\nbea
+P^2 - AQ^2 & = & K, ~~~~~~~ K = \pm k \\
+\to (P^2 \mp p^2) & = & A(Q^2 \pm q^2) 
+\neea
+%
+
+this also means that $r^2 - A = \pm k^2$
+
+%
+\nbea
+pP + qQ & = & p(Qr - sqK) + qQ \\
+& = & pQ(r+R) - pQR - spqK + qQ \\
+& = & Q(-pR ) \\
+\neea
+%
+
+%
+\nbea
+pP + qQ & = & p(pr + qA) + q(p + qr) \\
+& = & pQ(r+R) - pQR - spqK + qQ \\
+& = & Q(-pR ) \\
+\neea
+%
+
+
 %
 \nbea
 P -Qr & = & -{\rm sgn}(k)q K \\
@@ -790,6 +823,29 @@ P -Qr & = & -{\rm sgn}(k)q K \\
 pP + AqQ & = & p(Qr -{\rm sgn}(k)q K) + AqQ \\
 & = & Q(pr + Aq) - {\rm sgn}(k)pq K \\
 & = & QP - {\rm sgn}(k)pq K \\
+& = & (p + qr)(pr + qA) - {\rm sgn}(k)pq K \\
+& = & p^2r + pqA + pqr^2 + q^2A - {\rm sgn}(k)pq K \\
+\neea
+%
+
+%
+\nbea
+& = & p^2r + pqA + pqr^2 + q^2A \\
+& = & p^2(r + R) - p^2R + pqA + pqr^2 + q^2A \\
+& = & p^2(r + R) - p^2R + 2pqA + pq(r^2 - A) + q^2A \\
+& = & p^2(r + R) + pq(r^2 - A) - p^2R  - p^2A +A( p + q)^2 \\
+\neea
+%
+
+
+
+%
+\nbea
+pP + AqQ & = & \frac{pP|k| + Aq(p + qr)}{|k|} \\
+& = & \frac{p(P|k| Aq) + Aq^2r}{|k|} \\
+& = & \frac{p(P|k| Aq) + Aq^2(r+R) - Aq^2R}{|k|} \\
+& = & \frac{Aqp(P|k| - qR) + Aq^2(r+R)}{|k|} \\
+& = & \frac{Aqp((pr + qA)|k| - qR) + Aq^2(r+R)}{|k|} \\
 \neea
 %
 
@@ -799,6 +855,9 @@ pP + AqQ & = & \frac{p(pr + qA) + Aq(p + qr)}{|k|} \\
 & = & \frac{(p^2 + Aq^2)r + 2pqA}{|k|} \\
 & = & \frac{(p^2 - Aq^2)r + 2 Aq^2r + 2pqA}{|k|} \\
 & = & \frac{(p^2 - Aq^2)r + 2 Aq(qr + p)}{|k|} \\
+& = & \frac{kr + 2 Aq(qr + p)}{|k|} \\
+& = & \pm r + 2 AqQ \\
+pP & = & \pm r + AqQ
 \neea
 %
 
