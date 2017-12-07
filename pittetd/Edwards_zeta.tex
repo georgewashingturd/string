@@ -1329,13 +1329,48 @@ since $\mu(n) = (-1)^{k}$ and we are done.
 
 
 
+{\bf Page}. Symmetries of the ``zeta'' $\xi(s)$ function, we know that $\xi(s) = \xi(1-s)$, but what about $\xi(\overline{s})$?
 
+Integral along the small circle
+%
+\nbea
+\oint_c \frac{(-x)^{s-1}}{e^x - 1} dx  = \oint_c \frac{e^{-x}}{1 - e^{-x}} (-x)^{s-1}dx & = & \sum_n \oint_c e^{-x} e^{-nx} (-x)^{s-1} dx \\
+& = & \sum_n \oint_c e^{-x(n+1)} (-x)^{s-1} dx \\
+\neea
+%
+set $y = (n+1)x$
+%
+\nbea
+\sum_n \oint_c e^{-x(n+1)} (-x)^{s-1} dx & = & -\sum_{n=0}^\infty \frac{(-1)^s}{(n+1)^{s}} \oint_c  e^{-y} y^{s-1} dy \\
+\neea
+%
+now
+%
+\nbea
+\oint_c  e^{-y} y^{s-1} dy & = & \sum_{k=0} \oint_c \frac{(-y)^{k+s-1}}{k!} dy \\
+& = & \sum_{k=0} \oint_c \frac{(-c e^{i\theta})^{k+s-1}}{k!} ce^{i\theta}id\theta \\
+& = & \sum_{k=0} i \oint_c \frac{(-1)^{k+s-1}c^{k+s} e^{i\theta(k+s)}}{k!} d\theta \\
+& = & -\sum_{k=0} \frac{(-c)^{k+s}}{k!(k+s+1)} \left. e^{i\theta(k+s)}\right|_0^{2\pi} \\
+& = & -\sum_{k=0} \frac{(-c)^{k+s}}{k!(k+s+1)} (e^{i2\pi(k+s)} - 1) \\
+& = & -\sum_{k=0} \frac{(-c)^{k+s}}{k!(k+s+1)} (e^{i2\pi(k+\sigma+it)} - 1) \\
+& = & -\sum_{k=0} \frac{(-c)^{k+s}}{k!(k+s+1)} (e^{-2\pi t}e^{i2\pi(k+\sigma)} - 1) \\
+& = & -e^{-2\pi t}\sum_{k=0} \frac{(-c)^{k+s}}{k!(k+s+1)} \left(e^{i2\pi(k+\sigma)} - \frac{1}{e^{-2\pi t}}\right) \\
+\neea
+%
 
+%
+\nbea
+\sum_n \oint_c e^{-x(n+1)} (-x)^{s-1} dx & = & \sum_{n=0}^\infty \frac{1}{(n+1)^{s}} \sum_{k=0} \frac{(-1)^k c^{k+s}}{k!(k+s+1)} (e^{i2\pi(k+s)} - 1)
+\neea
+%
 
-
-
-
-
+%
+\nbea
+\int_1^3 e^{-y} y^{s} dx & = & \int_1^2 e^{-y} y^{s} dx + \int_2^3 e^{-y} y^{s} dx \\
+\to \int_1^2  e^{-y} y^{s} dx & = & \int_1^2 \sum_{k=0} \frac{(-y)^{k+s}}{k!} dx \\
+& = & \sum_{k=0} \frac{(-1)^{k+s}}{k!(k+s+1)} (2^{k+s+1} - 1)
+\neea
+%
 
 
 
