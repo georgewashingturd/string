@@ -1329,49 +1329,90 @@ since $\mu(n) = (-1)^{k}$ and we are done.
 
 
 
-{\bf Page}. Symmetries of the ``zeta'' $\xi(s)$ function, we know that $\xi(s) = \xi(1-s)$, but what about $\xi(\overline{s})$?
+{\bf Page}. Symmetries of the ``zeta'' $\xi(s)$ function, we know that $\xi(s) = \xi(1-s)$, but what about $\xi(\overline{s})$? For $\sigma > 1$ we know that $\zeta(\overline{s}) = \overline{\zeta(s)}$, how about for the rest $\sigma \le 1$?
 
-Integral along the small circle
+Let me state the answer first and how I got it and then go for the difficulties I had. The analytically continued $\zeta(s)$ can be expanded in Laurent series about $s=1$, note that Laurent expansion is not Taylon series, it doesn't have radius on convergence since also includes poles, so the singularities are included. To have $\zeta(\overline{s}) = \overline{\zeta(s)}$ we must have the coefficient of the Laurent series to be real
 %
 \nbea
-\oint_c \frac{(-x)^{s-1}}{e^x - 1} dx  = \oint_c \frac{e^{-x}}{1 - e^{-x}} (-x)^{s-1}dx & = & \sum_n \oint_c e^{-x} e^{-nx} (-x)^{s-1} dx \\
-& = & \sum_n \oint_c e^{-x(n+1)} (-x)^{s-1} dx \\
+\zeta(s) & = & \sum_{k=-1}^\infty a_k (s-1)^k \\
+\to \overline{\zeta(s)} & = & \sum_{k=-1}^\infty \overline{a_k (s-1)^k} \\
+& = & \sum_{k=-1}^\infty a_k (\overline{s}-1)^k
 \neea
 %
-set $y = (n+1)x$
+we can get to the last line only if the $a_k$'s are all real, which will be our task to show that it is so.
+
+For $s$ real and $s > 1$, we know that $\zeta(s)$ is real, this can mean two things, either all the $a_k$'s are all real, or that the imaginary parts cancel out at the end, since $s$ is real we can split
 %
 \nbea
-\sum_n \oint_c e^{-x(n+1)} (-x)^{s-1} dx & = & -\sum_{n=0}^\infty \frac{(-1)^s}{(n+1)^{s}} \oint_c  e^{-y} y^{s-1} dy \\
+\zeta(s) & = & \Re\left\{\sum_{k=-1}^\infty a_k (s-1)^k\right\} + i\Im\left\{ \sum_{k=-1}^\infty a_k (s-1)^k \right\} \\
+& = & \sum_{k=-1}^\infty a^{\rm Re}_k (s-1)^k + i\sum_{k=-1}^\infty a^{\rm Im}_k (s-1)^k \\
+\to 0 & = & \sum_{k=-1}^\infty a^{\rm Im}_k (s-1)^k
 \neea
 %
-now
+To show that each of the $a^{\rm Im}_k$ we need a result (from algebra?) that says that a polynomial that is zero for all $x\in [c,d]$, $d > c$, must be exactly zero, \ie each coefficient is zero. While it seems intuitive I was looking for a way show it more formally somehow. The other complication here is that we start with $\frac{1}{s-1}$ instead with a constant. But an even bigger problem is that this is not just a polynomial of degree $n$, this is an infinite power series. So my meandering led me to a few things. First, let's start with the solution. What we have is an infinite power series, multiplying both sides with $(s-1)$
 %
 \nbea
-\oint_c  e^{-y} y^{s-1} dy & = & \sum_{k=0} \oint_c \frac{(-y)^{k+s-1}}{k!} dy \\
-& = & \sum_{k=0} \oint_c \frac{(-c e^{i\theta})^{k+s-1}}{k!} ce^{i\theta}id\theta \\
-& = & \sum_{k=0} i \oint_c \frac{(-1)^{k+s-1}c^{k+s} e^{i\theta(k+s)}}{k!} d\theta \\
-& = & -\sum_{k=0} \frac{(-c)^{k+s}}{k!(k+s+1)} \left. e^{i\theta(k+s)}\right|_0^{2\pi} \\
-& = & -\sum_{k=0} \frac{(-c)^{k+s}}{k!(k+s+1)} (e^{i2\pi(k+s)} - 1) \\
-& = & -\sum_{k=0} \frac{(-c)^{k+s}}{k!(k+s+1)} (e^{i2\pi(k+\sigma+it)} - 1) \\
-& = & -\sum_{k=0} \frac{(-c)^{k+s}}{k!(k+s+1)} (e^{-2\pi t}e^{i2\pi(k+\sigma)} - 1) \\
-& = & -e^{-2\pi t}\sum_{k=0} \frac{(-c)^{k+s}}{k!(k+s+1)} \left(e^{i2\pi(k+\sigma)} - \frac{1}{e^{-2\pi t}}\right) \\
+0 & = & \sum_{k=0}^\infty a_{k-1}^{\rm Im} (s-1)^k 
 \neea
 %
-
+the good news is that a Taylor series is also an infinite power series so we can think of this as a Taylor expansion of a function
 %
 \nbea
-\sum_n \oint_c e^{-x(n+1)} (-x)^{s-1} dx & = & \sum_{n=0}^\infty \frac{1}{(n+1)^{s}} \sum_{k=0} \frac{(-1)^k c^{k+s}}{k!(k+s+1)} (e^{i2\pi(k+s)} - 1)
+f(s) & = & f(1) + f'(1)(s-1) + \frac{f''(s)}{2!}(s-1)^2 + \frac{f'''(s)}{3!}(s-1)^3 + \cdots \\
+& = & \sum_{k=0}^\infty a_{k-1}^{\rm Im} (s-1)^k \\
+\to f^{(k)}(1) & = & a_{k-1}^{\rm Im}
 \neea
 %
-
+but in the interval $s \in (1,\infty]$, $f(s) = 0$, this means $f(s)$ is a constant, which also means that its derivative is also constant, \ie 0, which means that the second derivative must be zero as well, and so on and so $f'(s) = f''(s) = \dots = f^{(k)} = 0$. Which means that each $a_{k-1}^{\rm Im} = 0$. Therefore
 %
 \nbea
-\int_1^3 e^{-y} y^{s} dx & = & \int_1^2 e^{-y} y^{s} dx + \int_2^3 e^{-y} y^{s} dx \\
-\to \int_1^2  e^{-y} y^{s} dx & = & \int_1^2 \sum_{k=0} \frac{(-y)^{k+s}}{k!} dx \\
-& = & \sum_{k=0} \frac{(-1)^{k+s}}{k!(k+s+1)} (2^{k+s+1} - 1)
+\overline{\zeta(s)} & = & \zeta(\overline{s})
 \neea
 %
 
+\bigskip
+\underline{\textbf{\textit{Erroneous Excursions}}}
+
+So I initally wanted to show the above by showing that if a polynomial of degree $N$ is zero in the interval $[c,d]$ then it must be exactly zero, although the proof below should be OK, it doesn't apply to an infinite power series, which can also be seen from how the proof goes.
+
+{\bf Polynomial Proposition}. Suppose that a polynomial of degree $N$, $\sum_{n=0}^N b_n y^n$ is zero for all $y \in [c,d]$. We can think of the polynomial as a function $f(y) = \sum_{n=0}^N b_n y^n$ then for this interval the function $f(y)$ is constant (which is zero in this case). This also means that the derivative $f^{(1)}(y)$ 
+%
+\nbea
+f^{(1)}(y) & = & \sum_{n=1}^N n b_n y^{n-1} = 0
+\neea
+%
+is also zero in this interval (sans the endpoints). Repeating the argument $N-1$ times we get $f^{(N-1)}(y) = N! b_N = 0$, which means that the highest coefficient $b_N$ is zero. Going back to the beginning, repeating the arguments over again we get $b_{N-1} = 0$, $b_{N-2} = 0, \dots b_0 = 0$, \ie each of the coefficient to be zero, thus the whole polynomial is exactly zero.
+
+We can apply the same argument for a polynomial that is equal to a constant instead of zero, $\sum_{n=0}^N b_n y^n = C$. We just need to set $b_0 \to b_0 - C$, again, each coefficient must be zero, including $b_0 - C = 0$, thus the polynomial is just a constant $b_0 = C$.
+
+We can employ the same strategy for polynomial that starts with a negative power $\sum_{k=-M}^N b_k y^k$, since the whole thing is equal zero we just need to multiply the whole thing with $y^M$, if the interval contains zero we just need to split the interval $[c,0),(0,d]$ and focus on one of them.
+
+Other ways I was trying to show that $a_{k}^{\rm Im} = 0$, is to calculate the analytically continued integral explicitly as a function of $s$. There are at least a couple of difficulty with this
+%
+\begin{enumerate}
+%
+\item We need to set the value of $s$ before doing the integral $\int_{+\infty}^{+\infty}\frac{(-x)^{s-1}}{e^x - 1}$. We can't just integrate it and then set $s$, this is especially true for the small circle integral as we will see.
+%
+\item Even if we can do the integral first, doing the integral itself doesn't really give anything useful, one problem is that the final result must be independent of the small circle radius $c$, but to show that this is so is not straightforward.
+%
+\end{enumerate}
+%
+Let's see what happens when we integrate the small circle, we can actually do this with the help of the Bernoulli numbers
+%
+\nbea
+\lim_{\epsilon\to0} \int_{0+\epsilon}^{2\pi-\epsilon} \frac{(-x)^{s}}{e^x - 1} \frac{dx}{x} & = & \lim_{\epsilon\to0} \int_{0+\epsilon}^{2\pi-\epsilon} (-x)^{s-2}\frac{x}{e^x - 1} dx \\
+& = & \lim_{\epsilon\to0} \int_{0+\epsilon}^{2\pi-\epsilon} (-x)^{s-2} \sum_{n=0} \frac{B_n x^n}{n!} dx \\
+& = & \lim_{\epsilon\to0} \sum_{n=0} (-1)^{s}\int_{0+\epsilon}^{2\pi-\epsilon} \frac{B_n x^{s+n-2}}{n!} dx \\
+& = & \lim_{\epsilon\to0} \sum_{n=0} (-1)^{s} i \int_{0+\epsilon}^{2\pi-\epsilon} \frac{B_n (ce^{i\theta})^{s+n-2}}{n!} (ce^{i\theta}) d\theta \\
+& = & \lim_{\epsilon\to0} \sum_{n=0} (-1)^{s} \frac{B_n c^{s + n - 1}}{n! (s + n-1)} (e^{i (2\pi - \epsilon)(s+n-1)} - e^{i (0 + \epsilon)(s+n-1)}) \\
+& = & \sum_{n=0} (-1)^{s} \frac{B_n c^{s + n - 1}}{n! (s + n-1)} (e^{i 2\pi (s+n-1)} - 1)
+\neea
+%
+Here we see the first problem, if we set $s$ to be a negative integer before the integration we will get the values of $\zeta(-n)$ but if we do it after the integration we will just get zero since $e^{2\pi i(s + n - 1)} = 1$ if $s + n - 1$ is an integer.
+
+Say $s$ is not an integer so we can still do the integral, the problem is that this is a function of $c$ (and it is obvious that the complex conjugate of this integral is not the same as the integral of $\overline{s}$ because conjugating $e^{2\pi i(s + n - 1)}$ will not only turn $s \to \overline{s}$ but also adding a negative sign in front of the $i$).
+
+To remove the dependency on $c$, we can integrate the rest of the integrals $\int_c^\infty \frac{(-x)^{s-1}}{e^x - 1}$, however, if we expand it using Bernoulli's numbers, the final integral we get will be of the form $\int_c^\infty x^{s + n -2}$ and the upper limit will give us issues.
 
 
 
@@ -1379,6 +1420,21 @@ now
 
 
 
+
+
+
+
+
+$\sum 1/\rho$ need not be in pair, counter example
+
+
+
+res f, only is f is holomorphic, no branch cut nothing
+
+two ways to see if zeta is $z(\bar s) = \bar {z(s)}$
+product formula, from formula for $\sum \frac{1}{\rho}$ and von magoldt's result, the RHS is real so it must come in conjugate pairs.
+and the small circle can be calculated using Bernoulli numbers
+Riemann's smart move to calculate $s < 0$ by using $1-s$
 
 
 
