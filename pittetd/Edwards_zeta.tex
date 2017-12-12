@@ -1373,7 +1373,7 @@ but in the interval $s \in (1,\infty]$, $f(s) = 0$, this means $f(s)$ is a const
 \bigskip
 \underline{\textbf{\textit{Erroneous Excursions}}}
 
-So I initally wanted to show the above by showing that if a polynomial of degree $N$ is zero in the interval $[c,d]$ then it must be exactly zero, although the proof below should be OK, it doesn't apply to an infinite power series, which can also be seen from how the proof goes.
+So I initially wanted to show the above by showing that if a polynomial of degree $N$ is zero in the interval $[c,d]$ then it must be exactly zero, although the proof below should be OK, it doesn't apply to an infinite power series, which can also be seen from how the proof goes.
 
 {\bf Polynomial Proposition}. Suppose that a polynomial of degree $N$, $\sum_{n=0}^N b_n y^n$ is zero for all $y \in [c,d]$. We can think of the polynomial as a function $f(y) = \sum_{n=0}^N b_n y^n$ then for this interval the function $f(y)$ is constant (which is zero in this case). This also means that the derivative $f^{(1)}(y)$ 
 %
@@ -1385,7 +1385,15 @@ is also zero in this interval (sans the endpoints). Repeating the argument $N-1$
 
 We can apply the same argument for a polynomial that is equal to a constant instead of zero, $\sum_{n=0}^N b_n y^n = C$. We just need to set $b_0 \to b_0 - C$, again, each coefficient must be zero, including $b_0 - C = 0$, thus the polynomial is just a constant $b_0 = C$.
 
-We can employ the same strategy for polynomial that starts with a negative power $\sum_{k=-M}^N b_k y^k$, since the whole thing is equal zero we just need to multiply the whole thing with $y^M$, if the interval contains zero we just need to split the interval $[c,0),(0,d]$ and focus on one of them.
+We can employ the same strategy for a polynomial that starts with a negative power $\sum_{k=-M}^N b_k y^k$, since the whole thing is equal zero we just need to multiply the whole thing with $y^M$, if the interval contains zero we just need to split the interval $[c,0),(0,d]$ to avoid multiplying by zero and focus on one of them since if it is exactly zero in one of the intervals, then it is zero everywhere.
+
+{\bf Another Fundamental Proposition}. We can use the above differentiation strategy to show a weaker form of the fundamental theorem of algebra, \ie a polynomial of degree $n$ has at most $n$ real roots. The fundamental theorem asserts there are exactly $n$ complex roots but we are only interested in reality :)
+
+We can use the above together with induction and an observation that to have more than one zeros we must have extremum points.
+
+Induction base is the case of polynomial of degree one, $a_1 x + a_0 = 0$, thus there is only one zero at $x = -a_0/a_1$. Inductive hypothesis is that up to degree $N$ the number of roots is at most the degree of the polynomial. Now we tackle $N+1$. Between any two consecutive zeros there must be an extremum between them, \ie the derivative must have a zero between them. But the derivative of a polynomial of degree $N+1$ is a polynomial of degree $N$ and by the inductive hypothesis this polynomial can have at most $N$ zeros, since the number of zeros is just the number of extrema plus one, the original polynomial of degree $N+1$ can at most have $N+1$ zeros. The argument still applies in even the case where we have multiple roots, in this case the roots are at the extremum itself.
+
+As to why they always have roots complex roots, intuitively you can see that since a polynomial is analytic, it obeys the Riemann-Cauchy condition, \ie it's a harmonic function, therefore a maxima in the real line must be a minima in the imaginary line, since a holomorphic function cannot have true maxima/minima, it only has saddle points thanks to Riemann-Cauchy equation.
 
 Other ways I was trying to show that $a_{k}^{\rm Im} = 0$, is to calculate the analytically continued integral explicitly as a function of $s$. There are at least a couple of difficulty with this
 %
