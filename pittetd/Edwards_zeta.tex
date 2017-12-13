@@ -206,6 +206,9 @@
 \newcommand{\mwrecmax}{m_{WW}^{\rm max}}
 
 \newcommand{\mpt}{{\rlap/p}_T}
+% \def overrides \Im
+\def\Im{\rm Im}
+\newcommand{\re}{\rm Re}
 
 %%%%%% END My stuffs - Stef
 
@@ -214,7 +217,7 @@
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 \DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
 
-\DeclareMathOperator{\re}{Re}
+%\DeclareMathOperator{\re}{Re}
 
 
 \begin{document}
@@ -1427,7 +1430,91 @@ To remove the dependency on $c$, we can integrate the rest of the integrals $\in
 
 
 
+%
+\begin{figure}
+\centering
+  \includegraphics[width=1.00\linewidth]{Saddle_Point_Contour.png}
+  \caption{Contour of integration used for the saddle point method.}
+\label{fig:Saddle_Point_Contour}
+\end{figure}
+%
 
+
+
+
+
+We don't have to use Taylor expansion, we just need to massage it into a power series.
+
+
+
+
+
+
+
+
+
+
+
+
+
+So the contour used for this saddle point is a peculiar one, see Fig.~\ref{fig:Saddle_Point_Contour}, it starts from infinity, $a + \infty\cdot e^{i\pi/4}$ to $a - \frac{1}{2}|a|e^{i\pi/4}$, vertically down to the line $Im(x) = (2N+1)\pi$ and to infinity again on this same line. The goal is to show that only the integral on the segment $L_1$ is significant.
+
+
+To make sense of this integral, first do the following variable substitution, $x = a + k e^{i\pi/4}, dx = dk$ with $a = i(2\pi t)^{1/2}$ and $k$ starting from $\frac{1}{2} |a|$, again see Fig.~\ref{fig:Saddle_Point_Contour}, note also that we are taking the modulus, so we can flip the integration direction to go from $a$ to infinity rather than from infinity to $a$, therefore the integral becomes
+%
+\nbea
+\left | \int_{L_0} \frac{dx}{e^x - 1} \right | = \left | \int_{-L_0} \frac{dx}{e^x - 1} \right | & \le & \int_{L_0} \frac{|dx|}{|e^x - 1|} \\
+& = & \int_{\frac{1}{2}(2\pi t)^{1/2}}^\infty \frac{|dk|}{|e^x - 1|} \\
+& = & \int_{\frac{1}{\sqrt{2}}(\pi t)^{1/2}}^\infty \frac{dk}{|e^{a + k e^{i\pi/4}} - 1|}
+\neea
+%
+Now we use the less famous triangle inequality $|a- b| \ge |a| - |b|$
+%
+\nbea
+|e^{a + k e^{i\pi/4}} - 1| & \ge & |e^{a + k e^{i\pi/4}}| - 1 \\
+& = & |e^{a}||e^{k \cos (\pi/4) + i k \sin(\pi 4)}| - 1 \\
+& = & e^{\frac{1}{\sqrt{2}}k } - 1
+\neea
+%
+We can now do another variable change $u = \frac{1}{\sqrt{2}} k, dk = \sqrt{2} du$ and the integral becomes
+%
+\nbea
+\int_{\frac{1}{\sqrt{2}}(\pi t)^{1/2}}^\infty \frac{dk}{e^{\frac{1}{\sqrt{2}}k } - 1} & = & \int_{\frac{1}{\sqrt{2}}\frac{1}{\sqrt{2}}(\pi t)^{1/2}}^\infty \frac{\sqrt{2} du}{e^{u} - 1} \\
+& = & \int_{\frac{1}{2}(\pi t)^{1/2}}^\infty \frac{\sqrt{2} du}{e^{u} - 1} \\
+& = & \int_{\frac{1}{2}(\pi t)^{1/2}}^\infty \frac{e^{-u}\sqrt{2} du}{1 - e^{-u}}
+\neea
+%
+The way I figured out this integral is by noting that integration along $k$ is somewhat like integration along the dotted line $u$ in Fig.~\ref{fig:Saddle_Point_Contour} but we need to of course take care of the fact that (from the triangle they form) the line $u$ is $\frac{1}{\sqrt{2}} k$.
+
+
+
+
+
+
+
+
+
+
+Dealing with log in the complex plane is a bit tricky, for example
+%
+\nbea
+\Im{(\log(-1)\log(-1))} & = & \Im{(\log(1))}
+\neea
+%
+but
+%
+\nbea
+\Im{(\log(-1)\log(-1))} & = & \Im{(i\pi + i\pi)} \\
+& = & 2\pi
+\neea
+%
+so we need to be careful, the same applies here
+%
+\nbea
+\Im{(\log(-x))} & = & \Im{(i\pi + \log(x))}
+\neea
+%
+Thus the minimum of $\Im{(\log(-x))}$ is at the beginning of $L_2$, see Fig.~\ref{fig:Saddle_Point_Contour}. If we forgot about this funny fact about log in the complex plane we might think that the minimum of $\Im(\log(-x))$ is at the end of $L_2$, because $-x$ would then be on the first quadrant and $\Im{(\log)}$ of it will be less than $\frac{\pi}{2}$. 
 
 
 
