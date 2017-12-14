@@ -1334,7 +1334,7 @@ since $\mu(n) = (-1)^{k}$ and we are done.
 
 {\bf Page}. Symmetries of the ``zeta'' $\xi(s)$ function, we know that $\xi(s) = \xi(1-s)$, but what about $\xi(\overline{s})$? For $\sigma > 1$ we know that $\zeta(\overline{s}) = \overline{\zeta(s)}$, how about for the rest $\sigma \le 1$?
 
-Let me state the answer first and how I got it and then go for the difficulties I had. The analytically continued $\zeta(s)$ can be expanded in Laurent series about $s=1$, note that Laurent expansion is not Taylon series, it doesn't have radius on convergence since also includes poles, so the singularities are included. To have $\zeta(\overline{s}) = \overline{\zeta(s)}$ we must have the coefficient of the Laurent series to be real
+Let me state the answer first and how I got it and then go for the difficulties I had. The analytically continued $\zeta(s)$ can be expanded in Laurent series about $s=1$, note that Laurent expansion is not Taylor series, it doesn't have radius on convergence since it also includes poles, so the singularities are included. To have $\zeta(\overline{s}) = \overline{\zeta(s)}$ we must have the coefficient of the Laurent series to be real
 %
 \nbea
 \zeta(s) & = & \sum_{k=-1}^\infty a_k (s-1)^k \\
@@ -1372,6 +1372,23 @@ but in the interval $s \in (1,\infty]$, $f(s) = 0$, this means $f(s)$ is a const
 \overline{\zeta(s)} & = & \zeta(\overline{s})
 \neea
 %
+I initially wanted to show that this is the case through two things, one, that we know the sum $\sum_{\rho} \frac{1}{\rho}$ given in chapter 3 to be real, thus the imaginary parts have to cancel. But this doesn't mean that they come in conjugate pairs, for example  we have two complex numbers, $ae^{i\theta_a}$ and $be^{i\theta_b}$ then
+%
+\nbea
+\frac{1}{a e^{i\theta_a}} + \frac{1}{b e^{i\theta_b}} & = & a^{-1} e^{-i\theta_a} + b^{-1} e^{-i\theta_b} \\
+& = & (a^{-1} \cos(\theta_a) + b^{-1} \cos(\theta_b)) + i(a^{-1}\sin(\theta_a) + b^{-1}\sin(\theta_b))
+\neea
+%
+and as long as $b^{-1} = -\frac{\sin(\theta_a)}{a \sin(\theta_b)}$ we have the RHS to be real but they don't form a conjugate pair.
+
+Then I wanted to use the von-Mangoldt's $\psi(x)$ that includes $\sum_\rho \frac{x^\rho}{\rho}$, again the LHS, $\psi(x)$, is real but again, they don't need to form conjugate pairs to cancel out, they just need to cancel out like above, just messier algebra
+%
+\nbea
+\frac{x^{\sigma_1 + it_1}}{\sigma_1 + it_1} + \frac{x^{\sigma_2 + it_2}}{\sigma_2 + it_2} & = & \frac{x^{\sigma_1 + it_1}}{\sigma_1^2 + t_1^2} + \frac{x^{\sigma_2 + it_2}}{\sigma_2^2 + t_2^2} = \frac{x^{\sigma_1 + it_1}}{\rho_1^2} + \frac{x^{\sigma_2 + it_2}}{\rho_2^2} \\
+& = & \frac{\rho_2^2 x^{\sigma_1} \cos(t_1 \log x) + \rho_1^2 x^{\sigma_2} \cos(t_2 \log x) + i (\rho_2^2 x^{\sigma_1} \sin(t_1 \log x) + \rho_2^2 x^{\sigma_2} \sin(t_2 \log x))}{\rho_1^2\rho_2^2}
+\neea
+%
+by adjusting $t_1$ or $t_2$ we can cancel the imaginary part but they don't have to be a conjugate pair.
 
 \bigskip
 \underline{\textbf{\textit{Erroneous Excursions}}}
@@ -1443,7 +1460,7 @@ To remove the dependency on $c$, we can integrate the rest of the integrals $\in
 
 
 
-We don't have to use Taylor expansion, we just need to massage it into a power series.
+{\bf Page }. We don't have to use Taylor expansion, we just need to massage it into a power series.
 
 
 
@@ -1457,8 +1474,7 @@ We don't have to use Taylor expansion, we just need to massage it into a power s
 
 
 
-So the contour used for this saddle point is a peculiar one, see Fig.~\ref{fig:Saddle_Point_Contour}, it starts from infinity, $a + \infty\cdot e^{i\pi/4}$ to $a - \frac{1}{2}|a|e^{i\pi/4}$, vertically down to the line $Im(x) = (2N+1)\pi$ and to infinity again on this same line. The goal is to show that only the integral on the segment $L_1$ is significant.
-
+{\bf Page }. So the contour used for this saddle point is a peculiar one, see Fig.~\ref{fig:Saddle_Point_Contour}, it starts from infinity, $a + \infty\cdot e^{i\pi/4}$ to $a - \frac{1}{2}|a|e^{i\pi/4}$, vertically down to the line $Im(x) = (2N+1)\pi$ and to infinity again on this same line. The goal is to show that only the integral on the segment $L_1$ is significant.
 
 To make sense of this integral, first do the following variable substitution, $x = a + k e^{i\pi/4}, dx = dk$ with $a = i(2\pi t)^{1/2}$ and $k$ starting from $\frac{1}{2} |a|$, again see Fig.~\ref{fig:Saddle_Point_Contour}, note also that we are taking the modulus, so we can flip the integration direction to go from $a$ to infinity rather than from infinity to $a$, therefore the integral becomes
 %
@@ -1495,41 +1511,74 @@ The way I figured out this integral is by noting that integration along $k$ is s
 
 
 
-Dealing with log in the complex plane is a bit tricky, for example
-%
-\nbea
-\Im{(\log(-1)\log(-1))} & = & \Im{(\log(1))}
-\neea
-%
-but
-%
-\nbea
-\Im{(\log(-1)\log(-1))} & = & \Im{(i\pi + i\pi)} \\
-& = & 2\pi
-\neea
-%
-so we need to be careful, the same applies here
+{\bf Page }. Dealing with log in the complex plane is a bit tricky, we usually have to designate a cut to avoid certain numbers having multiple log values, for example, 1 can be represented by $e^{i0}$ or $e^{i2\pi}$, the log of which are $0$ and $i 2\pi$ respectively. If we made the cut along the positive real axis we prevent $e^{i0}$ to becoming $e^{i2\pi}$, if the cut is on the negative real axis we prevent $e^{i\pi}$ from becoming $e^{-i\pi}$ while the positive real axis is set to be $r e^{i0}$, we can set other conventions of course even with the same cut.
+
+But in this case we are not bothered by this, I initially wrongly thought that the reason the starting point of $L_2$ cannot have the min $\Im(\log(-x))$ was because in this case $-x$ would be in the south east quadrant and the integration contour $C_M$ dictates that we make the cut on the positive real axis, so we have $0 \le \theta < 2\pi$ starting from the positive real axis going counter clockwise. In this south east quadrant the argument of $-x$ would be near $2\pi$. While the end point of $L_2$ would have $-x$ in the north east quadrant, thus the argument of $-x$ would be the smallest.
+
+Then I thought maybe the starting point of $L_2$ has the smallest argument because
 %
 \nbea
 \Im{(\log(-x))} & = & \Im{(i\pi + \log(x))}
 \neea
 %
-Thus the minimum of $\Im{(\log(-x))}$ is at the beginning of $L_2$, see Fig.~\ref{fig:Saddle_Point_Contour}. If we forgot about this funny fact about log in the complex plane we might think that the minimum of $\Im(\log(-x))$ is at the end of $L_2$, because $-x$ would then be on the first quadrant and $\Im{(\log)}$ of it will be less than $\frac{\pi}{2}$. 
+so to minimize $\Im(\log(-x))$ is the same as minimizing the argument of $x$ and since the starting point of $L_2$ is in the north west quadrant it has the smallest argument, again assuming the cut is in the positive real axis.
+
+But I was wrong, this is just about a lower bound, we don't care about cut here. If you see the derivation he just wanted the most negative argument of all, since the starting point of $L_2$ has $-x$ in the south east quadrant, its argument is negative while its end point in the north east quadrant would have a positive argument so we chose the one with the negative argument, that's all.
 
 
 
 
 
-$\sum 1/\rho$ need not be in pair, counter example
+
+
+
+
+
+Lesson of the day, doing integrals without doing integrals.
+
+
+We Taylored $\Psi(p+y)$ around $p$
+%
+\nbea
+\Psi(p+y) & = & \Psi^{(0)}(p) + \Psi^{(1)}(p) (y+p - p) + \frac{1}{2!}\Psi^{(2)}(p) (y+p - p)^2 + \dots \\
+& = & \sum_{k=0}^\infty \frac{\Psi^{(k)}(p)}{k!} y^k
+\neea
+%
+
+
+
+
+`` $\dots$ and in which sum is finite'', ``which'' here refers to $\sum_{j=0}^\infty A_j \omega^j$
+
+
+So the goal here is to calculate $b_0 c_0 + b_1 c_1 + \dots + b_Kc_K$, but the way Riemann did it is not to calculate this sum at all, the way he did it was to calculate an approximation to this sum by expressing it in terms of a power series of $\omega^j$. I say an approximation because $b_K$ contains $\omega_K$ while we are only mucking around with $\omega^\nu$ where $K$ is large enough such that $b_{K+1}, b_{K+2}, \dots$ does not contain $\omega^\nu$.
+
+This is what confused me when he expressed $G(y)$ as $\sum_{j=0}^\infty A_j \omega^j$ and he was only concerned about $A_0, A_1, \dots, A_{\nu-1}$ that are not dependent on $K$. Why care only up to $A_{\nu-1}$, the goal here is to calculate $b_0 c_0 + b_1 c_1 + \dots + b_Kc_K$, we need the $A$'s so that we can get the coefficient of negative powers of $y$ so that we can combine them with positive powers of $y$ in $\sum_{k=0}^\infty \frac{\Psi^{(k)}(p)}{k!} y^k$ to get the coefficient of $y^0$, but the coefficient of $y^0$ is exactly $b_0 c_0 + b_1 c_1 + \dots + b_Kc_K$, it includes $\omega^K$, so I figured that what we are doing here is an approximation of $b_0 c_0 + b_1 c_1 + \dots + b_Kc_K$.
+
+
+
+%
+\nbea
+(2y)^{n-1}(n+1)b_{n+1}
+\neea
+%
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 res f, only is f is holomorphic, no branch cut nothing
 
-two ways to see if zeta is $z(\bar s) = \bar {z(s)}$
-product formula, from formula for $\sum \frac{1}{\rho}$ and von magoldt's result, the RHS is real so it must come in conjugate pairs.
-and the small circle can be calculated using Bernoulli numbers
-Riemann's smart move to calculate $s < 0$ by using $1-s$
 
 
 
