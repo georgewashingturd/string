@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  16 DEC 2017 23:06
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  16 DEC 2017 23:51
 entering extended mode
 **C:/Users/User/Documents/GitHub/string/pittetd/Edwards_zeta.tex
 (C:/Users/User/Documents/GitHub/string/pittetd/Edwards_zeta.tex
@@ -620,7 +620,7 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 [25]
 Requested font "cmbxti10" at 12.0pt
  [26] [27] [28] [29] [30]
-Overfull \hbox (68.84976pt too wide) in alignment at lines 1507--1510
+Overfull \hbox (68.84976pt too wide) in alignment at lines 1538--1541
  [][][] []
  []
 
@@ -628,18 +628,18 @@ Overfull \hbox (68.84976pt too wide) in alignment at lines 1507--1510
 File: Saddle_Point_Contour.png Graphic file (type QTm)
  <use  "Saddle_Point_Contour.png" > [34] [35] [36]
 (Edwards_zeta.bbl) [37]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1725.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1756.
  (Edwards_zeta.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1725.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1725.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1756.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1756.
  ) 
 Here is how much of TeX's memory you used:
- 13320 strings out of 428755
- 183811 string characters out of 3166785
+ 13321 strings out of 428755
+ 183821 string characters out of 3166785
  290559 words of memory out of 3000000
- 16531 multiletter control sequences out of 15000+200000
+ 16532 multiletter control sequences out of 15000+200000
  13625 words of font info for 51 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
- 36i,17n,38p,872b,449s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,17n,38p,882b,459s stack positions out of 5000i,500n,10000p,200000b,50000s
 
 Output written on Edwards_zeta.pdf (37 pages).

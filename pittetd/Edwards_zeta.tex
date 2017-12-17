@@ -1354,7 +1354,14 @@ List of tricks for Euler-Maclaurin
 \item Bernoulli's polynomial
 \end{enumerate}
 %
-The first two can be combined as they are nothing but the Euler's summation formula as we shall see. The goal here is not just to transform a sum into an integral, we want to get the error estimate which is very important in this case. The Integral itself can be obtained from Euler's summation formula (see Apostol for details)
+The first two can be combined as they are nothing but the Euler's summation formula as we shall see, of course we can just use Stieljes integral to ``convert'' a sum into an integral but Stieljes integral is not really an integral it's more of an identity for a sum if you think about it therefore we need the trapezoidal tule to approximate the integral. The goal here is not just to transform a sum into an integral, we want to get the error estimate which is very important in this case. The funny thing here is that the starting point is an approximation to an approximation
+%
+\nbea
+\sum_{M}^N f(n) & = & {\rm trapezoidal~rule} + \frac{1}{2}[f(M) + f(N)] \\
+& \sim & \int_M^N f(x) dx + \frac{1}{2}[f(M) + f(N)]
+\neea
+%
+The final integral formula itself can be obtained from Euler's summation formula (see Apostol for details of derivation of Euler's summation formula)
 %
 \nbea
 \sum_{y < n \le x} f(n) & = & \int_y^x f(t) dt + \int_y^x (t - [t]) f'(t) dt + f(x)([x] - x) - f(y)([y] - y)
@@ -1451,6 +1458,30 @@ which might be a uselful identity :) Well for one thing if we set $k=0$
 If I didn't make any mistake, this is the second Bernoulli's identity I discovered :)
 \end{enumerate}
 %
+
+
+
+
+
+
+
+
+
+
+Remarks on estination of error as the last term omitted, since the Bernoulli's numbers at some point will grow out of bounds, the decrease is only in the beginning , the estimate of the last term error by $\int_{10}^{10.5}$ is still valid, it's just that the whole thing is super big.{NOT DONE YET}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 {\bf Page}. Symmetries of the ``zeta'' $\xi(s)$ function, we know that $\xi(s) = \xi(1-s)$, but what about $\xi(\overline{s})$? For $\sigma > 1$ we know that $\zeta(\overline{s}) = \overline{\zeta(s)}$, how about for the rest $\sigma \le 1$?
