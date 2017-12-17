@@ -1329,7 +1329,120 @@ For the second case
 %
 since $\mu(n) = (-1)^{k}$ and we are done.
 
+\bigskip
+\underline{\textbf{\textit{Chapter 6}}}
+\bigskip
 
+Main outline
+%
+\begin{enumerate}
+\item Euler-Maclaurin formula is applied to the Gamma function, $\Pi(s)$ and the zeta function, $\zeta(s)$, not the Riemann symmetric functional $\xi(s)$. The Euler-Maclaurin expansions of the two were then used to calculate the Riemann symmetric functional $\xi(s)$.
+%
+\item Using the expansion above we then calculate the location of the roots of $\xi(s)$ on the line by looking for sign change along the line.
+%
+\item We then prove Riemann hypothesis by calculating the number of roots in the strip (not just on the line), if the number of roots in the strip is the same as the one on the line then Riemann hypothesis is true.
+\end{enumerate}
+%
+
+List of tricks for Euler-Maclaurin
+%
+\begin{enumerate}
+\item Trapezoidal rule.
+%
+\item Stieljes integral.
+%
+\item Bernoulli's polynomial
+\end{enumerate}
+%
+The first two can be combined as they are nothing but the Euler's summation formula as we shall see. The goal here is not just to transform a sum into an integral, we want to get the error estimate which is very important in this case. The Integral itself can be obtained from Euler's summation formula (see Apostol for details)
+%
+\nbea
+\sum_{y < n \le x} f(n) & = & \int_y^x f(t) dt + \int_y^x (t - [t]) f'(t) dt + f(x)([x] - x) - f(y)([y] - y)
+\neea
+%
+we focus on the integral with $(t-[t])$
+%
+\nbea
+\int_y^x (t - [t]) f'(t) dt & = & -\int_y^x ([t] - t) f'(t) dt \\
+& = & -\int_y^x ([t] - t + \frac{1}{2} - \frac{1}{2}) f'(t) dt \\
+& = & -\int_y^x ([t] - t + \frac{1}{2}) f'(t) dt  + \int_y^x \frac{1}{2} f'(t) dt \\
+& = & -\int_y^x ([t] - t + \frac{1}{2}) f'(t) dt  + \int_y^x \frac{1}{2} f'(t) dt \\
+& = & -\int_y^x ([t] - t + \frac{1}{2}) f'(t) dt  + \frac{1}{2} (f(x) - f(y))
+\neea
+%
+we now set $y = M$ and $x = N$ to get (and a change of dummy variable $t \to x$ to get the same notation)
+%
+\nbea
+\sum_{M < n \le N} f(n) & = & \int_M^N f(x) dx - \int_M^N ([x] - x + \frac{1}{2}) f'(x) dx + \\
+&& f(M)([M] - M) - f(N)([N] - N) + \frac{1}{2} (f(N) - f(M)) \\
+& = & \int_M^N f(x) dx - \int_M^N ([t] - t + \frac{1}{2}) f'(x) dx  + 0 - 0 + \frac{1}{2} (f(N) - f(M))
+\neea
+%
+now we need to add $f(M)$ to the LHS since the sum starts with an inequality and therefore $f(M)$ is excluded while the one in the book includes $f(M)$, but if we are adding to the LHS we need to add the RHS as well
+%
+\nbea
+\sum_{M \le n \le N} f(n) & = & \int_M^N f(x) dx - \int_M^N ([x] - x + \frac{1}{2}) f'(x) dx  + \frac{1}{2} (f(N) - f(M)) + f(M) \\
+& = & \int_M^N f(x) dx - \int_M^N ([x] - x + \frac{1}{2}) f'(x) dx + \frac{1}{2} (f(N) + f(M))
+\neea
+%
+and we get the same formula, although I must say that the derivation here feels more natural starting with the trapezoidal rule (which is a common theme throughout the book, most the derivation was done in a more intuitive way rather than mechanically as is the case with Apostol).
+
+The error estimate is the reason we need Bernoulli's polynomial and the reason we can use Bernoulli's polynomial is because
+%
+\nbea
+x -[x] - \frac{1}{2} & = & t - \frac{1}{2} = B_1
+\neea
+%
+which to me is a coincidence :)
+
+List of tricks for Bernoulli's polynomial
+%
+\begin{enumerate}
+%
+\item $\int_x^{x + 1} f(x) = \int_x^{x+1/2} f(x) + f(x + 1/2)$ which is kinda obvious but not really.
+%
+\item The thing with $p(h)$, this is a sick trick :)
+%
+\nbea
+\sum_{n=0}^\infty \frac{B_n}{n!}(-h)^n = \frac{h}{1 - e^{-h}} & = & \sum_{n = 0}^k \frac{B_n(0)}{n!} - \frac{h^{k+1}}{k!} \int\overline{B}_k(x) e^{-hx} dx \\
+\sum_{n=0}^k \frac{B_n}{n!}(-h)^n + \sum_{n=k+1}^\infty \frac{B_n}{n!}(-h)^n & = & \sum_{n = 0}^k \frac{B_n(0)}{n!} + P(h) 
+\neea
+%
+where $P(h) = - \frac{h^{k+1}}{k!} \int\overline{B}_k(x) e^{-hx} dx$. Note that since $\frac{h}{1 - e^{-h}}$ is finite, the rest of the sum $\sum_{n=k+1}^\infty \frac{B_n}{n!}(-h)^n = C(h)$ is also finite, thus
+%
+\nbea
+\sum_{n=0}^k \frac{B_n}{n!}(-h)^n + C(h) & = & \sum_{n = 0}^k \frac{B_n(0)}{n!} + P(h)  \\
+\sum_{n=0}^k \frac{1}{n!}[(-1)^nB_n - B_n(0)]h^n & = & P(h) - C(h) \\
+& = & p(h)
+\neea
+%
+We know that $P(h) \le {\rm const} \cdot h^{k+1}$ as stated in the book and $C(h)$ is finite and also a power series of $h$ starting with $h^{k+1}$. Therefore
+%
+\nbea
+\frac{C(h)}{h^{k+1}} & = & \sum_{n = 0}^\infty \frac{B_{n+k+1}}{(n+k+1)!} (-h)^n
+\neea
+%
+and
+%
+\nbea
+\lim_{h\to 0} \frac{p(h)}{h^{k+1}} = \lim_{h\to 0} \frac{1}{h^{k+1}} (P(h) - C(h)) & = & {\rm const} - \frac{B_{n+k+1}}{(n+k+1)!} < \infty
+\neea
+%
+which is finite but $\lim_{h\to0} \frac{p(h)}{h^{k+1}}$ is something divided by 0, for it to be bounded the numerator must be zero as well, thus $p(h) = 0$ (recall that $\frac{0}{0}$ can be anything and in our case it is given by ${\rm const} - \frac{B_{n+k+1}}{(n+k+1)!}$), from the above it can be deduced that
+%
+\nbea
+{\rm const} \cdot h^{k+1} = \frac{h^{k+1}}{k!} \int\overline{B}_k(x) e^{-hx} dx & = & \sum_{n = k+1}^\infty \frac{B_{n}}{n!} (-h)^n
+\neea
+%
+and setting $h = 1$ we get
+%
+\nbea
+\frac{1}{k!} \int\overline{B}_k(x) e^{-x} dx & = & \sum_{n = k+1}^\infty \frac{B_{n}}{n!} (-1)^n
+\neea
+%
+which might be a uselful identity :)
+\end{enumerate}
+%
 
 
 {\bf Page}. Symmetries of the ``zeta'' $\xi(s)$ function, we know that $\xi(s) = \xi(1-s)$, but what about $\xi(\overline{s})$? For $\sigma > 1$ we know that $\zeta(\overline{s}) = \overline{\zeta(s)}$, how about for the rest $\sigma \le 1$?
