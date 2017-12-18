@@ -1499,7 +1499,7 @@ In the derivation we start with the derivative of $R_0$, to do this we need to s
 R_{2\nu-2} & \le & \int_0^\infty \frac{[B_{2\nu} - B_{2\nu}(x)]~ dx}{2\nu (s+x)^{2\nu}}
 \neea
 %
-because we estimate the denominator using $|s|$, we have to do the $\frac{d}{ds}$ derivative here, otherwise we incur a minus sign and need to do the complicated $\frac{d|s|}{ds}$ later. So
+we have to do the $\frac{d}{ds}$ derivative here before we take the absolute value, otherwise we incur a minus sign and we need to do the complicated $\frac{d|s|}{ds}$ later. So
 %
 \nbea
 \frac{d}{ds} R_{2\nu-2} & \le & -\int_0^\infty \frac{[B_{2\nu} - B_{2\nu}(x)]~ dx}{(s+x)^{2\nu+1}}
@@ -1511,7 +1511,7 @@ now we can take the absolute value and get rid of the minus sign :) the next ste
 \frac{1}{|s+x|} \le \frac{1}{(|s|+x)\cos(\theta/2)}
 \neea
 %
-combining the two we get something like the middle of Page 112 (and also forgetting about the second integral)
+as shown on Page 112, combining the two we get something like the middle of Page 112 (and also forgetting about the second integral)
 %
 \nbea
 |R'_{2\nu-2}| & \le & \int_0^\infty \frac{(-1)^{\nu+1}B_{2\nu}~ dx}{\cos^{2\nu + 1}(\theta/2)(|s|+x)^{2\nu + 1}} \\
@@ -1519,7 +1519,7 @@ combining the two we get something like the middle of Page 112 (and also forgett
 & = & \frac{|B_{2\nu}|}{(2\nu) \cos^{2\nu+1}(\theta/2)|s|^{2\nu}}
 \neea
 %
-Note that the minus sign in the second line is crucial as it negates the minus sign from computing hte lower limit of the integral :) if we set $\nu=1$ we get
+Note that the minus sign in the second line is crucial as it negates the minus sign from computing the lower limit of the integral :) if we set $\nu=1$ we get
 %
 \nbea
 |R'_0| & \le & \frac{B_{2}}{2 \cos^{3}(\theta/2)|s|^{2}}
@@ -1531,7 +1531,7 @@ which is what we have on Page 114. The second line on Page 114 is
 \left | \frac{\Pi'(s)}{\Pi(s)} - \log s \right | & \le & \frac{1}{2|s|} + \frac{B_{2}}{2 \cos^{3}(\theta/2)|s|^{2}}
 \neea
 %
-for sufficiently large $s$ and this is the key, sufficiently large
+for sufficiently large $s$ and this is the key, sufficiently large because
 %
 \nbea
 \frac{1}{2|s|} & \ge & \frac{B_{2}}{2 \cos^{3}(\theta/2)|s|^{2}}
@@ -1554,7 +1554,7 @@ thus because we are ignoring the imaginary part
 %
 \nbea
 \left | \re\left(\frac{\Pi'(s)}{\Pi(s)} - \log s \right) \right |  = \left | \re\frac{\Pi'(s)}{\Pi(s)} - \re\log s \right | & \le & \left | \frac{\Pi'(s)}{\Pi(s)} - \log s \right |  \\
-\left | \re\frac{\Pi'(s)}{\Pi(s)} - \re\log s \right | & \le & \frac{1}{|s|}
+\to \left | \re\frac{\Pi'(s)}{\Pi(s)} - \re\log s \right | & \le & \frac{1}{|s|}
 \neea
 %
 which is the third line, also since $1 \le \sigma \le 2$, $\re\log s$ is always positive because $s$ is on the right half of the complex plane thus $\re\log s \le \log |s|$ and
@@ -1580,7 +1580,7 @@ now since $1 \le \sigma \le 2$ we set $\sigma = 2$, for the very last step we wa
 & \le & t
 \neea
 %
-since whatever is in the bracket is less than 1 and so we get the final result :)
+since whatever is in the bracket is less than 1 (again for sufficiently large $s$) and so we get the final result :)
 
 
 
