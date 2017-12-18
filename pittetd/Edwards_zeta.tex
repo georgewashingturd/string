@@ -1458,17 +1458,34 @@ which might be a uselful identity :) Well for one thing if we set $k=0$
 If I didn't make any mistake, this is the second Bernoulli's identity I discovered :)
 \end{enumerate}
 %
+A quick remark on the estimation of error as the last term omitted, note that this is always true, if you omit a term, the error you make is the term that you omit, the thing is since the Bernoulli's numbers at some point will grow out of bounds, it's just that if you use too many terms your error grows so you must know when to stop. Also, doesn't matter which term you stop at, we can still make the same error estimate by noting that the $B_n$ is oscillatory and if the function is monotonically decreasing we can still make the same error estimate as the $\int_{10}^{10.5}$. But it doesn't mean that the series doesn't converge.
 
 
 
+On the application of Euler-Maclaurin to $\Pi(s)$
+%
+\begin{enumerate}
+\item Calculate $\log \Pi(s)$ instead of $\Pi(s)$. Not sure why we want to do this, one thing I can see is that $\log \Pi(s)$ will have smaller errors, although if we exponentiate it we will get the same thing? ~~~ \dunno
+\item Do the following integral tricks, 
+%
+\nbea
+\int_1^N = \int_1^\infty - \int_N^\infty ~~~~~~~~~~~~~ \int_N^\infty \frac{1}{x} = \int_0^\infty \frac{1}{x + N}
+\neea
+%
+For the first trick we have to do alternating series test to show that $\int_1^\infty$ converges.
+\end{enumerate}
+%
+%
+\begin{figure}
+\centering
+  \includegraphics[width=1.00\linewidth]{B_over_x.png}
+  \caption{Left is the plot of $\overline{B}_n(x) = x - [x]  -\frac{1}{2}$. Middle is $\frac{\overline{B}_n(x)}{x}$. Right is $\left|\frac{\overline{B}_n(x)}{x}\right|$}
+\label{fig:B_over_x}
+\end{figure}
+%
+About the alternating series test, $\overline{B_1}(x)$ is the periodic function, \ie $\overline{B}_1(x) = x - [x] - \frac{1}{2}$, see Fig.~\ref{fig:B_over_x} Left. To do the alternating series test we don't actually need to do the integral. From Fig.~\ref{fig:B_over_x} Middle, we see that in each integer interval $M \le x \le M+1$, $\int_M^{M+\frac{1}{2}} \frac{\overline{B}_1(x)}{x}$ is negative and $\int_{M+\frac{1}{2}}^M \frac{\overline{B}_1(x)}{x}$ is positive. So that's your alternating series.
 
-
-
-
-
-
-
-Remarks on estination of error as the last term omitted, since the Bernoulli's numbers at some point will grow out of bounds, the decrease is only in the beginning , the estimate of the last term error by $\int_{10}^{10.5}$ is still valid, it's just that the whole thing is super big.{NOT DONE YET}
+The alternating series test requires two conditions to be met, one the magnitude of the terms decreases and as $n\to \infty$, $a_n \to 0$. To see that $|a_n|$ decreases see Fig.~\ref{fig:B_over_x} Right, this is $ \left|\int\frac{\overline{B}_1(x)}{x}\right|$ and the second condition is obvious.
 
 
 
