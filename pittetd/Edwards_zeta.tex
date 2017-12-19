@@ -1458,11 +1458,10 @@ which might be a uselful identity :) Well for one thing if we set $k=0$
 If I didn't make any mistake, this is the second Bernoulli's identity I discovered :)
 \end{enumerate}
 %
-A quick remark on the estimation of error as the last term omitted, note that this is always true, if you omit a term, the error you make is the term that you omit, the thing is since the Bernoulli's numbers at some point will grow out of bounds, it's just that if you use too many terms your error grows so you must know when to stop. Also, doesn't matter which term you stop at, we can still make the same error estimate by noting that the $B_n$ is oscillatory and if the function is monotonically decreasing we can still make the same error estimate as the $\int_{10}^{10.5}$. But it doesn't mean that the series doesn't converge.
+A quick remark on the estimation of error as the last term omitted, note that this is always true, if you omit a term, the error you make is the term that you omit, the thing is since the Bernoulli's numbers at some point will grow out of bounds, it's just that if you use too many terms your error grows so you must know when to stop. Also, doesn't matter which term you stop at, we can still make the same error estimate by noting that the $B_n$ is oscillatory and if the function is monotonically decreasing we can still make the same error estimate as the $\int_{10}^{10.5}$. Also since this is an asymptotic series (not a Taylor series), the series might not converge, note that the Bernoulli's numbers oscillate between positive and negative and their magnitude increases without bound.
 
 
-
-On the application of Euler-Maclaurin to $\Pi(s)$
+{\bf Page 106}. On the application of Euler-Maclaurin to $\Pi(s)$
 %
 \begin{enumerate}
 \item Calculate $\log \Pi(s)$ instead of $\Pi(s)$. Not sure why we want to do this, one thing I can see is that $\log \Pi(s)$ will have smaller errors, although if we exponentiate it we will get the same thing? ~~~ \dunno
@@ -1472,7 +1471,7 @@ On the application of Euler-Maclaurin to $\Pi(s)$
 \int_1^N = \int_1^\infty - \int_N^\infty ~~~~~~~~~~~~~ \int_N^\infty \frac{1}{x} = \int_0^\infty \frac{1}{x + N}
 \neea
 %
-For the first trick we have to do alternating series test to show that $\int_1^\infty$ converges.
+\item True to the intuitive spirit of the book, we first apply Euler-Maclaurin to $\Pi(s)$ where $s$ is an integer rather than going straight to the general complex $s$, which can't be done using Euler-Maclaurin since this formula is to transform discrete series into an integral while $\Pi(s)$ with complex $s$ is not a discrete series.
 \end{enumerate}
 %
 %
@@ -1483,9 +1482,46 @@ For the first trick we have to do alternating series test to show that $\int_1^\
 \label{fig:B_over_x}
 \end{figure}
 %
-About the alternating series test, $\overline{B_1}(x)$ is the periodic function, \ie $\overline{B}_1(x) = x - [x] - \frac{1}{2}$, see Fig.~\ref{fig:B_over_x} Left. To do the alternating series test we don't actually need to do the integral. From Fig.~\ref{fig:B_over_x} Middle, we see that in each integer interval $M \le x \le M+1$, $\int_M^{M+\frac{1}{2}} \frac{\overline{B}_1(x)}{x}$ is negative and $\int_{M+\frac{1}{2}}^M \frac{\overline{B}_1(x)}{x}$ is positive. So that's your alternating series.
+{\bf Page 106}. For the first trick we have to do alternating series test to show that $\int_1^\infty$ converges. About the alternating series test, $\overline{B_1}(x)$ is the periodic function, \ie $\overline{B}_1(x) = x - [x] - \frac{1}{2}$, see Fig.~\ref{fig:B_over_x} Left. To do the alternating series test we don't actually need to do the integral. From Fig.~\ref{fig:B_over_x} Middle, we see that in each integer interval $M \le x \le M+1$, $\int_M^{M+\frac{1}{2}} \frac{\overline{B}_1(x)}{x}$ is negative and $\int_{M+\frac{1}{2}}^M \frac{\overline{B}_1(x)}{x}$ is positive. So that's your alternating series.
 
 The alternating series test requires two conditions to be met, one the magnitude of the terms decreases and as $n\to \infty$, $a_n \to 0$. To see that $|a_n|$ decreases see Fig.~\ref{fig:B_over_x} Right, this is $ \left|\int\frac{\overline{B}_1(x)}{x}\right|$ and the second condition is obvious.
+
+{\bf Page 108}. Mid page, in doing the integral
+%
+\nbea
+\int_0^1 \frac{t - \frac{1}{2}}{t + s} dt
+\neea
+%
+instead of doing IBP directly or a change of variables, it did a simple yet smart trick which actually amounts to a change of variables
+%
+\nbea
+\int_0^1 \frac{t - \frac{1}{2}}{t + s} dt & = & \int_0^1 \frac{t +s - s - \frac{1}{2}}{t + s} dt \\
+& = & \int_0^1 \frac{t + s}{t + s} dt - (s + \frac{1}{2})\int_0^1 \frac{1}{t + s} dt
+\neea
+%
+
+{\bf Page 111}. In doing IBP we actually have a lot of freedom because
+%
+\nbea
+\frac{dF(x)}{dx} = f(x) ~~~~~\longrightarrow ~~~~~ \int f(x) dx = F(x) + C
+\neea
+%
+we have massive freedom in choosing $C$, this is true even when doing IBP. This is why the book says that ``The function $B_{2\nu} - \overline{B}_{2\nu}(x)$ is an antiderivative of $-2\nu\overline{B}_{2\nu-1}(x)$'', it is ``an'' antiderivative and not ``the'' antiderivative :) Choosing this antiderivative simplifies a lot of things, like
+
+{\bf Page 112} Argument about the sign of $B_{2\nu} - \overline{B}_{2\nu}(x)$, this is very clever indeed, we know that the odd $\overline{B}_{2\nu+1}(x)$ has exactly three zeros at $x = 0,\frac{1}{2},1$, therefore it has two maxima and its derivative $\overline{B}'_{2\nu+1} = (2\nu + 1)\overline{B}_{2\nu}$ has 2 zeros at those maxima.
+
+We also know that the $\overline{B}_{2\nu}$ has one maxima in $[0,1]$ because its derivative $(2\nu)\overline{B}_{2\nu - 1}$ has a zero at $x=\frac{1}{2}$, so $\overline{B}_{2\nu}$ has a maxima at $x = \frac{1}{2}$.
+
+%
+\begin{figure}
+\centering
+  \includegraphics[width=1.00\linewidth]{B2.png}
+  \caption{Left is the plot of $\overline{B}_2(x)$. Right is $B_2 - \overline{B}_2(x)$}
+\label{fig:B2}
+\end{figure}
+%
+So how do you reconcile the fact that $\overline{B}_{2\nu}$ has two zeros (not on $x=0$ or $x=1$) but only one maxima? This can be done if $\overline{B}_{2\nu}$ starts and ends off positive but in the middle it dips down to negative (or vice versa), see Fig.~\ref{fig:B2} for an example of $\overline{B}_2$. But in this case $\overline{B}_{2\nu}$ flips sign between positive and negative, we don't want this, we want the sign to stay constant throughout $[0,1]$ to simplify things. Note that we can also do $\overline{B}_{2\nu}(x) - \overline{B}_{2\nu}$ to accomplish this.
+
 
 {\bf Page 113}. Last inequality
 %
@@ -1584,15 +1620,50 @@ since whatever is in the bracket is less than 1 (again for sufficiently large $s
 
 
 
+{\bf Page 114}. Application of Euler-Maclaurin to $\zeta(s)$. This is quite straightforward except that we cannot start the sum $\sum n^{-s}$ from $n=1$ because then the series becomes
+%
+\nbea
+\sum_{n=1}^\infty n^{-s} & = & \int_1^\infty x^{-s} dx + \frac{1}{2} 1^{-s} + \frac{B_2}{2} s + \cdots + \frac{B_{2\nu}}{(2\nu)!} s(s+1) \cdots (s+ 2\nu -2) + R_{2\nu}
+\neea
+%
+so the series decreases only by virtue of the decrease the Bernoulli's numbers.
 
 
 
+{\bf Page 117}. About the calculation of $n^{-\frac{1}{2} - it}$ as $n^{-1/2}[\cos(t\log n) + i\sin(t\log n)]$ as
+%
+\nbea
+18 \log 2 & = & 4\pi -\theta \\
+18 \log 3 &= & 6\pi + (\pi/3) - \theta \\
+18 \log 5 & = & 9\pi + (\pi/4) - \theta
+\neea
+%
+at first I was thoroughly confused by this but then I understood what he's trying to do, because we are calculating $\sin$ and $\cos$, we want to massage $t\log n$ in terms of special angles whose $\sin$, $\cos$ we know the value of like $\pi, \pi/3, \pi/4$, the second reason is we want to minimize $\theta$ to minimize the error. For example, $18 \log 5$ is $\sim 28.97$ so it's $9\pi + (\pi/4)$ minus some change. This is because we know $\sin$, $\cos$ of $9\pi$ and $\pi/4$. Thus
+%
+\nbea
+\sin(9\pi + (\pi/4) - \theta) & = & \sin(9\pi + (\pi/4))\cos(\theta) + \sin(\theta)\cos(9\pi + (\pi/4)) \\
+& = & -\sin(\pi/4)\cos(\theta) + \sin(\theta)\cos(\pi/4)
+\neea
+%
+and if we minimize $\theta$ , since more than likely we calculate $\sin$, $\cos$ using the series expansion, the smaller $\theta$ is the better.
 
-
-
-
-
-{\bf Page}. Symmetries of the ``zeta'' $\xi(s)$ function, we know that $\xi(s) = \xi(1-s)$, but what about $\xi(\overline{s})$? For $\sigma > 1$ we know that $\zeta(\overline{s}) = \overline{\zeta(s)}$, how about for the rest $\sigma \le 1$?
+{\bf Page 119}. $\xi(s)$ is real along the vertical line $\sigma = \frac{1}{2}$, this is due to its symmetry $\xi(1-s) = \xi(s)$ and $\xi(1-s) = \Pi((1-s)/2)((1-s)-1)\pi^{-(1-s)/2}\zeta(1-s)$
+%
+\nbea
+\xi\left(1 - \left(\frac{1}{2} + it\right)\right) & = & \Pi\left(\frac{1 - (\frac{1}{2} + it)}{2}\right)\left(1 - \left(\frac{1}{2} + it\right)-1\right)\pi^{-\left(1 - \left(\frac{1}{2} + it\right)\right)/2}\zeta\left(1 - \left(\frac{1}{2} + it\right)\right) \\
+& = & \Pi\left(\frac{\frac{1}{2} - it}{2}\right)\left(\frac{1}{2} - it -1\right)\pi^{-\left(\frac{1}{2} - it\right)/2}\zeta\left(\frac{1}{2} - it\right) \\
+& = & \Pi\left(\frac{\overline{\frac{1}{2} + it}}{2}\right)\left(\overline{\frac{1}{2} + it} -1\right)\pi^{-\left(\overline{\frac{1}{2} + it}\right)/2}\zeta\left(\overline{\frac{1}{2} + it}\right) \\
+& = & \overline{\Pi\left(\frac{\frac{1}{2} + it}{2}\right)}  ~~\overline{\left(\frac{1}{2} + it -1\right)} ~~\overline{\pi^{-\left(\frac{1}{2} + it\right)/2}} ~~  \overline{\zeta\left(\frac{1}{2} + it\right)} \\
+& = & \overline{\xi\left(\frac{1}{2} + it\right)}
+\neea
+%
+But $\xi\left(1 - \left(\frac{1}{2} + it\right)\right) = \xi\left(\frac{1}{2} + it\right)$, therefore
+%
+\nbea
+\xi\left(\frac{1}{2} + it\right) & = & \overline{\xi\left(\frac{1}{2} + it\right)}
+\neea
+%
+and thus $\xi\left(\frac{1}{2} + it\right)$ is real for any real $t$. This is assuming $\zeta(\overline{s}) = \overline{\zeta(s)}$. If $\zeta(s)$ is real all along the real line then we can use the reflection principle but I'm not sure because $\zeta(s)$ has a pole at $s=1$, also for $s$ real and $s> 1$, $\zeta(s)$ is positive but for $0 < s < 1$, $\zeta(s)$ is negative, see Apostol's Theorem 13.11. For $\sigma > 1$ we know that $\zeta(\overline{s}) = \overline{\zeta(s)}$, how about for the rest $\sigma \le 1$?
 
 Let me state the answer first and how I got it and then go for the difficulties I had. The analytically continued $\zeta(s)$ can be expanded in Laurent series about $s=1$, note that Laurent expansion is not Taylor series, it doesn't have radius on convergence since it also includes poles, so the singularities are included. To have $\zeta(\overline{s}) = \overline{\zeta(s)}$ we must have the coefficient of the Laurent series to be real
 %
@@ -1702,6 +1773,15 @@ Say $s$ is not an integer so we can still do the integral, the problem is that t
 
 To remove the dependency on $c$, we can integrate the rest of the integrals $\int_c^\infty \frac{(-x)^{s-1}}{e^x - 1}$, however, if we expand it using Bernoulli's numbers, the final integral we get will be of the form $\int_c^\infty x^{s + n -2}$ and the upper limit will give us issues.
 
+{\bf Page 119, Footnote}. $Z(t)$ is real when $t$ is real, we can see this easily from 
+%
+\nbea
+\xi\left(\frac{1}{2} + it\right) & = & \left \lbrack e^{\re \log \Pi(s/2)} \pi^{-1/4} \frac{-t^2 - \frac{1}{4}}{2} \right \rbrack Z(t)
+\neea
+%
+since the LHS is real and the first term on the RHS is real, $Z(t)$ must be real as well.
+
+{\bf Page 120}. The goal here is to express everything in terms of powers of $\left(\frac{1}{t}\right)$.
 
 
 
