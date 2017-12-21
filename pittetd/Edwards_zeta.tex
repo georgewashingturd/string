@@ -1787,6 +1787,189 @@ since the LHS is real and the first term on the RHS is real, $Z(t)$ must be real
 
 
 
+
+
+
+
+
+About the symmetry of $\frac{\xi'(s)}{\xi(s)}$, for simplicity let's denote $\frac{\xi'(s)}{\xi(s)} = F(s)$,
+%
+\nbea
+\int_{1\tfrac{1}{2}}^{1\tfrac{1}{2} + iT} F(s) ds & = & i \int_{0}^{T} F(1\tfrac{1}{2} + it) dt
+\neea
+%
+while on the opposite side we have
+%
+\nbea
+\int_{-\frac{1}{2} + iT}^{-\frac{1}{2}} F(s) ds & = & i \int_{T}^{0} F(-\tfrac{1}{2} + it) dt
+\neea
+%
+next is to use the symmetry $\xi(s) = \xi(1-s)$ but we need to be careful in using the symmetry for $F(s)$ becaue for the derivative $\xi'(s)$
+%
+\nbea
+\left. \frac{d}{ds} \xi(s) \right|_{s = w} & = & -\left. \frac{d}{ds} \xi(s) \right|_{s = 1 - w}
+\neea
+%
+this is analogous to our familiar friend the cosine function, even though it's symmetric with respect to the $y$ axis it's derivative is the opposite of one another across the vertical axis
+%
+\nbea
+\left. \frac{d}{dx}\cos(x) \right|_{x = y} & = & -\left. \frac{d}{dx}\cos(x) \right|_{x = -y}
+\neea
+%
+Therefore, since $\xi(s) = \xi(1-s)$ we have $\frac{\xi'(1-s)}{\xi(1-s)} = F(1-s) = -F(s)$ so the second integral becomes
+%
+\nbea
+i \int_{T}^{0} -F(1 - (-\tfrac{1}{2} + it)) dt & = & i \int_{0}^{T} F(1\tfrac{1}{2} - it) dt = i \int_{0}^{T} F(\overline{1\tfrac{1}{2} + it}) dt \\
+& = & i \int_{0}^{T} \overline{F(1\tfrac{1}{2} + it)} dt \\
+& = & i \left  ( ~\overline{\int_{0}^{T} F(1\tfrac{1}{2} + it) dt } ~ \right )
+\neea
+%
+Now, what we originally want was $\Im[\int_C F(s)]$, since there is a factor of $i$ in front of the integral what we really want is the real part, but
+%
+\nbea
+\re\left  ( ~\overline{\int_{0}^{T} F(1\tfrac{1}{2} + it) dt } ~ \right ) & = & \re \left  ( ~\int_{0}^{T} F(1\tfrac{1}{2} + it) dt ~ \right )
+\neea
+%
+and so the two integral along the vertical segments are equal.
+
+We now need to show that the integral on the two horizontal segments are equal, the steps are similar, on the right segment we have
+%
+\nbea
+\int_{1\tfrac{1}{2}}^{\tfrac{1}{2}} F(x + iT) dx
+\neea
+%
+while on the left segment we have
+%
+\nbea
+\int_{\tfrac{1}{2}}^{-\tfrac{1}{2}} F(x + iT) dx
+\neea
+%
+using $F(1 - s) = -F(s)$
+%
+\nbea
+\int_{\tfrac{1}{2}}^{-\tfrac{1}{2}} F(x + iT) dx & = & \int_{\tfrac{1}{2}}^{-\tfrac{1}{2}} -F(1-x - iT) dx, ~~~~~ y = 1-x \\
+& = & \int_{\tfrac{1}{2}}^{1\tfrac{1}{2}} F(y - iT) dy = \int_{\tfrac{1}{2}}^{1\tfrac{1}{2}} F(\overline{y + iT}) dy \\
+& = & -\left ( ~ \overline{\int_{1\tfrac{1}{2}}^{\tfrac{1}{2}} F(y + iT) dy} ~ \right ) \\
+\neea
+%
+in this case since there's no $i$ multiplying it we want the imaginary part of the integral and the overall minus sign helps us because the complex conjugate adds an extra minus sign to the imaginary part thus
+%
+\nbea
+\Im\left \lbrack - \left ( ~ \overline{\int_{1\tfrac{1}{2}}^{\tfrac{1}{2}} F(y + iT) dy} ~ \right ) \right \rbrack & = & \Im \left \lbrack \int_{1\tfrac{1}{2}}^{\tfrac{1}{2}} F(y + iT) dy \right \rbrack
+\neea
+%
+and the integrals along the two segments are equal.
+
+\bigskip
+\underline{\textit{\textbf{Branches and Cuts}}}. I initially wanted to show the above symmetry using the Fundamental Theorem of Calculus. Since the integrand is nothing but $\frac{d\log\xi(s)}{ds}$, if we integrate it we just get back $\log\xi(s)$. But this is a dangerous thing to do since $\log\xi(s)$ has many branch points, one for each of the zeros of $\xi(s)$.
+
+A pertinent example would be $\log\left ( \tfrac{z+1}{z-1}\right )$
+
+
+\bigskip
+\underline{\textit{\textbf{Brief (Pedestrian) Review of Branches and Cuts}}}. We have branches because we have multi-valued functions. If we restrict the function to be single valued, it is said that we are choosing a branch. For example, how do we create single-valued functions out of $f(z) = z^{1/3}$?
+
+One way is by creating three different single-valued functions, $f_1(z) = |z|^{1/3}e^{i\bar\theta/3}$, $f_2(z) = |z|^{1/3} e^{i\bar\theta/3 + 2\pi i/3}$ and $f_3(z) = |z| e^{i\bar\theta/3 + 4\pi i / 3}$ where $z = |z| e^{i\theta}$ and $\bar\theta = \theta \pmod{2\pi}$. 
+
+The first, $f_1(z)$ will generate numbers with angle $0 \le \arg (f_1(z)) < \tfrac{2\pi}{3}$, the second $f_2(z)$ generates $\tfrac{2\pi}{3} \le \arg (f_2(z)) < \tfrac{4\pi}{3}$ and the third $f_3(z)$ produces numbers with $\tfrac{4\pi}{3} \le \arg (f_3(z)) < \tfrac{6\pi}{3}$. This way we cover all possible values of $z^{1/3}$.
+
+Rather than splitting the function into three single valued ones we can split the domain into three complex planes. Let's take a simpler example of $z^{1/2}$. We can again create two single valued functions $f_R(z) = |z|^{1/2} e^{i\bar\theta/2 -\pi i/2}$ whose output is in the right half plane and $f_L(z) = |z|^{1/2} e^{i\bar\theta/2 + \pi i/2}$ whose output is in the left half plane.
+
+But wouldn't it be simpler if we can just designate $f(z) \to |z|^{1/2} e^{i\theta/2}$ while still maintaining the output to be always say for instance on the right half of the plane? This looks a lot more natural since taking a square root is (primarily) just multiplying the exponent by $\tfrac{1}{2}$.
+
+We can do this by setting the domain to be $z = |z|e^{i\theta}$ where $\theta$ is now restricted to $\theta \in (-\pi,\pi)$, since the interval is open, this is equivalent to excluding the negative real axis. With this choice of domain our $f_R$ simply becomes $f_R(z) = |z|^{1/2} e^{i\theta/2}$ which is very natural (compared to $f_R(z) = |z|^{1/2} e^{i\bar\theta/2 -\pi i/2}$).
+
+What we are doing is essentially creating two copies of the complex plane, one for $f_R$ and another for $f_L$, In their own planes, $f_R$ and $f_L$ take the same form $f_L(z) = f_R(z) = |z|^{1/2} e^{i\theta/2}$. However, the argument of $z$ is now different in these two planes.
+
+In the $f_R$ plane, $\theta \in (-\pi, \pi)$ and in the $f_L$ plane $\theta \in (-3\pi, -\pi)$ (we are excluding the negative real axis). These choices of angles make sense, by limiting $\theta \in (-\pi, \pi)$ we essentially limit $ -\frac{\pi}{2} < \arg(f_R(z)) < \frac{\pi}{2}$, which is the right half of the plane, and $\theta \in (-3\pi, -\pi)$ means $ -\frac{\pi}{2} < \arg(f_L(z)) < -\frac{3\pi}{2}$ which is the left half of the plane.
+
+To make things clearer, in the $f_R$ plane we start the angle from slightly above the negative real axis with $\pi$, we then go clockwise, the positive real axis has the angle zero and when we reach slightly below the negative real axis we get $-\pi$. For the $f_L$ plane we start slightly above the negative real axis with $-\pi$ going clockwise, the positive real axis is now at angle $-2\pi$ and when we are at slightly below the negative real axis we are at $-3\pi$.
+
+Now, just because $\theta \in (-3\pi, -\pi)$ in the $f_L$ plane, it doesn't mean that $w_L = f_L(z)$ cannot have $\arg(w_L)$ bigger than $-\pi$, for example, $f_L(e^{-i\pi}) = e^{-i\pi/2}$, this is fine since this is the angle of $w_L$ and not of $z$, we only restrict the angle of $z$.
+
+From the illustration above it is clear that if we start with the $f_R$ plane at slightly above the negative real axis and go clockwise one round and still continues to more negative angles $< -\pi$ we are crossing into the $f_L$ plane. The negative real axis that we exclude is called a branch cut. Intuitively it is where we glue together the two planes as illustrated above. So if we cross it, our single valued function will evolve into another (different) one, this is why we are not supposed to cross the branch cut whether when we're doing integral or not.
+
+For our first example $z^{1/3}$, instead of defining three separate single-valued functions like before, we can create three separate planes which can be affected by restricting the angle of $z$.
+
+Recall that $f_1(z) = |z|^{1/3}e^{i\bar\theta/3}$, \ie the output of this function has angle $0 \le \arg(f_1(z)) < \frac{2\pi}{3}$ a.k.a the first $120^\circ$ pizza slice and the other two $f_2$ and $f_3$ has output in the subsequent $120^\circ$ pizza slices respectively. We can instead have $f_{1,2,3}$ all have the same form $|z|^{1/3} e^{i\theta/3}$ by defining a branch cut $\theta \in (0, 2\pi)$ which excludes the positive real axis.
+
+Let's verify the outcome, well, $f_1$ is obvious, $f_2$ we get by going to the second plane which is $\theta \in (2\pi, 4\pi)$ so that $\frac{2\pi}{3} < \arg(f_2) < \frac{4\pi}{3}$ which is the second $120^\circ$ pizza slice and to get $f_3$, again, we cross the branch cut a second time from $f_2$ plane going to $f_3$ plane, this time we restrict $\theta \in (4\pi, 6\pi)$ so that $\frac{4\pi}{3} < \arg(f_2) < \frac{6\pi}{3}$ which is the last $120^\circ$ pizza slice. If we cross the branch cut again, we will end up in $f_1$'s plane but this time we have $\theta \in (6\pi, 8\pi)$ with the resulting output $\frac{6\pi}{3} < \arg(f_1) < \frac{8\pi}{3}$ which is the first pizza slice again :)
+
+So that's the story on how we got branch cuts and how it relates to multi-valued functions. In essence
+%
+\begin{enumerate}
+%
+\item If we have a multi-valued function, we need to make it single-valued.
+%
+\item We can either explicitly generate different single-valued functions or restrict the domain using branch cuts.
+%
+\item Branch cuts are the way to go, this way we create multiple complex planes, one for each of the single valued functions, and in this way all of the single-valued functions have the same form.
+%
+\item We must not cross branch cuts because then we are going into a different plane and therefore a different function (although the function has the same form).
+%
+\item Branch cuts need not be straight lines and they don't have to be on the real axis, they can be some wavy lines as long as they end on a branch point and not cross each other.
+\end{enumerate}
+%
+
+Talking about branch points, in the above examples of $z^{1/2}$ and $z^{1/3}$, the branch points are $z = 0$ and $z = \infty$. What is a branch point? A branch point can be defined (at least) two ways. The first not so pedestrian definition is that it is a point $z_0$ where for any $\epsilon > 0$, $f(z)$ is multivalued for all points in its neighborhood, \ie all $z$ such that $|z - z_0| \le \epsilon$.
+
+The more pedestrian definition is, a branch point is a point where the multi-valued function stopped being multi-valued. An even more pedestrian definition is that a branch point is a point we use to define other points, this is what we usually do to calculate things. Let's see how this goes.
+
+The above way of restricting the angle, $\theta \in (0,2\pi)$ for example, is not the best way of expressing how to calculate with a branch cut. A better way is to first pick a branch point and then use it as a reference to define other points in the domain. Let's take $(z-1)^{1/2}$ for example.
+
+The branch point here is $z=1$ because here the function stops being multi-valued. We then express all other points with respect to $z = 1$. Note that nnumbers in the complex plane are like vectors, so if we choose $z=1$ as a reference, all other points can be expressed as $z = 1 + r e^{i\alpha}$ where $r = |z - 1|$ and $\alpha$ is the angle with respect to the branch cut.
+
+ 
+
+
+As an application of what we learned above let's see what happens when we have a multi-valued function inside an integral and as a result of an integral. We'll start with a simple example and move on to more complicated ones.
+
+The way we do branch cuts
+
+
+
+Example of multi-valued function in an integral and as a result of an integral (Fundamental Theorem).
+
+It's not always straightforward as to what to do to split the angle, especially when we have many branch points, a pertinent example would be $\log\left ( \tfrac{z+1}{z-1}\right )$
+
+
+
+
+
+
+
+
+
+
+
+
+
+$z^p$ has branch points at 0 and infinity, at infinity because $z^p = e^{p \log z}$ and log $z$ has branch points at 0 and infinity through $\log \tfrac{1}{z} = -\log z$
+
+
+
+The branches dictate the angle assignment, not the other way round
+
+Each branch is on its own sheet and single valued. Connected through the cut, this is why we cannot go across the cut since then we are going to a different branch of the function which is a different function. Give example.
+
+Can only use fundamental if the function is fundamental, thus must choose a branch and a cut.
+
+The expansion of $(z^2 - 1)^{\tfrac{1}{2}}$ is $z - \frac{1}{2z} + \dots$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 %
 \begin{figure}
 \centering
