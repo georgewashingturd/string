@@ -1908,6 +1908,8 @@ So that's the story on how we got branch cuts and how it relates to multi-valued
 \item We must not cross branch cuts because then we are going into a different plane and therefore a different function (although the function has the same form).
 %
 \item Branch cuts need not be straight lines and they don't have to be on the real axis, they can be some wavy lines as long as they end on a branch point and not cross each other.
+%
+\item The final goal is to make the function single-valued and analytic, so it's not about assigning angles to $z$, we do it to make the function well-behaved, we'll see an example later.
 \end{enumerate}
 %
 
@@ -1917,12 +1919,33 @@ The more pedestrian definition is, a branch point is a point where the multi-val
 
 The above way of restricting the angle, $\theta \in (0,2\pi)$ for example, is not the best way of expressing how to calculate with a branch cut. A better way is to first pick a branch point and then use it as a reference to define other points in the domain. Let's take $(z-1)^{1/2}$ for example.
 
-The branch point here is $z=1$ because here the function stops being multi-valued. We then express all other points with respect to $z = 1$. Note that nnumbers in the complex plane are like vectors, so if we choose $z=1$ as a reference, all other points can be expressed as $z = 1 + r e^{i\alpha}$ where $r = |z - 1|$ and $\alpha$ is the angle with respect to the branch cut.
+The branch point here is $z=1$ because here the function stops being multi-valued. We can then express all other points with respect to $z = 1$. Note that numbers in the complex plane are like vectors, so if we choose $z=1$ as a reference, all other points can be expressed as $z = 1 + r e^{i\alpha}$ where $r = |z - 1|$ and $\alpha$ is the angle we need to define to make things work.
+
+To define this angle $\alpha$, we first need to choose a branch cut. Say we choose the cut to be the real axis with $\re(z) > 1$, it doesn't mean that the angle has to be $(0,2\pi)$. We can still assign $(-\pi,\pi)$ even though this means that the angle sort of cuts through the cut, this is fine.
+
+The problem with $(-\pi, \pi)$ is that at $z = 0$, $(z-1)^{1/2}$ will have a discontinuity, because at $z = 0^+$ we get $(0^+-1)^{1/2} = 1 + e^{i\pi/2}$ while at $z = 0^-$ we have $(0^--1)^{1/2} = 1 + e^{-i\pi/2}$. This was my big misunderstanding that I thought the angle assignments must not cut across the cut, rather it must make the function well behaved.
+
+To see an example of angle assignment that cuts through the branch cut but still makes the function well behaved we go to the next non-trivial example, $\log \left ( \frac{z+1}{z-1}\right )$.
+
+This time we have two branch points, $z = 1$ and $z = -1$. The most common choices of branch cuts are a cut from $-1$ to $+1$ or a cut from $-1$ to $-\infty$ and $+1$ to $+\infty$. We'll go through both of them.
+
+For the first choice, we define the angles like shown, to make
 
  
 
 
 As an application of what we learned above let's see what happens when we have a multi-valued function inside an integral and as a result of an integral. We'll start with a simple example and move on to more complicated ones.
+
+
+
+
+
+Analytic continuation, we can continue $\log_{(-\pi,\pi)}$ with $\log_{(0,2\pi)}$ because they have the same value in the upper half plane.
+
+
+
+
+
 
 The way we do branch cuts
 
@@ -1955,6 +1978,56 @@ Each branch is on its own sheet and single valued. Connected through the cut, th
 Can only use fundamental if the function is fundamental, thus must choose a branch and a cut.
 
 The expansion of $(z^2 - 1)^{\tfrac{1}{2}}$ is $z - \frac{1}{2z} + \dots$
+
+
+
+
+
+
+
+
+
+
+So you don't want $\zeta$ to be 0 along $C$ but you only want $\re \zeta(s)$ to be zero. But beyond $\re(s) > 1$ there's no zero.
+
+
+
+
+Baclund's estimate of $N(T)$, towards the end it has
+%
+\nbea
+\left | \re\zeta(2 + iT)\right | & \ge & 1 - \frac{1}{2^2} - \frac{1}{3^2}- \frac{1}{4^2} - \dots
+\neea
+%
+This is because
+%
+\nbea
+\re\zeta(2 + iT) & = & \sum_{n=1}^\infty n^{-2} \cos(T\log n) \\
+& = & 1 + \sum_{n=2}^\infty n^{-2} \cos(T\log n) \\
+& \ge & 1 + \sum_{n=2}^\infty n^{-2} (-1)
+\neea
+%
+as $cos \ge -1$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
