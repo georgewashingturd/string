@@ -1,7 +1,7 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  23 DEC 2017 13:18
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  23 DEC 2017 17:45
 entering extended mode
-**C:/Users/User/Documents/GitHub/string/pittetd/Edwards_zeta.tex
-(C:/Users/User/Documents/GitHub/string/pittetd/Edwards_zeta.tex
+**C:/Users/User/Documents/GitHub/string/pittetd/Branches_and_Cuts.tex
+(C:/Users/User/Documents/GitHub/string/pittetd/Branches_and_Cuts.tex
 LaTeX2e <2015/01/01> patch level 2
 Babel <3.9m> and hyphenation patterns for 69 languages loaded.
 (C:\miktex-portable-2.9\tex\latex\revtex\revtex4-1.cls
@@ -478,7 +478,8 @@ Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 223
 Class revtex4-1 Info: cite was not loaded (OK!) on input line 223.
 Class revtex4-1 Info: mcite was not loaded (OK!) on input line 223.
 Class revtex4-1 Info: multicol was not loaded (OK!) on input line 223.
- (Edwards_zeta.aux)
+
+(Branches_and_Cuts.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 223.
 LaTeX Font Info:    ... okay on input line 223.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 223.
@@ -501,8 +502,7 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box47
 Package hyperref Info: Link coloring OFF on input line 223.
-
-(C:\miktex-portable-2.9\tex\latex\hyperref\nameref.sty
+ (C:\miktex-portable-2.9\tex\latex\hyperref\nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (C:\miktex-portable-2.9\tex\generic\oberdiek\gettitlestring.sty
@@ -514,7 +514,7 @@ LaTeX Info: Redefining \ref on input line 223.
 LaTeX Info: Redefining \pageref on input line 223.
 LaTeX Info: Redefining \nameref on input line 223.
 
-(Edwards_zeta.out) (Edwards_zeta.out)
+(Branches_and_Cuts.out) (Branches_and_Cuts.out)
 \@outlinefile=\write4
 
 *geometry* detected driver: pdftex
@@ -606,51 +606,28 @@ Requested font "rsfs10" at 12.0pt
 Requested font "rsfs10" at 8.0pt
 Requested font "rsfs5" at 6.0pt
 Requested font "cmti12" at 12.0pt
- [1] [2] [3]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 389.
+ [1]
+Overfull \hbox (20.82478pt too wide) in paragraph at lines 261--264
+\OT1/cmr/m/n/12 then to-gether with sym-me-tries of $\OML/cmm/m/it/12 ^^X\OT1/c
+mr/m/n/12 (\OML/cmm/m/it/12 s\OT1/cmr/m/n/12 )$ it's easy to show that $2[] [] 
+= [] []$. 
+ []
 
-
-(C:\miktex-portable-2.9\tex\latex\base\omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 389.
- [4] [5] [6] [7] [8] [9]
-[10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21] [22] [23] [24]
-[25]
 Requested font "cmbxti10" at 12.0pt
- [26] [27] [28] [29]
-File: B_over_x.png Graphic file (type QTm)
- <use  "B_over_x.png" > [30]
-File: B2.png Graphic file (type QTm)
- <use  "B2.png" > [31]
-[32] [33]
-Overfull \hbox (23.83293pt too wide) in alignment at lines 1652--1658
- [][][] []
- []
+[2] [3] [4] [5] [6] [7] [8] [9] [10] [11] (Branches_and_Cuts.bbl) [12]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 638.
 
-[34] [35] [36]
-Overfull \hbox (68.84976pt too wide) in alignment at lines 1717--1720
- [][][] []
- []
-
-[37] [38] [39] [40] [41] [42] [43] [44] [45]
-File: Saddle_Point_Contour.png Graphic file (type QTm)
-
-<use  "Saddle_Point_Contour.png" > [46] [47] [48] [49] (Edwards_zeta.bbl)
-[50]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2226.
- (Edwards_zeta.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 2226.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 2226.
+(Branches_and_Cuts.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 638.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 638.
  ) 
 Here is how much of TeX's memory you used:
- 13328 strings out of 428755
- 183889 string characters out of 3166785
- 290563 words of memory out of 3000000
- 16537 multiletter control sequences out of 15000+200000
+ 13292 strings out of 428755
+ 183493 string characters out of 3166785
+ 283568 words of memory out of 3000000
+ 16509 multiletter control sequences out of 15000+200000
  13625 words of font info for 51 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
- 36i,17n,38p,872b,459s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,8n,38p,830b,418s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on Edwards_zeta.pdf (50 pages).
+Output written on Branches_and_Cuts.pdf (12 pages).

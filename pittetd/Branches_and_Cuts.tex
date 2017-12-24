@@ -1,0 +1,638 @@
+\documentclass[aps,preprint,preprintnumbers,nofootinbib,showpacs,prd]{revtex4-1}
+\usepackage{graphicx,color}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsmath,amssymb}
+\usepackage{multirow}
+\usepackage{amsthm}%        But you can't use \usewithpatch for several packages as in this line. The search 
+
+\usepackage{cancel}
+
+%%% for SLE
+\usepackage{dcolumn}   % needed for some tables
+\usepackage{bm}        % for math
+\usepackage{amssymb}   % for math
+\usepackage{multirow}
+%%% for SLE -End
+
+\usepackage{ulem}
+\usepackage{cancel}
+
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage[top=1in, bottom=1.25in, left=1.1in, right=1.1in]{geometry}
+
+\usepackage{mathtools} % for \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+%\usepackage{xeCJK}
+%\setCJKmainfont{SimSun}
+
+\newcommand{\msout}[1]{\text{\sout{\ensuremath{#1}}}}
+
+
+%%%%%% My stuffs - Stef
+\newcommand{\lsim}{\mathrel{\mathop{\kern 0pt \rlap
+  {\raise.2ex\hbox{$<$}}}
+  \lower.9ex\hbox{\kern-.190em $\sim$}}}
+\newcommand{\gsim}{\mathrel{\mathop{\kern 0pt \rlap
+  {\raise.2ex\hbox{$>$}}}
+  \lower.9ex\hbox{\kern-.190em $\sim$}}}
+
+%
+% Key
+%
+\newcommand{\key}[1]{\medskip{\sffamily\bfseries\color{blue}#1}\par\medskip}
+%\newcommand{\key}[1]{}
+\newcommand{\q}[1] {\medskip{\sffamily\bfseries\color{red}#1}\par\medskip}
+\newcommand{\comment}[2]{{\color{red}{{\bf #1:}  #2}}}
+
+
+\newcommand{\ie}{{\it i.e.} }
+\newcommand{\eg}{{\it e.g.} }
+
+%
+% Energy scales
+%
+\newcommand{\ev}{{\,{\rm eV}}}
+\newcommand{\kev}{{\,{\rm keV}}}
+\newcommand{\mev}{{\,{\rm MeV}}}
+\newcommand{\gev}{{\,{\rm GeV}}}
+\newcommand{\tev}{{\,{\rm TeV}}}
+\newcommand{\fb}{{\,{\rm fb}}}
+\newcommand{\ifb}{{\,{\rm fb}^{-1}}}
+
+%
+% SUSY notations
+%
+\newcommand{\neu}{\tilde{\chi}^0}
+\newcommand{\neuo}{{\tilde{\chi}^0_1}}
+\newcommand{\neut}{{\tilde{\chi}^0_2}}
+\newcommand{\cha}{{\tilde{\chi}^\pm}}
+\newcommand{\chao}{{\tilde{\chi}^\pm_1}}
+\newcommand{\chaop}{{\tilde{\chi}^+_1}}
+\newcommand{\chaom}{{\tilde{\chi}^-_1}}
+\newcommand{\Wpm}{W^\pm}
+\newcommand{\chat}{{\tilde{\chi}^\pm_2}}
+\newcommand{\smu}{{\tilde{\mu}}}
+\newcommand{\smur}{\tilde{\mu}_R}
+\newcommand{\smul}{\tilde{\mu}_L}
+\newcommand{\sel}{{\tilde{e}}}
+\newcommand{\selr}{\tilde{e}_R}
+\newcommand{\sell}{\tilde{e}_L}
+\newcommand{\smurl}{\tilde{\mu}_{R,L}}
+
+\newcommand{\casea}{\texttt{IA}}
+\newcommand{\caseb}{\texttt{IB}}
+\newcommand{\casec}{\texttt{II}}
+
+\newcommand{\caseasix}{\texttt{IA-6}}
+
+%
+% Greek
+%
+\newcommand{\es}{{\epsilon}}
+\newcommand{\sg}{{\sigma}}
+\newcommand{\dt}{{\delta}}
+\newcommand{\kp}{{\kappa}}
+\newcommand{\lm}{{\lambda}}
+\newcommand{\Lm}{{\Lambda}}
+\newcommand{\gm}{{\gamma}}
+\newcommand{\mn}{{\mu\nu}}
+\newcommand{\Gm}{{\Gamma}}
+\newcommand{\tho}{{\theta_1}}
+\newcommand{\tht}{{\theta_2}}
+\newcommand{\lmo}{{\lambda_1}}
+\newcommand{\lmt}{{\lambda_2}}
+%
+% LaTeX equations
+%
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+
+\newcommand{\nbea}{\begin{eqnarray*}}
+\newcommand{\neea}{\end{eqnarray*}}
+\newcommand{\nbeq}{\begin{equation*}}
+\newcommand{\neeq}{\end{equation*}}
+
+\newcommand{\no}{{\nonumber}}
+\newcommand{\td}[1]{{\widetilde{#1}}}
+\newcommand{\sqt}{{\sqrt{2}}}
+%
+\newcommand{\me}{{\rlap/\!E}}
+\newcommand{\met}{{\rlap/\!E_T}}
+\newcommand{\rdmu}{{\partial^\mu}}
+\newcommand{\gmm}{{\gamma^\mu}}
+\newcommand{\gmb}{{\gamma^\beta}}
+\newcommand{\gma}{{\gamma^\alpha}}
+\newcommand{\gmn}{{\gamma^\nu}}
+\newcommand{\gmf}{{\gamma^5}}
+%
+% Roman expressions
+%
+\newcommand{\br}{{\rm Br}}
+\newcommand{\sign}{{\rm sign}}
+\newcommand{\Lg}{{\mathcal{L}}}
+\newcommand{\M}{{\mathcal{M}}}
+\newcommand{\tr}{{\rm Tr}}
+
+\newcommand{\msq}{{\overline{|\mathcal{M}|^2}}}
+
+%
+% kinematic variables
+%
+%\newcommand{\mc}{m^{\rm cusp}}
+%\newcommand{\mmax}{m^{\rm max}}
+%\newcommand{\mmin}{m^{\rm min}}
+%\newcommand{\mll}{m_{\ell\ell}}
+%\newcommand{\mllc}{m^{\rm cusp}_{\ell\ell}}
+%\newcommand{\mllmax}{m^{\rm max}_{\ell\ell}}
+%\newcommand{\mllmin}{m^{\rm min}_{\ell\ell}}
+%\newcommand{\elmax} {E_\ell^{\rm max}}
+%\newcommand{\elmin} {E_\ell^{\rm min}}
+\newcommand{\mxx}{m_{\chi\chi}}
+\newcommand{\mrec}{m_{\rm rec}}
+\newcommand{\mrecmin}{m_{\rm rec}^{\rm min}}
+\newcommand{\mrecc}{m_{\rm rec}^{\rm cusp}}
+\newcommand{\mrecmax}{m_{\rm rec}^{\rm max}}
+%\newcommand{\mpt}{\rlap/p_T}
+
+%%%song
+\newcommand{\cosmax}{|\cos\Theta|_{\rm max} }
+\newcommand{\maa}{m_{aa}}
+\newcommand{\maac}{m^{\rm cusp}_{aa}}
+\newcommand{\maamax}{m^{\rm max}_{aa}}
+\newcommand{\maamin}{m^{\rm min}_{aa}}
+\newcommand{\eamax} {E_a^{\rm max}}
+\newcommand{\eamin} {E_a^{\rm min}}
+\newcommand{\eaamax} {E_{aa}^{\rm max}}
+\newcommand{\eaacusp} {E_{aa}^{\rm cusp}}
+\newcommand{\eaamin} {E_{aa}^{\rm min}}
+\newcommand{\exxmax} {E_{\neuo \neuo}^{\rm max}}
+\newcommand{\exxcusp} {E_{\neuo \neuo}^{\rm cusp}}
+\newcommand{\exxmin} {E_{\neuo \neuo}^{\rm min}}
+%\newcommand{\mxx}{m_{XX}}
+%\newcommand{\mrec}{m_{\rm rec}}
+\newcommand{\erec}{E_{\rm rec}}
+%\newcommand{\mrecmin}{m_{\rm rec}^{\rm min}}
+%\newcommand{\mrecc}{m_{\rm rec}^{\rm cusp}}
+%\newcommand{\mrecmax}{m_{\rm rec}^{\rm max}}
+%%%song
+
+\newcommand{\mc}{m^{\rm cusp}}
+\newcommand{\mmax}{m^{\rm max}}
+\newcommand{\mmin}{m^{\rm min}}
+\newcommand{\mll}{m_{\mu\mu}}
+\newcommand{\mllc}{m^{\rm cusp}_{\mu\mu}}
+\newcommand{\mllmax}{m^{\rm max}_{\mu\mu}}
+\newcommand{\mllmin}{m^{\rm min}_{\mu\mu}}
+\newcommand{\mllcusp}{m^{\rm cusp}_{\mu\mu}}
+\newcommand{\elmax} {E_\mu^{\rm max}}
+\newcommand{\elmin} {E_\mu^{\rm min}}
+\newcommand{\elmaxw} {E_W^{\rm max}}
+\newcommand{\elminw} {E_W^{\rm min}}
+\newcommand{\R} {{\cal R}}
+
+\newcommand{\ewmax} {E_W^{\rm max}}
+\newcommand{\ewmin} {E_W^{\rm min}}
+\newcommand{\mwrec}{m_{WW}}
+\newcommand{\mwrecmin}{m_{WW}^{\rm min}}
+\newcommand{\mwrecc}{m_{WW}^{\rm cusp}}
+\newcommand{\mwrecmax}{m_{WW}^{\rm max}}
+
+\newcommand{\mpt}{{\rlap/p}_T}
+% \def overrides \Im
+\def\Im{{\rm Im}}
+\newcommand{\re}{{\rm Re}}
+
+%%%%%% END My stuffs - Stef
+
+\newcommand{\dunno}{$ {}^{\mbox {--}}\backslash(^{\rm o}{}\underline{\hspace{0.2cm}}{\rm o})/^{\mbox {--}}$}
+
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+
+%\DeclareMathOperator{\re}{Re}
+
+
+\begin{document}
+
+\title{Branches and Cuts}
+\bigskip
+\author{Stefanus Koesno$^1$\\
+$^1$ Somewhere in California\\ San Jose, CA 95134 USA\\
+}
+%
+\date{\today}
+%
+\begin{abstract}
+
+\end{abstract}
+%
+\maketitle
+
+\renewcommand{\theequation}{A.\arabic{equation}}  % redefine the command that creates the equation no.
+\setcounter{equation}{0}  % reset counter 
+
+In my reading of Harold Edward's Riemman's Zeta Function I encountered something quite bizzare, something about complex analysis that I thought I knew but turned out I didn't. He was trying to integrate 
+%
+\nbea
+N(T) = \frac{1}{2\pi i} \int_{\partial R} \frac{d\log \xi(s)}{ds} ds & = & \frac{1}{2\pi i} \int_{\partial R} \frac{\xi'(s)}{\xi(s)} ds \\
+& = & \frac{1}{2\pi} \Im \left \lbrack \int_{\partial R} \frac{\xi'(s)}{\xi(s)} ds \right \rbrack
+\neea
+%
+where $\partial R$ is the counter clockwise boundary of a rectangle in the complex plane, the rectangle starts from $(1\tfrac{1}{2}, 0) \to (1\tfrac{1}{2}, iT) \to (-\tfrac{1}{2}, iT) \to (-\tfrac{1}{2},0)$. (We are only interested in the imaginary part of the integral because the LHS is the number of zeros of $\xi(s)$ in the rectangle and is therefore a real number.)
+
+He then said that due to the symmetry of $\xi(s)$ we just need to integrate
+%
+\nbea
+\int_{C} \frac{\xi'(s)}{\xi(s)} ds
+\neea
+%
+where $C$ is a broken line segment $(1\tfrac{1}{2}, 0) \to (1\tfrac{1}{2}, iT) \to (\tfrac{1}{2}, iT)$. I know that $\xi(s) = \xi(1-s)$ and $\xi(\overline{s}) = \overline{\xi(s)}$ and if we take the integral to be
+%
+\nbea
+\int_{C} \frac{d\log \xi(s)}{ds} ds & = & \log (\xi(\tfrac{1}{2}, iT)) - \log (\xi(1\tfrac{1}{2}, 0))
+\neea
+%
+then together with symmetries of $\xi(s)$ it's easy to show that $2 \Im \left \lbrack \int_{C} \frac{\xi'(s)}{\xi(s)} ds \right \rbrack = \Im \left \lbrack \int_{\partial R} \frac{\xi'(s)}{\xi(s)} ds \right \rbrack$.
+
+But I know that in complex integration you can't just apply Fundamental Theorem of Calculus willy nilly since according to Residue Theorem if you integrate around a residue the integral is not zero. If we use the fundamental theorem blindly then $\int_{\partial R} \frac{\xi'(s)}{\xi(s)} ds = 0$ which is obviously wrong since the integral counts the number of zeros of $\xi(s)$. The strange thing is that the above relationship $2 \Im \left \lbrack \int_{C} \frac{\xi'(s)}{\xi(s)} ds \right \rbrack = \Im \left \lbrack \int_{\partial R} \frac{\xi'(s)}{\xi(s)} ds \right \rbrack$ is still true and in a latter section Edwards applied the fundamental theorem to do the integral when calculating Backlund's estimate of the number of zerosless than $\Im T$.
+
+This then reminded me that $\log z$ has a branch cut and a branch point but thanks to my poor understanding of it I only got more confused as I tried to draw ridiculous branch cuts emanating from the zeros of $\xi(s)$ inside the rectangle $R$. After some soul searching I here summarized what I learned about branch cuts and points :)
+
+
+A pertinent example would be $\log\left ( \tfrac{z+1}{z-1}\right )$
+
+
+\bigskip
+\underline{\textit{\textbf{Brief (Pedestrian) Review of Branches and Cuts}}}. The only thing I remembered about branch cuts is that we need to make a cut or a slit emanating from a branch point and this slit then excluded from the complex plane, another thing is that we then define angles of the complex numbers $\theta$ of $r e^{i\theta}$ to be $(-\pi,\pi)$ or $(0,2\pi)$ depending on whether the cut is on the negative or positive real axis. And one thing I was convinved about was that the only reason we do this is to do integrals.
+
+The important thing I didn't know is that why we did all this, except for the fact that we have a multivalued function that we need to handle (one thing I never understood was the relationship between the cut and the angle assignment, I don't know whether they are related or which caused which).
+
+Let's start with the answer, we do branches because we have a multivalued function, $f(z)$, that we want to tame, \ie we want to make it single valued and analytic, it doesn't have anything to do with integrals :)
+
+The main reason we have multivalueness with complex numbers is because they're defined as $re^{i\theta}$ and of course $re^{i\theta} = re^{i\theta + 2n\pi i}$. This causes troubles because then in the example of $z^{1/2}$ if we go along the unit circle, at the boundary of $\theta=2\pi$ and $\theta=0$ we have a discontinuity and of course a multivalued function is not a function by definition.
+
+Since the problem is caused by angles going round and round, the solution should be to limit the values they can take. The question now is how we can limit it and what it means to limit the angle of $z$.
+
+Another misunderstanding I had was that the reason to limit the values of $\theta$ was to make sense of $z$, \ie is to make $z$ have unique $r$ and $\theta$, this is not the case, as mentioned above the main goal is to make sense of the function $f(z)$ rather than $z$.
+
+Let's start with an example of $f(z) = z^{1/3}$. We know that in complex numbers there are $n$ roots of unity, therefore there are three roots of $z$, they are $r^{1/3} e^{i\bar\theta/3}$, $r^{1/3} e^{i\bar\theta/3 + 2\pi i/3}$, and $r^{1/3} e^{i\bar\theta/3 + 4\pi i/3}$ where $\bar\theta = \theta \pmod{2\pi}$. If we limit the complex plane to $\theta \in (0,2\pi)$, of course by doing this we also exclude the positive real axis which is the cause of the problem as we acquire an extra $2\pi$ in going through it, then we will only get one root of $z^{1/3}$, however, we still have a choice of which root to go with.
+
+I initially (wrongly) assumed that since $\theta \in (0,2\pi)$, in this case $z^{1/3} = r^{1/3} e^{i\bar\theta/3} = r^{1/3} e^{i\theta/3}$. But this is not true, we can assign any one of the three roots of unity even with this angle choice, \eg we can choose $f(z) = r^{1/3} e^{i\bar\theta/3 + 2\pi i/3}$. For simplicity we can choose $f(z) = r^{1/3} e^{i\bar\theta/3} = r^{1/3} e^{i\theta/3}$ (the simplest choice is usually called the principle value of the function).
+
+With this restriction on the angle, $f(z)$ is single valued in this complex plane. Visually, what this does is to limit the output of $f(z)$ to the first $120^\circ$ pizza slice region. (Note that since $\theta$ is restricted we no longer need to use $\bar\theta$.)
+
+Another option is to limit $\theta \in (2\pi, 4\pi)$, in this version of the complex plane, again we have three choices for $f(z)$, however, if we choose a different version other than what we chose for $\theta \in (0,2\pi)$ above then we might get the same function as that of $\theta \in (0,2\pi)$, \ie the two functions might have the same output.
+
+So the key here is to be consistent with our choice of the form of the function, here we have $f(z) = r^{1/3} e^{i\bar\theta/3 + 2\pi i/3} = r^{1/3} e^{i\theta/3}$ which means that the output of $f(z)$ is in the second $120^\circ$ pizza slice. And of course the last option is $\theta \in (4\pi, 6\pi)$ with $f(z) = r^{1/3} e^{i\bar\theta/3 + 4 \pi i/3}= r^{1/3} e^{i\theta/3}$ and we are now in the last $120^\circ$ pizza slice.
+
+Of course there are other choices, we can for example choose $\theta \in (\tfrac{\pi}{2}, \tfrac{5\pi}{2})$, so we start from the positive imaginary axis and go counter counter clockwise. With this choice of angle we also change $f(z)$ in this particular plane, $f(z)$ is now $f(z) = r^{1/3} e^{i\theta/3 + \pi i/6}$ and our pizza slice is rotated $\pi/6$ counter clockwise (note that it is no longer $\bar\theta$ in $f(z)$ but $\theta$, in fact we can no longer express $f(z)$ using $\bar\theta$).
+
+And we can get the other two roots of $z^{1/3}$ by setting $\theta \in (5\pi/2, 9\pi/2)$ and $\theta \in (9\pi/2, 13\pi/2)$. Again, like above we now have three different versions of complex planes, each with each own unique angle assignment.
+
+There are a few things we notice from the above example
+%
+\begin{enumerate}
+%
+\item In each plane we get a well behaved $f(z)$, it is now single valued and continuous aside form the cut, in our example above, for each angle assignment, there's a discontinuity going from $\theta = 0$ to $\theta=2\pi$, continuity (everywhere else) in this case is trivial, we'll see a non-trivial example later. But this is a generic trait, within a single plane, there's a dicontinuity going across the cut.
+%
+\item Each version of the complex plane has a different $f(z)$ even though the form of $f(z) = r^{1/3}e^{i\theta/3}$ is the same in each plane, which form to choose is up to us, however, the form must be the same for each plane since we are now expressing its multivaluness by creating multiple complex planes. However, they are different functions because the output of $f(z)$ is different in each plane. Each single-valued version of $f(z)$ is called a branch function, so $f(z)$ has three branches.
+%
+\item We can go from one version of $f(z)$ to another one if we cross over the branch cut. In the above first example, the branch cut is is the positive real axis. Starting from the first plane, $\theta \in (0,2\pi)$, applying $f(z)$ along the unit circle counter clockwise we get output in the first pizza slice, at the end of the unit circle, just below the positive real axis, if we go across the cut the angle assignment now becomes $\theta \in (2\pi, 4\pi)$ and the output is now in the second pizza slice. If we start from the third plane, $\theta \in (4\pi, 6\pi)$ going across the cut will take us back to the first plane.
+\end{enumerate}
+%
+An important note that is not covered by the above example is that the choice of angle assignment need not follow the cut, \eg just because our cut is on the positive real axis it doesn't mean that our angle has to go from $(0, 2\pi)$, it can also be $(-\pi,\pi)$, the goal as mentioned before is to make $f(z)$ well behaved, in our example of $f(z) = z^{1/3}$ the choice of $\theta \in (-\pi,\pi)$ with a cut in the positive real axis doesn't make sense because then $f(-1)$ is multivalued but in the example we'll discuss later this is exactly what we need.
+
+Item no. 3 above is the reason why we should not cross a branch cut when doing integrals because then we are integrating two different functions one for each side of the cut.
+
+So we can think of this whole thing as having multiplane complex planes where in each plane the function is single valued and  we glue these planes on the branch cuts. So branch cuts are boundaries between these different planes. Note that a branch cut need not be a simple straight line going through the real axis, it can have any angle or even any shape. But if we choose a wavy line for example, then our angle assignment will be location dependent.
+
+Another thing about branch cuts is that they always end on a branch point. A branch point is a point that causes the multivalueness as you go around it or in other words, a branch point $z_0$ is a point where for $\epsilon > 0$, $f(z)$ is multivalued for all points in its neighborhood, \ie all $z$ such that $|z - z_0| \le \epsilon$.
+
+In a more pedestrian way, branch points are the points where the multivalued function stops being multivalued. In our example above  our branch cut starts at $z = 0$ and goes to $+\infty$ along the positive real axis.
+
+But if a branch cut must end on branch points then in this case $+\infty$ is also a branch point, how is this so? 
+%
+\nbea
+z^{1/3} & = & e^{\tfrac{1}{3} \log z}
+\neea
+%
+and $\log z$ has two branch points, one at $z = 0$ but
+%
+\nbea
+\log z & = & - \log \frac{1}{z}
+\neea
+%
+thus $+\infty$ is also a branch point. The reason a branch cut must end on branch points is that it has to stop us from going around the branch point full circle as from the definition of branch points, going full circle, $f(z)$ becomes multivalued, \ie if we don't end the cut on a branch point we are coallescing two different planes into one.
+
+Before going into applications of branch cuts in integrals, let's take a look at a more serious example.
+%
+\nbea
+f(z) & = & \log \left ( \frac{z+1}{z-1} \right )
+\neea
+%
+In this case we have two (finite) branch points $z = 1$ and $z = -1$. The most common choices of branch cuts are a cut from $-1$ to $+1$ or a cut from $-1$ to $-\infty$ and $+1$ to $+\infty$. We'll go through both of them.
+
+For the first choice, we define the angles like shown, note that even though for $z = +1$ the cut is on its leftt we still choose $\theta_{1,2} \in (0,2\pi)$, as explained above this is because we want $f(z)$ to be continuous we don't really care much about $z$ (of course unless $f(z) = z$). Since the importance of branch points is that how we go around them, we define $z$ differently for the two branch points,
+%
+\nbea
+z = -1 + r_1e^{i\theta_1} ~~~~~~~ z & = & 1 + r_2e^{i\theta_2}
+\neea
+%
+for $z$ around the left and right branch points respectively, $f(z)$ then becomes
+%
+\nbea
+f(z) & = & \log \left ( \frac{r_1}{r_2}\right ) + i (\theta_1 - \theta_2 + 2\pi k)
+\neea
+%
+Again, we have a free choice in $k$ as in our simple example, and the simplest, \ie principle value choice, is $k = 0$. We now need to check if our angle assignment for $\theta_{1,2}$ is good. The places we need to check are along the real axis with $\re(z) > 1$, $-1 \le \re(z) \le 1$ and $\re(z) < -1$. First, for $\re(z) > 1$
+%
+\nbea
+\Im ~ z = 0^+  & ~~~~~~~ & f(z) = \log \left( \frac{r_1}{r_2} \right ) + i (0 - 0) \\
+\Im ~ z = 0^- & ~~~~~~~ & f(z) = \log \left( \frac{r_1}{r_2} \right ) + i (2\pi - 2\pi)
+\neea
+%
+for $-1 \le \re(z) \le 1$
+%
+\nbea
+\Im ~ z = 0^+ & ~~~~~~~ & f(z) = \log \left( \frac{r_1}{r_2} \right ) + i (0 - \pi) \\
+\Im ~ z = 0^- & ~~~~~~~ & f(z) = \log \left( \frac{r_1}{r_2} \right ) + i (2\pi - \pi)
+\neea
+%
+and we see a discontinuity here as expected, lastly $\re(z) < -1$
+%
+\nbea
+\Im ~ z = 0^+ & ~~~~~~~ & f(z) = \log \left( \frac{r_1}{r_2} \right ) + i (\pi - \pi) \\
+\Im ~ z = 0^- & ~~~~~~~ & f(z) = \log \left( \frac{r_1}{r_2} \right ) + i (\pi - \pi)
+\neea
+%
+As a side note, we can also choose $\theta_{1,2} \in (-\pi, \pi)$ and still get a consistent result. How to see that we are going to another plane when crossing the cut, because going around $z = 1$ half way we are still not going to another plane
+
+
+If we choose the other branch cut choice we will have $\theta_1 \in (-\pi, \pi)$ and $\theta_2 \in (0, 2\pi)$ get a consistent result like above. If we reverse the assignment $\theta_1 \in (0, 2\pi)$ and $\theta_2 \in (-\pi, \pi)$ then in $-1 \le \re(z) \le 1$ we get
+%
+\nbea
+\Im ~ z = 0^+ & ~~~~~~~ & f(z) = \log \left( \frac{r_1}{r_2} \right ) + i (0 - \pi) \\
+\Im ~ z = 0^- & ~~~~~~~ & f(z) = \log \left( \frac{r_1}{r_2} \right ) + i (2\pi - (-\pi))
+\neea
+%
+which is discontinuous and hence not allowed :)
+
+
+
+
+
+
+
+
+
+
+
+Fundamental theorem, example with integral of 1/z
+
+
+
+
+
+
+
+
+Having learned
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Of course, this is not the only way to transform a multivalued function into a single valued one. We can modify the 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+We have branches because we have multi-valued functions. If we restrict the function to be single valued, it is said that we are choosing a branch. For example, how do we create single-valued functions out of $f(z) = z^{1/3}$?
+
+One way is by creating three different single-valued functions, $f_1(z) = |z|^{1/3}e^{i\bar\theta/3}$, $f_2(z) = |z|^{1/3} e^{i\bar\theta/3 + 2\pi i/3}$ and $f_3(z) = |z| e^{i\bar\theta/3 + 4\pi i / 3}$ where $z = |z| e^{i\theta}$ and $\bar\theta = \theta \pmod{2\pi}$. 
+
+The first, $f_1(z)$ will generate numbers with angle $0 \le \arg (f_1(z)) < \tfrac{2\pi}{3}$, the second $f_2(z)$ generates $\tfrac{2\pi}{3} \le \arg (f_2(z)) < \tfrac{4\pi}{3}$ and the third $f_3(z)$ produces numbers with $\tfrac{4\pi}{3} \le \arg (f_3(z)) < \tfrac{6\pi}{3}$. This way we cover all possible values of $z^{1/3}$.
+
+Rather than splitting the function into three single valued ones we can split the domain into three complex planes. Let's take a simpler example of $z^{1/2}$. We can again create two single valued functions $f_R(z) = |z|^{1/2} e^{i\bar\theta/2 -\pi i/2}$ whose output is in the right half plane and $f_L(z) = |z|^{1/2} e^{i\bar\theta/2 + \pi i/2}$ whose output is in the left half plane.
+
+But wouldn't it be simpler if we can just designate $f(z) \to |z|^{1/2} e^{i\theta/2}$ while still maintaining the output to be always say for instance on the right half of the plane? This looks a lot more natural since taking a square root is (primarily) just multiplying the exponent by $\tfrac{1}{2}$.
+
+We can do this by setting the domain to be $z = |z|e^{i\theta}$ where $\theta$ is now restricted to $\theta \in (-\pi,\pi)$, since the interval is open, this is equivalent to excluding the negative real axis. With this choice of domain our $f_R$ simply becomes $f_R(z) = |z|^{1/2} e^{i\theta/2}$ which is very natural (compared to $f_R(z) = |z|^{1/2} e^{i\bar\theta/2 -\pi i/2}$).
+
+What we are doing is essentially creating two copies of the complex plane, one for $f_R$ and another for $f_L$, In their own planes, $f_R$ and $f_L$ take the same form $f_L(z) = f_R(z) = |z|^{1/2} e^{i\theta/2}$. However, the argument of $z$ is now different in these two planes.
+
+In the $f_R$ plane, $\theta \in (-\pi, \pi)$ and in the $f_L$ plane $\theta \in (-3\pi, -\pi)$ (we are excluding the negative real axis). These choices of angles make sense, by limiting $\theta \in (-\pi, \pi)$ we essentially limit $ -\frac{\pi}{2} < \arg(f_R(z)) < \frac{\pi}{2}$, which is the right half of the plane, and $\theta \in (-3\pi, -\pi)$ means $ -\frac{\pi}{2} < \arg(f_L(z)) < -\frac{3\pi}{2}$ which is the left half of the plane.
+
+To make things clearer, in the $f_R$ plane we start the angle from slightly above the negative real axis with $\pi$, we then go clockwise, the positive real axis has the angle zero and when we reach slightly below the negative real axis we get $-\pi$. For the $f_L$ plane we start slightly above the negative real axis with $-\pi$ going clockwise, the positive real axis is now at angle $-2\pi$ and when we are at slightly below the negative real axis we are at $-3\pi$.
+
+Now, just because $\theta \in (-3\pi, -\pi)$ in the $f_L$ plane, it doesn't mean that $w_L = f_L(z)$ cannot have $\arg(w_L)$ bigger than $-\pi$, for example, $f_L(e^{-i\pi}) = e^{-i\pi/2}$, this is fine since this is the angle of $w_L$ and not of $z$, we only restrict the angle of $z$.
+
+From the illustration above it is clear that if we start with the $f_R$ plane at slightly above the negative real axis and go clockwise one round and still continues to more negative angles $< -\pi$ we are crossing into the $f_L$ plane. The negative real axis that we exclude is called a branch cut. Intuitively it is where we glue together the two planes as illustrated above. So if we cross it, our single valued function will evolve into another (different) one, this is why we are not supposed to cross the branch cut whether when we're doing integral or not.
+
+For our first example $z^{1/3}$, instead of defining three separate single-valued functions like before, we can create three separate planes which can be affected by restricting the angle of $z$.
+
+Recall that $f_1(z) = |z|^{1/3}e^{i\bar\theta/3}$, \ie the output of this function has angle $0 \le \arg(f_1(z)) < \frac{2\pi}{3}$ a.k.a the first $120^\circ$ pizza slice and the other two $f_2$ and $f_3$ has output in the subsequent $120^\circ$ pizza slices respectively. We can instead have $f_{1,2,3}$ all have the same form $|z|^{1/3} e^{i\theta/3}$ by defining a branch cut $\theta \in (0, 2\pi)$ which excludes the positive real axis.
+
+Let's verify the outcome, well, $f_1$ is obvious, $f_2$ we get by going to the second plane which is $\theta \in (2\pi, 4\pi)$ so that $\frac{2\pi}{3} < \arg(f_2) < \frac{4\pi}{3}$ which is the second $120^\circ$ pizza slice and to get $f_3$, again, we cross the branch cut a second time from $f_2$ plane going to $f_3$ plane, this time we restrict $\theta \in (4\pi, 6\pi)$ so that $\frac{4\pi}{3} < \arg(f_2) < \frac{6\pi}{3}$ which is the last $120^\circ$ pizza slice. If we cross the branch cut again, we will end up in $f_1$'s plane but this time we have $\theta \in (6\pi, 8\pi)$ with the resulting output $\frac{6\pi}{3} < \arg(f_1) < \frac{8\pi}{3}$ which is the first pizza slice again :)
+
+So that's the story on how we got branch cuts and how it relates to multi-valued functions. In essence
+%
+\begin{enumerate}
+%
+\item If we have a multi-valued function, we need to make it single-valued.
+%
+\item We can either explicitly generate different single-valued functions or restrict the domain using branch cuts.
+%
+\item Branch cuts are the way to go, this way we create multiple complex planes, one for each of the single valued functions, and in this way all of the single-valued functions have the same form.
+%
+\item We must not cross branch cuts because then we are going into a different plane and therefore a different function (although the function has the same form).
+%
+\item Branch cuts need not be straight lines and they don't have to be on the real axis, they can be some wavy lines as long as they end on a branch point and not cross each other.
+%
+\item The final goal is to make the function single-valued and analytic, so it's not about assigning angles to $z$, we do it to make the function well-behaved, we'll see an example later.
+\end{enumerate}
+%
+
+Talking about branch points, in the above examples of $z^{1/2}$ and $z^{1/3}$, the branch points are $z = 0$ and $z = \infty$. What is a branch point? A branch point can be defined (at least) two ways. The first not so pedestrian definition is that it is a point $z_0$ where for any $\epsilon > 0$, $f(z)$ is multivalued for all points in its neighborhood, \ie all $z$ such that $|z - z_0| \le \epsilon$.
+
+The more pedestrian definition is, a branch point is a point where the multi-valued function stopped being multi-valued. An even more pedestrian definition is that a branch point is a point we use to define other points, this is what we usually do to calculate things. Let's see how this goes.
+
+The above way of restricting the angle, $\theta \in (0,2\pi)$ for example, is not the best way of expressing how to calculate with a branch cut. A better way is to first pick a branch point and then use it as a reference to define other points in the domain. Let's take $(z-1)^{1/2}$ for example.
+
+The branch point here is $z=1$ because here the function stops being multi-valued. We can then express all other points with respect to $z = 1$. Note that numbers in the complex plane are like vectors, so if we choose $z=1$ as a reference, all other points can be expressed as $z = 1 + r e^{i\alpha}$ where $r = |z - 1|$ and $\alpha$ is the angle we need to define to make things work.
+
+To define this angle $\alpha$, we first need to choose a branch cut. Say we choose the cut to be the real axis with $\re(z) > 1$, it doesn't mean that the angle has to be $(0,2\pi)$. We can still assign $(-\pi,\pi)$ even though this means that the angle sort of cuts through the cut, this is fine.
+
+The problem with $(-\pi, \pi)$ is that at $z = 0$, $(z-1)^{1/2}$ will have a discontinuity, because at $z = 0^+$ we get $(0^+-1)^{1/2} = 1 + e^{i\pi/2}$ while at $z = 0^-$ we have $(0^--1)^{1/2} = 1 + e^{-i\pi/2}$. This was my big misunderstanding that I thought the angle assignments must not cut across the cut, rather it must make the function well behaved.
+
+To see an example of angle assignment that cuts through the branch cut but still makes the function well behaved we go to the next non-trivial example, $\log \left ( \frac{z+1}{z-1}\right )$.
+
+This time we have two branch points, $z = 1$ and $z = -1$. 
+
+ 
+
+
+As an application of what we learned above let's see what happens when we have a multi-valued function inside an integral and as a result of an integral. We'll start with a simple example and move on to more complicated ones.
+
+
+
+
+
+Analytic continuation, we can continue $\log_{(-\pi,\pi)}$ with $\log_{(0,2\pi)}$ because they have the same value in the upper half plane.
+
+
+
+
+
+
+The way we do branch cuts
+
+
+
+Example of multi-valued function in an integral and as a result of an integral (Fundamental Theorem).
+
+It's not always straightforward as to what to do to split the angle, especially when we have many branch points, a pertinent example would be $\log\left ( \tfrac{z+1}{z-1}\right )$
+
+
+
+
+
+
+
+
+
+
+
+
+
+$z^p$ has branch points at 0 and infinity, at infinity because $z^p = e^{p \log z}$ and log $z$ has branch points at 0 and infinity through $\log \tfrac{1}{z} = -\log z$
+
+
+
+The branches dictate the angle assignment, not the other way round
+
+Each branch is on its own sheet and single valued. Connected through the cut, this is why we cannot go across the cut since then we are going to a different branch of the function which is a different function. Give example.
+
+Can only use fundamental if the function is fundamental, thus must choose a branch and a cut.
+
+The expansion of $(z^2 - 1)^{\tfrac{1}{2}}$ is $z - \frac{1}{2z} + \dots$
+
+
+
+
+
+
+
+
+
+
+So you don't want $\zeta$ to be 0 along $C$ but you only want $\re \zeta(s)$ to be zero. But beyond $\re(s) > 1$ there's no zero.
+
+
+
+
+Baclund's estimate of $N(T)$, towards the end it has
+%
+\nbea
+\left | \re\zeta(2 + iT)\right | & \ge & 1 - \frac{1}{2^2} - \frac{1}{3^2}- \frac{1}{4^2} - \dots
+\neea
+%
+This is because
+%
+\nbea
+\re\zeta(2 + iT) & = & \sum_{n=1}^\infty n^{-2} \cos(T\log n) \\
+& = & 1 + \sum_{n=2}^\infty n^{-2} \cos(T\log n) \\
+& \ge & 1 + \sum_{n=2}^\infty n^{-2} (-1)
+\neea
+%
+as $cos \ge -1$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
