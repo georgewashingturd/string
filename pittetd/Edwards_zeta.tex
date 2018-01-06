@@ -1212,7 +1212,7 @@ and we get something very similar to the upper bound except for a minus sign for
 
 
 
-{\bf Page }. Making this note just to clear my head :) Relative error between Li$(x)$ and $\frac{x}{\log x - A}$ usually means that
+{\bf Page 86}, upper mid. Making this note just to clear my head :) Relative error between Li$(x)$ and $\frac{x}{\log x - A}$ usually means that
 %
 \nbea
 \frac{x/(\log x - A) - {\rm Li}(x)}{{\rm Li}(x)}
@@ -1238,7 +1238,7 @@ So if we divide this relative error by $x/(\log x)^2$, we get $A-1$.
 
 
 
-{\bf Page }. const times $x^{-1/2 + \epsilon}$ is the same as just $x^{-1/2 + \epsilon}$ for sufficiently larger $x$ :) because
+{\bf Page 91}. const times $x^{-1/2 + \epsilon}$ is the same as just $x^{-1/2 + \epsilon}$ for sufficiently larger $x$ :) because
 %
 \nbea
 K x^{-1/2 + \epsilon} & = & x^{-1/2 + \epsilon + \delta}
@@ -1258,40 +1258,16 @@ where $x^\delta = K$ or $\delta = \log_x K$, now say that the initial upper boun
 
 Mistake on Li
 
-Mistake on sum over $\gamma$, missing factor of 2 for the first one
+{\bf Page 89}. For upper and lower bound of $\psi(x)$ on this page the first sum doesn't have a factor of two like the other two sums. Note that
+%
+\nbea
+\sum_{|\gamma| < H} = \sum_{\pm \gamma < H} = \sum_{-H < \gamma < H}
+\neea
+%
+so it already covers the negative values of $\gamma$.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{\bf Page }. Another head clearing effort :)  Note that $\mu(1) = 1$ and not zero, this was the mistake I made. This relationship can be shown directly without the integral trick, although that trick is quite sick :)
+{\bf Page 93}. Another head clearing effort :)  Note that $\mu(1) = 1$ and not zero, this was the mistake I made. This relationship can be shown directly without the integral trick, although that trick is quite sick :)
 
 First, massage the sums into
 %
@@ -1954,15 +1930,153 @@ since the LHS is real and the first term on the RHS is real, $Z(t)$ must be real
 
 {\bf Page 121}, top. ``errors resulting from truncating the series $\dots$'', the series mentioned here are the square brackets in the last equality sign of Page 120.
 
+{\bf Page 121}, bot half. ``$\xi(\tfrac{1}{2})$ is positive on the entire real axis'', but for $0 < s < 1$, $\zeta(s)$ is negative, see Apostol's Theorem 13.11. We know that $\Pi(s)$ is positive in this range good thing we have a factor of $(s-1)$ in $\xi(s)$ and this thing is negative as well thus the whole thing is positive.
 
+{\bf Page 125}, bot and Page 125 Footnote. ``predominance of positive values of $\re~\zeta$ is due to the fact that the Euler-Maclaurin formula for $\zeta(\tfrac{1}{2} + it)$ begin with a $+1$ in the real part''. In the footnote it is said that $\frac{N^{1-s}}{s-1}$ has a large negative real part for small $t$. To see this start with the Euler-Maclaurin for $\zeta$
+%
+\nbea
+\zeta(\tfrac{1}{2} + it) & = & \sum_{n=1}^{N-1} n^{-(\tfrac{1}{2} + it)} + \frac{N^{\tfrac{1}{2} - it}}{-\tfrac{1}{2} + it} + \frac{1}{2} N^{\tfrac{1}{2} + it} + \int_N^\infty \overline{B}_1(x)(-\tfrac{1}{2} - it) x^{-1\tfrac{1}{2} - it} dx
+\neea
+%
+Let's do term by term, the first term, the sum
+%
+\nbea
+\sum_{n=1}^{N-1} n^{-(\tfrac{1}{2} + it)} & = & 1 + \sum_{n=2}^{N-1} n^{-(\tfrac{1}{2} + it)} \\
+& = & 1 + \sum_{n=1}^{N-1} n^{-\tfrac{1}{2}} [\cos(t \log n) - i\sin (t\log n)]
+\neea
+%
+that's our starting $+1$. (The first term is always $+1$ obviously since $1^{-s} = 1$ no matter what $s$ is).
 
+Now about the footnote $\frac{N^{1-s}}{s-1}$ has a large negative real part for small $t$
+%
+\nbea
+\frac{N^{\tfrac{1}{2} - it}}{-\tfrac{1}{2}+it} & = & \frac{N^{\tfrac{1}{2} - it} (-\tfrac{1}{2} - it)}{\tfrac{1}{4} + t^2} = \frac{1}{\tfrac{1}{4} + t^2} N^{\tfrac{1}{2}} \left ( \cos (t\log N)  - i \sin (t\log N)\right ) \left ( -\frac{1}{2} - it \right)
+\neea
+%
+Taking the real part
+%
+\nbea
+\re \left ( \frac{N^{\tfrac{1}{2} - it}}{-\tfrac{1}{2}+it} \right ) & = & \frac{1}{\tfrac{1}{4} + t^2} N^{\tfrac{1}{2}} \left ( -\frac{1}{2}\cos (t\log N)  - t \sin (t\log N)\right )
+\neea
+%
+and for small $t$, $\cos(t \log N) \sim 1$ and $t \sin (t \log N) \sim 0$ so for $t \sim 0$ we have
+%
+\nbea
+\frac{1}{\tfrac{1}{4}} N^{\tfrac{1}{2}} \left ( -\frac{1}{2} \right ) & \sim & -\frac{1}{8} N^{\tfrac{1}{2}}
+\neea
+%
+which is a large negative number for large $N$ and for $t$ big we have roughly
+%
+\nbea
+- \frac{t}{\tfrac{1}{4} + t^2} N^{\tfrac{1}{2}} & \sim & -\frac{N^{\tfrac{1}{2}}}{t}
+\neea
+%
+which is a small negative number for large $t$.
 
+{\bf Page 126}. Locating Gram's points, here we just use simple linear approximation. We start with $\theta(t_0) = 8\pi$ at $t_0 = 48.7$ and the gradient around this area is $\theta'(t_0) = 1.0$, what we want know is a new $t_1$ such that $\theta(t_1) = 9\pi$ so what we do is a simple calculation assuming everything is just a straight line so the new $t_1$ if given by
+%
+\nbea
+{\rm gradient}\cdot \Delta x & = & \Delta y
+\neea
+%
+here $\Delta x = t_1 - t_0$ and $\Delta y = 9\pi - \theta(t_0)$ and ${\rm gradient} = 1.0$ thus
+%
+\nbea
+(1.0) (t_1 - t_0) & = & 9\pi - 8\pi \\
+t_1 - 48.7 & = & \pi \\
+\to t_1 & = & 48.7 + \pi = 51.8
+\neea
+%
+as shown in the book. Now comes the correction to $t_1$, as shown in the book $\theta(51.8)$ overshoots $9\pi$ by $0.070$, to find the correct $t_2$ that gives $\theta(t_2) = 9\pi$ we do the same thing but in backwards, the gradient $\theta'(t_1) = 1.05$ and so ${\rm gradient}\cdot \Delta x = \Delta y$ here is $\Delta x = t_2 - t_1$, $\Delta y = 9\pi - \theta(t_1)$
+%
+\nbea
+(1.05) (t_2 - t_1) & = & 9\pi - \theta(t_1) \\
+(1.05) (t_2 - 51.8) & = & 9\pi - (\theta(t_1) + 0.070) \\
+\to t_2 & = & 51.8 - \frac{0.070}{1.05}
+\neea
+%
+which is the one shown in the book.
 
+%
+\begin{figure}
+\centering
+  \includegraphics[width=0.78\linewidth]{gram1.png}
+  \caption{Cartoon of exception to Gram's rule at $n=126$. Horizontal axis it the $t$ axis.}
+\label{fig:gram_1}
+\end{figure}
+%
+{\bf Page 127}, top. Exceptions to Gram's rule for $n=126$ and $n=134$. The cartoon of the exception that happens for $n=126$ can be seen at Fig.~\ref{fig:gram_1}. We can say that at $n=126$ the zero of $Z(t)$ came too late. As shown in Fig.~\ref{fig:gram_1}, there's usually one zero of $Z(t)$ between two Gram's points. The zero need not be in the middle of two Gram's point as long as it is between two of them
+%
+\begin{figure}
+\centering
+  \includegraphics[width=.78\linewidth]{gram2.png}
+  \caption{Cartoon of $Z(t)\cos \theta(t)$ when zero of $Z(t)$ is as usual (top) and when zero of $Z(t)$ is too late (bot) and what to do about it.}
+\label{fig:gram_2}
+\end{figure}
+%
+If the zero of $Z(t)$ arrives too late as shown in Fig.~\ref{fig:gram_1}, we can shift the Gram's point to the right so that there's a zero of $Z(t)$ between two Gram's points as shown in Fig.~\ref{fig:gram_2} top. Note that $Z(t) \cos \theta(t)$ can oscillate between plus and minus between two Gram's points as shown in Fig.~\ref{fig:gram_2} top, the main thing is that $Z(t) \cos \theta(t)$ must be positive at the Gram's points themselves.
 
+Of course we have to make sure that $\cos \theta(t)$ doesn't change when we shift the problematic Gram's point otherwise there might not be a zero of $Z(t)$ in that area to begin with.
 
+The case of $n = 134$ is the exact opposite of that of $n = 126$, the zero of $Z(t)$ came too early and there are two zeros of $Z(t)$ between two Gram's points and we need to shift the Gram's point left this time.
 
+{\bf Page 127}, bot. The equation for $\log \xi(\tfrac{1}{2} + it)$, we can get this from Chapter 2, Section 2.8, Page 46, note that here $s = \tfrac{1}{2} + it$ and $\rho = \tfrac{1}{2} + i\alpha$, from Chapter two we have
+%
+\nbea
+\xi(s) & = & c \prod \left ( 1 - \frac{s - \tfrac{1}{2}}{\rho - \tfrac{1}{2}} \right )
+\neea
+%
+setting $s = \frac{1}{2}$ we get
+%
+\nbea
+\xi(\tfrac{1}{2}) & = & c \prod \left ( 1 - \frac{\tfrac{1}{2} - \tfrac{1}{2}}{\rho - \tfrac{1}{2}} \right ) = c \prod \left ( 1 - \frac{0}{\rho - \tfrac{1}{2}} \right ) \\
+& = & c
+\neea
+%
+Thus
+%
+\nbea
+\xi(s) & = & \xi(\tfrac{1}{2}) \prod \left ( 1 - \frac{s - \tfrac{1}{2}}{\rho - \tfrac{1}{2}} \right ) \\
+& = & \xi(\tfrac{1}{2}) \prod \left ( 1 - \frac{\tfrac{1}{2} + it - \tfrac{1}{2}}{\tfrac{1}{2} + i\alpha - \tfrac{1}{2}} \right ) \\
+& = & \xi(\tfrac{1}{2}) \prod \left ( 1 - \frac{it}{i\alpha} \right )
+\neea
+%
+pairing $\alpha$ with its conjugate we get
+%
+\nbea
+\xi(s) & = & \xi(\tfrac{1}{2}) \prod_{\re~\alpha > 0} \left ( 1 - \frac{it}{i\alpha} \right )\left ( 1 - \frac{it}{-i\alpha} \right ) \\
+& = & \xi(\tfrac{1}{2}) \prod_{\re~\alpha > 0} \left ( 1 - \frac{t^2}{\alpha^2} \right )
+\neea
+%
 
-About the symmetry of $\frac{\xi'(s)}{\xi(s)}$, for simplicity let's denote $\frac{\xi'(s)}{\xi(s)} = F(s)$,
+{\bf Page 128}, top. Just a passing comment, this is a very crude technique to estimate the number of roots, a cool technique but crude :) I thought it was a more sophisticated approach than this.
+
+%
+\begin{figure}
+\centering
+  \includegraphics[width=.38\linewidth]{NT.png}
+  \caption{Cartoon of how to split up the integration contour. The inner paths cancel each other.}
+\label{fig:NT}
+\end{figure}
+%
+{\bf Page 128}, top half, $N(T) = \frac{1}{2\pi i}\int_{\partial R} \frac{\xi'(s)}{\xi(s)} ds$, we get this from $\xi(s) = \xi(0) \prod \left (1 - \frac{s}{\rho} \right )$ such that $\log \xi(s) = \log \xi(0) + \sum \log \left (1 - \frac{s}{\rho} \right )$, taking the derivative w.r.t. $s$
+%
+\nbea
+\frac{d}{ds} \log \xi(s) & = & \sum \frac{1}{\left (1 - \frac{s}{\rho} \right )} \cdot \left ( - \frac{1}{\rho} \right ) \\
+& = & \sum \frac{1}{s - \rho}
+\neea
+%
+Thus
+%
+\nbea
+N(T) & = & \frac{1}{2\pi i} \sum_\rho \int_{\partial R} \frac {1}{s - \rho} ds
+\neea
+%
+so we are just integrating over a bunch of poles. To do this we need to split up the integration contour as usual so that we have a loop around each pole, see Fig.~\ref{fig:NT} for an example. Note that in this way the inner patch cancel each other and the final result is just the outer contour encircling all of the poles.
+
+{\bf Page 128}, upper mid. Before we discuss the symmetry of the integral (which will be a bit long), here the LHS of the integral, $N(T)$, is a real number (an integer in fact since it's just the number of zeroes), therefore the RHS must be real as well. But since there is a factor of $\frac{1}{2\pi i}$ multiplying the integral what we need is just the imaginary part of the integral.
+
+{\bf Page 128}, mid. About the symmetry of $\frac{\xi'(s)}{\xi(s)}$, for simplicity let's denote $\frac{\xi'(s)}{\xi(s)} = F(s)$,
 %
 \nbea
 \int_{1\tfrac{1}{2}}^{1\tfrac{1}{2} + iT} F(s) ds & = & i \int_{0}^{T} F(1\tfrac{1}{2} + it) dt
@@ -2030,8 +2144,163 @@ in this case since there's no $i$ multiplying it we want the imaginary part of t
 %
 and the integrals along the two segments are equal.
 
+I initially wanted to take the antiderivative of the integrand, $\log \xi(s)$, and then plug in the end points of the integration contour, however, this is dangerous since $\log$ is multivalued and we have to make sure that along the path taken it has to be single valued for the fundamental theorem of calculus to apply. Since we have many branch points in this case (one for each of the zeros), it's quite tricky to define all the cuts. The above approach requires none of this :)
+
+{\bf Page 128}, lower mid. ``evaluated using the fundamental theorem of calculus''. Like bore, we can only use the fundamental theorem if the antiderivative of the integrand is single-valued. Here we are dealing with log and naturally we have to decide branch cuts for this.
+
+For the first integral we have 
+%
+\nbea
+\left.\Im\left\lbrack \log \pi^{-s/2} \Pi\left(\frac{s}{2} - 1\right)\right\rbrack\right|_{1\tfrac{1}{2}}^{\tfrac{1}{2} + iT}
+\neea
+%
+The approach taken in this book is a more relaxed one, to evaluate the above we actually need to find the zeros of $\Pi\left(\frac{s}{2} - 1\right)$ and assign them as branch points. Based on those branch points we need to decide the corresponding branch cuts. Then we assign the angle for a complex number $s$ w.r.t. each branch point.
+
+However, the approach taken is, just plug in the values of the lower and upper limits on the integral and just take the log of those numbers, assign the cut along the negative real axis and we are done :)
+
+For the above (\ie the first integral), the upper limit just gives us $\theta(T)$ but the lower limit was calculated simply by plugging in the numbers like explained above, and since it is just a log of a positive real number, the $\Im$ log is zero.
+
+For the second integral $\log s(s-1)$, it is simple enough for me to make a good example of :)
+%
+\begin{figure}
+\centering
+  \includegraphics[width=1.08\linewidth]{branch1.png}
+  \caption{Cartoon of how to setup branch cuts for $\log s(s-1)$ (left). Different regions in the complex plane where we need to check continuity in arguments (angles) shown center and on the right is the argument for $s = \tfrac{1}{2} + iT$.}
+\label{fig:branch1}
+\end{figure}
+%
+
+For $\log s(s-1)$ we cannot make the same cut as $\log \left ( \frac{z + 1}{z - 1} \right)$ where we connect the two branch points at $z = \pm 1$ through a single cut because (see Fig.~\ref{fig:branch1} left)
+%
+\nbea
+\log s(s-1) & = & \log (r_1 e^{i\theta_1})(1 + r_2e^{i\theta_2} - 1) \\
+& = & \log (r_1r_2) + i(\theta_1 + \theta_2) + ik2\pi
+\neea
+%
+we can set $k=0$ to be our principal branch. We now have $\theta_1 + \theta_2$ rather than $\theta_1 - \theta_2$ in the case of $\log \left ( \frac{z + 1}{z - 1} \right)$ and if we circle both branch points we accrue $4\pi$ where if it's $\theta_1 - \theta_2$ although individually the angle increases by $2\pi$ the difference is zero.
+
+Therefore the cuts should be like the one shown in Fig.~\ref{fig:branch1}. The culprit would be the fact that we now have infinities as branch points as well, in the case $\log \left ( \frac{z + 1}{z - 1} \right)$ we only have $+1$ and $-1$ as our branch points since as $z \to \pm \infty$ we get $\log 1 = 0$. So we need to connect $s = 0$ and $s = 1$ to infinity, note that the complex plane only has one infinity (complex numbers cannot be ordered) or another way is to project it to a sphere and the north pole is the point at infinity.
+
+It is easier to think of the sphere as the cut shown in Fig.~\ref{fig:branch1} connects three points, $s = 0$, $s = 1$ and infinity, \ie we are connecting two points going through the north pole.
+
+Now we need to check that the angles make sense the six regions depicted in Fig.~\ref{fig:branch1} center. We have $\theta_1 \in (-\pi,\pi)$ and $\theta_2 \in (0 , 2\pi)$ (\ie as we cross the cuts the angle jumps and across the non-cut real axis we have continuous angle)
+%
+\nbea
+L^+ & \to & (\theta_1 + \theta_2) = \pi + \pi = 2\pi \\
+L^- & \to & (\theta_1 + \theta_2) = -\pi + \pi = 0 \\
+M^+ & \to & (\theta_1 + \theta_2) = 0 + \pi = \pi \\
+M^- & \to & (\theta_1 + \theta_2) = 0 + \pi = \pi \\
+R^+ & \to & (\theta_1 + \theta_2) = 0 + 0 = 0 \\
+R^- & \to & (\theta_1 + \theta_2) = \pi + \pi = 2\pi
+\neea
+%
+so everything checks out, now the integral is
+%
+\nbea
+\Im \left. \log s(s-1) \right |_{1\tfrac{1}{2}}^{\tfrac{1}{2} + iT} & = & \Im \left ([\log(r_1r_2) + i (\theta_1 + \theta_2)]  - [\log(1\tfrac{1}{2}\cdot\tfrac{1}{2}) + i (0 + 0) ]\right ) \\
+& = & \theta_1 + \theta_2
+\neea
+%
+From Fig.~\ref{fig:branch1} right, we see that
+%
+\nbea
+\theta_2 = \alpha + \tfrac{\pi}{2} ~~~~~~~~~~~~~~~~~~~ \alpha = \tfrac{\pi}{2} - \theta_1
+\neea
+%
+Thus
+%
+\nbea
+\theta_1 + \theta_2 & = & \theta_1 + \left( \tfrac{\pi}{2} - \theta_1 + \tfrac{\pi}{2} \right) \\
+& = & \pi
+\neea
+%
+which is consistent with the book. Of course with this choice of cuts the original rectangular contour of the integral has to be modified slightly, it has to skim above the cut rather than going along the real axis.
+
+{\bf Page 128}, bot. ``$N(T)$ as the integer nearest to $\pi^{-1}\theta(T) + 1$''. This is because the absolute value of $\frac{1}{\pi} \int_C \frac{\zeta'(s)}{\zeta(s)}$ is less than $\frac{1}{2}$.
+
+We know that $N(T)$ is an integer, if $\pi^{-1}\theta(T) + 1$ is less than $m + \frac{1}{2}$ adding $\frac{1}{\pi} \int_C \frac{\zeta'(s)}{\zeta(s)}$ will not help us reach $m + 1$. Thus to make it an integer $\frac{1}{\pi} \int_C \frac{\zeta'(s)}{\zeta(s)}$ must be negative and $N(T)$ is $m$.
+
+If $\pi^{-1}\theta(T) + 1$ is more than $m + \frac{1}{2}$ then $\frac{1}{\pi} \int_C \frac{\zeta'(s)}{\zeta(s)}$ must be positive since it is less than $\frac{1}{2}$ and $N(T)$ is $m + 1$. And $N(T)$ is indeed the nearest integer to $\pi^{-1}\theta(T) + 1$.
+
+{\bf Page 129} mid. This is is a really cool way to show that $\re~\zeta$ is positive along $C$. If the real part is never zero than it is never on the imaginary axis, \ie the modulus argument of the complex number is less than $\frac{\pi}{2}$.
+
+{\bf Page 131} mid. Another cool way to show that something increases, first, take the limit as $k\to\infty$, next to show that each term is greater than its previous one by showing that the difference is never negative, but here it's really cool because we take the log of the quantity we are interested in and using the Stieljtes integral representation of it.  
+
+{\bf Page 133}, upper mid, we show that the integral
+%
+\nbea
+\Im \int_C \frac{\zeta'(s)}{\zeta(s)} ds & = & \Im \log \zeta(\tfrac{1}{2} + iT)
+\neea
+%
+Now, if we follow the book's strategy of just plugging in the number into $\zeta$ and assuming the cut is along the negative real axis then $\Im$ log will only give you $(0,2\pi)$ or $(-\pi,\pi)$ but as shown in the next paragraph this can go up to $(n + \tfrac{1}{2})\pi$ where $n$ is the number of times $\re~\zeta$ is zero.
+
+This is because we have multiple branch points, take for example $\log s(s-1)(s-2)$, here we have four branch points $s = 0, 1, 2$ and infinity. So we need to connect branch cuts to each of them. Say we connect $-\infty$ on the real axis to $0$ to $1$ and $2$ to $+ \infty$. A sensible choice of angles would be $\theta_{1,2} \in (-\pi, \pi)$ and $\theta_3 \in (0,2\pi)$, this ensures continuity of angle in the segment between $1$ and $2$. Therefore
+%
+\nbea
+\log s (s - 1)(s - 2) & = & \log(r_1r_2r_3) + i (\theta_1 + \theta_2 + \theta_3)
+\neea
+%
+thus the imaginary of this log can exceed $2\pi$ since we have a sum of three angles. For the case of $\zeta$ we have many zeros thus the arguments can pile up.
+
+{\bf Page 133}, ``The generalization of the statement that this integral lies between $\dots$ $-(n + \frac{1}{2})\pi$ and $(n + \frac{1}{2})\pi$''. 
+
+We can think of it as follows. Along the section of the integration contour $C$ we are interested in, we can split this section into segments where $\re~\zeta$ has the same sign in each segment. For example, take for simplicity the real axis as our integration contour $[a,b]$ and $\re~\zeta(s)$ is zero on $s = c_1, c_2$ and $c_3$.
+
+On $[a,c_1)$, since $\re~\zeta(s)$ is never zero in this segment, the argument of $\zeta(s)$ can change by at most $\pi$, \ie from slightly less than $- \frac{\pi}{2}$ to almost $\frac{\pi}{2}$. On the next segment, the same reasoning apply, within this segment the argument of $\zeta(s)$ can at most change by $\pi$ but from the previous segment to this one it can change more than $\pi$ of course and the same for the next segment thus through these three segments the argument of $\zeta(s)$ can change by at most $3\pi$.
+
+{\bf Page 134}. On the alternative evaluation of $\frac{\zeta'(s)}{\zeta(s)}$. Again, in the intuitive spirit of the book, he showed how we can get the coefficient of $(s-1)$, \ie $\zeta'(1)$, in the Taylor expansion of $\zeta(s)$ around $s = 1$.
+
+We know that there's a pole at $s = 1$ so to overcome this we do Euler-Maclaurin of $\zeta(s) - \frac{1}{s-1}$. Once we have this he sets $s = 1$ on the RHS. At first I was confused as to why this would work but then I realized something.
+
+Say we want to taylor expand a function $F(s)$ around $s = 1$
+%
+\nbea
+F(s) & = & F(1) + (s - 1)F'(s) + \frac{(s - 1)^2}{2!} F''(s) + \cdots \\
+\to \frac{F(s)}{(s-1)} - \frac{F(1)}{(s - 1)} & = &  F'(1) + \frac{(s - 1)}{2!} F''(1) + \cdots
+\neea
+%
+if we set $s = 1$ everything on the RHS becomes zero except for $F'(1)$ because all other terms is multiplied by $(s - 1)$. Each term in the LHS blows up of course but it's OK because, one, our objective is to find $F'(1)$ and two because their difference might not blow up even though they individually blow up.
+
+One caveat is that $F'''(1)$ and higher is not infinite otherwise we'll have $0\cdot\infty$ and we don't know what we get. So if we can calculate $\frac{F(s)}{(s-1)} - \frac{F(1)}{(s - 1)}$ through some other means then we can get $F'(1)$. In this particular section $F(s)$ is $(s - 1)\zeta(s)$.
+
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+%
+\begin{figure}
+\centering
+  \includegraphics[width=1.08\linewidth]{M_Contour.png}
+  \caption{Cartoon of how to relate the two integrals. Left is the integral from Section 1.2 Right is the integral from chapter seven. Each of these integrals is zero because the connected domain excludes all poles.}
+\label{fig:branch1}
+\end{figure}
+%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 For the first choice, we define the angles like shown, to make
 
