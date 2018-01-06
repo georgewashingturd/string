@@ -1238,14 +1238,6 @@ So if we divide this relative error by $x/(\log x)^2$, we get $A-1$.
 
 
 
-{\bf Page 91}. const times $x^{-1/2 + \epsilon}$ is the same as just $x^{-1/2 + \epsilon}$ for sufficiently larger $x$ :) because
-%
-\nbea
-K x^{-1/2 + \epsilon} & = & x^{-1/2 + \epsilon + \delta}
-\neea
-%
-where $x^\delta = K$ or $\delta = \log_x K$, now say that the initial upper bound $\le K x^{-1/2 + \epsilon}$ is valid starting from $x \ge x_0$, we now need to push this starting point further up because we can make $\delta$ as small as possible by increasing $x$. Although since $\delta > 0$, $\epsilon + \delta > \epsilon$ 
-
 
 
 
@@ -1265,6 +1257,17 @@ Mistake on Li
 \neea
 %
 so it already covers the negative values of $\gamma$.
+
+
+{\bf Page 91}. const times $x^{-1/2 + \epsilon}$ is the same as just $x^{-1/2 + \epsilon}$ for sufficiently larger $x$ :) because
+%
+\nbea
+K x^{-1/2 + \epsilon} & = & x^{-1/2 + \epsilon + \delta}
+\neea
+%
+where $x^\delta = K$ or $\delta = \log_x K$, now say that the initial upper bound $\le K x^{-1/2 + \epsilon}$ is valid starting from $x \ge x_0$, we now need to push this starting point further up because we can make $\delta$ as small as possible by increasing $x$.
+
+The same also applies to $x^{1/2} \log x$ since $\log x < x^\delta$ for any $\delta$ however small for sufficiently large $x$ (again, we just need to shift $x_0$ upward) we have $x^{1/2} \log x < x^{1/2 + \delta}$.
 
 
 {\bf Page 93}. Another head clearing effort :)  Note that $\mu(1) = 1$ and not zero, this was the mistake I made. This relationship can be shown directly without the integral trick, although that trick is quite sick :)
