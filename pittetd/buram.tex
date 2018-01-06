@@ -1101,6 +1101,19 @@ Let's do mod 20 for $p$, (I was messing around with mod 5 earlier and ended up w
 
 
 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+\nbea
+\Pi(s) & = & \int_0^\infty e^{-x} x^s dx \\
+& = & \int_0^\infty e^{-x} e^{s \log x} dx = \int_0^\infty e^{-x} e^{\sigma \log x} e^{\it \log x} dx \\
+& = & \int_0^\infty e^{-x} e^{\sigma \log x} [\cos (t \log x) + i\sin(t \log x)] dx \\
+\to \frac{d}{dt} \Pi(s) & = & \int_0^\infty e^{-x} e^{\sigma \log x} \log x [-\sin(t \log x) + i\cos(t \log x)] dx \\
+\to \frac{d^2}{dt^2} \Pi(s) & = & \int_0^\infty e^{-x} e^{\sigma \log x} \log^2 x [-\cos(t \log x) - i\sin(t \log x)] dx \\
+& = & - \int_0^\infty e^{-x} e^{\sigma \log x} \log^2 x [\cos(t \log x) + i\sin(t \log x)] dx 
+\neea
+
+
+
 
 
 

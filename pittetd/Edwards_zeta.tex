@@ -2161,6 +2161,14 @@ The approach taken in this book is a more relaxed one, to evaluate the above we 
 
 However, the approach taken is, just plug in the values of the lower and upper limits on the integral and just take the log of those numbers, assign the cut along the negative real axis and we are done :)
 
+In the case of $\log \Pi(\tfrac{s}{2} - 1)$ it's actually OK since $\Pi(s)$ doesn't have any zero, this can be seen from
+%
+\nbea
+\Pi(s) \Pi(s+1) & = & \frac{1}{\sin(s\pi)}
+\neea
+%
+if for any $s$ $\to$ $\Pi(s) = 0$ then the LHS is zero but there's no $s$ such that the RHS is zero, of course for $s$ with large imaginary part $\sin(s\pi)$ is very large but this doesn't mean that $\Pi(s)$ has a zero, this is similar to $\tfrac{1}{x}$, as $x$ goes to infinity it approaches zero but $\tfrac{1}{x}$ is never zero no matter what $x$ is.
+
 For the above (\ie the first integral), the upper limit just gives us $\theta(T)$ but the lower limit was calculated simply by plugging in the numbers like explained above, and since it is just a log of a positive real number, the $\Im$ log is zero.
 
 For the second integral $\log s(s-1)$, it is simple enough for me to make a good example of :)

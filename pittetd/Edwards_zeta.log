@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  5 JAN 2018 22:48
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  6 JAN 2018 13:17
 entering extended mode
 **C:/Users/User/Documents/GitHub/string/pittetd/Edwards_zeta.tex
 (C:/Users/User/Documents/GitHub/string/pittetd/Edwards_zeta.tex
@@ -652,50 +652,51 @@ File: NT.png Graphic file (type QTm)
 <use  "NT.png" > [49] [50] [51]
 File: branch1.png Graphic file (type QTm)
  <use  "branch1.png" >
-Overfull \hbox (36.42484pt too wide) in paragraph at lines 2170--2171
+Overfull \hbox (36.42484pt too wide) in paragraph at lines 2178--2179
  [][] 
  []
 
 [52] [53] [54] [55]
-Underfull \hbox (badness 10000) in paragraph at lines 2270--2271
+Underfull \hbox (badness 10000) in paragraph at lines 2278--2279
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 =-=-=-
  []
 
 File: M_Contour.png Graphic file (type QTm)
 <use  "M_Contour.png" >
-Overfull \hbox (36.42484pt too wide) in paragraph at lines 2275--2276
+Overfull \hbox (36.42484pt too wide) in paragraph at lines 2283--2284
  [][] 
  []
 
 [56]
-Underfull \hbox (badness 10000) in paragraph at lines 2369--2370
+Underfull \hbox (badness 10000) in paragraph at lines 2377--2378
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 =-=-=-
  []
 
+[57]
 File: Saddle_Point_Contour.png Graphic file (type QTm)
-<use  "Saddle_Point_Contour.png" > [57] [58] [59] [60]
-Underfull \hbox (badness 10000) in paragraph at lines 2557--2558
+ <use  "Saddle_Point_Contour.png" > [58] [59] [60]
+Underfull \hbox (badness 10000) in paragraph at lines 2565--2566
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 =-=-=-
  []
 
 [61] (Edwards_zeta.bbl) [62]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2621.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2629.
  (Edwards_zeta.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 2621.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 2621.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 2629.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 2629.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 13342 strings out of 428755
- 184030 string characters out of 3166785
+ 13341 strings out of 428755
+ 184020 string characters out of 3166785
  290563 words of memory out of 3000000
- 16546 multiletter control sequences out of 15000+200000
+ 16545 multiletter control sequences out of 15000+200000
  13625 words of font info for 51 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
  36i,17n,38p,872b,448s stack positions out of 5000i,500n,10000p,200000b,50000s
