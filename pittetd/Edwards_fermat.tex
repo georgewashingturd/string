@@ -983,7 +983,7 @@ Next is $x$ odd. Let's recast $x = 2m+1$, we then have
 A^2 = 1 + x + x^3 + x^3 = (1+x)(1+x^2) & = & (1 + 2m + 1)(1 + (2m + 1)^2) \\
 & = & 2(m+1)(4m^2 + 4m + 2) \\
 & = & 4(m+1)(2m^2 + 2m + 1) \\
-\to A^2 & = & 4(m + 1)(m^2 + (m+1^2))
+\to A^2 & = & 4(m + 1)(m^2 + (m+1)^2)
 \neea
 %
 Let's divide out the factor of $4$ and we have
@@ -1199,6 +1199,7 @@ but $u$ and $v$ are co-prime and of opposite parities, say $v$ is odd, from $4uv
 
 The other trivial solution is $Y = I = 1 \to v = 1$ and $Z = v = 0$ and $X = u = 1$, this means $C = u + v = 1$ and $F = u - v = 1$ and $2E^4 = C^4 - F^4 = 1 - 1 = 0 \to E = 0$, which means one of $n$ or $n + 2$ is zero, which also means $8A^4 = n(n + 2) = 0 \to A = 0$ and $B = \pm \sqrt{-2A^2 \pm\sqrt{8A^4 + 1}} = \pm 1$. This means that $m = a^2 - b^2 = 4A^4 - B^2 = -1$ and $m + 1 = 2ab = 4A^2B^2 = 0$ and $x = 2m+1 = -1$ and this is FINALLY our last solution LOL.
 
+In short, from this exercise the valid values of $m$ are $-1,0,3$, this will be useful in the future :)
 
 \bigskip
 \underline{\textbf{\textit{Pell's Equation Permutation}}}. Obviously we encountered Pell's equations along the way of the form $x^2 - 2y^2 = \pm 1$ in this problem. So I learned a thing or two about solving Pell's equation, well not really in solving it because for that you'll need the Indian cyclic method or the English method but here is how we generate more solutions once we get the first one, note that

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  6 JAN 2018 13:17
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  10 JAN 2018 20:38
 entering extended mode
 **C:/Users/User/Documents/GitHub/string/pittetd/Edwards_zeta.tex
 (C:/Users/User/Documents/GitHub/string/pittetd/Edwards_zeta.tex
@@ -652,24 +652,24 @@ File: NT.png Graphic file (type QTm)
 <use  "NT.png" > [49] [50] [51]
 File: branch1.png Graphic file (type QTm)
  <use  "branch1.png" >
-Overfull \hbox (36.42484pt too wide) in paragraph at lines 2178--2179
+Overfull \hbox (36.42484pt too wide) in paragraph at lines 2180--2181
  [][] 
  []
 
 [52] [53] [54] [55]
-Underfull \hbox (badness 10000) in paragraph at lines 2278--2279
+Underfull \hbox (badness 10000) in paragraph at lines 2280--2281
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 =-=-=-
  []
 
 File: M_Contour.png Graphic file (type QTm)
 <use  "M_Contour.png" >
-Overfull \hbox (36.42484pt too wide) in paragraph at lines 2283--2284
+Overfull \hbox (36.42484pt too wide) in paragraph at lines 2285--2286
  [][] 
  []
 
 [56]
-Underfull \hbox (badness 10000) in paragraph at lines 2377--2378
+Underfull \hbox (badness 10000) in paragraph at lines 2379--2380
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 =-=-=-
  []
@@ -677,16 +677,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 2377--2378
 [57]
 File: Saddle_Point_Contour.png Graphic file (type QTm)
  <use  "Saddle_Point_Contour.png" > [58] [59] [60]
-Underfull \hbox (badness 10000) in paragraph at lines 2565--2566
+Underfull \hbox (badness 10000) in paragraph at lines 2567--2568
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 =-=-=-
  []
 
-[61] (Edwards_zeta.bbl) [62]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2629.
+[61] [62] [63] [64] [65] (Edwards_zeta.bbl) [66]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2792.
  (Edwards_zeta.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 2629.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 2629.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 2792.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 2792.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -701,4 +701,4 @@ Here is how much of TeX's memory you used:
  1096 hyphenation exceptions out of 8191
  36i,17n,38p,872b,448s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on Edwards_zeta.pdf (62 pages).
+Output written on Edwards_zeta.pdf (66 pages).

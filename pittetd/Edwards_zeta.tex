@@ -2169,6 +2169,8 @@ In the case of $\log \Pi(\tfrac{s}{2} - 1)$ it's actually OK since $\Pi(s)$ does
 %
 if for any $s$ $\to$ $\Pi(s) = 0$ then the LHS is zero but there's no $s$ such that the RHS is zero, of course for $s$ with large imaginary part $\sin(s\pi)$ is very large but this doesn't mean that $\Pi(s)$ has a zero, this is similar to $\tfrac{1}{x}$, as $x$ goes to infinity it approaches zero but $\tfrac{1}{x}$ is never zero no matter what $x$ is.
 
+The only caveat is that either $\Pi(s)$ or $\Pi(s-1)$ can be infinite thus the other can be 0 and the two still give a finite product, however, we know that the poles of $\Pi(s)$ are only at negative integers and if one of them is at a negative integer the other must be as well except for $s = 0$ but in this case $\Pi(0)$ is finite ($= 1$).
+
 For the above (\ie the first integral), the upper limit just gives us $\theta(T)$ but the lower limit was calculated simply by plugging in the numbers like explained above, and since it is just a log of a positive real number, the $\Im$ log is zero.
 
 For the second integral $\log s(s-1)$, it is simple enough for me to make a good example of :)
@@ -2607,6 +2609,167 @@ K n_0^{-\sigma}(t\epsilon(1 + i)) \le \epsilon \cdot 2 K n_0^{-\sigma} t
 \neea
 %
 now, depending on how big $K$, $n_0$ and $\sigma$ is the total error can still be quite big.
+
+
+
+
+
+
+
+This is the thing about limits, the book says
+%
+\nbea
+|\zeta(s)| \ge \zeta(\sigma) - \epsilon
+\neea
+%
+what I found in Titchmarsh is as follows
+%
+\nbea
+|\zeta(s)| \ge \zeta(\sigma)(1 - \epsilon)
+\neea
+%
+and what I found in the proof of Titchmarsh is even worse, the $1$ in $(1 - \epsilon)$ is not even $1$, it approaches $1$ as something gets large :)
+
+\underline{\textbf{\textit{Diophantine's Approximation Theorem}}}. To do this we first need to apply Diophantine's approximation theorem to our $\zeta$ function, but we need to modify this slightly.
+
+The original Diophantine approximation is a way to approximate a real number using a rational number with any accuracy we want. The setup is as follows.
+
+Given a real number $\alpha$ and an integer $q$ we can find and integer $t$ between $1 \le t \le q$ and another integer $x$ such that
+%
+\nbea
+|t \alpha - x| \le \frac{1}{q} ~~~~~~~ \longrightarrow ~~~~~~~~\left | \alpha - \frac{x}{t} \right | \le \frac{1}{tq}
+\neea
+%
+and you see right away that we can approximate our real number $\alpha$ with $\frac{x}{t}$ with any given error $\le \frac{1}{q}$.
+
+In our situation what we need is the multi-dimensional version of it, given an array of real numbers $\alpha_1, \alpha_2, \dots, \alpha_N$ and an integer $q$ we can find a single number $t$ and $N$ integers $x_i$ such that
+%
+\nbea
+\left | t\alpha_i - x_i \right | \le \frac{1}{q}
+\neea
+%
+for each $\alpha_i$. Another modification we need to serve our purposes is to change $t$ from an integer to a positive real number 
+%
+\nbea
+\tau \le t \le \tau q^{N}
+\neea
+%
+So the key here is that we want to approximate $N$ real numbers using $N$ ``rational'' numbers each with an error $\le \frac{1}{q}$, ``rational'' because now we modify $t$ to a positive real number.
+
+The way to prove this is to use the pigeon hole principle. First, set an $N$ dimensional unit cube, we partition the cube into $q^N$ smaller cubes, we do this by partitioning each side of the cube into $q$ equal segments, so each segment is $\tfrac{1}{q}$ long.
+
+We then assemble the $N$ real numbers as a tuple $(\alpha_1, \alpha_2, \dots, \alpha_N)$ which represents an $N$ dimensional coordinate. To use the pigeon hole principle we need to create $q^N + 1$ coordinates out of this single coordinate.
+
+We do this by scaling the coordinate $(\alpha_1, \alpha_2, \dots, \alpha_N)$ by a scaling factor of $u$ where $u = \tau, q\tau, q^2\tau, \dots, q^N \tau$, \ie $u_i = q^i \tau$ with $0 \le i \le N$.
+
+But once we scale our coordinate it might get out of the cube, to pull it back into the cube we do $\pmod{1}$ which is equivalent to the usual $x - [x]$. Thus our $q^N + 1$ coordinates $(u_i\alpha_1, u_i\alpha_2, \dots, u_i\alpha_N)$, note that we multiply all $\alpha$'s with the {\it same} scaling factor $u_i$ but since we have $q^N + 1$ scaling factors we generate $q^N + 1$ coordinates.
+
+Since we have $q^N + 1$ coordinates and only $q^N$ partitions, our pigeon tells us that at least two of the coordinates must be in the same partition. To find our final $t$ in the approximation theorem we take the two coordinates in the same partition, say $A_1 = (u_1\alpha_1, u_1\alpha_2, \dots, u_1\alpha_N)$ and $A_2 = (u_2\alpha_1, u_2\alpha_2, \dots, u_2\alpha_N)$ and take $t = |u_2 - u_1|$.
+
+Note that the distance $|A_1 - A_2| \le \frac{1}{\sqrt{N}~q}$ (as $\frac{1}{q}$ is the length of each side of each partition), but the difference between in each coordinate axis $|u_2\alpha_i - u_1\alpha_i| \le \frac{1}{q}$.
+
+Therefore with $t = |u_2 - u_1|$,
+%
+\nbea
+t \alpha_i & \le & \frac{1}{q} \pmod{1} \\
+& \le & \frac{1}{q} + x_i
+\neea
+%
+and that's how we got our $x_i's$. Note that $t \alpha_i$ can be bigger than $\frac{1}{q}$  because one of the $u$'s, either $u_1$ or $u_2$ can be quite big and the other one small and the difference is big. But thankfully $\pmod{1}$ it is always less than or equal to $\frac{1}{q}$.
+
+In the original Diophantine approximation $t$ is an integer, $1 \le t \le q^N$ but here it is any real positive $\tau \le t \le \tau q^N$.
+
+
+\underline{\textbf{\textit{Lower and Upper Limits of $|\zeta(s)|$}}}. We now apply this to the zeta function, $\zeta(s=\sigma + it)$ 
+%
+\nbea
+\zeta(s=\sigma + it) & = & \sum_{n=1}^N \frac{1}{n^s} + \sum_{n = N+1}^\infty \frac{1}{n^s} \\
+|\zeta(s)| & \ge & \left | \sum_{n=1}^N n^{-\sigma} [\cos (t\log n) + i\sin(t\log n)] \right |
+\neea
+%
+so first step is to split the sum into two and ignore the second :) this is OK since we are only going for an inequality, then we throw away the imaginary part
+%
+\nbea
+|\zeta(s)| & \ge & \left | \sum_{n=1}^N n^{-\sigma} [\cos (t\log n)] \right | \\
+& \ge & \sum_{n=1}^N n^{-\sigma} [\cos (t\log n)]  - \sum_{n = N+1}^\infty \frac{1}{n^{\sigma}}
+\neea
+%
+since our final result has a minus sign in it $\zeta(\sigma)(1 - \epsilon)$ we added the last part above to get the minus sign. Now, the first sum can be massaged using Diophantine's approximation, the setup here is we have $N$ real numbers $\frac{\log n}{2\pi}$, $q$ is still an integer but this time we can control it, the $t$ in the above theorem is the $t$ here, what we want to show that we can find $t$ such that
+%
+\nbea
+\left | t \cdot \frac{\log n}{2 \pi} - x_n \right| \le \frac{1}{q} ~~~~~~~ \longrightarrow ~~~~~~~ \left | t \cdot \log n - 2\pi x_n \right| \le \frac{2 \pi}{q}
+\neea
+%
+and Diophantine says we can :) The only caveat now is that $t$ is a given number, it is now an input, but we are fine because we can always choose the range of $t$ by choosing the appropriate $\tau$ as $\tau \le t \le q^N \tau$.
+
+The reason we do this is because we want to make $\cos(t\log n)$ as close as possible to $1$, this would become the $1$ in $(1 - \epsilon)$. We can do this by choosing $q$ to be as large as we need it to. Another thing we need is the fact that 
+%
+\nbea
+\cos \left ( \left | t \cdot \log n - 2 \pi x_n \right| \right ) = \cos \left ( \pm \left \{ t \cdot \log n - 2 \pi x_n \right\} \right ) = \cos \left ( t \cdot \log n - 2 \pi x_n \right )
+\neea
+%
+and that since $\left | t \cdot \log n - 2\pi x_n \right| \le \frac{2 \pi}{q}$ this means that
+%
+\nbea
+\cos \left ( t \cdot \log n - 2 \pi x_n \right ) & \ge & \cos \left ( \tfrac{2\pi}{q} \right )
+\neea
+%
+since $\cos$ is a decreasing function for small angles, \ie smaller angles have higher cos. Therefore
+%
+\nbea
+\sum_{n=1}^N n^{-\sigma} [\cos (t\log n)] & \ge &  \cos \left ( \tfrac{2\pi}{q} \right )\sum_{n=1}^N n^{-\sigma}
+\neea
+%
+
+The usual trick of chopping and rearranging integrals and sums
+%
+\nbea
+\cos \left ( \tfrac{2\pi}{q} \right )\sum_{n=1}^N n^{-\sigma} & = & \cos \left ( \tfrac{2\pi}{q} \right ) \left ( \sum_{n=1}^\infty n^{-\sigma} - \sum_{n=N+1}^\infty n^{-\sigma} \right )
+\neea
+%
+We also the other half of the original sum, combining the two
+%
+\nbea
+|\zeta(s)| & \ge & \sum_{n=1}^N n^{-\sigma} [\cos (t\log n)]  - \sum_{n = N+1}^\infty n^{-\sigma} \\
+& \ge & \cos \left ( \tfrac{2\pi}{q} \right ) \left ( \zeta(\sigma) - \sum_{n=N+1}^\infty n^{-\sigma} \right )  - \sum_{n = N+1}^\infty n^{-\sigma} \\
+& = & \cos \left ( \tfrac{2\pi}{q} \right ) \zeta(\sigma) - 2 \sum_{n = N+1}^\infty n^{-\sigma}
+\neea
+%
+from line 2 to 3 we used the fact that $\sum_{n=N+1}^\infty n^{-\sigma} \ge \cos \left ( \tfrac{2\pi}{q} \right )\sum_{n=N+1}^\infty n^{-\sigma}$.
+
+The rightmost sum is just the tail of $\zeta(\sigma)$ and can be approximated using the usual integral trick
+%
+\nbea
+\sum_{n=N+1}^\infty n^{-\sigma} & \le & \int_{N}^\infty \frac{1}{x^\sigma} dx \\
+& = & \frac{1}{N^{\sigma - 1}}, ~~~~~~~ \sigma > 1
+\neea
+%
+we want $\le$ here because we will multiply it with $-2$ and we want the final result to have a lower bound and so
+%
+\nbea
+- 2 \sum_{n = N+1}^\infty n^{-\sigma} & \ge & - \zeta(\sigma) \frac{2}{\zeta(\sigma) N^{\sigma - 1}}
+\neea
+%
+Putting everything together
+%
+\nbea
+|\zeta(s)| & \ge & \cos \left ( \tfrac{2\pi}{q} \right ) \zeta(\sigma) - 2 \sum_{n = N+1}^\infty n^{-\sigma} \\
+& \ge & \left \{ \cos \left ( \tfrac{2\pi}{q} \right ) - \frac{1}{K N^{\sigma - 1}} \right \} \zeta(\sigma)
+\neea
+%
+where $K = \zeta(\sigma)/2$, note that since $\sigma > 1$ we have a convergent $\zeta(\sigma)$. If we choose big enough $q$ and $N$ the term in curly braces gives us the desired $(1 - \epsilon)$ and we are done.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

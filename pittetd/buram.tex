@@ -1103,14 +1103,177 @@ Let's do mod 20 for $p$, (I was messing around with mod 5 earlier and ended up w
 
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+On the problem proposed by Fermat on integer solutions to $1 + x + x^2 + x^3 = A^2$, I think the correct approach should be finding the overarching pattern for different number of $x$'s.
+
+What I mean is that if there's no $x$, \ie $1 = A^2$, then there is only this one solution, if there's only one $x$ then $1 + x = A^2$ has infinitely many solutions, for two $x$'s $1 + x + x^2$ has only two solutions $0, -1$ and for four $x$'s $1 + x + x^2 + x^3$ has four solutions $-1,0,1,7$.
+
+So there must be an overall mechanism that determines the number of solutions much like the gravitational lagrangian is the one to control the number of local degrees of freedom of the graviton such that in two dimensions and lower there's no gravity. Thus, the main actor is the lagrangian not the potential. We would like to find a so called ``lagrangian'' for $1 + x + x^2 + x^3 + \cdots$.
+
+For $1 + x + x^2$ there are only three solutions because
+%
 \nbea
-\Pi(s) & = & \int_0^\infty e^{-x} x^s dx \\
-& = & \int_0^\infty e^{-x} e^{s \log x} dx = \int_0^\infty e^{-x} e^{\sigma \log x} e^{\it \log x} dx \\
-& = & \int_0^\infty e^{-x} e^{\sigma \log x} [\cos (t \log x) + i\sin(t \log x)] dx \\
-\to \frac{d}{dt} \Pi(s) & = & \int_0^\infty e^{-x} e^{\sigma \log x} \log x [-\sin(t \log x) + i\cos(t \log x)] dx \\
-\to \frac{d^2}{dt^2} \Pi(s) & = & \int_0^\infty e^{-x} e^{\sigma \log x} \log^2 x [-\cos(t \log x) - i\sin(t \log x)] dx \\
-& = & - \int_0^\infty e^{-x} e^{\sigma \log x} \log^2 x [\cos(t \log x) + i\sin(t \log x)] dx 
+A^2 = 1 + x + x^2 & = & (x + 1)^2 - x \\
+x & = & (x + 1)^2 - A^2
 \neea
+%
+now assume that $x \ge 0$ then $x + 1 > A$ and let $x + 1 = A + \Delta$ thus
+%
+\nbea
+(A + \Delta)^2  - A^2 & = & A + \Delta - 1 \\
+2A\Delta + \Delta^2 & = & A + \Delta - 1
+\neea
+%
+but $A\Delta > A + \Delta$ for $A,\Delta \ge 0$ there's no solution except for $A = 1, \Delta = 0 \to x = 0$, to have a solution we need $A < 0, \Delta \ge 0$ ($\Delta$ can't be negative because $x + 1 = A + \Delta > 0$) or $A \ge 0, \Delta < 0$ for the same reason
+%
+\nbea
+-2|A|\Delta + \Delta^2 & = & -|A| + \Delta - 1 \\
+\to \Delta & = & \frac{2|A| + 1 \pm \sqrt{(2|A| + 1)^2 - 4(|A| + 1)}}{2} \\
+& = & \frac{2|A| + 1 \pm \sqrt{(2|A|)^2 - 3}}{2} 
+\neea
+%
+if we choose $A \ge 0, \Delta < 0$ we will get 
+%
+\nbea
+-2A|\Delta| + |\Delta|^2 & = & A - |\Delta| - 1 \\
+\to |\Delta| & = & \frac{2A - 1 \pm \sqrt{(2A)^2 - 3}}{2} 
+\neea
+%
+and the only squares that differ by 3 are $2^2 - 1^2 = 3$ thus $|A| = 1$, this means that $x = 0$ which was found earlier and this is consistent with our assumption that $x \ge 0$.
+
+The other case is $x < 0$
+%
+\nbea
+-|x| & = & (-|x| + 1)^2 - A^2 \\
+|x| & = & A^2 - (|x| - 1)^2
+\neea
+%
+now with $A = B + \Delta$ and $|x| - 1 = B$
+%
+\nbea
+B + 1 & = & 2B\Delta + \Delta^2
+\neea
+%
+again for $B,\Delta \ge 0$ positive this has no solution except for $B = 0, \Delta = 1 \to x = -1$, to have a solution we need $B < 0$, $\Delta \ge 0$ because $A > |x| - 1$ or like before $B \ge 0, \Delta < 0$
+%
+\nbea
+-|B| + 1 & = & -2|B|\Delta + \Delta^2 \\
+\to \Delta & = & \frac{2|B| \pm \sqrt{4|B|^2 - 4|B| + 4}}{2} \\
+& = & \frac{2|B| \pm \sqrt{(2|B| - 1)^2 + 3}}{2}
+\neea
+%
+the other choice $B \ge 0, \Delta < 0$ gives us
+%
+\nbea
+B + 1 & = & -2B|\Delta| + |\Delta|^2 \\
+\to |\Delta| & = & \frac{2|B| \pm \sqrt{(2B + 1)^2 + 3}}{2}
+\neea
+%
+again, the only squares differing by two is $1^2 + 3 = 2^2$ thus $|B| = 0$ and $x = -1$ which was our earlier result. The only two integer solutions to $1 + x + x^2 = A^2$ are then $x = 0,-1$.
+
+For $1 + x + x^2 + x^3 + x^4$, python script suggests that the only positive solution is $x = 3$ witht he total amounting to $121$.
+
+
+
+
+
+Some pattern
+%
+\nbea
+1 + x + x^2 & = & (x+1)^2 - x \\
+1 + x + x^2 + x^3 & = & (x^2+1)(x+1) \\
+1 + x + x^2 + x^3 + x^4 & = & (x^2+1)^2 + x(x^2 - x + 1) \\
+1 + x + x^2 + x^3 + x^4 + x^5 & = & (x^2+x+1)(x^2 - x + 1)(x+1) \\
+\neea
+%
+
+
+Some easy ones
+%
+\nbea
+1 + x + x^2 + x^3 + x^4 + x^5 & = & (x +1)(x^2 + x + 1)(x^2 - x + 1) 
+\neea
+%
+if $d|(x^2 - x + 1)$ and $d|(x^2 + x + 1)$ then $d|2x$ but since $x^2 \pm x + 1$ and $x$ are co-prime this means that $d|2$. Next, if $d|x+1$ and $d|(x^2 - x + 1)$ then $d|x^2 + 2$ and $d|x(x - 2)$ but again since $x^2 \pm x + 1$ and $x$ are co-prime this means that $d|x - 2$ but $d|x + 1$ means that $d|3$.
+
+Last is $d|x + 1$ and $d| x^2 + x + 1$, this means that $d|x^2$ and due to the co-primality above this means that $d|1$. So the summary is
+%
+\nbea
+d_1 = \gcd(x + 1, x^2 - x + 1) & | & 3 \\
+d_2 = \gcd(x^2 - x + 1, x^2 + x + 1) & | & 2 \\
+d_3 = \gcd(x + 1, x^2 + x + 1) & | & 1
+\neea
+%
+
+So we have four cases $d_1 = 3, d_2 = 1$, $d_3 = 1, d_2 = 2$, $d_3 = 3, d_2 = 2$ and $d_3 = 1, d_2 = 1$. Let's tackle the case with $d_2 = 2$ first.
+
+In this case 
+%
+\nbea
+x^2 + x + 1  = (x+1)^2 - x& = & 2A^2
+\neea
+%
+but this is impossible since the LHS is odd and the RHS is even, so the case for $d_2 = 2$ is not allowed, this kills two of the options above, so $d_2 = 1$.
+
+We actually do not need to consider the case of $d_1$ this is because since $d_2 = 1$ together with $d_3 = 1$ we must have
+%
+\nbea
+x^2 + x + 1 & = & A^2
+\neea
+%
+but as before this only has trivial solutions $0$ and $-1$ which will give an overall trivial solution to $1 + x + x^2 + x^3 + x^4 + x^5$.
+
+
+
+There's another somewhat easier case, it is the case of 
+%
+\nbea
+1 + x + x^2 + x^3 + x^4 + x^5 + x^6 + x^7 & = & (x + 1)(x^2 + 1)(x^4 + 1)
+\neea
+%
+just like the case of $x^3$ here $x$ must be odd because
+%
+\nbea
+\begin{array}{l l c l c l}
+d|(x + 1) & d|(x^2 + 1) & \to & d|2x  & \to & d|1\\
+d|(x^2 + 1) & d|(x^4 + 1) & \to & d|2x^2  & \to & d|1 \\
+d|(x + 1) & d|(x^4 + 1) & \to & d|2x^2  & \to & d|1
+\end{array}
+\neea
+%
+For the first two lines we just square the first term and subtract the second term from it, \eg $(x+1)^2 - (x^2+1) = 2x$. For the last line we just do things recursively
+%
+\nbea
+(x^4 + 1) - (x + 1) & = & x(x^3 - 1)
+\neea
+%
+but since $d|(x+1)$, $d$ is co-prime to $x$ and therefore $d|(x^3 - 1)$ continuing
+%
+\nbea
+(x^3 - 1) + (x + 1) & = & x(x^2 + 1)
+\neea
+%
+by the same reasoning $d|(x^2 + 1)$ but we've seen what happens when $d|(x^2 + 1)$ and $d|(x^4 + 1)$, \ie $d|2x^2$. To get to $d|1$ we must remember that $x$ is even so $x^n + 1$ is odd so $d\nmid2$.
+
+But since $d|(x^n+1)$ it cannot be that $d|x^m$ thus $d|1$, if this is the case then each term, $(x+1)$, $(x^2+1)$, $(x^4+1)$ is a square but this is impossible since there are no two squares where the difference is one except when $x = 0$. So for non-zero $x$ it must be odd. In this case we have $d|2$ and in fact by the preceding reasoning $d = 2$.
+
+Furthermore, just like stated before, we can't have $x^{2,4} + 1$ to be square thus they must be $x^{2,4} + 1 = 2A^2_{2,4}$ where $A$ is odd. This means that $(x+1) = 4B^2 = (2B)^2$ a perfect square and we can divide out the equation
+%
+\nbea
+A^2 & = & (x + 1)(x^2 + 1)(x^4 + 1) \\
+A'^2 & = & (x^2 + 1)(x^4 + 1)
+\neea
+%
+
+We can then do almost the same thing as what we did for $x^3$ but this time we substitute $x^2 = 2m+1$, in this case we get
+%
+\nbea
+A'^2 & = & 4(m + 1)(m^2 + (m + 1)^2) \\
+A''^2 & = & (m + 1)(m^2 + (m + 1)^2)
+\neea
+%
+with the designation $m + 1 = A^2_2, ~ m^2 + (m+1)^2 = A^2_4$ as previously stated but from our result for $x^3$ the only valid values for $m$ are $-1,0,3$ but in our current case $x^2 = 2m + 1$ so only 0 works which generate $x = \pm1$. But $x = 1$ doesn't work because our first factor $(x + 1) = 2$ is not square. Thus the only solution is $x= -1$.
+
+In conclusion, the only solutions to $1 + x + x^2 + x^3 + x^4 + x^5 + x^6 + x^7$ are $0$ and $-1$.
 
 
 

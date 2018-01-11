@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  6 JAN 2018 13:45
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  10 JAN 2018 20:39
 entering extended mode
 **C:/Users/User/Documents/GitHub/string/pittetd/buram.tex
 (C:/Users/User/Documents/GitHub/string/pittetd/buram.tex
@@ -671,21 +671,19 @@ Requested font "cmbx10" at 10.95pt
 Requested font "cmmib10" at 10.95pt
 Requested font "cmbsy10" at 10.95pt
 Requested font "rsfs10" at 10.95pt
-Requested font "cmti8" at 8.0pt
-Requested font "cmti7" at 6.0pt
-[23] (buram.bbl) [24]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1169.
+[23] [24] [25] [26] [27] (buram.bbl) [28]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1332.
  (buram.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1169.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1169.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1332.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1332.
  ) 
 Here is how much of TeX's memory you used:
- 13333 strings out of 428755
- 183833 string characters out of 3166785
+ 13329 strings out of 428755
+ 183795 string characters out of 3166785
  284555 words of memory out of 3000000
- 16544 multiletter control sequences out of 15000+200000
- 16660 words of font info for 62 fonts, out of 3000000 for 9000
+ 16542 multiletter control sequences out of 15000+200000
+ 15959 words of font info for 60 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
  36i,16n,38p,612b,457s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on buram.pdf (24 pages).
+Output written on buram.pdf (28 pages).
