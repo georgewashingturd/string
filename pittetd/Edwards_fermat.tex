@@ -1382,6 +1382,1370 @@ Since $t = c - d$
 
 
 
+\bigskip
+\underline{\textbf{\textit{Chapter 4}}}
+\bigskip
+
+This is one of the main chapters.
+
+{\bf Page 76}. Factorization of $x^n + y^n$ using roots of unity. This only works for odd $n$ because we start with 
+%
+\nbea
+X^n - 1 & = & (X - 1)(X - r) \dots (X - r^{n-1})
+\neea
+%
+we then set $X = -\frac{x}{y}$
+%
+\nbea
+\left(-\tfrac{x}{y}\right)^n - 1 & = & (-\tfrac{x}{y} - 1)(-\tfrac{x}{y} - r) \dots (-\tfrac{x}{y} - r^{n-1}) \\
+\to (-1)^n \tfrac{x^n}{y^n} - 1 & = & (-1)^n (\tfrac{x}{y} + 1)(\tfrac{x}{y} + r) \dots (\tfrac{x}{y} + r^{n-1})
+\neea
+%
+and multiply by $-y^n$, if $n$ is odd then we get
+%
+\nbea
+x^n + y^n & = & (x + y)(x + ry) \dots (x + r^{n-1}y)
+\neea
+%
+but if $n$ is even we get
+%
+\nbea
+x^n - y^n & = & (x + y)(x + ry) \dots (x + r^{n-1}y)
+\neea
+%
+the real culprit is the fact that we start with a minus sign $X^n - 1$. For $n$ even we have to start with the roots of $-1$ rather than the roots of $+1$, so
+%
+\nbea
+X^n + 1 & = & (X + s)(X + sr) \dots (X + sr^{n-1})
+\neea
+%
+where $s = e^{\pi i/n}$ and $r$ is like before the roots of $1$ (whart we're doing is basically rotating the roots of $1$ $90^\circ$ counter clockwise), $e^{2\pi i/n}$ we can then proceed like before, setting $X = \frac{x}{y}$ and then multiplying by $y^n$.
+
+
+
+
+
+{\bf Page 86, Problem 1}. This is straightforward enough. Here we have $\lambda = 5$ and $2 + \alpha + 3\alpha^2 - 2\alpha^3 = -\alpha + \alpha^2 - 4\alpha^3 - 2\alpha^4$. What we want here is to show that $f(\alpha^3) = g(\alpha^3)$ where $f(\alpha)$ is the LHS and $g(\alpha)$ is the RHS.
+
+Comparing the coefficients of both sides we see that the LHS is the second form, \ie we remove the highest power of $\alpha$ and the constant offset $c = -2$.
+
+Plugging in $\alpha^3$ in place of $\alpha$ we get
+%
+\nbea
+2 + \alpha^3 + 3\alpha^6 - 2\alpha^9 & = & -\alpha^3 + \alpha^6 - 4\alpha^9 - 2\alpha^{12} \\
+2 + \alpha^3 + 3\alpha - 2\alpha^4 & = & -\alpha^3 + \alpha - 4\alpha^4 - 2\alpha^{2} \\
+\neea
+%
+massaging the RHS we get (knowing that $c(1 + \alpha + \dots + \alpha^{\lambda-1}) = 0$ and choosing $c = 2$)
+%
+\nbea
+-\alpha^3 + \alpha - 4\alpha^4 - 2\alpha^{2} + 2(1 + \alpha + \alpha^2 + \alpha^3 + \alpha^4) & = & 2 + \alpha^3 + 3\alpha - 2\alpha^4
+\neea
+%
+which is the LHS.
+
+The next part of the problem asks if $f(\alpha^5) = g(\alpha^5)$, the answer is obviously not because $\alpha^5 = 1$ and so any term with $\alpha$ in it becomes that term multiplied by one
+%
+\nbea
+2 + 1 + 3 - 2 \neq -1 + 1 - 4 - 2
+\neea
+%
+
+{\bf Page 86, Problem 2}. This is a good thing to be implemented in Python, something that I will need for Problem 5, so I'll put the actual script on problem 5 itself. Here I'll just use the script to calculate the multiplications. First, denote the cyclotomic integers as
+%
+\nbea
+A & = & \alpha^4 + 7\alpha^2 + 5\alpha + 1 \\
+B & = & 2\alpha^3 + 3\alpha^2 - \alpha + 2 \\
+C & = & 4\alpha^4 + 2\alpha^3 - \alpha^2 + 5 
+\neea
+%
+First we will calculate $(AB)C$ and then $A(BC)$
+%
+\nbea
+AB & = & 33\alpha^4 + 10 \alpha^3 + 14\alpha^2 + 12\alpha + 15 \\
+BC & = & 3\alpha^4 + 15\alpha^3 + 21\alpha^2 + 11\alpha + 10 \\
+\to (AB)C = A(BC) & = & 235\alpha^4 + 200\alpha^3 + 161\alpha^2 + 103\alpha + 141
+\neea
+%
+
+{\bf Page 87, Problem 3}. Here we want to show that for $\lambda = 3$ the norm is always of the form $\frac{1}{4}(A^2 + 3B^2)$ and that $A$ and $B$ have the same parity (both odd or both even).
+
+The same parity part is easy because there's a $\frac{1}{4}$ multiplying the whole thing, if $A$ and $B$ differ in parity, then $(A^2 + 3B^2) \not\equiv 0 \pmod{4}$.
+
+It took me some time to figure this one out. Here's why. I started out naively
+%
+\nbea
+Nf(\alpha) & = & f(\alpha)f(\alpha^2) = (b_0 + b_1\alpha + b_2\alpha^2)(b_0 + b_1\alpha^2 + b_2\alpha) \\
+& = & b_0^2 + b_1^2 + b_2^2 + \alpha(b_0b_1 + b_0b_2 + b_1b_2) + \alpha^2(b_0b_1 + b_0b_2 + b_1b_2) \\
+& = & b_0^2 + b_1^2 + b_2^2 + (\alpha + \alpha^2)(b_0b_1 + b_0b_2 + b_1b_2)\\
+& = & b_0^2 + b_1^2 + b_2^2 + (-1)(b_0b_1 + b_0b_2 + b_1b_2)
+\neea
+%
+since $1 + \alpha + \alpha^2 = 0$. Moving on
+%
+\nbea
+b_0^2 + b_1^2 + b_2^2 - (b_0b_1 + b_0b_2 + b_1b_2) & = & (b_0 + b_1 + b_2)^2 - 3 (b_0b_1 + b_0b_2 + b_1b_2)
+\neea
+%
+This made me happy for a while since one term is a square and the other has a three in front of it. However, the term multiplying the 3 can be negative depending on what the $b$'s are and in our case we want it to be a square as well.
+
+I then remembered that only primes of the form $6n + 1$ can be expressed as $x^2 + 3y^2$. So if I can show that $Nf(\alpha)$ is only divisible by 3, 4 and primes of the form $6n + 1$ I'm good to go. But this is not easy to show.
+
+I then went brute force, doing everything mod 6 we have a total of 216 combinations of $b_0, b_1, b_2$ to check, a bit much.  But we can express $f(\alpha)$ ins the second form where we do away with the $\alpha^2$ term, in this case we have $f(\alpha) = c_0 + c_1\alpha$ and $Nf(\alpha) = c_0^2+  c_1^2 - c_0c_1$ so we only have 6 choose 2 = 15 combinations to check, choose 2 because it is symmetric in $c_0 \leftrightarrow c_1$.
+
+I actually computed all 15 combinations, the results are $0,1,3,4 \pmod{6}$. The $0,4 \pmod{6}$ cases happen only when $c_{0,1}$ are even so we can redo them using $2,0 \pmod{4}$. However, what we need is to show that every prime factor of $Nf(\alpha)$ is $1 \pmod{6}$, something which was too hard.
+
+The answer came after I realized that we might be able to do our usual trick in separating $c_0c_1$, 
+%
+\nbea
+c_1 + c_0 & = & u \\
+c_1 - c_0 & = & v
+\neea
+%
+which gives us $c_1 = \frac{u + v}{2}$ and $c_0 = \frac{u - v}{2}$, substituting this into $Nf(\alpha) = c_0^2 + c_1^2 - c_0c_1$ we get
+%
+\nbea
+Nf(\alpha) & = & \frac{1}{4} (u^2  - 2uv + v^2 + u^2 + 2uv + v^2 - u^2 + v^2) \\
+& = & \frac{1}{4} (u^2 + 3v^2)
+\neea
+%
+and that's our answer.
+
+Next is to find all six units for $\lambda = 3$. The units are given by $Nf(\alpha) = \frac{1}{4}(u^2 + 3v^2) = 1$, so the only possible values are
+%
+\nbea
+\begin{array}{r c l c r c l c r c l c r c l}
+u & = & 1 & ~ & v & = & 1 & ~~~~\to~~~~ & c_1 & = & 1 & ~ & c_0 & = & 0 \\
+u & = & 1 & ~ & v & = & -1 & ~~~~\to~~~~ & c_1 & = & 0 & ~ & c_0 & = & 1 \\
+u & = & -1 & ~ & v & = & 1 & ~~~~\to~~~~ & c_1 & = & 0 & ~ & c_0 & = & -1 \\
+u & = & -1 & ~ & v & = & -1 & ~~~~\to~~~~ & c_1 & = & -1 & ~ & c_0 & = & 0 \\
+u & = & 2 & ~ & v & = & 0 & ~~~~\to~~~~ & c_1 & = & 1 & ~ & c_0 & = & 1 \\
+u & = & -2 & ~ & v & = & 0 & ~~~~\to~~~~ & c_1 & = & -1 & ~ & c_0 & = & -1
+\end{array}
+\neea
+%
+where $f(\alpha) = c_0 + c_1 \alpha$.
+
+{\bf Page 87, Problem 4}. We now need to do what we did for Problem 3 but for $\lambda = 5$ and the final goal is to show that $Nf(\alpha) = \frac{1}{4}(A^2 - 5B^2)$. Also we have the hint this time so I'll just follow the hint. The only extra thing I'd do is cast $f(\alpha)$ in the second form where we remove the $\alpha^4$ term, $f(\alpha) = b_0 + b_1\alpha + b_2\alpha^2 + b_3\alpha^3$.
+
+Multiplying $f(\alpha)f(\alpha^4)$ we get
+%
+\nbea
+b_0^2 + b_1^2 + b_2^2 + b_3^2 + (\alpha + \alpha^4)(b_0b_1 + b_1b_2 + b_2b_3) + (\alpha^2 + \alpha^3)(b_0b_3 + b_0b_2 + b_1b_3)
+\neea
+%
+Note that $\theta_0 = \alpha + \alpha^4$ is real because they are complex conjugate of one another, the same goes with $\theta_1 = \alpha^2 + \alpha^3$. Thus $a = b_0^2 + b_1^2 + b_2^2 + b_3^2$, $b = b_0b_1 + b_1b_2 + b_2b_3$ and $c = b_0b_3 + b_0b_2 + b_1b_3$.
+
+Doing $f(\alpha^2)f(\alpha^3)$ will give us $a + b\theta_1 + c\theta_0$ indeed. The confusing thing about the hint is that the norm will be of the form $(b\theta_0 + c\theta_1)(b\theta_1 + c\theta_0)$. I finally realized that the $b$ and $c$ here are not the $b$ and $c$ above, that's why he used the phrase ``the norm has the form'' rather than ``the norm is''.
+
+One thing to note is that
+%
+\nbea
+\theta_0 + \theta_1 & = & \alpha + \alpha^4 + \alpha^2 + \alpha^3 = -1
+\neea
+%
+because $1 + \alpha + \dots + \alpha^4 = 1$. Therefore, we can rewrite $f(\alpha)f(\alpha^4)$ as
+%
+\nbea
+a + b\theta_0 + c\theta_1 & = & -a(\theta_0 + \theta_1) + b\theta_0 + c\theta_1 \\
+& = & (b-a)\theta_0 + (c-a)\theta_1
+\neea
+%
+the same with $f(\alpha^2)f(\alpha^3) = (b-a)\theta_1 + (c-a)\theta_0$, let $m = b-a$ and $n = c-a$ thus
+%
+\nbea
+Nf(\alpha) = f(\alpha)f(\alpha^4) \cdot f(\alpha^2)f(\alpha^3) & = & (m\theta_0 + n\theta_1)(m\theta_1 + n\theta_0) \\
+& = & m^2 \theta_1\theta_0 + mn(\theta_0^2 + \theta_1^2) + n^2 \theta_1\theta_0
+\neea
+%
+Now
+%
+\nbea
+\theta_0\theta_1 & = & (\alpha + \alpha^4)(\alpha^2 + \alpha^3) \\
+& = & \alpha^3 + \alpha^4 + \alpha + \alpha^2 \\
+& = & -1
+\neea
+%
+and
+%
+\nbea
+\theta_0^2 & = & (\alpha + \alpha^4)^2 = \alpha^2 + 2\alpha^5 + \alpha^3 \\
+\theta_1^2 & = & (\alpha^2 + \alpha^3)^2 = \alpha^4 + 2\alpha^5 + \alpha \\
+\to \theta_0^2 + \theta_1^2 & = & \alpha^2 + \alpha^3 + \alpha + \alpha^4 + 4 = -1 + 4 \\
+& = & 3
+\neea
+%
+Thus
+%
+\nbea
+m^2 \theta_1\theta_0 + mn(\theta_0^2 + \theta_1^2) + n^2 \theta_1\theta_0 & = & -m^2 + 3mn - n^2
+\neea
+%
+again, using the usual trick $m + n = u$ and $m - n = v \to m = \frac{u + v}{2}$ and $n = \frac{u - v}{2}$ we get
+%
+\nbea
+-m^2 + 3mn - n^2 & = & \frac{1}{4}(-u^2 - 2uv - v^2 - u^2 + 2uv - v^2 + 3u^2 - 3v^2) \\
+& = & \frac{1}{4}(u^2 - 5v^2)
+\neea
+%
+which is what we want. We now need to find the units which in this case satisfy $\frac{1}{4}(u^2 - 5v^2) = 1$ or $u^2 - 5v^2 = 4$. The good news is that we can use Pell's equation $r^2 - 5s^2 = 1$ and then multiply everything by four $(2r)^2 - 5(2s)^2 = 2^2$ in this way we get infinite number of units from the infinite number of solutions to Pell's equation. The drawback here is that the solutions are all even $u = 2r$ and $v = 2s$.
+
+{\bf Page 87, Problem 5}. Here $\lambda = 7$ and $f(\alpha) = \alpha^5 - \alpha^4 - 3\alpha^2 - 3\alpha - 2$, and here we need to compute $Nf(\alpha)$. Here we have a slightly different hint than that of Problem 4. We group $Nf(\alpha)$ by $f(\alpha)f(\alpha^2)f(\alpha^4)$ rather than by their complex conjugates like in Problem 4 $f(\alpha)f(\alpha^6)$.
+
+But looks like there a bug in this book, I've calculated the norm of $f(\alpha)$ multiple times and it is not $2509$ instead it is $1247$. Anyway, first thing I did was write a Python program to do this as follows
+%
+\begin{Verbatim}[baselinestretch=0.75]
+# shifts f(A) to f(A^k), k > 0
+def cycShift(f, k):
+
+    if (k <= 0) or len(f) <= 0:
+        return
+    if (k == 1):
+        return f
+
+    L = len(f)
+    g = [0] * L
+
+    for i in xrange(L):
+        g[(i*k) % L] += f[i]
+
+    return g
+    
+
+# multiplies two f's
+def multCyc(f, g):
+
+    if len(f) != len(g):
+        return
+
+    L = len(f)
+    res = [0] * L
+
+    for i in xrange(L):
+        for j in xrange(L):
+            res[(i+j) %L] += (g[i] * f[j])
+
+    return res
+
+# add two f's
+def addCyc(f, g):
+    
+    if len(f) != len(g):
+        return
+
+    L = len(f)
+    res = [0] * L
+
+    for i in xrange(L):
+        res[i] = g[i] + f[i]
+
+    return res
+
+# compute norm of f(A)
+def cycNorm(f):
+
+    L = len(f)
+
+    if L <= 1:
+        return
+    
+    res = [i for i in f] # deep copy of f
+
+    # create f(A^k)
+    for k in xrange(2,L):
+        fk = cycShift(f, k)
+        res = multCyc(res, fk)
+
+    for k in xrange(3,L):
+        if res[k] != res[k-1]:
+            return
+
+    return res[0] - res[1]
+\end{Verbatim}
+%
+If we do what the book suggested we get
+%
+\nbea
+f(\alpha)f(\alpha^2)f(\alpha^4) & = & -87(\alpha^6 + \alpha^5 + \alpha^3) - 65(\alpha^4 + \alpha^2 + \alpha) - 56 \\
+f(\alpha^3)f(\alpha^5)f(\alpha^6) & = & -87(\alpha^4 + \alpha^2 + \alpha) - 65(\alpha^6 + \alpha^5 + \alpha^3) - 56
+\neea
+%
+Thus we can choose $\theta_0 = \alpha^6 + \alpha^5 + \alpha^3$ and $\theta_1 = \alpha^4 + \alpha^2 + \alpha$, just like Problem 4 we have $\theta_0 + \theta_1 = -1$ so we can express 
+%
+\nbea
+-56 & = & 56(\theta_0 + \theta_1)
+\neea
+%
+and so
+%
+\nbea
+f(\alpha)f(\alpha^2)f(\alpha^4)\cdot f(\alpha^3)f(\alpha^5)f(\alpha^6) & = & (-31\theta_1 -9\theta_0)(-31\theta_0 - 9\theta_1) \\
+& = & 31^2\theta_0\theta_1 + 31\cdot9 (\theta_0^2 + \theta_1^2) + 9^2\theta_1\theta_0
+\neea
+%
+using the identities
+%
+\nbea
+\theta_0\theta_1 & = & \alpha^3 + \alpha + 1 + \alpha^2 + 1 + \alpha^6 + 1 + \alpha^5 + \alpha^4 = 2 \\
+\theta_0^2 & = & \alpha^5 + \alpha^3 + \alpha^6 + 2(\alpha^4 + \alpha^2 + \alpha) \\
+\theta_1^2 & = & \alpha + \alpha^4 + \alpha^2 + 2(\alpha^6 + \alpha^5 + \alpha^3)
+\neea
+%
+and so $\theta_0^2 + \theta_1^2 = -3$ thus
+%
+\nbea
+31^2\theta_0\theta_1 + 31\cdot9 (\theta_0^2 + \theta_1^2) + 9^2\theta_1\theta_0 & = & 2(31^2 + 9^2) - 3\cdot31\cdot 9 \\
+& = & 1247
+\neea
+%
+which is consistent with the Python program. From the pattern above what we see is that when computing the norm we want to group the $f(\alpha^l)$ such that the total is $\lambda$, \ie
+%
+\nbea
+f(\alpha^{l_1}) f(\alpha^{l_2}) \dots f(\alpha^{l_n})
+\neea
+%
+where $l_1 + l_2 + \dots + l_n = \lambda$.
+
+{\bf Page 87, Problem 6}. We need to show that if $f(\alpha) = g(\alpha)$ then $f(1) \equiv g(1) \pmod{\lambda}$. This is quite straightforward. If $f(\alpha) = g(\alpha)$ then their difference must be of the form $c(1 + \alpha + \dots + \alpha^{\lambda-1})$. Therefore
+%
+\nbea
+h(\alpha) = f(\alpha) - g(\alpha) & = & c(1 + \alpha + \dots + \alpha^{\lambda-1}) \\
+\to h(1) & = & (1 + 1 + \dots + 1) = \lambda
+\neea
+%
+since there are exactly $\lambda$ terms in the bracket.
+
+The second part asks you to show that $Nf(\alpha) \equiv 0 {\rm~or~} 1 \pmod{\lambda}$. It took longer than it should because I made the unnecessary assumption about something LOL
+
+We need to utilize the above result, $f(\alpha) = g(\alpha) \to f(1) \equiv g(1) \pmod{\lambda}$. This one is easy enough, let $f(\alpha)$ be $Nf(\alpha)$ and $g(\alpha) = f(\alpha)f(\alpha^2)\dots f(\alpha^{\lambda-1})$ and so we have
+%
+\nbea
+[Nf](1) & \equiv & f(1)f(1^2)\dots f(1^{\lambda-1}) \pmod{\lambda} \\
+& \equiv & f(1)f(1)\dots f(1) \pmod{\lambda} \\
+& \equiv & \left \{f(1)\right\}^{\lambda-1} \pmod{\lambda}
+\neea
+%
+but by Fermat's Little Theorem and the fact that $\lambda$ is prime we have $\left \{f(1)\right\}^{\lambda-1} \equiv 1 \pmod{\lambda}$ unless when $f(1) \equiv 0 \pmod{\lambda}$.
+
+The task now is to show that $[Nf](\alpha) \equiv [Nf](1) \pmod{\lambda}$. For this we utilize the result from Page 83 that says $[Nf](\alpha) = b_0 + b_1\alpha + \dots + b_{\lambda-1}\alpha^{\lambda-1}$ with $b_1 = b_2 = \dots = b_{\lambda-1}$ and so $[Nf](\alpha) = b_0 - b_1$.
+
+Therefore $[Nf](\alpha) = b_0 + b_1(\alpha + \dots + \alpha^{\lambda-1})$, we now need to use the usual trick $-1 = \alpha + \dots + \alpha^{\lambda-1}$ and write $b_0 = -b_0(\alpha + \dots + \alpha^{\lambda-1})$ and so
+%
+\nbea
+[Nf](\alpha) & = & (b_1 - b_0)(\alpha + \dots + \alpha^{\lambda-1}) \\
+\to [Nf](1) & = & (b_1 - b_0)(\lambda - 1)
+\neea
+%
+but $b_1 - b_0 = -[Nf](\alpha)$ thus
+%
+\nbea
+[Nf](1) & = & [Nf](\alpha) - \lambda[Nf](\alpha) \\
+\to [Nf](1) & \equiv & [Nf](\alpha) \pmod{\lambda}
+\neea
+%
+combining this with our previous result we get
+%
+\nbea
+[Nf](\alpha) & \equiv & [Nf](1) \equiv \left \{f(1)\right\}^{\lambda-1} \pmod{\lambda} \\
+& \equiv & 0 {\rm ~or~} 1 \pmod{\lambda}
+\neea
+%
+The reason I got stuck was somehow I felt that when setting $[Nf](\alpha) \to [Nf](1)$ we cannot do it by setting $f(1)f(1^2)\dots f(1^{\lambda-1})$, so setting $\alpha=1$ and then multiplying the $f$'s would be different from multiplying the $f$'s and then setting $\alpha = 1$. But of course this is not true, because 1 behaves just like $\alpha$, $1^\lambda = 1$ so we can multiply them first and then set $\alpha=1$ or set it to one first and then multiply (I believe you can do the same with zero as well as $0^{\lambda} = 1$).
+
+Here I put square brackets around $[Nf]$ to differentiate between setting $\alpha=1$ and then taking the norm of $f$ and taking the norm of $f$ and then setting $\alpha=1$.
+
+{\bf Page 87, Problem 7}. Here we need to show that $f(\alpha) + f(\alpha^2) + \dots + f(\alpha^{\lambda-1}) \equiv -f(1) \pmod{\lambda}$. The hint tells us to explicitly compute $f(1) + f(\alpha) + f(\alpha^2) + \dots + f(\alpha^{\lambda-1})$. Note that this sum includes $f(1)$ unlike the problem statement which starts with $f(\alpha)$.
+
+So we shall follow the hint. But instead of writing everything out let's pick a term from $f(\alpha)$, for example let's pick $b_i\alpha^i$. Changing $\alpha \to \alpha^j$ for each $j = 0,1,2,\dots,\lambda-1$ we get
+%
+\nbea
+b_i\alpha^i & \to & b_i + b_i(\alpha^{i} + \alpha^{2i} + \dots + \alpha^{(\lambda - 1)i}) \\
+& = & b_i + b_i(\alpha + \alpha^{2} + \dots + \alpha^{(\lambda - 1)}) \\
+& = & b_i + b_i(-1) = 0
+\neea
+%
+Going to the second line we used the fact that since $\lambda$ is prime the set $\{i, 2i, \dots, (\lambda-1)i\}$ is equal to the set of remainders of $\lambda$ sans 0. The above is true as long as $i \neq 0$ obviously as $b_0$ remains $b_0$ for all $f(\alpha^k)$ and the sum is
+%
+\nbea
+f(1) + f(\alpha) + \dots + f(\alpha^{\lambda-1}) & = & \lambda b_0 \\
+& \equiv & 0 \pmod{\lambda}
+\neea
+%
+Thus we are done :) Except that we need to show that this also answers first part of Problem 6. This is simple, if $f(\alpha) = g(\alpha)$ then 
+%
+\nbea
+f(\alpha) + \dots + f(\alpha^{\lambda-1}) & = & g(\alpha) + \dots + g(\alpha^{\lambda-1})
+\neea
+%
+note that we exclude $f(1)$ and $g(1)$ this time, but the LHS is $\equiv -f(1) \pmod{\lambda}$ and the RHS is $\equiv -g(1)\pmod{\lambda}$ so we practically have $f(1) \equiv g(1) \pmod{\lambda}$ in a more roundabout way :)
+
+{\bf Page 87, Problem 8}. We need to show that if $g(\alpha)$ is a conjugate of $f(\alpha)$ and $h(\alpha)$ is a conjugate of $g(\alpha)$ then $h(\alpha)$ is a conjugate of $f(\alpha)$.
+
+Following the hint, a conjugation takes $\alpha\to\alpha^j$ where $\lambda\nmid j$. This means that $g(\alpha) = f(\alpha^j)$ and $h(\alpha) = g(\alpha^i) = f(\alpha^{ji})$. But since $\lambda\nmid i,j$ individually the product $ij$ is also not a multiple of $\lambda$, thus $h(\alpha)$ is a conjugate of $f(\alpha)$.
+
+The next part asks us to show that if $g(\alpha)$ is a conjugate of $f(\alpha)$ then $f(\alpha)$ is a conjugate of $g(\alpha)$. Again, here $g(\alpha) = f(\alpha^j)$ but since $\lambda$ is prime there's an inverse of $j$ such that $ij \equiv 1 \pmod{\lambda}$, thus substituting $\alpha\to\alpha^i$ we get $g(\alpha^i) = f(\alpha^{ij}) = f(\alpha)$ and we are done.
+
+{\bf Page 87, Problem 9}.Here we want to strengthen result of Problem 6. If we restrict $f(\alpha) = A\alpha^j + B\alpha^k$ then not only that $Nf(1) \equiv 0 {\rm ~or~} 1 \pmod{\lambda}$ but also that every prime factor of $Nf(\alpha)$ is $0 {\rm~or~} 1 \pmod{\lambda}$.
+
+Following the hint, we know that (without loss of generality assume $j < k$)
+%
+\nbea
+A\alpha^j + B\alpha^k & = & \alpha^j(A + B\alpha^k) \\
+\to N(A\alpha^j + B\alpha^k) & = & N(\alpha^j) \cdot N(A + B\alpha^k) \\
+& = & 1 \cdot N(A + B\alpha)
+\neea
+%
+but 
+%
+\nbea
+N(A + B\alpha) & = & (A + B\alpha) (A + B\alpha^2) \dots (A + B\alpha^{\lambda-1}) \\
+\to (A + B)N(A + B\alpha) & = & (A + B)(A + B\alpha) (A + B\alpha^2) \dots (A + B\alpha^{\lambda-1}) \\
+& = & A^\lambda + B^\lambda
+\neea
+%
+which is the main theme of this chapter, \ie the factorization of $x^n + y^n$ using roots of $1$, see Page 76. But since $\lambda$ is prime and therefore odd we can factorize
+%
+\nbea
+(A + B)N(A + B\alpha) = A^\lambda + B^\lambda & = & (A + B)(A^{\lambda-1} - A^{\lambda-2}B + \dots + B^{\lambda - 1}) \\
+\to N(A + B\alpha) = Nf(\alpha) & = & A^{\lambda-1} - A^{\lambda-2}B + \dots + B^{\lambda - 1}
+\neea
+%
+because $f(\alpha)$ is a unit times a conjugate of $A + B\alpha$ as shown above. Now comes the main trick. First, say $p$ is a prime factor of $Nf(\alpha)$ then 
+%
+\nbea
+A^{\lambda-1} - A^{\lambda-2}B + \dots + B^{\lambda - 1} & \equiv & 0 \pmod{p}
+\neea
+%
+but since $\gcd(A,B) = 1$ none of them is divisible by $p$ because if one is then the other one must be also nullifying the co-primeness condition. This means that both $A$ and $B$ have inverses mod $p$. We can choose either $A$ or $B$ for the next step, here I will choose $B$. From the equivalence relation mod $p$ above do the following
+%
+\nbea
+A^{\lambda-1}  & \equiv & -(- A^{\lambda-2}B + \dots + B^{\lambda - 1}) \pmod{p} \\
+\to B^{-1}A^{\lambda-1}  & \equiv & -(- A^{\lambda-2}B^{-1}B + \dots + B^{-1}B^{\lambda - 1}) \pmod{p} \\
+& \equiv & -(- A^{\lambda-2}(-1) + \dots + B^{\lambda - 2}) \pmod{p}
+\neea
+%
+we now move $A^{\lambda-2}$ from RHS back to the LHS and repeat the process multiplying the whole thing by $B^{-1}$ again
+%
+\nbea
+B^{-1}A^{\lambda-1} & \equiv & -(- A^{\lambda-2} + \dots + B^{\lambda - 2}) \pmod{p} \\
+B^{-1}A^{\lambda-1} - A^{\lambda - 2} & \equiv & -(A^{\lambda-3}B + \dots + B^{\lambda - 2}) \pmod{p} \\
+\to B^{-2}A^{\lambda-1} - B^{-1}A^{\lambda - 2} & \equiv & -(A^{\lambda-3}B^{-1}B + \dots + B^{-1}B^{\lambda - 2}) \pmod{p}
+\neea
+%
+and now the $A^{\lambda-3}$ term on the RHS is free of $B$ and we can move it back to the LHS and after doing this $\lambda - 1$ times we get
+%
+\nbea
+B^{-(\lambda - 1)}A^{\lambda-1} - B^{-(\lambda - 2)}A^{\lambda - 2}  + \dots + 1 & \equiv & 0 \pmod{p} \\
+\to k^{\lambda-1} - k^{\lambda - 2} +  \dots + 1 & \equiv & 0 \pmod{p}
+\neea
+%
+and here $k \equiv B^{-1}A$, had we chosen to use $A^{-1}$ we would've gotten $k = BA^{-1}$. We now do the trick we always do when dealing with a geometric series. Multiply the whole thing by $k$ and then add them up
+%
+\nbea
+k \times (1 - k + k^2 - \dots + k^{\lambda - 1}) & \equiv & k - k^2 + k^3 - \dots + k^{\lambda} \equiv 0 \pmod{p} \\
+\to (1 + k) \times (1 - k + k^2 - \dots + k^{\lambda - 1})  & \equiv & 1 + k^{\lambda} \equiv 0 \pmod{p}
+\neea
+%
+since $\lambda$ is odd it's either $k \equiv -1$ or $k^{\lambda} \equiv -1 \pmod{p}$. But if $k \equiv -1$ then we have
+%
+\nbea
+1 - k + k^2 - \dots + k^{\lambda - 1} & = & 1 + 1 + 1 + \dots + 1 \equiv 0 \pmod{p} \\
+\to \lambda & \equiv & 0 \pmod{p}
+\neea
+%
+but since both $\lambda$ and $p$ are both prime the only possibility is that $p = \lambda$ and in that case $p \equiv 0 \pmod{\lambda}$ which is the first result we need.
+
+If $k^{\lambda} \equiv -1 \pmod{p}$ then $k^{2\lambda} \equiv 1 \pmod{p}$. According to Fermat's Little Theorem we must have $2\lambda|(p-1)$ if $2\lambda < p$ or $p-1|2\lambda$ if $p < 2\lambda$. For the former case this means that $p - 1 = 2\lambda n \to p \equiv 1 \pmod{\lambda}$ and for the latter case since $\lambda$ is prime, $2\lambda$ only has two distinct factors, 2 and $\lambda$ therefore $p - 1 = 2\lambda$ and again $p \equiv 1 \pmod{\lambda}$.
+
+{\bf Page 87, Problem 10}. We want to show that $\alpha^{\lambda-1}$ is the complex conjugate of $\alpha$. This is straightforward enough. From the definition of complex conjugation and the fact that $\alpha$ is a root of unity, we have
+%
+\nbea
+|\alpha|^2 & = & \alpha ~\overline{\alpha} = 1
+\neea
+%
+but we also have $\alpha^{\lambda} = \alpha \cdot \alpha^{\lambda-1} = 1$, equating the two we get $\overline{\alpha} = \alpha^{\lambda-1}$. This also means that the complex conjugate of $\alpha^j$ is given by $\alpha^{\lambda-j}$.
+
+Now we need to fill in the holes in the proof that $Nf(\alpha) \ge 0$ on (bottom part of) Page 83. There's not a lot to fill in actually except that $f(\alpha^j) = 0$ for some, and hence for all, $j = 1,2,\dots, \lambda-1$.
+
+The other steps are obvious
+%
+\nbea
+Nf(\alpha) & = & f(\alpha) f(\alpha^2) \dots f(\alpha^{\lambda-2})f(\alpha^{\lambda-1}) \\
+& = & f(\alpha) f(\alpha^2) \dots f(\overline{\alpha^2})f(\overline{\alpha}) \\
+& = & f(\alpha) f(\alpha^2) \dots \overline{f(\alpha^2)}~\overline{f(\alpha)} \\
+& = & |f(\alpha)|^2 |f(\alpha^2)|^2 \dots |f(\alpha^{\frac{\lambda-1}{2}})|^2
+\neea
+%
+note that since $\lambda$ is an odd prime $\lambda-1$ is even. Now we need to show that if $f(\alpha^j) = 0$ for some $j$ then it is zero for all $j$. This is also straightforward from the fact that $0 = c(1 + \alpha + \dots + \alpha^{\lambda-1})$ thus if $f(\alpha^j) = 0$ then it must be of the form $c(1 + \alpha + \dots + \alpha^{\lambda-1})$, but any conjugation of this form is also of this form since $\lambda$ is prime and a (non-zero) multiple of the unit group of $\lambda$ gives back the unit group $(\mathbb{Z}/\lambda\mathbb{Z})^*$.
+
+{\bf Page 87, Problem 11}. Here we want to divide a cyclotomic integer by another one for $\lambda = 5$. We want the quotient of $38\alpha^3 + 62\alpha^2 + 56\alpha + 29$ divided by $3\alpha^3 + 4\alpha^2 + 7\alpha + 1$. Again, here I'll write a Python script which would be an extension of the on in Problem 5. The method is to do the following
+%
+\nbea
+h(\alpha) g(\alpha) & = & f(\alpha) \\
+\to (Nh(\alpha)) g(\alpha) & = & f(\alpha) h(\alpha^2) h(\alpha^3) \dots h(\alpha^{\lambda-1}) \\
+\to g(\alpha) & = & \frac{1}{Nh(\alpha)} f(\alpha) h(\alpha^2) h(\alpha^3) \dots h(\alpha^{\lambda-1})
+\neea
+%
+to be able to divide the whole thing on the RHS by $Nh(\alpha)$ we might need to massage the product $f(\alpha) h(\alpha^2) h(\alpha^3) \dots h(\alpha^{\lambda-1})$ such that every coefficient is divisible by $Nh(\alpha)$, we can do this provided each coefficient has the same number modulo $Nh(\alpha)$ as explained on Page 85.
+%
+\begin{Verbatim}[baselinestretch=0.75]
+# do division f/h
+def divCyc(f, h):
+
+    if len(f) != len(h):
+        return
+
+    L = len(f)
+
+    if L == 1:
+        return [f[0]/h[0]]
+
+    Nh = cycNorm(h)
+
+    res = [i for i in f] # deep copy of f
+    for k in xrange(2,L):
+        hk = cycShift(h, k)
+        res = multCyc(res, hk)
+
+    # check if every coefficient is the same modulo Nh
+    for k in xrange(1,L):
+        if (res[k] % Nh) != (res[k-1] % Nh):
+            return
+
+    # now subtract the higest coefficient from each coefficient and divide by Nh
+    for k in xrange(L):
+        res[k] = (res[k] - res[-1])/Nh
+
+    return res
+\end{Verbatim}
+%
+and for our particular problem at hand the answer is $-7\alpha^3 - 3\alpha^2 - \alpha + 2$.
+
+{\bf Page 87, Problem 12}. We need to prove that $f(\alpha)$ is divisible by $\alpha - 1$ if and only if $f(1) \equiv 0 \pmod{\lambda}$. One direction is easy, if $f(\alpha)$ is divisible by $\alpha-1$ then $f(\alpha) = (\alpha - 1)h(\alpha)$, setting $\alpha \to 1$ we get $0$ and therefore $\equiv 0 \pmod{\lambda}$.
+
+The other direction not so much :) but we can learn something from the other direction. If $f(\alpha)$ is divisible by $\alpha - 1$ then 
+%
+\nbea
+f(\alpha) = (\alpha - 1)h(\alpha) & = & (\alpha - 1)(c_0 + c_1 \alpha + \dots + c_{\lambda-1}\alpha^{\lambda-1}) \\
+& = & (c_{\lambda - 1} - c_0) + (c_0 - c_1)\alpha + (c_1 - c_2)\alpha^2 + \dots + (c_{\lambda-2} - c_{\lambda-1})\alpha^{\lambda - 1}
+\neea
+%
+while on the other hand 
+%
+\nbea
+f(\alpha) & = & b_0 + b_1\alpha + \dots + b_{\lambda_1}\alpha^{\lambda-1} \\
+\to 0 \pmod{\lambda} \equiv f(1) = \lambda m & = & b_0 + b_1 + \dots + b_{\lambda_1} \\
+\to f(\alpha) & = & (b_0 - m) + (b_1 - m)\alpha + \dots + (b_{\lambda_1} - m)\alpha^{\lambda-1}
+\neea
+%
+which is saying that since there are $\lambda$ $m$'s we can spread them to the $\lambda$ coefficients of $f(\alpha)$ and in so doing $f(1)$ is now exactly 0.
+
+Our task now is to show that given such $f(\alpha) = (b_0 - m) + (b_1 - m)\alpha + \dots + (b_{\lambda_1} - m)\alpha^{\lambda-1}$, it is possible to find $\lambda$ coefficients $c_0, c_1, \dots, c_{\lambda - 1}$ such that $c_{\lambda - 1} - c_0 = b_0 - m, c_0 - c_1 = b_1 - m, \dots, c_{\lambda-2} - c_{\lambda-1} = b_{\lambda - 1} - m$ and thus $h(\alpha) = c_0 + c_1 \alpha + \dots + c_{\lambda-1}\alpha^{\lambda-1}$ and $h(\alpha)(\alpha - 1) = f(\alpha)$.
+
+Staring at this problem long enough you'll see that the key to success is determined by setting $c_{\lambda - 1} = 0$ and the rest will follow. Let's see it work, setting $c_{\lambda - 1} = 0$ we get
+%
+\nbea
+c_{\lambda - 2} & = & b_{\lambda - 1} - m \\
+c_{\lambda - 3} - c_{\lambda - 2} & = & b_{\lambda-2} - m \\
+& \vdots & \\
+c_0 - c_1 & = & b_1 - m \\
+-c_0 & = & b_0 - m
+\neea
+%
+so by setting $c_{\lambda - 1} = 0$ we are practically setting the solution for all $c$'s from both ends, from $c_{\lambda-2}$ going down and from $c_0$ going up, the only question now is whether we will get a consistent result coming from both ends.
+
+The answer is yes, here's why, the easiest way to see this is to start from the top all the way to the bottom and see if we can get $-c_0 = b_0 - m$. If we add everything starting from the top
+%
+\nbea
+\begin{array}{r c c l c}
+c_{\lambda - 2} & ~ & = & b_{\lambda - 1} - m & ~ \\
+c_{\lambda - 3} - c_{\lambda - 2} & ~ & = & b_{\lambda-2} - m  & ~ \\
+& ~ & \vdots & \\
+c_0 - c_1 & ~ & = & b_1 - m  & ~ \\
+\rule[0pt]{60pt}{1pt} & + & & \rule[0pt]{60pt}{1pt} & + \\
+c_0 & & = & \sum_{i = 1}^{\lambda - 1} b_i - m(\lambda - 1) &
+\end{array}
+\neea
+%
+but we know that $f(1) = 0 = \sum_{i = 0}^{\lambda - 1} b_i - m\lambda$ this means that $\sum_{i = 1}^{\lambda - 1} b_i - m(\lambda - 1) = -(b_0 - m)$ and thus $-c_0 = b_0 - m$ which is consistent with our previous result above. The same can be said if we go from the bottom to the top but actually we can even start from both ends and stop anywhere we want in the middle and the result will still be consistent by just summing both sides like above. This also serves as a good way to calculate division by $\alpha - 1$.
+
+Thus if $f(1) \equiv 0 \pmod{\lambda}$ then $f(\alpha)$ is divisible by $\alpha - 1$. We now need to show that this also serves as a proof of the first half of Problem 6. If $\alpha - 1$ divides $f(\alpha)$ then from $f(\alpha) = g(\alpha)$, $\alpha - 1$ also divides $g(\alpha)$ therefore $f(1) \equiv 0$ and $g(1) \equiv 0 \pmod{\lambda}$ and therefore $0 \equiv f(1) \equiv g(1) \pmod{\lambda}$. 
+
+But say $\alpha - 1$ does not divide $f(\alpha)$ which means that it doesn't divide $g(\alpha)$ either, this means that $f(1) \equiv k_f \pmod{\lambda}$ and $g(1) \equiv k_g \pmod{\lambda}$, this means that $f(\alpha) - k_f$ and $g(\alpha) - k_g$ are both divisible by $\alpha - 1$. But $f(\alpha) = g(\alpha)$ which means that $f(\alpha) - k_g$ is divisible by $\alpha - 1$ and therefore $f(1) - k_g \equiv 0 \pmod{\lambda}$ but we also have $f(1) - k_f \equiv 0 \pmod{\lambda}$, this means that $0 \equiv f(1) - k_g \equiv f(1) - k_f \pmod{\lambda}$ which also means that $k_g \equiv k_f \pmod{\lambda}$ which lastly means that $f(1) \equiv g(1) \pmod{\lambda}$ since $f(1) \equiv k_f$ and $g(1) \equiv k_g \pmod{\lambda}$.
+
+We can also show this by simply noting that if $f(\alpha) = g(\alpha)$ then $h(\alpha) = f(\alpha) - g(\alpha) = 0$, therefore $(\alpha - 1)|h(\alpha)$, since $h(\alpha) = 0$ is divisible by anything :) Using the result of Problem 12, divisibility by $\alpha - 1$ means we have $h(1) = f(1) - g(1) \equiv 0 \pmod{\lambda} \to f(1) \equiv g(1) \pmod{\lambda}$. Yet another proof of Problem 6.
+
+The third and last part of this problem asks us to divide both cyclotomic integers in Problem 11 by $\alpha - 1$. This time I will do it by hand instead of a Python script because we can do it quite easily using the method we discovered above, \ie 
+%
+\begin{enumerate}
+%
+\item Calculate $f(1)$, in this case it will be $f(1) = \lambda m$ since $f(\alpha)$ is divisible by $\alpha - 1$.
+%
+\item Transform $f(\alpha)$ from $b_0 + b_1\alpha + \dots + b_{\lambda - 1}\alpha^{\lambda - 1}$ to $(b_0 - m) + (b_1 - m)\alpha + \dots + (b_{\lambda - 1} - m)\alpha^{\lambda - 1}$.
+%
+\item From $(\alpha - 1)h(\alpha) = f(\alpha)$ we know that $(c_{\lambda - 1} - c_0) = b_0 - m, (c_1 - c_0) = b_1 - m, \dots, (c_{\lambda-2} - c_{\lambda - 1}) = b_{\lambda - 1} - m$.
+\end{enumerate}
+%
+Set $c_{\lambda - 1} = 0$ and we get the full solution for all $c$'s where $h(\alpha) = c_0 + c_1\alpha + \dots + c_{\lambda - 1}\alpha^{\lambda - 1}$.
+
+Let's do it for $f(\alpha) = 38\alpha^3 + 62\alpha^2 + 56\alpha + 29$, here $f(1) = 185$ thus with $\lambda = 5$ we have $m = 37$. Transform $f(\alpha)$ into $-37\alpha^4 + \alpha^3 + 25\alpha^2 + 19 \alpha - 8$, setting $c_4 = 0$ we get
+%
+\nbea
+\begin{array}{r c l c r c l}
+c_3 - c_4 & = & -37 & \to & c_3 & = & -37 \\
+c_2 - c_3 & = & 1 & \to & c_2 & = & -36 \\
+c_1 - c_2 & = & 25 & \to & c_1 & = & -11 \\
+c_0 - c_1 & = & 19 & \to & c_0 & = & 8 \\
+c_4 - c_0 & = & -8 & \to & c_0 & = & 8
+\end{array}
+\neea
+%
+the last one was just a consistency check. Thus $h(\alpha) = \frac{f(\alpha)}{\alpha - 1} = -37\alpha^3 -36\alpha^2 -11\alpha + 8$.
+
+For the other cyclotomic number $f(\alpha) = 3\alpha^3 + 4\alpha^2 + 7\alpha + 1$ we have $f(1) = 15$ thus $m = 3$, we then transform $f(\alpha)$ into $-3\alpha^4 + 0\alpha^3 + \alpha^2 + 4\alpha - 2$, setting $c_4 = 0$ we get
+%
+\nbea
+\begin{array}{r c l c r c l}
+c_3 - c_4 & = & -3 & \to & c_3 & = & -3 \\
+c_2 - c_3 & = & 0 & \to & c_2 & = & -3 \\
+c_1 - c_2 & = & 1 & \to & c_1 & = & -2 \\
+c_0 - c_1 & = & 4 & \to & c_0 & = & 2 \\
+c_4 - c_0 & = & -2 & \to & c_0 & = & 2
+\end{array}
+\neea
+%
+And the answer this time is $h(\alpha) = \frac{f(\alpha)}{\alpha - 1} = -3\alpha^3 - 3\alpha^2 - 2\alpha + 2$.
+
+{\bf Page 87, Problem 13}. We choose two cyclotomic integers at random, multiply them and then use the division algorithm, we do this first for $\lambda = 5$ then for $\lambda = 7$. The script to generate the random cyclotomic integers is as follows
+%
+\begin{Verbatim}[baselinestretch=0.75]
+# generate random cyclotomic integers
+def randCyc(L):
+    import random as rand
+
+    rand.seed()
+
+    return [rand.randint(-100,100) for i in xrange(L)]
+\end{Verbatim}
+%
+The rest of the python script to multiple and divide cyclotomic integers is available at problem 5 and Problem 11. Running the above script I got the following cyclotomic integers for $\lambda = 5$
+%
+\nbea
+A & = & 46\alpha^4 - 95\alpha^3 + 53\alpha^2 + 44\alpha - 39 \\
+B & = & 77\alpha^4 - 57\alpha^3 - 18\alpha^2 - 76\alpha - 80 \\
+AB & = & -2925\alpha^4 + 8545\alpha^3 - 16819\alpha^2 + 8112\alpha + 1701 \\
+(AB)/A & = & -134\alpha^3 - 95\alpha^2 - 153\alpha - 157 \\
+(AB)/B & = & -141\alpha^3 + 7\alpha^2 -2\alpha - 85
+\neea
+%
+and for $\lambda = 7$ I got
+%
+\nbea
+A & = & 27\alpha^6 + 36\alpha^5 + 63\alpha^4 + 35\alpha^3 + 19 \alpha^2 - 42 \alpha +46 \\
+B & = & 36\alpha^6 + 62\alpha^5 + 99\alpha^4 + 80\alpha^3 - 66\alpha^2 - 70\alpha - 91 \\
+AB & = & -488\alpha^6 - 2258\alpha^5 + 6193\alpha^4 + 15480\alpha^3 + 12523\alpha^2 + 3147\alpha + 8091 \\
+(AB)/A & = & 26\alpha^5 + 63\alpha^4 + 44\alpha^3 - 102\alpha^2 - 106\alpha + 55 \\
+(AB)/B & = & 9\alpha^5 + 36\alpha^4 + 8\alpha^3 - 8\alpha^2 -69\alpha + 19
+\neea
+%
+
+
+{\bf Page 88, Problem 14}. We need to show that if $f(\alpha)g(\alpha) = 1$ then $f(\alpha)$ is a unit and $g(\alpha) = f(\alpha^2)f(\alpha^3)\dots f(\alpha^{\lambda-1})$. We just follow the hint.
+
+Take the norm
+%
+\nbea
+Nf(\alpha)~Ng(\alpha) & = & 1
+\neea
+%
+since the norm is a non-negative integer both $Nf(\alpha) = Ng(\alpha) = 1$ which means that $f(\alpha)$ is a unit. This also means that
+%
+\nbea
+1 = f(\alpha)g(\alpha) & = & Nf(\alpha) \\
+& = & f(\alpha)f(\alpha^2)f(\alpha^3)\dots f(\alpha^{\lambda-1}) \\
+\to g(\alpha) & = & f(\alpha^2)f(\alpha^3)\dots f(\alpha^{\lambda-1})
+\neea
+%
+Now the question is can there be other options for $g(\alpha)$? Say $g(\alpha) = h(\alpha) \neq f(\alpha^2)f(\alpha^3)\dots f(\alpha^{\lambda-1})$ then we will have a contradiction
+%
+\nbea
+1 = f(\alpha)g(\alpha) & = & Nf(\alpha) \\
+f(\alpha)h(\alpha) & = & f(\alpha)f(\alpha^2)f(\alpha^3)\dots f(\alpha^{\lambda-1}) \\
+\to h(\alpha) & = & f(\alpha^2)f(\alpha^3)\dots f(\alpha^{\lambda-1})
+\neea
+%
+Also, this means that $f(\alpha) = g(\alpha^2)g(\alpha^3)\dots g(\alpha^{\lambda-1})$.
+
+{\bf Page 88, Problem 15}. Here we need to fill in the gaps and details of the proof that there is no other relation $f(\alpha) = 0$ than the one shown in the book $c(1 + \alpha + \alpha^2 + \dots + \alpha^{\lambda-1}) = 0$.
+
+For the middle steps, when it says ``If $r(X) \neq 0$ replace $f(X)$ by $r(X)$ and repeat the process.'' What it means is that we initially assume that there's a polynomial $f(X)$ of degree less than $\lambda - 1$ where $f(\alpha) = 0$.
+
+We then do the $x = by + r$ trick $ah(X) = q(X)f(X) + r(X)$, since $h(\alpha) = 0 = f(\alpha)$ this means that $r(\alpha) = 0$ as well. But $r(X)$ being the remainder has a degree even less than $f(X)$. Since this is the case we move from examining $f(X)$ to examining $r(X)$. We then repeat the process $ah(X) = q(X)r(X) + r'(X)$ but by the same argument we have $r'(\alpha) = 0$ and $r'(X)$ having an even lesser degree than $r(X)$. 
+
+But we need to be careful because sometimes we cannot get the remainder to have a degree lesser than that of the divisor. Therefore we need to allow rational numbers in the quotient and remainder and then multiply the whole thing by the common denominator  For example if we divide $X^2 + X + 1$ by $12X + 17$, first we need to multiply $X^2 + X + 1$ by 12, but even after we do this to get a remainder with a lesser degree than the divisor's we need to include rationals like so
+%
+\nbea
+\begin{array}{c r c l}
+& 12(X^2 + X + 1) & = & (12X + 17)(X + \tfrac{5}{12}) + (\tfrac{59}{12}) \\
+\Rightarrow & 12\cdot12(X^2 + X + 1) & = & (12X + 17)(12X + 5) + (59)
+\end{array}
+\neea
+%
+and at the end we multiply the whole thing by 12 to get $a = 144$, $f(X) = 12X + 17$, $q(X) = 12X + 5$ and $r(X) = 59$. If we did not include rationals the remainder would be $-5X + 12$ which is the same degree as the divisor and the cycle might not terminate.
+
+But once we get the remainder to be just a constant we can stop because $ah(X) = f(X)q(X) + r(X)$ means that since $h(\alpha) = 0$ and $f(\alpha) = 0$ we must have $r(\alpha) = 0$. If $r(X)$ is a non-zero constant then we are done because we already have our contradiction. If $r(X) = 0$ then we move on to the next step of the proof where we only consider $f(X)$ that divides $ah(X)$.
+
+Next is the statement that ``$h(j) \equiv 1 \pmod{\lambda}$ for $j \not\equiv 1 \pmod{\lambda}$''. We use the geometric series formula $1 + j + \dots + j^{\lambda - 1} = \frac{j^\lambda - 1}{j - 1}$, since $j \not\equiv 1$ there's nothing wrong with dividing by $j - 1$. Now assume that this value is $A$
+%
+\nbea
+\frac{j^\lambda - 1}{j - 1} & \equiv & A \pmod{\lambda}
+\neea
+%
+but by Fermat's Little Theorem $j^{\lambda} \equiv j^{\lambda - 1}\cdot j \equiv 1 \cdot j \pmod{\lambda}$ thus 
+%
+\nbea
+\frac{j^\lambda - 1}{j - 1} & \equiv & \frac{j - 1}{j - 1} \equiv 1 \equiv A \pmod{\lambda}
+\neea
+%
+and $1 + j + \dots + j^{\lambda - 1} \equiv A \equiv 1 \pmod{\lambda}$.
+
+The next thing we need is ``A polynomial $F(X)$ is divisible by $(X-1) \pmod{\lambda}$ if and only if $F(1) \equiv 0\pmod{\lambda}$.'' The if part is easy enough to see, the only if part not so much. The way to see this is using the fundamental theorem of algebra applied to congruences or by the following, if $F(X)$ is a polynomial of degree $n \pmod{\lambda}$ and $F(r) \equiv 0 \pmod{\lambda}$ then
+%
+\nbea
+F(X) & \equiv & F(X) - F(r) \\
+& \equiv & c_n (X^n - r^n) + c_{n-1}(X^{n-1} - r^{n-1}) + \dots + c_0(1 - 1) \\
+F(X) & \equiv & (X - r) \left \{c_n(X^{n-1} + X^{n-2}r + \dots + X r^{n-2} + r^{n-1}) + \right .\\
+& & \left.~~~~~~~~~~~~~ c_{n-1}(X^{n-2} + X^{n-3}r + \dots + X r^{n-3} + r^{n-2}) + \dots + c_1 \right \}
+\neea
+%
+and thus this means that $(X - r)$ divides $F(X)$.
+
+The next confusing thing is that ``This is true for either $f(X)$or $g(X)$ but not both'', the word ``This'' refers to divisibility by $(X-1)$. The way to see this is as follows, from $h(X) = f(X)g(X)$ set $X = 1$, since $h(X) = 1 + X + X^2 + \dots + X^{\lambda - 1}$ we have $h(1) = \lambda$ and $\lambda = f(1)g(1)$. But $\lambda$ is prime thus it is either $f(1) = \lambda$ or $g(1) = \lambda$ but it can't be both. This also means that only one of these is true, $f(1) \equiv 0 \pmod{\lambda}$ or $g(1) \equiv 0 \pmod{\lambda}$, and using the theorem $F(X)$  divisible by $X-1$ if and only if $F(1) \equiv 0\pmod{\lambda}$ we can only have either $f(X)$ or $g(X)$ divisible by $X - 1$ but not both.
+
+{\bf Page 88, Problem 16}. We need to prove by algebraic means that if $f(\alpha)h(\alpha) = g(\alpha)h(\alpha)$ then $f(\alpha) = g(\alpha)$. Now the hint says that we just need to consider the case $g(\alpha) = 0$. Why? The key point is this, first let $g(\alpha) = 0$ then we have $f(\alpha)h(\alpha) = 0$, but it need not mean that $f(\alpha) = 0$ it may mean that the product $f(\alpha)h(\alpha) = 0$ but not the individual numbers.
+
+If $g(\alpha) \neq 0$ we just need to do the following substitution $f(\alpha) \to f(\alpha) - g(\alpha)$ and $g(\alpha) \to 0$ like before and we have
+%
+\nbea
+(f(\alpha) - g(\alpha))h(\alpha) = 0
+\neea
+%
+if we prove the theorem for the case $g(\alpha) = 0$ this means that in this case $f(\alpha) - g(\alpha) = 0$ and therefore $f(\alpha) = g(\alpha)$.
+
+The hint tells us to us the argument in Problem 15. But we must use it in a different way. Here we are not trying to express $al(X)$ as $f(X)h(X)$ this is because $f(X)$ and $h(X)$ can now be of order $\lambda - 1$ each giving a total order of $2(\lambda - 1)$. (Note the notation change since $h(\alpha)$ is already used, so now we use $l(X) = X^{\lambda-1} + X^{\lambda - 2} + \dots + 1$).
+
+We can still continue with it if we want to but then the LHS is no longer $al(X)$ instead it must be a generic polynomial of degree $2(\lambda-1)$ that is zero when $X = \alpha$, \ie
+%
+\nbea
+al(X)(c_1 X^{\lambda - 1} + c_2 X^{\lambda - 2} + \dots + c_\lambda) & = & f(X)h(X) + r(X)
+\neea
+%
+The problem with this is that when we arrived at the step where $X - 1$ divides $f(X)$ or $h(X)$ but not both we can't assert the same thing anymore. This is because previously $l(1) = \lambda = f(1)h(1)$ but now we have 
+%
+\nbea
+\lambda(c_1 + c_2 + \dots + c_\lambda) & = & f(1)h(1)
+\neea
+%
+and the sum of the coefficients can still be a multiple of $\lambda$ therefore both $f(1)$ and $h(1)$ can both be a multiple of $X - 1$ and we can't have the same contradiction as before.
+
+The right way to do it is the following. Set $al(X) = f(X)q(X) + r(X)$ where $f(\alpha)h(\alpha) = 0$ and $r(\alpha)h(\alpha) = 0$. Just like before each $r(X)$ can be made to have a lower degree than that of the divisor and we repeat the process until we reach a zero $r(X)$ or a constant one.
+
+If $r(X) = k$ is a non-zero constant then $k h(\alpha) = 0$ which means that $h(\alpha) = 0$ a contradiction since it was assumed that $h(\alpha) \neq 0$. If $r(X) = 0$ then we have an $f(X)$ that divides $l(X)$ and the proof continues like the one in Problem 15.
+
+The final conclusion is slightly different, the assumption that there is a non-zero $f(\alpha)$ that has a product with $h(\alpha) \to f(\alpha)h(\alpha) = 0$ leads to a contradiction, therefore $f(\alpha) = 0 = g(\alpha)$. The lesson here is that 
+%
+\begin{enumerate}
+%
+\item No matter what we need to keep the LHS of $a l(X) = f(X)q(X) + r(X)$ to be a polynomial of degree $\lambda - 1$ to ensure $l(1) = f(1)q(1) = \lambda$. This makes sure that only one of $f(X)$ or $q(X)$ is divisible by $X-1$, otherwise the proof fails.
+%
+\item We need not have $f(\alpha)$ to be zero, we can have other conditions such as the one above $f(\alpha)h(\alpha) = 0$ or something else like $f(\alpha)h(\alpha)u(\alpha)$.
+\end{enumerate}
+%
+So the above two points are the gist of the proof of Problem 15.
+
+{\bf Page 88, Problem 17}. Here we need to show that the properties of congruences apply to cyclotomic integers. The first $h(\alpha) \equiv h(\alpha)$ one is straightforward since $h(\alpha) - h(\alpha) = 0$ and 0 is divisible by anything :)
+
+The second one $h(\alpha) \equiv k(\alpha)$ implies $k(\alpha) \equiv h(\alpha)$ is also straightforward if
+%
+\nbea
+h(\alpha) \equiv k(\alpha) \pmod{f(\alpha)} \to f(\alpha)u(\alpha) = h(\alpha) - k(\alpha) \to f(\alpha)(-u(\alpha)) = k(\alpha) - h(\alpha) 
+\neea
+%
+which means that $\to k(\alpha) \equiv h(\alpha) \pmod{f(\alpha)}$. Next, transitivity, $h(\alpha) \equiv k(\alpha)$ and $k(\alpha) \equiv g(\alpha)$ means $h(\alpha) \equiv g(\alpha)$
+%
+\nbea
+h(\alpha) \equiv k(\alpha) \pmod{f(\alpha)} & \to & h(\alpha) - k(\alpha) = f(\alpha) u(\alpha) \\
+k(\alpha) \equiv g(\alpha) \pmod{f(\alpha)} & \to & k(\alpha) - g(\alpha) = f(\alpha) v(\alpha)
+\neea
+%
+adding the two equalities we get
+%
+\nbea
+h(\alpha) - \bcancel{k(\alpha)} + \bcancel{k(\alpha)} - g(\alpha) = f(\alpha) (u(\alpha)+v(\alpha))
+\neea
+%
+so $h(\alpha) \equiv g(\alpha) \pmod{f(\alpha)}$. The last two are addition and multiplication, first, addition
+%
+\nbea
+h_1(\alpha) \equiv k_1(\alpha) \pmod{f(\alpha)} & \to & h_1(\alpha) = k_1(\alpha) + f(\alpha) u(\alpha) \\
+h_2(\alpha) \equiv k_2(\alpha) \pmod{f(\alpha)} & \to & h_2(\alpha) = k_2(\alpha) + f(\alpha) v(\alpha)
+\neea
+%
+adding the two equalities we get what we want, lastly, multiplication, just multiply the two equalities to get
+%
+\nbea
+h_1(\alpha) h_2(\alpha) = k_1(\alpha)k_2(\alpha) + f(\alpha) \{ k_1(\alpha) v(\alpha) + k_2(\alpha) u(\alpha) + u(\alpha) v(\alpha)\}
+\neea
+%
+
+{\bf Page 88, Problem 18}. We need to prove that a prime cyclotomic integer is irreducible. Assume the contrary, then a prime $p(\alpha)$ can be split into $p(\alpha) = f(\alpha)g(\alpha)$ where $f$ and $g$ are not units, we also note that $p(\alpha)$ does not divide $f$ nor $g$ because if we take the norm
+%
+\nbea
+Np(\alpha) & = & Nf(\alpha) Ng(\alpha)
+\neea
+%
+since the norm is a (non-zero) integer $Nf, Ng < Np$ and if $p(\alpha)$ divides $f$ or $g$ then
+%
+\nbea
+p(\alpha) u(\alpha) & = & f(\alpha) \\
+\to Np(\alpha) Nu(\alpha) & = & Nf(\alpha)
+\neea
+%
+which means that either $Np(\alpha) = Nf(\alpha)$ and in this case $g$ is a unit contrary to our assumption about $g$ or $Np(\alpha) < Nf(\alpha)$ which also is a contradiction. Thus $p(\alpha)$ does not divide $f$ nor $g$, but $p(\alpha)$ certainly divides the product $f(\alpha)g(\alpha)$ since it is $p(\alpha)$ itself contrary to the definition of a prime cyclotomic integer where you have to divide the factors to divide the product to be a prime.
+
+{\bf page 88, Problem 19}. Need to show that for ordinary integers, irreducible means prime. If an integer $p$ is irreducible this means that $p = mn$ where $m$ or $n$ is a unit, \ie plus minus 1. If $m$ is a unit then $n$ must be irreducible otherwise we can factor $n$ and $p$ is no longer irreducible. So if $m$ is $\pm1$ then $n = \pm p$ but this is the very definition of a prime number.
+
+{\bf Page 91}, theorem at top of page, note that it is an if and only if so if we have $f(k) \equiv g(k) \pmod{p}$ we also have $f(\alpha) \equiv g(\alpha) \pmod{h(\alpha)}$ as long as $h(\alpha)$ is a prime that divides a binomial $x + \alpha^j y$.
+
+{\bf Page 91}, last paragraph, $N(\alpha - 1) = N(1 - \alpha)$, this is because the norm is a product of $\lambda - 1$ terms and since $\lambda$ is an odd prime $\lambda - 1$ is an even number, since the norm is a product of an even number of terms we have $N(f(\alpha)) = N(-f(\alpha))$.
+
+{\bf Page 92}, top of page ``$\alpha \to \alpha^i$ preserve products'', it doesn't mean that $w(\alpha)u(\alpha) = w(\alpha^i)u(\alpha^i)$. What it means is
+%
+\nbea
+w(\alpha)u(\alpha) & = & f(\alpha^j)g(\alpha^j) \\
+\to w(\alpha^i)u(\alpha^i) & = & f(\alpha^{ij})g(\alpha^{ij})
+\neea
+%
+
+{\bf Page 92}, top of page ``Also each divides a binomial and each divides $p$'', the $p$ refers to the same prime number, \ie all conjugates $h(\alpha^j)$ of $h(\alpha)$ divides the same prime number $p$, this is because the previous explanation above if $h(\alpha)$ divides $p$ then
+%
+\nbea
+h(\alpha) g(\alpha) & = & p \\
+\to h(\alpha^j) g(\alpha^j) & = & p
+\neea
+%
+like said above that ``$\alpha \to \alpha^i$ preserve products''. And the conjugates $h(\alpha^j)$ cannot divide other prime numbers due to the reason mentioned previously, if $h(\alpha^j)$ divides another prime $q$ then $h(\alpha)$ also divides $q$ by the argument above, and from Bezout's lemma we have $ap + bq = 1$ therefore $h(\alpha)$ divides 1 and it must be a unit and not a prime. 
+
+{\bf Page 92}, top(ish) part of first paragraph, ``two cyclotomic integers are congruent mod $h(\alpha^j)$ if and only if  they are congruent mod $h(\alpha)$''. This is because $h(\alpha)$ and $h(\alpha^j)$ share the same $k$ and the same $p$ and so we have (from Theorem on Page 91)
+%
+\nbea
+f(\alpha) \equiv g(\alpha) \pmod{h(\alpha)} \Longleftrightarrow f(k) \equiv g(k) \pmod{p} \Longleftrightarrow f(\alpha) \equiv g(\alpha) \pmod{h(\alpha^j)}
+\neea
+%
+
+{\bf Page 92}, top(ish) part of first paragraph, ``it follows that $h(\alpha^j)$ divides $h(\alpha)$ and $h(\alpha)$ divides $h(\alpha^j)$''. To show this, first assume that $h(\alpha)\nmid h(\alpha^j)$ which can be written as $h(\alpha^j) \equiv g(\alpha) \pmod{h(\alpha)}$ where $g(\alpha)$ can be anything.
+
+Then from Page 91 Theorem we have $h(\alpha^j) \equiv g(\alpha) \pmod{h(\alpha)} \Longleftrightarrow h(k^j) \equiv g(k) \pmod{p}$. But we also have $f(k) \equiv g(k) \pmod{p} \Longleftrightarrow f(\alpha) \equiv g(\alpha) \pmod{h(\alpha^j)}$ since $h(\alpha^j)$ and $h(\alpha)$ share the same $k$ and $p$. Therefore we have $h(k^j) \equiv g(k) \pmod{p} \Longleftrightarrow h(\alpha^j) \equiv g(\alpha) \pmod{h(\alpha^j)}$. But $h(\alpha^j) \equiv 0 \pmod{h(\alpha^j)}$ which means that $g(\alpha) \equiv 0 \pmod{h(\alpha^j)}$.
+
+And from $f(\alpha) \equiv g(\alpha) \pmod{h(\alpha)} \Longleftrightarrow f(k) \equiv g(k) \pmod{p} \Longleftrightarrow f(\alpha) \equiv g(\alpha) \pmod{h(\alpha^j)}$ we have $g(\alpha) \equiv 0 \pmod{h(\alpha^j)} \Longleftrightarrow g(\alpha) \equiv 0 \pmod{h(\alpha)}$. Finally our original statement $h(\alpha^j) \equiv g(\alpha) \pmod{h(\alpha)}$ means that $h(\alpha^j) \equiv 0 \pmod{h(\alpha)}$. If we start with $h(\alpha) \equiv g(\alpha) \pmod{h(\alpha^j)}$ we will get the other result $h(\alpha) \equiv 0 \pmod{h(\alpha^j)}$.
+
+{\bf Page 92}, mid of top paragraph. $\alpha^j \equiv k \equiv \alpha^i \pmod{\alpha^j}$, note that in this case from the fact that $\alpha \equiv k \pmod{h(\alpha)}$ we have $\alpha^j \equiv k \pmod{h(\alpha^j)}$ for all $j$. We get $k \equiv \alpha^i \pmod{h(\alpha^j)}$ because we have assumed that $h(\alpha^j)|h(\alpha^i)$.
+
+{\bf Page 92}, almost the end of big (top) paragraph, $q_{\lambda - 1}(\alpha) = 1$, this is because $Nh(\alpha) = p$ because $h(\alpha)$ is a prime and thus not a unit.
+
+{\bf Page 93}, top page, proof of Theorems and Corollaries, the key ingredient here is $\alpha \equiv 1 \pmod{\alpha - 1}$.
+
+{\bf Page 93}, top page, $f(\alpha)g(\alpha) \equiv 0 \pmod{\alpha - 1}, f(1)g(1) \equiv 0 \pmod{\alpha - 1}$, this is because $\alpha \equiv 1 \pmod{\alpha - 1}$ so we can substitute 1 for $\alpha$ as long as it's mod $\alpha - 1$.
+
+{\bf Page 93}, end of first paragraph of proof, what we want to show is that a unit multiple of a prime cyclotomic is also a prime cyclotomic. We can prove this by contradiction. Say $q(\alpha)$ is prime and $p(\alpha) = u(\alpha)q(\alpha)$ is not. From the definition it's obvious that $p(\alpha)$ is irreducible.
+
+Since $p(\alpha)$ is not prime there must be a number divisible by $p(\alpha)$ but whose factors are not divisible by $p(\alpha)$
+%
+\nbea
+p(\alpha) y(\alpha) & = & f(\alpha) g(\alpha)
+\neea
+%
+but $p(\alpha)\nmid f(\alpha)$ and $p(\alpha) \nmid g(\alpha)$. However,
+%
+\nbea
+p(\alpha) y(\alpha)  = q(\alpha) u(\alpha) y(\alpha)& = & f(\alpha) g(\alpha)
+\neea
+%
+and $q(\alpha)|f(\alpha)$ or $q(\alpha)|g(\alpha)$, say in this case $q(\alpha)|f(\alpha)$ then
+%
+\nbea
+f(\alpha) & = & q(\alpha) F(\alpha)
+\neea
+%
+but since a unit has an inverse, it divides everything so we can write $F(\alpha) = u(\alpha) \tilde F(\alpha)$ where $\tilde F(\alpha) = u^{-1}(\alpha) F(\alpha)$ therefore
+%
+\nbea
+f(\alpha) & = & q(\alpha) u(\alpha)\tilde F(\alpha) \\
+& = & p(\alpha) \tilde F(\alpha)
+\neea
+%
+contrary to our assumption that $p(\alpha)$ doesn't divide $f(\alpha)$ thus a unit multiple of a prime is also a prime.
+
+{\bf Page 93}, mid(ish) of second paragraph of proof, ``$\alpha - 1$ is the unique prime divisor of $\lambda$''. From the previous paragraph we have that $\alpha^j - 1$ is a multiple of $\alpha - 1$ and $h(\alpha)$ and its conjugates are prime which are just unit multiples of conjugates of $\alpha - 1$. 
+
+Here $\lambda = Nh(\alpha)$ which is just a product of conjugates of $h(\alpha)$, each of which is prime and each of which is a unit multiple of $\alpha - 1$, thus $\lambda = Nh(\alpha)$ is just a product of a bunch of $\alpha - 1$ and a bunch of units and $\alpha - 1$ being the sole prime divisor of $\lambda = Nh(\alpha)$ although there might be multiple copies of it.
+
+{\bf Page 93}, mid(ish) of second paragraph of proof, ``every conjugate of $\alpha$ is congruent to $1 \pmod{\alpha - 1}$'', this is because $\alpha \equiv 1 \pmod{\alpha-1}$ and thus $\alpha^j \equiv 1^j \equiv 1 \pmod{\alpha-1}$.
+
+{\bf Page 93}, last paragraph on the proof of second Theorem on Page 92, this proof uses the fact that $Nh(\alpha)$ is prime, I want to make it more general by assuming that $Nh(\alpha) = p^n$ a power of odd prime instead. This is because in the exercises we get something like $h(\alpha)$ divides a prime $p \equiv 1 \pmod{\lambda}$ which implies that $Nh(\alpha) | p^j$ since $N p = p^{\lambda - 1}$. However, we need not care too much about the norm because if $h(\alpha)|p$ with $p \equiv 1 \pmod{\lambda}$ and $h(\alpha)$ is not a unit then it is a cyclotomic prime and divides a binomial.
+
+{\bf Proposition 93.1}, I use the page number as theorems in this book are not numbered, {\it If $Nh(\alpha) = p^n$ a power of odd prime, $n \ge 1$, and $p \equiv 1 \pmod{\lambda}$, then $h(\alpha)$ divides a binomial, however, $h(\alpha)$ might not be prime except when $h(\alpha)|p$ then in that case $h(\alpha)$ is prime cyclotomic.}
+
+{\bf Proposition 93.1.0}, A reformulation of the above, {\it If a non-unit $h(\alpha) | p$ an odd prime and $p \equiv 1 \pmod{\lambda}$, then $h(\alpha)$ divides a binomial and is prime cyclotomic.}
+
+{\it Proof}. I will just point out modifications needed, full detail will be on the book. Following what the book does, find a $k$ such that $\alpha \equiv k \pmod{h(\alpha)}$, meaning $k^\lambda \equiv 1 \pmod{p^n}$. Now here comes the catch, unlike what happens in the book $k^\lambda - 1$ need not be $0 \pmod{p^n}$, say it is $p^r \pmod{p^n}$, $r < n$, then Bezout gives us $p^r = a(k^\lambda - 1) + bp^n$ since $Nh(\alpha) = p^n \to h(\alpha) | p^n$ and $1 \equiv \alpha^\lambda \equiv k^\lambda \pmod{h(\alpha)}$ this means that $h(\alpha) | p^r \to Nh(\alpha) | p^{r(\lambda-1)}$ which is not a contradiction.
+
+However, we can still restrict our search for $k$ to those $k$ such that $k^\lambda - 1 \equiv 0 \pmod{p^n}$. We might miss some other $k$'s but that's okay. The next steps would be similar. Again, assume $p \equiv 1 \pmod{\lambda}$.
+
+Let $\gamma$ be a primitive root mod $p^n$ (I've proved the existence of primitive roots mod $p^n$ twice before, one for Stein and one for Apostol) then $(\gamma^i)^\lambda \equiv 1 \pmod{p^n}$ if and only if $p^{n-1}(p - 1)/\lambda = \mu$ divides $i$ and the solutions are still given by $m^j$ where $m = \gamma^\mu$ and $j = 1,2,\dots,\lambda$ just like in the book. This means our $k = m^j$.
+
+We then proceed to the Lemma, here the difference is
+%
+\nbea
+h(m) h(m^2) \dots h(m^{\lambda-1}) \equiv 0 \pmod{p^n}
+\neea
+%
+\ie mod $p^n$ instead of mod $p$. And the more serious difference is that if $h(\alpha)|\alpha - m^j$ then $h(\alpha) \equiv h(m^j) \pmod{h(\alpha)}$ but it doesn't mean that $h(m^j) \equiv 0 \pmod{p^n}$ because it can be that $h(\alpha)|p^r, r < m$ as stated above.
+
+The proof of the lemma is similar
+%
+\nbea
+h(X)h(X^2) \dots h(X^{\lambda-1}) & = & q(X)(X^{\lambda - 1} + X^{\lambda-2} + \dots + 1) + r(X) \\
+h(\alpha)h(\alpha^2) \dots h(\alpha^{\lambda-1}) = p^n & = & q(\alpha)(\alpha^{\lambda - 1} + \alpha^{\lambda-2} + \dots + 1) + r(\alpha) \\
+\to p^n & = & q(\alpha)\cdot 0 + r(\alpha)
+\neea
+%
+Thus $r(X) = p^n$, the next crucial step is
+%
+\nbea
+m^{\lambda - 1} + m^{\lambda - 2} + \dots + 1 = \frac{m^\lambda - 1}{m - 1}
+\neea
+%
+again $m^\lambda \equiv 1 \pmod{p^n}$ because $m = \gamma^\mu \not \equiv 1 \pmod{p^n}$ since $\gamma$ is a primitive root and $p^{n-1}(p - 1) = \lambda\mu$ thus there is at least .
+
+For the last step, we need to show that $h(\alpha)$ divides $\alpha - m^j$ by showing that $Nh(\alpha)$ divides $(\alpha - m^j)h(\alpha^2)h(\alpha^3) \dots h(\alpha^{\lambda-1})$. Again
+%
+\nbea
+h(X) & = & q(X)(X - m^j) + r \\
+h(m^j) = p^n & = & q(m^j)\cdot 0 + r
+\neea
+%
+thus $r \equiv 0 \pmod{p^n}$. Then
+%
+\nbea
+(\alpha - m^j)h(\alpha^2)h(\alpha^3) \dots h(\alpha^{\lambda-1}) & = & (\alpha - m^j) \cdot q(\alpha^2) (\alpha - m^j) q(\alpha^3) (\alpha^3 - m^j) \cdots q(\alpha^{\lambda - 1}) (\alpha^{\lambda - 1} - m^j) \\
+& = & N(\alpha - m^j) q(\alpha^2) q(\alpha^3) \dots q(\alpha^{\lambda-1})
+\neea
+%
+and the key is that
+%
+\nbea
+N(\alpha - m^j) & = & \frac{m^{j\lambda} - 1}{m^j - 1}
+\neea
+%
+again, since $j=1,2,\dots,\lambda-1$, $m^j \not \equiv 1 \pmod{p^n}$ and $m^{j\lambda} \equiv \gamma^{j\mu\lambda} \equiv 1 \pmod{p^n}$ thus $N(\alpha - m^j)$ is divisible by $p^n = Nh(\alpha)$ and so $h(\alpha)$ divides $\alpha - m^j$.
+
+Here's why $h(\alpha)$ might not be prime, because we can no longer assume that if $f(\alpha)g(\alpha) \equiv 0 \pmod{h(\alpha)}$ then $f(k)g(k) \equiv 0 \pmod{p^n}$ and vice versa. Even if we can establish that fact $f(k)g(k) \equiv 0 \pmod{p^n}$ still doesn't say that $f(k) \equiv 0 \pmod{p^n}$ or $g(k) \equiv 0 \pmod{p^n}$ it might be that $p^r|f(k)$ and $p^s|g(k)$ with $r+s = n$.
+
+But this situation can be salvaged if $h(\alpha)|p$ because then the arguments in the book all hold, \ie $f(\alpha)g(\alpha) \equiv 0 \pmod{h(\alpha)} \to f(k)g(k) \equiv 0 \pmod{p}$ because otherwise Bezout tells us that $1 = af(k)g(k) + bp$ is divisible by $h(\alpha)$ implying that $h(\alpha)$ is a unit but $Nh(\alpha) = p^n$. The rest of the proof follows just as what is shown in the book.
+
+{\bf Page 94}, last statement of proof of Lemma, ``because $m^\lambda \equiv 1 \pmod{p}$ and $m\not\equiv 1 \pmod{p}$''. Note that $m = \gamma^\mu$ where $\gamma$ is a primitive root mod $p$ and that $\lambda\mu = p - 1$, thus $m = \gamma^\mu \not\equiv 1$ and of course consequently $m^\lambda = \gamma^{\mu\lambda} = \gamma^{p-1} \equiv 1$.
+
+{\bf Page 95}, top of page, $N(\alpha - k) = \frac{k^\lambda - 1}{k-1}$, here $k \not \equiv 1$ because $k = m^j$ where $m = \gamma^\mu$, $\gamma$ a primitive root and $\mu\lambda = p-1$ thus $m = \gamma^\mu \not\equiv 1$. But $m^j$ can still be one, however, here $j = 1,2,\dots,\lambda - 1$ ($\lambda$ not included) thus $\gamma^{\mu j} \not\equiv 1$.
+
+{\bf Page 95}, top paragraph, conclusion of proof of theorem, note that $Nh(\alpha) = p$ thus $h(\alpha)|p$.
+
+{\bf Page 95, Problem 1}. This is the same as Page 88, Problem 18.
+
+{\bf Page 95, Problem 2}. This is the same as Page 88, Problem 19.
+
+{\bf Page 96, Problem 3}. This is an interesting one as we want to show that unique factorization fails because we have irreducibles that are not prime. The only assumption we are allowed to make is that every cyclotomic integer is a product of irreducibles.
+
+First, if $h(\alpha)$ is irreducible (and not a unit since a unit is prime) but not prime then there must be a number it divides that is not itself or a unit multiple of itself. If the only number it divides is just itself or a unit multiple of itself since $h(\alpha)$ is irreducible than it must be prime. Note that only units divide other units.
+
+Therefore there is at least one other number, say $w(\alpha)$, that is divisible by $h(\alpha)$. Our assumption tells us that $w(\alpha)$ is a product of irreducibles therefore we can express
+%
+\nbea
+w(\alpha) & = & f_1(\alpha) f_2(\alpha) \dots f_n(\alpha)
+\neea
+%
+where $f_i(\alpha)$ are not $h(\alpha)$ or a unit multiple of it otherwise $h(\alpha)$ divides one of the factors of $w(\alpha)$ and it will be prime. This means that
+%
+\nbea
+w(\alpha) = h(\alpha)y(\alpha) & = & f(\alpha) f_2(\alpha) \dots f_n(\alpha)
+\neea
+%
+and by assumption $y(\alpha)$ is a product of irreducibles and so we have shown that there are at least two ways of factorizing $w(\alpha)$.
+
+{\bf Page 96, Problem 4}. We are calculating the norm of various binomials, the trick here is to use the hint
+%
+\nbea
+(x + y)N(x + \alpha y) & = & (x + y)(x + \alpha y) (x + \alpha^2 y) \dots (x + \alpha^{\lambda-1} y) \\
+& = & x^\lambda + y^\lambda
+\neea
+%
+which is the identity at the beginning of the Chapter, Page 76. So for $\lambda = 5$
+%
+\nbea
+\begin{array}{r c l c r c l}
+N(1 + \alpha) & = & 1 & ~~~~~~~~ & N(3 -  2\alpha) & = & 211 \\
+N(2 + \alpha) & = & 11 & ~~~~~~~~ & N(4 + \alpha) & = & 205 \\
+N(2 - \alpha) & = & 31 & ~~~~~~~~ & N(5 + 2\alpha) & = & 451 \\
+N(3 + \alpha) & = & 61 & ~~~~~~~~ & N(5 -  4\alpha) & = & 2101 \\
+N(3 - \alpha) & = & 121 & ~~~~~~~~ & N(7 + \alpha) & = & 2101 \\
+N(3 + 2\alpha) & = & 55 & ~~~~~~~~ & & &
+\end{array}
+\neea
+%
+And for $\lambda = 7$
+%
+\nbea
+\begin{array}{r c l c r c l}
+N(2 + \alpha) & = & 43 & ~~~~~~~~ & N(4 - \alpha) & = & 5461 \\
+N(2 - \alpha) & = & 127 & ~~~~~~~~ & N(4 + 3\alpha) & = & 2653 \\
+N(3 + \alpha) & = & 547 & ~~~~~~~~ & N(4 - 3\alpha) & = & 14197 \\
+N(3 - \alpha) & = & 1093 & ~~~~~~~~ & N(5 + \alpha) & = & 13021 \\
+N(3 + 2\alpha) & = & 463 & ~~~~~~~~ & N(5 + 2\alpha) & = & 11179 \\
+N(3 - 2\alpha) & = & 2059 & ~~~~~~~~ & N(5 + 3\alpha) & = & 10039 \\
+N(4 + \alpha) & = & 3277 & ~~~~~~~~ & N(5 + 4\alpha) & = & 10501 
+\end{array}
+\neea
+%
+And I calculated all these by hand :)
+
+{\bf Page 96, Problem 5}. Show that if a prime $p$ divides $N(x + \alpha y)$ then $p \equiv 1 \pmod{\lambda}$ without assuming a prime $h(\alpha)$ divides $p$. From Problem 4 we know that $N(x + \alpha y) = \frac{x^\lambda + y^\lambda}{x + y}$.
+
+It is actually similar to Page 87, Problem 9, the fact that $p$ divides $N(x + \alpha y)$ means $N(x + \alpha y) \equiv 0 \pmod{p}$. We then factorize
+%
+\nbea
+N(x + \alpha y) = \frac{x^\lambda + y^\lambda}{x + y} & = & (y^{\lambda-1} - xy^{\lambda - 2} + \dots + x^{\lambda-1}) \\
+\to (y^{\lambda-1} - xy^{\lambda - 2} + \dots + x^{\lambda-1}) & \equiv & 0 \pmod{p}
+\neea
+%
+since $x$ and $y$ are co-prime $p$ doesn't divide any of them. Do the same trick as Page 87 Problem 9 to massage the equivalence relation into
+%
+\nbea
+k^{\lambda-1} - k^{\lambda - 2} + \dots + 1 & \equiv & 0 \pmod{p}
+\neea
+%
+where $k \equiv x^{-1} y$ or $y^{-1} x$, see Problem 9 Page 87 for details. We now do the trick we always do when dealing with a geometric series. Multiply the whole thing by $k$ and then add them up
+%
+\nbea
+k \times (1 - k + k^2 - \dots + k^{\lambda - 1}) & \equiv & k - k^2 + k^3 - \dots + k^{\lambda} \equiv 0 \pmod{p} \\
+\to (1 + k) \times (1 - k + k^2 - \dots + k^{\lambda - 1})  & \equiv & 1 + k^{\lambda} \equiv 0 \pmod{p}
+\neea
+%
+since $\lambda$ is odd it's either $k \equiv -1$ or $k^{\lambda} \equiv -1 \pmod{p}$. But if $k \equiv -1$ then we have
+%
+\nbea
+1 - k + k^2 - \dots + k^{\lambda - 1} & = & 1 + 1 + 1 + \dots + 1 \equiv 0 \pmod{p} \\
+\to \lambda & \equiv & 0 \pmod{p}
+\neea
+%
+but since both $\lambda$ and $p$ are both prime the only possibility is that $p = \lambda$ and in that case $p \equiv 0 \pmod{\lambda}$ which is the first result we need.
+
+If $k^{\lambda} \equiv -1 \pmod{p}$ then $k^{2\lambda} \equiv 1 \pmod{p}$. According to Fermat's Little Theorem we must have $2\lambda|(p-1)$ if $2\lambda < p$ or $p-1|2\lambda$ if $p < 2\lambda$. For the former case this means that $p - 1 = 2\lambda n \to p \equiv 1 \pmod{\lambda}$ and for the latter case since $\lambda$ is prime, $2\lambda$ only has two distinct factors, 2 and $\lambda$ therefore $p - 1 = 2\lambda$ and again $p \equiv 1 \pmod{\lambda}$.
+
+{\bf Page 96, Problem 6}. We are now asked to find the prime factors of the norms we found in Problem 4 using information from Problem 5.
+for $\lambda = 5$
+%
+\nbea
+\begin{array}{r c l c l c r c l c l}
+N(1 + \alpha) & = & 1 & = & 1 \cdot 1 & ~~~~~~~~ & N(3 -  2\alpha) & = & 211 & = & 211 \cdot 1 \\
+N(2 + \alpha) & = & 11 & = & 11 \cdot 1 & ~~~~~~~~ & N(4 + \alpha) & = & 205 & = & 41 \cdot 5 \\
+N(2 - \alpha) & = & 31 & = & 31 \cdot 1 & ~~~~~~~~ & N(5 + 2\alpha) & = & 451 & = & 41 \cdot 41 \\
+N(3 + \alpha) & = & 61 & = & 61 \cdot 1 & ~~~~~~~~ & N(5 -  4\alpha) & = & 2101 & = & 191 \cdot 11 \\
+N(3 - \alpha) & = & 121 & = & 11 \cdot 11 & ~~~~~~~~ & N(7 + \alpha) & = & 2101 & = & 191 \cdot 11 \\
+N(3 + 2\alpha) & = & 55 & = & 11 \cdot 5 & ~~~~~~~~ & & &
+\end{array}
+\neea
+%
+For the bigger numbers, since they are odd, it cannot be a multiple of $5(2n+1) + 1$ so it can only be a multiple of $11, 21, 31, \dots$. And the primes in this list are $11, 31, 41, 61, \dots$ but we need not consider more than these since to do factorization we only need to go to $\sqrt{n}$ and $61^2 = 3721$ already. So we just need if any of these four primes divide the norm, if they don't then the norm is also a prime because any prime divisor of the norm must be one of these four from Problem 5.
+
+And for $\lambda = 7$
+%
+\nbea
+\begin{array}{r c l  c l c r c l c l}
+N(2 + \alpha) & = & 43 & = & 43\cdot 1 & ~~~~~~~~ & N(4 - \alpha) & = & 5461 & = & 127 \cdot 43 \\
+N(2 - \alpha) & = & 127 & = & 127 \cdot 1 & ~~~~~~~~ & N(4 + 3\alpha) & = & 2653 & = & 379 \cdot 7 \\
+N(3 + \alpha) & = & 547 & = & 547 \cdot 1 & ~~~~~~~~ & N(4 - 3\alpha) & = & 14197 & = & 14197 \cdot 1 \\
+N(3 - \alpha) & = & 1093 & = & 1093 \cdot 1 & ~~~~~~~~ & N(5 + \alpha) & = & 13021 & = & 449 \cdot 29 \\
+N(3 + 2\alpha) & = & 463 & = & 463 \cdot 1 & ~~~~~~~~ & N(5 + 2\alpha) & = & 11179 & = & 1597 \cdot 7 \\
+N(3 - 2\alpha) & = & 2059 & = & 71 \cdot 29 & ~~~~~~~~ & N(5 + 3\alpha) & = & 10039 & = & 10039 \cdot 1 \\
+N(4 + \alpha) & = & 3277 & = & 113 \cdot 29 & ~~~~~~~~ & N(5 + 4\alpha) & = & 10501 & = & 10501 \cdot 1
+\end{array}
+\neea
+%
+Again, all these are odd, so the only possible factors are of the form $7(2n) + 1 = 15, 29, 43, 57, 71, 85, 99, 113, 127$, again we only need to go up to $\sqrt{n}$ and here $n \sim 10000 \to \sqrt{n} \sim 100$, the only primes in that list are $29, 43, 71, 113, 127$.
+
+I initially thought that this was just a calculation but it also betrays the fact that Problem 5 simplifies the factorization considerably as explained above. I did everything by hand and the only mistake I made was $2653$ because I didn't check that it was a multiple of 7.
+
+{\bf Page 96, Problem 7}. Here we are again calculating norms, $N(9 - \alpha)$ with $\lambda = 5$, directly and using the fact that it is $N(9-\alpha) = N(3 - \alpha)N(3 + \alpha)$ because
+%
+\nbea
+N(9 - \alpha) & = & N(9 - \alpha^2) = N \{(3 - \alpha) (3 + \alpha) \} = N(3 - \alpha) N(3 + \alpha)
+\neea
+%
+A direct calculation gives you $N(9 - \alpha) = \frac{9^5 - 1^5}{8} = 7381$, again by hand. We have calculated $N(3 - \alpha)$ and $N(3 + \alpha)$ in Problem 4 and their product is $61 \cdot 121 = 7381$, again by hand.
+
+{\bf Page 96, Problem 8}. Prove that for $p \equiv 1 \pmod{\lambda}$ the prime factorization of $p$ is unique. If $h_1(\alpha)$ and $h_2(\alpha)$ are both factors of $p$ then they are unit multiples of one another's conjugate.
+
+What we know is that since $h_{1,2}|p \to Nh_{1,2}(\alpha) | p^{\lambda - 1}$. Note that $N p = p^{\lambda - 1}$ and not $p$. This means that 
+%
+\nbea
+Nh_1(\alpha) & = & p^j \\
+Nh_2(\alpha) & = & p^k
+\neea
+%
+where $j,k = 1,2,\dots,\lambda - 1$ because $Nh_{1,2}(\alpha)$ is an integer. If $Nh_1(\alpha) = Nh_2(\alpha)$ then we are done, we just need to follow the same steps as the proof of the Third Corollary on Page 95.
+
+But it's not easy to show that the norms are equal. Another way is to find a binomial whose norm is a multiple of $p$ given such prime $p$. Since if $p|N(x + \alpha^j y)$ and $h_{1,2}(\alpha)|p$ then we have $h_{1,2}(\alpha)$ being a prime divide one of the factors of $N(x + \alpha^j y)$ which means that $h_{1,2}(\alpha)$ divides a conjugate of the binomial which is also a binomial. The First Theorem on Page 92 says that if a prime $h(\alpha)$ divides a binomial then its norm is prime and since $Nh_{1,2}(\alpha) | p^{\lambda - 1}$ we have $Nh_{1,2}(\alpha) = p$ and from the Third Corollary on Page 93 we have $h_2(\alpha)$ is a unit times a conjugate of $h_1(\alpha)$.
+
+So the task now is to show that we can find a binomial whose norm is divisible by $p$. From Problem 4 we know that the norm of a binomial is given by $\frac{x^\lambda + y^\lambda}{x + y}$ and we want this thing to be $\equiv 0 \pmod{p}$. So we don't want $x + y$ to be $0 \pmod{p}$ obviously. Thus
+%
+\nbea
+x^\lambda + y^\lambda & \equiv & 0 \pmod{p} \\
+x^\lambda & \equiv & -y^\lambda \pmod{p} \\
+\left ( \frac{x}{-y} \right )^\lambda & \equiv & 1 \pmod{p}
+\neea
+%
+Since $p$ is prime we have primitive roots $\gamma$ mod $p$. And Fermat's Little Theorem gives us $\gamma^{p-1} \equiv 1 \pmod{p}$ but here $p \equiv 1 \pmod{\lambda} \to p - 1 = \mu\lambda$. Thus we can assign
+%
+\nbea
+\gamma^\mu & \equiv & \frac{x}{-y} \pmod{p} \\
+\to (-y)\gamma^\mu & \equiv & x \pmod{p}
+\neea
+%
+Thus we can choose any $y \not\equiv 0 \pmod{p}$ we want, multiply it with $-\gamma^\mu$ to get our $x$, the only condition is that $x + y \not\equiv 0 \pmod{p}$ but this is guaranteed because
+%
+\nbea
+x + y \equiv y(1 - \gamma^\mu) \pmod{p}
+\neea
+%
+and $\gamma$ being a primitive root and $\mu\lambda = p-1$ means that $\gamma^\mu \not\equiv 1 \pmod{p}$ and $x + \alpha y$ will be our binomial. As a aside, this shows that if $h(\alpha)|p$ and $p \equiv 1 \pmod{\lambda}$ then $Nh(\alpha) = p$.
+
+{\bf Page 96, Problem 9}. Filling in the details of Kummer's proof that if $Nh(\alpha)$ is prime then $\alpha \equiv k \pmod{h(\alpha)}$.
+
+First step, let $h(\alpha^2)h(\alpha^3) \dots h(\alpha^{\lambda-1}) = H(\alpha) = A_0 + A_1 \alpha + A_2 \alpha^2 + \dots + A_{\lambda - 1} \alpha^{\lambda-1}$. We then create the following somewhat curious object $\alpha^{-n}H(\alpha) + \alpha^{-2n}H(\alpha^2) + \dots + \alpha^{-(\lambda - 1)n}H(\alpha^{\lambda - 1})$.
+
+One thing to note here is, since we are working with negative powers of $\alpha$,
+%
+\nbea
+1 + \alpha + \dots + \alpha^{\lambda - 1} & = & 0 \\
+\to \alpha^{-(\lambda-1)} \times (1 + \alpha + \dots + \alpha^{\lambda - 1}) & = & 0 \\
+\to \alpha^{-(\lambda - 1)} + \alpha^{-(\lambda - 2)} + \dots + 1 & = & 0
+\neea
+%
+which is just a (negative) conjugate of $1 + \alpha + \dots + \alpha^{\lambda - 1}$, again this is guaranteed by the fact that any integer multiple of the unit group $(\mathbb{Z}/\lambda\mathbb{Z})^*$ is also the unit group itself as long as the multiplier is not a multiple of $\lambda$.
+
+To calculate the curious object, let's examine it term by term, let's take $A_i \alpha^i$ of $H(\alpha)$ then
+%
+\nbea
+A_i \alpha^i & \to & A_i (\alpha^{i - n} + \alpha^2{i - n} + \dots + \alpha^{(\lambda - 1)(i - n)}) \\
+& = & A_i \{(\alpha^{i - n})^1 + (\alpha^{i - n})^2 + \dots + (\alpha^{i - n})^{\lambda - 1}\} = A_i(-1)
+\neea
+%
+which is just $A_i$ multiplied by a (maybe negative) conjugate of $\alpha + \dots + \alpha^{\lambda - 1}$, note that hte constant 1 is missing, therefore the terms in curly braces add up to $-1$. The above is true only when $i - n\neq 0$ if $i = n$ then we get $A_i(\lambda - 1)$ thus
+%
+\nbea
+\alpha^{-n}H(\alpha) + \alpha^{-2n}H(\alpha^2) + \dots + \alpha^{-(\lambda - 1)n}H(\alpha^{\lambda - 1}) & = & A_n \lambda - (A_0 + A_1 + \dots + A_{\lambda - 1})
+\neea
+%
+The next curious object is $\alpha^{-n}(1 - \alpha)H(\alpha) + \alpha^{-2n}(1 - \alpha^2)H(\alpha^2) + \dots + \alpha^{-(\lambda - 1)n}(1 - \alpha^{\lambda - 1})H(\alpha^{\lambda - 1})$, again, take one term $A_i \alpha^i$ from $H(\alpha)$ and examine what happens to this term
+%
+\nbea
+A_i \alpha^i & \to & A_i \{ (1-\alpha)(\alpha^{i - n}) + (1-\alpha^2)(\alpha^{i - n})^2 + \dots + (1-\alpha^{\lambda - 1})(\alpha^{i - n})^{\lambda - 1}\} \\
+& = & A_i \{ (\alpha^{i - n}) + (\alpha^{i - n})^2 + \dots + (\alpha^{i - n})^{\lambda - 1}  - (\alpha^{i - n + 1}) - (\alpha^{i - n + 1})^2 - \dots - (\alpha^{i - n + 1})^{\lambda - 1}\} \\
+& = & A_i\{-1 - (-1)\} \\
+& = & 0
+\neea
+%
+the only exception to the above rule is when $i = n \to A_i(\lambda - 1 - (-1)) = A_i\lambda$ and $i = n - 1 \to A_i(-1 - \lambda + 1) = -A_i\lambda$ thus
+%
+\nbea
+\alpha^{-n}(1 - \alpha)H(\alpha) + \alpha^{-2n}(1 - \alpha^2)H(\alpha^2) + \dots + \alpha^{-(\lambda - 1)n}(1 - \alpha^{\lambda - 1})H(\alpha^{\lambda - 1}) & = & \lambda(A_n - A_{n-1})
+\neea
+%
+The next thing we need to show is that $H(\alpha^j)H(\alpha^k) \equiv 0 \pmod{p}$. Note that $Nh(\alpha) = p$ and $H(\alpha) = h(\alpha^2)h(\alpha^3)\dots h(\alpha^{\lambda-1})$ thus 
+%
+\nbea
+H(\alpha^j)H(\alpha^k) & = & \{h(\alpha^{2j})h(\alpha^{3j})\dots h(\alpha^{(\lambda-1)j})\} \cdot \{h(\alpha^{2k})h(\alpha^{3k})\dots h(\alpha^{(\lambda-1)k})\}
+\neea
+%
+if $j \not \equiv k \pmod{p}$ then there's an $i \not \equiv 1,0 \pmod{p}$ such that $ji \equiv k \pmod{p}$ thus
+%
+\nbea
+H(\alpha^j)H(\alpha^k) & = & \{h(\alpha^{2j})h(\alpha^{3j})\dots h(\alpha^{(i-1)j}) h(\alpha^{(i+1)j}) \dots h(\alpha^{(\lambda-1)j})\} \times \\
+&& \{h(\alpha^{ij = k})h(\alpha^{2k})h(\alpha^{3k})\dots h(\alpha^{(\lambda-1)k})\} \\
+& = & \{h(\alpha^{2j})h(\alpha^{3j})\dots h(\alpha^{(i-1)j}) h(\alpha^{(i+1)j}) \dots Nh(\alpha)
+\neea
+%
+and since $Nh(\alpha) = p$ the whole thing is $0 \pmod{p}$. To simplify things let's denote
+%
+\nbea
+F(n) & = & \alpha^{-n}(1 - \alpha)H(\alpha) + \alpha^{-2n}(1 - \alpha^2)H(\alpha^2) + \dots + \alpha^{-(\lambda - 1)n}(1 - \alpha^{\lambda - 1})H(\alpha^{\lambda - 1}) \\
+& = & \lambda(A_n - A_{n - 1})
+\neea
+%
+One important thing to note is that $n$ is not bounded, since $\alpha^\lambda = 1$ we can have $n$ to take any value, for example $A_{-5} = A_{\lambda - 5 \pmod{\lambda}}$. Therefore since the cross terms $H(\alpha^j) H(\alpha^k) \equiv 0$ for $j \not \equiv k$ we have
+%
+\nbea
+F^2(n) & \equiv & \alpha^{-2n}(1 - \alpha)^2H^2(\alpha) + \alpha^{-4n}(1 - \alpha^2)^2H^2(\alpha^2) + \dots + \\
+&& \alpha^{-2(\lambda - 1)n}(1 - \alpha^{\lambda - 1})^2H^2(\alpha^{\lambda - 1}) \\
+F(n + 1)F(n-1) & \equiv & \alpha^{-2n}(1 - \alpha)^2H^2(\alpha) + \alpha^{-4n}(1 - \alpha^2)^2H^2(\alpha^2) + \dots + \\
+&& \alpha^{-2(\lambda - 1)n}(1 - \alpha^{\lambda - 1})^2H^2(\alpha^{\lambda - 1}) 
+\neea
+%
+Thus 
+%
+\nbea
+F^2(n) - F(n+1)F(n-1) \equiv 0 & \equiv  & \lambda^2 (A_n - A_{n - 1})^2 - \lambda^2(A_{n + 1} - A_n) (A_{n - 1} - A_{n - 2}) \pmod{p} \\
+\to \frac{(A_n - A_{n - 1})}{(A_{n + 1} - A_n)} & \equiv & \frac{(A_{n - 1} - A_{n - 2})}{(A_n - A_{n - 1})} \pmod{p}
+\neea
+%
+But the above relationship is true for any $n$ since it is just the identity $F^2(n) - F(n+1)F(n-1) \equiv 0$, thus if we denote $\xi \equiv \frac{(A_n - A_{n - 1})}{(A_{n + 1} - A_n)}$, $\xi$ must be independent of $n$. To see this, start with $F^2(2) - F(3)F(1) \equiv 0$ to get
+%
+\nbea
+\frac{(A_2 - A_1)}{(A_3 - A_2)} & \equiv & \frac{(A_1 - A_0)}{(A_2 - A_1)} \pmod{p}
+\neea
+%
+next, set $n = 3, F^2(3) - F(4)F(2) \equiv 0$ to get 
+%
+\nbea
+\frac{(A_3 - A_2)}{(A_4 - A_3)} & \equiv & \frac{(A_2 - A_1)}{(A_3 - A_2)} \pmod{p}
+\neea
+%
+but $\frac{(A_2 - A_1)}{(A_3 - A_2)} \equiv \frac{(A_1 - A_0)}{(A_2 - A_1)}$ incrementing $n$ we will get the ratio for the next $n$ and therefore all the ratios are the same which means that $\xi \equiv \frac{(A_n - A_{n - 1})}{(A_{n + 1} - A_n)}$ is independent of $n$. 
+
+The only potential problem would be when some of the differences $A_l - A_{l-1}$ are zero. But as mentioned before $n$ can have any value due to $\alpha^\lambda = 1$ thus we can for example set $F^2(-1) \equiv \lambda^2(A_{-1 \equiv \lambda - 1 \pmod{\lambda}} - A_{-2 \equiv \lambda - 2 \pmod{\lambda}})^2$, therefore if any of the differences is zero then all of them will be zero which means that $A_0 = A_1 = A_2 = \dots = A_{\lambda - 1}$ therefore $H(\alpha) = A_0(1 + \alpha + \dots + \alpha^{\lambda - 1}) = 0$. This cannot be because $Nh(\alpha) = p \neq 0$ and $Nh(\alpha) = h(\alpha)H(\alpha)$ therefore $\xi$ is well defined.
+
+Now, if we rewrite the identity
+%
+\nbea
+\frac{(A_n - A_{n - 1})}{(A_{n + 1} - A_n)} \equiv \frac{(A_{n - 1} - A_{n - 2})}{(A_n - A_{n - 1})} & \to & (A_n - A_{n - 1}) \equiv (A_{n + 1} - A_n) \frac{(A_{n - 1} - A_{n - 2})}{(A_n - A_{n - 1})} \\
+& \to & (A_n - A_{n - 1}) \equiv (A_{n + 1} - A_n) \xi \\
+& \to & \xi A_n - A_{n - 1} \equiv \xi A_{n + 1} - A_n
+\neea
+%
+Again, just like before, this means that $\xi A_{m} - A_{m - 1}$ is constant regardless what $m$ is. The last step is show that $(\alpha - \xi) H(\alpha) \equiv 0 \pmod{p}$
+%
+\nbea
+(\alpha - \xi) H(\alpha) & \equiv & (A_0 \alpha + A_1 \alpha^2 + \dots + A_{\lambda - 1}\alpha^\lambda) - (\xi A_0 + \xi A_1 \alpha + \dots + \xi A_{\lambda - 1} \alpha^{\lambda - 1}) \\
+& \equiv & (A_0 - \xi A_1)\alpha + (A_1 - \xi A_2) \alpha^2 + \dots + (A_{\lambda - 2} - \xi A_{\lambda - 1}) \alpha^{\lambda - 1} + (A_{\lambda - 1} - \xi A_0) \\
+& \equiv & (A_0 - \xi A_1) (\alpha + \alpha^2 + \dots + \alpha^{\lambda - 1} + 1) \\
+& \equiv & 0
+\neea
+%
+because the terms in brackets is the usual zero. Thus $(\alpha - \xi) H(\alpha) \equiv 0 \pmod{p}$ and using the usual trick
+%
+\nbea
+h(\alpha) g(\alpha) = f(\alpha) \Longleftrightarrow Nh(\alpha) g(\alpha) = f(\alpha) h(\alpha^2) h(\alpha^3) \dots h(\alpha^{\lambda - 1})
+\neea
+%
+we have here
+%
+\nbea
+h(\alpha) g(\alpha) = (\alpha - \xi) \Longleftrightarrow Nh(\alpha) g(\alpha) = (\alpha - \xi) h(\alpha^2) h(\alpha^3) \dots h(\alpha^{\lambda - 1}) = (\alpha - \xi) H(\alpha)
+\neea
+%
+which means $h(\alpha)|(\alpha - \xi)$
+
+{\bf Page 96, Problem 10}. We need to use the theorems in Section 4.3 to prove that if a prime $p \equiv 1 \pmod{\lambda}$ is divisible by prime $h(\alpha)$ then there are precisely $\lambda - 1$ solutions to $k^\lambda \equiv 1\pmod{\lambda}$ with $k\not\equiv1\pmod{\lambda}$.
+
+Just like Problem 8, $h(\alpha)|p$ means $Nh(\alpha)|p^{\lambda-1}$, to use the theorems we have to either show that $Nh(\alpha) = p$ or $h(\alpha)$ divides a binomial. But Problem 8 already tells us that $Nh(\alpha) = p$ which means that according to the second Theorem on Page 92 $h(\alpha)$ divides a binomial.
+
+Since $h(\alpha)$ divides a binomial $x + \alpha^j y$ and a prime $p$ from the Theorem on Page 91 we have $f(\alpha) \equiv g(\alpha) \pmod{h(\alpha)} \Longleftrightarrow f(k) \equiv g(k) \pmod{p}$. From page 92 we know that
+%
+\nbea
+\alpha^{\lambda - 1} + \alpha^{\lambda - 2} + \dots + \alpha + 1 \equiv 0 \pmod{h(\alpha)} & \Longleftrightarrow & k^{\lambda - 1} + k^{\lambda - 2} + \dots + k + 1 \equiv 0 \pmod{p}
+\neea
+%
+which also means that $k^\lambda - 1 = (k-1)(k^{\lambda - 1} + k^{\lambda - 2} + \dots + k + 1) \equiv 0 \pmod{p}$. So it is obvious that $k \equiv 1$ is a solution to $k^\lambda - 1$, the other solutions we can get from the fact that the conjugates of $\alpha^{\lambda - 1} + \alpha^{\lambda - 2} + \dots + \alpha + 1$ is just itself
+%
+\nbea
+0 = \alpha^{\lambda - 1} + \alpha^{\lambda - 2} + \dots + \alpha + 1 = (\alpha^j)^{\lambda - 1} + (\alpha^j)^{\lambda - 2} + \dots + (\alpha^j) + 1
+\neea
+%
+Theorem on Page 91 gives us $f(\alpha) \equiv g(\alpha) \pmod{h(\alpha)} \Longleftrightarrow f(k) \equiv g(k) \pmod{p}$ then 
+%
+\nbea
+(\alpha^j)^{\lambda - 1} + (\alpha^j)^{\lambda - 2} + \dots + (\alpha^j) + 1 \equiv 0 \Longleftrightarrow (k^j)^{\lambda - 1} + (k^j)^{\lambda - 2} + \dots + (k^j) + 1 \equiv 0 \pmod{p}
+\neea
+%
+since $j$ runs from $1,2,\dots, \lambda-1$ these $k^j$ give us the other $\lambda - 1$ solution to $k^\lambda \equiv 1 \pmod{\lambda}$.
+
+The next part of the question asks us to prove this again but this time without using the fact that $h(\alpha)$ is prime. This is actually quite straightforward, it's even given in Stein's ent.pdf. From $p \equiv 1 \pmod{\lambda}$ we have $p - 1 = \mu\lambda$ therefore
+%
+\nbea
+k^{p-1} - 1 = k^{\mu\lambda} - 1 = (k^\lambda - 1)((k^\lambda)^{\mu-1} + (k^\lambda)^{\mu - 2} + \dots + (k^\lambda) + 1)
+\neea
+%
+The second bracket is a polynomial of degree $\lambda\mu - \lambda$ so it at most has $\lambda\mu - \lambda$ roots the first bracket is a polynomial of degree $\lambda$ so it at most has $\lambda$ roots, the LHS however is $k^{p-1} - 1$ and every remainder of $p$ is a root and there are $p - 1 = \mu\lambda$ roots, thus each bracket in the RHS must have the maximum number of roots and $k^\lambda - 1$ must have exactly $\lambda$ roots.
+
+{\bf Page 96, Problem 11}. Here we have $\lambda = 5$, $f(\alpha) = g(\alpha)$ and we want to find which prime $p$ gives us $f(7) \equiv g(7) \pmod{p}$.
+
+According to Theorem on Page 91, this means that $k = 7$ where $\alpha \equiv k \pmod{h(\alpha)}$. The simplest guess for $h(\alpha)$ is $\alpha - 7$. If $N(\alpha - 7)$ is prime then from Page 92 Theorems we have $\alpha - 7$ to be prime and since it divides itself we have $\alpha \equiv 7 \pmod{\alpha - 7}$. And $N(\alpha - 7)$ is the prime $p$ we need.
+
+So let's calculate $N(\alpha - 7) = \frac{7^5 - 1^5}{6} = 2801$ and lucky for us it is prime, thus $p = 2801$.
+
+{\bf Page 96, Problem 12}. Prove that $f(\alpha) = g(\alpha)$ if and only if $f(X) - g(X) = q(X)(X^{\lambda - 1} + X^{\lambda-2} + \dots + 1)$. Conclude that if $k^{\lambda-1} + k^{\lambda-2} + \dots + 1 \equiv 0 \pmod{p}$ then $f(\alpha) = g(\alpha)$ implies $f(k) \equiv g(k) \pmod{p}$.
+
+The if only if is easy in the only if direction. If $f(X) - g(X) = q(X)(X^{\lambda - 1} + X^{\lambda-2} + \dots + 1)$ then setting $X = \alpha$ we get $f(\alpha) - g(\alpha) = q(\alpha)(\alpha^{\lambda - 1} + \alpha^{\lambda-2} + \dots + 1) = q(\alpha) \cdot 0 = 0$. The other direction is not too difficult either, assume $f(X) - g(X)$ is some polynomial in $X$. We now want to use the division algorithm on this with $h(X) = X^{\lambda - 1} + X^{\lambda-2} + \dots + 1$ as the divisor, we then get
+%
+\nbea
+f(X) - g(X) & = & Q(X)(X^{\lambda - 1} + X^{\lambda-2} + \dots + 1) + r(X)
+\neea
+%
+with $r(X)$ having a lesser degree than that of $h(X)$. If we set $X = \alpha$ we get (knowing that $f(\alpha) = g(\alpha) \to 0 = f(\alpha) - g(\alpha)$)
+%
+\nbea
+0 = f(\alpha) - g(\alpha) & = & Q(\alpha)(\alpha^{\lambda - 1} + \alpha^{\lambda-2} + \dots + 1) + r(\alpha) \\
+0 & = & Q(\alpha) \cdot 0 + r(\alpha) \\
+\to 0 & = & r(\alpha)
+\neea
+%
+and from Page 88, Problem 15, we know that $r(\alpha) = c(\alpha^{\lambda - 1} + \alpha^{\lambda-2} + \dots + 1)$ which means that
+%
+\nbea
+f(X) - g(X) & = & Q(X)(X^{\lambda - 1} + X^{\lambda-2} + \dots + 1) + c(X^{\lambda - 1} + X^{\lambda-2} + \dots + 1) \\
+& = & (Q(X) + c)(X^{\lambda - 1} + X^{\lambda-2} + \dots + 1) \\
+& = & q(X)(X^{\lambda - 1} + X^{\lambda-2} + \dots + 1)
+\neea
+%
+Now the next part of the question, it is straightforward enough, we already have $f(\alpha) = g(\alpha) \Longleftrightarrow f(X) - g(X) = q(X)(X^{\lambda - 1} + X^{\lambda-2} + \dots + 1)$, we now set $X = k$ to get $f(k) - g(k) = q(k)(k^{\lambda - 1} + k^{\lambda-2} + \dots + 1) \equiv 0 \pmod{p} \to f(k) \equiv g(k) \pmod{p}$ since the problem tells us that $k^{\lambda-1} + k^{\lambda-2} + \dots + 1 \equiv 0 \pmod{p}$.
+
+{\bf Page 97}. Bottom. $\alpha + 2$ is prime because $N(\alpha + 2) = 11$ is prime which satisfies the condition of Theorem on page 92. The next statement $g(\alpha)$ is divisible by $\alpha + 2$ if and only if $g(-2) \equiv 0 \pmod{11}$. This comes from Theorem of Page 91, $f(\alpha) \equiv g(\alpha) \pmod{h(\alpha)} \Longleftrightarrow f(k) \equiv g(k) \pmod{p}$.
+
+From Theorem on Page 92, since $N(\alpha + 2) = 11$ is prime $\alpha + 2$ is a cyclotomic prime and it divides a binomial, here the prime is $h(\alpha) = \alpha + 2$ and the binomial is also $\alpha + 2$. And since $\alpha + 2 \equiv 0 \pmod{h(\alpha)}$, a trivial identity, we therefore have $\alpha \equiv -2 \pmod{h(\alpha)}$, $k = -2$ and $p = Nh(\alpha) = 11$ therefore Theorem on Page 91 gives us
+%
+\nbea
+g(\alpha) \equiv (\alpha + 2)y(\alpha) \pmod{h(\alpha)} \Longleftrightarrow g(-2) \equiv (-2 + 2)y(-2) \equiv 0 \pmod{11}
+\neea
+%
+
+{\bf Page 98}. First line, ``product of 4 distinct prime factors each of norm 11''. Note that the norm of an ordinary integer $i$ is $i^{\lambda-1}$ and {\bf not} $i$. This is because $N(i) = (i)(i)(i)\dots(i) = i^{\lambda-1}$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
