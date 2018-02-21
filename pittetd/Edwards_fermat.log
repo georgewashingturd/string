@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  10 JAN 2018 20:39
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  20 FEB 2018 20:41
 entering extended mode
 **C:/Users/User/Documents/GitHub/string/pittetd/Edwards_fermat.tex
 (C:/Users/User/Documents/GitHub/string/pittetd/Edwards_fermat.tex
@@ -484,35 +484,35 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 \FV@StepNumber=\count133
 \FV@OutFile=\write4
 )
-Class revtex4-1 Info: Patching array package. on input line 222.
-Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 222
+Class revtex4-1 Info: Patching array package. on input line 225.
+Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 225
 .
-Class revtex4-1 Info: cite was not loaded (OK!) on input line 222.
-Class revtex4-1 Info: mcite was not loaded (OK!) on input line 222.
-Class revtex4-1 Info: multicol was not loaded (OK!) on input line 222.
+Class revtex4-1 Info: cite was not loaded (OK!) on input line 225.
+Class revtex4-1 Info: mcite was not loaded (OK!) on input line 225.
+Class revtex4-1 Info: multicol was not loaded (OK!) on input line 225.
  (Edwards_fermat.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 222.
-LaTeX Font Info:    ... okay on input line 222.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 222.
-LaTeX Font Info:    ... okay on input line 222.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 222.
-LaTeX Font Info:    ... okay on input line 222.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 222.
-LaTeX Font Info:    ... okay on input line 222.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 222.
-LaTeX Font Info:    ... okay on input line 222.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 222.
-LaTeX Font Info:    ... okay on input line 222.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 222.
-LaTeX Font Info:    ... okay on input line 222.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 222.
-LaTeX Font Info:    ... okay on input line 222.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 225.
+LaTeX Font Info:    ... okay on input line 225.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 225.
+LaTeX Font Info:    ... okay on input line 225.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 225.
+LaTeX Font Info:    ... okay on input line 225.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 225.
+LaTeX Font Info:    ... okay on input line 225.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 225.
+LaTeX Font Info:    ... okay on input line 225.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 225.
+LaTeX Font Info:    ... okay on input line 225.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 225.
+LaTeX Font Info:    ... okay on input line 225.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 225.
+LaTeX Font Info:    ... okay on input line 225.
 Requested font "cmr12" at 12.0pt
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box48
-Package hyperref Info: Link coloring OFF on input line 222.
+Package hyperref Info: Link coloring OFF on input line 225.
 
 (C:\miktex-portable-2.9\tex\latex\hyperref\nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -522,9 +522,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count134
 )
-LaTeX Info: Redefining \ref on input line 222.
-LaTeX Info: Redefining \pageref on input line 222.
-LaTeX Info: Redefining \nameref on input line 222.
+LaTeX Info: Redefining \ref on input line 225.
+LaTeX Info: Redefining \pageref on input line 225.
+LaTeX Info: Redefining \nameref on input line 225.
 
 (Edwards_fermat.out) (Edwards_fermat.out)
 \@outlinefile=\write5
@@ -562,7 +562,7 @@ LaTeX Info: Redefining \nameref on input line 222.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Class revtex4-1 Info: Taking \maketitle back from hyperref on input line 222.
+Class revtex4-1 Info: Taking \maketitle back from hyperref on input line 225.
 Requested font "cmr12" at 14.4pt
 Requested font "cmr10" at 10.95pt
 
@@ -584,7 +584,7 @@ Requested font "cmsy6" at 6.0pt
 Requested font "cmex10" at 12.0pt
 Requested font "cmex8" at 8.0pt
 Requested font "cmex7" at 6.0pt
-LaTeX Font Info:    Try loading font information for U+msa on input line 236.
+LaTeX Font Info:    Try loading font information for U+msa on input line 239.
 
 (C:\miktex-portable-2.9\tex\latex\amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -592,7 +592,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 Requested font "msam10" at 12.0pt
 Requested font "msam10" at 8.0pt
 Requested font "msam7" at 6.0pt
-LaTeX Font Info:    Try loading font information for U+msb on input line 236.
+LaTeX Font Info:    Try loading font information for U+msb on input line 239.
 
 (C:\miktex-portable-2.9\tex\latex\amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -609,7 +609,7 @@ Requested font "cmmib6" at 6.0pt
 Requested font "cmbsy10" at 12.0pt
 Requested font "cmbsy8" at 8.0pt
 Requested font "cmbsy6" at 6.0pt
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 236.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 239.
 
 (C:\miktex-portable-2.9\tex\latex\jknappen\ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
@@ -621,7 +621,7 @@ Requested font "cmti12" at 12.0pt
  [1]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 267.
+               Default added (so using `tbp') on input line 270.
 
 Requested font "cmmi10" at 10.95pt
 Requested font "cmsy10" at 10.95pt
@@ -635,7 +635,7 @@ Requested font "rsfs10" at 10.95pt
 [2] [3] [4] [5] [6] [7] [8]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 537.
+               Default added (so using `tbp') on input line 540.
 
 [9] [10] [11] [12]
 Requested font "cmtt12" at 12.0pt
@@ -643,37 +643,85 @@ Requested font "cmtt12" at 12.0pt
 Requested font "cmbxti10" at 12.0pt
 
 [24] [25]
-Overfull \hbox (53.17833pt too wide) in alignment at lines 1253--1257
+Overfull \hbox (53.17833pt too wide) in alignment at lines 1256--1260
  [][][] []
  []
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1284.
+               Default added (so using `tbp') on input line 1287.
 
 [26] [27]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 1329
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 1332
 .
  (C:\miktex-portable-2.9\tex\latex\base\omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1329.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1332.
 
- [28]
-(Edwards_fermat.bbl) [29]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1391.
- (Edwards_fermat.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1391.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1391.
+ [28] [29] [30]
+[31] [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [43] [44] [45]
+Overfull \hbox (41.25111pt too wide) in paragraph at lines 2070--2074
+\OT1/cmr/m/n/12 Now the ques-tion is can there be other op-tions for $\OML/cmm/
+m/it/12 g\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^K\OT1/cmr/m/n/12 )$? Say $\OML/cmm
+/m/it/12 g\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^K\OT1/cmr/m/n/12 ) = \OML/cmm/m/i
+t/12 h\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^K\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 6
+\OT1/cmr/m/n/12 = \OML/cmm/m/it/12 f\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^K[]\OT1
+/cmr/m/n/12 )\OML/cmm/m/it/12 f\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^K[]\OT1/cmr/
+m/n/12 ) [] \OML/cmm/m/it/12 f\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^K[]\OT1/cmr/m
+/n/12 )$
+ []
+
+[46] [47] [48] [49] [50] [51] [52] [53] [54]
+Overfull \hbox (45.17491pt too wide) in alignment at lines 2347--2350
+ [][][] []
+ []
+
+[55] [56] [57] [58] [59] [60] [61]
+Overfull \hbox (6.62865pt too wide) in alignment at lines 2568--2573
+ [][][] []
+ []
+
+
+Overfull \hbox (10.39406pt too wide) in alignment at lines 2577--2579
+ [][][] []
+ []
+
+[62]
+Overfull \hbox (16.88893pt too wide) in alignment at lines 2613--2616
+ [][][] []
+ []
+
+
+Overfull \hbox (1.96973pt too wide) in alignment at lines 2644--2649
+ [][][] []
+ []
+
+[63]
+Overfull \hbox (4.78044pt too wide) in alignment at lines 2671--2673
+ [][][] []
+ []
+
+
+Overfull \hbox (14.89305pt too wide) in alignment at lines 2683--2685
+ [][][] []
+ []
+
+[64] [65] [66] [67] [68] [69] [70] [71] (Edwards_fermat.bbl) [72]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2942.
+
+(Edwards_fermat.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 2942.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 2942.
  ) 
 Here is how much of TeX's memory you used:
- 13697 strings out of 428755
- 189605 string characters out of 3166785
- 295024 words of memory out of 3000000
- 16906 multiletter control sequences out of 15000+200000
+ 13701 strings out of 428755
+ 189639 string characters out of 3166785
+ 299057 words of memory out of 3000000
+ 16910 multiletter control sequences out of 15000+200000
  16128 words of font info for 61 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
- 36i,16n,38p,1030b,497s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,18n,38p,1030b,498s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on Edwards_fermat.pdf (29 pages).
+Output written on Edwards_fermat.pdf (72 pages).

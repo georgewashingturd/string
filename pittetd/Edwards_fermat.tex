@@ -26,6 +26,8 @@
 
 \usepackage{fancyvrb}
 
+
+
 %\usepackage{xeCJK}
 %\setCJKmainfont{SimSun}
 
@@ -218,6 +220,7 @@
 
 \DeclareMathOperator{\re}{Re}
 
+\newcommand\showdiv[1]{\overline{\smash{\hstretch{.5}{)}\mkern-3.2mu\hstretch{.5}{)}}#1}}
 
 \begin{document}
 
@@ -2213,9 +2216,13 @@ p(\alpha) u(\alpha) & = & f(\alpha) \\
 %
 which means that either $Np(\alpha) = Nf(\alpha)$ and in this case $g$ is a unit contrary to our assumption about $g$ or $Np(\alpha) < Nf(\alpha)$ which also is a contradiction. Thus $p(\alpha)$ does not divide $f$ nor $g$, but $p(\alpha)$ certainly divides the product $f(\alpha)g(\alpha)$ since it is $p(\alpha)$ itself contrary to the definition of a prime cyclotomic integer where you have to divide the factors to divide the product to be a prime.
 
-{\bf page 88, Problem 19}. Need to show that for ordinary integers, irreducible means prime. If an integer $p$ is irreducible this means that $p = mn$ where $m$ or $n$ is a unit, \ie plus minus 1. If $m$ is a unit then $n$ must be irreducible otherwise we can factor $n$ and $p$ is no longer irreducible. So if $m$ is $\pm1$ then $n = \pm p$ but this is the very definition of a prime number.
+{\bf Page 88, Problem 19}. Need to show that for ordinary integers, irreducible means prime. If an integer $p$ is irreducible this means that $p = mn$ where $m$ or $n$ is a unit, \ie plus minus 1. If $m$ is a unit then $n$ must be irreducible otherwise we can factor $n$ and $p$ is no longer irreducible. So if $m$ is $\pm1$ then $n = \pm p$ but this is the very definition of a prime number.
 
 {\bf Page 91}, theorem at top of page, note that it is an if and only if so if we have $f(k) \equiv g(k) \pmod{p}$ we also have $f(\alpha) \equiv g(\alpha) \pmod{h(\alpha)}$ as long as $h(\alpha)$ is a prime that divides a binomial $x + \alpha^j y$.
+
+{\bf Page 91}, lower page, ``$p = \lambda, h(\alpha)$ divides $\alpha - 1$ because $1-1 \equiv 0 \pmod{\lambda}$''. I found this logic to be a little faulty. The thing is just because $1 - 1 \equiv 0 \pmod{\lambda}$ it doesn't mean that $\alpha - 1$ is divisible by $h(\alpha)$. If that's the case then we can use any number we want $7 - 7 \equiv 0 \pmod{\lambda}$ therefore $\alpha - 7$ is divisible by $h(\alpha)$?
+
+This is obviously not true, the thing is that $\alpha \equiv k$ also means that $k$ must satisfy Eq (1) on Page 91, we of course know that $k=1$ does therefore $\alpha - 1$ is divisible by $h(\alpha)$.
 
 {\bf Page 91}, last paragraph, $N(\alpha - 1) = N(1 - \alpha)$, this is because the norm is a product of $\lambda - 1$ terms and since $\lambda$ is an odd prime $\lambda - 1$ is an even number, since the norm is a product of an even number of terms we have $N(f(\alpha)) = N(-f(\alpha))$.
 
@@ -2296,7 +2303,7 @@ Here $\lambda = Nh(\alpha)$ which is just a product of conjugates of $h(\alpha)$
 
 {\bf Proposition 93.1}, I use the page number as theorems in this book are not numbered, {\it If $Nh(\alpha) = p^n$ a power of odd prime, $n \ge 1$, and $p \equiv 1 \pmod{\lambda}$, then $h(\alpha)$ divides a binomial, however, $h(\alpha)$ might not be prime except when $h(\alpha)|p$ then in that case $h(\alpha)$ is prime cyclotomic.}
 
-{\bf Proposition 93.1.0}, A reformulation of the above, {\it If a non-unit $h(\alpha) | p$ an odd prime and $p \equiv 1 \pmod{\lambda}$, then $h(\alpha)$ divides a binomial and is prime cyclotomic.}
+{\bf Proposition 93.1.0}, A reformulation of the above, {\it If a non-unit $h(\alpha) | p$ an odd prime and $p \equiv 1 \pmod{\lambda}$, then $h(\alpha)$ divides a binomial and is prime cyclotomic.} But according tot he first Theorem on page 92 this also means that $Nh(\alpha) = p$.
 
 {\it Proof}. I will just point out modifications needed, full detail will be on the book. Following what the book does, find a $k$ such that $\alpha \equiv k \pmod{h(\alpha)}$, meaning $k^\lambda \equiv 1 \pmod{p^n}$. Now here comes the catch, unlike what happens in the book $k^\lambda - 1$ need not be $0 \pmod{p^n}$, say it is $p^r \pmod{p^n}$, $r < n$, then Bezout gives us $p^r = a(k^\lambda - 1) + bp^n$ since $Nh(\alpha) = p^n \to h(\alpha) | p^n$ and $1 \equiv \alpha^\lambda \equiv k^\lambda \pmod{h(\alpha)}$ this means that $h(\alpha) | p^r \to Nh(\alpha) | p^{r(\lambda-1)}$ which is not a contradiction.
 
@@ -2730,6 +2737,186 @@ g(\alpha) \equiv (\alpha + 2)y(\alpha) \pmod{h(\alpha)} \Longleftrightarrow g(-2
 
 {\bf Page 98}. First line, ``product of 4 distinct prime factors each of norm 11''. Note that the norm of an ordinary integer $i$ is $i^{\lambda-1}$ and {\bf not} $i$. This is because $N(i) = (i)(i)(i)\dots(i) = i^{\lambda-1}$.
 
+{\bf Page 98}. Top page, ``The only factors of norm $5 (= \lambda)$ are units time $\alpha - 1$.'' How to see this? Assume otherwise, but we know that $N(\alpha - 1) = \lambda$. If there are other prime factors say $f(\alpha)$ then it must be that 
+%
+\nbea
+\lambda = f(\alpha) g(\alpha) & = & N(\alpha - 1) = (\alpha - 1)^{\lambda - 1} u(\alpha) \\
+\to f(\alpha) & | & (\alpha - 1)
+\neea
+%
+the RHS of the first line is due to the fact that any conjugate $\alpha^j - 1$ is a unit multiple of $\alpha - 1$. Since $f(\alpha) | (\alpha - 1)$ it means that $Nf(\alpha) | N(\alpha - 1) \to Nf(\alpha) | \lambda$ which means that the quotient of $(\alpha - 1)/f(\alpha)$ is a unit, hence $f(\alpha) = (\alpha - 1)u(\alpha)$ thus the only prime factors of $\lambda$ is $(\alpha - 1)$.
+
+{\bf Page 98}. Lower half dividing one cyclotomic with another, here we divide $4\alpha^2 - 5$ by $\alpha + 2$, we can still use the normal notation like $(\alpha + 2)^{-1}$ just need to keep track what it means.
+
+{\bf Page 99}. Last paragraph, just a short comment, note that the cyclotomic integers do not form a group under multiplication because there's obviously no inverse for non-units, they do form a group under addition. Therefore, $\alpha^4 \equiv k^4 \pmod{h(\alpha)}$ doesn't mean that $\alpha \equiv k$ because otherwise in the example of normal integers we can multiply both sides with the inverse $1 \equiv (\alpha^{-1} k)^4$ , one of the roots is obviously 1 and we can infer $\alpha^{-1} k \equiv 1 \to \alpha \equiv k$ but if $\alpha \equiv k$ we certainly have $\alpha^4 \equiv k^4$.
+
+{\bf Page 99}. Last paragraph, ``$a^4 \not \equiv 1 \pmod{29}$'', the reason we don't include $a^4 \equiv 1$ is because then $\alpha \equiv 1 \pmod{h(\alpha)} \to h(\alpha) | (\alpha - 1) \to Nh(\alpha) | N(\alpha - 1) = \lambda$, but here we want $Nh(\alpha) = 29$ or more generally $Nh(\alpha) = p \equiv 1 \pmod{\lambda}$.
+
+{\bf Page 100}. Top page, we started the guess of $g(-13) \equiv 0 \pmod{29}$ with $g(\alpha) \equiv \alpha^2 - \alpha^4 + 1$ why not start with $g(\alpha) \equiv \alpha + 13$ since this is the simplest guess? One reason I can think of is that he already knew :) problem is that $N(\alpha + 13) = 4482037 = 7 \cdot 29 \cdot 22079$. He wanted a simpler example.
+
+{\bf Page 100}. Mid(ish) page, dividing $\alpha + 4$ by a factor of 29 and $k + 4 \equiv 0 \pmod{29}$, there's a simple typo, ``The solution is $k = 4$'', it should've been $k = -4$. Also, even though we are trying to get the factors of $\alpha + 4$ we first try to find a conjugate that is divisible by $-\alpha^4 + \alpha^2 + 1$. Since $(-13)^4 \equiv -4 \pmod{29}$ we can therefore conclude that $\alpha^4 + 4 \equiv 0$. Once we get all the factors of $\alpha^4 + 4$ we can do a conjugation at the end to get the factors of $\alpha + 4$ by taking $\alpha \to \alpha^2$.
+
+{\bf Page 100}. Mid page, ``$k \equiv k^8 \equiv 16$'', note that if $\alpha \equiv k$ then $1 \equiv \alpha^7 \equiv k^7$. Therefore $k^8 \equiv k$.
+
+{\bf Page 100}. Footnote, last section of footnote, note that $\theta_0 + \theta_1 = -1$.
+
+{\bf Page 101}. Mid(ish) page, ``$N(\alpha - 4) \equiv 0 \pmod{47}$''. This is because $N(\alpha - 4) = \frac{1^{23} - 4^{23}}{1 - 4}$ but $4^{23} = 2^{2\cdot 23} \equiv 2^{47-1} \equiv 1 \pmod{47}$.
+
+{\bf Page 106, Problem 1 (a)}. The key to these problems is to not blindly compute things :) We know from this section that
+%
+\nbea
+N(\alpha + 2) = (\alpha + 2)(\alpha^2 + 2)(\alpha^3 + 2)(\alpha^4 + 2) = 11
+\neea
+%
+Now, instead of massaging the LHS we massage the RHS. The only factor missing from the LHS compared to $N(\alpha + 2)$ is $(\alpha^2 + 2)$ therefore if we multiply $(\alpha^2 + 2)(\alpha^4 + \alpha^3 + 2)$ we should get $(3 - \alpha)$
+%
+\nbea
+(\alpha^2 + 2)(\alpha^4 + \alpha^3 + 2) & = & \alpha^6 + \alpha^5 + 2\alpha^2 + 2\alpha^4 + 2\alpha^3 + 4 \\
+& = & \alpha + 1 + 2\alpha^2 + 2\alpha^4 + 2\alpha^3 + 4 \\
+& = & -3 + \alpha
+\neea
+%
+
+{\bf Page 106, Problem 1 (b)}. We know that $N(3 - \alpha) = N(\alpha - 3) = 11^2 = \{(\alpha + 2)(\alpha^2 + 2)(\alpha^3 + 2)(\alpha^4 + 2)\}^2$ since $N(\alpha + 2) = 11$ thus
+%
+\nbea
+(3 - \alpha)(3 - \alpha^2)(3 - \alpha^3)(3 - \alpha^4) & = & \{(\alpha + 2)(\alpha^2 + 2)(\alpha^3 + 2)(\alpha^4 + 2)\}^2
+\neea
+%
+and we also know that $(\alpha^2 + 2)$ is prime since $N(\alpha^2 + 2) = 11$ a prime. Now we want to know which conjugate of $3 - \alpha$ is divisible by $(\alpha^2 + 2)$. From
+%
+\nbea
+\alpha^2 & \equiv & -2 \pmod{\alpha^2 + 2} \\
+\to k^2 & \equiv & -2 \pmod{11}
+\neea
+%
+and the fact that $1 \equiv \alpha^{\lambda = 5} \equiv k^5 \to k^6 \equiv k$ we know that $k^6 \equiv (-2)^3 \equiv 3 \pmod{11}$. So $\alpha \equiv 3 \pmod{\alpha^2 + 2}$ therefore it is $3 - \alpha$ itself that is divisible by $\alpha^2 + 2$. But substituting $\alpha \to 3$ in the other conjugates $3 - \alpha^j$ doesn't product $0 \pmod{11}$ and there are two counts of $\alpha^2 + 2$ in the RHS above, therefore both $\alpha^2 + 2$ must divide $3 - \alpha$, \ie $(\alpha^2 + 2)^2 | (3 - \alpha)$.
+
+The quotient is of course a unit since $N(3 - \alpha) = N(\alpha^2 + 2)^2$, now we need to find the unit, we can use the normal algorithm $f(\alpha)g(\alpha) = h(\alpha) \to g(\alpha) = \frac{h(\alpha)f(\alpha^2)f(\alpha^3)\dots f(\alpha^{\lambda-1})}{Nf(\alpha)}$, here $h(\alpha) = 3 - \alpha$, $f(\alpha) = (\alpha^2 + 2)^2$ and $Nf(\alpha) = 11^2$ and so
+%
+\nbea
+g(\alpha) = \frac{(3-\alpha)\{(\alpha + 2)(\alpha^3 + 2)(\alpha^4 + 2)\}^2}{11^2}
+\neea
+%
+But form Problem 1 (a) we know that $(3-\alpha)(\alpha + 2)(\alpha^3 + 2)(\alpha^4 + 2) = 11(\alpha^4 + \alpha^3 + 4)$ so
+%
+\nbea
+\frac{(3-\alpha)\{(\alpha + 2)(\alpha^3 + 2)(\alpha^4 + 2)\}^2}{11^2} & = & \frac{\bcancel{11}(\alpha^4 + \alpha^3 + 4)(\alpha + 2)(\alpha^3 + 2)(\alpha^4 + 2)}{11^{\bcancel{2}}} \\
+& = & \frac{(\alpha^4 + \alpha^3 + 4)(\alpha + 2)(\alpha^3 + 2)(\alpha^4 + 2)}{(\alpha + 2)(\alpha^2 + 2)(\alpha^3 + 2)(\alpha^4 + 2)} \\
+& = & \frac{(\alpha^4 + \alpha^3 + 4)}{(\alpha^2 + 2)}
+\neea
+%
+to get to the last line I substituted $11 = N(\alpha^2 + 2)$. Doing the long division we get
+%
+\nbea
+\frac{(\alpha^4 + \alpha^3 + 4)}{(\alpha^2 + 2)} & = & \alpha^2 + \alpha - 2 + 2\frac{(3 - \alpha)}{(\alpha^2 + 2)}
+\neea
+%
+The last fraction can be done using the usual division algorithm
+%
+\nbea
+\frac{(3 - \alpha)}{(\alpha^2 + 2)} & = & \frac{(3 - \alpha)(\alpha + 2)(\alpha^3 + 2)(\alpha^4 + 2)}{11} \\
+& = & \alpha^4 + \alpha^3 + 2
+\neea
+%
+Therefore
+%
+\nbea
+\frac{(\alpha^4 + \alpha^3 + 4)}{(\alpha^2 + 2)} & = & -\alpha - \alpha^2 \\
+& = & -\alpha(\alpha + 1)
+\neea
+%
+$-\alpha$ is obviously a unit $N(\alpha + 1) = \frac{1^\lambda + 1^\lambda}{1 + 1} = 1$ also a unit, the inverse of this unit is just the product of all of its conjugates (since $Nu(\alpha) = 1$).
+
+{\bf Page 106, Problem 1 (c)}. We know from the Section that $N(5 + 2\alpha) = 11 \cdot 41$, also $N(\alpha^2 + 2) = 11$ and $N(3\alpha^4 + 3\alpha^2 + 1) = 41$ from Page 98. 
+
+Also from Page 98 we have $(3\alpha^2 + 3\alpha + 1)|(\alpha + 4) \to (3\alpha^4 + 3\alpha^2 + 1)|(\alpha^2 + 4)$ but this means that $\alpha^2 \equiv -4 \equiv k^2$. Here $\lambda = 5$ therefore $1 \equiv \alpha^5 \equiv k^5 \to k^6 \equiv k \equiv (-4)^4 \equiv 18 \pmod{41}$. Using this $k$ we have $5 + 2\alpha \to 5 + 36 = 41$. Therefore $5 + 2\alpha$ is divisible by $(3\alpha^4 + 3\alpha^2 + 1)$.
+
+For $\alpha^2 + 2$ we have $k^2 \equiv -2 \to k^6 \equiv 3 \pmod{11}$ therefore $5 + 2\alpha \to 5 + 6 = 11$ and therefore $5 + 2\alpha$ is divisible by $\alpha^2 + 2$. The quotient is a unit since as shown above $N(5 + 2\alpha) = 11 \cdot 41 = N(\alpha^2 + 2) N(3\alpha^4 + 3\alpha^2 + 1)$.
+
+{\bf Page 107, Problem 1 (d)}. We know that $N(5 - 4\alpha^2) = 11 \cdot 191$ and $N(\alpha + 2) = 11$ we also know that $\alpha \equiv -2 \pmod{\alpha + 2}$ therefore $5 - 4\cdot (-2)^2 = -11 \equiv 0 \pmod{11}$, therefore $5 - 4\alpha^2$ is divisible by $\alpha + 2$. The norm of the quotient is obviously $191$ as shown above.
+
+{\bf Page 107, Problem 1 (e)}. We know that $2\alpha^4 + \alpha^2 + 4 | 4\alpha - 5$ therefore $4k \equiv 5 \pmod{191}$ and as shown in the book $k \equiv 49$. If we substitute $\alpha \to 49$ we do not get $0 \pmod{191}$ for $2\alpha^3 + \alpha^4 + 4 \equiv 29$, $2\alpha^2 + \alpha + 4 \equiv 80$ and $2\alpha + \alpha^3 + 4 \equiv 95$ therefore they are not divisible by $2\alpha^4 + \alpha^2 + 4$.
+
+{\bf Page 107, Problem 1 (f)}. The same thing over again, $\alpha^3 + 2$ means that $k^3 \equiv -2$ and $k \equiv k^6 = (-2)^2 \equiv 4 \pmod{11}$ therefore $\alpha + 7 \to 4 + 7 = 11 \equiv 0 \pmod{11}$ and $\alpha + 7$ is divisible by $\alpha^3 + 2$.
+
+From Page 98 we know that $k \equiv 49$ for $2\alpha^4 + \alpha^2 + 4$, conjugating $\alpha \to \alpha^2$ we get $2\alpha^3 + \alpha^4 + 4$ and $k^2 \equiv 49$ therefore $k \equiv k^6 \equiv 49^3 \equiv -7 \pmod{191}$ therefore $\alpha + 7 \to -7 + 7 \equiv 0 \pmod{191}$ and $\alpha + 7$ is divisible by $2\alpha^3 + \alpha^4 + 4$.
+
+{\bf Page 107, Problem 1 (g)}. Again, the same scheme, $\alpha + 2$ means that $k \equiv -2 \pmod{11}$ therefore $\alpha^4 - 5 \to 16 - 5 = 11 \equiv 0 \pmod{11}$ and therefore $\alpha + 2$ divides $\alpha^4 - 5$.
+
+{\bf Page 107, Problem 2 (a)}. To check divisibility we need to find the corresponding $k$ for $2\alpha^5 + 2\alpha^2 + \alpha + 1$. But this might not be easy, however, we can do the opposite, for example we can go from $3 - 2\alpha \equiv 0 \pmod{71}$ to get $\alpha \equiv -34 \pmod{71}$. Because if this $k$ belongs to $2\alpha^5 + 2\alpha^2 + \alpha + 1$ then $2k^5 + 2k^2 + k + 1$ will be $0 \pmod{71}$ as $2\alpha^5 + 2\alpha^2 + \alpha + 1$ is obviously divisible by $2\alpha^5 + 2\alpha^2 + \alpha + 1$. And for $k \equiv -34$ it does, $2k^5 + 2k^2 + k + 1$ will be $0 \pmod{71}$.
+
+We can then try all the conjugates of $3 - 2\alpha$ to see if the corresponding $k$ will work on $2\alpha^5 + 2\alpha^2 + \alpha + 1$. Here $\lambda = 7$ therefore $k^8 \equiv k$. For $3 - 2\alpha^2$ we have $k^2 \equiv -34 \to k^8 \equiv k \equiv 45 \pmod{71}$ causing $2k^5 + 2k^2 + k + 1 \equiv 3 \pmod{71}$ a no go.
+
+For $3 - 2\alpha^3$ we have $k^3 \equiv -34 \to k^{15} \equiv k \equiv 32 \pmod{71}$ causing $2k^5 + 2k^2 + k + 1 \equiv 41 \pmod{71}$ a no go.
+
+For $3 - 2\alpha^4$ we have $k^4 \equiv -34 \to k^{8} \equiv k \equiv 20 \pmod{71}$ causing $2k^5 + 2k^2 + k + 1 \equiv 29 \pmod{71}$ a no go.
+
+For $3 - 2\alpha^5$ we have $k^5 \equiv -34 \to k^{15} \equiv k \equiv 30 \pmod{71}$ causing $2k^5 + 2k^2 + k + 1 \equiv 59 \pmod{71}$ a no go.
+
+For $3 - 2\alpha^6$ we have $k^6 \equiv -34 \to k^{36} \equiv k \equiv 48 \pmod{71}$ causing $2k^5 + 2k^2 + k + 1 \equiv 11 \pmod{71}$ a no go.
+
+
+
+
+
+
+
+{\bf Page 107, Problem 2 (e)}. We want to find an element with norm 8. Part (d) gives us some clue since the norm of $3 - \alpha^4 - \alpha^6$ is $8\cdot 197$. From Page 101 we know that $\alpha^6 - 2\alpha^3 + \alpha + 1$ has norm 197 and it also has $\alpha \equiv k \equiv -6$. Now we need to find out which conjugate of $3 - \alpha^4 - \alpha^6$ is divisible by $\alpha^6 - 2\alpha^3 + \alpha + 1$.
+
+It turned out that $3 - \alpha^6 - \alpha^2 \to 3 - 6^6 - 6^2 \equiv 0 \pmod{197}$. So we can divide this by $\alpha^6 - 2\alpha^3 + \alpha + 1$ using the usual algorithm (note that long division does not yield anything in this case) and we found that $\alpha^6 - \alpha^4 + \alpha^3$ or (factoring out the unit) $\alpha^3 - \alpha + 1$ has norm 8.
+
+
+
+
+{\bf Page 107, Problem 10}. We need to prove that if $\lambda$ divides $Ng(\alpha)$ then $\alpha - 1$ divides $g(\alpha)$. We know that $\lambda = N(\alpha - 1) | Ng(\alpha)$, which is the assumption of the problem. But since $\alpha - 1$ is prime as shown in the Corollary of Page 93, it must divide one of the conjugates of $g(\alpha)$, say $\alpha - 1 | g(\alpha^j)$.
+
+But since $\lambda$ is prime there must be an integer $i$ such that $ij \equiv 1 \pmod{\lambda}$, therefore $\alpha - 1|g(\alpha^j) \to \alpha^i - 1 | g(\alpha^{ij}) = g(\alpha)$ but $\alpha^i - 1 = (\alpha - 1)(\dots)$, thus $\alpha - 1|g(\alpha)$.
+
+{\bf Page 107, Problem 11}. We can do it in an easy way or a harder way. The easy way is to just multiply $\alpha - 1$ with $1 + 2\alpha + 3\alpha^2 + \dots + \lambda \alpha^{\lambda - 1}$ and see that the result is
+%
+\nbea
+(1-2) \alpha + (2-3)\alpha^2 + \dots + (\lambda - 1 - \lambda)\alpha^{\lambda - 1} + \lambda - 1 & = & \lambda - 1 - (\alpha + \alpha^2 + \dots + \alpha^{\lambda - 1}) \\
+& = & \lambda - 1 + 1 = \lambda
+\neea
+%
+The harder way is to do long division on $N(\alpha - 1)$ by $\alpha - 1$ to get $(\alpha^2 - 1)(\alpha^3 - 1) \dots (\alpha^{\lambda - 1} - 1)$. But first we need to massage $N(\alpha - 1) = \lambda \to \alpha^{\lambda-1} + \alpha^{\lambda - 2} + \dots + (1 + \lambda)$.
+
+\bigskip
+{\renewcommand{\arraystretch}{0.2} %<- modify value to suit your needs
+\begin{tabular}{r l}
+ & ~~~~~~~~~~~~~$\alpha^{\lambda - 2} + 2\alpha^{\lambda - 3} + 3\alpha^{\lambda - 4} + 4\alpha^{\lambda - 5} + ~~~~\dots~~~ + (\lambda - 1)$ \\
+$\alpha - 1$ & $\sqrt{\alpha^{\lambda - 1} + \alpha^{\lambda - 2} + ~\alpha^{\lambda - 3} + ~~\alpha^{\lambda - 4} + ~~\alpha^{\lambda - 5} + ~~~\dots~~~~ + (1 + \lambda)}$ \\
+& ~~~$\alpha^{\lambda-1} - \alpha^{\lambda - 2}$\\
+ & ~~~------------------------------------------------------------------------------ - \\
+ & ~~~~~~~~~~~~$2\alpha^{\lambda-2} + \alpha^{\lambda - 3}$ \\
+ & ~~~~~~~~~~~~$2\alpha^{\lambda-2} - 2\alpha^{\lambda - 3}$\\
+ & ~~~------------------------------------------------------------------------------ - \\
+ &~~~~~~~~~~~~~~~~~~~~~~~$3\alpha^{\lambda-3} + ~\alpha^{\lambda - 4}$ \\
+ &~~~~~~~~~~~~~~~~~~~~~~~$3\alpha^{\lambda-3} - 3\alpha^{\lambda - 4}$ \\
+ & ~~~------------------------------------------------------------------------------ - \\
+ &~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$4\alpha^{\lambda-4} + ~\alpha^{\lambda - 5}$ \\
+ &~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$4\alpha^{\lambda-4} - 4\alpha^{\lambda - 5}$ \\
+ & ~~~------------------------------------------------------------------------------ - \\
+ & ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$\vdots$ \\
+ & ~~~------------------------------------------------------------------------------ - \\
+ &~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$(\lambda - 1)\alpha + (\lambda + 1)$\\
+ &~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$(\lambda - 1)\alpha - (\lambda - 1)$\\
+ & ~~~------------------------------------------------------------------------------ - \\
+ &~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$2\lambda$\\
+\\\\\\
+\end{tabular}
+}
+
+Therefore
+%
+\nbea
+\frac{\lambda}{\alpha - 1} & = & \alpha^{\lambda - 2} + 2\alpha^{\lambda - 3} + 3\alpha^{\lambda - 4} + 4\alpha^{\lambda - 5} + \dots + (\lambda - 1) + \frac{2\lambda}{\alpha - 1} \\
+\to \frac{2\lambda}{\alpha - 1} & = & -\alpha^{\lambda - 2} - 2\alpha^{\lambda - 3} - 3\alpha^{\lambda - 4} - 4\alpha^{\lambda - 5} - \dots - (\lambda - 1) \\
+& = & \lambda \alpha^{\lambda -1} + (\lambda - 1)\alpha^{\lambda - 2} + (\lambda - 2)\alpha^{\lambda - 3} + (\lambda - 3)\alpha^{\lambda - 4} + (\lambda - 4)\alpha^{\lambda - 5} + \dots 1
+\neea
+%
+we get to the last line by adding $\lambda(\alpha^{\lambda - 1} + \alpha^{\lambda - 2} + \dots + 1)$.
 
 
 
