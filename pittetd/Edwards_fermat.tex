@@ -2856,18 +2856,396 @@ For $3 - 2\alpha^5$ we have $k^5 \equiv -34 \to k^{15} \equiv k \equiv 30 \pmod{
 
 For $3 - 2\alpha^6$ we have $k^6 \equiv -34 \to k^{36} \equiv k \equiv 48 \pmod{71}$ causing $2k^5 + 2k^2 + k + 1 \equiv 11 \pmod{71}$ a no go.
 
+According to the above $\alpha \equiv -34$ works it setting $2k^5 + 2k^2 + k + 1$ to be $0 \pmod{71}$. It's true that this is not conclusive this is more of the if part of an if and only if but we can still make it conclusive. 
 
+Calculating the norm $N(\alpha + 37)$ we get $1500667147 = 7 \cdot 29 \cdot 71 \cdot 104119$. This means that since $N(2\alpha^5 + 2\alpha^2 + \alpha + 1) = 71$ we have $2\alpha^5 + 2\alpha^2 + \alpha + 1$ dividing one of the conjugates of $(\alpha + 37)$.
 
+From this point we can check all conjugates of $(\alpha + 37)$ and see what value $k$ works for those conjugates but these values were listed above and the only one that worked for $2\alpha^5 + 2\alpha^2 + \alpha + 1$ was $k \equiv -37$ therefore $2\alpha^5 + 2\alpha^2 + \alpha + 1$ divides $\alpha + 37$ and by the Theorems on Page 92 its value of $k$ is indeed $\equiv -37$ and it therefore divides $3 - 2\alpha$.
 
+{\bf Page 107, Problem 2 (b)}. Just like in Part (a) we need to find the corresponding $k$, here $\alpha + 4 \to k \equiv -4$, so let's create the table (note also that $N(1 + \alpha^2 - \alpha^4) = 29$)
+%
+\nbea
+\begin{array}{r c l c r c l}
+\alpha & \to & \alpha^2 & \to & 1 + k^4 - k & \equiv & 0 \pmod{29} \\
+\alpha & \to & \alpha^3 & \to & 1 + k^6 - k^5 & \equiv & -12 \pmod{29} \\
+\alpha & \to & \alpha^4 & \to & 1 + k - k^2 & \equiv & -19 \pmod{29} \\
+\alpha & \to & \alpha^5 & \to & 1 + k^3 - k^6 & \equiv & 15 \pmod{29} \\
+\alpha & \to & \alpha^6 & \to & 1 + k^5 - k^3 & \equiv & -2 \pmod{29} 
+\end{array}
+\neea
+%
+in all those calculations we set $k \equiv -4$ we are not changing $k$. Thus the conjugate $\alpha \to \alpha^2$, \ie $1 + \alpha^4 - \alpha$ is the one, again like Part (a) this is only the if of the if and only if but again we can make sure by calculating $N(\alpha + 4) = 3277 = 29 \cdot 113$ which means that $1 + \alpha^4 - \alpha$ divides one of the conjugates of $\alpha + 4$ we can then do the same test as in Part (a) to see which conjugates it divides and we will find out that it is $\alpha + 4$.
 
+Now to the quotient
+%
+\nbea
+\frac{\alpha + 4}{1 + \alpha^4 - \alpha} & = & 2 + 2\alpha + 2\alpha^2 + 3\alpha^3 + 2\alpha^4 + \alpha^5
+\neea
+%
 
+{\bf Page 107, Problem 2 (c)}. Here we need to calculate the norm, again I used my Python script but this time I enhanced the script to use Periods as given in the Footnote of Page 100 or more completely in Section 4.5. The catch with this is we need to first fins the primitive root mod $\lambda$ and find $e$ and $f$ that minimizes $e + f$ where $ef = \lambda - 1$ this is because
+%
+\nbea
+Ng(\alpha) & = & G(\alpha) \cdot \sigma G(\alpha) \cdot \sigma^2 G(\alpha) \dots \cdot \sigma^{e-1} G(\alpha) \\
+G(\alpha) & = & g(\alpha) \cdot \sigma^e g(\alpha) \cdot \sigma^{e^2} g(\alpha) \cdot \dots \cdot \sigma^{\lambda - 1 -e} g(\alpha)
+\neea
+%
+So you see that there are $f-1$ multiplications for $Ng(\alpha)$ and $e - 1$ multiplications for $G(\alpha)$, the python script is as follows
+%
+\begin{Verbatim}[baselinestretch=0.75]
+# the following two functions are used to generate primitive roots
+# translated to Python from http://www.bluetulip.org/2014/programs/primitive.js
+# (some rights may remain with the author of the above javascript code)
+
+def isNotPrime(possible):
+    i = 2
+    while i <= possible**0.5:
+        if (possible % i) == 0:
+            return True
+        i = i + 1
+    return False
+
+def primRoots(theNum):
+    if isNotPrime(theNum):
+        raise ValueError("Sorry, the number must be prime.")
+    o = 1
+    roots = []
+    r = 2
+    while r < theNum:
+        k = pow(r, o, theNum)
+        while (k > 1):
+            o = o + 1
+            k = (k * r) % theNum
+        if o == (theNum - 1):
+            roots.append(r)
+        o = 1
+        r = r + 1
+    return roots
+    min_tot = 2 + (L-1)/2
+    min_e = 2
+
+# search a factor e of L-1 such that e+f is minimized
+
+def searchMinE(L):
+    # we know we are searching a parabola and sqrt(L-1)
+    # is the minimum point thus we break once we find the closest
+    # integer factor but we search backwards and forwards
+
+    if L <= 1:
+        return L
+
+    min_tot = 2 + (L-1)/2
+    min_e = 2
+    
+    s = int(sqrt(L-1))
+    for i in xrange(s,L):
+        if ((L-1)% i) == 0:
+            if (i + (L-1)/i) < min_tot:
+                min_e = i
+                min_tot = i + (L-1)/i
+            break
+
+    for i in xrange(s,0,-1):
+        if ((L-1)% i) == 0:
+            if (i + (L-1)/i) < min_tot:
+                min_e = i
+                min_tot = i + (L-1)/i
+            break
+
+    return min_e
+
+# funtion to do sigma conjugation
+def sigmaShift(f, g, k):
+    L = len(f)
+    return cycShift(f, pow(g,k,L))
+
+# compute norm of f(A) using periods
+# total e + f multiplications rather than e*f
+# but first you must find a primitive root so the total
+# time needed might be the same
+def cycNormFast(f, g, e=2):
+
+    # Find primitive a root
+    # Create the \sigma operator \alpha \to \alpha^\gamma
+    # Construct G(\alpha)
+    # Multiply the G(\alpha)'s
+
+    L = len(f)
+    if L <= 1:
+        return
+    
+    #g = primRoots(L)[0]
+
+    # for now set e = 2
+    # e = 2
+    F = (L-1)/e
+
+    # now construct G
+    G = [i for i in f] # deep copy of f
+
+    for k in xrange(1,F):
+        fk = sigmaShift(f, g, k*e)
+        G = multCyc(G, fk)
+
+    # now construct G
+    res = [i for i in G] # deep copy of f
+
+    for k in xrange(1,e):
+        Gk = sigmaShift(G, g, k)
+        res = multCyc(res, Gk)
+
+    #print res
+
+    for k in xrange(3,L):
+        if res[k] != res[k-1]:
+            return
+
+    return res[0] - res[1]
+\end{Verbatim}
+%
+so for this problem the call would be like so, yielding a result of $197$.
+%
+\begin{Verbatim}[baselinestretch=0.75]
+cycNormFast([2,0,2,0,0,0,1], g=primRoots(7)[0], e=searchMinE(7))
+\end{Verbatim}
+%
+
+{\bf Page 107, Problem 2 (d)}. Again using the Python script above with the result of $1576 = 8 \cdot 197$.
+%
+\begin{Verbatim}[baselinestretch=0.75]
+cycNormFast([3,0,0,0,-1,0,-1], g=primRoots(7)[0], e=searchMinE(7))
+\end{Verbatim}
+%
 
 {\bf Page 107, Problem 2 (e)}. We want to find an element with norm 8. Part (d) gives us some clue since the norm of $3 - \alpha^4 - \alpha^6$ is $8\cdot 197$. From Page 101 we know that $\alpha^6 - 2\alpha^3 + \alpha + 1$ has norm 197 and it also has $\alpha \equiv k \equiv -6$. Now we need to find out which conjugate of $3 - \alpha^4 - \alpha^6$ is divisible by $\alpha^6 - 2\alpha^3 + \alpha + 1$.
 
 It turned out that $3 - \alpha^6 - \alpha^2 \to 3 - 6^6 - 6^2 \equiv 0 \pmod{197}$. So we can divide this by $\alpha^6 - 2\alpha^3 + \alpha + 1$ using the usual algorithm (note that long division does not yield anything in this case) and we found that $\alpha^6 - \alpha^4 + \alpha^3$ or (factoring out the unit) $\alpha^3 - \alpha + 1$ has norm 8.
 
+{\bf Page 107, Problem 3 (a)}. I think the first thing to do before factoring these cyclotomic integer is to find their norms, again I'll use the Python script above to get $N(5\alpha^4 - 3\alpha^3 - 5\alpha^2 + 5\alpha - 2) = 9455 = 5 \cdot 31 \cdot 61$
 
+$N(\alpha - 1) = \lambda = 5$ so that's one factor, no need to see which conjugate because here $\alpha \equiv 1$ and $5 - 3 - 5 + 5 - 2 \equiv 0 \pmod{5}$. Now we need to divide 
+%
+\nbea
+\frac{5\alpha^4 - 3\alpha^3 - 5\alpha^2 + 5\alpha - 2}{\alpha - 1} & = & 5\alpha^3 + 2\alpha^2 - 3\alpha + 2
+\neea
+%
+with norm $N(5\alpha^3 + 2\alpha^2 - 3\alpha + 2) = 1891 = 31 \cdot 61$. Next use the fact that $N(2 - \alpha) = 31$ and we need to find which conjugate is divisible by $(2 - \alpha)$ or the other way round we can find out which conjugate of $2 - \alpha$ divides $5\alpha^3 + 2\alpha^2 - 3\alpha + 2$ (this is less effort as we just need to find the new $k$ while conjugating the longer cyclotomic integer takes more time). The answer is $2 - \alpha^2$ so we divide again
+%
+\nbea
+\frac{5\alpha^3 + 2\alpha^2 - 3\alpha + 2}{2 - \alpha^2} & = & \alpha^3 + \alpha^2 - 2\alpha + 1
+\neea
+%
+and just as a check $N(\alpha^3 + \alpha^2 - 2\alpha + 1) = 61$. Thus
+%
+\nbea
+5\alpha^4 - 3\alpha^3 - 5\alpha^2 + 5\alpha - 2 & = & (\alpha - 1)(2 - \alpha^2)(\alpha^3 + \alpha^2 - 2\alpha + 1)
+\neea
+%
 
+{\bf Page 107, Problem 3 (b)}. Just like Part (a) first calculate the norm $N(-4\alpha^3 - 11\alpha^2 + 8\alpha + 15) = 128161 = 11 \cdot 61 \cdot 191$ but we know that $N(2 + \alpha) = 11$, just need to find out which conjugate. It turned out to be $2 + \alpha^3$ dividing
+%
+\nbea
+\frac{-4\alpha^3 - 11\alpha^2 + 8\alpha + 15}{2 + \alpha^3} & = & -3\alpha^3 + 11\alpha + 13
+\neea
+%
+as a consistency check the norm is $N(-3\alpha^3 + 11\alpha + 13) = 11651 = 61 \cdot 191$. Again we know that $N(3 + \alpha) = 61$ need to find out which conjugate, it is $3 + \alpha$ actually, dividing
+%
+\nbea
+\frac{-3\alpha^3 + 11\alpha + 13}{3 + \alpha} & = & -\alpha^3 - \alpha^2 + 2\alpha + 4
+\neea
+%
+with norm $N(-\alpha^3 - \alpha^2 + 2\alpha + 4) = 191$ thus
+%
+\nbea
+-4\alpha^3 - 11\alpha^2 + 8\alpha + 15 & = & (2 + \alpha^3)(3 + \alpha)(-\alpha^3 - \alpha^2 + 2\alpha + 4)
+\neea
+%
+
+{\bf Page 107, Problem 4 (a)}. Same thing as Problem 3, norm $N(\alpha^2 - 3\alpha - 4) = 5461 = 43 \cdot 127$ we know that $N(2 + \alpha) = 43$ the conjugate that divides is $2 + \alpha^4$ dividing we get
+%
+\nbea
+\frac{\alpha^2 - 3\alpha - 4}{2 + \alpha^4} & = & \alpha^5 + \alpha^4 - 2\alpha - 2
+\neea
+%
+with norm $N(\alpha^5 + \alpha^4 - 2\alpha - 2) = 127$ thus
+%
+\nbea
+\alpha^2 - 3\alpha - 4 & = & (2 + \alpha^4)(\alpha^5 + \alpha^4 - 2\alpha - 2)
+\neea
+%
+
+{\bf Page 107, Problem 4 (b)}. Norm $N(\alpha^5 - \alpha^4 - 3\alpha^2 - 3\alpha - 2) = 1247 = 29 \cdot 43$ and $N(2 + \alpha) = 43$ (I choose to use 43 first because from Kummer's table $29 = N(1 + \alpha - \alpha^2)$). The conjugate that works is  $(2 + \alpha^6)$ with
+%
+\nbea
+\frac{\alpha^5 - \alpha^4 - 3\alpha^2 - 3\alpha - 2}{2 + \alpha^6} & = & -\alpha^4 - 2\alpha^2 - \alpha - 1
+\neea
+%
+but $N(-\alpha^4 - 2\alpha^2 - \alpha - 1) = 29$ so we are done
+%
+\nbea
+\alpha^5 - \alpha^4 - 3\alpha^2 - 3\alpha - 2 & = & (2 + \alpha^6)(-\alpha^4 - 2\alpha^2 - \alpha - 1)
+\neea
+%
+
+{\bf Page 107, Problem 5}. We are just dividing  (numerator is Kummer's denominator is the book's)
+%
+\nbea
+\frac{2 + \alpha + \alpha^3}{2\alpha^5 + 2\alpha^2 + \alpha + 1}
+\neea
+%
+but this turns out not to work because it's the conjugate $\alpha\to\alpha^5$, \ie $2 + \alpha + \alpha^5$ that is actually divisible by $2\alpha^5 + 2\alpha^2 + \alpha + 1$ with the quotient $-\alpha^4-\alpha^3-\alpha^2-\alpha$ and this is a unit.
+
+{\bf Page 107, Problem 6}. We want to find an element with $\lambda = 19, p = 191$, again in this case I wrote a Python script to implement the algorithm in the book as follows
+%
+\begin{Verbatim}[baselinestretch=0.75]
+# calculate prime factor for primes that divide a binomial
+def binPrimeFactor(L, p):
+    if (p-1) % L != 0:
+        return
+
+    w = (p-1) / L
+    k = pow(2, w, p)
+
+    # calculate all powers of k
+    kp = [pow(k, i, p) for i in xrange(L)]
+
+    # calculate all g(\alpha) made of two powers of k
+    # there are four possibilities with plus minus for each
+
+    # prepare things for cycNormFast
+    g = primRoots(L)[0]
+
+    # this part is to find e and f that minimizes e + f
+    # so that we minimize the number of multiplication
+    # in the cycNormFast function
+    
+    min_e = searchMinE(L)
+    print min_e
+
+    # now we generate all combos for powers of k
+    import itertools
+    t = [i for i in range(1,L)]
+    for u in xrange(2,L):
+        
+        l = itertools.combinations(t, u)
+
+        for i in l:
+            # create a bitmap for the plus minus
+            for k in range(0,2**u):
+                res = [0] * L
+                for j in range(u):
+                    b = pow(-1,(k >> j) & 0x01)
+                    res[i[j]] = b*1
+                    res[0] -= b*kp[i[j]]
+                N = cycNormFast(f=res, g=g, e=min_e)
+                if N == p:
+                    print N, res, u
+\end{Verbatim}
+%
+and the results are many :) the first one is $\alpha^9 - \alpha^4 - 1$ compared to Kummer's $1 + \alpha + \alpha^{16}$.
+
+{\bf Page 107, Problem 7}. Constructing more entries in Kummer's table, we can continue with $p = 191$ or continue with more prime, the next three after $761$ are $1103, 1217, 1483$
+%
+\nbea
+N(\alpha^8 - \alpha^3 + \alpha^2 + 1) & = & 1217 \\
+N(\alpha^{11} - \alpha - 1) & = & 1483 \\
+N(\alpha^{16} - \alpha^{11} - \alpha^5 + \alpha + 1) & = & 1559
+\neea
+%
+I couldn't find a factorization of $1103$ so I calculated the next one 1559.
+
+{\bf Page 107, Problem 8}. I did not follow the hint but I calculated $N(1 + \alpha - \alpha^7 + \alpha^8 + \alpha^{11}) = 547$ and not 599 so it must be wrong :)
+
+{\bf Page 107, Problem 9}. The condition $f(\alpha) = f(-\alpha)$ means
+%
+\nbea
+f(\alpha) = a_0 + a_1(\alpha + \alpha^{-1}) + a_2(\alpha^2 + \alpha^{-2}) + \dots + a_{11}(\alpha^{11} + \alpha^{-11})
+\neea
+%
+setting $\alpha \to 4$ we get
+%
+\nbea
+f(4) \equiv a_0 + 16 a_1 + 19 a_2 + 6a_{3} + 30a_{4} + 4a_{5} + 34a_{6} + 23a_{7} + 5a_{8} + 10a_{9} + 14a_{10} + 26a_{11}
+\neea
+%
+we require $f(\alpha) \equiv 0 \pmod{47}$ because $N(\alpha - 4) = 23456248059221 = 47 \cdot 178481 \cdot 2796203$ so if $47$ has a prime factor it must divide $\alpha - 4$ and therefore $\alpha \equiv 4$. Note, however, that Kummer's factor of $\alpha^{10} + \alpha^{-10} + \alpha^{8} + \alpha^{-8} + \alpha^{7} + \alpha^{-7}$ doesn't satisfy this condition, replacing $\alpha$ with $4$ we get $42 \pmod{47}$. This might mean that it was it's conjugate that is divisible by the ``ideal'' factor of 47, let's see if this is true with the following simple Python script
+%
+\begin{Verbatim}[baselinestretch=0.75]
+# calcule f(k) mod p given f(\alpha)
+def calcFK(f, k, p):
+    L = len(f)
+
+    res = 0
+    for i in range(L):
+        res += f[i]*pow(k,i,p)
+
+    return res % p
+
+# find if a conjugate of f(\alpha) satisfies f(k) \equiv 0 \pmod{p}
+def findConjWithCorrectK(f, k, p):
+
+    L = len(f)
+    for i in xrange(1, L):
+        if calcFK(cycShift(f, i), k, p) == 0:
+            print i
+\end{Verbatim}
+%
+the answer is that $\alpha \to \alpha^{10}$ and $\alpha \to \alpha^{13}$ satisfy $f(4) \equiv 0 \pmod{47}$.
+
+To get a few simple candidates we can set some of them to zero but I think it's easier to write a Python script as it's very similar to the one used to find a prime factor above, Problem 6, this one is
+%
+\begin{Verbatim}[baselinestretch=0.75]
+def findSquarePrime(L, a, p):
+    
+    hl = (((L-1)/2) + 1)
+    kp = [1] * hl
+    for i in xrange(1,hl):
+        kp[i] = (pow(a,i,p) + pow(a,L-i,p)) % p
+
+    print kp
+
+    g = primRoots(L)[0]
+    min_e = searchMinE(L)
+    
+    import itertools
+    t = [i for i in range(1,hl)]
+    
+    for u in xrange(2,hl):
+        
+        l = itertools.combinations(t, u)
+
+        for i in l:
+            # create a bitmap for the plus minus
+            for k in range(0,2**u):
+                res = [0] * L
+                for j in range(u):
+                    b = pow(-1,(k >> j) & 0x01)
+                    res[i[j]] = b*1
+                    res[L-i[j]] = b*1
+                    res[0] -= 2*b*kp[i[j]]
+                N = cycNormFast(f=res, g=g, e=min_e)
+                if N == p**2:
+                    print N, res, u
+                    
+# use case
+findSquarePrime(23, 4, 47)
+\end{Verbatim}
+%
+There are many solution, the first one is
+%
+\nbea
+f(\alpha) & = & -(\alpha^{1} + \alpha^{-1}) + (\alpha^{3} + \alpha^{-3}) + (\alpha^{9} + \alpha^{-9}) \\
+\to f(4) & \equiv & -16 + 6 + 10 \equiv 0 \pmod{47} 
+\neea
+%
+but the questions asks for a few solutions so here are a couple more
+%
+\nbea
+f(\alpha) & = & 2 - (\alpha^{2} + \alpha^{-2}) + (\alpha^{5} + \alpha^{-5}) + (\alpha^{10} + \alpha^{-10}) \\
+f(\alpha) & = & - (\alpha^{2} + \alpha^{-2}) + (\alpha^{8} + \alpha^{-8}) + (\alpha^{10} + \alpha^{-10})
+\neea
+%
+As noted earlier Kummer's solution satisfies $f(4) \equiv 0 \pmod{47}$ only if we take the conjugate $\alpha \to \alpha^{10,13}$, the norm of the solutions above are all guaranteed to be $p^2 = 47^2$ as that's how the script works.
 
 {\bf Page 107, Problem 10}. We need to prove that if $\lambda$ divides $Ng(\alpha)$ then $\alpha - 1$ divides $g(\alpha)$. We know that $\lambda = N(\alpha - 1) | Ng(\alpha)$, which is the assumption of the problem. But since $\alpha - 1$ is prime as shown in the Corollary of Page 93, it must divide one of the conjugates of $g(\alpha)$, say $\alpha - 1 | g(\alpha^j)$.
 
@@ -2912,7 +3290,7 @@ Therefore
 %
 \nbea
 \frac{\lambda}{\alpha - 1} & = & \alpha^{\lambda - 2} + 2\alpha^{\lambda - 3} + 3\alpha^{\lambda - 4} + 4\alpha^{\lambda - 5} + \dots + (\lambda - 1) + \frac{2\lambda}{\alpha - 1} \\
-\to \frac{2\lambda}{\alpha - 1} & = & -\alpha^{\lambda - 2} - 2\alpha^{\lambda - 3} - 3\alpha^{\lambda - 4} - 4\alpha^{\lambda - 5} - \dots - (\lambda - 1) \\
+\to \frac{\lambda}{\alpha - 1} & = & -\alpha^{\lambda - 2} - 2\alpha^{\lambda - 3} - 3\alpha^{\lambda - 4} - 4\alpha^{\lambda - 5} - \dots - (\lambda - 1) \\
 & = & \lambda \alpha^{\lambda -1} + (\lambda - 1)\alpha^{\lambda - 2} + (\lambda - 2)\alpha^{\lambda - 3} + (\lambda - 3)\alpha^{\lambda - 4} + (\lambda - 4)\alpha^{\lambda - 5} + \dots 1
 \neea
 %
