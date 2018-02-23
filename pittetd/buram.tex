@@ -1280,6 +1280,46 @@ In conclusion, the only solutions to $1 + x + x^2 + x^3 + x^4 + x^5 + x^6 + x^7$
 
 
 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+
+{\bf Page 110, Problem 6}. Straightforward calculation, $\lambda = 17$, $f=4$ which means $e = 4$, the smallest primitive root mod 17 is 3, let's first prepare the various $\sigma$ powers
+%
+\nbea
+\sigma^{1\cdot 4} & \to & \alpha^{3^4} = \alpha^{13} \\
+\sigma^{2\cdot 4} & \to & \alpha^{3^8} = \alpha^{16} \\
+\sigma^{3\cdot 4} & \to & \alpha^{3^{12}} = \alpha^4
+\neea
+% 
+therefore the periods are
+%
+\nbea
+\eta_0 & = & \alpha + \sigma^e \alpha + \sigma^{2e} \alpha + \sigma^{3e}\alpha \\
+& = & \alpha + \alpha^{13} + \alpha^{16} + \alpha^{4} \\
+\eta_1 = \sigma \eta_0 & = & \alpha^3 + \alpha^5 + \alpha^{14} + \alpha^{12} \\
+\eta_2 = \sigma \eta_1 & = & \alpha^9 + \alpha^{15} + \alpha^{8} + \alpha^{2} \\
+\eta_3 = \sigma \eta_2 & = & \alpha^{10} + \alpha^{11} + \alpha^{7} + \alpha^{6}
+\neea
+%
+the multiplication table is
+%
+\nbea
+\eta^2_0 & = & (\alpha^2 + \alpha^9 + \alpha^{15} + \alpha^{8}) + 2(\alpha^{14} + 1 + \alpha^{5} + \alpha^{12} + 1 + \alpha^{3}) \\
+& = & \eta_2 + 2 (\eta_1 + 2) \\
+& = & \eta_2 + 2\eta_1 + 4 \\
+\eta_0\eta_1 & = & 2\eta_0 + \eta_2 + \eta_3 \\
+\eta_0\eta_2 & = & \eta_0 + \eta_1 + \eta_2 + \eta_3
+\neea
+%
+we can get $\eta_0\eta_3$ by doing $\sigma^{3} \eta_1\eta_0 = \eta_{4=0} \eta_3$.
+
+{\bf Page 110, Problem 7}. We want to know the conditions on a prime $p$ and $f$ that will make the conjugation $\alpha \to \alpha^p$ on the period of length $f$ invariant.
+
+Again, we can always express a prime $p$ as $p \equiv \gamma^j \pmod{\lambda}$, thus the conjugation $\alpha \to \alpha^p$ means $\alpha \to \alpha^{\gamma^j}$ which means $\alpha \to \sigma^{j}\alpha$ and we want $\sigma^j \eta_i = \eta_{i+j} = \eta_i$. This means that $j$ is a multiple of $e$. Not sure about conditions on $f$ :)
+
+{\bf Page 110, Problem 8}. Need to show that the period $\eta_0$ is independent of the choice of primitive root. We know that $\eta_0$ is the only one that contains $\alpha$ and different primitive roots give the same periods (sans the ordering) therefore $\eta_0$ must be the same since it is the only one with $\alpha$ so that's the short story :)
+
+
 
 
 
