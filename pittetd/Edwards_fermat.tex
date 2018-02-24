@@ -3152,7 +3152,44 @@ N(\alpha^{11} - \alpha - 1) & = & 1483 \\
 N(\alpha^{16} - \alpha^{11} - \alpha^5 + \alpha + 1) & = & 1559
 \neea
 %
-I couldn't find a factorization of $1103$ so I calculated the next one 1559.
+I couldn't find a factorization of $1103$ so I calculated the next one 1559. So I tried doing the same thing to 1103 as what was done on the book for 47 with $\lambda = 23$, from Section 4.5 what this means is we are setting $e=2$ and periods with length $f = (\lambda - 1)/e = (19 - 1)/2 = 9$. The periods are given by
+%
+\nbea
+\theta_0 & = & \alpha^{1} + \alpha^{4} + \alpha^{16} + \alpha^{7} + \alpha^{9} + \alpha^{17} + \alpha^{11} + \alpha^{6} + \alpha^{5} \\
+\theta_1 & = & \alpha^{2} + \alpha^{8} + \alpha^{13} + \alpha^{14} + \alpha^{18} + \alpha^{15} + \alpha^{3} + \alpha^{12} + \alpha^{10}
+\neea
+%
+with the same identities $\theta_0 + \theta_1 = 1$, this means that $Nf(\alpha) = F(\alpha) \cdot\sigma F(\alpha)$ with $F(\alpha) = f(\alpha)\cdot \sigma^2 f(\alpha) \cdot \sigma^{4} f(\alpha) \cdot \sigma^{6} f(\alpha) \cdot \dots \cdot \sigma^{16} f(\alpha) = a + b \theta_0$ and therefore $\sigma F(\alpha) = a + b\theta_1$ and
+%
+\nbea
+Nf(\alpha) & = & (a + b\theta_0)(a + b\theta_1)
+\neea
+%
+Calculated this one by hand to get
+%
+\nbea
+\theta^2 & = & \theta_1 - 4 \\
+\to \theta_0\theta_1 = \theta_0(-1-\theta_1)& = & 5 \\
+\to 1103 = (a + b\theta_0)(a + b\theta_1) & = & a^2 - ab + 5b^2
+\neea
+%
+and as what was done in the book, multiply everything by 4 to get
+%
+\nbea
+4412 & = & (2a - b)^2 + 19b^2
+\neea
+%
+The curious thing here is that the coefficient of $b^2$ is $\lambda = 19$ while in the book it is $\lambda = 23$, it seems like the coefficient of $b^2$ should be $\lambda$ :) So here I also tried different $b$'s from $1$ to $15$, only one $b$ works, which is 7
+%
+\nbea
+4412 - 19\cdot7^2 = 59^2 & = & (2a - 7)^2 \\
+\to a & = & 33
+\neea
+%
+and so $F(\alpha) = 33 + 7\theta_0$, the question now is if we can concoct an $f(\alpha)$ such that $F(\alpha) = 33 + 7\theta_0$. ~~~\dunno
+
+
+
 
 {\bf Page 107, Problem 8}. I did not follow the hint but I calculated $N(1 + \alpha - \alpha^7 + \alpha^8 + \alpha^{11}) = 547$ and not 599 so it must be wrong :)
 
@@ -3295,6 +3332,238 @@ Therefore
 \neea
 %
 we get to the last line by adding $\lambda(\alpha^{\lambda - 1} + \alpha^{\lambda - 2} + \dots + 1)$.
+
+{\bf Page 107}. Summary of Section 4.5
+%
+\begin{enumerate}
+%
+\item The introduction of the operator $\sigma$ is an actually good move. For example $\sigma^2 \cdot \sigma^3 = \sigma^5$ so we can threat them like normal numbers w.r.t. exponents. The catch is that one, its operation on $\alpha$ is quite complex $\sigma f(\alpha^j) = f(\alpha^{\gamma^j})$. The next catch is that operation on periods must be handled carefully $\sigma^i \eta_1\eta_2 = \eta_{1+i}\eta_{2+i}$, it applies to both periods and not just $(\sigma^i\eta_1) \eta_2$.
+%
+\item The periods, $\eta_i$, is made of repeated applications of $\sigma$, \ie to create a period take a power of alpha, $\alpha^j$, and then
+%
+\nbea
+\eta_i & = & \alpha^j + \sigma^e \alpha^j + \sigma^{2e}\alpha^j + \dots + \sigma^{-e}\alpha^j
+\neea
+%
+This applies to {\bf any} period, for $\eta_0$ we have to start with $\alpha$ we can start with any $\alpha^j$ but it must contain $\alpha$ at the end so it's easier to start with $\alpha$.
+%
+\end{enumerate}
+%
+
+{\bf Page 109}. Top page, proof that periods are independent of the choice of primitive roots. First it says ``if $\alpha^j$ is any power of $\alpha$, and if $\eta_i$ is the period which contains it, then $\eta_i$ also contains $\sigma'^{e} \alpha^j$. (Then it also contains $\sigma'^{e}\sigma'^{e}\alpha^j = \sigma'^{2e}\alpha^j,\sigma'^{3e}\alpha^j, \dots, \sigma'^{-e}\alpha^j$''.
+
+The note in bracket is just the consequence of the previous if, what it says is first we need to establish that if $\alpha^j$ is in $\eta_i$ then $\sigma^e \alpha^j$ is also in $\eta_i$. Once this is established we note that $\sigma^e \alpha^j$ is just 
+$\alpha^k$ for some $k$ but by the application of the if statement $\alpha^k$ in $\eta_i$ means that $\sigma^e \alpha^k = \sigma^{2e} \alpha^j$ is also in $\eta_i$ and we can repeat the argument again and again.
+
+{\bf Page 109}. Top page, continuation of the above proof, ``suffice to prove that $\sigma'^e$ is a power of $\sigma^e$''. To see this, the first key is to note that any period can be expressed as sums of powers of $\sigma^e$ with the appropriate choice of $\alpha^j$
+%
+\nbea
+\eta_i & = & \alpha^j + \sigma^e \alpha^j + \sigma^{2e}\alpha^j + \dots + \sigma^{-e}\alpha^j \\
+& = & \sum_{s = 0}^{f-1} \sigma^{se} \alpha^j
+\neea
+%
+where $\sigma^{efn} = 1$ for any integer $n$ (this is the other key). The problem I had was that say $\sigma'^e = \sigma^{me}$, how do we know that $\sigma^{me}$ is one of those $\sigma^{se}$? Easy, this is because $\sigma^{efn} = 1$ so we just need $m \pmod{f}$, let $l \equiv m \pmod{f}$ then $\sigma^{me} = \sigma^{le}$ with $0 \le l < f$ but $s$ runs from $0 \le s < f$ thus we are guaranteed to find a value of $s$ such that $s \equiv m \pmod{f}$.
+
+
+{\bf Page 110, Problem 1}. Since $\lambda = 5$, $e = 2$ means that $f = (\lambda-1)/2 = 2$. The primitive roots of 5 are 2 and 3. Let's choose 2 as our primitive root. In this case we only have $\theta_0$ and $\theta_1$
+%
+\nbea
+\theta_0 & = & \alpha + \sigma^2 \alpha = \alpha + \alpha^4 \\
+\theta_1 = \sigma \theta_0 & = & \alpha^2 + \alpha^3
+\neea
+%
+The multiplication table is
+%
+\nbea
+\theta^2_0 & = & \alpha^2 + \alpha^3 + 2 = \theta_1 + 2 \\
+\theta_0 \theta_1 & = & -\theta_0 - \theta^2_0 \\
+& = & - \theta_0 - \theta_1 - 2 \\
+& = & 1 - 2 = -1
+\neea
+%
+
+Next we need to find a cyclotomic integer whose norm is divisible by a prime that is neither 1 nor 0 mod 5. From page 108 we know that $Ng(\alpha) = G(\alpha)G(\alpha^2)$ and $G(\alpha) = a + b\theta_0$ (we can always eliminate $\theta_1$ by using $\theta_0 + \theta_1 = 1$), therefore the norm is given by $(a + b\theta_0)(a + b\theta_1) = a^2 - ab - b^2$. there are plenty values for $a$ and $b$ that generate a prime factor $\not\equiv 0,1 \pmod{5}$ a few of them are $(a,b, p) = (5,1,19),(6,1,29),(7,3, 19),(9,2,59),(9,4, 29),(11,1,109),(11,3, 79)$ where $p$ is the prime factor of the norm.
+
+But the problem now is that we need to find $g(\alpha)$ (note what we have now is $G(\alpha)$ and not $g(\alpha)$) such that we get the values of $a$ and $b$ above. Note that we can also cast it in terms of $m\theta_0 + n\theta_1$ by eliminating the constant using $-1 = \theta_0 + \theta_1$. In this case we get $Ng(\alpha) = -m^2 + 3mn - n^2$ with more or less the same result.
+
+But of course we can ``cheat'' instead of trying to find the actual $g(\alpha)$ that generates the above $a$ and $b$ if we just set $g(\alpha) = 2$ then $Ng(\alpha) = 16$ or if $g(\alpha) = 7$ then $Ng(\alpha) = 7^4$ and the prime factor of the norm is obviously $\not\equiv 0,1 \pmod{5}$ :)
+
+From Page 96, Problem 5, if $p$ divides the norm of a binomial then $p \equiv 0,1 \pmod{\lambda}$, since this is not the case then we can't deploy the mechanism in Section 4.4 to find its prime cyclotomic factors.
+
+{\bf Page 110, Problem 2}. We need to show that the form of $Nf(\alpha)$ for $\lambda = 7$ is $\frac{1}{4}[A^2 + 7B^2]$. The key of course is to choose $e=2$ so that we only have two periods $\theta_0$ and $\theta_1$. In which case the period length is $f = 3$.
+
+If this is the case then the norm is given by 
+%
+\nbea
+Nf(\alpha) & = & (a\theta_0 + b\theta_1)(a\theta_1 + b\theta_0) \\
+& = & (a^2 + b^2)\theta_0\theta_1  + ab(\theta^2_0 + \theta^2_1)
+\neea
+%
+so what we need is $\theta_0\theta1$ and $\theta^2_0 + \theta^2_1$ the smallest primitive root mod 7 is 3 so
+%
+\nbea
+\theta_0 & = & \alpha + \alpha^{3^2} + \alpha^{3^4} \\
+& = & \alpha + \alpha^2 + \alpha^4 \\
+\theta_1 & = & \alpha^3 + \alpha^5 + \alpha^6 \\
+\theta_0\theta_1 & = & 3 + \theta_0  + \theta_1 \\
+& = & 2
+\neea
+%
+and also
+%
+\nbea
+(-1)^2 = (\theta_0 + \theta_1)^2 & = & (\theta^2_0 + \theta^2_1) + 2\theta_0\theta_1 \\
+1 & = & (\theta^2_0 + \theta^2_1) + 4 \\
+-3 & = & (\theta^2_0 + \theta^2_1)
+\neea
+%
+since $\theta_0 + \theta_1 = -1$. Thus
+%
+\nbea
+Nf(\alpha) & = & 2a^2 -3 ab + 2b^2
+\neea
+%
+Let $a + b = u, a - b = v$ and
+%
+\nbea
+2a^2 -3 ab + 2b^2 & = & \tfrac{1}{4} \{2(u + v)^2 - 3(u^2 - v^2) + 2(u - v)^2 \} \\
+& = & \tfrac{1}{4} \{u^2 + 7 v^2 \} 
+\neea
+%
+I initially tried $Nf(\alpha) = (a + b\theta_0)(a + b\theta_1) = a^2 - ab + 2b^2$ but $a + b = u, a - b = v$ doesn't gibe us much as the substitution yields $\frac{1}{4}(2u^2 - 2uv + 4v^2)$.
+
+{\bf Page 110, Problem 3}. We want to calculate $(\theta_0 - \theta_1)^2$ for several values of $\lambda$, 
+%
+\nbea
+\begin{array}{r c l c r c l c r c l}
+\lambda & = & 3 & \to & (\theta_0 - \theta_1)^2 & = & - 3 & ~~~~~ & \frac{\lambda - 1}{2} & = & 1 \\
+\lambda & = & 5 & \to & (\theta_0 - \theta_1)^2 & = & 5 & ~~~~~ & \frac{\lambda - 1}{2} & = & 2 \\
+\lambda & = & 7 & \to & (\theta_0 - \theta_1)^2 & = & -7 & ~~~~~ & \frac{\lambda - 1}{2} & = & 3 \\
+\lambda & = & 11 & \to & (\theta_0 - \theta_1)^2 & = & -11 & ~~~~~ & \frac{\lambda - 1}{2} & = & 5 \\
+\lambda & = & 13 & \to & (\theta_0 - \theta_1)^2 & = & 13 & ~~~~~ & \frac{\lambda - 1}{2} & = & 6 \\
+\lambda & = & 17 & \to & (\theta_0 - \theta_1)^2 & = & 17 & ~~~~~ & \frac{\lambda - 1}{2} & = & 8 \\
+\lambda & = & 19 & \to & (\theta_0 - \theta_1)^2 & = & -19 & ~~~~~ & \frac{\lambda - 1}{2} & = & 9 \\
+\lambda & = & 23 & \to & (\theta_0 - \theta_1)^2 & = & -23 & ~~~~~ & \frac{\lambda - 1}{2} & = & 11 \\
+\lambda & = & 29 & \to & (\theta_0 - \theta_1)^2 & = & 29 & ~~~~~ & \frac{\lambda - 1}{2} & = & 14 \\
+\lambda & = & 31 & \to & (\theta_0 - \theta_1)^2 & = & -31 & ~~~~~ & \frac{\lambda - 1}{2} & = & 15 
+\end{array}
+\neea
+%
+So it seems like the formula is
+%
+\nbea
+(\theta_0 - \theta_1)^2 & = & (-1)^{\frac{\lambda - 1}{2}} \lambda
+\neea
+%
+The Python script I used to calculate the above numbers is
+%
+\begin{Verbatim}[baselinestretch=0.75]
+def Problem3(L):
+    g = primRoots(L)[0]
+    e = 2
+    f = (L-1)/e
+
+    t = [0] * L
+
+    for i in xrange(f):
+        t[pow(g,i*e,L)] = 1
+
+    for i in xrange(f):
+        t[pow(g,(i*e) + 1,L)] = -1
+
+    res = multCyc(t,t)
+    return res[0] - res[1]
+\end{Verbatim}
+%
+
+{\bf Page 110, Problem 4}. We now need to prove the formula we found in Problem 3.
+
+
+{\bf Page 110, Problem 5}. We want to find the general formula for $Ng(\alpha)$ for any prime $\lambda$, what we need is the formula from Problem 3 because we need the value of $\theta_0\theta_1$ (to avoid clutter let $r = (-1)^{\frac{\lambda - 1}{2}}$)
+%
+\nbea
+(-1)^2 = (\theta_0 + \theta_1)^2 & = & \theta_0^2 + \theta_1^2 + 2\theta_0\theta_1 \\
+(-1)^{\frac{\lambda - 1}{2}}\lambda = (\theta_0 - \theta_1)^2 & = & \theta_0^2 + \theta_1^2 - 2\theta_0\theta_1 \\
+\to \frac{1 - r\lambda}{4} & = & \theta_0\theta_1
+\neea
+%
+and also
+%
+\nbea
+(-1)^2 = (\theta_0 + \theta_1)^2 & = & (\theta^2_0 + \theta^2_1) + 2\theta_0\theta_1 \\
+1 & = & (\theta^2_0 + \theta^2_1) + \frac{1 - (-1)^{\frac{\lambda - 1}{2}}\lambda}{2} \\
+\to \frac{1 + r\lambda}{2} & = & (\theta^2_0 + \theta^2_1)
+\neea
+%
+therefore
+%
+\nbea
+Ng(\alpha) & = & (a^2 + b^2)\theta_0\theta_1  + ab(\theta^2_0 + \theta^2_1) \\
+& = & (a^2 + b^2)\frac{1 - r\lambda}{4}  + ab\frac{1 + r\lambda}{2} \\
+\neea
+%
+Now as usual let $a + b = u$ and $a - b = v$ first let
+%
+\nbea
+w & = & \frac{1 - r\lambda}{4} \\
+t & = & \frac{1 + r\lambda}{2} \\
+\to 2w + t & = & 1 \\
+\to 2w - t & = & -r\lambda = -(-1)^{\frac{\lambda - 1}{2}}\lambda
+\neea
+%
+then
+%
+\nbea
+Ng(\alpha) & = & \tfrac{1}{4}\left\{(2w + t)u^2 + (2w - t)v^2 \right\} \\
+& = & \tfrac{1}{4}\left\{u^2 -(-1)^{\frac{\lambda - 1}{2}}\lambda v^2 \right\}
+\neea
+%
+
+{\bf Page 110, Problem 6}. Straightforward calculation, $\lambda = 17$, $f=4$ which means $e = 4$, the smallest primitive root mod 17 is 3, let's first prepare the various $\sigma$ powers
+%
+\nbea
+\sigma^{1\cdot 4} & \to & \alpha^{3^4} = \alpha^{13} \\
+\sigma^{2\cdot 4} & \to & \alpha^{3^8} = \alpha^{16} \\
+\sigma^{3\cdot 4} & \to & \alpha^{3^{12}} = \alpha^4
+\neea
+% 
+therefore the periods are
+%
+\nbea
+\eta_0 & = & \alpha + \sigma^e \alpha + \sigma^{2e} \alpha + \sigma^{3e}\alpha \\
+& = & \alpha + \alpha^{13} + \alpha^{16} + \alpha^{4} \\
+\sigma \eta_0 = \eta_1 & = & \alpha^3 + \alpha^5 + \alpha^{14} + \alpha^{12} \\
+\sigma \eta_1 = \eta_2 & = & \alpha^9 + \alpha^{15} + \alpha^{8} + \alpha^{2} \\
+\sigma \eta_2 = \eta_3 & = & \alpha^{10} + \alpha^{11} + \alpha^{7} + \alpha^{6}
+\neea
+%
+the multiplication table is
+%
+\nbea
+\eta^2_0 & = & (\alpha^2 + \alpha^9 + \alpha^{15} + \alpha^{8}) + 2(\alpha^{14} + 1 + \alpha^{5} + \alpha^{12} + 1 + \alpha^{3}) \\
+& = & \eta_2 + 2 (\eta_1 + 2) \\
+& = & \eta_2 + 2\eta_1 + 4 \\
+\eta_0\eta_1 & = & 2\eta_0 + \eta_2 + \eta_3 \\
+\eta_0\eta_2 & = & \eta_0 + \eta_1 + \eta_2 + \eta_3
+\neea
+%
+we can get $\eta_0\eta_3$ by doing $\sigma^{3} \eta_1\eta_0 = \eta_{4=0} \eta_3$.
+
+{\bf Page 110, Problem 7}. We want to know the conditions on a prime $p$ and $f$ that will make the conjugation $\alpha \to \alpha^p$ on the period of length $f$ invariant.
+
+Again, we can always express a prime $p$ as $p \equiv \gamma^j \pmod{\lambda}$, thus the conjugation $\alpha \to \alpha^p$ means $\alpha \to \alpha^{\gamma^j}$ which means $\alpha \to \sigma^{j}\alpha$ and we want $\sigma^j \eta_i = \eta_{i+j} = \eta_i$. This means that $j$ is a multiple of $e$. Not sure about conditions on $f$ :)
+
+{\bf Page 110, Problem 8}. Need to show that the period $\eta_0$ is independent of the choice of primitive root. We know that $\eta_0$ is the only one that contains $\alpha$ and different primitive roots give the same periods (sans the ordering) therefore $\eta_0$ must be the same since it is the only one with $\alpha$ so that's the short story :)
+
+
+
+
+
+
+
+
+
+
 
 
 

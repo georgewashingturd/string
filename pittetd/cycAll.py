@@ -318,6 +318,93 @@ def findConjWithCorrectK(f, k, p):
 
 
 
-
+def findMe():
+    for a in xrange(1,30):
+        for b in xrange(a):
+            t = a**2 - a*b + 3*(b**2)
+            if (t) > 0:
+                u = factors(t)
+                prev = 0
+                for i in u:
+                    if i != prev:
+                        prev = i
+                        if i % 5 > 1:
+                            print a, b, t, i
 
         
+def Problem3(L):
+    g = primRoots(L)[0]
+    e = 2
+    f = (L-1)/e
+
+    t = [0] * L
+
+    for i in xrange(f):
+        t[pow(g,i*e,L)] = 1
+
+    for i in xrange(f):
+        t[pow(g,(i*e) + 1,L)] = -1
+
+    res = multCyc(t,t)
+    return res[0] - res[1]
+
+def Problem5(L):
+    g = primRoots(L)[0]
+    e = 2
+    f = (L-1)/e
+
+    t = [0] * L
+
+    for i in xrange(f):
+        t[pow(g,i*e,L)] = 1
+
+    for i in xrange(f):
+        t[pow(g,(i*e) + 1,L)] = 1
+
+    res = multCyc(t,t)
+    return res[0] - res[1]
+
+
+def EE(L):
+    g = primRoots(L)[0]
+    t0 = [pow(g,2*i,L) for i in xrange((L-1)/2)]
+    t1 = [pow(g,2*i + 1,L) for i in xrange((L-1)/2)]
+
+    c = [0,0,0]
+    indv = [(i*2) % L for i in t0]
+
+    try:
+        b = indv.index(t0[0])
+        c[0] += 1
+    except ValueError:
+        c[1] += 1
+
+    res = []
+    for i in xrange(len(t0)-1):
+        for j in xrange(i+1,len(t0)):
+            res.append((t0[i]+t0[j]) % L)
+
+    print 't0', t0
+    print 't1', t1
+    print 'indv', indv
+    print 'res', res
+    
+    # count t0, t1 and 0
+    a = [t0[0], t1[0], 0]
+    
+    j = 0
+
+    for i in a:
+        s = 0
+        while 1:
+            try:
+                b = res[s:].index(i)
+                s += b + 1
+                c[j] += 2
+            except ValueError:
+                break
+        j += 1
+
+    print c
+    
+    return t0, t1, indv, res
