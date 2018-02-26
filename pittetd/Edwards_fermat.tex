@@ -3476,7 +3476,145 @@ def Problem3(L):
 \end{Verbatim}
 %
 
-{\bf Page 110, Problem 4}. We now need to prove the formula we found in Problem 3.
+{\bf Page 110, Problem 4}. We now need to prove the formula we found in Problem 3. To do this let's list a few facts we'll need
+%
+\begin{enumerate}
+%
+\item {\bf Proposition 110.0} A cyclotomic integer is invariant under $\sigma^e$ if and only if it is made of periods.
+
+{\it Proof}. The only if part is easy, if it's made of periods it's of course invariant under $\sigma^e$. The other way is also easy. To be invariant under $\sigma^e$ means that if any $\alpha^j$ is part of the cyclotomic integer $\sigma^e \alpha^j$ must be in as well which in turn means that since $\sigma^e \alpha^j = \alpha^k$ is in then $\sigma^e \alpha^k = \sigma^{2e} \alpha^j$, etc are also in. But this is the definition of periods $\eta_i = \sum_{u = 0}^{f-1} \sigma^{ue} \alpha^j$ and we are done :)
+
+In other words products and sums and product of sums and sums of products of periods (and other combinations) are also a period. We need this fact because we want to express $\theta_0^2 = a\theta_0 + b\theta_1$ (only in terms of periods), we can always remove the constant term (or any period $\theta_i$) using the identity $\theta_0 + \theta_1 = -1$.
+%
+\item We need to simplify what we want $(\theta_0 - \theta_1)^2$ into
+%
+\nbea
+(\theta_0 - \theta_1)^2 & = & (\theta_0 - (-1 - \theta_1))^2 = (2\theta_0 + 1)^2 \\
+& = & 4(\theta_0^2 + \theta_0) + 1
+\neea
+%
+we could have eliminated $\theta_0$ and get $(\theta_0 - \theta_1)^2 = 4(\theta_1^2 + \theta_1) + 1$.
+%
+\item No.1 above shows that (as mentioned earlier) we can express
+%
+\nbea
+\theta_0^2 & = & a\theta_0 + b\theta_1 \\
+\to \sigma \theta_0^2 & = & \theta_1^2 = a\theta_1 + b\theta_0
+\neea
+%
+The identity $(\theta_0 - \theta_1)^2 = 4(\theta_0^2 + \theta_0) + 1 = 4(\theta_1^2 + \theta_1) + 1$ gives
+%
+\nbea
+4(\theta_0^2 + \theta_0) + \bcancel{1} & = & 4(\theta_1^2 + \theta_1) + \bcancel{1} \\
+a\theta_0 + b\theta_1 +\theta_0 & = & a\theta_1 + b\theta_0 +\theta_1 \\
+\to [(a+1) - b] \theta_0 & = & [(a+1) - b]\theta_1
+\neea
+%
+but we know that $\theta_0 \neq \theta_1$ so it means that $(a+1) - b = 0 \to \theta_0^2 = a\theta_0 + (a+1)\theta_1$ and
+%
+\nbea
+(\theta_0 - \theta_1)^2 & = & 4(\theta_0^2 + \theta_0) + 1 \\
+& = & -4(a+1) + 1
+\neea
+%
+We now need to find the value of $a$ as a function of $\lambda$.
+%
+\item From Problem 3 we know that $\frac{\lambda - 1}{2}$ plays an important role and it does. We can split the proof to two cases, one where $\frac{\lambda - 1}{2}$ is even and the other where it is odd. The important thing about this is that when $\frac{\lambda - 1}{2}$ is even we have $-1$ to be a quadratic residue, otherwise it is a quadratic non residue.
+%
+ \item The main idea of the proof is to count the multiplicity of periods $\theta_0$ and $\theta_1$ in $\theta_0^2$, we know that
+ %
+ \nbea
+ \theta_0 & = & \sum_{u=0}^{f-1} \sigma^{ue}\alpha \\
+ \to \theta_0^2 & = & \left ( \sum_{u=0}^{f-1} \sigma^{ue}\alpha \right )^2 \\
+ & = & \left ( \sum_{u=0}^{f-1} \sigma^{ue}\alpha^2 \right ) + 2 \times \{{\rm cross~terms}\}
+ \neea
+ %
+Note that $(\sigma^{ue}\alpha^j)^2 = \sigma^{ue}\alpha^{2j}$, this is how we got the first term in the RHS and let's call it the main term $M$. Since we have only two periods, this main term can only be either $\theta_0$ or $\theta_1$ but let's just call it $M$ for now.
+
+Let's check the cross terms. In squaring a sum the cross terms are made from
+%
+\nbea
+(a + b+ c + d)^2 & \to & (2ab + 2ac + 2ad) + (2bc + 2bd) + (2cd)
+\neea
+%
+therefore in the example above there are $2\times(3 + 2 + 1)$ cross terms. In our case, our periods have length $f = \frac{\lambda - 1}{2}$, therefore there are $2\times((f-1) + (f - 2) + \dots + 1) = 2\times\frac{f(f-1)}{2}$ cross terms. From No.1 we know that they must form periods. Since each period has $f$ terms there must be at most $f-1$ periods.
+
+The at most part comes into play because some of the cross terms can be $\alpha^\lambda = 1$, we now need to know under what circumstances that this happens and how many they are.
+
+Let's denote a primitive root mod $\lambda$ as $\beta$ then we can express
+%
+\nbea
+\theta_0 & = & \sum_{ue}^{f-1} \alpha^{\beta^{ue}}
+\neea
+%
+a cross term would like like $\alpha^{\beta^{u_1 e} + \beta_{u_2 e}}$ where we can assume that $u_1 < u_2$ therefore if we want a cross term to be $\alpha^\lambda$ we must have
+%
+\nbea
+\alpha^{\beta^{u_1 e} + \beta_{u_2 e}} & = & 1 \\
+\to \beta^{u_1 e} + \beta_{u_2 e} & \equiv & 0 \pmod{\lambda} \\
+\beta^{u_1e}(1 + \beta^{(u_2 - u_1) e}) & \equiv & 0 \pmod{\lambda}
+\neea
+%
+or in other words $-1 \equiv \beta^{(u_2 - u_1) e}$ but here $e = 2$ therefore it means that $-1$ must be a quadratic residue since it is an even power of a primitive root. And as shown above it is also a sufficient condition, if $-1$ is not a quadratic residue than none of the cross term can be $\alpha^\lambda$.
+
+The question now is how many of the cross terms are $\alpha^{\lambda}$? $-1 \equiv \beta^{ke}$ means that $1 \equiv \beta^{2ke}$ but since $\beta$ is a primitive root this means that $2ke = 2f \to k = \frac{f}{2}$ (recall that $e=2$). Thus the only combinations that produce $\alpha^\lambda$ are
+%
+\nbea
+\alpha^{\beta^0} \cdot \alpha^{\beta^{ke}}, \alpha^{\beta^e} \cdot \alpha^{\beta^{(k+1)e}}, \alpha^{\beta^{2e}} \cdot \alpha^{\beta^{(k+2)e}}, \dots  
+\neea
+%
+but $k = \frac{f}{2}$ and the sum $\theta_0 = \sum_{ue}^{f-1} \alpha^{\beta^{ue}}$ runs only to $f-1$ therefore there are only
+%
+\nbea
+(f-1) - \frac{f}{2} + 1 & = & \frac{f}{2}
+\neea
+%
+corss terms that produce $\alpha^\lambda$. The plus $1$ is because the $f-1$ term is also included. There can be no other combinations, this can be shown easily by contradiction because otherwise $\beta^{w_1 e}(1 + \beta^{(w_2 - w_1) e}) \equiv 0 \pmod{\lambda}$ then $-1 \equiv \beta^{(w_2 - w_1)e}$ but since $\beta$ is a primitive root we must have $w_2 - w_1 = k$. The only thing we forgot was the factor of 2 multiplying all the cross terms, therefore there are in total $2 \times \frac{f}{2} = f$ terms of $\alpha^{\lambda} = 1$.
+%
+\item Let's recap, there are $f(f-1)$ cross terms and $f$ of them are $\alpha^{\lambda} = 1$ therefore there are only $f(f - 2)$ terms available to form periods and since each period has $f$ terms we have exactly $f-2$ periods. Therefore
+%
+\nbea
+\theta_0^2 & = & A\theta_0 + B\theta_1 + C
+\neea
+%
+where $A + B = f - 2 + 1$ (the total number of periods, the plus one is from the main term that we've not touched till now) and $C = f$ (the total number of $\alpha^\lambda = 1$). But from No. 3 above we know that if we remove the constant term, here it is $C$, we must have $\theta_0^2 = a\theta_0 + (a+1)\theta_1$. Therefore what we have is
+%
+\nbea
+(A - C) = a,~~~ (B - C) = a + 1 ~~~~~~\to ~~~~~~ B = A + 1
+\neea
+%
+with $A + B = f - 1$ and $C = f$, solving we get
+%
+\nbea
+2B - 1 & = & f - 1 \\
+\to B & = & \frac{f}{2} \\
+\to A & = & \frac{f}{2} - 1
+\neea
+% 
+and $a = A - C = -\frac{f}{2} - 1$ and
+%
+\nbea
+(\theta_0 - \theta_1)^2 & = & -4(a + 1) + 1 \\
+& = & 2 f + 1 = \lambda
+\neea
+%
+recall that $f = \frac{\lambda - 1}{2}$. This is what we want for even $f = \frac{\lambda - 1}{2}$. Lastly, for odd $f = \frac{\lambda - 1}{2}$, as explained above we do not have $\alpha^\lambda$ in the cross terms therefore $f(f-1)$ cross terms all form periods and there are $f - 1$ periods
+%
+\nbea
+\theta_0^2 & = & A\theta_0 + B\theta_1
+\neea
+%
+with $A + B = f - 1 + 1$ (again the plus one is from the main term) and it must be that $B = A + 1$ (as dictated by No. 3), therefore $A = a = \frac{f}{2} - 1$ and
+%
+\nbea
+(\theta_0 - \theta_1)^2 & = & -4(a + 1) + 1 \\
+& = & -2 f + 1 = -\lambda
+\neea
+%
+consistent with the answer to Problem 3.
+%
+\end{enumerate} 
+%
 
 
 {\bf Page 110, Problem 5}. We want to find the general formula for $Ng(\alpha)$ for any prime $\lambda$, what we need is the formula from Problem 3 because we need the value of $\theta_0\theta_1$ (to avoid clutter let $r = (-1)^{\frac{\lambda - 1}{2}}$)
@@ -3555,6 +3693,47 @@ Again, we can always express a prime $p$ as $p \equiv \gamma^j \pmod{\lambda}$, 
 
 {\bf Page 110, Problem 8}. Need to show that the period $\eta_0$ is independent of the choice of primitive root. We know that $\eta_0$ is the only one that contains $\alpha$ and different primitive roots give the same periods (sans the ordering) therefore $\eta_0$ must be the same since it is the only one with $\alpha$ so that's the short story :)
 
+{\bf Page 113}. Top page, note that what was proven in the previous page is $X^p - X \equiv (X - 1)(X - 2) \dots (X - p) \pmod{p}$. However, in this page what we have is $g(\alpha)^p - g(\alpha) \equiv (g(\alpha) - 1)(g(\alpha) - 2)\dots (g(\alpha) - p) \pmod{p}$. So we cannot say that the product on the RHS is a product of $p$ consecutive integers just like when we prove the case for integer $X$.
+
+But from Page 112 bottom paragraph, the purpose of proving the integer case is to show that the coefficients of $X^p - X - (X - 1)(X - 2) \dots (X - p)$ are all multiples of $p$. Of course these are the coefficients once we've multiplied everything out not the coefficients as they are now. Since the cyclotomic integers $g(\alpha)^p - g(\alpha) - (g(\alpha) - 1)(g(\alpha) - 2)\dots (g(\alpha) - p)$ has the same coefficients they are also $0 \pmod{p}$.
+
+{\bf Page 114, Problem 1}. Here we are computing Pascal triangle up to $n = 13$ and verifying that the coefficients are multiple of $n$ when $n$ is prime
+%
+\nbea
+\begin{array}{r c l c l}
+n & = & 1 & \to & 1 \\
+n & = & 2 & \to & 1 ~2~ 1 \\
+n & = & 3 & \to & 1 ~3~ 3~ 1 \\
+n & = & 4 & \to & 1 ~4~ 6~ 4~ 1 \\
+n & = & 5 & \to & 1 ~5~ 10 ~10 ~5~ 1 \\
+n & = & 6 & \to & 1~ 6~ 15~ 20~ 15~ 6~ 1 \\
+n & = & 7 & \to & 1 ~7~ 21~ 35~ 35~ 21~ 7~ 1 \\
+n & = & 8 & \to & 1 ~8~ 28~ 56~ 70~ 56~ 28~ 8~ 1 \\
+n & = & 9 & \to & 1 ~9 ~36~ 84 ~126~ 126~ 84~ 36~ 9~ 1 \\
+n & = & 10 & \to & 1~ 10~ 45~ 120~ 210 ~252 ~210~ 120~ 45~ 10~ 1 \\
+n & = & 11 & \to & 1~ 11~ 55~ 165~ 330 ~462 ~462~ 330~ 165~ 55~ 11~ 1 \\
+n & = & 12 & \to & 1~ 12~ 66~ 220~ 495 ~792 ~924~ 792~ 495~ 220~ 66~ 12~ 1 \\
+n & = & 13 & \to & 1~ 13~ 78~ 286~ 715 ~1287~ 1716~ 1287~ 715~ 286~ 78~ 13~ 1
+\end{array}
+\neea
+%
+For $n$ prime $2, 3, 5, 7$ are obvious for $n = 11$ we have $165 = 11 \cdot 15, 330 = 11\cdot 30, 462 = 11 \cdot 42$ and for $n = 13$ we have $78 = 13 \cdot 6, 286 = 13 \cdot 22, 715 = 13 \cdot 55, 1287 = 13 \cdot 99$, all calculated by hand :) 
+
+{\bf Page 114, Problem 2}. Calculate $X(X - 1)(X - 2)\dots(X - p + 1)$ for $p = 3,5,7,11$.
+%
+\nbea
+\begin{array}{r c l c l c l}
+p & = & 3 & \to & X\dots(X - 2) & = & X^3 - 3X^2 + 2X \\ 
+p & = & 5 & \to & X\dots(X - 4) & = & X^5 - 10X^4 + 35X^3 - 50X^2 + 24X \\ 
+p & = & 7 & \to & X\dots(X - 6) & = & X^7-21X^6+175X^5-735X^4+1624X^3-1764X^2+720X \\
+p & = & 11 & \to & X\dots(X - 10) & = & X^{11}-55X^{10}+1320X^9-18150X^8+157773X^7-902055X^6+\\
+&&&&&&3416930X^5-8409500X^4+12753576X^3-10628640X^2+3628800X 
+\end{array}
+\neea
+%
+to check the (difficult) numbers for $p = 7$, $735 = 7 \cdot 105, 1624 = 7 \cdot 232, 1764 = 7 \cdot 252, 720 = 7 \cdot 102 + 6$, for $p = 11$, $1320 = 11 \cdot 120, 18150 = 11 \cdot 1650, 157773 = 11\cdot 14343, 902055 = 11\cdot82005, 3416930 = 11\cdot310630, 8409500 = 11\cdot764500, 12753576 = 11\cdot1159416, 10628640 = 11\cdot966240, 3628800 = 11\cdot 329890 + 10$.
+
+{\bf Page 114, Problem 3}. 
 
 
 
