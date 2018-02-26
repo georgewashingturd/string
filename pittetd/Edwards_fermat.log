@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  25 FEB 2018 16:48
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  25 FEB 2018 22:51
 entering extended mode
 **C:/Users/User/Documents/GitHub/string/pittetd/Edwards_fermat.tex
 (C:/Users/User/Documents/GitHub/string/pittetd/Edwards_fermat.tex
@@ -662,7 +662,7 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 
  [28] [29] [30]
 [31] [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [43] [44] [45]
-Overfull \hbox (41.25111pt too wide) in paragraph at lines 2070--2074
+Overfull \hbox (41.25111pt too wide) in paragraph at lines 2072--2076
 \OT1/cmr/m/n/12 Now the ques-tion is can there be other op-tions for $\OML/cmm/
 m/it/12 g\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^K\OT1/cmr/m/n/12 )$? Say $\OML/cmm
 /m/it/12 g\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^K\OT1/cmr/m/n/12 ) = \OML/cmm/m/i
@@ -674,51 +674,51 @@ m/n/12 ) [] \OML/cmm/m/it/12 f\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^K[]\OT1/cmr/m
  []
 
 [46] [47] [48] [49] [50] [51] [52] [53] [54]
-Overfull \hbox (45.17491pt too wide) in alignment at lines 2347--2350
+Overfull \hbox (45.17491pt too wide) in alignment at lines 2349--2352
  [][][] []
  []
 
 [55] [56] [57] [58] [59] [60] [61]
-Overfull \hbox (6.62865pt too wide) in alignment at lines 2568--2573
+Overfull \hbox (6.62865pt too wide) in alignment at lines 2572--2577
  [][][] []
  []
 
 
-Overfull \hbox (10.39406pt too wide) in alignment at lines 2577--2579
+Overfull \hbox (10.39406pt too wide) in alignment at lines 2581--2583
  [][][] []
  []
 
 [62]
-Overfull \hbox (16.88893pt too wide) in alignment at lines 2613--2616
- [][][] []
- []
-
-
-Overfull \hbox (1.96973pt too wide) in alignment at lines 2644--2649
+Overfull \hbox (16.88893pt too wide) in alignment at lines 2617--2620
  [][][] []
  []
 
 [63]
-Overfull \hbox (4.78044pt too wide) in alignment at lines 2671--2673
+Overfull \hbox (1.96973pt too wide) in alignment at lines 2648--2653
  [][][] []
  []
 
 
-Overfull \hbox (14.89305pt too wide) in alignment at lines 2683--2685
+Overfull \hbox (4.78044pt too wide) in alignment at lines 2675--2677
  [][][] []
  []
 
-[64] [65] [66] [67] [68] [69] [70] [71] [72] [73] [74] [75] [76] [77] [78]
-[79] [80] [81] [82] [83] [84] [85] [86] [87] [88] [89] [90]
-Overfull \hbox (57.487pt too wide) in alignment at lines 3724--3732
+[64]
+Overfull \hbox (14.89305pt too wide) in alignment at lines 2687--2689
  [][][] []
  []
 
-[91] (Edwards_fermat.bbl) [92]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 3768.
+[65] [66] [67] [68] [69] [70] [71] [72] [73] [74] [75] [76] [77] [78] [79]
+[80] [81] [82] [83] [84] [85] [86] [87] [88] [89] [90] [91]
+Overfull \hbox (57.487pt too wide) in alignment at lines 3728--3736
+ [][][] []
+ []
+
+[92] [93] [94] [95] [96] (Edwards_fermat.bbl) [97]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 3903.
  (Edwards_fermat.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 3768.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 3768.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 3903.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 3903.
  ) 
 Here is how much of TeX's memory you used:
  13701 strings out of 428755
@@ -729,4 +729,4 @@ Here is how much of TeX's memory you used:
  1096 hyphenation exceptions out of 8191
  36i,18n,38p,1030b,498s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on Edwards_fermat.pdf (92 pages).
+Output written on Edwards_fermat.pdf (97 pages).

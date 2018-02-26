@@ -1858,7 +1858,9 @@ since $\lambda$ is odd it's either $k \equiv -1$ or $k^{\lambda} \equiv -1 \pmod
 %
 but since both $\lambda$ and $p$ are both prime the only possibility is that $p = \lambda$ and in that case $p \equiv 0 \pmod{\lambda}$ which is the first result we need.
 
-If $k^{\lambda} \equiv -1 \pmod{p}$ then $k^{2\lambda} \equiv 1 \pmod{p}$. According to Fermat's Little Theorem we must have $2\lambda|(p-1)$ if $2\lambda < p$ or $p-1|2\lambda$ if $p < 2\lambda$. For the former case this means that $p - 1 = 2\lambda n \to p \equiv 1 \pmod{\lambda}$ and for the latter case since $\lambda$ is prime, $2\lambda$ only has two distinct factors, 2 and $\lambda$ therefore $p - 1 = 2\lambda$ and again $p \equiv 1 \pmod{\lambda}$.
+If $k^{\lambda} \equiv -1 \pmod{p}$ then $k^{2\lambda} \equiv 1 \pmod{p}$. Since $2$ and $\lambda$ are prime, the order (or exponent) of $k$ must be either $2$, $\lambda$or $2\lambda$ and each must divide $p - 1$ according to Fermat's Little Theorem. for the cases of the order being $\lambda$ or $2\lambda$ this means that $\lambda|p-1$ or $2\lambda|p-1$, either way this means that $p - 1 \equiv 0 \pmod{\lambda}$.
+
+If the order of $k$ is 2 then $k$ can only be $+1$ or $-1$ (as $x^2 \equiv 1$ can only have two solutions). But $k \equiv -1$ is already covered above resulting in $p \equiv 0 \pmod{\lambda}$ and as shown above $1 + k^\lambda \equiv 0 \pmod{p}$ which means that $k$ cannot be 1.
 
 {\bf Page 87, Problem 10}. We want to show that $\alpha^{\lambda-1}$ is the complex conjugate of $\alpha$. This is straightforward enough. From the definition of complex conjugation and the fact that $\alpha$ is a root of unity, we have
 %
@@ -2456,7 +2458,9 @@ since $\lambda$ is odd it's either $k \equiv -1$ or $k^{\lambda} \equiv -1 \pmod
 %
 but since both $\lambda$ and $p$ are both prime the only possibility is that $p = \lambda$ and in that case $p \equiv 0 \pmod{\lambda}$ which is the first result we need.
 
-If $k^{\lambda} \equiv -1 \pmod{p}$ then $k^{2\lambda} \equiv 1 \pmod{p}$. According to Fermat's Little Theorem we must have $2\lambda|(p-1)$ if $2\lambda < p$ or $p-1|2\lambda$ if $p < 2\lambda$. For the former case this means that $p - 1 = 2\lambda n \to p \equiv 1 \pmod{\lambda}$ and for the latter case since $\lambda$ is prime, $2\lambda$ only has two distinct factors, 2 and $\lambda$ therefore $p - 1 = 2\lambda$ and again $p \equiv 1 \pmod{\lambda}$.
+If $k^{\lambda} \equiv -1 \pmod{p}$ then $k^{2\lambda} \equiv 1 \pmod{p}$. Since $2$ and $\lambda$ are prime, the order (or exponent) of $k$ must be either $2$, $\lambda$or $2\lambda$ and each must divide $p - 1$ according to Fermat's Little Theorem. for the cases of the order being $\lambda$ or $2\lambda$ this means that $\lambda|p-1$ or $2\lambda|p-1$, either way this means that $p - 1 \equiv 0 \pmod{\lambda}$.
+
+If the order of $k$ is 2 then $k$ can only be $+1$ or $-1$ (as $x^2 \equiv 1$ can only have two solutions). But $k \equiv -1$ is already covered above resulting in $p \equiv 0 \pmod{\lambda}$ and as shown above $1 + k^\lambda \equiv 0 \pmod{p}$ which means that $k$ cannot be 1.
 
 {\bf Page 96, Problem 6}. We are now asked to find the prime factors of the norms we found in Problem 4 using information from Problem 5.
 for $\lambda = 5$
@@ -3604,11 +3608,11 @@ recall that $f = \frac{\lambda - 1}{2}$. This is what we want for even $f = \fra
 \theta_0^2 & = & A\theta_0 + B\theta_1
 \neea
 %
-with $A + B = f - 1 + 1$ (again the plus one is from the main term) and it must be that $B = A + 1$ (as dictated by No. 3), therefore $A = a = \frac{f}{2} - 1$ and
+with $A + B = f - 1 + 1$ (again the plus one is from the main term) and it must be that $B = A + 1$ (as dictated by No. 3), therefore $A = a = \frac{f - 1}{2}$ and
 %
 \nbea
 (\theta_0 - \theta_1)^2 & = & -4(a + 1) + 1 \\
-& = & -2 f + 1 = -\lambda
+& = & -2 (f+1) + 1 = -\lambda
 \neea
 %
 consistent with the answer to Problem 3.
@@ -3731,16 +3735,147 @@ p & = & 11 & \to & X\dots(X - 10) & = & X^{11}-55X^{10}+1320X^9-18150X^8+157773X
 \end{array}
 \neea
 %
-to check the (difficult) numbers for $p = 7$, $735 = 7 \cdot 105, 1624 = 7 \cdot 232, 1764 = 7 \cdot 252, 720 = 7 \cdot 102 + 6$, for $p = 11$, $1320 = 11 \cdot 120, 18150 = 11 \cdot 1650, 157773 = 11\cdot 14343, 902055 = 11\cdot82005, 3416930 = 11\cdot310630, 8409500 = 11\cdot764500, 12753576 = 11\cdot1159416, 10628640 = 11\cdot966240, 3628800 = 11\cdot 329890 + 10$.
+to check the (difficult) numbers for $p = 7$, $735 = 7 \cdot 105, 1624 = 7 \cdot 232, 1764 = 7 \cdot 252, 720 = 7 \cdot 102 + 6$, for $p = 11$, $1320 = 11 \cdot 120, 18150 = 11 \cdot 1650, 157773 = 11\cdot 14343, 902055 = 11\cdot82005, 3416930 = 11\cdot310630, 8409500 = 11\cdot764500, 12753576 = 11\cdot1159416, 10628640 = 11\cdot966240, 3628800 = 11\cdot 329890 + 10$. Thus al of them are $\equiv X^p - X \pmod{p}$.
 
-{\bf Page 114, Problem 3}. 
+{\bf Page 114, Problem 3}. We need to verify $\eta^p \equiv \eta \pmod{p}$ in the case of $\lambda = 7$, $p = 2$ and then for $\lambda = 13$ and $p = 13$. First, $\lambda = 7$ here $\lambda - 1 = 6 = 2\cdot 3$. So we can either have $e = 2, f = 3$ or $e = 3, f = 2$. But $\eta^p \equiv \eta$ only works if $\eta$ is a period of length $f$ where $f$ is the exponent (or I rpefer to call it order) of $p \pmod{\lambda}$.
 
+Here $p=2$ and the order of 2 mod 7 is 3 so $f = 3$ and $e = 2$, the only primitive roots mod 7 are 3 and 5 and so here we have
+%
+\nbea
+\eta_0 & = & \alpha + \alpha^{2} + \alpha^{4} \\
+\sigma\eta_0 = \eta_1 & = & \alpha^3 + \alpha^5 + \alpha^6
+\neea
+%
+with $p = 2$ we have
+%
+\nbea
+\eta_0^2 & = & \alpha^2 + \alpha^4 + \alpha + 2(\alpha^3 + \alpha^5 + \alpha^6) \\
+& = & \theta_0 + 2\theta_1 \\
+& \equiv & \theta_0 \pmod{p} \\
+\eta_1^2 & = & \alpha^6 + \alpha^3 + \alpha^5 + 2(\alpha + \alpha^2 + \alpha^4) \\
+& = & \eta_1 + 2\eta_0 \\
+& \equiv & \eta_1 \pmod{p}
+\neea
+%
+Now, if we choose $e = 3, f = 2$ where $f$ is no longer the exponent of $p \pmod{\lambda}$ then
+%
+\nbea
+\eta_0 & = & \alpha + \alpha^{6} \\
+\sigma\eta_0 = \eta_1 & = & \alpha^3 + \alpha^{4} \\
+\sigma\eta_1 = \eta_2 & = & \alpha^{2} + \alpha^{5}
+\neea
+%
+again, with $p=2$ we have
+%
+\nbea
+\eta_0^2 & = & \alpha^2 + \alpha^5 + 2 \equiv \eta_2 \pmod{p}
+\neea
+%
+which doesn't work :)
 
+Next, is $\lambda=13$, $p=3$, the exponent of 3 mod 13 is 3, we also have $\lambda - 1 = 12$, therefore with $f = 3$ (the exponent of $p \pmod{\lambda}$) we must have $e = 4$, the primitive roots mod 13 are 2, 6, 7, 11, let's choose 2
+%
+\nbea
+\eta_0 & = & \alpha + \alpha^{3} + \alpha^{9} \\
+\sigma\eta_0 = \eta_1 & = & \alpha^2 + \alpha^{6} + \alpha^{5} \\
+\sigma\eta_1 = \eta_2 & = & \alpha^4 + \alpha^{12} + \alpha^{10} \\
+\sigma\eta_2 = \eta_3 & = & \alpha^{8} + \alpha^{11} + \alpha^{7}
+\neea
+%
+with $p = 3$ we have from the formula $(x + y + z)^4 = x^3+y^3+z^3+3(yz^2+xz^2+y^2z+x^2z+xy^2+x^2y) +6xyz$
+%
+\nbea
+\eta_0^3 & = & \alpha^3 + \alpha^9 + \alpha + 3(\alpha^5 + \alpha^{11} + \alpha^{7} + \alpha^6 + \alpha^2 + \alpha^8) + 6 = \eta_0 + 3(\eta_1 + \eta_3) + 6 \\
+& \equiv & \eta_0 \pmod{3} \\
+\eta_1^3 & = & \alpha^6 + \alpha^5 + \alpha^2 + 3(\alpha^{10} + \alpha^{9} + \alpha + \alpha^{12} + \alpha^{4} + \alpha^{3}) + 6 = \eta_1 + 3(\eta_0 + \eta_2) + 6 \\
+& \equiv & \eta_1 \pmod{3} \\
+\eta_2^3 & = & \alpha^{12} + \alpha^{10} + \alpha^4 + 3(\alpha^{7} + \alpha^{5} + \alpha^{2} + \alpha^{11} + \alpha^{8} + \alpha^{6}) + 6 = \eta_2 + 3(\eta_1 + \eta_3) + 6 \\
+& \equiv & \eta_2 \pmod{3} \\
+\eta_3^3 & = & \alpha^{11} + \alpha^{7} + \alpha^{8} + 3(\alpha + \alpha^{10} + \alpha^{4} + \alpha^{9} + \alpha^{3} + \alpha^{12}) + 6  = \eta_3 + 3(\eta_0 + \eta_2) + 6 \\
+& \equiv & \eta_3 \pmod{3}
+\neea
+%
 
+{\bf Page 114, Problem 4}. Show that for a prime $\lambda$, any prime factor of $k^{\lambda - 1} + k^{\lambda - 2} + \dots + 1$ are either 0 or 1 $\pmod{\lambda}$. The main thing here is that ``any prime factor of`` not just that the whole sum is $0,1 \pmod{\lambda}$ even though it is.
 
+If $k = 1$ then the sum is exactly $\lambda$ and we have $0 \pmod{\lambda}$, if $k \neq 1$ then from geometric series we have the sum to be $\frac{k^{\lambda} - 1}{k - 1} \equiv \frac{k - 1}{k - 1} \equiv 1 \pmod{\lambda}$ (where we have used Fermat's Little Theorem $k^\lambda \equiv k \pmod{\lambda}$).
 
+But the above geometric formula also applies mod any prime factor $p$ of the sum (as long as $k \neq 1$), \ie $k^{\lambda - 1} + k^{\lambda - 2} + \dots + 1 = \frac{k^{\lambda} - 1}{k - 1} \equiv 0 \pmod{p}$, it is $0 \pmod{p}$ because $p$ is a prime factor of the sum.
 
+This means that $k^\lambda \equiv 1 \pmod{p}$, therefore it's either $k = 1$ (the only element with order one is $k = 1$) or the order of $k$ mod $p$ is $\lambda$ (because $\lambda$ is prime otherwise the order can be any factor of $\lambda$). But $k = 1$ is already covered above and we have explictly assumed that $k\neq1$ in this case so that we were able to use the geometric series formula so the order of $k$ is $\lambda$. Then Fermat's Little Theorem tells us that $\lambda|p - 1$ and we immediately have $p \equiv 1 \pmod{\lambda}$.
 
+{\bf Page 114, Problem 5}. Here we have $\lambda = 5$ and $p = 19$, here we want to show that $p$ has a prime factor then the $u_i$ in $\eta_i \equiv u_i \pmod{p}$ obeys $u^2 + u - 1 \equiv 0 \pmod{p}$.
+
+It is simple enough since $\lambda - 2 = 4 = 2\cdot 2$ thus $e = 2, f = 2$. Note that if we force $e = 1, f = 4$ then $\eta_0 = -1$ (because it's just the sum of all powers of $\alpha$) and $(-1)^2 - 1 - 1 \not \equiv 0 \pmod{19}$. Likewise with $e = 4, f = 1$. This is actually obvious since quadratic $u$ must have only two solutions and if $e = 4$ we have four $\eta$.
+
+So with $e = 2, f = 2$ we have (choosing 2 as the primitive root mod 5)
+%
+\nbea
+\eta_0 & = & \alpha + \alpha^4 \\
+\eta_1 & = & \alpha^2 + \alpha^3
+\neea
+% 
+Therefore, the multiplication table is
+%
+\nbea
+\eta_0^2 & = & \eta_1 + 2 = -1 - \eta_0 +2 \\
+\to 0 & = & \eta_0^2 + \eta_0 - 1
+\neea
+%
+since $\eta_0 + \eta_1 = -1$. Applying $\sigma\eta_0^2 = \eta_1^2 = 1 - \eta_1$ So if $\eta_i \equiv u_i \pmod{p}$ therefore $u_i^2 + u_i - 1 \equiv 0 \pmod{19}$, solving it we get $u_i(u_i + 1) \equiv 1 \pmod{19}$. The solution is $u_i = 4$ and $u_i = -5$ and these are the only two solutions since we only have two $\eta$.
+
+Next we are asked to show that $\eta_0 - u$ divides $p$, note that $\eta_0 \equiv u \pod{p}$ means that $p|\eta_0 - u$ and not the other around. What we need to show is the other way around.
+
+For one thing the norm $N(\eta_0 - 4) = N(\eta_0 + 5) = 19^2$. This means that (let $f(\alpha) = \eta_0 - 4$), arranging things judiciously :)
+%
+\nbea
+Nf(\alpha) = 19\cdot 19 & = & \{f(\alpha)f(\alpha^2) \} \cdot \{f(\alpha^3)f(\alpha^3)\} \\
+& = & \{19 \} \cdot \{19\}
+\neea
+%
+where $f(\alpha) = f(\alpha^4) = \eta_0 - 4$ and $f(\alpha^2) = f(\alpha^3) = \eta_1 - 4$. And the factorization is therefore $(\eta_0 - 4)(\eta_1 - 4) = 19$.
+
+I was initially tempted to arrange things by complex conjugation $(f(\alpha)f(\alpha^4)) \cdot (f(\alpha^2)f(\alpha^3))$ but it didn't work out well because each term, even though positive real numbers, was not an integer.
+
+We know need to show that these factors of 19, $\eta_0 - 4$ and $\eta_1 - 4$, are irreducible. Well if they are reducible then
+%
+\nbea
+h(\alpha) g(\alpha) & = & \eta_{0} - 4 \\
+Nh(\alpha) Ng(\alpha) & = & 19^2
+\neea
+%
+which means that $Nh(\alpha) = Ng(\alpha) = 19$ for $\eta_0$ to be reducible but just like the proof on Page 113, $Nh(\alpha) = h(1)^{\lambda - 1} \equiv 0,1 \pmod{\alpha - 1}$. From Page 93 we know that $\alpha - 1$ is prime, its norm is $\lambda$ therefore $Nh(\alpha) = h(1)^{\lambda - 1} \equiv 0,1 \pmod{\lambda}$.
+
+In this case $Nh(\alpha) = 19$ so it can't be $0 \pmod{\lambda}$. Thereofore it must be $1 \pmod{\lambda = 5}$ but 19 is not $1 \pmod{19}$ thus contrary to our asuumption, $\eta_0 - 4$ is irreducible. The same arguments goes for $\eta_1 - 4$. There are also other factorizations like $(\eta_0 + 5)(\eta_1 + 5) = 19$ and by the same argument above each factor is also irreducible.
+
+{\bf Page 114, Problem 6}. We are now factoring 3 into its irreducible factors like in Problem 5 but here $\lambda = 13$, $\lambda - 1 = 12$. To make things simple let's try with $e = 2, f = 6$ so that we only have two periods (choosing 2 as the primitive root)
+%
+\nbea
+\eta_0 & = & \alpha + \alpha^{4} + \alpha^{3} + \alpha^{12}+ \alpha^{9}+ \alpha^{10}\\
+\eta_1 & = & \alpha^2 + \alpha^8 + \alpha^6 + \alpha^{11} + \alpha^5 + \alpha^7
+\neea
+%
+the multiplication table is
+%
+\nbea
+\eta_0^2 & = & \eta_1 + 2(\eta_1 + \eta_0 + 3) \\
+& = & 3 - \eta_0
+\neea
+%
+this means that if $\eta_0 \equiv u \pmod{p}$ then $u^2 + u - 3 \equiv u(u+1) \equiv 0 \pmod{3}$ meaning $u = 2$ or $u = -3$ (we can also set $u = 0$).
+
+As in Problem 5 the factorization is $3 = (\eta_0 - 2)(\eta_1 - 2) = (\eta_0 + 3)(\eta_1 + 3)$, if we use $\eta_0 \equiv 0$ we get $-3 = \eta_0 \eta_1 \to 3 = -\eta_0\eta_1$ which is another factorization.
+
+{\bf Page 114, Problem 7}. We want to show that if $f$ is an exponent of $p$ mod $\lambda$ then if $Ng(\alpha) = p^f$ then $g(\alpha)$ is irreducible. 
+
+This is similar to Problem 5 and also very similar to the proof on Page 13. Assume that $g(\alpha)$ is reducible then
+%
+\nbea
+f(\alpha) h(\alpha) & = & g(\alpha) \\
+Nf(\alpha) Nh(\alpha) & = & p^f
+\neea
+%
+since $g(\alpha)$ is assumed to be reducible then $Nf(\alpha) = p^a$ where $0 < a < f$. Following the logic of the proof on page 113, $Nf(\alpha) \equiv f(1)^{\lambda-1} \equiv 0,1 \pmod{\alpha - 1} \equiv 0,1 \pmod{\lambda}$ since from Page 93 we know that $\alpha - 1$ is prime and its norm is $\lambda$ (so $\alpha - 1|\lambda$) but since $Ng(\alpha) = p^a$ it must be $1 \pmod{\lambda}$. This means that $p^a \equiv 1 \pmod{\lambda}$ which means that $a$ must be a multiple of $f$ contrary to our assumtion that $0 < a < f$. Therefore, $g(\alpha)$ is irreducible.
 
 
 
