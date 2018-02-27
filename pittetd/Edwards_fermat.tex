@@ -711,7 +711,7 @@ def SolvePell(A=149, English=False, Shortcut=True):
     while kK[0] == 0 or K <> 1:
         
         # min_s is to hold the current possible minimum of s
-        # has to be reset everytime we search for the next K,
+        # has to be reset every time we search for the next K,
         # this is only for the Indian method
         min_s = float('inf')
         
@@ -1183,7 +1183,7 @@ This means that $2uv = 0$ so either $u=0$ or $v = 0$ or both (but we can't have 
 
 And from $n = 2C^4 = 2, n + 2 = 4E^4 = 4$ (or the other way round) we get $8A^4 = n(n+2) = 8$, meaning $A = 1$. And from $B = \pm \sqrt{-2A^2 \pm\sqrt{8A^4 + 1}}$, we get $B = \pm 1$ which in turn means $m = a^2 - b^2 = 4A^4 - B^2 = 3$ and $m + 1 = 2ab = 4A^2B^2 = 4$, this translates to $x = 2m+1 = 7$.
 
-The other case is $2E^4 = C^4 - F^4$, again subtituting $C = u + v$ and $F = u-v$
+The other case is $2E^4 = C^4 - F^4$, again substituting $C = u + v$ and $F = u-v$
 %
 \nbea
 2E^4 & = & (u + v)^4 - (u - v)^4 \\
@@ -3573,7 +3573,7 @@ but $k = \frac{f}{2}$ and the sum $\theta_0 = \sum_{ue}^{f-1} \alpha^{\beta^{ue}
 (f-1) - \frac{f}{2} + 1 & = & \frac{f}{2}
 \neea
 %
-corss terms that produce $\alpha^\lambda$. The plus $1$ is because the $f-1$ term is also included. There can be no other combinations, this can be shown easily by contradiction because otherwise $\beta^{w_1 e}(1 + \beta^{(w_2 - w_1) e}) \equiv 0 \pmod{\lambda}$ then $-1 \equiv \beta^{(w_2 - w_1)e}$ but since $\beta$ is a primitive root we must have $w_2 - w_1 = k$. The only thing we forgot was the factor of 2 multiplying all the cross terms, therefore there are in total $2 \times \frac{f}{2} = f$ terms of $\alpha^{\lambda} = 1$.
+cross terms that produce $\alpha^\lambda$. The plus $1$ is because the $f-1$ term is also included. There can be no other combinations, this can be shown easily by contradiction because otherwise $\beta^{w_1 e}(1 + \beta^{(w_2 - w_1) e}) \equiv 0 \pmod{\lambda}$ then $-1 \equiv \beta^{(w_2 - w_1)e}$ but since $\beta$ is a primitive root we must have $w_2 - w_1 = k$. The only thing we forgot was the factor of 2 multiplying all the cross terms, therefore there are in total $2 \times \frac{f}{2} = f$ terms of $\alpha^{\lambda} = 1$.
 %
 \item Let's recap, there are $f(f-1)$ cross terms and $f$ of them are $\alpha^{\lambda} = 1$ therefore there are only $f(f - 2)$ terms available to form periods and since each period has $f$ terms we have exactly $f-2$ periods. Therefore
 %
@@ -3737,7 +3737,7 @@ p & = & 11 & \to & X\dots(X - 10) & = & X^{11}-55X^{10}+1320X^9-18150X^8+157773X
 %
 to check the (difficult) numbers for $p = 7$, $735 = 7 \cdot 105, 1624 = 7 \cdot 232, 1764 = 7 \cdot 252, 720 = 7 \cdot 102 + 6$, for $p = 11$, $1320 = 11 \cdot 120, 18150 = 11 \cdot 1650, 157773 = 11\cdot 14343, 902055 = 11\cdot82005, 3416930 = 11\cdot310630, 8409500 = 11\cdot764500, 12753576 = 11\cdot1159416, 10628640 = 11\cdot966240, 3628800 = 11\cdot 329890 + 10$. Thus al of them are $\equiv X^p - X \pmod{p}$.
 
-{\bf Page 114, Problem 3}. We need to verify $\eta^p \equiv \eta \pmod{p}$ in the case of $\lambda = 7$, $p = 2$ and then for $\lambda = 13$ and $p = 13$. First, $\lambda = 7$ here $\lambda - 1 = 6 = 2\cdot 3$. So we can either have $e = 2, f = 3$ or $e = 3, f = 2$. But $\eta^p \equiv \eta$ only works if $\eta$ is a period of length $f$ where $f$ is the exponent (or I rpefer to call it order) of $p \pmod{\lambda}$.
+{\bf Page 114, Problem 3}. We need to verify $\eta^p \equiv \eta \pmod{p}$ in the case of $\lambda = 7$, $p = 2$ and then for $\lambda = 13$ and $p = 13$. First, $\lambda = 7$ here $\lambda - 1 = 6 = 2\cdot 3$. So we can either have $e = 2, f = 3$ or $e = 3, f = 2$. But $\eta^p \equiv \eta$ only works if $\eta$ is a period of length $f$ where $f$ is the exponent (or I prefer to call it order) of $p \pmod{\lambda}$.
 
 Here $p=2$ and the order of 2 mod 7 is 3 so $f = 3$ and $e = 2$, the only primitive roots mod 7 are 3 and 5 and so here we have
 %
@@ -3802,7 +3802,7 @@ If $k = 1$ then the sum is exactly $\lambda$ and we have $0 \pmod{\lambda}$, if 
 
 But the above geometric formula also applies mod any prime factor $p$ of the sum (as long as $k \neq 1$), \ie $k^{\lambda - 1} + k^{\lambda - 2} + \dots + 1 = \frac{k^{\lambda} - 1}{k - 1} \equiv 0 \pmod{p}$, it is $0 \pmod{p}$ because $p$ is a prime factor of the sum.
 
-This means that $k^\lambda \equiv 1 \pmod{p}$, therefore it's either $k = 1$ (the only element with order one is $k = 1$) or the order of $k$ mod $p$ is $\lambda$ (because $\lambda$ is prime otherwise the order can be any factor of $\lambda$). But $k = 1$ is already covered above and we have explictly assumed that $k\neq1$ in this case so that we were able to use the geometric series formula so the order of $k$ is $\lambda$. Then Fermat's Little Theorem tells us that $\lambda|p - 1$ and we immediately have $p \equiv 1 \pmod{\lambda}$.
+This means that $k^\lambda \equiv 1 \pmod{p}$, therefore it's either $k = 1$ (the only element with order one is $k = 1$) or the order of $k$ mod $p$ is $\lambda$ (because $\lambda$ is prime otherwise the order can be any factor of $\lambda$). But $k = 1$ is already covered above and we have explicitly assumed that $k\neq1$ in this case so that we were able to use the geometric series formula so the order of $k$ is $\lambda$. Then Fermat's Little Theorem tells us that $\lambda|p - 1$ and we immediately have $p \equiv 1 \pmod{\lambda}$.
 
 {\bf Page 114, Problem 5}. Here we have $\lambda = 5$ and $p = 19$, here we want to show that $p$ has a prime factor then the $u_i$ in $\eta_i \equiv u_i \pmod{p}$ obeys $u^2 + u - 1 \equiv 0 \pmod{p}$.
 
@@ -3846,7 +3846,7 @@ Nh(\alpha) Ng(\alpha) & = & 19^2
 %
 which means that $Nh(\alpha) = Ng(\alpha) = 19$ for $\eta_0$ to be reducible but just like the proof on Page 113, $Nh(\alpha) = h(1)^{\lambda - 1} \equiv 0,1 \pmod{\alpha - 1}$. From Page 93 we know that $\alpha - 1$ is prime, its norm is $\lambda$ therefore $Nh(\alpha) = h(1)^{\lambda - 1} \equiv 0,1 \pmod{\lambda}$.
 
-In this case $Nh(\alpha) = 19$ so it can't be $0 \pmod{\lambda}$. Thereofore it must be $1 \pmod{\lambda = 5}$ but 19 is not $1 \pmod{19}$ thus contrary to our asuumption, $\eta_0 - 4$ is irreducible. The same arguments goes for $\eta_1 - 4$. There are also other factorizations like $(\eta_0 + 5)(\eta_1 + 5) = 19$ and by the same argument above each factor is also irreducible.
+In this case $Nh(\alpha) = 19$ so it can't be $0 \pmod{\lambda}$. Therefore it must be $1 \pmod{\lambda = 5}$ but 19 is not $1 \pmod{19}$ thus contrary to our assumption, $\eta_0 - 4$ is irreducible. The same arguments goes for $\eta_1 - 4$. There are also other factorizations like $(\eta_0 + 5)(\eta_1 + 5) = 19$ and by the same argument above each factor is also irreducible.
 
 {\bf Page 114, Problem 6}. We are now factoring 3 into its irreducible factors like in Problem 5 but here $\lambda = 13$, $\lambda - 1 = 12$. To make things simple let's try with $e = 2, f = 6$ so that we only have two periods (choosing 2 as the primitive root)
 %
@@ -3875,8 +3875,378 @@ f(\alpha) h(\alpha) & = & g(\alpha) \\
 Nf(\alpha) Nh(\alpha) & = & p^f
 \neea
 %
-since $g(\alpha)$ is assumed to be reducible then $Nf(\alpha) = p^a$ where $0 < a < f$. Following the logic of the proof on page 113, $Nf(\alpha) \equiv f(1)^{\lambda-1} \equiv 0,1 \pmod{\alpha - 1} \equiv 0,1 \pmod{\lambda}$ since from Page 93 we know that $\alpha - 1$ is prime and its norm is $\lambda$ (so $\alpha - 1|\lambda$) but since $Ng(\alpha) = p^a$ it must be $1 \pmod{\lambda}$. This means that $p^a \equiv 1 \pmod{\lambda}$ which means that $a$ must be a multiple of $f$ contrary to our assumtion that $0 < a < f$. Therefore, $g(\alpha)$ is irreducible.
+since $g(\alpha)$ is assumed to be reducible then $Nf(\alpha) = p^a$ where $0 < a < f$. Following the logic of the proof on page 113, $Nf(\alpha) \equiv f(1)^{\lambda-1} \equiv 0,1 \pmod{\alpha - 1} \equiv 0,1 \pmod{\lambda}$ since from Page 93 we know that $\alpha - 1$ is prime and its norm is $\lambda$ (so $\alpha - 1|\lambda$) but since $Ng(\alpha) = p^a$ it must be $1 \pmod{\lambda}$. This means that $p^a \equiv 1 \pmod{\lambda}$ which means that $a$ must be a multiple of $f$ contrary to our assumption that $0 < a < f$. Therefore, $g(\alpha)$ is irreducible.
 
+{\bf Page 114}. Summary of Section 4.7
+
+The theme in Edwards' books (at least the one I keep seeing) is that we don't need to rely on formulas all the time. We just need to know what needs to be done and find ways to do it. For example, the formula to find a prime factor of a prime integer is to construct $g(\alpha) = a + b\eta_0 + c\eta_1 + \dots$ such that $Ng(\alpha) = p^f$. But that is not what he did for the first part on this section. Instead, by calculating the norm we see that simple trial and errors will give us the solution.
+
+This also explains how many conjugates we need to test if a candidate works as a prime factor. We know that $Ng(\alpha) = p^f$ and there are $ef$ terms in $Ng(\alpha)$ but what we want is a prime factor of $p$ therefore a group of $e$ conjugates must form one $p$, thus once we get a candidate we just need to multiply $e$ conjugates to see if their product contains $p$.
+
+{\bf Page 116}. Top Page. ``the desired factor of 59 can be found by dividing by two suitable factors of 11''. Why two suitable factors? Recall that $11$ has four prime factors and what we have is
+%
+\nbea
+N(25 - \theta_0) = (25 - \theta_0)(25 - \theta_1)(25 - \theta_0)(25 - \theta_1) & = & 11^2 \cdot 59^2
+\neea
+%
+There are four factors in the LHS and there are two copies of 11, each carrying four factors, so we have 8 factors we need to spread into the four in the LHS, therefore each factor in the LHS should have 2 suitable factors of 11.
+
+{\bf Page 116}. Top Page, near the end of first paragraph, ``It is also divisible by $\alpha^4 + 2$ because the conjugation $\alpha\to\alpha^4$ leaves $\theta_0$ and $\theta_1$ invariant.'' Earlier we saw that $\alpha + 2|25 - \theta_0$, conjugating ($\alpha \to \alpha^4$) we get $\alpha^4 + 2|25 - \theta_0$.
+
+{\bf Page 116}. Top Page, calculation after first paragraph, it is refreshing to see that we are not using the normal algorithm $f(\alpha) g(\alpha) = h(\alpha) \to g(\alpha) = \frac{h(\alpha)f(\alpha^2)f(\alpha^3) \dots f(\alpha^{\lambda - 1})}{Nf(\alpha)}$. Here, the thing we need to remember is that $(a + b\theta_0)(a + b\theta_1)$ gives you an integer. So we can use this information to do division like in this case.
+
+{\bf Page 116}. Mid(ish) Page, factorization of 79, it is interesting that even though the congruence is $a + 29b - 30c \equiv 0 \pmod{79}$ we did not choose the simplest solution $a = 29, b=-1, c=0$ like usual. Maybe he already knew that this solution $\to (29 - \theta_0)$ results in $(29 - \theta_0)(29 - \theta_1) = 11 \cdot 29$. The other simple solution $a = 30, b = 0, c = 1$ results in $(30 + \theta_0)(30 + \theta_1) = 11 \cdot 79$ as well. We can of course divide it by the suitable factors of 11, two of them since there are four prime factors of 11 and there are two terms in the LHS. Let's try it.
+
+A prime factor of 11 is $\alpha + 2$, like before $\theta_0 \equiv 3 \pmod{\alpha + 2}$ and $\theta_1 \equiv -4$, $29 - 3 \not \equiv 0 \pmod{11}$ but $30 + 3 \equiv 0 \pmod{11}$ so let's just divide our second solution. We need to find another factor of 11 to divide $30 + \theta_0$ but as mentioned in the book, conjugating $\alpha \to \alpha^4$ doesn't change $\theta_{0,1}$ so the two factors are $\alpha + 2$ and $\alpha^4 + 2$
+%
+\nbea
+\frac{30 + \theta_0}{(\alpha + 2)(\alpha^4 + 2)} & = & \frac{(30 + \theta_0)(5 + 2\theta_1)}{(5 + 2\theta_0)(5 + 2\theta_1)} \\
+& = & \frac{150 + 60\theta_1 + 5\theta_0 - 2}{11} = \frac{143 + 55\theta_1}{11} = 13 + 5\theta_1
+\neea
+%
+which is another factor of $79$ while we're at it let's divide $29 - \theta_0$ as well, here the prime factor of 11 that works must be $\alpha^2$ since $\alpha$ and therefore $\alpha^4$ don't work
+%
+\nbea
+\frac{29 - \theta_0}{(\alpha^2 + 2)(\alpha^3 + 2)} & = & \frac{(29 - \theta_0)(5 + 2\theta_0)}{(5 + 2\theta_1)(5 + 2\theta_0)} \\
+& = & \frac{145 + 58\theta_0 - 5\theta_0 - 2(1 - \theta_0)}{11} = \frac{143 + 55\theta_0}{11} = 13 + 5\theta_0
+\neea
+%
+which is just the conjugate of the previous solution.
+
+{\bf Page 118}. Second Paragraph, and other places also it says something like ``Therefore $a + b\eta_0 + c\eta_1 + d\eta_2$ is divisible by a prime divisor of 13 only if it or one of its conjugates satisfies $a - 3b - 5c - 6d \equiv 0 \pmod{13}$'. Why ``one of its conjugates''? because the values of $u_i$'s are the cyclic permutations of $(-3,-5,-6)$, when you permute you get the conjugate because you're exchanging the $\eta_i$'s.
+
+{\bf Page 121, Problem 1}. $\lambda = 7$, $\eta_2 - \eta_1 + 1$ divides $\eta_0 + 3$, we need to show that the quotient is a unit. Here $f = 2$ and $e = 3$ and we know it divides $\eta_0 + 3$ because mod $\eta_2 - \eta_1 + 1$ we have $\eta_0 \equiv -3$.
+
+The norm $N(\eta_0 + 3)$ must be a product of cyclic permutations of the $\eta$'s because a conjugation of one $\eta$ gives you another $\eta$ and since there are only 3 $\eta$'s we must have $\{(\eta_0 + 3)(\eta_1 + 3)(\eta_2 + 3)\}^2$
+%
+\nbea
+(\eta_0 + 3)(\eta_1 + 3) & = & \eta_0\eta_1 + 3(\eta_0 + \eta_1) + 9 \\
+& = & (\eta_1 + \eta_2) - 3(1 + \eta_2) + 9 = (\eta_1 - 2\eta_2) + 6 \\
+\to (\eta_0 + 3)(\eta_1 + 3)(\eta_2 + 3) & = & \eta_1\eta_2 - 2\eta_2^2 + 6\eta_2 + 3\eta_1 - 6\eta_2 + 18 \\
+& = & (\eta_2 + \eta_0) -2(2 + \eta_1) + 3\eta_1 + 18 \\
+& = & (\eta_0 + \eta_1 + \eta_2) + 14 \\
+& = & 13
+\neea
+%
+Therefore $N(\eta_0 + 3) = 13^2$. This means that the quotient is indeed a unit. We now need to find this unit and its inverse (the real calculation is too long to type, I'll just put the final result here, it took me three tries to get it right)
+%
+\nbea
+\frac{\eta_0 + 3}{\eta_2 - \eta_1 + 1} & = & \frac{(\eta_0 + 3)(\eta_0 - \eta_2 + 1)(\eta_0 - \eta_1 - 1)}{(\eta_2 - \eta_1 + 1)(\eta_0 - \eta_2 + 1)(\eta_0 - \eta_1 - 1)} \\
+& = & \frac{3 + 3\eta_0 - 10\eta_1 + 3\eta_2}{13} \\
+& = & \frac{13 + 13\eta_0 + 13\eta_2}{13} \\
+& = & 1 + \eta_0 + \eta_2
+\neea
+%
+As a check $N(1 + \eta_0 + \eta_2) = 1$, the inverse of this unit is $f(\alpha^2)f(\alpha^3)f(\alpha^4)f(\alpha^5)f(\alpha^6) = 1 + \eta_2$ where $f(\alpha) = 1 + \eta_0 + \eta_2$.
+
+{\bf Page 121, Problem 2}. Derive last line of Table 4.7.5, a factorization of 97 when $\lambda = 7$. First, 97 has an exponent $f = 2$ so we are using periods with length 2 given on Page 117. The relationships among the $u_i$'s are given on Page 118, we need to find $u_0^3 + u_0^2 - 2u_0 - 1 \equiv 0 \pmod{97}$. Trying out different $u_0$'s (this one really tries your patience) you get $u_0 = 25$. Therefore $u_2 \equiv u_0^2 - 2 \equiv 41 \pmod{97}$, $u_1 \equiv -1 -u_0 - u_2 \equiv 30 \pmod{97}$.
+
+So the $u_i$'s are cyclic permutations of $(25,41,30)$ and $a + b\eta_0 + c\eta_1 + d\eta_2$ is divisible by prime divisor of 97 if it (or its conjugates) satisfies $a + 25b + 41c + 30d \equiv 0 \pmod{97}$. Let's try out the simple solutions, from the answer in the Table, it seems like we need to do some division.
+
+The simple ones give not so good answers the best one is $\eta_0 - 30$ giving $(\eta_0 - 30)(\eta_1 - 30)(\eta_2 - 30) = 7 \cdot 41 \cdot 97$ and we need to do division, seven is obviously the norm of $\alpha - 1$.
+
+The not so simple choices like $(a=16) + 25(b=1) + 41(c=-1)$ is quite tricky, I initially assigned $\eta_0 \equiv 25$ and $\eta_1 \equiv 41$ and it didn't work, what works is $\eta_0 \equiv 41$ and $\eta_1 \equiv 25$. Here we get $41 \cdot 97$ from $16 + \eta_1 - \eta_0$.
+
+Trying another not so simple one I got the answer immediately $-5 + \eta_0 - \eta_2$, $\eta_0 \equiv 30, \eta_2 \equiv 25$ with 
+%
+\nbea
+(-5 + \eta_0 - \eta_2)(-5 + \eta_1 - \eta_0)(-5 + \eta_2 - \eta_1) & = & -97
+\neea
+%
+A different result from the book's. However, this is actually a good exercise because the table gives a different assignment $\eta_0 \equiv 25$ and $\eta_2 \equiv 41$ due to this we can't divide $(-5 + \eta_0 - \eta_2)$ by $4\eta_0 - 3$.
+
+So the lesson here is that once the assignment $\eta_i \equiv u_i \pmod{p}$ is made the prime factor is also determined, different $u_i$ will generate different prime factors.
+
+To get the result in the book we need $5 + \eta_0 - \eta_1$ with
+%
+\nbea
+(5 + \eta_0 - \eta_1)(5 + \eta_1 - \eta_2)(5 + \eta_2 - \eta_0) & = & 97
+\neea
+%
+to get the result in the table we just need to multiply this by a unit $-1 + \eta_0$ :)
+
+{\bf Page 121, Problem 3}. Here we calculate the prime $p$ under 100 that also has exponent 3 mod $\lambda = 13$. This prime is 61. We now need to find the factors of 61, again we need to solve $u_0^4 + u_0^3 + 2u_0^2 - 4u_0 + 3 \equiv 0 \pmod{61}$. The hint says that $u = 10$ solves it. Let's try it $10000 + 1000 + 200 - 40 + 3 = 1079 = 61 \cdot 183$ and so it works :)
+
+So we have $3u_2 \equiv 3 - 2u_0 - u_0^3 \equiv 27 \pmod{61}$ and $u_1 \equiv u_0^2 - 2u_2 \equiv 46 \pmod{61}$ and $u_3 \equiv -1 - u_0 - u_1 - u_2 \equiv 38 \pmod{61}$, so the equation is $a + 10b + 46c + 27d +38e \equiv 0 \pmod{61}$. So now we get to trial and error.
+
+Since $f = 3$ then $e = 4$, the smallest primitive root mod 13 is 2 so
+%
+\nbea
+\eta_0 & = & \alpha + \alpha^3 + \alpha^9 \\
+\eta_1 & = & \alpha^2 + \alpha^5 + \alpha^6 \\
+\eta_2 & = & \alpha^4 + \alpha^{10} + \alpha^{12} \\
+\eta_3 & = & \alpha^7 + \alpha^8 + \alpha^{11} 
+\neea
+%
+
+Trial and error might take a while so I wrote a Python script :) 
+%
+\begin{Verbatim}[baselinestretch=0.75]
+# print out multiplication table for periods
+def multTablePeriods(L, f):
+
+    e = (L-1)/f
+
+    # create eta's
+    g = primRoots(L)[0]
+
+    eta = [[0] * L for i in xrange(e)]
+
+    for i in xrange(e):
+        for j in xrange(f):
+            eta[i][pow(g,j*e+i,L)] = 1
+
+        print eta[i]
+
+    # first get non zero index of each eta
+    nz = [0] * e
+    for i in xrange(e):
+        for j in xrange(L):
+            if eta[i][j] != 0:
+                nz[i] = j
+                break
+
+    # now build the multiplication table if there are e periods
+    # then there are e main terms plus e(e-1)/2 cross terms
+
+    for i in xrange(e):
+        res = multCyc(eta[i], eta[i])
+
+        print 'eta', i, '^2 = ',
+        
+        for j in xrange(e):
+            if res[nz[j]] != 0:
+                print '+', res[nz[j]], '* eta', j,
+
+        print '+', res[0]
+
+    # now check for cross terms
+    for i in xrange(e-1):
+        for j in xrange(1,e):
+            res = multCyc(eta[i], eta[j])
+
+            print 'eta', i, '* eta', j, ' = ',
+        
+            for o in xrange(e):
+                if res[nz[o]] != 0:
+                    print '+', res[nz[o]], '* eta', o,
+
+            print '+', res[0]
+
+# find u_i corresponding to eta_i
+def FindU(L, p, e):
+
+    if L == 5:
+        for i in xrange(1,1000):
+            if ((i*(i+1)) % p) == 1:
+                u = [i, -(i+1)]
+                break
+    
+    elif L == 13:
+        u = [0] * e
+        for i in xrange(100):
+            if e == 4:
+                if ((pow(i,4,p) + pow(i,3,p) + 2*pow(i,2,p) - 4*i + 3) % p) == 0:
+                    u[0] = i
+                    break
+                if ((pow(-i,4,p) + pow(-i,3,p) + 2*pow(-i,2,p) - 4*(-i) + 3) % p) == 0:
+                    u[0] = -i
+                    break
+            elif e == 3:
+                if ((pow(i,3,p) + pow(i,2,p) - 4*i + 1) % p) == 0:
+                    u[0] = i
+                    break
+                if ((pow(-i,3,p) + pow(-i,2,p) - 4*(-i) + 1) % p) == 0:
+                    u[0] = -i
+                    break
+            elif e == 2:
+                if ((pow(i,2,p) + i -3) % p) == 0:
+                    u[0] = i
+                    break
+                if ((pow(-i,2,p) + (-i) -3) % p) == 0:
+                    u[0] = -i
+                    break
+        print u[0]
+        if e == 4:
+            # find inverse of 3 mod p
+            for i in xrange(1,p):
+                if (i*3) % p == 1:
+                    i3 = i
+                    break
+            else:
+                i3 = 0
+                
+            u[2] = (i3 * (3 - 2*u[0] - pow(u[0],3,p))) % p
+            u[1] = (pow(u[0],2,p) - 2*u[2]) % p
+            u[3] = (-1 -u[0] - u[1] - u[2] ) % p
+        elif e == 3:
+            u[2] = (pow(u[0],2,p) + u[0] - 3) % p
+            u[1] = (-1 - u[0] - u[2]) % p
+        elif e == 2:
+            u[1] = (-1 - u[0]) % p
+
+    return u
+
+# find factors of prime numbers   
+def Page121Problem3and5(L, p):
+
+    # first find order of p mod L
+    for i in xrange(1,L):
+        if pow(p,i,L) == 1:
+            f = i
+            break
+
+    print 'f', f
+    e = (L-1)/f
+
+    # create eta's
+    g = primRoots(L)[0]
+
+    eta = [[0] * L for i in xrange(e)]
+
+    for i in xrange(e):
+        for j in xrange(f):
+            eta[i][pow(g,j*e+i,L)] = 1
+
+        print eta[i]
+
+    u = FindU(L,p,e)
+
+    for i in xrange(e):
+        print 'u', i, u[i],
+    print
+
+    min_e = searchMinE(L)
+    
+    import itertools
+    t = [i for i in range(1,e+1)]
+    
+    for y in xrange(1,e + 1):
+        
+        l = itertools.combinations(t, y)
+
+        for i in l:
+            # create a bitmap for the plus minus
+            for k in range(0,2**y):
+                res = [0] * (e+1)
+                for j in range(y):
+                    b = pow(-1,(k >> j) & 0x01)
+                    res[i[j]] = b*1
+                    res[0] -= b*u[i[j]-1]
+
+                cd = [0] * L
+                for j in xrange(1,len(res)):
+                    et = [res[j] * z for z in eta[j-1]]
+                    cd = addCyc(cd, et)
+                cd[0] = res[0]
+                N = cycNormFast(f=cd, g=g, e=min_e)
+
+                if N == pow(p,f):
+                    print N, res
+
+                    # check result to see if we need a minus sign
+                    tmp = [0] * L
+                    tmp[0] = res[0]
+                    for j in xrange(1,e + 1):
+                        et = [res[j] * w for w in eta[j-1]]
+                        tmp = addCyc(tmp, et)
+
+                    tot = [w for w in tmp]
+                    for j in xrange(1,e):
+                        tmp = cycShift(tmp, g)
+                        tot = multCyc(tot, tmp)
+
+                    # check if all elements from index 1 to L-1 are the same
+                    for j in xrange(2,L):
+                        if tot[j] != tot[j-1]:
+                            print 'Tot is not right'
+                            break
+                    else:
+                        print tot[0] - tot[1]
+\end{Verbatim}
+%
+The weakness of this script is I always assign $\eta_i$ to $\pm u_i$ there's no clyclic permutation I can add that in the future. For  $\lambda = 13$ and $p = 61$ the result is
+%
+\nbea
+61 & = & (1 + \eta_0 + \eta_2 - \eta_3)(1 + \eta_1 + \eta_3 - \eta_0)(1 + \eta_2 + \eta_0 - \eta_1)(1 + \eta_3 + \eta_1 - \eta_2)
+\neea
+%
+
+{\bf page 121, Problem 4}. We need to calculate the next prime with exponent 2 mod $\lambda=5$. The next prime is 109. We need to solve $u^2 + u - 1 \equiv 0 \pmod{109}$ the solutions are $10, -11$.So what we have is $a + 10b - 11c \equiv 0 \pmod{109}$ but again we can use the script above to immediately get the solution
+%
+\nbea
+109 & = & (\eta_0 - 10)(\eta_1 - 10)
+\neea
+%
+
+{\bf Page 121, Problem 5}, The only possible exponents of $\lambda = 13$ are $1,2,3,4,6,12$, exponent 1 and 12 are not of interest since exponent 1 was dealt with in earlier Sections and exponent 12 means that the prime is its own prime factor. The exponents of the prime less than 100 are, $f = 1 \to 53, 79$, $f = 3 \to 3, 29, 61$, $f = 4 \to 5, 31, 47, 73, 83$, $f = 6 \to 17, 23, 43$, the rest of the primes have exponent of 12 they are $2, 7, 11, 19, 37, 41, 59, 67, 71, 89, 97$.
+
+So we need to factorize the first prime with exponent bigger than 2, they are $f = 3 \to 3$, $f = 4 \to 5$ and $f = 6 \to 17$.
+
+For $f = 4, e = 3$ the multiplication table is
+%
+\nbea
+\eta_0^2 & = & \eta_1 + 2\eta_2 + 4 \\
+\eta_0\eta_1 & = & \eta_0 + 2\eta_1 + \eta_2 \\
+\eta_0\eta_2 & = & 2\eta_0 + \eta_1 + \eta_2
+\neea
+%
+The equations obeyed by $u$ are
+%
+\nbea
+u_0^2 & \equiv & u_1 + 2u_2 + 4 \\
+u_0u_1 & \equiv & u_0 + 2u_1 + u_2 \\
+u_0u_2 & \equiv & 2u_0 + u_1 + u_2
+\neea
+%
+Then
+%
+\nbea
+u_0^3 & \equiv & u_0u_1 + 2u_0u_2 + 4u_0 \\
+& \equiv & u_0 + 2u_1 + u_2 + 2(2u_0 + u_1 + u_2) + 4u_0 \\
+& \equiv & 9u_0 + 4u_1 + 3u_2
+\neea
+%
+adding $u_0^2$ to both sides
+%
+\nbea
+u_0^3 + u_0^2 & \equiv & 9u_0 + 5u_1 + 5u_2 + 4 \\
+& \equiv & 9u_0 - 5 - 5 u_0 + 4 \\
+0 & \equiv & u_0^3 + u_0^2  - 4u_0 + 1
+\neea
+%
+To get the rest
+%
+\nbea
+u_0^2 & \equiv & (-1 - u_0 - u_2) + 2u_2 + 4 \\
+u_2 & \equiv & u_0^2 + u_0 - 3
+\neea
+%
+
+For $f = 6, e = 2$ the multiplication table is
+%
+\nbea
+\eta_0^2 & = & 2\eta_0 + 3\eta_1 + 6 \\
+\eta_0\eta_1 & = & 3\eta_0 + 3\eta_1
+\neea
+%
+But of course $\eta_1 = -1 - \eta_0$ so
+%
+\nbea
+u_0^2 & \equiv & 2u_0 + 3(-1-u_0) + 6 \\
+0 & \equiv & u_0^2 + u_0 - 3
+\neea
+%
+
+Using the Python script from Problem 3 we get
+%
+\nbea
+3 & = & \eta_0 \eta_1 \eta_2 \eta_3 \\
+5 & = & (\eta_0 + 1)(\eta_1 + 1)(\eta_2 + 1) \\
+17 & = & (\eta_0 - 4)(\eta_1 - 4)
+\neea
+%
+with the understanding that the $\eta_0$ for 3 is different from the one for 5 and 17 since the period lengths are all different for each of the primes.
 
 
 

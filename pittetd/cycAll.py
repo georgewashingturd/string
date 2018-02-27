@@ -408,3 +408,224 @@ def EE(L):
     print c
     
     return t0, t1, indv, res
+
+
+def pF(n):
+    a = factors(n)
+
+    for i in a:
+        print i,
+
+    print 
+
+# print out multiplication table for periods
+def multTablePeriods(L, f):
+
+    e = (L-1)/f
+
+    # create eta's
+    g = primRoots(L)[0]
+
+    eta = [[0] * L for i in xrange(e)]
+
+    for i in xrange(e):
+        for j in xrange(f):
+            eta[i][pow(g,j*e+i,L)] = 1
+
+        print eta[i]
+
+    # first get non zero index of each eta
+    nz = [0] * e
+    for i in xrange(e):
+        for j in xrange(L):
+            if eta[i][j] != 0:
+                nz[i] = j
+                break
+
+    # now build the multiplication table if there are e periods
+    # then there are e main terms plus e(e-1)/2 cross terms
+
+    for i in xrange(e):
+        res = multCyc(eta[i], eta[i])
+
+        print 'eta', i, '^2 = ',
+        
+        for j in xrange(e):
+            if res[nz[j]] != 0:
+                print '+', res[nz[j]], '* eta', j,
+
+        print '+', res[0]
+
+    # now check for cross terms
+    for i in xrange(e-1):
+        for j in xrange(1,e):
+            res = multCyc(eta[i], eta[j])
+
+            print 'eta', i, '* eta', j, ' = ',
+        
+            for o in xrange(e):
+                if res[nz[o]] != 0:
+                    print '+', res[nz[o]], '* eta', o,
+
+            print '+', res[0]
+
+# find u_i corresponding to eta_i
+def FindU(L, p, e):
+
+    if L == 5:
+        for i in xrange(1,1000):
+            if ((i*(i+1)) % p) == 1:
+                u = [i, -(i+1)]
+                break
+    
+    elif L == 13:
+        u = [0] * e
+        for i in xrange(100):
+            if e == 4:
+                if ((pow(i,4,p) + pow(i,3,p) + 2*pow(i,2,p) - 4*i + 3) % p) == 0:
+                    u[0] = i
+                    break
+                if ((pow(-i,4,p) + pow(-i,3,p) + 2*pow(-i,2,p) - 4*(-i) + 3) % p) == 0:
+                    u[0] = -i
+                    break
+            elif e == 3:
+                if ((pow(i,3,p) + pow(i,2,p) - 4*i + 1) % p) == 0:
+                    u[0] = i
+                    break
+                if ((pow(-i,3,p) + pow(-i,2,p) - 4*(-i) + 1) % p) == 0:
+                    u[0] = -i
+                    break
+            elif e == 2:
+                if ((pow(i,2,p) + i -3) % p) == 0:
+                    u[0] = i
+                    break
+                if ((pow(-i,2,p) + (-i) -3) % p) == 0:
+                    u[0] = -i
+                    break
+        print u[0]
+        if e == 4:
+            # find inverse of 3 mod p
+            for i in xrange(1,p):
+                if (i*3) % p == 1:
+                    i3 = i
+                    break
+            else:
+                i3 = 0
+                
+            u[2] = (i3 * (3 - 2*u[0] - pow(u[0],3,p))) % p
+            u[1] = (pow(u[0],2,p) - 2*u[2]) % p
+            u[3] = (-1 -u[0] - u[1] - u[2] ) % p
+        elif e == 3:
+            u[2] = (pow(u[0],2,p) + u[0] - 3) % p
+            u[1] = (-1 - u[0] - u[2]) % p
+        elif e == 2:
+            u[1] = (-1 - u[0]) % p
+
+    return u
+
+# find factors of prime numbers   
+def Page121Problem3and5(L, p):
+
+    # first find order of p mod L
+    for i in xrange(1,L):
+        if pow(p,i,L) == 1:
+            f = i
+            break
+
+    print 'f', f
+    e = (L-1)/f
+
+    # create eta's
+    g = primRoots(L)[0]
+
+    eta = [[0] * L for i in xrange(e)]
+
+    for i in xrange(e):
+        for j in xrange(f):
+            eta[i][pow(g,j*e+i,L)] = 1
+
+        print eta[i]
+
+    u = FindU(L,p,e)
+
+    for i in xrange(e):
+        print 'u', i, u[i],
+    print
+
+    min_e = searchMinE(L)
+    
+    import itertools
+    t = [i for i in range(1,e+1)]
+    
+    for y in xrange(1,e + 1):
+        
+        l = itertools.combinations(t, y)
+
+        for i in l:
+            # create a bitmap for the plus minus
+            for k in range(0,2**y):
+                res = [0] * (e+1)
+                for j in range(y):
+                    b = pow(-1,(k >> j) & 0x01)
+                    res[i[j]] = b*1
+                    res[0] -= b*u[i[j]-1]
+
+                cd = [0] * L
+                for j in xrange(1,len(res)):
+                    et = [res[j] * z for z in eta[j-1]]
+                    cd = addCyc(cd, et)
+                cd[0] = res[0]
+                N = cycNormFast(f=cd, g=g, e=min_e)
+
+                if N == pow(p,f):
+                    print N, res
+
+                    # check result to see if we need a minus sign
+                    tmp = [0] * L
+                    tmp[0] = res[0]
+                    for j in xrange(1,e + 1):
+                        et = [res[j] * w for w in eta[j-1]]
+                        tmp = addCyc(tmp, et)
+
+                    tot = [w for w in tmp]
+                    for j in xrange(1,e):
+                        tmp = cycShift(tmp, g)
+                        tot = multCyc(tot, tmp)
+
+                    # check if all elements from index 1 to L-1 are the same
+                    for j in xrange(2,L):
+                        if tot[j] != tot[j-1]:
+                            print 'Tot is not right'
+                            break
+                    else:
+                        print tot[0] - tot[1]
+                    
+
+        
+def Page121Problem5(L):
+
+    # first find order of p mod L
+    for i in xrange(1,100):
+        if isNotPrime(i) == False:
+            for j in xrange(1,L):
+                if pow(i,j,L) == 1:
+                    print 'p', i, 'f', j
+                    break
+
+def Page121Problem4(L):
+
+    # first find order of p mod L
+    for i in xrange(1,300):
+        if isNotPrime(i) == False:
+            for j in xrange(1,L):
+                if pow(i,j,L) == 1:
+                    print 'p', i, 'f', j
+                    break
+
+    for u in xrange(1,1000):
+        if ((u*(u+1)) % 109) == 1:
+            print u
+            break
+
+
+                

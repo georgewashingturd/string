@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  25 FEB 2018 22:51
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  26 FEB 2018 22:11
 entering extended mode
 **C:/Users/User/Documents/GitHub/string/pittetd/Edwards_fermat.tex
 (C:/Users/User/Documents/GitHub/string/pittetd/Edwards_fermat.tex
@@ -714,11 +714,12 @@ Overfull \hbox (57.487pt too wide) in alignment at lines 3728--3736
  [][][] []
  []
 
-[92] [93] [94] [95] [96] (Edwards_fermat.bbl) [97]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 3903.
+[92] [93] [94] [95] [96] [97] [98] [99] [100] [101] [102] [103] [104]
+(Edwards_fermat.bbl) [105] [106]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 4273.
  (Edwards_fermat.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 3903.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 3903.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 4273.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 4273.
  ) 
 Here is how much of TeX's memory you used:
  13701 strings out of 428755
@@ -729,4 +730,4 @@ Here is how much of TeX's memory you used:
  1096 hyphenation exceptions out of 8191
  36i,18n,38p,1030b,498s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on Edwards_fermat.pdf (97 pages).
+Output written on Edwards_fermat.pdf (106 pages).
