@@ -418,9 +418,7 @@ def pF(n):
 
     print 
 
-# print out multiplication table for periods
-def multTablePeriods(L, f):
-
+def generateEtas(L, f):
     e = (L-1)/f
 
     # create eta's
@@ -432,15 +430,70 @@ def multTablePeriods(L, f):
         for j in xrange(f):
             eta[i][pow(g,j*e+i,L)] = 1
 
-        print eta[i]
+        print u'\u03B7%d =' % (i), eta[i]
 
-    # first get non zero index of each eta
+    return eta
+
+def generateEtag(L, f, c):
+    e = (L-1)/f
+
+    # create eta's
+    g = primRoots(L)[c]
+
+    eta = [[0] * L for i in xrange(e)]
+
+    for i in xrange(e):
+        for j in xrange(f):
+            eta[i][pow(g,j*e+i,L)] = 1
+
+        print u'\u03B7%d =' % (i), eta[i]
+
+    return eta
+
+def findEtaNz(eta):
+
+    e = len(eta)
+    L = len(eta[0])
+
     nz = [0] * e
+    
     for i in xrange(e):
         for j in xrange(L):
             if eta[i][j] != 0:
                 nz[i] = j
                 break
+
+    return nz
+
+# function to print sums of eta's
+def printSumEtaRaw(res, nz):
+    e = len(nz)
+    m = 0
+    for j in xrange(e):
+        if res[nz[j]] != 0:
+            if res[nz[j]] < 0:
+                print '-'
+            elif m > 0:
+                print '+',
+            print u'%d*\u03B7%d' % (abs(res[nz[j]]), j),
+            m += 1
+
+
+    if res[0] < 0:
+        print '-', abs(res[0])
+    elif res[0] > 0:
+        print '+', abs(res[0])
+    else:
+        print
+
+# print out multiplication table for periods
+def multTablePeriods(L, f):
+
+    e = (L-1)/f
+    eta = generateEtas(L, f)
+
+    # first get non zero index of each eta
+    nz = findEtaNz(eta)
 
     # now build the multiplication table if there are e periods
     # then there are e main terms plus e(e-1)/2 cross terms
@@ -448,26 +501,18 @@ def multTablePeriods(L, f):
     for i in xrange(e):
         res = multCyc(eta[i], eta[i])
 
-        print 'eta', i, '^2 = ',
+        print u'\u03B7%d^2 = ' % (i),
+        printSumEtaRaw(res, nz)
         
-        for j in xrange(e):
-            if res[nz[j]] != 0:
-                print '+', res[nz[j]], '* eta', j,
-
-        print '+', res[0]
 
     # now check for cross terms
     for i in xrange(e-1):
-        for j in xrange(1,e):
+        for j in xrange(i+1,e):
             res = multCyc(eta[i], eta[j])
 
-            print 'eta', i, '* eta', j, ' = ',
-        
-            for o in xrange(e):
-                if res[nz[o]] != 0:
-                    print '+', res[nz[o]], '* eta', o,
-
-            print '+', res[0]
+            print u'\u03B7%d*\u03B7%d = ' % (i, j),
+            printSumEtaRaw(res, nz)
+            
 
 # find u_i corresponding to eta_i
 def FindU(L, p, e):
@@ -523,6 +568,31 @@ def FindU(L, p, e):
 
     return u
 
+def printEtaFactor(res):
+    ln = len(res)
+
+    for j in xrange(ln-1):
+        m = 0
+
+        print '(',
+        for i in xrange(1,ln):
+            if res[i] != 0:
+                if res[i] < 0:
+                    print '-',
+                elif m > 0:
+                    print '+',
+                print u'%d*\u03B7%d' % (abs(res[i]), ((i-1)+j) % (ln-1)),
+                m += 1
+            
+        if res[0] < 0:
+            print '-', abs(res[0]),
+        elif res[0] > 0:
+            print '+', abs(res[0]),
+        print ')',
+
+    print
+    
+
 # find factors of prime numbers   
 def Page121Problem3and5(L, p):
 
@@ -536,22 +606,16 @@ def Page121Problem3and5(L, p):
     e = (L-1)/f
 
     # create eta's
-    g = primRoots(L)[0]
 
-    eta = [[0] * L for i in xrange(e)]
-
-    for i in xrange(e):
-        for j in xrange(f):
-            eta[i][pow(g,j*e+i,L)] = 1
-
-        print eta[i]
+    eta = generateEtas(L, f)
 
     u = FindU(L,p,e)
 
     for i in xrange(e):
-        print 'u', i, u[i],
+        print 'u%d: %d,' % (i, u[i]),
     print
 
+    g = primRoots(L)[0]
     min_e = searchMinE(L)
     
     import itertools
@@ -562,6 +626,7 @@ def Page121Problem3and5(L, p):
         l = itertools.combinations(t, y)
 
         for i in l:
+            print i
             # create a bitmap for the plus minus
             for k in range(0,2**y):
                 res = [0] * (e+1)
@@ -577,9 +642,13 @@ def Page121Problem3and5(L, p):
                 cd[0] = res[0]
                 N = cycNormFast(f=cd, g=g, e=min_e)
 
+                # we actually don't need to calculate the norm
+                # we can straight away do the verification below
+                # but this serves as a double-check
+
                 if N == pow(p,f):
                     print N, res
-
+                    
                     # check result to see if we need a minus sign
                     tmp = [0] * L
                     tmp[0] = res[0]
@@ -598,7 +667,10 @@ def Page121Problem3and5(L, p):
                             print 'Tot is not right'
                             break
                     else:
-                        print tot[0] - tot[1]
+                        print tot[0] - tot[1], '=',
+
+                    # this is just cosmetics but it's worth it
+                    printEtaFactor(res)
                     
 
         
@@ -628,4 +700,82 @@ def Page121Problem4(L):
             break
 
 
-                
+def Page124Problem1(L, f):
+
+    e = (L-1)/f
+    g = primRoots(L)[0]
+
+    eta = generateEtas(L, f)
+    nz = findEtaNz(eta)
+
+    # build P(X) here X = 13
+
+    P = [0] * L
+    P[0] = 13
+    P[1] = -1
+
+    p = [i for i in P]
+
+    for i in xrange(1,f):
+        tmp = cycShift(p, pow(g,i*e,L))
+        print tmp
+        P = multCyc(P, tmp)
+
+    print P
+
+    # search for power of 13
+
+    res = [[0] * L for i in xrange(f)]
+
+    # first try to calculate the constant term
+    c = P[0] - pow(13, f)
+    P[0] -= c
+    
+    for i in xrange(f,0,-1):
+        t = pow(13,i)
+        for j in xrange(L):
+            if P[j] != 0:
+                if P[j] % t == 0:
+                    res[i-1][j] = P[j] / t
+                    P[j] = 0
+
+    P[0] += c
+    res.insert(0,P)
+
+    print res
+
+    print '(%+d)' % res[0][0],
+    
+    # now see which eta is which
+    for i in xrange(1,f):
+        print '(',
+        for j in xrange(e):
+            if res[i][nz[j]] != 0:
+                print u'%+d*\u03B7%d' % (res[i][nz[j]],j),
+        print ')*X^%d' % i,
+
+    if res[f][0] != 1:
+        print 'res[f][0] not one, something wrong'
+        
+    for j in xrange(1,L):
+        if res[f][j] != 0:
+            print 'res[f] is not right'
+            break
+        
+    print '(%+d)*X^%d' % (res[f][0], f)
+
+
+
+def bbaass():
+    for i in xrange(2**6):
+        for j in xrange(6):
+            print ((i >> j) & 1),
+        print
+
+
+
+
+
+
+
+    

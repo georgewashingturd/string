@@ -3883,6 +3883,10 @@ The theme in Edwards' books (at least the one I keep seeing) is that we don't ne
 
 This also explains how many conjugates we need to test if a candidate works as a prime factor. We know that $Ng(\alpha) = p^f$ and there are $ef$ terms in $Ng(\alpha)$ but what we want is a prime factor of $p$ therefore a group of $e$ conjugates must form one $p$, thus once we get a candidate we just need to multiply $e$ conjugates to see if their product contains $p$.
 
+The next comment I have is that when factoring prime integers, say $e = 2$, so we only have two periods $\theta_0$ and $\theta_1$, once we find that say $(\theta_0 - 3)$ is a factor then we immediately know that the factorization must be $(\theta_0 - 3)(\theta_1 - 3)$. This is because we know that the norm is $Ng(\alpha) = p^f$ but the norm is also of the form $[(a + b\theta_0)(a + b\theta_1)]^f$.
+
+Finally, this is actually the same method as discussed previously on Section 4.4 for $p \equiv 1 \pmod{\lambda}$. In that case the periods are all of length 1 because that's the exponent of $p$. But periods of length one is just $\alpha^j$ and the $\eta_i \equiv u_i$ just means $\alpha \equiv k$.
+
 {\bf Page 116}. Top Page. ``the desired factor of 59 can be found by dividing by two suitable factors of 11''. Why two suitable factors? Recall that $11$ has four prime factors and what we have is
 %
 \nbea
@@ -3982,9 +3986,7 @@ Since $f = 3$ then $e = 4$, the smallest primitive root mod 13 is 2 so
 Trial and error might take a while so I wrote a Python script :) 
 %
 \begin{Verbatim}[baselinestretch=0.75]
-# print out multiplication table for periods
-def multTablePeriods(L, f):
-
+def generateEtas(L, f):
     e = (L-1)/f
 
     # create eta's
@@ -3996,15 +3998,54 @@ def multTablePeriods(L, f):
         for j in xrange(f):
             eta[i][pow(g,j*e+i,L)] = 1
 
-        print eta[i]
+        print u'\u03B7%d =' % (i), eta[i]
 
-    # first get non zero index of each eta
+    return eta
+
+def findEtaNz(eta):
+
+    e = len(eta)
+    L = len(eta[0])
+
     nz = [0] * e
+    
     for i in xrange(e):
         for j in xrange(L):
             if eta[i][j] != 0:
                 nz[i] = j
                 break
+
+    return nz
+
+# function to print sums of eta's
+def printSumEtaRaw(res, nz):
+    e = len(nz)
+    m = 0
+    for j in xrange(e):
+        if res[nz[j]] != 0:
+            if res[nz[j]] < 0:
+                print '-'
+            elif m > 0:
+                print '+',
+            print u'%d*\u03B7%d' % (abs(res[nz[j]]), j),
+            m += 1
+
+
+    if res[0] < 0:
+        print '-', abs(res[0])
+    elif res[0] > 0:
+        print '+', abs(res[0])
+    else:
+        print
+
+# print out multiplication table for periods
+def multTablePeriods(L, f):
+
+    e = (L-1)/f
+    eta = generateEtas(L, f)
+
+    # first get non zero index of each eta
+    nz = findEtaNz(eta)
 
     # now build the multiplication table if there are e periods
     # then there are e main terms plus e(e-1)/2 cross terms
@@ -4012,26 +4053,18 @@ def multTablePeriods(L, f):
     for i in xrange(e):
         res = multCyc(eta[i], eta[i])
 
-        print 'eta', i, '^2 = ',
+        print u'\u03B7%d^2 = ' % (i),
+        printSumEtaRaw(res, nz)
         
-        for j in xrange(e):
-            if res[nz[j]] != 0:
-                print '+', res[nz[j]], '* eta', j,
-
-        print '+', res[0]
 
     # now check for cross terms
     for i in xrange(e-1):
         for j in xrange(1,e):
             res = multCyc(eta[i], eta[j])
 
-            print 'eta', i, '* eta', j, ' = ',
-        
-            for o in xrange(e):
-                if res[nz[o]] != 0:
-                    print '+', res[nz[o]], '* eta', o,
-
-            print '+', res[0]
+            print u'\u03B7%d*\u03B7%d = ' % (i, j),
+            printSumEtaRaw(res, nz)
+            
 
 # find u_i corresponding to eta_i
 def FindU(L, p, e):
@@ -4087,6 +4120,31 @@ def FindU(L, p, e):
 
     return u
 
+def printEtaFactor(res):
+    ln = len(res)
+
+    for j in xrange(ln-1):
+        m = 0
+
+        print '(',
+        for i in xrange(1,ln):
+            if res[i] != 0:
+                if res[i] < 0:
+                    print '-',
+                elif m > 0:
+                    print '+',
+                print u'%d*\u03B7%d' % (abs(res[i]), ((i-1)+j) % (ln-1)),
+                m += 1
+            
+        if res[0] < 0:
+            print '-', abs(res[0]),
+        elif res[0] > 0:
+            print '+', abs(res[0]),
+        print ')',
+
+    print
+    
+
 # find factors of prime numbers   
 def Page121Problem3and5(L, p):
 
@@ -4100,22 +4158,16 @@ def Page121Problem3and5(L, p):
     e = (L-1)/f
 
     # create eta's
-    g = primRoots(L)[0]
 
-    eta = [[0] * L for i in xrange(e)]
-
-    for i in xrange(e):
-        for j in xrange(f):
-            eta[i][pow(g,j*e+i,L)] = 1
-
-        print eta[i]
+    eta = generateEtas(L, f)
 
     u = FindU(L,p,e)
 
     for i in xrange(e):
-        print 'u', i, u[i],
+        print 'u%d: %d,' % (i, u[i]),
     print
 
+    g = primRoots(L)[0]
     min_e = searchMinE(L)
     
     import itertools
@@ -4141,9 +4193,13 @@ def Page121Problem3and5(L, p):
                 cd[0] = res[0]
                 N = cycNormFast(f=cd, g=g, e=min_e)
 
+                # we actually don't need to calculate the norm
+                # we can straight away do the verification below
+                # but this serves as a double-check
+
                 if N == pow(p,f):
                     print N, res
-
+                    
                     # check result to see if we need a minus sign
                     tmp = [0] * L
                     tmp[0] = res[0]
@@ -4162,17 +4218,20 @@ def Page121Problem3and5(L, p):
                             print 'Tot is not right'
                             break
                     else:
-                        print tot[0] - tot[1]
+                        print tot[0] - tot[1], '=',
+
+                    # this is just cosmetics but it's worth it
+                    printEtaFactor(res)
 \end{Verbatim}
 %
-The weakness of this script is I always assign $\eta_i$ to $\pm u_i$ there's no clyclic permutation I can add that in the future. For  $\lambda = 13$ and $p = 61$ the result is
+The weakness of this script is I always assign $\eta_i$ to $\pm u_i$ there's no cyclic permutation I can add that in the future. For  $\lambda = 13$ and $p = 61$ the result is
 %
 \nbea
 61 & = & (1 + \eta_0 + \eta_2 - \eta_3)(1 + \eta_1 + \eta_3 - \eta_0)(1 + \eta_2 + \eta_0 - \eta_1)(1 + \eta_3 + \eta_1 - \eta_2)
 \neea
 %
 
-{\bf page 121, Problem 4}. We need to calculate the next prime with exponent 2 mod $\lambda=5$. The next prime is 109. We need to solve $u^2 + u - 1 \equiv 0 \pmod{109}$ the solutions are $10, -11$.So what we have is $a + 10b - 11c \equiv 0 \pmod{109}$ but again we can use the script above to immediately get the solution
+{\bf Page 121, Problem 4}. We need to calculate the next prime with exponent 2 mod $\lambda=5$. The next prime is 109. We need to solve $u^2 + u - 1 \equiv 0 \pmod{109}$ the solutions are $10, -11$.So what we have is $a + 10b - 11c \equiv 0 \pmod{109}$ but again we can use the script above to immediately get the solution
 %
 \nbea
 109 & = & (\eta_0 - 10)(\eta_1 - 10)
@@ -4237,8 +4296,7 @@ u_0^2 & \equiv & 2u_0 + 3(-1-u_0) + 6 \\
 0 & \equiv & u_0^2 + u_0 - 3
 \neea
 %
-
-Using the Python script from Problem 3 we get
+I then fed these relationships among the $u$'s to the Python script above which resulted in
 %
 \nbea
 3 & = & \eta_0 \eta_1 \eta_2 \eta_3 \\
@@ -4247,6 +4305,177 @@ Using the Python script from Problem 3 we get
 \neea
 %
 with the understanding that the $\eta_0$ for 3 is different from the one for 5 and 17 since the period lengths are all different for each of the primes.
+
+{\bf Page 124}. Last major paragraph of the proof, first ``$\psi(\alpha)\alpha,\psi(\alpha)\alpha^2,\dots,\psi(\alpha)\alpha^\lambda = \psi(\alpha)$ are all nonzero mod $h(\alpha)$ (because $h(\alpha)$ is prime)''. This is because otherwise $\psi(\alpha)\alpha^j \equiv 0 \pmod{h(\alpha)}$ but since $h(\alpha)$ is prime it must divide either $\psi(\alpha)$ or $\alpha^j$ but both are not divisible by $h(\alpha)$.
+
+Second, ``because $\psi(\alpha)\alpha^j \equiv \psi(\alpha)\alpha^k$ would imply $\alpha^j \equiv \alpha^k$''. This is because otherwise
+%
+\nbea
+\psi(\alpha)\alpha^j \equiv \psi(\alpha)\alpha^k \to \psi(\alpha)\alpha^j - \psi(\alpha)\alpha^k \equiv 0 \pmod{h(\alpha)}
+\neea
+%
+which means that $h(\alpha)$ either divides $\psi(\alpha)$ or $\alpha^j - \alpha^k$.
+
+Lastly, ``$\psi(\alpha)\alpha^j \equiv \alpha^i$ would imply $\psi(\alpha) \equiv \alpha^k$'', again, otherwise $\psi(\alpha)\alpha^j - \alpha^i \equiv 0 \pmod{h(\alpha)}$ and since $h(\alpha)$ is prime it must either divide $\psi(\alpha)$ or $\psi(\alpha) - \alpha^{i-j}$.
+
+
+{\bf Page 124}. Last major paragraph of the proof, when counting nonzero incongruent cyclotomic integers the funny thing here is that going from $\alpha,\alpha^2,\dots,\alpha^\lambda = 1$ to the next nonzero incongruent ones we just multiply them $\alpha^j\psi(\alpha)$ instead of $\alpha^j + \alpha^k\psi(\alpha)$ which is done in Problem 4 to count that there are $p^n$ elements in the group $S$. This is because we are only counting the nonzero ones while Problem 4 includes zero. See Problem 4 for more detail.
+
+{\bf Page 124, Problem 1}. Here we want to calculate $P(X)$ of Page 122 for different $\lambda$ and $f$.
+
+%
+\nbea
+\begin{array}{r c l c r c l c l}
+\lambda & = & 5 &~& f & = & 2 & \to & 1 - \eta_0 X  + X^2 \\
+\lambda & = & 7 &~& f & = & 2 & \to & 1 - \eta_0 X  + X^2 \\
+\lambda & = & 11 &~& f & = & 5 & \to & - 1 + 157 \eta_1 X  - 157 \eta_0 X^2  + X^5 \\
+\lambda & = & 13 &~& f & = & 3 & \to & -1 + \eta_2 X -\eta_0 X^2 + X^3 \\
+\lambda & = & 31 &~& f & = & 5 & \to & e -1 + \eta_3 X - (\eta_4 -\eta_5)X^2  + (\eta_1 + \eta_2 )X^3  - \eta_0 X^4 + X^5
+\end{array}
+\neea
+%
+again this was all done using a Python script
+%
+\begin{Verbatim}[baselinestretch=0.75]
+def Page124Problem1(L, f):
+
+    e = (L-1)/f
+    g = primRoots(L)[0]
+
+    eta = generateEtas(L, f)
+    nz = findEtaNz(eta)
+
+    # build P(X) here X = 13
+
+    P = [0] * L
+    P[0] = 13
+    P[1] = -1
+
+    p = [i for i in P]
+
+    for i in xrange(1,f):
+        tmp = cycShift(p, pow(g,i*e,L))
+        print tmp
+        P = multCyc(P, tmp)
+
+    print P
+
+    # search for power of 13
+
+    res = [[0] * L for i in xrange(f)]
+
+    # first try to calculate the constant term
+    c = P[0] - pow(13, f)
+    P[0] -= c
+    
+    for i in xrange(f,0,-1):
+        t = pow(13,i)
+        for j in xrange(L):
+            if P[j] != 0:
+                if P[j] % t == 0:
+                    res[i-1][j] = P[j] / t
+                    P[j] = 0
+
+    P[0] += c
+    res.insert(0,P)
+
+    print res
+
+    print '(%+d)' % res[0][0],
+    
+    # now see which eta is which
+    for i in xrange(1,f):
+        print '(',
+        for j in xrange(e):
+            if res[i][nz[j]] != 0:
+                print u'%+d*\u03B7%d' % (res[i][nz[j]],j),
+        print ')*X^%d' % i,
+
+    if res[f][0] != 1:
+        print 'res[f][0] not one, something wrong'
+        
+    for j in xrange(1,L):
+        if res[f][j] != 0:
+            print 'res[f] is not right'
+            break
+        
+    print '(%+d)*X^%d' % (res[f][0], f)
+\end{Verbatim}
+%
+
+{\bf Page 124, Problem 2}. If you multiply all of them $(\alpha^3 + 3\alpha^2 + 12\alpha - 1)(\alpha^3 - 14\alpha^2 + 5\alpha - 1)(\alpha^3-12\alpha^2-3\alpha-1)(\alpha^3 - 5\alpha^2 + 14\alpha - 1)$ you get
+%
+\nbea
+\alpha^{12}-28\alpha^{11}+233\alpha^{10}-666\alpha^9+2611\alpha^8-8090\alpha^7+30103\alpha^6-8090\alpha^5+\\
+2611\alpha^4-666\alpha^3+233\alpha^2-28\alpha+1
+\neea
+%
+But $-28 \equiv 233 \equiv -666 \equiv 2611 \equiv -8090 \equiv 30103 \equiv 1 \pmod{29}$, thus the whole thing is $\equiv \alpha^{12} + \alpha^{11} + \alpha^{10} + \dots + 1 \equiv 0 \pmod{29}$. This is actually a cool technique, factoring a polynomial mod $p$ using cyclotomic integers. We finally learn an application of cyclotomic integers :)
+
+{\bf Page 125, Problem 3}. So first thing to do is to get $P(X)$ of page 122. To choose $e$ and $f$ we set $f$ to be the exponent of prime $p$ mod $\lambda$. Once we get $P(X)$ we need the congruences $\eta_i \equiv u_i$, these we get from factoring $p$ using the technique of Section 4.7.
+
+First one we to to factorize is $X^4 + X^3 + X^2 + X + 1$ mod $19$, mod $59$ and mod $41$. Here $\lambda = 5$, the corresponding exponents $f$ are $2, 2, 1$ respectively. The $P(X)$ is $X^2 - \eta_0X + 1$ and $X - \alpha$ respectively.
+
+For $p = 19$, we have $\eta_0 \equiv 4, \eta_1 \equiv -5$. So the factors are $(X^2 - 4X + 1)(X^2 +5X + 1) = X^4+X^3-18X^2+X+1$ and $-18 \equiv 1 \pmod{19}$ so it works.
+
+For $p = 59$, $\eta_0 \equiv 25, \eta_1 \equiv -26$. So the factors are $(X^2 - 25X + 1)(X^2 +26X + 1) = X^4+X^3-648X^2+X+1$ and $-648 \equiv 1 \pmod{59}$ so it works.
+
+For $p = 41$ this is different since the exponent is 1, \ie $41 \equiv 1 \pmod{5}$. Therefore $P(X) = X - \alpha$ and if we substitute $X = \alpha$ we just get $0 = 0$. But we should not just follow a formula blindly. The crux of the method in Problem 2 is that we want to multiply $f$ number of cyclotomic integers where each of them contains a different conjugation of a prime factor of $p$.
+
+In the case of $p = 41$, from Page 98 we know that the prime factor of $p$ divides $\alpha + 4 \to \alpha \equiv -4$, therefore $(\alpha - (-4))$ contains one conjugate of the prime factor of $p$, another conjugate would be contained in $\alpha^2 \equiv -4$ here $\lambda = 5, \alpha^5 = 1$ so $(\alpha^2)^3 \equiv \alpha \equiv (-4)^3$, yet another conjugate is in $\alpha^3 \equiv -4 \to (\alpha^3)^2 \equiv \alpha \equiv (-4)^2$ and the last one is in $\alpha^4 \equiv -4 \to (\alpha^4)^4 \equiv \alpha \equiv (-4)^4$ so the factorization is
+%
+\nbea
+(\alpha -(-4))(\alpha -(-4)^3)(\alpha -(-4)^2)(\alpha -(-4)^4) & = & \alpha^4-204\alpha^3-14144\alpha^2+208896\alpha+1048576
+\neea
+%
+and $-204 \equiv -14144 \equiv 208896 \equiv 1048576 \equiv 1 \pmod{41}$ :)
+
+Next, for $\lambda = 7$ we have $p = 3, 13, 29$ their exponents $f$ are $6, 2, 1$ respectively. An exponent of $6$ means that the prime factors of $3$ are just $3$ time some units. That means that there is only one period of length 6 and as it is $\eta_0 = \alpha^6 + \alpha^5 + \dots + \alpha = -1$ so it means that there can be no cyclic permutation. And if we insist of building $P(X)$ it will be of order $X^6$ and it actually won't work because substituting $X=\alpha$ will just give you zero because $\eta_0 = -1$.
+
+But this actually hints that we cannot factor $X^6 + X^5 + \dots + 1 \equiv 0 \pmod{3}$ and the hint says that the number of factors is $e$ where in this case is 1. Indeed since the prime factor of 3 is just 3 times some unit if we can factor the above one of its factor has to be a multiple of 3 which means that the whole thing is a multiple of 3. Or at leaast we cannot factor it using this method.
+
+For 13 its exponent $f = 2$ so $e = 6$, expect 6 factors. The $P(X)$ is $X^2 - \eta_0X + 1$, from Table 4.7.5 the possible values are $-3, -5, -6$ rotating the three we get
+%
+\nbea
+(X^2 + 3X + 1)(X^2 + 5X + 1)(X^2 + 6X + 1) & = & X^6+14X^5+66X^4+118X^3+66X^2+14X+1
+\neea
+%
+where $14\equiv66\equiv118\equiv1\pmod{3}$.
+
+For $29$ the exponent $f=1$ so $e = 6$ but again this is like the case of $p = 41, \lambda = 5$, the $P(X) = 0$ so we need to do something similar to what we did with $p = 41$. From Page 100 we know that the prime factor of 29 divides $\alpha + 4$ so again in this case $\alpha \equiv -4$, other conjugates of prime factor of $29$ are in $(\alpha^2)^4 \equiv (-4)^4$, $(\alpha^3)^5 \equiv (-4)^5$, $(\alpha^4)^2 \equiv (-4)^2$, $(\alpha^5)^3 \equiv (-4)^3$, $(\alpha^6)^6 \equiv (-4)^6$
+%
+\nbea
+&& (X-(-4))(X-(-4)^4)(X-(-4)^5)(X-(-4)^2)(X-(-4)^3)(X-(-4)^6) \\
+&& ~~~~~~~ = X^6-3276X^5-3581760X^4+899297280X^3+58683555840X^2-879394553856X \\
+&& ~~~~~~~~~~~~~-4398046511104
+\neea
+%
+and as usual the coefficients are all $\equiv 1 \pmod{29}$.
+
+The last part of the question is factoring $X^{30} + X^{29} + \dots + 1 \pmod{2}$. The exponent is $f = 5$ with $e = 6$. We don't have $\eta$ for $\lambda = 31$. If we calculate $P(X)$ we get $X^5 - \eta_0 X^4 + (\eta_1 + \eta_2) X^3 -(\eta_4 + \eta_5)X^2 +\eta_3X - 1$.
+
+And since it is mod 2 the only choices for $u$ will be $0,1$. So there are only $2^6 = 64$ combinations to try for these $\eta$'s.And a combination that works is $\eta_0 = 1, \eta_1 = 1, \eta_2 = 0, \eta_3 = 1, \eta_4 = 0, \eta_5 = 0$
+%
+\nbea
+(X^5+X^3-2X^2-1)(X^5+X^3-X^2+X-1)(X^5+2X^3-X^2-1) \times \\
+(X^5-X^4-X^2+X-1)(X^5-X^4+X^3+X-1)(X^5-X^4+X^3-X^2-1)
+\neea
+%
+resulting in
+%
+\nbea
+X^{30}-3X^{29}+9X^{28}-23X^{27}+47X^{26}-93X^{25}+161X^{24}-263X^{23}+399X^{22}-561X^{21}+\\
+759X^{20}-949X^{19}+1141X^{18}-1295X^{17}+1389X^{16}-1439X^{15}+1389X^{14}-1295X^{13}+\\
+1141X^{12}-949X^{11}+759X^{10}-561X^9+399X^8-263X^7+\\
+161X^6-93X^5+47X^4-23X^3+9X^2-3X+1
+\neea
+%
+and every coefficient is odd thus it is equivalent to $X^{30} + X^{29} + \dots + 1 \pmod{2}$.
+
+We don't care about the factorization of $p$ itself, as mentioned above in the exercises choosing different $\eta_i \equiv u_i$ generate different factorizations.
+
+Exponent of 2 mod 31 is 5.
+
 
 
 
