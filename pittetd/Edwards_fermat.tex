@@ -3484,9 +3484,9 @@ def Problem3(L):
 %
 \begin{enumerate}
 %
-\item {\bf Proposition 110.0} A cyclotomic integer is invariant under $\sigma^e$ if and only if it is made of periods.
+\item {\bf Proposition 110.0} A cyclotomic integer is invariant under $\sigma^e$ if and only if it is made of periods and constants.
 
-{\it Proof}. The only if part is easy, if it's made of periods it's of course invariant under $\sigma^e$. The other way is also easy. To be invariant under $\sigma^e$ means that if any $\alpha^j$ is part of the cyclotomic integer $\sigma^e \alpha^j$ must be in as well which in turn means that since $\sigma^e \alpha^j = \alpha^k$ is in then $\sigma^e \alpha^k = \sigma^{2e} \alpha^j$, etc are also in. But this is the definition of periods $\eta_i = \sum_{u = 0}^{f-1} \sigma^{ue} \alpha^j$ and we are done :)
+{\it Proof}. The constant part is obvious. The only if part is easy, if it's made of periods it's of course invariant under $\sigma^e$. The other way is also easy. To be invariant under $\sigma^e$ means that if any $\alpha^j$ is part of the cyclotomic integer $\sigma^e \alpha^j$ must be in as well which in turn means that since $\sigma^e \alpha^j = \alpha^k$ is in then $\sigma^e \alpha^k = \sigma^{2e} \alpha^j$, etc are also in. But this is the definition of periods $\eta_i = \sum_{u = 0}^{f-1} \sigma^{ue} \alpha^j$ and we are done :) 
 
 In other words products and sums and product of sums and sums of products of periods (and other combinations) are also a period. We need this fact because we want to express $\theta_0^2 = a\theta_0 + b\theta_1$ (only in terms of periods), we can always remove the constant term (or any period $\theta_i$) using the identity $\theta_0 + \theta_1 = -1$.
 %
@@ -3700,6 +3700,14 @@ Again, we can always express a prime $p$ as $p \equiv \gamma^j \pmod{\lambda}$, 
 {\bf Page 113}. Top page, note that what was proven in the previous page is $X^p - X \equiv (X - 1)(X - 2) \dots (X - p) \pmod{p}$. However, in this page what we have is $g(\alpha)^p - g(\alpha) \equiv (g(\alpha) - 1)(g(\alpha) - 2)\dots (g(\alpha) - p) \pmod{p}$. So we cannot say that the product on the RHS is a product of $p$ consecutive integers just like when we prove the case for integer $X$.
 
 But from Page 112 bottom paragraph, the purpose of proving the integer case is to show that the coefficients of $X^p - X - (X - 1)(X - 2) \dots (X - p)$ are all multiples of $p$. Of course these are the coefficients once we've multiplied everything out not the coefficients as they are now. Since the cyclotomic integers $g(\alpha)^p - g(\alpha) - (g(\alpha) - 1)(g(\alpha) - 2)\dots (g(\alpha) - p)$ has the same coefficients they are also $0 \pmod{p}$.
+
+{\bf Page 113}. Top page, about the proof of the Theorem. Note that in cyclotomic integers the normal prime integers are generally no longer prime cyclotomic. In this proof we have
+%
+\nbea
+[g(\alpha) - 1][g(\alpha) - 2] \dots [g(\alpha) - p] & \equiv & 0 \pmod{p}
+\neea
+%
+but it doesn't mean that $p|[g(\alpha) - 1]$ or $p|[g(\alpha) - 2]$ and so on, it's because $p$ is no longer prime cyclotomic. This is why the proof immediately switches to mod $h(\alpha)$ which is indeed prime cyclotomic.
 
 {\bf Page 114, Problem 1}. Here we are computing Pascal triangle up to $n = 13$ and verifying that the coefficients are multiple of $n$ when $n$ is prime
 %
@@ -4306,6 +4314,12 @@ I then fed these relationships among the $u$'s to the Python script above which 
 %
 with the understanding that the $\eta_0$ for 3 is different from the one for 5 and 17 since the period lengths are all different for each of the primes.
 
+{\bf Page 122}. Top page, ``$P(X)$ depends only on which powers of $\alpha$ lie in the same period $\eta_0$ $\dots$ Therefore, in the examples, the coefficients $\dots$ must all be independent of the choice $\gamma$.'' I'm not convinced by this and I have a counter example. I noticed that this might not be true when doing Problem 3.
+
+The problem is that $\eta_0^2$ is also a polynomial that depends only on powers of $\alpha$ that lie only in $\eta_0$ but we all know that $\eta_0^2$ involves other $\eta$'s. This is because a product of $\alpha^j\cdot\alpha^k$ both in $\eta_0$ can result in $\alpha^l$ which is in another $\eta$.
+
+{\bf Page 122}. Top page, we can see that the coefficients of $P(X)$ are all made up of periods because from its definition $P(X) = \prod_{i=1}^f (X - \sigma^{ei} \alpha)$ which means that $P(X)$ is invariant under $\sigma^e$ and according to Proposition 110.0 (or if you think about it enough) $P(X)$ can only be made of periods and constants.
+
 {\bf Page 124}. Last major paragraph of the proof, first ``$\psi(\alpha)\alpha,\psi(\alpha)\alpha^2,\dots,\psi(\alpha)\alpha^\lambda = \psi(\alpha)$ are all nonzero mod $h(\alpha)$ (because $h(\alpha)$ is prime)''. This is because otherwise $\psi(\alpha)\alpha^j \equiv 0 \pmod{h(\alpha)}$ but since $h(\alpha)$ is prime it must divide either $\psi(\alpha)$ or $\alpha^j$ but both are not divisible by $h(\alpha)$.
 
 Second, ``because $\psi(\alpha)\alpha^j \equiv \psi(\alpha)\alpha^k$ would imply $\alpha^j \equiv \alpha^k$''. This is because otherwise
@@ -4472,9 +4486,213 @@ X^{30}-3X^{29}+9X^{28}-23X^{27}+47X^{26}-93X^{25}+161X^{24}-263X^{23}+399X^{22}-
 %
 and every coefficient is odd thus it is equivalent to $X^{30} + X^{29} + \dots + 1 \pmod{2}$.
 
-We don't care about the factorization of $p$ itself, as mentioned above in the exercises choosing different $\eta_i \equiv u_i$ generate different factorizations.
+Note that in solving this problem we don't care about the factorization of $p$ itself, as mentioned above in the exercises choosing different $\eta_i \equiv u_i$ generate different factorizations. What we need is just the integers $u_i$.
 
-Exponent of 2 mod 31 is 5.
+{\bf Page 125, Problem 4}. We are counting the number of incongruent cyclotomic integers mod $h(\alpha)$ and it should be a power of $p$. This is similar to the counting of the number of incongruent nonzero elements of $S$ on Page 124. The difference here is that we also include zero. 
+
+Following the hint, we start with $p$ incongruent integers $0,1,2,\dots,p-1$ mod $h(\alpha)$. If these exhaust the number of incongruent integers mod $h(\alpha)$ then we are done. If not then there is $g_1(\alpha)$ incongruent to all these then $a + bg_1(\alpha)$ are incongruent to each other, these already include $0,1,2,\dots,p-1$ because $0 \le a, b < p$. How do we know that they are incongruent among themselves? if $b$ is zero then it's obvious if $a$ is zero then if $b'g_1(\alpha) \equiv b''g_1(\alpha)$ then $b' \equiv b''$ but if $b' \neq b''$ then it's not possible.
+
+How many numbers do we have now? Since $0 \le a,b < p$ we have $p^2$ incongruent numbers. If these exhaust everything we are done if not then we have another $g_2(\alpha)$ incongruent to all these and $a + bg_1(\alpha) + cg_2(\alpha)$, $0 \le a,b,c <p$ are the new set of incongruent integers and there are $p^3$ of them. They are all incongruent because
+%
+\nbea
+a' + b'g_1(\alpha) + c'g_2(\alpha) & \equiv & a'' + b''g_1(\alpha) + c''g_2(\alpha) \pmod{h(\alpha)} \\
+\to (a' - a'') + (b' - b'')g_1(\alpha) & \equiv & (c'' - c') g_2(\alpha) \pmod{h(\alpha)}
+\neea
+%
+but this is inconsistent with the fact that
+%
+\nbea
+A + B g_1(\alpha) & \not\equiv & g_2(\alpha) \pmod{h(\alpha)} \\
+\to (CA) + (CB) g_1(\alpha) &\not\equiv & C g_2(\alpha) \pmod{h(\alpha)} 
+\neea
+%
+for any $C \neq 0$ therefore they are all incongruent. And so on and so on :)
+
+{\bf Page 125, Problem 5}. We want to see which primes in Table 4.7.2 divide $7\alpha^3 + 45\alpha^2 + 83\alpha + 90$ (note that we are not factoring this thing just finding out which prime factor divides it). Note that Table 4.7.2 is $\lambda = 5, f = 2$. Since this problem is in Section 4.8 we should use what we learn in this section to solve this, no brute forcing :)
+
+First we need to massage the cyclotomic integer into $g_1(\eta)\alpha + g_2(\eta)$ like on Page 122. We then substitute $\eta_i \equiv u_i$ and see if the resulting $a_1 \alpha + a_2 \equiv 0 h(\alpha)$ where $a_i = g_i(u)$.
+
+For this we need $P(X)$ and for $\lambda = 5, f = 2$ it is simple enough $P(X) = X^2 - \eta_0X + 1$ and so $\alpha^2 = \eta_0\alpha - 1$ and $\eta_0^2 = \eta_1 + 2 = -1 - \eta_0 + 2 = 1 - \eta_0$ thus we have
+%
+\nbea
+7\alpha^3 + 45\alpha^2 + 83\alpha + 90 & = & \alpha(38 \eta_0 + 83) + (45 - 7\eta_0)
+\neea
+%
+We now go to Table 4.7.2 at heeding the hint, we need to also check the conjugates, say for the first line of the table $\theta_0 \equiv 4, \theta_1 \equiv -5$ the conjugate will have $\theta_1 \equiv 4, \theta_0 \equiv -5$ and so on. And the Theorem in the section says that each coefficient must be zero for the whole thing to be $\equiv 0 \pmod{h(\alpha)}$. Another thing to note is that this Theorem only applies to cyclotomic integers with degree less than $f$, this is why we need to massage it above. So we look for $38 u_0 + 83 \equiv 45 - 7u_0 \equiv 0 \pmod{p}$.
+
+Trying out different rows from the table we get $29$ and $79$ as the factors with $\theta_0 \equiv -6$ for 29 and $\theta_0 \equiv 29$ for 79.
+
+{\bf Page 125, Problem 6}. I was initially confused by this. I think the {\it if only if} part only applies to the property of $Q_h(\alpha)$ not to the existence of it. Because otherwise the only if part will read {\it if $g(X) = q(X)Q_h(X) + r(X)$ with each coefficient of $r(X) \equiv 0\pmod{p}$ then there is $Q_n(\alpha) \dots$} which doesn't make sense since we already used $Q_h(X)$ before proving that it exists.
+
+So basically what it's asking is that we can always find $Q_h(\alpha)$ with the property that if $h(\alpha) | g(\alpha)$ then $g(X) = q(X)Q_h(X) + r(X)$ where coefficients of $r(X)$ are all $0 \pmod{p}$ and that if $g(X) = q(X)Q_h(X) + r(X)$ with coefficients of $r(X) \equiv 0\pmod{p}$ then $h(\alpha)|g(\alpha)$.
+
+Well, this $Q_h(\alpha)$ is $P(\alpha)$ and we are done :) well almost, we need to replace each period with its counterpart $u_i$ then we are really done.
+
+
+
+
+
+
+
+{\bf Page 128}. Bottom page, proof of Proposition. Possible values mod $p$ now has more than just $0,1,2,\dots, p-1$ this is because cyclotomic integers are also included otherwise it's very easy to prove that we can find a unique $u_i$ mod $p$ for each $\eta_i$. This is because if there are only $p$ valid values mod $p$ like above then $j - \eta_i$ can only take $p$ different values mod $p$ and all of them must be unique because otherwise $j_1 -\eta_i \equiv j_2 -\eta_i$ means $j_1 \equiv j_2$ mod $p$. And the proof of the Proposition is immediately completed :)
+
+{\bf Page 128}. My summary on the proof of the Proposition. I was initially very confused by all this. The key is to remember that prime integers are no longer cyclotomic prime in general. Another thing to note is that no $j - \eta_i$ is actually divisible by $p$.
+
+This latter fact is because for a cyclotomic integer to be divisible by an integer $a$ all of its coefficients must have the same value mod $a$ as noted on Page 85. But a period's coefficients are just $0$ and $1$ (except for periods with length $\lambda - 1$). And so $j - \eta_i$ has coefficients of $j ,0,-1$ which can't be made to be equal to each other mod $p$.
+
+The other thing I couldn't initially understand was how and why we need $\psi(\eta)$. If we are right that none of $j - \eta_i$ is divisible by $p$ then how do we get $j - \eta_i \equiv 0 \pmod{p}$? The answer is we don't. What we have is $(j - \eta_i)\psi(\eta) \equiv 0 \pmod{p}$. 
+
+The whole product is zero not individual terms, again this is because $p$ is not longer prime and so the product can be divisible by $p$ while each term is not. And this is why we need $\psi(\eta)$ because we can't have individual terms to be 0 mod $p$.
+
+Having cleared this confusion let's see an example on how to build $\psi(\eta)$. First problem I had was how do I chose which $j - \eta$ to start with, how do I know which one is not divisible by $p$. But according to my understanding above each $j - \eta$ is not divisible by $p$ so we can choose anyone. But if that's the case what will happen if we actually start with the actual $u - \eta$ as a starting point and will it still work. If $u - \eta$ is part of $\psi(\eta)$ why is $\psi(\eta)$ not divisible by $p$? 
+
+Another thing I was confused about was that a cyclic permutation of the $u$'s is also a solution. Doesn't it mean that there are two $u$'s for each $\eta$? But the proof explicitly says that there is only one $u$ for each $\eta$. Let's see this with an example.
+
+Take $\lambda = 5$ and $p = 19$, in Section 4.7 we know that the prime factors of $19$ is $(\eta_0 - 4)(\eta_1 - 4)$ or $(\eta_0 + 5)(\eta_1 + 5)$, in the first case we have $\eta_0 \equiv 4, \eta_1 \equiv -5$ and in the second case we have $\eta_0 \equiv -5, \eta_1 \equiv 4$.
+
+We can start with {\bf any} $j - \eta$ we want. Say we start with $\psi(\eta) = \eta_0 - 4$. Even though $\eta_0 \equiv 4$ is one of the solution for $u$ this is fine. What this means is that with this choice of $\psi(\eta)$ we can't have $\eta_0 \equiv 4$ because $(\eta_0 - 4)\psi(\eta)$ can not be 0 mod $p$. Another thing this decides is $\eta_1 \equiv 4$ (which means $\eta_0 \equiv -5$) because $(\eta_1 - 4)\psi(\eta) = (\eta_0 - 4)(\eta_1 - 4) = 19 = p$. Which means that $\eta_1 \not\equiv -5$. A starting point of $\psi(\eta) = \eta_1 + 5$ will also produce the same $\eta_0$.
+
+Had we started with $\psi(\eta) = \eta_1 - 4$ then we automatically set $\eta_0 \equiv 4$ and $\eta_1 \equiv -5$. But in this case we have a different $\psi(\eta)$ from our previous choice. Of course, with this choice, for the next step we cannot include $\eta_0 - 4$ in $\psi(\eta)$.
+
+What this means is that if $\psi(\eta)$ already contains one set of the $u$'s then it will not accept another one. In other words, for every set of $u$, in the first example above $\eta_0 \equiv -5, \eta_1 \equiv 4$, we have a unique $\psi(\eta)$. So for each cyclic permutation we have a new $\psi(\eta)$.
+
+
+{\bf Page 133, Problem 5}. We need to show that the coefficients of $(X - \eta_1)(X - \eta_2) \dots (X - \eta_e)$ are all integers. The coefficients of $X^e$ is 1 so it is an integer, the coefficient of $X^0$ is a product of $(-1)^e\eta_0\eta_1\eta_2 \dots \eta_e$ and this is clearly invariant under $\sigma^j$ because what $\sigma^j$ does is $j$ cyclic permutations, since the product contains all $\eta$'s any cyclic permutation leaves it invariant.
+
+For other coefficients, say that of $X^i$, it is made of all product of $e - i$ number of $\eta$'s, \ie $e$ choose $i$ $\eta$'s. Since it contains all possible combinations of $e$ choose $i$ eta, any cyclic permutations will leave it invariant. The only possible problem is that each term in the coefficient has a different sign from the other. But this is not so because each $e$ choose $i$ term will have $(-1)^i$ as its sign.
+
+We now need to calculate all coefficients up to $\lambda = 13$, the only valid values for $\lambda$ are $\lambda = 3, 5, 7, 11, 13$. Again, it's easier to write the Python script for this Problem :) But for the Python script it's easier to calculate it directly rather than trying to use the multiplication table.
+%
+\begin{Verbatim}[baselinestretch=0.75]
+def Page133Problem5(L):
+
+    import itertools
+    # we need to get all possible values of e
+
+    for e in xrange(2,L):
+        print 'e = %d' % e
+        if (L-1) % e == 0:
+            f = (L-1)/e
+            
+            eta = generateEtas(L,f)
+            nz = findEtaNz(eta)
+
+            # don't forget to set the minus sign
+            for i in xrange(e):
+                eta[i] = [-1*j for j in eta[i]]
+
+            t = [i for i in range(0,e)]
+    
+            for y in xrange(1,e+1):
+        
+                l = itertools.combinations(t, y)
+
+                tot = [0] * L
+                for i in l:
+                    # create individual products
+                    res = [0] * L
+                    res[0] = 1
+                    for j in i:
+                        res = multCyc(res, eta[j])
+
+                    tot = addCyc(tot, res)
+
+                # check that tot has same elements from [1:end]
+                for i in xrange(2,L):
+                    if tot[i] != tot[i-1]:
+                        print 'Something Wrong'
+                else:
+                    print '%d*X^%d' % (tot[0] - tot[1], e - y)
+\end{Verbatim}
+%
+The answers are
+%
+\nbea
+\begin{array}{r c l c r c l c l}
+\lambda & = & 3 &, & e & = & 2 & \to & X^2 + X + 1 \\
+\lambda & = & 5 &, & e & = & 2 & \to & X^2 + X + 1 \\
+\lambda & = & 5 &, & e & = & 4 & \to & X^4 + X^3 + X^2 + X + 1 \\
+\lambda & = & 7 &, & e & = & 2 & \to & X^2 + 2X + 3 \\
+\lambda & = & 7 &, & e & = & 3 & \to & X^3 + X^2 - 2X - 1 \\
+\lambda & = & 7 &, & e & = & 6 & \to & X^6 + X^5 + X^4 + X^3 + X^2 + X + 1 \\
+\lambda & = & 11 &, & e & = & 2 & \to & X^2 + X + 3 \\
+\lambda & = & 11 &, & e & = & 5 & \to & X^5 + X^4 - 4X^3 - 3X^2 + 3X + 1 \\
+\lambda & = & 11 &, & e & = & 10 & \to & X^{10} + X^9 + X^8 + X^7 + X^6 + X^5 + X^4 + X^3 + X^2 + X + 1 \\
+\lambda & = & 13 &, & e & = & 2 & \to & X^2 + X - 3 \\
+\lambda & = & 13 &, & e & = & 3 & \to & X^3 + X^2 - 4X + 1 \\
+\lambda & = & 13 &, & e & = & 4 & \to & X^4 + X^3 + 2X^2 - 4X + 3 \\
+\lambda & = & 13 &, & e & = & 6 & \to & X^6 + X^5  - 5X^4 - 4X^3 + 6X^2 + 3X - 1 \\
+\lambda & = & 13 &, & e & = & 12 & \to & X^{12} + X^{11} + X^{10} + X^9 + X^8 + X^7 + X^6 + X^5 + X^4 + X^3 + X^2 + X + 1
+\end{array}
+\neea
+%
+Something interesting here is that for $e = \lambda - 1$ we have $\sum_{i=0}^{\lambda - 1} X^i$. This is obvious because the polynomial is $\prod_{i=1}^{\lambda - 1}(X - \alpha^i)$ and any $\alpha^j$ is now a root but the constant factor is always 1 because it's the product of $(-1)^{\lambda - 1}\prod_{i=1}^{\lambda - 1} \alpha^i =(+1) \alpha^{\frac{\lambda(\lambda - 1)}{2}} = 1$ so when we set $X = \alpha$ the sum of the powers of $\alpha$ must be $-1$ and the result follows.
+
+{\bf Proposition 133.0} {\it The sum of all combinations of $m = \lambda - 1$ choose $n$ of products of $n$ $\alpha^j$ is $(-1)^n$}.
+
+{\it Proof}. What is says is that, \eg $m=5 - 1 = 4$ and $n = 3$ then what we have is
+%
+\nbea
+\alpha^{1}\alpha^{2}\alpha^{3} + \alpha^{1}\alpha^{2}\alpha^{4} + \alpha^{1}\alpha^{3}\alpha^{4} + \alpha^{2}\alpha^{3}\alpha^{4} = -1
+\neea
+%
+From the above solution to Problem 5 the answer is obvious. We can also prove this by counting and induction but it's very cumbersome. The idea is like so, let $m = 4$ like above and start with $n = 1$ in this case the sum is just $\sum_{i=1}^{4} \alpha^i = -1$ which is obvious. We then move to $n = 2$. To do this start with
+%
+\nbea
+(-1)^2 = (\alpha^4 + \alpha^3 + \alpha^2 + \alpha)^2 & = & (\alpha^3 + \alpha + \alpha^4 + \alpha^2) + 2({\rm cross~terms})
+\neea
+%
+The first bracket in the RHS is what I call the main term and it amounts to $-1$. The LHS is $+1$. The cross terms are what we want and so
+%
+\nbea
+2 & = & 2 ({\rm cross~terms})
+\neea
+%
+Thus the cross terms sum to 1 which is consistent with the Proposition. Next is $n = 3$, it's easier if we denote $x = \alpha, y = \alpha^2, z = \alpha^3, w = \alpha^4$. Again we start with
+%
+\nbea
+(-1)^3 = (x^4 + y^3 + z^2 + w)^3 & = & (x^2 + y^4 + x + w^3) + 3x^2(y + z + w) + {\rm cyclic~permutation} + \\
+&& 6({\rm cross~terms})
+\neea
+%
+The cyclic permutations on the RHS means $3y^2(x + z + w)$ and so on. What we see here is that the bracket in the $3\cdot^2(\cdot + \cdot + \cdot)$ term is just the cross term in $m$ choose $1$ minus the leading term outside the bracket. So for $3x^2(y + z + w)$ it is equal to $3x^2(-1 - x) = -3x^2 - 3x^3$, combining with other cyclic permutations we get
+%
+\nbea
+-3(x^2 + y^2 + z^2 + w^2) - 3(x^3 + y^3 + z^3 + w^3) & = & 3 + 3 \\
+& = & 6
+\neea
+%
+The LHS is $-1$, the main term is also $-1$, the cyclic permutations add to $+6$ so 
+%
+\nbea
+0 & = & 6 + 6({\rm cross ~ terms})
+\neea
+%
+Thus the cross terms add to $-1$. The same idea applies when we go to $n = 4$ the only difference this time is that the cyclic permutation terms are more complicated, we'll get something like
+%
+\nbea
+12 x^2 (yz + yw + wz) + {\rm cyclic ~ permutation}
+\neea
+%
+This time the terms in bracket is just the cross terms for $n = 2$ without the leading term thus
+%
+\nbea
+12 x^2 (yz + yw + wz) & = & 12 x^2 (1 - xy - xz - xw) = 12x^2 - 12x^3 (y + z + w)
+\neea
+%
+and the last bracket on the RHS is the cross terms for $n = 1$ and so we can repeat the process. As we go to higher powers we will get things like this with something like $C\cdot x^2 y^3 ({\rm cross terms})$ where the cross terms are from lower $n$ and exclude $x$ and $y$. As you can see this line of thinking gets very messy indeed and so I decided not to pursue a full proof with this not to mention having to calculate the exact numerical factors and make sure they add up to the factor of the actual cross term.
+
+{\bf Page 134, Problem 9}. We want to show that there is at least one $j - \eta_i$ that is not $0$ mod $p$. Note that $1 \le j \le p$ and $1 \le i \le e$. If all of them are zero then there must be $j_1 - \eta_i \equiv 0 \equiv j_2 - \eta_i$ with $j_1 \neq j_2$ (note that here we are concentrating on the same $i$). But this means that $j_i \equiv j_2$ but since $1 \le j_1, j_2 \le p$ this must means $j_1 = j_2$, a contradiction. Therefore not all of them are 0 mod $p$ which means that at least one of them is not 0 mod $p$.
+
+We can also show that actually none of them is divisible by $p$ unless $p$ itself is a cyclotomic prime which happens only when the exponent of $p$ is $\lambda - 1 \to e = 1$. This is because divisibility of a cyclotomic prime by an integer $i$ means that every coefficient of that cyclotomic integer is the same mod $i$. 
+
+If $e > 1$ then every coefficient of $\alpha^j$ in each period is either 0 or 1 and for $j - \eta_i$ the coefficients will be $-1,0, j$ and they can't be equal each other mod $p$. The only exception is that when $e = 1$ then there's only one period which contains all powers of $\alpha$ where each coefficient is 1 so this time $j -\eta_0$ can be divisible by $p$ if $j \equiv -1 \pmod{p}$. 
+
+
+
+
+
+
 
 
 

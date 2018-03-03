@@ -774,8 +774,44 @@ def bbaass():
 
 
 
+def Page133Problem5(L):
 
+    import itertools
+    # we need to get all possible values of e
 
+    for e in xrange(2,L):
+        print 'e = %d' % e
+        if (L-1) % e == 0:
+            f = (L-1)/e
+            
+            eta = generateEtas(L,f)
+            nz = findEtaNz(eta)
 
+            # don't forget to set the minus sign
+            for i in xrange(e):
+                eta[i] = [-1*j for j in eta[i]]
+
+            t = [i for i in range(0,e)]
+    
+            for y in xrange(1,e+1):
+        
+                l = itertools.combinations(t, y)
+
+                tot = [0] * L
+                for i in l:
+                    # create individual products
+                    res = [0] * L
+                    res[0] = 1
+                    for j in i:
+                        res = multCyc(res, eta[j])
+
+                    tot = addCyc(tot, res)
+
+                # check that tot has same elements from [1:end]
+                for i in xrange(2,L):
+                    if tot[i] != tot[i-1]:
+                        print 'Something Wrong'
+                else:
+                    print '%d*X^%d' % (tot[0] - tot[1], e - y)
 
     
