@@ -4560,6 +4560,7 @@ What this means is that if $\psi(\eta)$ already contains one set of the $u$'s th
 
 If what we have is $g(k)\psi(u) \equiv 0 \pmod{p}$ then we can handle it like normal integers because now they are normal integers but what we have here is $g(\alpha)\psi(\eta)$ which is a cyclotomic integer.
 
+Another thing to note is as my note above on the Proposition on Page 126, for each set of $u$'s (for each different prime factor of $p$) we have a different $\psi(\eta)$. And this proof shows that the different $\psi(\eta)$'s are related to one another by $\sigma^{-k}\psi(\eta)$.
 
 {\bf Page 133, Problem 1}. We want to build $\psi(\eta)$ for $\lambda = 31$ and $p = 2$ ($f = 5$, $e = 6$). Since we are working mod 2 the values of $u$ can only be 0 or 1. From Section 4.7, Page 120, the multiplication table indicates that $u_0, u_1, \dots, u_5$ must have two consecutive 1's or two consecutive 0's, \ie $1,1,0,0,1,0$ or $0,0,1,0,1,1$.
 
@@ -4609,10 +4610,65 @@ which is clearly not 0 mod 3. Now we check the products with $\eta_1 - u_i$
 \neea
 %
 
-{\bf Page 133, Problem 3}. We want to prove that when the exponent is $\lambda - 1$ then $p$ is prime cyclotomic integer. The hint says that what we need to do is prove that the Proofs in this Section 4.9 applies when $e = 1$. 
+{\bf Page 133, Problem 3}. We want to prove that when the exponent of $p$ mod $\lambda$ is $\lambda - 1$ then $p$ is prime cyclotomic integer. The hint says that what we need to do is prove that the Proofs in this Section 4.9 apply when $e = 1$. 
 
-The proof that the factor of $p$ is $p$ times units can actually be found From Page 114 and 116 of Section 7. Since the factors of $p$ are actually $p$ itself times units, to prove that these factors are prime cyclotomic we need to show that the proofs in this section applies to $e = 1$ because $h(\alpha)$ is $p$ itself.
+From Page 114 and 116 of Section 7 we know that the factors of $p$ are $p$ times units, there it was mentioned that the prime factor of $p$ is units times $p$ but the argument actually applies to just a factor of $p$ not necessarily prime factors of $p$.
 
+Showing that the proofs in this section apply to $e = 1$ means that the ideal prime factor of $p$ has all the properties defined through the Proposition and Theorems of Section 4.9. However, this does not prove that the prime factor of $p$ actually exists.
+
+But adherence to the Proposition and Theorems in this Section means that we can define an equivalence relation mod a prime factor of $p$ that applies to cyclotomic integers $f(\alpha) \equiv g(\alpha) \pmod{h(\alpha)} \Leftrightarrow f(\alpha)\psi(\eta) \equiv g(\alpha)\psi(\eta) \pmod{p}$ but more importantly that this equivalence relation is prime. Furthermore, Theorem 2 states that there is only one distinct equivalence relation of this type.
+
+But the catch is that this equivalence relation is mod the prime factor of $p$ and not mod $p$. However, the second half of Theorem 2 states that $g(\alpha) \equiv 0 \pmod{p} \Leftrightarrow g(\alpha) \psi(\eta)\equiv 0 \pmod{p} \Leftrightarrow g(\alpha) \equiv 0 \pmod{h(\alpha)}$ as long as $g(\alpha) \equiv 0$ mod all prime factors of $p$.
+
+We still have not proved that there is a prime factor of $p$ and we have not proved that that prime factor is $p$ itself but we already have what we need thanks to the last part of Theorem 2.
+
+Say $f(\alpha)g(\alpha) \equiv 0 \pmod{p}$ then thanks to Theorem 2, \ie $w(\alpha) \equiv 0 \pmod{p} \Leftrightarrow w(\alpha) \equiv 0 \pmod{h(\alpha)}$, we have $f(\alpha)g(\alpha) \equiv 0 \pmod{h(\alpha)}$ and Theorem 1 says that this latter congruence is prime, $f(\alpha) \equiv 0 \pmod{h(\alpha)}$ or $g(\alpha) \equiv 0 \pmod{h(\alpha)}$. Using the $\Leftrightarrow$ from Theorem 2 again we immediately get $f(\alpha) \equiv 0 \pmod{p}$ or $g(\alpha) \equiv 0 \pmod{p}$ which means that $p$ is a cyclotomic prime.
+
+One might ask, if that's the case then $p$ is always cyclotomic prime even if $e > 1$. Not so fast. Say there are 2 ideal prime factors $h_1(\alpha), h_2(\alpha)$ corresponding to $e = 2$. Then Theorem 2 brings our mod $p$ to $h_1(\alpha)|f(\alpha)$ or $h_1(\alpha)|g(\alpha)$ and $h_2(\alpha)|f(\alpha)$ or $h_2(\alpha)|g(\alpha)$. The problem is if $h_1(\alpha)|f(\alpha)$ but $h_2(\alpha) \nmid f(\alpha)$ (so $h_2(\alpha)|g(\alpha)$) then we can't bring it back to $p|f(\alpha)$ because the Theorem states that only if $f(\alpha)$ is divisible by both $h_1(\alpha)$ and $h_2(\alpha)$ then we can say that $f(\alpha) \equiv 0 \pmod{p}$. But for $e=1$ there's only one ideal prime factor so this complication never arises.
+
+Note that in the above reasoning the existence of an actual prime factor of $p$ is not needed. Also that to prove Theorem 2 we need the Proposition and Theorem 1. Therefore to solve this Problem we need to show that the proofs of the Proposition and Theorems apply for $e = 1$.
+
+First the Proposition on Page 126. Now there is only one $u$ and one $\eta$, \ie $\eta_0$ and $u_0$. We need to show that we can find $u_0$ such that $\eta_0 - u_0 \equiv 0 \pmod{p}$. For this we don't actually need $\psi(\eta)$ because
+%
+\nbea
+\eta_0 & = & \alpha^{\lambda - 1} + \alpha^{\lambda - 2} + \dots + \alpha
+\neea
+%
+and as mentioned many times above for a cyclotomic integer to be divisible by an integer all of its coefficients must be the same modulo that integer. Here that integer is $p$ and as long as $-u_0 \equiv 1 \pmod{p} \to u_0 = p - 1$ we will have $\eta_0 - u_0 = \eta_0 + 1 \equiv 0 \pmod{p}$.
+
+One might be tempted to say that we don't need $\psi(\eta)$ because $p$ is now no longer just an integer prime but also a cyclotomic prime since the only factors of $p$ are $p$ itself. But this is already assuming that $p$ is already a cyclotomic prime something that we want to achieve so we can't do this.
+
+Nevertheless, $\psi(\eta)$ is easily found (and there's only one of it)
+%
+\nbea
+\psi(\eta) & = & \prod_{j = 1}^{p - 2} (\eta_0 - j) \not\equiv 0 \pmod{p}
+\neea
+%
+The fact that it is $\not\equiv 0 \pmod{p}$ is not due to the fact that each term is not divisible by $p$ (due to the fact that the coefficients are not the same mod $p$) therefore the whole product is not divisible by $p$ either. We can't say this because this assumes that $p$ is prime cyclotomic. The reason it is $\not\equiv 0$ is what was shown in the book.
+
+Proof of Theorem 1 doesn't depend on $e$ at all and so it still applies in this case and the equivalence relations $f(\alpha) \equiv g(\alpha)$ are still defined as $f(\alpha)\psi(\eta) \equiv g(\alpha)\psi(\eta)$.
+
+Proof of Theorem 2. The crux of Theorem 2 is the last paragraph on Page 131. But in this case there's only one $e$ therefore we don't need to go through all this hoops, if there's another $\overline{u}_0$ then it must be $\equiv u_0$ because there's only one of them (note that mod 1 everything is zero so the statement on Page 132 $k \equiv 0 \pmod{e=1}$ is meaningless here)and here $M = \psi(\eta)$. Again, the proof of the last part of Theorem 2 is also trivial in this case because there's only $e = 1$ ideal prime factor of $p$. We immediately get $g(\alpha)\cdot M \equiv 0 \pmod{p}$ of Page 133 nothing else needs to be done.
+
+{\bf Page 133, Problem 4}. We want to show that if a cyclotomic integer $\phi(\eta)$ is made up of periods $f$ with norm $p^f$ where $f$ is the exponent of $p$ mod $\lambda$ then $\phi(\eta)$ is prime cyclotomic.
+
+What we know is that since $N\phi(\eta) = p^f$ and
+%
+\nbea
+N\phi(\eta) & = & \{\phi(\eta) \cdot \sigma\phi(\eta) \cdot \dots \cdot \sigma^{e-1}\phi(\eta) \}^f \\
+\to \phi(\eta) \cdot \sigma\phi(\eta) \cdot \dots \cdot \sigma^{e-1}\phi(\eta) & = & \pm p
+\neea
+%
+the plus minus depends on whether $f$ is even or odd. The reason we can group the norm like above is because $\phi(\eta)$ is made up of periods only and even though $\sigma$ covers all conjugation of $\alpha$, $\sigma^e$ is the identity transformation for periods thus every $e$ conjugations the pattern repeats.
+
+Suppose now that $f(\alpha)g(\alpha) \equiv 0 \pmod{\phi(\eta)}$ then we can multiply both sides with
+%
+\nbea
+f(\alpha)g(\alpha) \sigma\phi(\eta) \cdots \sigma^{e-1} \phi(\eta) \psi(\eta) & \equiv & 0 \pmod{\phi(\eta)\sigma\phi(\eta)\dots \sigma^{e-1}\phi(\eta)} \\
+& \equiv & 0 \pmod{p}
+\neea
+%
+But this is the equivalence relation mod the ideal prime factor of $p$ and by Theorem 1 this is prime. Another thing is that $p$ does not divide $w(\alpha) = \sigma\phi(\eta) \cdots \sigma^{e-1} \phi(\eta)$ because $Nw(\alpha) = p^{f(e-1)}$ while $Np = p^{ef}$. Thus it's either $p|f(\alpha)$ or $p|g(\alpha)$ but this also means either $\phi(\eta)|f(\alpha)$ or $\phi(\eta)|g(\alpha)$ since $\phi(\eta)$ is a factor of $p$. But this means that $\phi(\eta)$ is cyclotomic prime.
 
 
 
