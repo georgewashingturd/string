@@ -4556,6 +4556,65 @@ Had we started with $\psi(\eta) = \eta_1 - 4$ then we automatically set $\eta_0 
 
 What this means is that if $\psi(\eta)$ already contains one set of the $u$'s then it will not accept another one. In other words, for every set of $u$, in the first example above $\eta_0 \equiv -5, \eta_1 \equiv 4$, we have a unique $\psi(\eta)$. So for each cyclic permutation we have a new $\psi(\eta)$.
 
+{\bf Page 133}. Top page, last part of proof of Theorem 2. Note that we went through all these  hoops because what we have is $g(\alpha)\psi(\eta) \equiv 0 \pmod{p}$ and what we want is $g(\alpha) \equiv 0 \pmod{p}$. Again, $p$ though a prime is not cyclotomic prime so we can't say that $p|g(\alpha)$ or $p|\psi(\eta)$ from $g(\alpha) \equiv 0 \pmod{p}$.
+
+If what we have is $g(k)\psi(u) \equiv 0 \pmod{p}$ then we can handle it like normal integers because now they are normal integers but what we have here is $g(\alpha)\psi(\eta)$ which is a cyclotomic integer.
+
+
+{\bf Page 133, Problem 1}. We want to build $\psi(\eta)$ for $\lambda = 31$ and $p = 2$ ($f = 5$, $e = 6$). Since we are working mod 2 the values of $u$ can only be 0 or 1. From Section 4.7, Page 120, the multiplication table indicates that $u_0, u_1, \dots, u_5$ must have two consecutive 1's or two consecutive 0's, \ie $1,1,0,0,1,0$ or $0,0,1,0,1,1$.
+
+Let's start with the consecutive 1's as a guess for our $\psi(\eta)$. This choice gives us 
+%
+\nbea
+\psi(\eta) = (\eta_0 - 0)(\eta_1 - 0)(\eta_2 - 1)(\eta_3 - 1)(\eta_4 - 0)(\eta_5 - 1)
+\neea
+%
+what we need to check if this is not 0 mod 2 and if multiplying it with our choice of $u$'s will make it 0 mod 2. The result is
+%
+\nbea
+\psi(\eta) = 1 + \eta_1 + \eta_3 + \eta_4
+\neea
+%
+which is clearly not 0 mod 2. Now let's check the result of $(\eta_i - u_i)\psi(\eta)$
+%
+\nbea
+\begin{array}{r c l c l}
+(\eta_0 - 1)\psi(\eta) & = & 4 + 4\eta_0 + 2(\eta_2 + \eta_3 + \eta_4 + \eta_5) & \equiv & 0 \pmod{2} \\
+(\eta_1 - 1)\psi(\eta) & = & 4 + 4\eta_2 + 2(\eta_0 + \eta_1 + \eta_3 + \eta_5) & \equiv & 0 \pmod{2} \\
+(\eta_2 - 0)\psi(\eta) & = & 4(\eta_0 + \eta_1) + 2(\eta_2 + \eta_3 + \eta_4 + \eta_5) & \equiv & 0 \pmod{2} \\
+(\eta_3 - 0)\psi(\eta) & = & 4(\eta_3 + \eta_5) + 2(\eta_0 + \eta_1 + \eta_2 + \eta_4) & \equiv & 0 \pmod{2} \\
+(\eta_4 - 1)\psi(\eta) & = & 4 + 4 \eta_5 + 2(\eta_0 + \eta_1 + \eta_2 + \eta_4) & \equiv & 0 \pmod{2} \\
+(\eta_5 - 0)\psi(\eta) & = & 4(\eta_2 + \eta_4) + 2(\eta_0 + \eta_1 + \eta_3 + \eta_5) & \equiv & 0 \pmod{2}
+\end{array}
+\neea
+%
+Page 120 also says that the guess with two consecutive 1's or 0's doesn't mean that these $u$'s satisfies all relations among the $\eta$'s but the Proposition of Section 4.9 will prove this. And this problem proves that $1,1,0,0,1,0$ works for all relations among $\eta$'s, \ie what it takes is to find $\psi(\eta)$ that works.
+
+{\bf Page 133, Problem 2}. This time we find $\psi(\eta)$ for $\lambda = 13$ and $p = 3$ ($f = 3$, $e = 4$). We are working with mod 3 so the possible values for $u$ are $-1,0,1$. From Section 4.7 Page 120, one possible values for the $u$'s are $0,-1,-1,1$ with this choice of $u$ we have
+%
+\nbea
+\psi(\eta) & = & \{(\eta_0 + 1)(\eta_0 - 1)\}\{(\eta_1 - 0)(\eta_1 - 1)\}\{(\eta_2 - 0)(\eta_2 - 1)\}\{(\eta_3 + 1)(\eta_3 - 0)\} \\
+& = & 2\eta_0 + \eta_1 + 2\eta_3
+\neea
+%
+which is clearly not 0 mod 3. Now we check the products with $\eta_1 - u_i$
+%
+\nbea
+\begin{array}{r c l c l}
+(\eta_0 - 0)\psi(\eta) & = & 6\eta_2 + 3(\eta_0 + \eta_1 + \eta_3) & \equiv & 0 \pmod{3} \\
+(\eta_1 + 1)\psi(\eta) & = & 6 + 6(\eta_0 + \eta_3) + 3(\eta_1 + \eta_2) & \equiv & 0 \pmod{3} \\
+(\eta_2 + 1)\psi(\eta) & = & 6 + 6(\eta_1 + \eta_3) + 3(\eta_0 + \eta_2) & \equiv & 0 \pmod{3} \\
+(\eta_3 - 1)\psi(\eta) & = & 3 + 3(\eta_0 + \eta_1 + \eta_2) & \equiv & 0 \pmod{3}
+\end{array}
+\neea
+%
+
+{\bf Page 133, Problem 3}. We want to prove that when the exponent is $\lambda - 1$ then $p$ is prime cyclotomic integer. The hint says that what we need to do is prove that the Proofs in this Section 4.9 applies when $e = 1$. 
+
+The proof that the factor of $p$ is $p$ times units can actually be found From Page 114 and 116 of Section 7. Since the factors of $p$ are actually $p$ itself times units, to prove that these factors are prime cyclotomic we need to show that the proofs in this section applies to $e = 1$ because $h(\alpha)$ is $p$ itself.
+
+
+
 
 {\bf Page 133, Problem 5}. We need to show that the coefficients of $(X - \eta_1)(X - \eta_2) \dots (X - \eta_e)$ are all integers. The coefficients of $X^e$ is 1 so it is an integer, the coefficient of $X^0$ is a product of $(-1)^e\eta_0\eta_1\eta_2 \dots \eta_e$ and this is clearly invariant under $\sigma^j$ because what $\sigma^j$ does is $j$ cyclic permutations, since the product contains all $\eta$'s any cyclic permutation leaves it invariant.
 
