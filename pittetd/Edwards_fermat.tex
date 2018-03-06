@@ -3709,6 +3709,14 @@ But from Page 112 bottom paragraph, the purpose of proving the integer case is t
 %
 but it doesn't mean that $p|[g(\alpha) - 1]$ or $p|[g(\alpha) - 2]$ and so on, it's because $p$ is no longer prime cyclotomic. This is why the proof immediately switches to mod $h(\alpha)$ which is indeed prime cyclotomic.
 
+Another important note, just because $h(\alpha)$ is prime cyclotomic it doesn't mean that it must only divide one $[g(\alpha) - j]$, it can divide two or more. However, if it divides two then
+%
+\nbea
+g(\alpha) - j \equiv 0 \equiv g(\alpha) - k \pmod{h(\alpha)}
+\neea
+%
+which means that $k - j \equiv 0 \pmod{h(\alpha)}$. But this means that $h(\alpha)$ divides a smaller number than $p$, say $m = |j - k|$. This is impossible because then $Nh(\alpha) | m^{\lambda - 1}$ and from $h(\alpha)|p$ we also have $Nh(\alpha) | p^{\lambda - 1}$ but since $m < p$ we have $\gcd(m,p) = 1$. So only one $[g(\alpha) - j]$ is divisible by $h(\alpha)$.
+
 {\bf Page 114, Problem 1}. Here we are computing Pascal triangle up to $n = 13$ and verifying that the coefficients are multiple of $n$ when $n$ is prime
 %
 \nbea
@@ -4529,7 +4537,59 @@ So basically what it's asking is that we can always find $Q_h(\alpha)$ with the 
 Well, this $Q_h(\alpha)$ is $P(\alpha)$ and we are done :) well almost, we need to replace each period with its counterpart $u_i$ then we are really done.
 
 
+{\bf Page 127}. Comment on Theorem 1 especially on ``the new definition coincides with the old one whenever the old one is valid''. If you see the proof of Theorem 1 on Page 129 and Page 130 you'll see that the equivalence relation mod a prime factor $h(\alpha)$ is defined as $\cdot\psi(\eta) \equiv \cdot \pmod{p}$.
 
+How do we derive congruence modulo a prime factor $h(\alpha)$ from this? Well
+%
+\nbea
+f(\alpha) \psi(\eta) & \equiv & 0 \pmod{p} \\
+\to f(\alpha) \psi(\eta) & \equiv & 0 \pmod{h(\alpha)}
+\neea
+%
+since $h(\alpha)$ is prime it either divides $f(\alpha)$ or $\psi(\eta)$. The key here is that $h(\alpha)$ must not divide $\psi(\eta)$ and this is guaranteed because if $h(\alpha)|\psi(\eta)$ it means that being prime it divides $\eta_i - j$ in $\psi(\eta)$. But $\eta_i \equiv u_i \not\equiv j \pmod{h(\alpha)}$.
+
+If $h(\alpha)$ divides $\eta_i - j$ then we will have $u_i - j \equiv 0 \pmod{h(\alpha)}$ which means that $h(\alpha)$ divides a number less than $p$ that is co-prime to $p$ since $p$ is a prime integer but this is impossible since $Nh(\alpha)|p^{\lambda - 1}$ while $h(\alpha)|j - u_i$ means $Nh(\alpha)| (j - u_i)^{\lambda - 1}$.
+
+How about the other way around? can two prime factors $h_1(\alpha)$ and $h_2(\alpha)$ divide the same $\eta_i - u_i$? Since $p$ is a normal integer having cyclotomic prime factors means that 
+%
+\nbea
+p = h_1(\alpha)h_2(\alpha) \cdots h_n(\alpha)
+\neea
+%
+must be invariant under any conjugation. This means that we must have the $h_i(\alpha)$ to be conjugates of one another and we must have all conjugates of $h_i(\alpha)$ so that the RHS is invariant under any conjugation. One option is to have $n = \lambda - 1$ prime factors each a conjugate of the other.
+
+But if this is the case then the RHS is just $Nh_1(\alpha)$ but if this is the case then we have what is described in Page 92 which is a prime that divides a binomial.
+
+For $n$ less than $\lambda - 1$ distinct prime factors we still have them to be a cyclic permutation themselves under any conjugation, however, if we take the norm of $h_1(\alpha)$ we will then get 
+%
+\nbea
+Nh_1(\alpha) & = & h_1(\alpha)h_2(\alpha) \cdots h_{n < \lambda - 1}(\alpha) \times \{\lambda - 1 - n~{\rm conjugates}\} \\
+& = & p \times \{\lambda - 1 - n~{\rm conjugates}\}
+\neea
+%
+but the LHS is just a normal integer so the curly braces must be a normal integer too. But since we don't have all the conjugates of $h_1(\alpha)$ in this curly braces it is not invariant under any conjugation and therefore cannot be an integer.
+
+What this means is that $n|\lambda - 1$ and
+%
+\nbea
+p & = & \{h_1(\alpha)h_2(\alpha) \cdots h_{n}(\alpha)\}^m
+\neea
+%
+But in this case the norm of $h_1(\alpha)$ is $Nh_1(\alpha) = \{h_1(\alpha)h_2(\alpha) \cdots h_{e-1}(\alpha)\}^l$ where $l = \frac{\lambda - 1}{n}$. But if $l < m$ then obviously $Nh_1(\alpha) | \{h_1(\alpha)h_2(\alpha) \cdots h_{n}(\alpha)\}^m$ which means $Nh_1(\alpha) | p$ but since $p$ is a prime integer this means that $Nh_1(\alpha) = p$ and $l = m$ (we have assumed that $h(\alpha)$ is not a unit). This case is of no interest because $Nh_1(\alpha) = p$ is again covered by the Theorems on Page 92.
+
+If $m < l \to l = mq + r$ then 
+%
+\nbea
+Nh_1(\alpha) & = & p^q \cdot  \{h_1(\alpha)h_2(\alpha) \cdots h_{n}(\alpha)\}^{r}
+\neea
+%
+The curly braces is invariant under any conjugation and therefore it must be an integer but from the definition $p = \{h_1(\alpha)h_2(\alpha) \cdots h_{n}(\alpha)\}^m$ above $\{h_1(\alpha)h_2(\alpha) \cdots h_{n}(\alpha)\}^{r} | p$ and since $p$ is a prime integer this cannot be unless $r = 0$ and in this case we have $Nh_1(\alpha) = p^q$.
+
+We are almost done, this means that the prime factors of a prime integer must be a conjugate of one another and since $\eta_i \equiv u_i \pmod{h_1(\alpha)}$ means that $\sigma^k\eta_i = \eta_{i + k} \equiv u_i \pmod{h_1(\sigma^k \alpha)}$ and so the same $\eta_i \equiv u_i$ cannot be shared by two different prime factors.
+
+Another note about Theorem 1 is that we have actually many $\psi(\eta)$ one for each prime factor $h_i(\alpha)$ of $p$. If for one prime factor $\psi(\eta) \not\equiv 0 \pmod{h_i(\alpha)}$ then it must be 0 for the other prime factors as discussed above since no two prime factors can share the same $\eta_i \equiv u_i$ and no two $\eta_j \equiv u_j$ is established by the same prime factor.
+
+In conclusion, every prime factor $h_i(\alpha)$ has its own $\psi_i(\eta)$ which it doesn't divide and so the congruence $f(\alpha)\psi_i(\eta) \equiv 0 \pmod{p}$ means that $f(\alpha) \equiv 0 \pmod{h_i(\alpha)}$ and so the two congruences coincide if there is an actual prime factor.
 
 
 
@@ -4555,6 +4615,24 @@ We can start with {\bf any} $j - \eta$ we want. Say we start with $\psi(\eta) = 
 Had we started with $\psi(\eta) = \eta_1 - 4$ then we automatically set $\eta_0 \equiv 4$ and $\eta_1 \equiv -5$. But in this case we have a different $\psi(\eta)$ from our previous choice. Of course, with this choice, for the next step we cannot include $\eta_0 - 4$ in $\psi(\eta)$.
 
 What this means is that if $\psi(\eta)$ already contains one set of the $u$'s then it will not accept another one. In other words, for every set of $u$, in the first example above $\eta_0 \equiv -5, \eta_1 \equiv 4$, we have a unique $\psi(\eta)$. So for each cyclic permutation we have a new $\psi(\eta)$.
+
+Another note on this Proposition is that it does not establish the congruence relations $\eta_1 \equiv u_i$. This is because the congruence relation mod a prime factor is not defined yet. The congruence relation is defined only in Theorem 1. What this proposition says is that if we have an equation $F(\eta_0, \eta_1, \eta_2, \dots) = 0$ then we will have $F(u_0, u_1, u_2, \dots) \equiv 0 \pmod{p}$.
+
+Why is this important? because it means that we still cannot do substitution for the $\eta$'s. For example, we have $\phi(\eta) = \eta_0 + 3\eta_1$ we can't just say $\phi(u) = u_0 + 3u_1$ because again the congruence relation $\eta_i \equiv u_i$ is not established yet. However, if we have $\eta_0 + 3\eta_1 = 0$ then we can say that $u_0 + 3u_1 \equiv 0 \pmod{p}$.
+
+Another note, from the proof of the Theorem on Page 112 we see that as long as $g(\alpha)$ is made up of periods of length $f$ we have the prime factor $h(\alpha)|[g(\alpha) - j]$. Therefore instead of using $j - \eta_i$ we can use $j - \phi(\eta)$ where $\phi(\eta)$ is made up of periods of length $f$. But we need $e$ of them, one thing we can do is $\phi_i(\eta) = \sigma^i \phi(\eta)$.
+
+We will then get 
+%
+\nbea
+(\phi_i(\eta) - j)\Gamma(\phi) \equiv 0 \pmod{p}
+\neea
+%
+where $\Gamma(\phi)$ plays the role of $\psi(\eta)$. But what it means is that we won't get $\eta_i \equiv u_i$ but rather $\phi_i(\eta) \equiv v_i$.
+
+Now how does this relate to $F(\eta) = 0 \to F(u) \equiv 0 \mod p$? Any $F(\phi) = 0$ can be converted into $F(\eta) = 0$, inserting $u$ (or one of the cyclic permutation of $u$) for $\eta$ we must have $F(u) \equiv 0$. Now assume that $\phi_i(\eta) \to v_i$ implies another assignment $\eta_i \to w_i$ where $w$ is not part of the cyclic permutation of $u$. Then when we convert $F(\phi) = F(\eta)$ and substitute $F(\eta \to w)$ since $F(\phi \to v) = F(\eta \to w)$ and $F(\phi \to v) \equiv 0$ we must have $F(\eta \to w) \equiv 0$ as well but this is in contradiction to Theorem 2 that states that any $\overline u$ must be a cyclic permutation of $u$. Thus any $\eta \to w$ implied by $\psi \to v$ must be a cyclic permutation of the $u$.
+
+
 
 {\bf Page 133}. Top page, last part of proof of Theorem 2. Note that we went through all these  hoops because what we have is $g(\alpha)\psi(\eta) \equiv 0 \pmod{p}$ and what we want is $g(\alpha) \equiv 0 \pmod{p}$. Again, $p$ though a prime is not cyclotomic prime so we can't say that $p|g(\alpha)$ or $p|\psi(\eta)$ from $g(\alpha) \equiv 0 \pmod{p}$.
 
@@ -4655,20 +4733,29 @@ Proof of Theorem 2. The crux of Theorem 2 is the last paragraph on Page 131. But
 What we know is that since $N\phi(\eta) = p^f$ and
 %
 \nbea
-N\phi(\eta) & = & \{\phi(\eta) \cdot \sigma\phi(\eta) \cdot \dots \cdot \sigma^{e-1}\phi(\eta) \}^f \\
-\to \phi(\eta) \cdot \sigma\phi(\eta) \cdot \dots \cdot \sigma^{e-1}\phi(\eta) & = & \pm p
+N\phi(\eta) = p^f & = & \{\phi(\eta) \cdot \sigma\phi(\eta) \cdot \dots \cdot \sigma^{e-1}\phi(\eta) \}^f \\
+\to \pm p & = & \phi(\eta) \cdot \sigma\phi(\eta) \cdot \dots \cdot \sigma^{e-1}\phi(\eta)
 \neea
 %
-the plus minus depends on whether $f$ is even or odd. The reason we can group the norm like above is because $\phi(\eta)$ is made up of periods only and even though $\sigma$ covers all conjugation of $\alpha$, $\sigma^e$ is the identity transformation for periods thus every $e$ conjugations the pattern repeats.
+the plus minus depends on whether $e, f$ are even or odd. The reason we can group the norm like above is because $\phi(\eta)$ is made up of periods only and even though $\sigma$ covers all conjugation of $\alpha$, $\sigma^e$ is the identity transformation for periods thus every $e$ conjugations the pattern repeats. And the reason we define $p$ that way is because $p$ as an integer is invariant under any conjugation thus we must have all conjugates of $\phi(\eta)$ other choices of $e$ conjugates of $\phi(\eta)$ are not be invariant under conjugation. For simplcity let's denote $\sigma^k \phi(\eta) \to \phi_k(\eta)$.
 
-Suppose now that $f(\alpha)g(\alpha) \equiv 0 \pmod{\phi(\eta)}$ then we can multiply both sides with
+From Section 4.9 we know that $p$ has prime divisors (although they mght be hypothetical) and Theorem 2 states that there are $e$ of them, let's denote them and their corresponding hypothetical counterparts $h_i(\alpha) \leftrightarrow \psi_i(\eta)$. One thing to note is that these $e$ prime factors of $p$ are conjugates of one another. We can see this from the fact that the $\psi_i(\eta)$ are conjugates of one another as it is just a product of $j - \eta_l$ so a conjugation is just a cyclic permutation of the $\eta$'s.
+
+The prime divisors of $p$ being prime must divide one (or more) of the conjugates $\phi_k(\eta)$ in the RHS. Say $\phi_k(\eta) \psi_i(\eta) \equiv 0 \pmod{p}$ a conjugation of this gives us 
 %
 \nbea
-f(\alpha)g(\alpha) \sigma\phi(\eta) \cdots \sigma^{e-1} \phi(\eta) \psi(\eta) & \equiv & 0 \pmod{\phi(\eta)\sigma\phi(\eta)\dots \sigma^{e-1}\phi(\eta)} \\
-& \equiv & 0 \pmod{p}
+\sigma^j \phi_k(\eta)\psi_i(\eta)  = \phi_{k + j}(\eta) \psi_{i + j}(\eta) & \equiv & 0 \pmod{p}
 \neea
 %
-But this is the equivalence relation mod the ideal prime factor of $p$ and by Theorem 1 this is prime. Another thing is that $p$ does not divide $w(\alpha) = \sigma\phi(\eta) \cdots \sigma^{e-1} \phi(\eta)$ because $Nw(\alpha) = p^{f(e-1)}$ while $Np = p^{ef}$. Thus it's either $p|f(\alpha)$ or $p|g(\alpha)$ but this also means either $\phi(\eta)|f(\alpha)$ or $\phi(\eta)|g(\alpha)$ since $\phi(\eta)$ is a factor of $p$. But this means that $\phi(\eta)$ is cyclotomic prime.
+So the situation now is each $\phi_i(\eta)$ is divisible by the same number of prime divisors of $p$. But if each $\phi_i(\eta)$ is divisible by $n$ of the prime divisors then the product $\pm p = \prod \phi_i(\eta)$ is divisible by the $e$ prime divisors $n$ times which is not possible since $p$ contains exactly the $e$ prime divisors exactly once. Thus each $\phi_i(\eta)$ is divisible by exactly one prime divisor of $p$.
+
+Another thing we need to consider is that $\phi_i(\eta)$ can be divisible by other factors whether prime or not. But if that's the case then these factor would divide $p$ and therefore must divide $p$ on top of its $e$ prime factors which is not allowed (unless those factors are units). Thus each $\phi_i(\eta)$ only has one prime factor plus units.
+
+We could've said that the norm of $h_i(\alpha)$ is the same as the norm of $\phi_k(\eta)$ and therefore each $\phi_k(\eta)$ only contains the corresponding prime factor and at most units but $h_i(\alpha)$ might not even exist. 
+
+Now since each $\phi_k(\eta)$ contains only one prime factor and at most units it must be prime as well (units times prime is also prime). The only question now is what happens if $h_i(\alpha)$ is actually non existent? That's fine because then it would mean that $\phi_k(\eta)$ is also hypothetical and congruence relations mod $\phi_k(\eta)$ is defined through $\psi_i(\eta)$ as well.
+
+But in this case since $\phi_k(\eta)$ satisfies the congruence relations $\cdot \psi_i(\eta) \equiv \cdot \pmod{p}$ and it also divides $p$ therefore it must the a prime divisor of $p$.
 
 
 
@@ -4809,7 +4896,15 @@ If $e > 1$ then every coefficient of $\alpha^j$ in each period is either 0 or 1 
 
 
 
+{\bf Page, Problem 1}. This is almost the same as Problem 4 of Page 133. However, this time $g(\alpha)$ bears no assumption that it is made up of periods of length $f$. Here too we can use the fact that $p$ has $e$ prime divisors as dictated by Theorem 2 of Section 4.9.
 
+This means that $p^f$ has a total of $ef = \lambda - 1$ prime divisors each with multiplicity $f$. The norm $Ng(\alpha)$ has a total of $\lambda - 1 = ef$ conjugations. From the fundamental theorem since $Ng(\alpha)|p^f$ and $p^f|Ng(\alpha)$ the multiplicities of the prime divisors for both $Ng(\alpha)$ and $p^f$ must be exactly the same.
+
+Since the multiplicities on both sides are equal and $p^f$ only contains prime divisors of $p$ then $Ng(\alpha)$ only contains prime divisors of $p$ as well. The only exception is units, both sides may contain units aside from the prime divisors.
+
+The only question now is whether some conjugates have more than one prime divisors, since the number of conjugates (a total of $ef$) is the same as the number of prime divisors, if one of the conjugates contains more than one prime divisors some of them will contain none and thus those will be a multiple of units and have norm 1 but the norm of a conjugate of $g(\alpha)$ is the same as the norm of $g(\alpha)$ so it canot be units. Thus each conjugate of $g(\alpha)$ contains exactly one prime divisor of $p$ and nothing else sans units and $g(\alpha)$ itself is therefore prime.
+
+Again, if the prime divisors are actually hypothetical then $g(\alpha)$ will also be hypothetical and its congruence relations will be defined through $\cdot \psi(\eta) \equiv \cdot \pmod{p}$.
 
 
 
