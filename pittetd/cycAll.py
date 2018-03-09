@@ -815,3 +815,78 @@ def Page133Problem5(L):
                     print '%d*X^%d' % (tot[0] - tot[1], e - y)
 
     
+def findOrder(L, p):
+    for i in xrange(1,L):
+        if pow(p,i,L) == 1:
+            return i
+
+def isZeroModP(f, p):
+    L = len(f)
+    c = f[0] % p
+    for k in xrange(1,L):
+        if (f[k] % p) != c:
+            return False
+
+    return True
+
+def changeModP(f, p):
+    L = len(f)
+    for i in xrange(L):
+        f[i] = f[i] % p
+
+    return f
+
+def findPsi(L, p):
+
+    f = findOrder(L, p)
+    e = (L - 1)/f
+
+    print 'f =', f
+    
+    eta = generateEtas(L, f)
+    nz = findEtaNz(eta)
+
+    # u is the u in \eta_i \equib u_i
+    u = [0] * e
+
+    Psi = [0] * L
+    Psi[0] = 1
+    
+    for v in xrange(p):
+        for i in xrange(e):
+
+            t = [1*k for k in eta[i]]
+            t[0] -= v
+            tmp = [1*k for k in Psi]
+            tmp = changeModP(multCyc(tmp, t), p)
+
+            if isZeroModP(tmp, p) == False:
+                Psi = [1*k for k in tmp]
+            else:
+                u[i] = v
+
+    # check consistency and print output
+    etj = [i for i in eta]
+    
+    g = primRoots(L)[0]
+    for k in xrange(e):
+
+        # check consistency
+        for i in xrange(e):
+            etj[i][0] = -u[(i-k) % e]
+            tmp = multCyc(Psi, etj[i])
+            if isZeroModP(tmp, p) == False:
+                print 'There is something wrong', tmp, k, i
+
+        Psi = cycShift(Psi, g)
+        
+    # print output
+    printSumEtaRaw(Psi, nz)
+    
+    return Psi, u
+
+
+
+
+
+    
