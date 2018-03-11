@@ -836,6 +836,24 @@ def changeModP(f, p):
 
     return f
 
+def checkMultiplicity(f, Psi, p):
+    L = len(f)
+    
+    res = multCyc(f, Psi)
+    mult = 1
+    if isZeroModP(res, p) == False:
+        return 0
+    else:
+        for i in xrange(1, 10):
+            res = multCyc(res, Psi)
+            if isZeroModP(res, pow(p, i + 1)) == False:
+                mult = i
+                break
+        else:
+            mult = float('inf')
+
+    return mult
+
 def findPsi(L, p):
 
     f = findOrder(L, p)
@@ -867,7 +885,9 @@ def findPsi(L, p):
 
     # check consistency and print output
     etj = [i for i in eta]
-    
+
+    # this is the phi from Page 140
+    phi = [0] * L    
     g = primRoots(L)[0]
     for k in xrange(e):
 
@@ -879,14 +899,40 @@ def findPsi(L, p):
                 print 'There is something wrong', tmp, k, i
 
         Psi = cycShift(Psi, g)
+        # we don't add Psi itself, only its conjugates
+        if k < e-1:
+            phi = addCyc(phi, Psi)
+
+    # we now check how many times phi is divisible
+    # by this prime factor
+
+    mult = checkMultiplicity(phi, Psi, p)
+    
+    if mult == 0:
+        print u'Something wrong with \u03C6(\u03B7)'
+    elif mult != float('inf'):
+        print u'\n\u03C6(\u03B7) is divisible %d times\n' % mult
+    else:
+        print u'is still divisible at 11 multiplicities'
+    
         
     # print output
+    print u'\u03A8(\u03B7) =',
     printSumEtaRaw(Psi, nz)
+    print
+
+    if mult > 1:
+        phi[0] += p
+    print u'\u03C6(\u03B7) =',
+    printSumEtaRaw(phi, nz)
+    print
+
+    # something extra check multiplicities of eta_i - u_i
+    for i in xrange(e):
+        eta[i][0] = -u[i]
+        mult = checkMultiplicity(eta[i], Psi, p)
+        print u'multiplicity of \u03B7%d - %d is %d' % (i, u[i], mult)
     
     return Psi, u
 
 
-
-
-
-    

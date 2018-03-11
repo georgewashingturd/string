@@ -5038,7 +5038,7 @@ As a side note, to handle units we can multiply $\Psi(\eta)$ with the inverse of
 
 Again we will be utilizing the fundamental theorem. Let's concentrate on one $p_i$, we know that it has $e_i$ prime factors and so $Ng(\alpha)$ must have the same number of prime factors. So for each prime factor there are $\mu_i$ copies of them on the RHS.
 
-More importantly Theorem 2 of Section 4.9 says that each prime factor is related to another through conjugation. $Ng(\alpha)$ is a product of all conjugates of $g(\alpha)$ if $g(\alpha)$ contains $n$ (not necessarily distinct) prime factors of $p_i$ then there will be a factor $p_i^{nf_i}$ on the LHS because the $\lambda - 1$ conjugations contains $f$ copies of the cyclic permutations of the $\eta$'s. Therefore equating the two $p_i^{nf_i} = p^{\mu_i} \to n = \mu_i/f_i$.
+More importantly Theorem 2 of Section 4.9 says that each prime factor is related to another through conjugation. $Ng(\alpha)$ is a product of all conjugates of $g(\alpha)$ if $g(\alpha)$ contains $n$ (not necessarily distinct) prime factors of $p_i$ then there will be a factor $p_i^{nf_i}$ on the LHS because the $\lambda - 1$ conjugations contain $f$ copies of the cyclic permutations of the $\eta$'s. Therefore equating the two $p_i^{nf_i} = p^{\mu_i} \to n = \mu_i/f_i$.
 
 
 {\bf Page 139}. Bottom page, this is a cool way of looking at zero. Instead of zero being nothing, here zero has everything, \ie zero has every number (including) zero as a factor.
@@ -5052,6 +5052,267 @@ This is actually an example of the failure of unique factorization. Since $47$ d
 {\bf Page 140}. Theorem in the middle of the page. This is the reverse of $\Psi(\eta)$. Here we want something that is only divisible by $h(\alpha)$, the usual definition of $\Psi(\eta)$ is something that is divisible by other prime factors of $p$ but not by $h(\alpha)$. Here we want something that is only divisible by $h(\alpha)$ and not by other prime factors of $p$. Of course $h(\alpha)$ can be nonexistent.
 
 {\bf Page 140}. Proof of Theorem. there's a simple typo there, the first term of $\phi(\eta)$ is $\delta\Psi(\eta)$, it should have been $\sigma\Psi(\eta)$.
+
+{\bf Page 141, Problem 1}. The setting is that one of the $u$'s, $u_j$ is unique and so $u_j - \eta_0$ is divisible by one of the prime divisors of $p$ exactly once and not divisible by any other primes divisors. We need to show that this is not the only case because $u_j + kp - \eta_0$ is also actually divisible exactly once by the same prime divisor and not by any other.
+
+I think the set up is like this. We don't know how many times $u_j - \eta_0$ is divisible by this prime divisor but we know that it is only divisible by this one prime divisor. But we know that $kp$ is divisible once by the any prime divisor as long as $k \not\equiv 0 \mod p$. Therefore, adding $kp$ guarantees that the sum $u_j + kp - \eta_0$ is divisible by this prime divisor only once.
+
+The same goes with $\phi(\eta)$, if it is divisible by just one prime divisor (but maybe multiple times) then adding $kp$ will restrict it to be divisible only once because $kp$ is as long as $k \not\equiv 0 \mod p$.
+
+As a side note, it might be odd to find out that some $\eta_i - u_i$ is divisible by a prime divisor more than once but for a concrete example the prime divisor associated with $\Psi(\eta)$ found in Problem 2 of Page 133 for $\lambda = 13$ and $p = 3$ actually divides $\eta_0 + 1$ twice.
+
+{\bf Page 142, Problem 2}. We actually calculated the capital letter $\Psi(\eta)$ for $\lambda = 31, p = 2 \to f = 5, e = 6$ in Problem 1 of Page 133. Here we need to find the lower case $\psi(\eta)$ defined on Page 140. There are only 6 prime divisors. First we find $\phi(\eta) = \sigma\Psi(\eta) + \sigma^2\Psi(\eta) + \dots + \sigma^{e - 1}\Psi$, $\Psi = 1 + \eta_1 + \eta_3 + \eta_4$ and we have $\phi(\eta) = 3 + \eta_0 + \eta_2 + \eta_5$.
+
+We can just add $p$ to $\phi(\eta)$ to make sure it is only divisible once by the prime divisor in question but let's check it out explicitly by multiplying it by $\Psi^\mu(\eta)$. And in this case I found that $\phi(\eta)$ is divisible by any multiplicities of $p = 2$ as I keep multiplying it by $\Psi^\mu(\eta)$ the result is always divisible by $2^\mu$. Thus we need to add $p$ to $\phi(\eta)$ and I verified it manually that it is no longer divisible by higher multiplicities other than one. The divisors are then given by $(2, 5 + \eta_0 + \eta_2 + \eta_5)$ and its cyclic permutations. 
+
+After doing Problem 3 using the Python script below I found that $\phi(\eta)$ is actually divisible only 9 times not infinitely many times :)
+
+{\bf Page 142, Problem 3}. We need to do the same thing as Problem 2 but this time with $\lambda = 23$ and $p = 47$. So this time I wrote a Python script, first to find $\Psi(\eta)$ and then to find $\phi(\eta)$ and check what the multiplicity is for $\phi(\eta)$, if it's more than one then we add $p$ to it and it obviously finds the $u$'s as well.
+%
+\begin{Verbatim}[baselinestretch=0.75]
+def findOrder(L, p):
+    for i in xrange(1,L):
+        if pow(p,i,L) == 1:
+            return i
+
+def isZeroModP(f, p):
+    L = len(f)
+    c = f[0] % p
+    for k in xrange(1,L):
+        if (f[k] % p) != c:
+            return False
+
+    return True
+
+def changeModP(f, p):
+    L = len(f)
+    for i in xrange(L):
+        f[i] = f[i] % p
+
+    return f
+
+def checkMultiplicity(f, Psi, p):
+    L = len(f)
+    
+    res = multCyc(f, Psi)
+    mult = 1
+    if isZeroModP(res, p) == False:
+        return 0
+    else:
+        for i in xrange(1, 10):
+            res = multCyc(res, Psi)
+            if isZeroModP(res, pow(p, i + 1)) == False:
+                mult = i
+                break
+        else:
+            mult = float('inf')
+
+    return mult
+
+def findPsi(L, p):
+
+    f = findOrder(L, p)
+    e = (L - 1)/f
+
+    print 'f =', f
+    
+    eta = generateEtas(L, f)
+    nz = findEtaNz(eta)
+
+    # u is the u in \eta_i \equib u_i
+    u = [0] * e
+
+    Psi = [0] * L
+    Psi[0] = 1
+    
+    for v in xrange(p):
+        for i in xrange(e):
+
+            t = [1*k for k in eta[i]]
+            t[0] -= v
+            tmp = [1*k for k in Psi]
+            tmp = changeModP(multCyc(tmp, t), p)
+
+            if isZeroModP(tmp, p) == False:
+                Psi = [1*k for k in tmp]
+            else:
+                u[i] = v
+
+    # check consistency and print output
+    etj = [i for i in eta]
+
+    # this is the phi from Page 140
+    phi = [0] * L    
+    g = primRoots(L)[0]
+    for k in xrange(e):
+
+        # check consistency
+        for i in xrange(e):
+            etj[i][0] = -u[(i-k) % e]
+            tmp = multCyc(Psi, etj[i])
+            if isZeroModP(tmp, p) == False:
+                print 'There is something wrong', tmp, k, i
+
+        Psi = cycShift(Psi, g)
+        # we don't add Psi itself, only its conjugates
+        if k < e-1:
+            phi = addCyc(phi, Psi)
+
+    # we now check how many times phi is divisible
+    # by this prime factor
+
+    mult = checkMultiplicity(phi, Psi, p)
+    
+    if mult == 0:
+        print u'Something wrong with \u03C6(\u03B7)'
+    elif mult != float('inf'):
+        print u'\n\u03C6(\u03B7) is divisible %d times\n' % mult
+    else:
+        print u'is still divisible at 11 multiplicities'
+    
+        
+    # print output
+    print u'\u03A8(\u03B7) =',
+    printSumEtaRaw(Psi, nz)
+    print
+
+    if mult > 1:
+        phi[0] += p
+    print u'\u03C6(\u03B7) =',
+    printSumEtaRaw(phi, nz)
+    print
+
+    # something extra check multiplicities of eta_i - u_i
+    for i in xrange(e):
+        eta[i][0] = -u[i]
+        mult = checkMultiplicity(eta[i], Psi, p)
+        print u'multiplicity of \u03B7%d - %d is %d' % (i, u[i], mult)
+    
+    return Psi, u
+\end{Verbatim}
+%
+The result is that $\psi(\eta)$ is divisible by the prime divisor only once so we get $\psi(\eta)$ immediately
+%
+\nbea
+\psi(\eta) = \phi(\eta) & = & 569\eta_0 + 590\eta_1 + 594\eta_2 + 572\eta_3 + 582\eta_4 + 584\eta_5 + 600\eta_6 + 587\eta_7 + 580\eta_8 + 575\eta_9 + \\
+&& 570\eta_{10} + 583\eta_{11} + 574\eta_{12} + 593\eta_{13} + 598\eta_{14} + 578\eta_{15} + 608\eta_{16} + 591\eta_{17} + 602\eta_{18} + \\
+&& 573\eta_{19} + 603\eta_{20} + 567\eta_{21} + 945
+\neea
+%
+So the prime divisors are given by $(47, \psi(\eta))$ and its cyclic permutations.
+
+{\bf Page 142, Problem 4}. We need to find necessary and sufficient condition for ``factorization'' of $p \neq \lambda$ to be $(p) = (p, \eta_1 - u)(p, \eta_2 - u) \dots (p, \eta_{e - 1} - u)$.
+
+The necessary condition is as follows. If we ca factorize $(p) = (p, \eta_1 - u)(p, \eta_2 - u) \dots (p, \eta_{e - 1} - u)$ then for some $i$ we have $\eta_i - u \to (\eta_i - u)\Psi(\eta) \equiv 0 \mod p$ according Theorems and Proposition of Section 4.9. Therefore $u \equiv u_i \mod p$ of $u_i$ of Proposition of Section 4.9 and therefore $u = u_i + kp$. If $k \equiv 0 \mod p$ then we might have $\eta_i - u$ divisible multiple times by a prime divisor, to guarantee that it is divisible only once we must have $k \not\equiv 0 \mod p$.
+
+The sufficient condition is also the same, if $u = u_i + kp$ with $k \not\equiv 0 \mod p$ then we can factorize $(p) = (p, \eta_1 - u)(p, \eta_2 - u) \dots (p, \eta_{e - 1} - u)$ thanks again to the Proposition and Theorems of Section 4.9.
+
+
+
+{\bf Page 142, Problem 5}. Note that here we are not trying to find an integer $v_i$ such that $(\eta_i - v_i)\Psi^2(\eta) \equiv 0 \mod p$, \ie we are not trying to find $\eta_i \equiv v_i \mod h^\mu(\alpha)$ where $h(\alpha)$ is a prime divisor of $p$. This was what I was trying to do at first because $A$ now contains multiples of prime divisors.
+
+We are just trying to see what the implication is of having something mod $A$. So say $f(\alpha) \equiv 0 \mod A$ we can then imply that
+%
+\nbea
+f(\alpha) w(\alpha) & \equiv & 0 \mod n
+\neea
+%
+where $w(\alpha)$ is such that each $(p_i, \psi_i)^{\mu_i}$ in $A$ becomes $p^{\mu_i}$, \ie $w(\alpha)$ contains all prime divisors of $p_i$ missing from $A$ with the same multiplicity as the one in $A$.
+
+Now suppose after we found $n$ incongruent cyclotomic integers mod $A$ we find a new one $b(\alpha)$ that is incongruent to all $n$ cyclotomic integers then it must be that
+%
+\nbea
+b(\alpha) - y(\alpha) & \not\equiv 0 & \mod A \\
+(b(\alpha) - y(\alpha))w(\alpha) & \not\equiv 0 & \mod n \\
+\to  b(\alpha)w(\alpha) & \not\equiv & y(\alpha)w(\alpha) \mod n 
+\neea
+% 
+where $y(\alpha)$ is any of the $n$ cyclotomic integers we've found so far. But this can't be because mod $n$ means the coefficients of the cyclotomic integer takes the value from $0$ to $n - 1$ since we've found all cyclotomic integers such that $f(\alpha)w(\alpha)$ has the coefficients between $0$ and $n - 1$, $b(\alpha)w(\alpha)$ must be one of the ones we've found and in that case $f(\alpha)w(\alpha) \equiv b(\alpha) w(\alpha) \mod n=Aw(\alpha) \to f(\alpha) \equiv b(\alpha) \mod A$. So there at most can be $n$ incongruent cyclotomic integers mod $A$, there can be less of course.
+
+{\bf Page 142, Problem 6}. This is actually quite different from Theorem on Page 140. The norm $N\psi(\eta)$ is not $p^f$ but it's divisible by $p^f$. Therefore, the norm can have more than $f$ multiples of some prime divisors of $p$ but not $f$ multiples of all of them.
+
+Let's do one direction at a time. If $\psi(\eta)$ is divisible by exactly one prime factor of $p$ then
+%
+\nbea
+\psi(\eta) \Psi_i(\eta) & \equiv & 0 \mod p \\
+\to \sigma^k \left \{\psi(\eta) \Psi_i(\eta) \right \} \equiv \psi(\sigma^k\eta) \Psi_{i + k}(\eta)  & \equiv & 0 \mod p 
+\neea
+%
+while the norm is given by
+%
+\nbea
+N\psi(\eta) = \{\sigma \psi(\eta) \cdot \sigma^2 \psi(\eta) \cdot \dots \cdot \sigma^{e - 1} \psi(\eta)\}^f
+\neea
+%
+The norm is like this because $\psi(\eta)$ is made up of periods with length $f$ where $f$ is the exponent of $p$ mod $\lambda$ thus $\sigma^e \eta = \eta$ and we can group the norm after every $\sigma^e$. From the equivalence above, we know that $\sigma^k \psi(\eta)$ is ``divisible'' by $\Psi_{i + k}(\eta)$ which is a conjugate of the prime divisor in question. And since $\psi(\eta)$ doesn't contain any other prime divisor of $p$ its conjugate won't either. To see this, assume we have $\psi(\sigma^k \eta)\Psi_{m}(\eta) \equiv 0$ and $\psi(\sigma^k \eta)\Psi_{n}(\eta) \equiv 0$ where $m \neq n$. Conjugating by $\sigma^{e - k}$ we have $\psi(\sigma \eta)\Psi_{m - k}(\eta) \equiv 0$ and $\psi(\eta)\Psi_{n-k}(\eta) \equiv 0$ which means that our original $\psi(\eta)$ is divisible by more than one prime divisor, a contradiction.
+
+Thus the multiplicity in $N\psi(\eta)$ for each prime divisor of $p$ is $f$ and therefore it is divisible by $p^f$.
+
+The converse can be solved using the proof of Theorem on Page 140 with slight modification. Let $N\psi(\eta) = b$, from the definition of the norm we have the multiplicity of each prime divisor in $N\psi(\eta)$ to be exactly $(\nu_1 + \nu_2 + \dots + \nu_e)f$. But since this norm is not equal to $p^f$, only divisible, the multiplicity of each prime divisor in $b$ can be $f + \Delta$ except for at lest one of them because $b$ is not divisible by $p^{f+1}$.
+
+So for that particular one we still have $(\nu_1 + \nu_2 + \dots + \nu_e)f = f$ therefore one $\nu_i$ must be 1 and the others 0, thus $\psi(\eta)$ is divisible by exactly one prime divisor of $p$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{\bf Page 151, Problem 2}. Here we need to show that if there is a prime divisor that is not the divisor of a cyclotomic integer then there is a cyclotomic integer that is not divisible by any prime cyclotomic integer.
+
+The hint tells us the answer for this one. The answer is the small $\psi(\eta)$ which is divisible only by one prime divisor of $p$ and not by any other prime divisors.
+
+The next part of the question asks us to show that there is a cyclotomic integer that can be written in two distinct ways as a product of irreducibles.
+
+First, I needed to clarify what it means by irreducibles. I initially thought that if $g(\alpha)$ is such that $Ng(\alpha) = 47 \cdot 139$ (a product of two prime integers) then $g(\alpha)$ is reducible.
+
+But this is not true, being irreducible just means that when you factorize it (if you can factorize it) the only possible factorization is something times a unit. In the example above if $g(\alpha)$ is reducible then $g(\alpha) = f(\alpha)h(\alpha)$ with $Nf(\alpha) = 47$ and $Nh(\alpha) = 139$ but there's no cyclotomic integer whose norm is 47 (neither there is one with norm of 139) therefore $g(\alpha)$ is irreducible.
+
+Another example is $g(\alpha)$ where $Ng(\alpha) = 47^2$, this is also irreducible because if it's reducible then $g(\alpha) = f(\alpha)h(\alpha)$ with $Nf(\alpha) = 47$ and $Nh(\alpha) = 47$ but there's no cyclotomic integer whose norm is 47 therefore $g(\alpha)$ is irreducible.
+
+Also all prime factors with norm $p^f$ are irreducible because there is no cyclotomic integer with norm $p^n$ witn $n < f$.
+
+So $\psi(\eta)$ is irreducible because although its norm is not a prime integer $N\psi(\eta) = p^f \cdot Q$, $p$ doesn't have real prime factors, because if $\psi(\eta)$ is reducible than one of the factors would have a norm of $p^f$ but that is no actual cyclotomic integer whose norm is $p^f$.
+
+To show that there is a cyclotomic integer that can be written as a product of irreducibles in two distinct ways we can use Problem 3 of Page 96. Or we can just express the RHS of $N\psi(\eta) = p^f \cdot Q$ in terms of products of irreducibles.
+
+I initially thought what happened if $N\psi(\eta) = p^f$ or when we express $p$ as a product of irreducibles we have $\psi(\eta)$ and its conjugates? because then there's only one way to write this as a product of irreducibles.
+
+Well, $p$ doesn't have actual prime factors, if $N\psi(\eta) = p^f$ then $\psi(\eta)$ is $p$'s actual prime factor. The converse is also true, if we can factorize $p$ into irreducibles whose norm is $p^f$ then those irreducibles are actual prime factors of $p$. But here $p$ doesn't have actual prime factors so this thing won't happen.
+
+Another thing is that in normal cases where $p$ has prime factors, say $N(\alpha + 4) = 11$ for $\lambda = 5$, we can't say that here we already have more than one way to express 11 as products of cyclotomic integers. One way is $N(\alpha + 4)$ and the other way is 11 itself. But here $11$ is not irreducible because it has prime factors.
+
+But the situation is a bit different if $p$ doesn't have actual prime factors, the expression $p^f$ is a product of irreducibles because there are no cyclotomic integers with norm $p^f$ therefore $N\psi(\eta) = p^f \cdot Q$ gives us two ways of writing $N\psi(\eta)$ as a product of irrreducibles (or course once we finish writing $Q$ as a product of irreducibles).
+
+{\bf Proposition 151.0}. The norm $N\psi(\eta)$ can have other prime factors besides the one in question. Suppose there are only two prime factors in $N\psi(\eta)$, those of $p_1$ and $p_2$, and as assumed above one of the prime factors is non-existent. If the prime factor of $p_2$ is an actual one, call it $h_2(\alpha)$, then $\psi(\eta)$ is divisible by $h_2(\alpha)$ but if this is the case then $\psi(\eta)/h_2(\alpha)$ is an actual cyclotomic integer which is a contradiction since the prime divisor of $p_1$ is non-existent.
+
+The situation is the same if we have more than two prime divisors as long as only one of them is fictitious because once we finished dividing by the actual prime factors we get an actual prime divisor for the fictitious one. But if there are two or more fictitious ones we are ok because even if we finished dividing by the actual ones we are left with a cyclotomic integer that is a product of two or more fictitious prime factors.
+
+Also, as mentioned above the norm $N\psi(\eta)$ can't be $p^f$ because then $\psi(\eta)$ is an actual prime factor of $p$, therefore the norm $N\psi(\eta)$ can only be
+%
+\nbea
+N\psi(\eta) = p_1^f p_2^{n_2f} \dots p_k^{n_k f} \cdot q_1^{m_1 f} q_2^{m_1 f} \dots q_l^{m_l f}
+\neea
+%
+The $p$'s are primes with no actual prime factors ($p_1$ is the one whose prime factor is contained in $\psi(\eta)$ with multiplicity one) while the $q$'s are the primes with actual prime factors. The exponents are all multiples of $f$ because $\psi(\eta)$ is made up of periods of length $f$ and so the norm is of the form $A^f$ and by the fundamental theorem the multiplicities must be the same for both sides.
+
 
 
 
