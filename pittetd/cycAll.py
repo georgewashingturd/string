@@ -933,6 +933,6 @@ def findPsi(L, p):
         mult = checkMultiplicity(eta[i], Psi, p)
         print u'multiplicity of \u03B7%d - %d is %d' % (i, u[i], mult)
     
-    return Psi, u
+    return Psi, phi, u
 
 
