@@ -1,3 +1,5 @@
+from sympy import *
+
 # shifts f(A) to f(A^k), k > 0
 def cycShift(f, k):
 
@@ -418,7 +420,7 @@ def pF(n):
 
     print 
 
-def generateEtas(L, f):
+def generateEtas(L, f, v=False):
     e = (L-1)/f
 
     # create eta's
@@ -429,8 +431,8 @@ def generateEtas(L, f):
     for i in xrange(e):
         for j in xrange(f):
             eta[i][pow(g,j*e+i,L)] = 1
-
-        print u'\u03B7%d =' % (i), eta[i]
+        if v == True:
+            print u'\u03B7%d =' % (i), eta[i]
 
     return eta
 
@@ -486,6 +488,92 @@ def printSumEtaRaw(res, nz):
     else:
         print
 
+# function to prepare linear algebra matrix
+def findCoeff(res, nz, i, u0):
+    const = -res[0]
+    const -= res[nz[0]]*u0
+
+    e = len(nz)
+    coeff = [0]*(e - 1)
+
+    for j in xrange(1,e):
+        if res[nz[j]] != 0:
+            coeff[j-1] = -res[nz[j]]
+
+    coeff[i - 1] += u0
+
+    return coeff, const
+
+
+# function to find all u_i for all \eta_i
+def findAllUs(L, p):
+    f = findOrder(L, p)
+    e = (L - 1)/f
+
+    eta = generateEtas(L, f)
+    nz = findEtaNz(eta)
+
+    g = primRoots(L)[0]
+    min_e = searchMinE(L)
+
+    u0 = 0
+
+    # find u0
+    for i in xrange(1, p+1):
+        eta[0][0] = -i
+        if cycNormFast(f=eta[0], g=g, e=min_e) % p == 0:
+            u0 = i
+            break
+
+    if e == 1:
+        sol = {}
+        u = [u0]
+    else:
+        eta[0][0] = 0
+        coeffs = []
+        consts = []
+        # find the other u's
+        for j in xrange(1,e):
+            res = multCyc(eta[0], eta[j])
+
+            coeff, const = findCoeff(res, nz, j, u0)
+            coeffs.append(coeff)
+            consts.append(const)
+
+        # create symbol string tuple
+        u = ()
+        for i in xrange(1,e):
+            u += ('u%d ' % i,)
+        
+        # create equations string tuple
+        eqn = ()
+        for i in xrange(0,e-1):
+            eqstr = '%+d' % consts[i]
+            for j in xrange(len(coeffs[i])):
+                eqstr += '%+d*u%d' % (coeffs[i][j], j+1)
+            eqn += (eqstr,)
+
+        sol = solve(eqn, u)
+        soln = sol.items()
+
+        u = [0] * e
+        u[0] = u0
+
+        for i in soln:
+            num = i[1].p
+            den = i[1].q % p
+
+            if den != 1:
+                den = pow(den, p-2, p)
+                num = (num * den)
+
+            num = num % p
+
+            u[int(str(i[0])[1:])] = num
+
+    return sol, u
+
+
 # print out multiplication table for periods
 def multTablePeriods(L, f):
 
@@ -512,10 +600,10 @@ def multTablePeriods(L, f):
 
             print u'\u03B7%d*\u03B7%d = ' % (i, j),
             printSumEtaRaw(res, nz)
-            
+
 
 # find u_i corresponding to eta_i
-def FindU(L, p, e):
+def findU(L, p, e):
 
     if L == 5:
         for i in xrange(1,1000):
@@ -594,13 +682,20 @@ def printEtaFactor(res):
     
 
 # find factors of prime numbers   
-def Page121Problem3and5(L, p):
+def findPrimeFactors(L, p, C=10):
 
     # first find order of p mod L
     for i in xrange(1,L):
         if pow(p,i,L) == 1:
             f = i
             break
+    else:
+        print 'p == L'
+        return
+
+    if f == L - 1 :
+        print 'f is L - 1'
+        return 
 
     print 'f', f
     e = (L-1)/f
@@ -609,7 +704,9 @@ def Page121Problem3and5(L, p):
 
     eta = generateEtas(L, f)
 
-    u = FindU(L,p,e)
+    # u = findU(L,p,e)
+
+    sol, u = findAllUs(L,p)
 
     for i in xrange(e):
         print 'u%d: %d,' % (i, u[i]),
@@ -620,64 +717,68 @@ def Page121Problem3and5(L, p):
     
     import itertools
     t = [i for i in range(1,e+1)]
-    
-    for y in xrange(1,e + 1):
+
+
+    for c in xrange(1,C+1):
+        print 'c', c
+        for y in xrange(1,e + 1):
+            
+            l = itertools.combinations(t, y)
+
+            for i in l:
+                # create a bitmap for the plus minus
+                for k in range(0,2**y):
+                    res = [0] * (e+1)
+                    for j in range(y):
+                        b = pow(-1,(k >> j) & 0x01)
+                        if j == 0:
+                            b *= c
+                        res[i[j]] = b*1
+                        res[0] -= b*u[i[j]-1]
+
+                    cd = [0] * L
+                    for j in xrange(1,len(res)):
+                        et = [res[j] * z for z in eta[j-1]]
+                        cd = addCyc(cd, et)
+                    cd[0] = res[0]
+                    N = cycNormFast(f=cd, g=g, e=min_e)
+
+                    # we actually don't need to calculate the norm
+                    # we can straight away do the verification below
+                    # but this serves as a double-check
+
+                    if N == pow(p,f):
+                        print N, res
+                        
+                        # check result to see if we need a minus sign
+                        tmp = [0] * L
+                        tmp[0] = res[0]
+                        for j in xrange(1,e + 1):
+                            et = [res[j] * w for w in eta[j-1]]
+                            tmp = addCyc(tmp, et)
+
+                        tot = [w for w in tmp]
+                        for j in xrange(1,e):
+                            tmp = cycShift(tmp, g)
+                            tot = multCyc(tot, tmp)
+
+                        # check if all elements from index 1 to L-1 are the same
+                        for j in xrange(2,L):
+                            if tot[j] != tot[j-1]:
+                                print 'Tot is not right'
+                                break
+                        else:
+                            print tot[0] - tot[1], '=',
+
+                        # this is just cosmetics but it's worth it
+                        printEtaFactor(res)
+                        
+
         
-        l = itertools.combinations(t, y)
-
-        for i in l:
-            print i
-            # create a bitmap for the plus minus
-            for k in range(0,2**y):
-                res = [0] * (e+1)
-                for j in range(y):
-                    b = pow(-1,(k >> j) & 0x01)
-                    res[i[j]] = b*1
-                    res[0] -= b*u[i[j]-1]
-
-                cd = [0] * L
-                for j in xrange(1,len(res)):
-                    et = [res[j] * z for z in eta[j-1]]
-                    cd = addCyc(cd, et)
-                cd[0] = res[0]
-                N = cycNormFast(f=cd, g=g, e=min_e)
-
-                # we actually don't need to calculate the norm
-                # we can straight away do the verification below
-                # but this serves as a double-check
-
-                if N == pow(p,f):
-                    print N, res
-                    
-                    # check result to see if we need a minus sign
-                    tmp = [0] * L
-                    tmp[0] = res[0]
-                    for j in xrange(1,e + 1):
-                        et = [res[j] * w for w in eta[j-1]]
-                        tmp = addCyc(tmp, et)
-
-                    tot = [w for w in tmp]
-                    for j in xrange(1,e):
-                        tmp = cycShift(tmp, g)
-                        tot = multCyc(tot, tmp)
-
-                    # check if all elements from index 1 to L-1 are the same
-                    for j in xrange(2,L):
-                        if tot[j] != tot[j-1]:
-                            print 'Tot is not right'
-                            break
-                    else:
-                        print tot[0] - tot[1], '=',
-
-                    # this is just cosmetics but it's worth it
-                    printEtaFactor(res)
-                    
-
-        
-def Page121Problem5(L):
+def printOrderList(L, n):
 
     # first find order of p mod L
-    for i in xrange(1,100):
+    for i in xrange(1,n):
         if isNotPrime(i) == False:
             for j in xrange(1,L):
                 if pow(i,j,L) == 1:
@@ -934,5 +1035,4 @@ def findPsi(L, p):
         print u'multiplicity of \u03B7%d - %d is %d' % (i, u[i], mult)
     
     return Psi, phi, u
-
 
