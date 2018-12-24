@@ -1,0 +1,666 @@
+\documentclass[aps,preprint,preprintnumbers,nofootinbib,showpacs,prd]{revtex4-1}
+\usepackage{graphicx,color}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsmath,amssymb}
+\usepackage{multirow}
+\usepackage{amsthm}%        But you can't use \usewithpatch for several packages as in this line. The search 
+
+\usepackage{cancel}
+
+%%% for SLE
+\usepackage{dcolumn}   % needed for some tables
+\usepackage{bm}        % for math
+\usepackage{amssymb}   % for math
+\usepackage{multirow}
+%%% for SLE -End
+
+\usepackage{ulem}
+\usepackage{cancel}
+
+\usepackage{hyperref}
+
+\usepackage[top=1in, bottom=1.25in, left=1.1in, right=1.1in]{geometry}
+
+\usepackage{mathtools} % for \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+\usepackage{simplewick}
+
+\newcommand{\msout}[1]{\text{\sout{\ensuremath{#1}}}}
+
+
+%%%%%% My stuffs - Stef
+\newcommand{\lsim}{\mathrel{\mathop{\kern 0pt \rlap
+  {\raise.2ex\hbox{$<$}}}
+  \lower.9ex\hbox{\kern-.190em $\sim$}}}
+\newcommand{\gsim}{\mathrel{\mathop{\kern 0pt \rlap
+  {\raise.2ex\hbox{$>$}}}
+  \lower.9ex\hbox{\kern-.190em $\sim$}}}
+
+%
+% Key
+%
+\newcommand{\key}[1]{\medskip{\sffamily\bfseries\color{blue}#1}\par\medskip}
+%\newcommand{\key}[1]{}
+\newcommand{\q}[1] {\medskip{\sffamily\bfseries\color{red}#1}\par\medskip}
+\newcommand{\comment}[2]{{\color{red}{{\bf #1:}  #2}}}
+
+
+\newcommand{\ie}{{\it i.e.} }
+\newcommand{\eg}{{\it e.g.} }
+
+%
+% Energy scales
+%
+\newcommand{\ev}{{\,{\rm eV}}}
+\newcommand{\kev}{{\,{\rm keV}}}
+\newcommand{\mev}{{\,{\rm MeV}}}
+\newcommand{\gev}{{\,{\rm GeV}}}
+\newcommand{\tev}{{\,{\rm TeV}}}
+\newcommand{\fb}{{\,{\rm fb}}}
+\newcommand{\ifb}{{\,{\rm fb}^{-1}}}
+
+%
+% SUSY notations
+%
+\newcommand{\neu}{\tilde{\chi}^0}
+\newcommand{\neuo}{{\tilde{\chi}^0_1}}
+\newcommand{\neut}{{\tilde{\chi}^0_2}}
+\newcommand{\cha}{{\tilde{\chi}^\pm}}
+\newcommand{\chao}{{\tilde{\chi}^\pm_1}}
+\newcommand{\chaop}{{\tilde{\chi}^+_1}}
+\newcommand{\chaom}{{\tilde{\chi}^-_1}}
+\newcommand{\Wpm}{W^\pm}
+\newcommand{\chat}{{\tilde{\chi}^\pm_2}}
+\newcommand{\smu}{{\tilde{\mu}}}
+\newcommand{\smur}{\tilde{\mu}_R}
+\newcommand{\smul}{\tilde{\mu}_L}
+\newcommand{\sel}{{\tilde{e}}}
+\newcommand{\selr}{\tilde{e}_R}
+\newcommand{\sell}{\tilde{e}_L}
+\newcommand{\smurl}{\tilde{\mu}_{R,L}}
+
+\newcommand{\casea}{\texttt{IA}}
+\newcommand{\caseb}{\texttt{IB}}
+\newcommand{\casec}{\texttt{II}}
+
+\newcommand{\caseasix}{\texttt{IA-6}}
+
+%
+% Greek
+%
+\newcommand{\es}{{\epsilon}}
+\newcommand{\sg}{{\sigma}}
+\newcommand{\dt}{{\delta}}
+\newcommand{\kp}{{\kappa}}
+\newcommand{\lm}{{\lambda}}
+\newcommand{\Lm}{{\Lambda}}
+\newcommand{\gm}{{\gamma}}
+\newcommand{\mn}{{\mu\nu}}
+\newcommand{\Gm}{{\Gamma}}
+\newcommand{\tho}{{\theta_1}}
+\newcommand{\tht}{{\theta_2}}
+\newcommand{\lmo}{{\lambda_1}}
+\newcommand{\lmt}{{\lambda_2}}
+%
+% LaTeX equations
+%
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+
+\newcommand{\nbea}{\begin{eqnarray*}}
+\newcommand{\neea}{\end{eqnarray*}}
+\newcommand{\nbeq}{\begin{equation*}}
+\newcommand{\neeq}{\end{equation*}}
+
+\newcommand{\no}{{\nonumber}}
+\newcommand{\td}[1]{{\widetilde{#1}}}
+\newcommand{\sqt}{{\sqrt{2}}}
+%
+\newcommand{\me}{{\rlap/\!E}}
+\newcommand{\met}{{\rlap/\!E_T}}
+\newcommand{\rdmu}{{\partial^\mu}}
+\newcommand{\gmm}{{\gamma^\mu}}
+\newcommand{\gmb}{{\gamma^\beta}}
+\newcommand{\gma}{{\gamma^\alpha}}
+\newcommand{\gmn}{{\gamma^\nu}}
+\newcommand{\gmf}{{\gamma^5}}
+%
+% Roman expressions
+%
+\newcommand{\br}{{\rm Br}}
+\newcommand{\sign}{{\rm sign}}
+\newcommand{\Lg}{{\mathcal{L}}}
+\newcommand{\M}{{\mathcal{M}}}
+\newcommand{\tr}{{\rm Tr}}
+
+\newcommand{\msq}{{\overline{|\mathcal{M}|^2}}}
+
+%
+% kinematic variables
+%
+%\newcommand{\mc}{m^{\rm cusp}}
+%\newcommand{\mmax}{m^{\rm max}}
+%\newcommand{\mmin}{m^{\rm min}}
+%\newcommand{\mll}{m_{\ell\ell}}
+%\newcommand{\mllc}{m^{\rm cusp}_{\ell\ell}}
+%\newcommand{\mllmax}{m^{\rm max}_{\ell\ell}}
+%\newcommand{\mllmin}{m^{\rm min}_{\ell\ell}}
+%\newcommand{\elmax} {E_\ell^{\rm max}}
+%\newcommand{\elmin} {E_\ell^{\rm min}}
+\newcommand{\mxx}{m_{\chi\chi}}
+\newcommand{\mrec}{m_{\rm rec}}
+\newcommand{\mrecmin}{m_{\rm rec}^{\rm min}}
+\newcommand{\mrecc}{m_{\rm rec}^{\rm cusp}}
+\newcommand{\mrecmax}{m_{\rm rec}^{\rm max}}
+%\newcommand{\mpt}{\rlap/p_T}
+
+%%%song
+\newcommand{\cosmax}{|\cos\Theta|_{\rm max} }
+\newcommand{\maa}{m_{aa}}
+\newcommand{\maac}{m^{\rm cusp}_{aa}}
+\newcommand{\maamax}{m^{\rm max}_{aa}}
+\newcommand{\maamin}{m^{\rm min}_{aa}}
+\newcommand{\eamax} {E_a^{\rm max}}
+\newcommand{\eamin} {E_a^{\rm min}}
+\newcommand{\eaamax} {E_{aa}^{\rm max}}
+\newcommand{\eaacusp} {E_{aa}^{\rm cusp}}
+\newcommand{\eaamin} {E_{aa}^{\rm min}}
+\newcommand{\exxmax} {E_{\neuo \neuo}^{\rm max}}
+\newcommand{\exxcusp} {E_{\neuo \neuo}^{\rm cusp}}
+\newcommand{\exxmin} {E_{\neuo \neuo}^{\rm min}}
+%\newcommand{\mxx}{m_{XX}}
+%\newcommand{\mrec}{m_{\rm rec}}
+\newcommand{\erec}{E_{\rm rec}}
+%\newcommand{\mrecmin}{m_{\rm rec}^{\rm min}}
+%\newcommand{\mrecc}{m_{\rm rec}^{\rm cusp}}
+%\newcommand{\mrecmax}{m_{\rm rec}^{\rm max}}
+%%%song
+
+\newcommand{\mc}{m^{\rm cusp}}
+\newcommand{\mmax}{m^{\rm max}}
+\newcommand{\mmin}{m^{\rm min}}
+\newcommand{\mll}{m_{\mu\mu}}
+\newcommand{\mllc}{m^{\rm cusp}_{\mu\mu}}
+\newcommand{\mllmax}{m^{\rm max}_{\mu\mu}}
+\newcommand{\mllmin}{m^{\rm min}_{\mu\mu}}
+\newcommand{\mllcusp}{m^{\rm cusp}_{\mu\mu}}
+\newcommand{\elmax} {E_\mu^{\rm max}}
+\newcommand{\elmin} {E_\mu^{\rm min}}
+\newcommand{\elmaxw} {E_W^{\rm max}}
+\newcommand{\elminw} {E_W^{\rm min}}
+\newcommand{\R} {{\cal R}}
+
+\newcommand{\ewmax} {E_W^{\rm max}}
+\newcommand{\ewmin} {E_W^{\rm min}}
+\newcommand{\mwrec}{m_{WW}}
+\newcommand{\mwrecmin}{m_{WW}^{\rm min}}
+\newcommand{\mwrecc}{m_{WW}^{\rm cusp}}
+\newcommand{\mwrecmax}{m_{WW}^{\rm max}}
+
+\newcommand{\mpt}{{\rlap/p}_T}
+
+%%%%%% END My stuffs - Stef
+
+\newcommand{\dunno}{$ {}^{\mbox {--}}\backslash(^{\rm o}{}\underline{\hspace{0.2cm}}{\rm o})/^{\mbox {--}}$}
+
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\tor}{tor}
+
+
+
+
+
+\begin{document}
+
+\title{Hungerford}
+\bigskip
+\author{Stefanus$^1$\\
+$^1$ Samsung Semiconductor Inc\\ San Jose, CA 95134 USA\\
+}
+%
+\date{\today}
+%
+\begin{abstract}
+Just for fun :)
+
+\end{abstract}
+%
+\maketitle
+
+\renewcommand{\theequation}{A.\arabic{equation}}  % redefine the command that creates the equation no.
+\setcounter{equation}{0}  % reset counter 
+
+
+
+{\bf Theorem 1}. If the order of every element of a group is $2$ then the group is abelian.
+
+{\it Proof}. Start with a group $G$ and $a,b \in G$ since the order of each element is two we have $a^2 = b^2 = e$ and $a^{-1} = a, b^{-1} = b$
+%
+\nbea
+ab & = & ab \\
+ab \cdot e & = & e \cdot ab \\
+ab \cdot aa& = & bb \cdot ab \\
+a\cdot abaa & = & a\cdot b bab \\
+ba a\cdot a & = & ab bab \cdot a \\
+ba & = & ab ~ (ba)^2
+\neea
+%
+but since this is a group $ba = c \in G$ and since $c^2 = e$ we have $ba = ab$.
+
+{\bf Theorem 1.1}. If the order of a group $G$ is even then there is an element of order 2.
+
+{\it Proof}. If the group has an even number of elements then there are an odd number of non-identity elements. We also know that the inverse element of an element is unique so if an element is its own inverse than that element is of order 2. Now assume there is no element who's its own inverse, pick such element and its inverse and remove from the group if we keep doing this we will end up with one last non-identity element but since it's a group and inverses are unique it must be its own inverse and its order 2.
+
+{\bf Theorem 1.2} For $a,b \in G$ we have $|ab| = |ba|$
+
+{\it Proof}. Assume $(ab)^n = e$ 
+%
+\nbea
+e = (ab)^n & = & ab~ab~\dots ~ab
+\neea
+%
+multiply from the left by $a^{-1}$ and from the right by $a$ we have 
+%
+\nbea
+a^{-1} e a & = & a^{-1}~ab~ab~\dots ~ab~a \\
+e & = & ba ~ ba ~ \dots ~ ba = (ba)^n
+\neea
+%
+so we have that $(ba)^n = e$ we must now show that $n$ is the order of $ba$. This is done through the same means. Assume there is an $m < n$ such that $(ba)^m = e$ then 
+%
+\nbea
+e  = (ba)^m & = & ba ~ ba ~ \dots ~ ba
+\neea
+%
+now if we multiply from the left by $a$ and from the right by $a^{-1}$ we have 
+%
+\nbea
+a e a^{-1}  & = & a~ba ~ ba ~ \dots ~ ba~a^{-1} \\
+e & = & (ab)^m
+\neea
+%
+which is a contradiction
+
+{\bf Theorem 1.3}. If $a,b \in G$ and $ab = ba$ then the order of $ab$ is $k = {\rm lcm}(|a|,|b|)$
+
+{\it Proof}. First, notation. Let $k = r_a d r_b$ where $d = \gcd(a,b)$ and $1 = \gcd(r_a, r_b), |a| = r_a d, |b| = r_b d$. Then
+%
+\nbea
+(ab)^k & = & a^{(r_a d) r_b} b^{r_a (r_b d)} \\
+& = & a^{|a| r_b} b^{|b| r_a} \\
+& = & e
+\neea
+%
+
+Assume there is an $m < k$ such that $(ab)^m = e$ then $m | k$. Let $m = r_1 r_d r_2$ where $r_1 s_a =  r_a, r_2 s_b = r_b$ and $r_d s_d = d$ then 
+%
+\nbea
+(ab)^{ms_a s_d} & = & a^{|a| r_2} b^{|a| r_2} \\
+e & = & e b^{|a| r_2} \\
+e & = & b^{|a| r_2}
+\neea
+%
+since $|b|$ is the order of $b$ we must have $|b|$ divide $|a| r_2 = r_a d r_2$ but $1 = \gcd(r_a, |b|)$ and $d r_2 |~|b|$ so this is a contradiction unless $r_2 = r_b$ but in this case we can do the same thing but with $(ab)^{m s_b s_d}$ and we will get $r_1 = r_a$ which in any case we get back $m = k$.
+
+{\bf Theorem 2}. If $F$ is a field and $G$ is a subgroup of nonzero elements of $F$, \ie $G \subset F^*$, then if $n$ is the order of $G$ where $n = p_1^{r_1} \cdot p_2^{r_2} \dots p_i^{r_i}$, then each generator $a_i$ of $G$ has order $p_i$ or $p_i^{r_i}$.
+
+{\it Proof}. Since $F$ is a field $G$ is abelian. And Cauchy's theorem tells us that for every $p_i$ there is an element $b_i$ of $G$ with that order. If all we have is $b_i$ then we won't be able to reconstruct $G$.
+
+Therefore there must be other elements with order $p_i^{s_i}$ with $1 < s_i \le r_i$. Now we use the fact that $F$ is a field. Say we have $c_i$ with order $p_i^{t_i}, 1 \le t_i < r_i$ then from the equation $f(x) = x^{p_i} - 1$ we know that all powers of $b_i^j, 1 \le j \le p_i$ are all the roots of $f(x)$. This means that there is only one element with order $p_i$ otherwise given two elements with order $p_i$ we can build $p^2_i$ distinct elements and if we have three elements with order $p_i$ we can build $p_i^3$ elements.
+
+This means that $c_i^{p_i^{t_i - 1}} = b_i^k$ because both are roots of $f(x)$ this means that $c_i b_i$ cannot generate all the different $p_i^{r_i}$ elements since $t_i < r_i$. The only way out is to have $c_i$ have the order $r_i$ and $c_i^{p_i^{r_i - 1}} = b_i^k$.
+
+{\textit{\textbf{Corollary 2.1}}} Every Unit $Z^*_p$ with prime $p$ has a primitive root because $Z_p$ is a field and $Z^*_p$ is an abelian subgroup.
+
+{\bf Theorem 3}. The order of $A_n \subset S_n$ is $n!/2$ and its index is 2.
+
+{\it Proof}. Recall that $A_n$ is the subgroup of the permutation group $S_n$ whose elements are all made up of even transpositions. Recall also that each permutation can only be even or odd it cannot be both this is due to the fact that the identity permutation is even.
+
+Now let's say that the number of odd permutation, $M$, is bigger than the number of even ones, $N$. Since the number of all permutations is $n!$ the total is even. So this means that $M$ and $N$ are both even or both odd. In our first case $M > N$ this means that $M \ge N + 2$.
+
+Another fact we need is that the product of even and odd permutations is odd. So say we take one permutation $p_i$ of the odd ones and multiply it with the rest of the odd permutations, this way we generate $M-1$ even permutations and they are all distinct because if two of them are the same then 
+%
+\nbea
+p_ip_j & = & p_ip_k \\
+\to p_j & = & p_k
+\neea
+%
+but $p_j$ and $p_k$ are distinct so we generate distinct $M-1 \ge N+1$ even permutations a contradiction. Now say we have $M < N$ meaning $M + 2 \le N$ we do the same thing take one odd permutation $p_i$ and multiply it with every even permutation this way generating $N \ge M + 2$ odd permutations again a contradiction. Therefore $M = N = n!/2$ :) 
+
+Now for the index, we can immediately see this from the above argument the left or right product of an odd permutation with the set $A_n$ will generate all of the distinct odd permutations and the left and right product of an even permutation with $A_n$ will also generate all of $A_n$ because say there are duplicates in $h_i A_n$ then 
+%
+\nbea
+h_i h_j & = & h_i h_k
+\neea
+%
+where $h \in A_n$ then $h_j = h_k$ but they are all distinct so the index must be two and because of this $A_n$ is a normal subgroup because the left product and the right product with any element is itself.
+
+{\bf Theorem 3.1} A subgroup of the permutation group $S_n$ must have all elements even or if it has both even and odd elements then the number of even elements is either equal or one less than the number of odd elements (by even and odd we mean the number of transpositions)
+
+{\it Proof}. Since the identity is even and the product of two odd elements is even a subgroup cannot have all odd elements. If it has both even and odd elements, say $M$ odd ones and $N$ even ones, then $M=N-1$ or $M = n$. Facts that might be useful is that the inverse of an element is unique and the inverse of an odd/even element is odd/even (because the identity is even).
+
+Using the logic of the proof of Theorem 3 above we have $N \ge M - 1$ (this is what you get when you pick one odd element and multiply it with the other odd elements) and $M \ge N$ (when you pick an odd element and multiply it with even elements). Thus either $M = N$ or $N = M - 1$.
+
+{\bf Theorem 3.2} A normal subgroup of $S_n$ must have all elements even
+
+{\it Proof}. To be normal we must have $a^{-1}Ga = G$ but $a^{-1}ba$ is always even so the elements of $G$ must be all even.
+
+{\bf Theorem 3.3} For $n \ge 5$ the only normal subgroups of $S_n$ are $S_n$, (1), $A_n$.
+
+{\it Proof}. We will use Theorem 10.28 from the book that says that $A_n$ is simple for $n \ge 5$. If there is another normal subgroup it must have all even elements or some even and some odd but it cannot have all odd elements since odd times odd is even so an all odd element set will not be a subgroup (and because the identity is even).
+
+To be normal we must have $a^{-1} G a = G$ where $G$ is a subgroup but $a^{-1} b a$ is always even. Thus the subgroup cannot have odd elements. But by Theorem 10.28 of the book $A_n$ is simple (it doesn't have any normal subgroup and recall that $A_n$ is the subgroup of all even elements of $S_n$) therefore there's no other normal subgroups for $n \ge 5$.
+
+{\bf Theorem 3.4} $A_2$ and $A_3$ are simple
+
+{\it Proof}. $A_2$ has only one element, the identity (since $S_2$ only has two elements), so $A_2$ is simple. $A_3$ has three elements (since $S_3$ has 6 elements) with one of them being the identity so the other two must be the inverses of one another so $A_3$ does not have any subgroups except the identity so $A_3$ is simple.
+
+
+
+
+{\bf Note 1}. On the classification of integers as composite or prime. In the proof in ent.pdf we assume that an integer is either composite or prime but there can be another alternative it can be neither. It is when one of the factor of the number is not existent. The number itself is real because the proof starts by picking an integer from the set $\mathcal{Z}$.
+
+This is the case in cyclotomic integers, for $\lambda = 23$ there's no cyclotomic integer with norm 47 therefore even though it is a cyclotomic prime divisor. 
+
+This is the same situation as the one in Hungerford's proof on UFD from ACC. He assumed that since $a$ is not irreducible $a$ is a product of $a_1b_1$ where one of them (either $a_1$ or $b_1$) must be reducible. But again we might have a situation where $a_1$ or $b_1$ is fictitious.
+
+For integers the better solution is the sieve construction. Starts with 2 as a prime then remove all multiple of two's. We then pick the smallest number bigger than 2 that was not removed. That number is then a prime, we then repeat the process with multiples of 3.
+
+
+
+{\bf Note 2}. About unique factorization. The first thing we need to show is that there is a factorization and once we show that we need to show that it is unique. This is why the first requirement for UFD is ACC (see Hungerford) this is to make sure there is factorization. And by definition a factorization is a finite factorization if it is infinite then we say that there is really no factorization to begin with.
+
+So again in this case infinite factorization equals no factorization $0 = \infty$. So this is the purpose of ACC not for the uniqueness but more for the existence.
+
+Once we have factorization we need to show that this is unique and this is achieved using if $p|ab$ then $p|a$ or $p|b$ for irreducible $p$.
+
+
+
+
+{\bf Theorem 4.0}. For integral domain if $p$ an irreducible and $p|ab$ then $p|a$ or $p|b$.
+
+{\it Proof}. What I want to do here is the proof done in ent.pdf but generalized to any integral domain. In ent.pdf what was used was $\gcd(an, bn) = \gcd(a,b) \cdot |n|$ and the proof of this was done through a neat trick using induction. However for an arbitrary integral domain we might not have $|n|$ and more importantly gcd might not be defined.
+
+But say that gcd is defined we need to show that $\gcd(an, bn) \sim \gcd(a,b) \cdot n$ where $\sim$ means associate. To prove this we need a short lemma
+
+{\bf Lemma 4.0.1} For $a,b \in R$ an integral domain $a \sim b$ if and only if $a|b$ and $b|a$ 
+
+{\it Proof}. If $a \sim b$ then $a = ub$ where $u$ is a unit, but $bu = a$ means $b|a$ but $u$ a unit means that $uv = 1$ where $v$ is also a unit thus $va = vub = b$ thus $a|b$.
+
+Now the converse, if $a|b$then $ac = b$ but since $b|a$ we have $bd = a$ which means that $bdc = b$, $cd = 1$ with $c$ and $d$ units Q.E.D
+
+{\bf Lemma 4.0.2} For $a,b,n \in R$ we have $(an, bn) \sim (a,b) n$ 
+
+{\it Proof}. We need to show that $(an,bn) | (a,b)n$ and $(a,b)|(an,bn)$. Let's prove the latter first, denote $d = (a,b)$ and $g = (an,bn)$. This means $d|a$ and $d|b$ thus $a = d m_a, b = dm_b$ and
+%
+\nbea
+na & = & n dm_a \\
+nb & = & nd m_b
+\neea
+%
+Thus $nd|na$ and $nd | nb$ but by the definition of gcd this means that $d|g$.
+
+Now we need to prove the other way, \ie $g|nd$. We know that $n|na$ and $n|nb$ so by definition of gcd $n|g, g = nr$ also $na = gs_a, nb = gs_b$ thus
+%
+\nbea
+na & = & g s_a = nrs_a \\
+\to a & = & rs_a \\
+nb & = & g s_b = nr s_b \\
+\to b & = & r s_b
+\neea
+% 
+We can cancel things because this is an integral domain, this means that $r|a$ and $r|b$ and therefore $r|d$ and $g = nr | nd$. If you forget why we can cancel things it's because $na = nb \to n(a-b) = 0$ but an integral domain means that one of the factors must be zero.
+
+
+Now back to the proof of Theorem 4.0 We know that $p|ab$ and $p|pb$ so $p|(ab,pb)$but $(ab,pb) \sim (a,p)b$. Therefore
+%
+\nbea
+p &|& (ab, pb) \\
+\to p & | & u (a,p) b
+\neea
+%
+where $u$ is a unit. So since $\gcd(a,p) = v$ a unit and a product of units is itself a unit it must be that $p|wb, ph = wb$ where $w$ is a unit. If $sw = 1$ then $ph = wb \to phs = b$ and $p|b$.
+
+
+
+
+{\bf Theorem 4.1} For integers (or maybe Euclidean domain) we can proof that if $p$ a prime (or irreducible) and $p|ab$ then $p|a$ or $p|b$.
+
+{\it Proof}. The proof I want to do here is the one using the minimum amount of information. My strategy is to just use the division algorithm only. For now assume that $(p,a) = (p,b) = 1$ otherwise the theorem is proven right away.
+
+First if $a > p$ then we do $a = pn + r$ if $a< p$ then $p = am + r$. In either case $r \neq 0$ because in the first case if $r = 0$ then $p|a$ and we have proven the theorem. In the second case $p$ is prime and co-prime to $a$ so $r$ can't be zero.
+
+If $r \neq 0$ then $\gcd(p,r) = 1$ in the first case it's because $0 < r < p$ and $p$ is prime while in the second case it's because $r < a$ and $a < p$ and again $p$ is prime. 
+
+The same happens with $b$ it must be under one of those two cases so in total we have 4 cases. But in all cases we have the remainder less than $p$ and co-prime to it. So say we multiply the remainders of $a$ and $b$ we have $r_ar_b$ and it is a multiple of $p$ as well (as can be seen by straightforward algebra).
+
+But in any case we have $p|r_ar_b$ with $r_a < a$ and $r_b < b$ and we have an infinite descent.
+
+
+
+{\bf Lemma 1}. if $s \sim t$ then $(n,s) \sim (n,t)$ for $n,s,t \in R$ an integral domain 
+
+{\it Proof}. $s \sim t$ means that $s = ut$ where $u$ a unit. Let $g = (n,t)$ and $d = (n,s)$ now we need to show that $d|g$ and $g|d$.
+
+From $d = (n,s) = (n,ut)$ we have $d|n$ and $d|ut\to dh = ut \to dhv = t \to d|t$ thus $d|n$ and $d|t$ where $uv = 1$ then from the definition of gcd $d|g$.
+
+Now the other way around which is practically the same proof but $t = vs$.
+
+
+
+{\bf Lemma 2}. $(r,(s,t)) \sim ((r,s), t)$
+
+{\it Proof}. The strategy here is to show that both are associates of $(r,s,t) = h$. Let $d = (s,t)$ and $g = (r,d)$. So now we need to show that $g|h$ and $h|g$.
+
+$g|h$ is the easy one because with $d = g m_d$ we have
+%
+\nbea
+r & = & g m_r \\
+s & = & d m_s = g m_d m_s \\
+t & = & d m_t = g m_d m_t
+\neea
+%
+so $g | r,s,t \to g|h$ according to the definition of gcd, now the other way around $h|g$. We know that $h|r,s,t$ but if we focus only on $s,t$ we see that $h|s,t$ by the definition of gcd $h|d$ because every thing that divides $s$ and $t$ must divide $d$. But $h|r$ thus $h$ divides $r$ and $d$ and therefore by the definition of gcd $h|g$. The same proof applies to $((r,s),t)$.
+
+{\bf Theorem 5}. Any group with order $p$ or $p^2$ is abelian
+
+{\it Proof}. We use the class equation on page 334 and 335 of Hungerford. They are
+%
+\nbea
+|G| & = & |C_1| + |C_2| + \dots + |C_t| \\
+|G| & = & [G:C(a_1)] + [G:C(a_2)] + \dots + [G:C(a_t)]
+\neea
+%
+Where $C_i$'s are distinct conjugacy classes of $G$. Since $|C_i| = [G:C(a_i)]$ and from Lagrange's Theorem we know that $|G| = |C(a_i)|[G:C(a_i)]$ we know that $|C_i|$ divides $|G|$ , note that $C_i \neq C(a_i)$ this is very important the two are not the same, related, but not the same.
+
+One element that is in its own conjugacy class is the identity $e$, this is because it commutes with everyone else, thus every conjugate of $e$ is $e$ itself, $x^{-1} e x = e$ for all $x \in G$. Because of this the centralizer of $e$ is the whole group $C(e) = G$ which also means that $|C_e| = [G:C(e)] = 1$.
+
+If $|G| = p$ then 
+%
+\nbea
+|G| & = & |C_e| + |C_2| + \dots + |C_t| \\
+p & = & 1 + |C_2| + \dots + |C_t|
+\neea
+%
+and the rest of the $|C_i|$ must also divide $p$ so the only solution is to have all of them to be 1 but that said this means that $[G:C(a_i)] = 1 \to C(a_i) = G$ which means that $a_i$ is abelian (it's part of the center of $G$) and to make up to the sum of $p$ we must have $t = p$ therefore $G$ is abelian.
+
+If $|G| = p^2$ then 
+%
+\nbea
+|G| & = & |C_e| + |C_2| + \dots + |C_t| \\
+p^2 & = & 1 + |C_2| + \dots + |C_t|
+\neea
+%
+The only options for $|C_i|$ is 1 or $p$ because it must divide $p^2$ if all of them is $p$ then we won't have the sum of $p^2$ on the LHS so some of them must be 1 and some of them $p$.
+
+But the number of $|C_i|$ with $|C_i| = 1$ must be a multiple of $p$ say $np$ and the rest of the $|C_i|$, $p(p - n)$ of them, must have value $p$. So $|C_j| = p$ for $n < j \le p(p - n)$.
+
+Let's pick one of these $C_j$, the corresponding centralizer would be all the elements that commute with $a_j$. All those $|C_i| = 1$ means that $a_i$ commute with every other elements therefore there are minimal $pn + 1$ elements that commute with $a_j$ (they are those $np$ elements plus $a_j$ itself).
+
+But this means that $|C(a_j)| \ge pn + 1$ and $|C(a_j)||p^2$ which means that $[G:C(a_j)] = 1$ but to make the sum work we must have $t = p^2$ thus the group is abelian.
+
+{\bf Theorem 6}. Every cycle is made up of transpositions
+
+{\it Proof}. We use induction. First we prove that a 3-cycle can be written in terms of transpositions
+%
+\nbea
+(123) & = & (32)(13)
+\neea
+%
+We use $1,2,3$ for notational simplicity like what it's done on the book but we can replace it by $a,b,c$ for a general proof. (1,2,3 are symbols anyway)
+
+So the trick is that $(123)$ means $1 \to 2$, $2 \to 3$, $3 \to 1$, so to split them into two transpositions, first pick an element, say $1$, we know that $1 \to 2$ so we can start with $(12), 1\to2, 2\to 1$ so $1$ is already mapped correctly, the next transposition must then map $1 \to 3$ so that $2 \to 1 \to 3$ therefore $(123) = (13)(12)$.
+
+So we can pick any two element we want and work from there, for a general cycle
+%
+\nbea
+(123\dots k)
+\neea
+%
+we can again choose say $1$ and $k$ to be in the transposition, $(1k), 1 \to k, k \to 1$, so $k$ is already mapped correctly but $1$ must be mapped to $2$ so we must have
+%
+\nbea
+(123\dots k) & = & (k23\dots k-1)(1k)
+\neea
+%
+but by the induction hypothesis $(k23\dots k-1)$ is a cycle with $k-1$ element and therefore can be decomposed into a product of transpositions.
+
+{\bf Theorem 7}. Any subgroup of a solvable group is solvable
+
+{\it Proof}. Recall that a solvable group is a group $G$ such that there is a sequence of subgroups
+%
+\nbea
+G = G_0 \supseteq G_1 \supseteq G_2 \dots \supseteq G_{n-1} \supseteq G_n = \langle e \rangle 
+\neea
+%
+where each $G_i$ is normal in $G_{i-1}$ and $G_{i-1}/G_i$ is abelian.
+
+Suppose that $H$ is a subgroup of $G$. Then we can form a sequence of subgroups for $H$ by simply taking the intersection $H_i = H \cap G_i$ then we have the following sequence of subgroups
+%
+\nbea
+H = H_0 \supseteq H_1 \supseteq H_2 \dots \supseteq H_{n-1} \supseteq H_n = \langle e \rangle 
+\neea
+%
+And we claim that $H$ is solvable.
+
+First we need to show that $H_{i} = H \cap G_{i}$ is normal in $H_{i-1}$. To show this we need to show that for every $a \in H_{i-1}$ we have $aH_ia^{-1} \in H_i$. 
+
+Since $G_{i}$ is normal in $G_{i-1}$ for every $a \in G_{i-1}$ we have $aG_ia^{-1} \in G_i$ but now we are only concerned with $a \in H_{i-1}$ which is an element of both $H$ and $G_{i-1}$.
+
+Take $b \in H_{i}$ which means that $b \in H$ and $b \in G_i$ if we take $aba^{-1}$ since $a \in G_{i-1}$ and $G_{i-1}$ is normal in $G_i$ we have $aba^{-1} \in G_i$ but since $a,b \in H$ we must have $aba^{-1} \in H$ therefore $aba^{-1} \in H \cap G_i = H_i$ since this is true for every element of $H_i$ we have $H_i$ normal in $H_{i-1}$.
+
+Now we must show that $H_{i-1}/H_i$ is abelian. First thing to note is that we are now dealing with quotient groups, for a quotient group to be abelian we must have 
+%
+\nbea
+NaNb = Nab = NbNa = Nba
+\neea
+%
+where $N$ is a subgroup of $G$ and $a,b \in G$. But note that this doesn't mean that $ab = ba$. What it means is that for every $n \in N$ there is $n_1 \in N$ such that 
+%
+\nbea
+nab = n_1ba
+\neea
+%
+for every element $a,b \in G$.
+
+Following a similar argument as before let $N = H_i$ then $Na,Nb \in H_{i-1}/N$ with $a,b \in H_{i-1}$ we must show that  $Nab = Nba$, \ie for every $n \in N$ there is $n_1 \in N$ such that $nab = n_1ba$ for every $a,b \in H_{i-1}$.
+
+Note that every $n \in N$ is $\in G_i$ and $\in H$. Since $G_{i-1}/G_i$ is abelian for each $n \in G_i$ we must have $nab = n_1ba$ where $n_1 \in G_i$. However $n,a,b \in H$ too. This means that $nab \in H$ since $H$ is a group. Therefore
+%
+\nbea
+nab & = & n_1ba \\
+n aba^{-1}b^{-1} & = & n_1
+\neea
+%
+since $b^{-1}, a^{-1}, n, a, b \in H$ we must have $n_1 \in H$ as well thus $n_1 \in H \cap G_i \to n_1 \in H_i$ since this is true for all $n \in H_i$ we have $H_{i-1}/H_i$ to be abelian.
+
+{\bf Theorem 8}. If $K$ is a splitting field for a minimal polynomial $f(x) \in F[x]$ of $u \in K$ then $f(x)$ is separable in $K$.
+
+{\it Proof}. Say $f(x)$ is not separable meaning it has duplicate roots in its splitting field $K$ we can write $f(x)$ as 
+%
+\nbea
+f(x) & = & (x - u)^n(x - v_1)(x - v_2) \dots (x - v_k) \\
+& = & x^m + C_1 x^{m-1} + \dots + C_m
+\neea
+%
+where $n$ is the multiplicity of the root $u$ (among the $v$'s there can be duplicate roots as well) and $C_m \in F$. 
+
+Next we take the derivative of $f(x)$
+%
+\nbea
+f'(x) & = & m x^{m-1} + (m-1)C_1 x^{m-1} + \dots + C_{m-1} \\
+& = & n(x - u)^{n-1}(x - v_1)(x - v_2) \dots (x - v_k) + (x - u)^n
+\neea
+%
+where an integer coefficient like $m$ means $m \cdot 1_F$ where $1_F$ is the multiplicative identity in $F$ (note that we are working with a generic field here $1_F$ can be a matrix).
+
+But $f'(x)$ is a polynomial in $F[x]$ (because each coefficient is in $F$) with a lesser degree than $f(x)$ which is the minimal polynomial algebraic over $u$ which is a contradiction therefore $f(x)$ must be separable.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$(2ab) \to (2ab)^2 = (b2a)$ so a square will rotate everything to the right
+
+E is infinite where E is the field that contains all algebraic extension of Q
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
