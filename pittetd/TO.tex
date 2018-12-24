@@ -476,6 +476,8 @@ So if $a$ is even then it will only work when $m = 1$ otherwise we will have mor
 
 If $a$ is odd then $d = \gcd(m, m+2) | 2$. But since $m(m+2)$ must be even we must have $m$ even but in that case $m(m + 2)$ will have more than one prime factor unless when $m = 2$ because $m$ even means that $m=2h$, $m(m + 2) = 4(h(h + 1))$ and $h$ and $h + 1$ are co-prime so they must contain more than one prime factor except for $h = 1 \to p = 2, e = 3, a = 9$ but then $p$ is no longer odd.
 
+But more than that the above argument only works of $p$ is odd because we need to split into $(a^{(p-1)/2} \pm 1)$ and $(p-1)/2$ is an integer only if $p$ is odd but somehow it works :) 
+
 
 
 
