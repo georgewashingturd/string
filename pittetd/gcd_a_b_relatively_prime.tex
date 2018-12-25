@@ -396,22 +396,73 @@ Thus there is no such shape such that for any co-prime point the rest of the poi
 
 {\it Answer}. For all co-prime it's a simple answer there's no such thing because we will hit even even lattice points thus no such area exists for any $n$.
 
-For all non co-prime, it seems like for anything $n > 2$ we don't see any. So we can break it down further is there a number $j,l$ and $m$ such that $\gcd(j,l+i) > 1$, $0 \le i < m$? We can do it quite easily by using the trick used to show that there are consecutive composite numbers, so in this case we set $j = (m+1)!$, $l = 2$.
+For all non co-prime, from playing around with Python we need quite a big start for $n = 3$ to get all 9 points to be non co-prime for $n = 4$ I haven't seen any but this might be because my starting point is not big enough. Because we need to have numbers who have each others' factors.
 
-Next what about $\gcd(j+i, l+i) > 1$. Using the same trick we set $j = l = m!$. So
+Then I was reminded by a theorem in apostol on chapter 5 about congruences, and there it was, it says that given any $k$ there's always a square (of lattice points) with sides $k$ all of which is non co-prime. The prove uses Chinese Reminder Theorem in a very smart way, please see page 118.
 
-\textbf{\textit{Conjecture}}, For $n \ge 4$ there's no lattice points $(a+i,b+j), 0 \le i,j < n$ such that each point is not co-prime.
+I will not repeat the proof here but it gives a new way of generating consecutive composite numbers besides the $(N + 1)! + 2 \to (N + 1)! + N + 1$ trick. This time the difference is we can choose what factors the consecutive numbers have.
 
-Or we can say it another way given any $x$ and $y$ we can find $a$ and $b$, $0 \le |a|,|b| \le 3$ such that $4x + a$ and $4y + b$ are co-prime.
+First, set up a Chinese Remainder system with 
+%
+\nbea
+x & \equiv & 0 - i  + 1 \pmod{p_i^2}
+\neea
+%
+where $i$ takes the values $1,2,\dots, N$ and $p_i$ is the $i^{\rm th}$ prime number, for example for $N = 3$ we have 
+%
+\nbea
+x & \equiv & 0 \pmod{2^2} \\
+x & \equiv & -1 \pmod{3^2} \\
+x & \equiv & -2 \pmod{5^2} 
+\neea
+%
+therefore $x + 1$ is a multiple of $3^2$ and $x + 2$ is a multiple of $5^2$ thus we have three consecutive numbers each divisible by $2^2, 3^2, 5^2$ respectively and this way we can generate $N$ consecutive composite numbers. This generates interestingly a much larger number compared to the $(N + 1)!$ method. Here's a python code to calculate Chinese Remainder system 
+%
+\begin{verbatim}
+from fractions import gcd
+from math import factorial
 
-{\it Proof}. From playing around with Python we need quite a big start for $n = 3$ to get all 9 points to be non co-prime for $n = 4$ I haven't seen any but this might be because my starting point is not big enough. 
+def extended_gcd(a,b):
+    if (b == 0):
+# if b =0, then return g =a, m=1, n=0		
+        #print (a,"\t",b,"\t",a,"\t",1,"\t",0)
+        return (a,1,0)	
+    else:
+# if b is not 0, then recursively call the function to get the value of
+# g,m,n at each step. The code also displays the value of a,b at each step
+        (g,m,n) = extended_gcd(b,a%b)
+        #print a,"\t",b,"\t",g,"\t",n,"\t",m-(a//b)*n
+        return(g,n,m-(a//b)*n)
 
-One of my strategies is to start with $4x + a$ now if $a$ is zero we can always move it to $a = 3$ (zero is the worst because then $x$ can be anything mod 4).
+def Chinese(vals, mods):
+    if not mods or not vals or len(mods) != len(vals):
+        return
 
-$a = 3$ is the best because the factors of $4x + 3$ can only be $-1, 1 \mod 4$, for $4y + b$ we can always choose $b = 2$ so that the factors can only be $-1,-2 \mod 4$ thus the only common factor is $-1 \mod 4$ and therefore the gcd is 1.
+    m = mods[0]
+    v = vals[0]
 
-The trick now is to make sure that the factor must be $-2 \mod 4$ rather than $2 \mod 4$ although they are the same
+    for r in range(1,len(mods)):
 
+        if gcd(m, mods[r]) > 1:
+            return
+
+        (g,i,j) = extended_gcd(m, mods[r])
+        t = i*(vals[r] - v) % mods[r]
+        x = (v + t*m) % (m * mods[r])
+
+        m = m * mods[r]
+        v = x
+
+    return x
+
+pp = [2**2,3**2,5**2,7**2,11**2,13**2,17**2,19**2,23**2,29**2,31**2,37**2,41**2,43**2,47**2,53**2,59**2,61**2,67**2,71**2,73**2,79**2,83**2,89**2,97**2]
+
+def Compare(N):
+    for i in range(2,N+1):
+        print(factorial(i+1), Chinese(range(0,-i,-1),pp[:i]))
+
+\end{verbatim}
+%
 
 
 Another idea is to use the fact that at least 0.25$n^2$ are visible and then to proceed as follows. Assume we have four consecutive lattice points and all of them are not co-prime then from Bezout we get
