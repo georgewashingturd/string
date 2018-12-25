@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  24 DEC 2018 22:20
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  25 DEC 2018 15:19
 entering extended mode
 **C:/Users/User/Documents/GitHub/string/pittetd/gcd_a_b_relatively_prime.tex
 (C:/Users/User/Documents/GitHub/string/pittetd/gcd_a_b_relatively_prime.tex
@@ -629,16 +629,16 @@ Overfull \hbox (513.30034pt too wide) in paragraph at lines 464--464
  []
 
 [9] [10] [11] (gcd_a_b_relatively_prime.bbl) [12]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 619.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 623.
  (gcd_a_b_relatively_prime.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 619.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 619.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 623.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 623.
  ) 
 Here is how much of TeX's memory you used:
- 13309 strings out of 428755
- 183738 string characters out of 3166785
+ 13311 strings out of 428755
+ 183757 string characters out of 3166785
  286425 words of memory out of 3000000
- 16530 multiletter control sequences out of 15000+200000
+ 16532 multiletter control sequences out of 15000+200000
  13300 words of font info for 49 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
  36i,8n,38p,577b,543s stack positions out of 5000i,500n,10000p,200000b,50000s

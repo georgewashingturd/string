@@ -408,7 +408,7 @@ First, set up a Chinese Remainder system with
 x & \equiv & 0 - i  + 1 \pmod{p_i^2}
 \neea
 %
-where $i$ takes the values $1,2,\dots, N$ and $p_i$ is the $i^{\rm th}$ prime number, for example for $N = 3$ we have 
+where $i$ takes the values $1,2,\dots, N$ and $p_i$ is the $i^{\rm th}$ prime number, it's $p^2$ instead of $p$ to make sure that it's a composite number (although we might get away with just using $2^2$ and just $p$ for the rest), for example for $N = 3$ we have 
 %
 \nbea
 x & \equiv & 0 \pmod{2^2} \\
@@ -463,6 +463,10 @@ def Compare(N):
 
 \end{verbatim}
 %
+
+
+
+
 
 
 Another idea is to use the fact that at least 0.25$n^2$ are visible and then to proceed as follows. Assume we have four consecutive lattice points and all of them are not co-prime then from Bezout we get
