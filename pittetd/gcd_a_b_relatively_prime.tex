@@ -463,7 +463,15 @@ def Compare(N):
 
 \end{verbatim}
 %
+This also gives an idea on how to generate all prime numbers albeit inefficiently :) We can set up a Chinese Remainder system with the first $n$ primes like so $x \equiv a_i \pmod{p_i}$ where $a_i \not\equiv 0, \not\equiv 1 \pmod{p_i}$. This will generate a bunch of new numbers not divisible by any of hte $p_i$.
 
+The smallest of these numbers (mod $\prod_{i=1}^n p_i$) must be a prime number and it must be the next prime number after $p_n$. This is because if it's composite it must be divisible by one of the $p_i$ or it can be a power of a new prime number. 
+
+But any number in the range $[1,\prod_{i = 1}^n p_i]$ can be mapped into a Chinese Remainder map $\pmod{p_i}$ bijectively. Therefore if a power of a new prime number is in the range then the prime number itself must be in the range therefore the smallest number $\not\equiv 0 \pmod{p_i}$ is a new prime number.
+
+We then repeat the process with our latest recruit. In a way this is just the sieve method in disguise :) 
+
+The question now is whether we can find the smallest number $\not\equiv 0 \pmod{p_i}$ in an efficient way. 
 
 
 
