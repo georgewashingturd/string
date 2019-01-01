@@ -26,6 +26,8 @@
 
 \usepackage{simplewick}
 
+\usepackage{fancyvrb}
+
 \newcommand{\msout}[1]{\text{\sout{\ensuremath{#1}}}}
 
 
@@ -418,7 +420,7 @@ x & \equiv & -2 \pmod{5^2}
 %
 therefore $x + 1$ is a multiple of $3^2$ and $x + 2$ is a multiple of $5^2$ thus we have three consecutive numbers each divisible by $2^2, 3^2, 5^2$ respectively and this way we can generate $N$ consecutive composite numbers. This generates interestingly a much larger number compared to the $(N + 1)!$ method. Here's a python code to calculate Chinese Remainder system 
 %
-\begin{verbatim}
+\begin{Verbatim}[baselinestretch=0.75]
 from fractions import gcd
 from math import factorial
 
@@ -461,7 +463,7 @@ def Compare(N):
     for i in range(2,N+1):
         print(factorial(i+1), Chinese(range(0,-i,-1),pp[:i]))
 
-\end{verbatim}
+\end{Verbatim}
 %
 This also gives an idea on how to generate all prime numbers albeit inefficiently :) We can set up a Chinese Remainder system with the first $n$ primes like so $x \equiv a_i \pmod{p_i}$ where $a_i \not\equiv 0, \not\equiv 1 \pmod{p_i}$. This will generate a bunch of new numbers not divisible by any of hte $p_i$.
 
@@ -471,7 +473,105 @@ But any number in the range $[1,\prod_{i = 1}^n p_i]$ can be mapped into a Chine
 
 We then repeat the process with our latest recruit. In a way this is just the sieve method in disguise :) 
 
-The question now is whether we can find the smallest number $\not\equiv 0 \pmod{p_i}$ in an efficient way. 
+The question now is whether we can find the smallest number $\not\equiv 0 \pmod{p_i}$ in an efficient way. One way of doing this is of course list all numbers $\not \equiv 0 \pmod{p_i}$ and then choose the smallest one.
+
+Another way is to calculate $p_n \mod p_i$ for all $i < n$ and then increment $p_n$ one at a time while keeping track of its value mod $p_i$, $i \le n$, and once all of its mods are non-zero we know that we reach a prime number. For example we already have $2,3,5$ then we write 
+%
+\nbea
+5 & \equiv & 0 \pmod{5} \\
+& \equiv & 1 \pmod{2} \\
+& \equiv & 2 \pmod{3} 
+\neea
+%
+if we increase by one we get $1,0,0 \pmod{5,2,3}$ so this is not a prime number increasing it by one again we get $2,1,1 \pmod {5,2,3}$ and this is a prime. And we can do this iteratively so we don't need to recalculate the mods for the new prime, continuing our example above we get $7 \equiv 2,1,1 \pmod{5,2,3}$ so if we increase by one we get $1,3,0,2 \pmod{7,5,2,3}$ so this is not a prime number. And we keep doing this so what we need is just extra storage. So in a sense this is like sieve method but we don't need the storage upfront and we can always find the next prime unlike sieve where you have to know the upper bound like prime under $1000$. So here's a little code to do this (in C instead of python because python is too slow we also start from 3 instead of 2 because all primes are odd).  
+%
+\begin{Verbatim}[baselinestretch=0.75]
+#include<stdio.h>
+#include<stdlib.h>
+
+typedef struct _node{
+    unsigned int num;
+    struct _node * next;
+}node;
+
+int main (void)
+{
+    node * headq;
+    node * headm;
+    node * tmpq, * tmpm;
+    
+    headq = (node *)malloc(sizeof(node));
+    headm = (node *)malloc(sizeof(node));
+    
+    headq->num = 3;
+    headq->next = NULL;
+    headm->num = 0;
+    headm->next = NULL;
+    
+    unsigned i = 0, N = 300000;
+    
+    while (i++ < N)
+    {
+        unsigned int found = 0;
+        unsigned int n = 0;
+        
+        node * prevq, * prevm;
+        while (found == 0)
+        {
+            found = 1;
+            tmpq = headq;
+            tmpm = headm;
+            
+            n+=2; 
+            
+            while (tmpq)
+            {
+                tmpm->num += 2;
+                if (tmpm->num >= tmpq->num)
+                {
+                    tmpm->num -= tmpq->num;
+                }
+                
+                if (tmpm->num == 0)
+                {
+                    found = 0;
+                }
+                
+                prevq = tmpq;
+                prevm = tmpm;
+                tmpq = tmpq->next;
+                tmpm = tmpm->next;
+            }
+        }
+        
+        prevq->next = (node *)malloc(sizeof(node));
+        prevm->next = (node *)malloc(sizeof(node));
+        
+        prevq->next->num = prevq->num + n;
+        prevm->next->num = 0;
+        
+        prevq->next->next = NULL;
+        prevm->next->next = NULL; 
+
+        printf("%u%c",i,13);
+    }
+    
+    printf("\n2, ");    
+    
+    tmpq = headq;
+    
+    while (tmpq)
+    {
+        printf("%u, ", tmpq->num);
+        tmpq = tmpq->next;
+    }
+    
+    printf("\n");
+    
+    return 0;
+}
+\end{Verbatim}
+%
 
 
 
