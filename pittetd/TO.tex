@@ -653,6 +653,14 @@ note that even though we have 4 prime factors $|G| = p^2 qr$ the first term only
 %
 where $m$ now counts the number of unique prime factors of $|G|$. So if we assume that there is no more than $d$ elements with $x^d = e$ for each $d|m$ then we will have a contradiction thus this assumption must be wrong. So as you can see that the contrapositive is a lot more difficult to prove. 
 
+This actually works for abelian and non abelian groups what we did above was actually do ${\rm number ~ of ~ elements ~  generated} = \sum_{\stackrel{d|m}{d \neq m}} \varphi(d)$ and so of course we cannot get 1 when we divide it by $m$ since $m = \sum_{d|m} \varphi(d)$ and we get this identity    
+%
+\nbea
+\sum_{\stackrel{d|m}{d\neq m}} \frac{\varphi(d)}{m} & = & - \prod_{i = 1}^m \left ( 1 - \frac{1}{p_i} \right ) + 1
+\neea
+%
+where $p_i$ runs through the unique prime factors of $m$.            
+
 Initially I was very confused by this theorem, but the main point of this theorem is that ``there is no more than $d$ elements with $x^d = e$ for each $d|m$'' means that for each order $d$ if $x$ has order $d$ then $H = \langle x \rangle$ contains all elements with order $d$. 
 
 
