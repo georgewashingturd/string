@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2015.10.3)  17 JUN 2017 12:45
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9) (preloaded format=xelatex 2016.3.16)  4 NOV 2020 17:11
 entering extended mode
-**"C:/Users/User/Documents/GitHub/string/pittetd/my extra at work.tex"
-("C:/Users/User/Documents/GitHub/string/pittetd/my extra at work.tex"
-LaTeX2e <2015/01/01> patch level 2
-Babel <3.9m> and hyphenation patterns for 69 languages loaded.
-(C:\miktex-portable-2.9\tex\latex\revtex\revtex4-1.cls
+**"D:/Github/string/pittetd/my extra at work.tex"
+("D:/Github/string/pittetd/my extra at work.tex"
+LaTeX2e <2015/10/01> patch level 2
+Babel <3.9n> and hyphenation patterns for 69 languages loaded.
+(D:\Downloads\miktex-portable-2.9\tex\latex\revtex\revtex4-1.cls
 Document Class: revtex4-1 2010/07/25/20:33:00 4.1r (http://publish.aps.org/revt
 ex4/ for documentation)
  Copyright (c) 2009 The American Physical Society.
@@ -21,18 +21,18 @@ Class revtex4-1 Info: Repairing broken LaTeX eqnarray on input line 358.
 Class revtex4-1 Info: Repairing hyperref-unfriendly LaTeX definition of \mpfoot
 note on input line 433.
 Class revtex4-1 Info: Repairing broken LateX \@sect on input line 755.
-\intertabularlinepenalty=\count80
-\@tbpen=\count81
+\intertabularlinepenalty=\count79
+\@tbpen=\count80
 \@arstrutbox@hline=\box26
 Class revtex4-1 Info: Repairing broken LaTeX \@xbitor on input line 1786.
 Class revtex4-1 Info: Making \typeout \long on input line 2046.
 ltxfront[2010/07/25/20:33:00 4.1r frontmatter package (AO,DPC)]
-\c@affil=\count82
-\c@collab=\count83
+\c@affil=\count81
+\c@collab=\count82
 \absbox=\box27
 ltxgrid[2010/07/25/20:33:00 4.1r page grid package (portions licensed from W. E
 . Baxter web at superscript.com)]
-\c@linecount=\count84
+\c@linecount=\count83
 \output@latex=\toks14
 \box@size@1=\box28
 \box@size@2=\box29
@@ -43,28 +43,28 @@ ltxgrid[2010/07/25/20:33:00 4.1r page grid package (portions licensed from W. E
 \column@recovered=\box33
 \pagesofar=\box34
 \footsofar=\box35
-\pagegrid@col=\count85
+\pagegrid@col=\count84
 Class revtex4-1 Info: Overriding \@vspace, \@vspacer, \@no@pgbk, \@newline, and
  \\  on input line 5578.
-\c@part=\count86
-\c@section=\count87
-\c@subsection=\count88
-\c@subsubsection=\count89
-\c@paragraph=\count90
-\c@subparagraph=\count91
+\c@part=\count85
+\c@section=\count86
+\c@subsection=\count87
+\c@subsubsection=\count88
+\c@paragraph=\count89
+\c@subparagraph=\count90
 \abovecaptionskip=\skip42
 \belowcaptionskip=\skip43
-\c@figure=\count92
+\c@figure=\count91
 \fbox@1=\box36
-\c@table=\count93
+\c@table=\count92
 \fbox@2=\box37
-\c@video=\count94
+\c@video=\count93
 \fbox@4=\box38
 \@bibdataout=\write3
 \widetext@top=\box39
 \widetext@bot=\box40
 Class revtex4-1 Info: Selecting society aps on input line 7542.
-(C:\miktex-portable-2.9\tex\latex\revtex\aps4-1.rtx
+(D:\Downloads\miktex-portable-2.9\tex\latex\revtex\aps4-1.rtx
 File: aps4-1 2010/07/25/20:33:00 4.1r (http://publish.aps.org/revtex4/ for docu
 mentation)
 Class revtex4-1 Info: RevTeX society APS selected on input line 31.
@@ -72,77 +72,77 @@ Class revtex4-1 Info: RevTeX society APS selected on input line 31.
 Class revtex4-1 Info: Selecting journal prd on input line 7544.
 Class revtex4-1 Info: APS journal PRD selected on input line 7545.
 
-(C:\miktex-portable-2.9\tex\latex\revtex\aps12pt4-1.rtx
+(D:\Downloads\miktex-portable-2.9\tex\latex\revtex\aps12pt4-1.rtx
 File: aps12pt4-1 2010/07/25/20:33:00 4.1r (http://publish.aps.org/revtex4/ for 
 documentation)
 Class revtex4-1 Info: RevTeX pointsize 12pt selected on input line 30.
 )
-(C:\miktex-portable-2.9\tex\latex\textcase\textcase.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\textcase\textcase.sty
 Package: textcase 2004/10/07 v0.07 Text only upper/lower case changing (DPC)
 )
-(C:\miktex-portable-2.9\tex\latex\url\url.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\url\url.sty
 \Urlmuskip=\muskip10
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-(C:\miktex-portable-2.9\tex\latex\natbib\natbib.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\natbib\natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip44
 \bibsep=\skip45
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count95
+\c@NAT@ctr=\count94
 )
 Class revtex4-1 Info: Repairing natbib's \BibitemShut on input line 7549.
 
-(C:\miktex-portable-2.9\tex\latex\revtex\revsymb4-1.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\revtex\revsymb4-1.sty
 Package: revsymb4-1 2010/07/25/20:33:00 4.1r (http://publish.aps.org/revtex4/ f
 or documentation)
 LaTeX Info: Redefining \REV@mathfrak on input line 119.
 ))
-(C:\miktex-portable-2.9\tex\latex\graphics\graphicx.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\graphics\graphicx.sty
 Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
-(C:\miktex-portable-2.9\tex\latex\graphics\keyval.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\graphics\keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks16
 )
-(C:\miktex-portable-2.9\tex\latex\graphics\graphics.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\graphics\graphics.sty
 Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
 
-(C:\miktex-portable-2.9\tex\latex\graphics\trig.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\graphics\trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(C:\miktex-portable-2.9\tex\latex\00miktex\graphics.cfg
+(D:\Downloads\miktex-portable-2.9\tex\latex\00miktex\graphics.cfg
 File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
 Package graphics Info: Driver file: xetex.def on input line 94.
 
-(C:\miktex-portable-2.9\tex\xelatex\xetex-def\xetex.def
+(D:\Downloads\miktex-portable-2.9\tex\xelatex\xetex-def\xetex.def
 File: xetex.def 2015/09/11 v4.06 LaTeX color/graphics driver for XeTeX (TeX Liv
 e/RRM/JK)
 
-(C:\miktex-portable-2.9\tex\generic\oberdiek\infwarerr.sty
+(D:\Downloads\miktex-portable-2.9\tex\generic\oberdiek\infwarerr.sty
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-(C:\miktex-portable-2.9\tex\generic\oberdiek\ltxcmds.sty
+(D:\Downloads\miktex-portable-2.9\tex\generic\oberdiek\ltxcmds.sty
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )))
 \Gin@req@height=\dimen102
 \Gin@req@width=\dimen103
 )
-(C:\miktex-portable-2.9\tex\latex\graphics\color.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\graphics\color.sty
 Package: color 2014/10/28 v1.1a Standard LaTeX Color (DPC)
 
-(C:\miktex-portable-2.9\tex\latex\00miktex\color.cfg
+(D:\Downloads\miktex-portable-2.9\tex\latex\00miktex\color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: xetex.def on input line 142.
 )
-(C:\miktex-portable-2.9\tex\latex\caption\caption.sty
-Package: caption 2015/09/17 v3.3-111 Customizing captions (AR)
+(D:\Downloads\miktex-portable-2.9\tex\latex\caption\caption.sty
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 
-(C:\miktex-portable-2.9\tex\latex\caption\caption3.sty
-Package: caption3 2015/09/20 v1.7-115 caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 57.
+(D:\Downloads\miktex-portable-2.9\tex\latex\caption\caption3.sty
+Package: caption3 2016/02/04 v1.7-139 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
 \captionmargin=\dimen104
 \captionmargin@=\dimen105
 \captionwidth=\dimen106
@@ -164,41 +164,41 @@ onskip \begingroup \small \rmfamily \sbox \@tempboxa {\let \\\heading@cr \@make
 lushing \let \footnote \@footnotemark@gobble \@make@capt@title {#1}{#2}\par \en
 dgroup }{\global \@minipagefalse \hb@xt@ \hsize {\hfil \unhbox \@tempboxa \hfil
  }}\endgroup \vskip \belowcaptionskip .
-\c@ContinuedFloat=\count96
-) (C:\miktex-portable-2.9\tex\latex\caption\subcaption.sty
-Package: subcaption 2015/09/15 v1.1-100 Sub-captions (AR)
-\c@subfigure=\count97
-\c@subtable=\count98
+\c@ContinuedFloat=\count95
+) (D:\Downloads\miktex-portable-2.9\tex\latex\caption\subcaption.sty
+Package: subcaption 2016/02/20 v1.1-142 Sub-captions (AR)
+\c@subfigure=\count96
+\c@subtable=\count97
 )
-(C:\miktex-portable-2.9\tex\latex\amsmath\amsmath.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\amsmath\amsmath.sty
 Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip46
 
 For additional information on amsmath, use the `?' option.
-(C:\miktex-portable-2.9\tex\latex\amsmath\amstext.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\amsmath\amstext.sty
 Package: amstext 2000/06/29 v2.01
 
-(C:\miktex-portable-2.9\tex\latex\amsmath\amsgen.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\amsmath\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks17
 \ex@=\dimen111
 )
 LaTeX Info: Redefining \text on input line 39.
 )
-(C:\miktex-portable-2.9\tex\latex\amsmath\amsbsy.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\amsmath\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen112
 )
-(C:\miktex-portable-2.9\tex\latex\amsmath\amsopn.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\amsmath\amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
-\inf@bad=\count99
+\inf@bad=\count98
 LaTeX Info: Redefining \frac on input line 210.
-\uproot@=\count100
-\leftroot@=\count101
+\uproot@=\count99
+\leftroot@=\count100
 LaTeX Info: Redefining \overline on input line 306.
-\classnum@=\count102
-\DOTSCASE@=\count103
+\classnum@=\count101
+\DOTSCASE@=\count102
 LaTeX Info: Redefining \ldots on input line 378.
 LaTeX Info: Redefining \dots on input line 381.
 LaTeX Info: Redefining \cdots on input line 466.
@@ -207,15 +207,15 @@ LaTeX Info: Redefining \cdots on input line 466.
 \big@size=\dimen113
 LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
-\macc@depth=\count104
-\c@MaxMatrixCols=\count105
+\macc@depth=\count103
+\c@MaxMatrixCols=\count104
 \dotsspace@=\muskip11
-\c@parentequation=\count106
-\dspbrk@lvl=\count107
+\c@parentequation=\count105
+\dspbrk@lvl=\count106
 \tag@help=\toks18
-\row@=\count108
-\column@=\count109
-\maxfields@=\count110
+\row@=\count107
+\column@=\count108
+\maxfields@=\count109
 \andhelp@=\toks19
 \eqnshift@=\dimen114
 \alignsep@=\dimen115
@@ -230,10 +230,10 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
-(C:\miktex-portable-2.9\tex\latex\amsfonts\amssymb.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\amsfonts\amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
-(C:\miktex-portable-2.9\tex\latex\amsfonts\amsfonts.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\amsfonts\amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
@@ -242,10 +242,10 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 LaTeX Info: Redefining \frak on input line 111.
 LaTeX Info: Redefining \Bbb on input line 113.
 ))
-(C:\miktex-portable-2.9\tex\latex\multirow\multirow.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\multirow\multirow.sty
 \bigstrutjot=\dimen120
 )
-(C:\miktex-portable-2.9\tex\latex\amscls\amsthm.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\amscls\amsthm.sty
 Package: amsthm 2015/03/04 v2.20.2
 \thm@style=\toks22
 \thm@bodyfont=\toks23
@@ -257,13 +257,13 @@ Package: amsthm 2015/03/04 v2.20.2
 \thm@headsep=\skip51
 \dth@everypar=\toks27
 )
-(C:\miktex-portable-2.9\tex\latex\cancel\cancel.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\cancel\cancel.sty
 Package: cancel 2013/04/12 v2.2 Cancel math terms
 )
-(C:\miktex-portable-2.9\tex\latex\tools\dcolumn.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\tools\dcolumn.sty
 Package: dcolumn 2014/10/28 v1.06 decimal alignment package (DPC)
 
-(C:\miktex-portable-2.9\tex\latex\tools\array.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\tools\array.sty
 Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen121
 \extrarowheight=\dimen122
@@ -271,7 +271,7 @@ Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
 \extratabsurround=\skip52
 \backup@length=\skip53
 ))
-(C:\miktex-portable-2.9\tex\latex\tools\bm.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\tools\bm.sty
 Package: bm 2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
 \symboldoperators=\mathgroup6
 \symboldletters=\mathgroup7
@@ -279,27 +279,27 @@ Package: bm 2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 141.
 LaTeX Info: Redefining \bm on input line 207.
 )
-(C:\miktex-portable-2.9\tex\latex\ulem\ulem.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\ulem\ulem.sty
 \UL@box=\box43
 \UL@hyphenbox=\box44
 \UL@skip=\skip54
 \UL@hook=\toks29
 \UL@height=\dimen123
-\UL@pe=\count111
+\UL@pe=\count110
 \UL@pixel=\dimen124
 \ULC@box=\box45
 Requested font "lasy6" scaled 1000
 Package: ulem 2012/05/18
 \ULdepth=\dimen125
 )
-(C:\miktex-portable-2.9\tex\latex\hyperref\hyperref.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\hyperref\hyperref.sty
 Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
 
-(C:\miktex-portable-2.9\tex\generic\oberdiek\hobsub-hyperref.sty
+(D:\Downloads\miktex-portable-2.9\tex\generic\oberdiek\hobsub-hyperref.sty
 Package: hobsub-hyperref 2012/04/25 v1.12 Bundle oberdiek, subset hyperref (HO)
 
 
-(C:\miktex-portable-2.9\tex\generic\oberdiek\hobsub-generic.sty
+(D:\Downloads\miktex-portable-2.9\tex\generic\oberdiek\hobsub-generic.sty
 Package: hobsub-generic 2012/04/25 v1.12 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2012/04/25 v1.12 Construct package bundles (HO)
 Package hobsub Info: Skipping package `infwarerr' (already loaded).
@@ -340,25 +340,25 @@ Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
 Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
 Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
 )
-(C:\miktex-portable-2.9\tex\generic\ifxetex\ifxetex.sty
+(D:\Downloads\miktex-portable-2.9\tex\generic\ifxetex\ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-(C:\miktex-portable-2.9\tex\latex\oberdiek\auxhook.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\oberdiek\auxhook.sty
 Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 )
-(C:\miktex-portable-2.9\tex\latex\oberdiek\kvoptions.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\oberdiek\kvoptions.sty
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
 \@linkdim=\dimen126
-\Hy@linkcounter=\count112
-\Hy@pagecounter=\count113
+\Hy@linkcounter=\count111
+\Hy@pagecounter=\count112
 
-(C:\miktex-portable-2.9\tex\latex\hyperref\pd1enc.def
+(D:\Downloads\miktex-portable-2.9\tex\latex\hyperref\pd1enc.def
 File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count114
+\Hy@SavedSpaceFactor=\count113
 
-(C:\miktex-portable-2.9\tex\latex\00miktex\hyperref.cfg
+(D:\Downloads\miktex-portable-2.9\tex\latex\00miktex\hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
 Package hyperref Info: Hyper figures OFF on input line 4443.
@@ -369,11 +369,11 @@ Package hyperref Info: Backreferencing OFF on input line 4463.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4688.
 LaTeX Info: Redefining \href on input line 4952.
-\c@Hy@tempcnt=\count115
+\c@Hy@tempcnt=\count114
 LaTeX Info: Redefining \url on input line 5041.
 \XeTeXLinkMargin=\dimen127
 Requested font "pzdr" at 0.00002pt
-\Fld@menulength=\count116
+\Fld@menulength=\count115
 \Field@Width=\dimen128
 \Fld@charsize=\dimen129
 Package hyperref Info: Hyper figures OFF on input line 6295.
@@ -385,30 +385,30 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6320.
 Package hyperref Info: PDF/A mode OFF on input line 6325.
 LaTeX Info: Redefining \ref on input line 6365.
 LaTeX Info: Redefining \pageref on input line 6369.
-\Hy@abspage=\count117
-\c@Item=\count118
-\c@Hfootnote=\count119
+\Hy@abspage=\count116
+\c@Item=\count117
+\c@Hfootnote=\count118
 )
 
 Package hyperref Message: Driver (autodetected): hxetex.
 
-(C:\miktex-portable-2.9\tex\latex\hyperref\hxetex.def
+(D:\Downloads\miktex-portable-2.9\tex\latex\hyperref\hxetex.def
 File: hxetex.def 2012/11/06 v6.83m Hyperref driver for XeTeX
 
-(C:\miktex-portable-2.9\tex\latex\hyperref\puenc.def
+(D:\Downloads\miktex-portable-2.9\tex\latex\hyperref\puenc.def
 File: puenc.def 2012/11/06 v6.83m Hyperref: PDF Unicode definition (HO)
 )
-(C:\miktex-portable-2.9\tex\generic\oberdiek\stringenc.sty
+(D:\Downloads\miktex-portable-2.9\tex\generic\oberdiek\stringenc.sty
 Package: stringenc 2011/12/02 v1.10 Convert strings between diff. encodings (HO
 )
 )
 \pdfm@box=\box46
-\c@Hy@AnnotLevel=\count120
-\HyField@AnnotCount=\count121
-\Fld@listcount=\count122
-\c@bookmark@seq@number=\count123
+\c@Hy@AnnotLevel=\count119
+\HyField@AnnotCount=\count120
+\Fld@listcount=\count121
+\c@bookmark@seq@number=\count122
 
-(C:\miktex-portable-2.9\tex\latex\oberdiek\rerunfilecheck.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\oberdiek\rerunfilecheck.sty
 Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 Package rerunfilecheck Info: Feature \pdfmdfivesum is not available
 (rerunfilecheck)             (e.g. pdfTeX or LuaTeX with package `pdftexcmds').
@@ -419,15 +419,15 @@ tly
 )
 \Hy@SectionHShift=\skip55
 )
-(C:\miktex-portable-2.9\tex\latex\jknappen\mathrsfs.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\jknappen\mathrsfs.sty
 Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 \symrsfs=\mathgroup9
 )
-(C:\miktex-portable-2.9\tex\latex\geometry\geometry.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\geometry\geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
-\Gm@cnth=\count124
-\Gm@cntv=\count125
-\c@Gm@tempcnt=\count126
+\Gm@cnth=\count123
+\Gm@cntv=\count124
+\c@Gm@tempcnt=\count125
 \Gm@bindingoffset=\dimen130
 \Gm@wd@mp=\dimen131
 \Gm@odd@mp=\dimen132
@@ -438,31 +438,31 @@ Package: geometry 2010/09/12 v5.6 Page Geometry
 \Gm@layoutvoffset=\dimen137
 \Gm@dimlist=\toks30
 
-(C:\miktex-portable-2.9\tex\xelatex\xetexconfig\geometry.cfg))
-(C:\miktex-portable-2.9\tex\latex\mathtools\mathtools.sty
+(D:\Downloads\miktex-portable-2.9\tex\xelatex\xetexconfig\geometry.cfg))
+(D:\Downloads\miktex-portable-2.9\tex\latex\mathtools\mathtools.sty
 Package: mathtools 2015/11/12 v1.18 mathematical typesetting tools
 
-(C:\miktex-portable-2.9\tex\latex\tools\calc.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\tools\calc.sty
 Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count127
-\calc@Bcount=\count128
+\calc@Acount=\count126
+\calc@Bcount=\count127
 \calc@Adimen=\dimen138
 \calc@Bdimen=\dimen139
 \calc@Askip=\skip56
 \calc@Bskip=\skip57
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count129
+\calc@Ccount=\count128
 \calc@Cskip=\skip58
 )
-(C:\miktex-portable-2.9\tex\latex\mathtools\mhsetup.sty
+(D:\Downloads\miktex-portable-2.9\tex\latex\mathtools\mhsetup.sty
 Package: mhsetup 2010/01/21 v1.2a programming setup (MH)
 )
 LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
-\g_MT_multlinerow_int=\count130
+\g_MT_multlinerow_int=\count129
 \l_MT_multwidth_dim=\dimen140
 \origjot=\skip59
 \l_MT_shortvdotswithinadjustabove_dim=\dimen141
@@ -472,49 +472,66 @@ LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
 \l_MT_above_shortintertext_sep=\dimen145
 \l_MT_below_shortintertext_sep=\dimen146
 )
-Class revtex4-1 Info: Patching array package. on input line 217.
-Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 217
+(D:\Downloads\miktex-portable-2.9\tex\latex\fancyvrb\fancyvrb.sty
+Package: fancyvrb 2008/02/07
+
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)
+\FV@CodeLineNo=\count130
+\FV@InFile=\read1
+\FV@TabBox=\box47
+\c@FancyVerbLine=\count131
+\FV@StepNumber=\count132
+\FV@OutFile=\write4
+)
+Class revtex4-1 Info: Patching array package. on input line 219.
+Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 219
 .
-Class revtex4-1 Info: cite was not loaded (OK!) on input line 217.
-Class revtex4-1 Info: mcite was not loaded (OK!) on input line 217.
-Class revtex4-1 Info: multicol was not loaded (OK!) on input line 217.
+Class revtex4-1 Info: cite was not loaded (OK!) on input line 219.
+Class revtex4-1 Info: mcite was not loaded (OK!) on input line 219.
+Class revtex4-1 Info: multicol was not loaded (OK!) on input line 219.
  ("my extra at work.aux")
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 217.
-LaTeX Font Info:    ... okay on input line 217.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 217.
-LaTeX Font Info:    ... okay on input line 217.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 217.
-LaTeX Font Info:    ... okay on input line 217.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 217.
-LaTeX Font Info:    ... okay on input line 217.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 217.
-LaTeX Font Info:    ... okay on input line 217.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 217.
-LaTeX Font Info:    ... okay on input line 217.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 217.
-LaTeX Font Info:    ... okay on input line 217.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 217.
-LaTeX Font Info:    ... okay on input line 217.
+\openout1 = `"my extra at work.aux"'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 219.
+LaTeX Font Info:    ... okay on input line 219.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 219.
+LaTeX Font Info:    ... okay on input line 219.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 219.
+LaTeX Font Info:    ... okay on input line 219.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 219.
+LaTeX Font Info:    ... okay on input line 219.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 219.
+LaTeX Font Info:    ... okay on input line 219.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 219.
+LaTeX Font Info:    ... okay on input line 219.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 219.
+LaTeX Font Info:    ... okay on input line 219.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 219.
+LaTeX Font Info:    ... okay on input line 219.
 Requested font "cmr12" at 12.0pt
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\AtBeginShipoutBox=\box47
-Package hyperref Info: Link coloring OFF on input line 217.
- (C:\miktex-portable-2.9\tex\latex\hyperref\nameref.sty
+\AtBeginShipoutBox=\box48
+Package hyperref Info: Link coloring OFF on input line 219.
+
+(D:\Downloads\miktex-portable-2.9\tex\latex\hyperref\nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
-(C:\miktex-portable-2.9\tex\generic\oberdiek\gettitlestring.sty
+(D:\Downloads\miktex-portable-2.9\tex\generic\oberdiek\gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count131
+\c@section@level=\count133
 )
-LaTeX Info: Redefining \ref on input line 217.
-LaTeX Info: Redefining \pageref on input line 217.
-LaTeX Info: Redefining \nameref on input line 217.
+LaTeX Info: Redefining \ref on input line 219.
+LaTeX Info: Redefining \pageref on input line 219.
+LaTeX Info: Redefining \nameref on input line 219.
 
 ("my extra at work.out") ("my extra at work.out")
-\@outlinefile=\write4
+\@outlinefile=\write5
+\openout5 = `"my extra at work.out"'.
+
 
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -549,10 +566,12 @@ LaTeX Info: Redefining \nameref on input line 217.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Class revtex4-1 Info: Taking \maketitle back from hyperref on input line 217.
+Class revtex4-1 Info: Taking \maketitle back from hyperref on input line 219.
+\openout3 = `"my extra at workNotes.bib"'.
+
 Requested font "cmr12" at 14.4pt
 Requested font "cmr10" at 10.95pt
-(C:\miktex-portable-2.9\tex\generic\oberdiek\se-ascii-print.def
+(D:\Downloads\miktex-portable-2.9\tex\generic\oberdiek\se-ascii-print.def
 File: se-ascii-print.def 2011/12/02 v1.10 stringenc: Printable ASCII characters
 
 )
@@ -571,16 +590,16 @@ Requested font "cmsy6" at 6.0pt
 Requested font "cmex10" at 12.0pt
 Requested font "cmex8" at 8.0pt
 Requested font "cmex7" at 6.0pt
-LaTeX Font Info:    Try loading font information for U+msa on input line 232.
-(C:\miktex-portable-2.9\tex\latex\amsfonts\umsa.fd
+LaTeX Font Info:    Try loading font information for U+msa on input line 234.
+(D:\Downloads\miktex-portable-2.9\tex\latex\amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 Requested font "msam10" at 12.0pt
 Requested font "msam10" at 8.0pt
 Requested font "msam7" at 6.0pt
-LaTeX Font Info:    Try loading font information for U+msb on input line 232.
+LaTeX Font Info:    Try loading font information for U+msb on input line 234.
 
-(C:\miktex-portable-2.9\tex\latex\amsfonts\umsb.fd
+(D:\Downloads\miktex-portable-2.9\tex\latex\amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 Requested font "msbm10" at 12.0pt
@@ -595,9 +614,9 @@ Requested font "cmmib6" at 6.0pt
 Requested font "cmbsy10" at 12.0pt
 Requested font "cmbsy8" at 8.0pt
 Requested font "cmbsy6" at 6.0pt
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 232.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 234.
 
-(C:\miktex-portable-2.9\tex\latex\jknappen\ursfs.fd
+(D:\Downloads\miktex-portable-2.9\tex\latex\jknappen\ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 Requested font "rsfs10" at 12.0pt
@@ -606,8 +625,8 @@ Requested font "rsfs5" at 6.0pt
 Requested font "cmti12" at 12.0pt
  [1]
 File: inf-rot.eps Graphic file (type eps)
- <inf-rot.eps> [2]
-[3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15]
+
+<inf-rot.eps> [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15]
 File: branch-cut-plots/sq-root-cut.eps Graphic file (type eps)
 
 <branch-cut-plots/sq-root-cut.eps> [16] [17] [18]
@@ -620,26 +639,27 @@ File: n-squared-plots/n_squared_sum_box_1.eps Graphic file (type eps)
 File: n-squared-plots/n_squared_sum_box_2.eps Graphic file (type eps)
 
 <n-squared-plots/n_squared_sum_box_2.eps> [28] [29]
-Overfull \hbox (47.07045pt too wide) in paragraph at lines 1079--1110
+Overfull \hbox (47.07045pt too wide) in paragraph at lines 1081--1112
 []$
  []
 
 
-Overfull \hbox (14.90265pt too wide) in paragraph at lines 1079--1110
+Overfull \hbox (14.90265pt too wide) in paragraph at lines 1081--1112
 []$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1079--1110
+Underfull \hbox (badness 10000) in paragraph at lines 1081--1112
 
  []
 
-[30] [31]
+[30]
+Requested font "cmtt12" at 12.0pt
+ [31] [32] [33] [34]
 Requested font "cmbxti10" at 12.0pt
- [32]
 File: FLT_n_1.png Graphic file (type QTm)
  <use  "FLT_n_1.png" >
-Overfull \hbox (15.0259pt too wide) in paragraph at lines 1180--1181
+Overfull \hbox (15.0259pt too wide) in paragraph at lines 1278--1279
  [][] 
  []
 
@@ -654,99 +674,98 @@ Requested font "cmbsy10" at 10.95pt
 Requested font "rsfs10" at 10.95pt
 File: FLT_n_3.png Graphic file (type QTm)
 <use  "FLT_n_3.png" >
-Overfull \hbox (15.0259pt too wide) in paragraph at lines 1186--1187
+Overfull \hbox (15.0259pt too wide) in paragraph at lines 1284--1285
  [][] 
  []
 
 File: FLT_n_115.png Graphic file (type QTm)
 <use  "FLT_n_115.png" >
-Overfull \hbox (15.0259pt too wide) in paragraph at lines 1192--1193
+Overfull \hbox (15.0259pt too wide) in paragraph at lines 1290--1291
  [][] 
  []
 
+[35]
 File: FLT_n_4.png Graphic file (type QTm)
-<use  "FLT_n_4.png" >
-Overfull \hbox (22.76639pt too wide) in paragraph at lines 1211--1212
+ <use  "FLT_n_4.png" >
+Overfull \hbox (22.76639pt too wide) in paragraph at lines 1309--1310
  [][] 
  []
 
 File: FLT_n_12.png Graphic file (type QTm)
 <use  "FLT_n_12.png" >
-Overfull \hbox (22.76639pt too wide) in paragraph at lines 1217--1218
+Overfull \hbox (22.76639pt too wide) in paragraph at lines 1315--1316
  [][] 
  []
 
-[33] [34]
+[36]
 File: FLT_angle_n_3.png Graphic file (type QTm)
  <use  "FLT_angle_n_3.png" >
-Overfull \hbox (22.76639pt too wide) in paragraph at lines 1254--1255
+Overfull \hbox (22.76639pt too wide) in paragraph at lines 1352--1353
  [][] 
  []
 
 File: FLT_angle_n_33333.png Graphic file (type QTm)
 <use  "FLT_angle_n_33333.png" >
-Overfull \hbox (22.76639pt too wide) in paragraph at lines 1260--1261
+Overfull \hbox (22.76639pt too wide) in paragraph at lines 1358--1359
  [][] 
  []
 
-[35] [36] [37] [38] [39] [40] [41] [42]
-Overfull \hbox (12.2947pt too wide) in alignment at lines 1529--1532
+[37] [38] [39] [40] [41] [42] [43] [44] [45]
+Overfull \hbox (12.2947pt too wide) in alignment at lines 1627--1630
  [][][] []
  []
 
-[43] [44] [45] [46] [47] [48]
+[46] [47] [48] [49] [50]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1757.
-
-[49] [50]
-Overfull \hbox (8.55136pt too wide) in alignment at lines 1814--1816
- [][][] []
- []
+               Default added (so using `tbp') on input line 1855.
 
 [51] [52]
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1889.
-
-[53]
-File: FLT_twins_dist.png Graphic file (type QTm)
- <use  "FLT_twins_dist.png" > [54] [55] [56] [57] [58] [59]
-Overfull \hbox (0.10997pt too wide) in alignment at lines 2121--2126
+Overfull \hbox (8.55136pt too wide) in alignment at lines 1912--1914
  [][][] []
  []
 
-[60] [61] [62]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 2258
+[53] [54]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 1987.
+
+File: FLT_twins_dist.png Graphic file (type QTm)
+<use  "FLT_twins_dist.png" > [55] [56] [57] [58] [59] [60] [61]
+Overfull \hbox (0.10997pt too wide) in alignment at lines 2219--2224
+ [][][] []
+ []
+
+[62] [63] [64] [65]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 2356
 .
- (C:\miktex-portable-2.9\tex\latex\base\omscmr.fd
+ (D:\Downloads\miktex-portable-2.9\tex\latex\base\omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 2258.
-
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 2356.
 
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 2261.
+(amsmath)                 on input line 2359.
 
-[63]
-Overfull \hbox (7.48509pt too wide) in alignment at lines 2274--2276
+
+Overfull \hbox (7.48509pt too wide) in alignment at lines 2372--2374
  [][][] []
  []
 
-[64] [65] [66] [67] [68]
-Overfull \hbox (39.89938pt too wide) in alignment at lines 2468--2477
+[66] [67] [68] [69] [70]
+Overfull \hbox (39.89938pt too wide) in alignment at lines 2566--2575
  [][][] []
  []
 
-[69]
-Overfull \hbox (33.48509pt too wide) in alignment at lines 2522--2524
+[71]
+Overfull \hbox (33.48509pt too wide) in alignment at lines 2620--2622
  [][][] []
  []
 
-[70] [71] [72] [73] [74] [75] [76] [77] [78] [79] [80]
+[72] [73] [74] [75] [76] [77] [78] [79] [80] [81] [82]
 Requested font "cmex7" at 5.0pt
 Requested font "msam5" at 5.0pt
 Requested font "msbm5" at 5.0pt
@@ -754,244 +773,244 @@ Requested font "cmbx5" at 5.0pt
 Requested font "cmmib5" at 5.0pt
 Requested font "cmbsy5" at 5.0pt
 Requested font "rsfs5" at 5.0pt
- [81] [82]
-Underfull \hbox (badness 10000) in paragraph at lines 2917--2918
+ [83] [84]
+Underfull \hbox (badness 10000) in paragraph at lines 3015--3016
 
  []
 
-[83] [84]
-Underfull \hbox (badness 10000) in paragraph at lines 2976--2977
+[85] [86]
+Underfull \hbox (badness 10000) in paragraph at lines 3074--3075
 
  []
 
-[85]
-Underfull \hbox (badness 10000) in paragraph at lines 2991--2992
+[87]
+Underfull \hbox (badness 10000) in paragraph at lines 3089--3090
 
  []
 
-[86] [87]
-Underfull \hbox (badness 10000) in paragraph at lines 3080--3081
+[88] [89]
+Underfull \hbox (badness 10000) in paragraph at lines 3178--3179
 
  []
 
-[88]
-Underfull \hbox (badness 10000) in paragraph at lines 3117--3118
+[90]
+Underfull \hbox (badness 10000) in paragraph at lines 3215--3216
 []\OT1/cmr/m/n/12 =-=-=-=-=-=-=-=-=-=-=-=-=+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 +-+-+-
  []
 
-[89] [90] [91] [92] [93] [94] [95] [96] [97] [98] [99] [100] [101] [102]
-[103] [104] [105] [106] [107] [108] [109] [110] [111] [112] [113] [114]
-[115] [116]
-Underfull \hbox (badness 10000) in paragraph at lines 4139--4140
+[91] [92] [93] [94] [95] [96] [97] [98] [99] [100] [101] [102] [103] [104]
+[105] [106] [107] [108] [109] [110] [111] [112] [113] [114] [115] [116]
+[117] [118]
+Underfull \hbox (badness 10000) in paragraph at lines 4237--4238
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 =-=-=-
  []
 
-[117]
-Underfull \hbox (badness 10000) in paragraph at lines 4182--4183
+[119]
+Underfull \hbox (badness 10000) in paragraph at lines 4280--4281
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 =-=-=-
  []
 
-[118] [119] [120] [121] [122] [123]
-Underfull \hbox (badness 10000) in paragraph at lines 4427--4428
-[]\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-=-=-=-
- []
-
-[124] [125]
-Underfull \hbox (badness 10000) in paragraph at lines 4470--4471
+[120] [121] [122] [123] [124] [125]
+Underfull \hbox (badness 10000) in paragraph at lines 4525--4526
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 =-=-=-
  []
 
 [126] [127]
-Underfull \hbox (badness 10000) in paragraph at lines 4543--4544
-[]\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-=-=-=-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 4568--4569
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 =-=-=-
  []
 
-[128] [129] [130] [131] [132] [133] [134] [135] [136]
-Overfull \hbox (27.60042pt too wide) in alignment at lines 4905--4910
- [][][] []
+[128] [129]
+Underfull \hbox (badness 10000) in paragraph at lines 4641--4642
+[]\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+=-=-=-
  []
 
-[137]
-Overfull \hbox (43.84346pt too wide) in alignment at lines 4932--4940
- [][][] []
+
+Underfull \hbox (badness 10000) in paragraph at lines 4666--4667
+[]\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+=-=-=-
  []
 
-[138]
-Overfull \hbox (62.83934pt too wide) in alignment at lines 4958--4964
+[130] [131] [132] [133] [134] [135] [136] [137] [138]
+Overfull \hbox (27.60042pt too wide) in alignment at lines 5003--5008
  [][][] []
  []
 
 [139]
-Overfull \hbox (0.79628pt too wide) in alignment at lines 4992--4997
- [][][] []
- []
-
-
-Overfull \hbox (76.08777pt too wide) in alignment at lines 5001--5007
- [][][] []
- []
-
-
-Overfull \hbox (0.79628pt too wide) in alignment at lines 5011--5016
+Overfull \hbox (43.84346pt too wide) in alignment at lines 5030--5038
  [][][] []
  []
 
 [140]
-Overfull \hbox (22.05898pt too wide) in alignment at lines 5020--5025
+Overfull \hbox (62.83934pt too wide) in alignment at lines 5056--5062
+ [][][] []
+ []
+
+[141]
+Overfull \hbox (0.79628pt too wide) in alignment at lines 5090--5095
  [][][] []
  []
 
 
-Overfull \hbox (171.99907pt too wide) in paragraph at lines 5040--5041
+Overfull \hbox (76.08777pt too wide) in alignment at lines 5099--5105
+ [][][] []
+ []
+
+
+Overfull \hbox (0.79628pt too wide) in alignment at lines 5109--5114
+ [][][] []
+ []
+
+[142]
+Overfull \hbox (22.05898pt too wide) in alignment at lines 5118--5123
+ [][][] []
+ []
+
+
+Overfull \hbox (171.99907pt too wide) in paragraph at lines 5138--5139
 []\OT1/cmr/m/n/12 =============================================================
 ====== 
  []
 
-[141] [142] [143]
-Overfull \hbox (2.27861pt too wide) in paragraph at lines 5116--5117
+[143] [144] [145]
+Overfull \hbox (2.27861pt too wide) in paragraph at lines 5214--5215
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=
 -=-=-=--=-
  []
 
-[144]
-Overfull \hbox (2.27861pt too wide) in paragraph at lines 5175--5176
+[146]
+Overfull \hbox (2.27861pt too wide) in paragraph at lines 5273--5274
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=
 -=-=-=--=-
  []
 
-[145] [146]
-Overfull \hbox (2.27861pt too wide) in paragraph at lines 5235--5236
+[147] [148]
+Overfull \hbox (2.27861pt too wide) in paragraph at lines 5333--5334
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=
 -=-=-=--=-
  []
 
-[147] [148] [149] [150] [151]
-Overfull \hbox (2.27861pt too wide) in paragraph at lines 5479--5480
+[149] [150] [151] [152] [153]
+Overfull \hbox (2.27861pt too wide) in paragraph at lines 5577--5578
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=
 -=-=-=--=-
  []
 
 
-Overfull \hbox (2.27861pt too wide) in paragraph at lines 5496--5497
+Overfull \hbox (2.27861pt too wide) in paragraph at lines 5594--5595
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=
 -=-=-=--=-
  []
 
-[152]
-Underfull \hbox (badness 10000) in paragraph at lines 5514--5515
+[154]
+Underfull \hbox (badness 10000) in paragraph at lines 5612--5613
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 =-=-=-
  []
 
-[153] [154] [155] [156] [157] [158] [159] [160] [161]
-Underfull \hbox (badness 10000) in paragraph at lines 5881--5882
+[155] [156] [157] [158] [159] [160] [161] [162] [163]
+Underfull \hbox (badness 10000) in paragraph at lines 5979--5980
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 =-=-=-
  []
 
-[162]
-Underfull \hbox (badness 10000) in paragraph at lines 5948--5949
+[164]
+Underfull \hbox (badness 10000) in paragraph at lines 6046--6047
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 =-=-=-
  []
 
-[163] [164] [165] [166] [167]
-Underfull \hbox (badness 10000) in paragraph at lines 6106--6107
+[165] [166] [167] [168] [169]
+Underfull \hbox (badness 10000) in paragraph at lines 6204--6205
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 =-=-=-
  []
 
-[168] [169]
-Underfull \hbox (badness 10000) in paragraph at lines 6165--6166
+[170] [171]
+Underfull \hbox (badness 10000) in paragraph at lines 6263--6264
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 =-=-=-
  []
 
-[170]
-Underfull \hbox (badness 10000) in paragraph at lines 6232--6233
+[172]
+Underfull \hbox (badness 10000) in paragraph at lines 6330--6331
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 =-=-=-
  []
 
-[171] [172]
-Underfull \hbox (badness 10000) in paragraph at lines 6278--6279
+[173] [174]
+Underfull \hbox (badness 10000) in paragraph at lines 6376--6377
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 =-=-=-
  []
 
-[173]
-Underfull \hbox (badness 10000) in paragraph at lines 6355--6356
+[175]
+Underfull \hbox (badness 10000) in paragraph at lines 6453--6454
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 =-=-=-
  []
 
-[174] [175] [176]
-Overfull \hbox (7.55692pt too wide) in paragraph at lines 6426--6430
+[176] [177] [178]
+Overfull \hbox (7.55692pt too wide) in paragraph at lines 6524--6528
 \OT1/cmr/m/n/12 which is what we re-ally want and this time we ob-tained it leg
 ally :) so fi-nally $[][] 1\OML/cmm/m/it/12 = [] p \OT1/cmr/m/n/12 =
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 6452--6453
-[]\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-=-=-=-
- []
-
-[177] [178]
-Underfull \hbox (badness 10000) in paragraph at lines 6505--6506
-[]\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-=-=-=-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 6511--6512
-[]\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-=-=-=-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 6521--6522
+Underfull \hbox (badness 10000) in paragraph at lines 6550--6551
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 =-=-=-
  []
 
 [179] [180]
-Underfull \hbox (badness 10000) in paragraph at lines 6559--6560
+Underfull \hbox (badness 10000) in paragraph at lines 6603--6604
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 =-=-=-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 6563--6564
+Underfull \hbox (badness 10000) in paragraph at lines 6609--6610
 []\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 =-=-=-
  []
 
-[181] [182] ("my extra at work.bbl") [183]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 6637.
+
+Underfull \hbox (badness 10000) in paragraph at lines 6619--6620
+[]\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+=-=-=-
+ []
+
+[181] [182]
+Underfull \hbox (badness 10000) in paragraph at lines 6657--6658
+[]\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+=-=-=-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 6661--6662
+[]\OT1/cmr/m/n/12 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+=-=-=-
+ []
+
+[183] [184] ("my extra at work.bbl") [185]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 6735.
  ("my extra at work.aux")
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 6637.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 6637.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 6735.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 6735.
  ) 
 Here is how much of TeX's memory you used:
- 13408 strings out of 428755
- 185132 string characters out of 3166785
- 302050 words of memory out of 3000000
- 16598 multiletter control sequences out of 15000+200000
- 17684 words of font info for 67 fonts, out of 3000000 for 9000
+ 13782 strings out of 428721
+ 191422 string characters out of 3167142
+ 309818 words of memory out of 3000000
+ 17001 multiletter control sequences out of 15000+200000
+ 17853 words of font info for 68 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
- 36i,19n,38p,999b,569s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,19n,39p,978b,569s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on my extra at work.pdf (183 pages).
+Output written on my extra at work.pdf (185 pages).
